@@ -35,6 +35,10 @@ namespace qOS {
             bool removeFront( void );
             bool receive( void *dst );
             bool send( void *itemToQueue, const queueSendMode pos );
+            bool send( void *itemToQueue )
+            {
+                return send( itemToQueue, queueSendMode::TO_BACK );
+            }
             void* peek( void ) const;
             bool isReady( void ) const;
             size_t getItemSize( void );

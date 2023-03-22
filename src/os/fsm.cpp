@@ -42,8 +42,8 @@ bool stateMachine::setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::su
     surrounding = sFcn;
     fsm::_Handler::Machine = this;
     fsm::_Handler::Data = pData;
-    stateSubscribe( &top, nullptr, topFcn, init, nullptr );
-    top.parent = nullptr;
+    top.topSelf( topFcn, init );
+
     #if ( Q_FSM_PS_SIGNALS_MAX > 0 )  && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
     if ( psSignals[ 0 ] > fsm::signalID::SIGNAL_NONE ) {
         unsubscribeAll();
@@ -52,23 +52,28 @@ bool stateMachine::setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::su
     return true;
 }
 /*============================================================================*/
-bool stateMachine::stateSubscribe( fsm::state *s, fsm::state *parent, fsm::stateCallback_t sFcn, fsm::state *init, void *pData )
+void fsm::state::topSelf( fsm::stateCallback_t topFcn, fsm::state *init )
 {
-    bool retValue = false;
-
-    if ( nullptr != s ) {
-        s->sData = pData;
-        s->lastRunningChild = init;
-        s->initState = init;
-        s->sCallback = sFcn;
-        s->parent = ( nullptr == parent ) ? &top : parent;
-        s->tTable = nullptr;
-        s->tEntries = 0u;
-        s->tdef = nullptr;
-        s->nTm = 0u;
-        retValue = true;
-    }
-    return retValue;
+    lastRunningChild = init;
+    initState = init;
+    sCallback = topFcn;
+    parent = nullptr;
+    tTable = nullptr;
+    tEntries = 0u;
+    tdef = nullptr;
+    nTm = 0u;
+}
+/*============================================================================*/
+bool fsm::state::subscribe( fsm::state *s, fsm::stateCallback_t sFcn, fsm::state *init )
+{
+    s->lastRunningChild = init;
+    s->initState = init;
+    s->sCallback = sFcn;
+    s->parent = this;
+    s->tTable = nullptr;
+    s->tEntries = 0u;
+    s->tdef = nullptr;
+    s->nTm = 0u;
 }
 /*============================================================================*/
 void stateMachine::unsubscribeAll( void )
@@ -257,20 +262,15 @@ void stateMachine::timeoutPerformSpecifiedActions( fsm::state *s, fsm::signalID 
     }
 }
 /*============================================================================*/
-bool stateMachine::installTimeoutSpec( fsm::timeoutSpec_t *ts )
+bool stateMachine::installTimeoutSpec( fsm::timeoutSpec_t &ts )
 {
-    bool retValue = false;
-
-    if ( nullptr != ts ) {
-        (void)memset( ts, 0, sizeof(fsm::timeoutSpec_t) );
-        timeSpec = ts;
-        for ( size_t i = 0u ; i < (size_t)Q_FSM_MAX_TIMEOUTS ; ++i ) {
-            timeSpec->timeout[ i ].disarm();
-        }
-        retValue = true;
+    timeSpec = &ts;
+    for ( size_t i = 0u ; i < (size_t)Q_FSM_MAX_TIMEOUTS ; ++i ) {
+        timeSpec->timeout[ i ].disarm();
+        timeSpec->isPeriodic = 0u;
     }
 
-    return retValue;
+    return true;
 }
 /*============================================================================*/
 bool fsm::state::setTimeouts( fsm::timeoutStateDefinition_t *tdef, size_t n )
@@ -369,6 +369,11 @@ fsm::state* fsm::state::getParent( void ) const
 void* fsm::state::getData( void ) const
 {
     return sData;
+}
+/*============================================================================*/
+void fsm::state::setData( void* pData ) 
+{
+    sData = pData;
 }
 /*============================================================================*/
 fsm::transition_t* fsm::state::getTransitionTable( void ) const

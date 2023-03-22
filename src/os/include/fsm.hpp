@@ -114,21 +114,32 @@ namespace qOS {
                 void sweepTransitionTable( _Handler &h );
                 state( state const& ) = delete;      /* not copyable*/
                 void operator=( state const& ) = delete;  /* not assignable*/
+                bool subscribe( fsm::state *s, fsm::stateCallback_t sFcn, fsm::state *init );
+                void topSelf( fsm::stateCallback_t topFcn, fsm::state *init );
             public:
                 state() = default;
+                bool add( fsm::state &s, fsm::stateCallback_t sFcn, fsm::state &init )
+                {
+                    return subscribe( &s, sFcn, &init );
+                }
+                bool add( fsm::state &s, fsm::stateCallback_t sFcn )
+                {
+                    return subscribe( &s, sFcn, nullptr );
+                }
                 bool setTransitions( transition_t *table, size_t n );
                 bool setTimeouts( timeoutStateDefinition_t *tdef, size_t n );
                 state* getInit( void ) const;
                 state* getLastState( void ) const;
                 state* getParent( void ) const;
                 void* getData( void ) const;
+                void setData( void *pData );
                 transition_t* getTransitionTable( void ) const;
                 void setCallback( stateCallback_t sFcn );
             friend class qOS::stateMachine;
         };
 
         typedef struct {
-            uint32_t isPeriodic{ 0u};
+            uint32_t isPeriodic{ 0u };
             timer timeout[ Q_FSM_MAX_TIMEOUTS ];
         } timeoutSpec_t;
 
@@ -156,7 +167,6 @@ namespace qOS {
             fsm::timeoutSpec_t *timeSpec{ nullptr };
             fsm::surroundingCallback_t surrounding{ nullptr };
             fsm::state top;
-            //fsm::_Handler handler;
             fsm::signal_t signalNot;
             void *owner{ nullptr };
             void unsubscribeAll( void );
@@ -178,15 +188,42 @@ namespace qOS {
             fsm::signal_t checkForSignals( fsm::signal_t sig );
             stateMachine( stateMachine const& ) = delete;      /* not copyable*/
             void operator=( stateMachine const& ) = delete;  /* not assignable*/
+            bool setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::surroundingCallback_t sFcn, void* pData );
         public:
             void *mData{ nullptr };
             stateMachine() = default;
-            bool setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::surroundingCallback_t sFcn, void* pData );
-            bool stateSubscribe( fsm::state *s, fsm::state *parent, fsm::stateCallback_t sFcn, fsm::state *init, void *pData );
+            bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn, void* pData )
+            {
+                return setup( topFcn, &init, sFcn, pData );
+            }
+            bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn )
+            {
+                return setup( topFcn, &init, sFcn, nullptr );
+            }
+            bool setup( fsm::stateCallback_t topFcn, fsm::state &init )
+            {
+                return setup( topFcn, &init, nullptr, nullptr );
+            }
+            bool add( fsm::state &s, fsm::stateCallback_t sFcn, fsm::state &init )
+            {
+                return top.subscribe( &s, sFcn, &init );
+            }
+            bool add( fsm::state &s, fsm::stateCallback_t sFcn )
+            {
+                return top.subscribe( &s, sFcn, nullptr );
+            }
             bool installSignalQueue( queue *q );
             bool sendSignal( fsm::signalID sig, void *sData, bool isUrgent );
+            bool sendSignal( fsm::signalID sig, void *sData )
+            {
+                return sendSignal( sig, sData, false );
+            }
+            bool sendSignal( fsm::signalID sig )
+            {
+                return sendSignal( sig, nullptr, false );
+            }
             bool sendSignalToSubscribers( fsm::signalID sig, void *sData, bool isUrgent );
-            bool installTimeoutSpec( fsm::timeoutSpec_t *ts );
+            bool installTimeoutSpec( fsm::timeoutSpec_t &ts );
             bool timeoutSet( index_t xTimeout, time_t t );
             bool timeoutStop( index_t xTimeout );
             const fsm::state* getTop( void ) const;

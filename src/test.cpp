@@ -50,26 +50,26 @@ qOS::fsm::status s2_callback( qOS::fsm::handler_t h )
 void task_callback( event_t e )
 {
     if ( e.firstCall() ) {
-        cout << "first call "<< qOS::os.getTaskRunning()->getName() << endl; 
+        cout << "first call "<< qOS::os.getTaskRunning().getName() << endl; 
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        cout << "notified(SIMPLE)! " << qOS::os.getTaskRunning()->getName() << endl;
+        cout << "notified(SIMPLE)! " << qOS::os.getTaskRunning().getName() << endl;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
         
-        cout << "notified(QUEUED)! " << qOS::os.getTaskRunning()->getName() << endl;
+        cout << "notified(QUEUED)! " << qOS::os.getTaskRunning().getName() << endl;
     }
 
-    cout << "im task "<< qOS::os.getTaskRunning()->getName() << endl;
+    cout << "im task "<< qOS::os.getTaskRunning().getName() << endl;
     
     if ( e.lastIteration() ) {
-        qOS::os.notify( qOS::QUEUED, &t1, nullptr );
-        qOS::os.notify( qOS::QUEUED, &t1, nullptr );
-        qOS::os.notify( qOS::QUEUED, &t2, nullptr );
-        qOS::os.notify( qOS::QUEUED, &t1, nullptr );
-        cout << "last iteration "<< qOS::os.getTaskRunning()->getName() << endl; 
+        qOS::os.notify( qOS::QUEUED, t1, nullptr );
+        qOS::os.notify( qOS::QUEUED, t1, nullptr );
+        qOS::os.notify( qOS::QUEUED, t2, nullptr );
+        qOS::os.notify( qOS::QUEUED, t1, nullptr );
+        cout << "last iteration "<< qOS::os.getTaskRunning().getName() << endl; 
     }
 }
 
@@ -81,17 +81,20 @@ uint32_t clockProvider( void ) {
 
 int main()
 {
+    t1.setName( "t1");
+    t2.setName( "t2");
+    t3.setName( "t3");
     qOS::os.init( clockProvider, 0.001f, idleTask_callback );
-    qOS::os.addTask( &t1, task_callback, qOS::core::LOWEST_PRIORITY, 0.5f, task::PERIODIC, qOS::ENABLED, nullptr );
-    qOS::os.addTask( &t2, task_callback, qOS::core::HIGHEST_PRIORITY, 0.5f, 10, qOS::ENABLED, nullptr );
-    qOS::os.addTask( &t3, task_callback, qOS::core::MEDIUM_PRIORITY, 2.0f, task::PERIODIC, qOS::ENABLED, nullptr );
+    qOS::os.addTask( t1, task_callback, qOS::core::LOWEST_PRIORITY, 0.5f, task::PERIODIC, qOS::ENABLED, nullptr );
+    qOS::os.addTask( t2, task_callback, qOS::core::HIGHEST_PRIORITY, 0.5f, 10, qOS::ENABLED, nullptr );
+    qOS::os.addTask( t3, task_callback, qOS::core::MEDIUM_PRIORITY, 2.0f, task::PERIODIC, qOS::ENABLED, nullptr );
 
     qOS::fsm::timeoutSpec_t tm_specTimeout;
-    m.setup( nullptr, &s1, nullptr, nullptr );
-    m.installTimeoutSpec( &tm_specTimeout );
-    m.stateSubscribe( &s1, nullptr, s1_callback, nullptr, nullptr );
-    m.stateSubscribe( &s2, nullptr, s2_callback, nullptr, nullptr );
-    qOS::os.addStateMachineTask( &t4, &m, qOS::core::MEDIUM_PRIORITY, 0.1f, qOS::ENABLED, nullptr );
+    m.setup( nullptr, s1 );
+    m.installTimeoutSpec( tm_specTimeout );
+    m.add( s1, s1_callback );
+    m.add( s2, s2_callback );
+    qOS::os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 0.1f, qOS::ENABLED, nullptr );
 
     qOS::os.run();
     for(;;) { }

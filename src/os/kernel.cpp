@@ -33,58 +33,50 @@ void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCa
     
 }
 /*============================================================================*/
-bool core::addTask( task *Task, taskFcn_t callback, const priority_t p, const qOS::time_t t, const iteration_t n, const taskState init, void *arg )
+bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::time_t t, const iteration_t n, const taskState init, void *arg )
 {
     bool retValue = false;
 
-    if ( nullptr != Task ) {
-        Task->setCallback( callback );
-        Task->time.set( t );
-        Task->setData( arg );
-        Task->setPriority( clipUpper( p, MAX_PRIORITY_VALUE ) );
-        Task->setIterations( n );
-        Task->setFlags( task::BIT_SHUTDOWN | task::BIT_ENABLED, true );
-        Task->setState( init );
-        Task->entry = core::taskEntries++;
-        Task->pEventInfo = static_cast<_Event*>( this );
-        retValue = waitingList->insert( Task, AT_BACK );
-    }
+        Task.setCallback( callback );
+        Task.time.set( t );
+        Task.setData( arg );
+        Task.setPriority( clipUpper( p, MAX_PRIORITY_VALUE ) );
+        Task.setIterations( n );
+        Task.setFlags( task::BIT_SHUTDOWN | task::BIT_ENABLED, true );
+        Task.setState( init );
+        Task.entry = core::taskEntries++;
+        Task.pEventInfo = static_cast<_Event*>( this );
+        retValue = waitingList->insert( &Task, AT_BACK );
 
     return retValue;
 }
 /*============================================================================*/
-bool core::addEventTask( task *Task, taskFcn_t callback, const priority_t p, void *arg )
-{
-    return core::addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, arg );
-}
-/*============================================================================*/
 static void fsmTaskCallback( event_t e )
 {
-    task *xTask = qOS::os.getTaskRunning();
-    stateMachine *sm = static_cast<stateMachine*>( xTask->getAttachedObject() );
+    stateMachine *sm = static_cast<stateMachine*>( qOS::os.getTaskRunning().getAttachedObject() );
     fsm::signal_t sig = { fsm::signalID::SIGNAL_NONE, nullptr };
     (void)sm->run( sig );
 } 
 /*============================================================================*/
-bool core::addStateMachineTask( task *Task, stateMachine *m, const priority_t p, const qOS::time_t t, const taskState init, void *arg )
+bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::time_t t, const taskState init, void *arg )
 {
     bool retValue = core::addTask( Task, fsmTaskCallback, p, t, task::PERIODIC, init, arg );
     if ( retValue ) {
-        Task->aObj = m;
-        m->owner = Task;
+        Task.aObj = &m;
+        m.owner = &Task;
         #if ( Q_QUEUES == 1 )
-            if ( nullptr != m->sQueue ) {
+            if ( nullptr != m.sQueue ) {
                 /*bind the queue*/
-                retValue =Task->attachQueue( m->sQueue, queueLinkMode::QUEUE_COUNT, 1u );
+                retValue = Task.attachQueue( *m.sQueue, queueLinkMode::QUEUE_COUNT, 1u );
             }
         #endif
     }
     return retValue;
 }
 /*============================================================================*/
-task* core::getTaskRunning( void ) const
+task& core::getTaskRunning( void ) const
 {
-    return currentTask;
+    return *currentTask;
 }
 /*============================================================================*/
 bool core::setIdleTask( taskFcn_t callback )
@@ -117,16 +109,10 @@ bool core::setSchedulerReleaseCallback( taskFcn_t callback )
     return retValue;
 }
 /*============================================================================*/
-bool core::removeTask( task *Task )
+bool core::removeTask( task &Task )
 {
-    bool retValue = false;
-
-    if ( nullptr != Task ) {
-        Task->setFlags( task::BIT_REMOVE_REQUEST, true );
-        retValue = true;
-    }
-
-    return retValue;
+    Task.setFlags( task::BIT_REMOVE_REQUEST, true );
+    return true;
 }
 /*============================================================================*/
 void core::triggerReleaseSchedEvent( void )
@@ -206,7 +192,7 @@ bool core::checkIfReady( void )
             #if ( Q_PRIO_QUEUE_SIZE > 0 )
                 critical::enter();
                 /*clean any entry of this task from the priority queue */
-                priorityQueue.cleanUp( xTask );
+                priorityQueue.cleanUp( *xTask );
                 critical::exit();
             #endif
             xTask->setFlags( task::BIT_REMOVE_REQUEST, false );
@@ -391,94 +377,78 @@ static bool taskEntryOrderPreserver( listCompareHandle_t h )
 }
 #endif
 /*============================================================================*/
-bool core::notify( notifyMode mode, task* Task, void* eventData )
+bool core::notify( notifyMode mode, task &Task, void* eventData )
 {
     bool retValue = false;
 
-    if ( nullptr != Task ) {
-        if ( notifyMode::SIMPLE == mode ) {
-            if ( Task->notifications < MAX_NOTIFICATION_VALUE ) {
-                ++Task->notifications;
-                Task->asyncData = eventData;
-                retValue = true;
-            }
-        }
-        else if ( notifyMode::QUEUED == mode ) {
-            #if ( Q_PRIO_QUEUE_SIZE > 0 )
-                retValue = priorityQueue.insert( Task, eventData );
-            #endif
-        }
-        else {
-            /*nothing to do here*/
-        }
-    }
-
-    return retValue;
-}
-/*============================================================================*/
-bool core::hasPendingNotifications( task* Task )
-{
-    bool retValue = false;
-
-    if ( nullptr != Task ) {
-        if ( Task->notifications > 0u ) {
+    if ( notifyMode::SIMPLE == mode ) {
+        if ( Task.notifications < MAX_NOTIFICATION_VALUE ) {
+            ++Task.notifications;
+            Task.asyncData = eventData;
             retValue = true;
         }
-        else {
-            #if ( Q_PRIO_QUEUE_SIZE > 0 )
-                retValue = priorityQueue.isTaskInside( Task );
-            #endif
-        }
+    }
+    else if ( notifyMode::QUEUED == mode ) {
+        #if ( Q_PRIO_QUEUE_SIZE > 0 )
+            retValue = priorityQueue.insert( Task, eventData );
+        #endif
+    }
+    else {
+        /*nothing to do here*/
     }
 
     return retValue;
 }
 /*============================================================================*/
-bool core::eventFlagsModify( task* Task, const taskFlag_t flags, const bool action )
+bool core::hasPendingNotifications( task &Task )
 {
     bool retValue = false;
 
-    if ( nullptr != Task ) {
-        taskFlag_t flagsToSet = Task->flags & task::EVENT_FLAGS_MASK;
-        Task->setFlags( flagsToSet, action );
+
+    if ( Task.notifications > 0u ) {
         retValue = true;
     }
-
-    return retValue;
-}
-/*============================================================================*/
-taskFlag_t core::eventFlagsRead( task *Task ) const
-{
-    taskFlag_t retValue = 0u;
-
-    if ( nullptr != Task ) {
-        retValue = Task->flags & task::EVENT_FLAGS_MASK;
+    else {
+        #if ( Q_PRIO_QUEUE_SIZE > 0 )
+            retValue = priorityQueue.isTaskInside( Task );
+        #endif
     }
+    
 
     return retValue;
 }
 /*============================================================================*/
-bool core::eventFlagsCheck( task *Task, taskFlag_t flagsToCheck, const bool clearOnExit, const bool checkForAll )
+bool core::eventFlagsModify( task &Task, const taskFlag_t flags, const bool action )
+{
+    taskFlag_t flagsToSet = Task.flags & task::EVENT_FLAGS_MASK;
+    Task.setFlags( flagsToSet, action );
+
+    return true;
+}
+/*============================================================================*/
+taskFlag_t core::eventFlagsRead( task &Task ) const
+{
+    return Task.flags & task::EVENT_FLAGS_MASK;
+}
+/*============================================================================*/
+bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clearOnExit, const bool checkForAll )
 {
     bool retValue = false;
+    taskFlag_t cEventBits = Task.flags & task::EVENT_FLAGS_MASK;
 
-    if ( nullptr != Task ) {
-        taskFlag_t cEventBits = Task->flags & task::EVENT_FLAGS_MASK;
-
-        flagsToCheck &= task::EVENT_FLAGS_MASK;
-        if ( false == checkForAll ) {
-            if ( 0u != ( cEventBits & flagsToCheck ) ) {
-                retValue = true;
-            }
+    flagsToCheck &= task::EVENT_FLAGS_MASK;
+    if ( false == checkForAll ) {
+        if ( 0u != ( cEventBits & flagsToCheck ) ) {
+            retValue = true;
         }
-        else {
-            if ( ( cEventBits & flagsToCheck ) == flagsToCheck ) {
-                retValue = true;
-            }
+    }
+    else {
+        if ( ( cEventBits & flagsToCheck ) == flagsToCheck ) {
+            retValue = true;
         }
-        if ( ( true == retValue ) && ( true == clearOnExit ) ) {
-            Task->flags &= ~flagsToCheck;
-        }
+    }
+    if ( ( true == retValue ) && ( true == clearOnExit ) ) {
+        Task.flags &= ~flagsToCheck;
     }
 
     return retValue;
@@ -509,39 +479,37 @@ task* core::findTaskByName( const char *name )
     return found;
 }
 /*============================================================================*/
-bool core::yieldToTask( task *Task )
+bool core::yieldToTask( task &Task )
 {
     bool  retValue = false;
 
-    if ( ( nullptr != currentTask ) && ( Task != currentTask ) ) {
-        yieldTask = Task;
+    if ( ( nullptr != currentTask ) && ( &Task != currentTask ) ) {
+        yieldTask = &Task;
         retValue = true;
     }
 
     return retValue;
 }
 /*============================================================================*/
-globalState core::getGlobalState( task *Task ) const
+globalState core::getGlobalState( task &Task ) const
 {
     globalState retValue = UNDEFINED;
 
-    if ( nullptr != Task ) {
-        list *xList = static_cast<list*>( Task->container );
-        if ( currentTask == Task ) {
-            retValue = RUNNING;
-        }
-        else if ( waitingList == xList ) {
-            retValue = WAITING;
-        }
-        else if ( suspendedList == xList ) {
-            retValue = SUSPENDED;
-        }
-        else if ( nullptr == xList ) {
-            /*undefined*/
-        }
-        else {
-            retValue = READY; /*by discard, it must be ready*/
-        }
+    list *xList = static_cast<list*>( Task.container );
+    if ( currentTask == &Task ) {
+        retValue = RUNNING;
+    }
+    else if ( waitingList == xList ) {
+        retValue = WAITING;
+    }
+    else if ( suspendedList == xList ) {
+        retValue = SUSPENDED;
+    }
+    else if ( nullptr == xList ) {
+        /*undefined*/
+    }
+    else {
+        retValue = READY; /*by discard, it must be ready*/
     }
 
     return retValue;

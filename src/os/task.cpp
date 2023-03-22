@@ -175,7 +175,7 @@ bool task::setName( const char *name )
 /*============================================================================*/
 const char* task::getName( void ) const
 {
-    return name;
+    return ( nullptr != name ) ? name : "nullptr";
 }
 /*============================================================================*/
 trigger task::queueCheckEvents( void )
@@ -219,17 +219,16 @@ size_t task::getID( void ) const
     return entry;
 }
 /*============================================================================*/
-bool task::attachQueue( queue *q, const queueLinkMode mode, const size_t arg )
+bool task::attachQueue( queue &q, const queueLinkMode mode, const size_t arg )
 {
     bool retValue = false;
 
-    if ( ( nullptr != q ) && ( q->isReady() ) ) {
-        setFlags( static_cast<uint32_t>( mode) & QUEUE_FLAGS_MASK, 0u != arg );
+    if ( q.isReady() ) {
+        setFlags( static_cast<uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0u != arg );
         if ( queueLinkMode::QUEUE_COUNT == mode ) {
             aQueueCount = arg;
         }
-        /*reject, if no valid arg input*/
-        aQueue = ( arg > 0u ) ? q : nullptr;
+        aQueue = ( arg > 0u ) ? &q : nullptr;
         retValue = true;
     }
 

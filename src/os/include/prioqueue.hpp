@@ -23,8 +23,8 @@ class prioQueue {
         prioQueue( queueStack_t *area, const size_t size );
         size_t count( void );
         task* get( void );
-        bool isTaskInside( task *Task );
-        bool insert( task *Task, void *pData );
+        bool isTaskInside( task &Task );
+        bool insert( task &Task, void *pData );
         void clearIndex( index_t indexToClear );
-        void cleanUp( const task * Task );
+        void cleanUp( const task &Task );
 };

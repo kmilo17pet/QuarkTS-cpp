@@ -63,23 +63,46 @@ namespace qOS {
             void operator=( const core & ) = delete;
             
             void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback );
-            bool addTask( task *Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState init, void *arg );
-            bool addEventTask( task *Task, taskFcn_t callback, const priority_t p, void *arg );
-            bool addStateMachineTask( task *Task, stateMachine *m, const priority_t p, const time_t t, const taskState init, void *arg );
-            task* getTaskRunning( void ) const;
+            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState init, void *arg );
+            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState init )
+            {
+                return addTask( Task, callback, p, t, n, init, nullptr );
+            }
+            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n )
+            {
+                return addTask( Task, callback, p, t, n, taskState::ENABLED, nullptr );
+            }
+            bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg )
+            {
+                return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, arg );
+            }
+            bool addEventTask( task &Task, taskFcn_t callback, const priority_t p )
+            {
+                return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, nullptr );
+            }
+            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState init, void *arg );
+            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState init )
+            {
+                return addStateMachineTask( Task, m, p, t, init, nullptr );
+            }
+            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t )
+            {
+                return addStateMachineTask( Task, m, p, t, taskState::ENABLED, nullptr );
+            }
+            task& getTaskRunning( void ) const;
             bool setIdleTask( taskFcn_t callback );
             bool schedulerRelease( void );
             bool setSchedulerReleaseCallback( taskFcn_t callback );
-            bool removeTask( task *Task );
+            bool removeTask( task &Task );
             bool run( void );
-            bool notify( notifyMode mode, task* Task, void* eventData );
-            bool hasPendingNotifications( task* Task );
-            bool eventFlagsModify( task* Task, const taskFlag_t flags, const bool action );
-            taskFlag_t eventFlagsRead( task *Task ) const;
-            bool eventFlagsCheck( task *Task, taskFlag_t flagsToCheck, const bool clearOnExit, const bool checkForAll );
+            bool notify( notifyMode mode, task &Task, void* eventData );
+            bool hasPendingNotifications( task &Task );
+            bool eventFlagsModify( task &Task, const taskFlag_t flags, const bool action );
+            taskFlag_t eventFlagsRead( task &Task ) const;
+            bool eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clearOnExit, const bool checkForAll );
             task* findTaskByName( const char *name );
-            bool yieldToTask( task *Task );
-            globalState getGlobalState( task *Task ) const;
+            bool yieldToTask( task &Task );
+            globalState getGlobalState( task &Task ) const;
     };
 
     extern core& os;

@@ -58,7 +58,7 @@ task* prioQueue::get( void )
     return xTask;
 }
 /*============================================================================*/
-bool prioQueue::isTaskInside( task *Task )
+bool prioQueue::isTaskInside( task &Task )
 {
     bool retValue = false;
     base_t currentQueueIndex = index + 1;
@@ -67,7 +67,7 @@ bool prioQueue::isTaskInside( task *Task )
         critical::enter();
         /*loop the queue slots to check if the Task is inside*/
         for ( base_t i = 0 ; i < currentQueueIndex ; ++i ) {
-            if ( Task == stack[ i ].Task ) {
+            if ( &Task == stack[ i ].Task ) {
                 retValue = true;
                 break;
             }
@@ -78,14 +78,14 @@ bool prioQueue::isTaskInside( task *Task )
     return retValue;
 }
 /*============================================================================*/
-bool prioQueue::insert( task *Task, void *pData )
+bool prioQueue::insert( task &Task, void *pData )
 {
     bool retValue = false;
     const base_t queueMaxIndex = size - 1;
 
     /*check if data can be queued*/
-    if ( ( nullptr != Task )  && ( index < queueMaxIndex ) ) {
-        queueStack_t tmp{ Task, pData };
+    if ( index < queueMaxIndex ) {
+        queueStack_t tmp{ &Task, pData };
         /*insert task and the corresponding eventData to the queue*/
         stack[ ++index ] = tmp;
         retValue = true;
@@ -104,10 +104,10 @@ void prioQueue::clearIndex( index_t indexToClear )
     --index; /*decrease the index*/
 }
 /*============================================================================*/
-void prioQueue::cleanUp( const task * Task )
+void prioQueue::cleanUp( const task &Task )
 {
     for ( index_t i = 1u ; i < size ; ++i ) {
-        if ( stack[ i ].Task == Task ) {
+        if ( stack[ i ].Task == &Task ) {
             clearIndex( i );
         }
     }

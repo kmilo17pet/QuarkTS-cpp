@@ -122,7 +122,7 @@ namespace qOS {
             bool setName( const char *name );
             const char* getName( void ) const;
             size_t getID( void ) const;
-            bool attachQueue( queue *q, const queueLinkMode mode, const size_t arg );
+            bool attachQueue( queue &q, const queueLinkMode mode, const size_t arg );
             void* getAttachedObject( void ) const;
             event_t eventData( void ) const;
 

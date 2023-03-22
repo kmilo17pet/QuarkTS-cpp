@@ -1,4 +1,4 @@
-# qos-cpp
+# QuarkTS for C++
 
 # how to build
 
