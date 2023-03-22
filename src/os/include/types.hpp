@@ -3,7 +3,6 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
-#include <bits/stdc++.h>
 
 typedef int base_t;
 typedef uint8_t byte_t;

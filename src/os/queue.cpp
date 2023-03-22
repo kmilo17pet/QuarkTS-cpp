@@ -1,5 +1,7 @@
 #include "queue.hpp"
 #include "critical.hpp"
+#include <cstring>
+
 
 using namespace qOS;
 

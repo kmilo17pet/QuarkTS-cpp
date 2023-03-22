@@ -74,6 +74,8 @@ bool fsm::state::subscribe( fsm::state *s, fsm::stateCallback_t sFcn, fsm::state
     s->tEntries = 0u;
     s->tdef = nullptr;
     s->nTm = 0u;
+
+    return true;
 }
 /*============================================================================*/
 void stateMachine::unsubscribeAll( void )
