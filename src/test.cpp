@@ -65,10 +65,10 @@ void task_callback( event_t e )
     cout << "im task "<< qOS::os.getTaskRunning().getName() << endl;
     
     if ( e.lastIteration() ) {
-        qOS::os.notify( qOS::QUEUED, t1, nullptr );
-        qOS::os.notify( qOS::QUEUED, t1, nullptr );
-        qOS::os.notify( qOS::QUEUED, t2, nullptr );
-        qOS::os.notify( qOS::QUEUED, t1, nullptr );
+        qOS::os.notify( qOS::notifyMode::QUEUED, t1, nullptr );
+        qOS::os.notify( qOS::notifyMode::QUEUED, t1, nullptr );
+        qOS::os.notify( qOS::notifyMode::QUEUED, t2, nullptr );
+        qOS::os.notify( qOS::notifyMode::QUEUED, t1, nullptr );
         cout << "last iteration "<< qOS::os.getTaskRunning().getName() << endl; 
     }
 }

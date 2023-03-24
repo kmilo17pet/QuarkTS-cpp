@@ -25,7 +25,7 @@ qOS::getTickFcn_t clock::getTick = &internalTick;
     const qOS::time_t clock::WEEK = 604800.0f;
 #endif
 /*============================================================================*/
-qOS::clock_t clock::convert2Clock( const time_t t )
+qOS::clock_t clock::convert2Clock( const qOS::time_t t )
 {
     #if ( Q_SETUP_TIME_CANONICAL == 1 )
         return (qOS::clock_t)t;
@@ -50,7 +50,7 @@ qOS::time_t clock::convert2Time( const qOS::clock_t t )
         return static_cast<qOS::time_t>( t );
     #else
         #if ( Q_SETUP_TICK_IN_HERTZ == 1 )
-            return static_cast<time_t>( t/timingBase );
+            return static_cast<qOS::time_t>( t/timingBase );
         #else
             return static_cast<qOS::time_t>( timingBase*static_cast<qOS::time_t>( t ) );
         #endif

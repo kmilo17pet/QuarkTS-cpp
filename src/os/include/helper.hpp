@@ -1,4 +1,5 @@
-#pragma once
+#ifndef QOS_CPP_HELPER
+#define QOS_CPP_HELPER
 
 #include "types.hpp"
 
@@ -59,4 +60,4 @@ namespace qOS {
 
 }
 
-
+#endif /*QOS_CPP_HELPER*/

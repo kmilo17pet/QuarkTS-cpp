@@ -6,19 +6,19 @@
 using namespace qOS;
 
 /*============================================================================*/
-queue::queue( void *pData, const size_t itemSize, const size_t itemsCount )
+queue::queue( void *pData, const std::size_t itemSize, const std::size_t itemsCount )
 {
     (void)setup( pData, itemSize, itemsCount );
 }
 /*============================================================================*/
-bool queue::setup( void *pData, const size_t itemSize, const size_t itemsCount )
+bool queue::setup( void *pData, const std::size_t itemSize, const std::size_t itemsCount )
 {
     bool retValue = false;
 
     if ( ( nullptr != pData ) && ( itemSize > 0u ) && ( itemsCount > 0u ) ) {
         this->itemsCount = itemsCount; /* Initialise the queue members*/
         this->itemSize = itemSize;
-        head = static_cast<uint8_t*>( pData );
+        head = static_cast<std::uint8_t*>( pData );
         reset();
         retValue = true;
     }
@@ -46,12 +46,12 @@ bool queue::isFull( void ) const
     return ( itemsWaiting == itemsCount ) ? true : false;
 }
 /*============================================================================*/
-size_t queue::count( void ) const
+std::size_t queue::count( void ) const
 {
     return itemsWaiting;
 }
 /*============================================================================*/
-size_t queue::itemsAvailable( void ) const
+std::size_t queue::itemsAvailable( void ) const
 {
     return itemsCount - itemsWaiting;
 }
@@ -67,7 +67,7 @@ void queue::moveReader( void )
 bool queue::removeFront( void )
 {
     bool retValue = false;
-    size_t waiting;
+    std::size_t waiting;
 
     critical::enter();
     waiting = itemsWaiting; /*to avoid side effects*/
@@ -90,7 +90,7 @@ void queue::copyDataFromQueue( void * const dst )
 bool queue::receive( void *dst )
 {
     bool retValue = false;
-    size_t waiting;
+    std::size_t waiting;
 
     critical::enter();
     waiting = itemsWaiting; /*to avoid side effects*/
@@ -129,7 +129,7 @@ bool queue::send( void *itemToQueue, const queueSendMode pos )
 {
     bool retValue = false;
 
-    if ( ( TO_BACK == pos  ) || ( TO_FRONT == pos ) ) {
+    if ( ( queueSendMode::TO_BACK == pos  ) || ( queueSendMode::TO_FRONT == pos ) ) {
         critical::enter();
         if ( itemsWaiting < itemsCount ) {
             copyDataToQueue( itemToQueue, pos );
@@ -143,13 +143,13 @@ bool queue::send( void *itemToQueue, const queueSendMode pos )
 /*============================================================================*/
 void* queue::peek( void ) const
 {
-    uint8_t *retValue = nullptr;
-    size_t waiting;
+    std::uint8_t *retValue = nullptr;
+    std::size_t waiting;
 
     critical::enter();
     waiting = itemsWaiting; /*to avoid side effects*/
     if ( waiting > 0u ) {
-        retValue = static_cast<uint8_t *>( reader + itemSize );
+        retValue = static_cast<std::uint8_t *>( reader + itemSize );
         if ( retValue >= tail ) {
             retValue = head;
         }
@@ -164,7 +164,7 @@ bool queue::isReady( void ) const
     return ( nullptr != head );
 }
 /*============================================================================*/
-size_t queue::getItemSize( void )
+std::size_t queue::getItemSize( void )
 {
     return itemSize;
 }

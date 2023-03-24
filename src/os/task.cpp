@@ -7,23 +7,23 @@ iteration_t task::PERIODIC = INT32_MIN;
 iteration_t task::INDEFINITE = task::PERIODIC;
 iteration_t task::SINGLE_SHOT = 1;
 
-const uint32_t task::BIT_INIT = 0x00000001uL;
-const uint32_t task::BIT_ENABLED = 0x00000002uL;
-const uint32_t task::BIT_QUEUE_RECEIVER = 0x00000004uL;
-const uint32_t task::BIT_QUEUE_FULL = 0x00000008uL;
-const uint32_t task::BIT_QUEUE_COUNT = 0x00000010uL;
-const uint32_t task::BIT_QUEUE_EMPTY = 0x00000020uL;
-const uint32_t task::BIT_SHUTDOWN = 0x00000040uL;
-const uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
+const std::uint32_t task::BIT_INIT = 0x00000001uL;
+const std::uint32_t task::BIT_ENABLED = 0x00000002uL;
+const std::uint32_t task::BIT_QUEUE_RECEIVER = 0x00000004uL;
+const std::uint32_t task::BIT_QUEUE_FULL = 0x00000008uL;
+const std::uint32_t task::BIT_QUEUE_COUNT = 0x00000010uL;
+const std::uint32_t task::BIT_QUEUE_EMPTY = 0x00000020uL;
+const std::uint32_t task::BIT_SHUTDOWN = 0x00000040uL;
+const std::uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
 
-const uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
-const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
+const std::uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
+const std::uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
 
 #define TASK_ITER_VALUE( x )                                               \
 ( ( ( (x) < 0 ) && ( (x) != PERIODIC ) ) ? -(x) : (x) )                    \
 
 /*============================================================================*/
-void task::setFlags( const uint32_t flags, const bool value )
+void task::setFlags( const std::uint32_t flags, const bool value )
 {
     if ( value ) {
         bitsSet( this->flags, flags );
@@ -33,9 +33,9 @@ void task::setFlags( const uint32_t flags, const bool value )
     }
 }
 /*============================================================================*/
-bool task::getFlag( const uint32_t flag ) const
+bool task::getFlag( const std::uint32_t flag ) const
 {
-    uint32_t xBit;
+    std::uint32_t xBit;
     xBit = this->flags & flag;
     return ( 0uL != xBit );
 }
@@ -180,11 +180,11 @@ const char* task::getName( void ) const
 /*============================================================================*/
 trigger task::queueCheckEvents( void )
 {
-    trigger retValue = None;
+    trigger retValue = trigger::None;
 
     if ( nullptr != aQueue ) {
         bool fullFlag, countFlag, receiverFlag, emptyFlag;
-        size_t qCount; /*current queue count*/
+        std::size_t qCount; /*current queue count*/
 
         fullFlag = getFlag( BIT_QUEUE_FULL );
         countFlag = getFlag( BIT_QUEUE_COUNT );
@@ -194,17 +194,17 @@ trigger task::queueCheckEvents( void )
         qCount = aQueue->count(); /*to avoid side effects*/
         /*check the queue events in the corresponding precedence order*/
         if ( fullFlag && aQueue->isFull() ) {
-            retValue = byQueueFull;
+            retValue = trigger::byQueueFull;
         }
         else if ( ( countFlag ) && ( qCount >= aQueueCount ) ) {
-            retValue = byQueueCount;
+            retValue = trigger::byQueueCount;
         }
         else if ( receiverFlag && ( qCount > 0u ) ) {
-            retValue = byQueueReceiver;
+            retValue = trigger::byQueueReceiver;
         }
         else if ( emptyFlag && aQueue->isEmpty() ) {
             /*qQueue_IsEmpty is known to not have side effects*/
-            retValue = byQueueEmpty;
+            retValue = trigger::byQueueEmpty;
         }
         else {
             /*this case does not need to be handled*/
@@ -214,17 +214,17 @@ trigger task::queueCheckEvents( void )
     return retValue;
 }
 /*============================================================================*/
-size_t task::getID( void ) const
+std::size_t task::getID( void ) const
 {
     return entry;
 }
 /*============================================================================*/
-bool task::attachQueue( queue &q, const queueLinkMode mode, const size_t arg )
+bool task::attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg )
 {
     bool retValue = false;
 
     if ( q.isReady() ) {
-        setFlags( static_cast<uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0u != arg );
+        setFlags( static_cast<std::uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0u != arg );
         if ( queueLinkMode::QUEUE_COUNT == mode ) {
             aQueueCount = arg;
         }

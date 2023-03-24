@@ -1,23 +1,24 @@
-#pragma once
+#ifndef QOS_CPP_QUEUE
+#define QOS_CPP_QUEUE
 
 #include <types.hpp>
 
 namespace qOS {
 
-    typedef enum {
+    enum class queueSendMode {
         TO_BACK,
         TO_FRONT
-    } queueSendMode;
+    };
 
     class queue {
         protected:
-            uint8_t *head{ nullptr };
-            uint8_t *tail{ nullptr };
-            uint8_t *writer{ nullptr };
-            uint8_t *reader{ nullptr };
-            volatile size_t itemsWaiting = 0u;
-            size_t itemsCount = 0u;
-            size_t itemSize = 0u;
+            std::uint8_t *head{ nullptr };
+            std::uint8_t *tail{ nullptr };
+            std::uint8_t *writer{ nullptr };
+            std::uint8_t *reader{ nullptr };
+            volatile std::size_t itemsWaiting = 0u;
+            std::size_t itemsCount = 0u;
+            std::size_t itemSize = 0u;
             void moveReader( void );
             void copyDataFromQueue( void * const dst );
             void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ); 
@@ -25,13 +26,13 @@ namespace qOS {
             void operator=( queue const& ) = delete;  /* not assignable*/
         public:
             queue() = default;
-            queue( void *pData, const size_t itemSize, const size_t itemsCount );
-            bool setup( void *pData, const size_t itemSize, const size_t itemsCount );
+            queue( void *pData, const std::size_t itemSize, const std::size_t itemsCount );
+            bool setup( void *pData, const std::size_t itemSize, const std::size_t itemsCount );
             void reset( void );
             bool isEmpty( void ) const;
             bool isFull( void ) const;
-            size_t count( void ) const;
-            size_t itemsAvailable( void ) const;
+            std::size_t count( void ) const;
+            std::size_t itemsAvailable( void ) const;
             bool removeFront( void );
             bool receive( void *dst );
             bool send( void *itemToQueue, const queueSendMode pos );
@@ -41,6 +42,8 @@ namespace qOS {
             }
             void* peek( void ) const;
             bool isReady( void ) const;
-            size_t getItemSize( void );
+            std::size_t getItemSize( void );
     };
 }
+
+#endif /*QOS_CPP_QUEUE*/

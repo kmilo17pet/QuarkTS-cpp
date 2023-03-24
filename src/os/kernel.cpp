@@ -33,7 +33,7 @@ void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCa
     
 }
 /*============================================================================*/
-bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::time_t t, const iteration_t n, const taskState init, void *arg )
+bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::time_t t, const iteration_t n, const qOS::taskState init, void *arg )
 {
     bool retValue = false;
 
@@ -120,7 +120,7 @@ void core::triggerReleaseSchedEvent( void )
     bitsClear( flag, BIT_INIT );
     bitsClear( flag, BIT_RELEASE_SCHED );
     _Event::FirstCall = ( false == bitsGet( flag, BIT_FCALL_RELEASED ) );
-    _Event::Trigger = bySchedulingRelease;
+    _Event::Trigger = trigger::bySchedulingRelease;
     _Event::TaskData = nullptr;
     if ( nullptr != releaseSchedCallback ) {
         taskFcn_t callback = releaseSchedCallback;
@@ -140,7 +140,7 @@ bool core::checkIfReady( void )
         /*try to extract a task from the front of the priority queue*/
         xTask = priorityQueue.get();
         if ( nullptr  != xTask ) {  /*got a task from the priority queue?*/
-            xTask->Trigger = byNotificationQueued;
+            xTask->Trigger = trigger::byNotificationQueued;
             xTask->setFlags( task::BIT_SHUTDOWN, true ); /*wake-up the task!!*/
         }
     #endif
@@ -156,14 +156,14 @@ bool core::checkIfReady( void )
 
         if ( xTask->getFlag( task::BIT_SHUTDOWN ) ) {
             #if ( Q_PRIO_QUEUE_SIZE > 0 )
-            if ( byNotificationQueued == xTask->Trigger ) {
+            if ( trigger::byNotificationQueued == xTask->Trigger ) {
                 xReady = true;
             }
             else
             #endif
             if ( xTask->deadLineReached() ) {
                 xTask->time.reload();
-                xTask->Trigger = byTimeElapsed;
+                xTask->Trigger = trigger::byTimeElapsed;
                 xReady = true;
             }
             #if ( Q_QUEUES == 1 )
@@ -173,12 +173,12 @@ bool core::checkIfReady( void )
             }
             #endif
             else if ( xTask->notifications > 0u ) {
-                xTask->Trigger = byNotificationSimple;
+                xTask->Trigger = trigger::byNotificationSimple;
                 xReady = true;
             }
             #if ( Q_TASK_EVENT_FLAGS == 1 )
             else if ( 0uL != ( task::EVENT_FLAGS_MASK & xTask->flags ) ) {
-                xTask->Trigger = byEventFlags;
+                xTask->Trigger = trigger::byEventFlags;
                 xReady = true;
             }
             #endif
@@ -220,7 +220,7 @@ void core::dispatchTaskFillEventInfo( task *Task )
     triggered the task
     */
     switch ( xEvent ) {
-        case byTimeElapsed:
+        case trigger::byTimeElapsed:
             /*handle the iteration value and the FirstIteration flag*/
             taskIteration = Task->iterations;
             _Event::FirstIteration = ( ( task::PERIODIC != taskIteration ) && ( taskIteration < 0 ) );
@@ -235,30 +235,30 @@ void core::dispatchTaskFillEventInfo( task *Task )
             }
             _Event::StartDelay = Task->time.elapsed();
             break;
-        case byNotificationSimple:
+        case trigger::byNotificationSimple:
             /*Transfer async-data to the eventInfo structure*/
             _Event::EventData = Task->asyncData;
             --Task->notifications;
             break;
         #if ( Q_QUEUES == 1 )
-            case byQueueReceiver:
+            case trigger::byQueueReceiver:
                 /*the EventData will point to the queue front-data*/
                 _Event::EventData = Task->aQueue->peek();
                 break;
-            case byQueueFull: case byQueueCount: case byQueueEmpty:
+            case trigger::byQueueFull: case trigger::byQueueCount: case trigger::byQueueEmpty:
                 /*the EventData will point to the the linked queue*/
                 _Event::EventData = (void*)Task->aQueue;
                 break;
         #endif
         #if ( Q_PRIO_QUEUE_SIZE > 0 )
-            case byNotificationQueued:
+            case trigger::byNotificationQueued:
                 /*get the extracted data from queue*/
                 _Event::EventData = priorityQueue.data;
                 priorityQueue.data = nullptr;
                 break;
         #endif
         #if ( Q_TASK_EVENT_FLAGS == 1 )
-            case byEventFlags:
+            case trigger::byEventFlags:
                 break;
         #endif
             default: break;
@@ -267,7 +267,7 @@ void core::dispatchTaskFillEventInfo( task *Task )
     _Event::Trigger = Task->Trigger;
     _Event::FirstCall = false == Task->getFlag( task::BIT_INIT );
     _Event::TaskData = Task->taskData;
-    currentTask = Task; /*needed for qTask_Self()*/
+    currentTask = Task;
 }
 /*============================================================================*/
 void core::dispatch( list *xList )
@@ -301,7 +301,7 @@ void core::dispatch( list *xList )
         xList->remove( nullptr, listPosition::AT_FRONT );
         waitingList->insert( xTask, listPosition::AT_BACK );
         #if ( Q_QUEUES == 1 )
-            if ( byQueueReceiver == xTask->Trigger ) {
+            if ( trigger::byQueueReceiver == xTask->Trigger ) {
                 /*remove the data from the attached Queue*/
                 (void)xTask->aQueue->removeFront();
             }
@@ -459,10 +459,10 @@ task* core::findTaskByName( const char *name )
     task *found = nullptr;
 
     if ( nullptr != name ) {
-        const size_t maxLists = sizeof( coreLists )/sizeof( coreLists[ 0 ] );
+        const std::size_t maxLists = sizeof( coreLists )/sizeof( coreLists[ 0 ] );
         bool r = false;
 
-        for ( size_t i = 0u ; ( false == r ) && ( i < maxLists ) ; ++i ) {
+        for ( std::size_t i = 0u ; ( false == r ) && ( i < maxLists ) ; ++i ) {
             for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
                 auto xTask = it.get<task*>();
                 if ( nullptr != xTask->name ) {
@@ -493,23 +493,23 @@ bool core::yieldToTask( task &Task )
 /*============================================================================*/
 globalState core::getGlobalState( task &Task ) const
 {
-    globalState retValue = UNDEFINED;
+    globalState retValue = globalState::UNDEFINED;
 
     list *xList = static_cast<list*>( Task.container );
     if ( currentTask == &Task ) {
-        retValue = RUNNING;
+        retValue = globalState::RUNNING;
     }
     else if ( waitingList == xList ) {
-        retValue = WAITING;
+        retValue = globalState::WAITING;
     }
     else if ( suspendedList == xList ) {
-        retValue = SUSPENDED;
+        retValue = globalState::SUSPENDED;
     }
     else if ( nullptr == xList ) {
         /*undefined*/
     }
     else {
-        retValue = READY; /*by discard, it must be ready*/
+        retValue = globalState::READY; /*by discard, it must be ready*/
     }
 
     return retValue;

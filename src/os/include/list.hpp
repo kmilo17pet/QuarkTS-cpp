@@ -1,19 +1,20 @@
-#pragma once
+#ifndef QOS_CPP_LIST
+#define QOS_CPP_LIST
 
 #include "types.hpp"
 
 namespace qOS {
 
-    typedef enum {
+    enum listPosition : std::int32_t {
         AT_FRONT = -1,
         AT_BACK = -2
-    } listPosition;
+    };
 
-    typedef struct _listCompareHandle_s {
+    struct _listCompareHandle_s {
         void *n1;                 /**< Points to the node that is currently being processed*/
         void *n2;                 /**< Points to the node that is currently being processed*/
-    } _listCompareHandle_t;
-    typedef _listCompareHandle_t* listCompareHandle_t;
+    };
+    using listCompareHandle_t = struct _listCompareHandle_s*;
    
     class node {
         protected:
@@ -27,12 +28,12 @@ namespace qOS {
         friend class listIterator;
     };
 
-    typedef bool (*listCompareFcn_t)( listCompareHandle_t h );
+    using listCompareFcn_t = bool (*)( listCompareHandle_t );
 
-    typedef enum {
+    enum class listDirection {
         FORWARD,
         BACKWARD
-    } listDirection;
+    };
 
     class listIterator;
 
@@ -41,8 +42,8 @@ namespace qOS {
             node *head = nullptr;
             node *tail = nullptr;
             node *iter = nullptr;
-            listDirection iDir = FORWARD;
-            size_t size = 0u;
+            listDirection iDir = listDirection::FORWARD;
+            std::size_t size = 0u;
             bool isMember( const void * const xNode ) const;
             void insertAtFront( node * const xNode );
             void insertAtBack( node * const xNode );
@@ -62,7 +63,7 @@ namespace qOS {
             void* getFront( void ) const;
             void* getBack( void ) const;
             bool isEmpty( void ) const;
-            size_t length( void ) const;
+            std::size_t length( void ) const;
             bool sort( listCompareFcn_t f );
             bool swap( void* node1, void* node2 );
             bool move( list *src, const listPosition p );
@@ -80,7 +81,7 @@ namespace qOS {
             void *current = nullptr;
         public:
             listIterator() = delete;
-            listIterator( list *xList ) : listIterator( xList, FORWARD, nullptr ) {}
+            listIterator( list *xList ) : listIterator( xList, listDirection::FORWARD, nullptr ) {}
             listIterator( list *xList, listDirection dir ) : listIterator( xList, dir, nullptr ) {}
             listIterator( list *xList, listDirection dir, void *nodeOffset );
             bool until( void );
@@ -94,3 +95,5 @@ namespace qOS {
     };
 
 }
+
+#endif /*QOS_CPP_LIST*/

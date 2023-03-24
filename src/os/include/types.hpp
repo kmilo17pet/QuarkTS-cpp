@@ -1,17 +1,17 @@
-#pragma once
+#ifndef QOS_CPP_TYPES
+#define QOS_CPP_TYPES
 
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
 
-typedef int base_t;
-typedef uint8_t byte_t;
-typedef float float32_t;  /*this is not always true in some compilers*/
-typedef double float64_t; /*this is not always true in some compilers*/
-typedef size_t index_t; /*better portability*/
-typedef uint32_t cycles_t;
-typedef int32_t iteration_t;
-typedef uint8_t priority_t;
+using base_t = int;
+using byte_t = std::uint8_t;
+using float32_t = float;  /*this is not always true in some compilers*/
+using float64_t = double; /*this is not always true in some compilers*/
+using index_t = std::size_t ;
+using cycles_t = std::uint32_t ;
+using iteration_t = std::int32_t;
+using priority_t = std::uint8_t;
 
-#define qLink                   ( true )
-#define qUnLink                 ( false )
+#endif /*QOS_CPP_TYPES*/

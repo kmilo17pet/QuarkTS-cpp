@@ -1,4 +1,5 @@
-#pragma once
+#ifndef QOS_CPP_FSML
+#define QOS_CPP_FSML
 
 #include "types.hpp"
 #include "timer.hpp"
@@ -11,7 +12,7 @@ namespace qOS {
     namespace fsm {
         class state;
 
-        typedef enum {
+        enum signalID : std::uint32_t {
             SIGNAL_START = 0xFFFFFFFFuL,
             SIGNAL_EXIT = 0xFFFFFFFEuL,
             SIGNAL_ENTRY = 0xFFFFFFFDuL,
@@ -20,31 +21,32 @@ namespace qOS {
             MIN_SIGNAL = 0x0uL,
             TM_MAX = 0xFFFFFFFBuL,
             TM_MIN = TM_MAX - ( Q_FSM_MAX_TIMEOUTS - 1 ),
-        } signalID;
+        };
 
         constexpr signalID SIGNAL_TIMEOUT( index_t iTm ) 
         {
             return static_cast<signalID>( signalID::TM_MAX - static_cast<fsm::signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<fsm::signalID>( iTm ) );
         }
 
-        typedef struct {
+        struct _signal_s {
             signalID id;
             void *data{ nullptr };
-        } signal_t;
+        };
+        using signal_t = struct _signal_s;
 
-        typedef enum {
+        enum status : std::int16_t {
             BEFORE_ANY = -32767,
             ABSENT = -32766,
             FAILURE = -32765,
             SUCCESS = -32764,
             SIGNAL_HANDLED = -32763,
-        } status;
+        };
 
-        typedef enum {
-            NO_HISTORY = 0,
+        enum class historyMode : std::uint8_t {
+            NO_HISTORY = 0u,
             SHALLOW_HISTORY,
             DEEP_HISTORY,
-        } historyMode;
+        };
 
         class _Handler {
             protected:
@@ -52,7 +54,7 @@ namespace qOS {
                 state *NextState{ nullptr };
                 stateMachine* Machine{ nullptr };
                 state *State{ nullptr };
-                historyMode TransitionHistory{ NO_HISTORY };
+                historyMode TransitionHistory{ historyMode::NO_HISTORY };
                 status Status{ SUCCESS };
                 signalID Signal;
                 _Handler( _Handler const& ) = delete;      /* not copyable*/
@@ -79,26 +81,26 @@ namespace qOS {
                 status status( void ) const { return Status; }
             friend class qOS::fsm::state;
         };
-        typedef _Handler& handler_t;
+        using handler_t = _Handler&;
+        using stateCallback_t = status (*)( handler_t );
+        using surroundingCallback_t = void (*)( handler_t );
+        using signalAction_t = bool (*)( handler_t );
+        using timeoutSpecOption_t = std::uint32_t;
 
-        typedef status (*stateCallback_t)( handler_t h );
-        typedef void (*surroundingCallback_t)( handler_t h );
-        typedef bool (*signalAction_t)( handler_t h );
-
-        typedef uint32_t timeoutSpecOption_t;
-
-        typedef struct {
-            time_t xTimeout;
+        struct _timeoutStateDefinition_s{
+            qOS::time_t xTimeout;
             timeoutSpecOption_t options;
-        } timeoutStateDefinition_t;
+        };
+        using timeoutStateDefinition_t = struct _timeoutStateDefinition_s;
 
-        typedef struct {
+        struct _transition_s {
             signalID xSignal;
             signalAction_t guard{ nullptr };
             state *nextState{ nullptr };
-            historyMode historyMode{ NO_HISTORY };
+            historyMode historyMode{ historyMode::NO_HISTORY };
             void *signalData;
-        } transition_t;
+        };
+        using transition_t = struct _transition_s;
 
         class state {
             protected:
@@ -109,8 +111,8 @@ namespace qOS {
                 timeoutStateDefinition_t *tdef{ nullptr };
                 transition_t *tTable{ nullptr };
                 void *sData{ nullptr };
-                size_t tEntries{ 0u };
-                size_t nTm{ 0u };
+                std::size_t tEntries{ 0u };
+                std::size_t nTm{ 0u };
                 void sweepTransitionTable( _Handler &h );
                 state( state const& ) = delete;      /* not copyable*/
                 void operator=( state const& ) = delete;  /* not assignable*/
@@ -126,8 +128,8 @@ namespace qOS {
                 {
                     return subscribe( &s, sFcn, nullptr );
                 }
-                bool setTransitions( transition_t *table, size_t n );
-                bool setTimeouts( timeoutStateDefinition_t *tdef, size_t n );
+                bool setTransitions( transition_t *table, std::size_t n );
+                bool setTimeouts( timeoutStateDefinition_t *tdef, std::size_t n );
                 state* getInit( void ) const;
                 state* getLastState( void ) const;
                 state* getParent( void ) const;
@@ -138,23 +140,25 @@ namespace qOS {
             friend class qOS::stateMachine;
         };
 
-        typedef struct {
-            uint32_t isPeriodic{ 0u };
+        struct _timeoutSpec_s {
+            std::uint32_t isPeriodic{ 0u };
             timer timeout[ Q_FSM_MAX_TIMEOUTS ];
-        } timeoutSpec_t;
+        };
+        using timeoutSpec_t = _timeoutSpec_s;
 
-        typedef enum {
+        enum psReqStatus{
             PS_SIGNAL_NOT_FOUND,
             PS_SUBSCRIBER_NOT_FOUND,
             PS_SUBSCRIBER_FOUND,
             PS_SIGNAL_SLOTS_FULL,
             PS_SUBSCRIBER_SLOTS_FULL
-        } psReqStatus;
+        };
 
-        typedef struct {
+        struct _psIndex_s {
             psReqStatus status;
-            size_t sig_slot, sub_slot;
-        } psIndex_t;
+            std::size_t sig_slot, sub_slot;
+        };
+        using psIndex_t = _psIndex_s;
 
     }
 
@@ -224,7 +228,7 @@ namespace qOS {
             }
             bool sendSignalToSubscribers( fsm::signalID sig, void *sData, bool isUrgent );
             bool installTimeoutSpec( fsm::timeoutSpec_t &ts );
-            bool timeoutSet( index_t xTimeout, time_t t );
+            bool timeoutSet( index_t xTimeout, qOS::time_t t );
             bool timeoutStop( index_t xTimeout );
             const fsm::state* getTop( void ) const;
             fsm::state* getCurrent( void ) const;
@@ -247,3 +251,5 @@ namespace qOS {
     };
 
 }
+
+#endif /*QOS_CPP_FSML*/

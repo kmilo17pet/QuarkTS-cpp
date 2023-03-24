@@ -18,11 +18,11 @@ void timer::reload( void )
     tStart = clock::getTick();
 }
 /*============================================================================*/
-bool timer::set( time_t tTime )
+bool timer::set( qOS::time_t tTime )
 {
     bool retValue = false;
     
-    if ( tTime > static_cast<time_t>( 0 ) ) {
+    if ( tTime > static_cast<qOS::time_t>( 0 ) ) {
         this->reload();
         tv = clock::convert2Clock( tTime );
         retValue = true;
@@ -31,9 +31,9 @@ bool timer::set( time_t tTime )
     return retValue;
 }
 /*============================================================================*/
-timer& timer::operator=( time_t tTime )
+timer& timer::operator=( qOS::time_t tTime )
 {
-    if( tTime > static_cast<time_t>( 0 ) ) {
+    if( tTime > static_cast<qOS::time_t>( 0 ) ) {
         set( tTime );
     }
     else {

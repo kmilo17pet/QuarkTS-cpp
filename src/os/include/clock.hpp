@@ -1,26 +1,27 @@
-#pragma once
+#ifndef QOS_CPP_CLOCK
+#define QOS_CPP_CLOCK
 
 #include "types.hpp"
 #include "config.h"
 
 namespace qOS {
 
-    typedef uint32_t clock_t;
+    using clock_t = std::uint32_t ;
 
     #if ( Q_SETUP_TIME_CANONICAL == 1 )
-        typedef uint32_t time_t;
+        using time_t = std::uint32_t;
     #else
-        typedef float32_t time_t;
+        using time_t = float32_t;
     #endif
 
     #if ( Q_SETUP_TICK_IN_HERTZ == 1 )
-        typedef clock_t timingBase_t;
+        using timingBase_t = qOS::clock_t;
     #else
         /** @brief A macro to specify a qTime_t type for time-base APIs.*/
-        typedef time_t timingBase_t;
+        using timingBase_t = qOS::time_t;
     #endif
 
-    typedef clock_t (*getTickFcn_t)(void);
+    using getTickFcn_t = clock_t (*)( void );
 
     class clock {
         protected:
@@ -29,10 +30,10 @@ namespace qOS {
             clock( clock &other ) = delete;
             void operator=( const clock & ) = delete;
             static getTickFcn_t getTick;
-            static clock_t convert2Clock( const time_t t );
-            static time_t convert2Time( const clock_t t );
+            static qOS::clock_t convert2Clock( const qOS::time_t t );
+            static qOS::time_t convert2Time( const qOS::clock_t t );
             static void sysTick( void );
-            static bool timeDeadLineCheck( const clock_t ti, const clock_t td );
+            static bool timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td );
             static bool setTimeBase( const timingBase_t tb );
             static bool setTickProvider( const getTickFcn_t provider );
             static const time_t NONE;
@@ -44,3 +45,5 @@ namespace qOS {
     };
 
 }
+
+#endif /*QOS_CPP_CLOCK*/

@@ -208,7 +208,7 @@ bool list::isEmpty( void ) const
     return ( nullptr == this->head ) ? true : false;
 }
 /*============================================================================*/
-size_t list::length( void ) const
+std::size_t list::length( void ) const
 {
     return this->size;
 }
@@ -218,17 +218,17 @@ bool list::sort( listCompareFcn_t f )
     bool retValue = false;
 
     if ( nullptr != f ) {
-        size_t count = this->size;
+        std::size_t count = this->size;
 
         if ( count >= 2u ) {
             node *current = nullptr, *before, *after;
-            _listCompareHandle_t xHandle;
+            struct _listCompareHandle_s xHandle;
             bool xRetCmp;
 
-            for ( size_t i = 1u ; i < count ; ++i ) {
-                size_t n = count - i - 1u;
+            for ( std::size_t i = 1u ; i < count ; ++i ) {
+                std::size_t n = count - i - 1u;
                 current = this->head;
-                for ( size_t j = 0u; j <= n; ++j ) {
+                for ( std::size_t j = 0u; j <= n; ++j ) {
                     xHandle.n1 = current;
                     xHandle.n2 = current->next;
                     xRetCmp = f( &xHandle );
@@ -409,19 +409,19 @@ void list::clean( void )
 /*============================================================================*/
 listIterator list::begin( void ) 
 {
-    listIterator it( this, FORWARD, nullptr );
+    listIterator it( this, listDirection::FORWARD, nullptr );
     return it;
 }
 /*============================================================================*/
 listIterator list::end( void ) 
 {
-    listIterator it( this, BACKWARD, nullptr );
+    listIterator it( this, listDirection::BACKWARD, nullptr );
     return it;
 }
 /*============================================================================*/
 listIterator list::from( void *offset )
 {
-    listIterator it( this, FORWARD, offset );
+    listIterator it( this, listDirection::FORWARD, offset );
     return it;
 }
 /*============================================================================*/
@@ -429,7 +429,7 @@ listIterator::listIterator( list *xList, listDirection dir, void *nodeOffset )
 {
     node *ret, *offset = static_cast<node*>( nodeOffset );
     l = xList;
-    if ( FORWARD == dir ) {
+    if ( listDirection::FORWARD == dir ) {
         ret = ( xList->isMember( nodeOffset) ) ? offset : xList->head;
         iter = ( nullptr != ret ) ? ret->next : nullptr;
     }

@@ -1,10 +1,12 @@
-#pragma once
+#ifndef QOS_CPP_CRITICAL
+#define QOS_CPP_CRITICAL
 
 #include "types.hpp"
 
 namespace qOS {
-    typedef void (*int_restorer_t)( uint32_t arg1 );
-    typedef uint32_t (*int_disabler_t)( void );
+
+    using int_restorer_t = void (*)( std::uint32_t );
+    using int_disabler_t = std::uint32_t (*)( void );
 
     namespace critical {
         void enter( void );
@@ -12,3 +14,5 @@ namespace qOS {
         bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn );
     };
 }
+
+#endif /*QOS_CPP_CRITICAL*/

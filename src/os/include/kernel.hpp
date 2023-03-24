@@ -1,4 +1,5 @@
-#pragma once
+#ifndef QOS_CPP_KERNEL
+#define QOS_CPP_KERNEL
 
 #include <cstddef>
 #include <cstdint>
@@ -14,18 +15,19 @@
 
 namespace qOS {
 
-    typedef uint32_t coreFlags_t;
-    typedef bool (*notificationSpreaderFcn_t)( task * const Task, void* eventData );
+    using coreFlags_t = std::uint32_t ;
+    using notificationSpreaderFcn_t = bool (*)( task * const, void* );
 
-    typedef struct _qNotificationSpreader_s {
+    struct _notificationSpreader_s {
         notificationSpreaderFcn_t mode;
         void *eventData;
-    } notificationSpreader_t;
+    };
+    using notificationSpreader_t = struct _notificationSpreader_s;
 
-    typedef enum {
+    enum class notifyMode : std::uint8_t {
         SIMPLE,
         QUEUED
-    } notifyMode;
+    };
 
     class core : protected _Event {
         protected:
@@ -38,16 +40,16 @@ namespace qOS {
             //_event_t_ eventInfo;
             volatile coreFlags_t flag{ 0uL };
             notificationSpreader_t nSpreader{ nullptr, nullptr };
-            size_t taskEntries{ 0uL };
+            std::size_t taskEntries{ 0uL };
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
             list* waitingList = &coreLists[ Q_PRIORITY_LEVELS ];
             list* suspendedList = &coreLists[ Q_PRIORITY_LEVELS + 1 ];
             list* readyList = &coreLists[ 0 ];
             const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
-            const uint32_t BIT_INIT = 0x00000001uL;
-            const uint32_t BIT_FCALL_IDLE = 0x00000002uL;
-            const uint32_t BIT_RELEASE_SCHED = 0x00000004uL;
-            const uint32_t BIT_FCALL_RELEASED = 0x00000008uL;
+            const std::uint32_t BIT_INIT = 0x00000001uL;
+            const std::uint32_t BIT_FCALL_IDLE = 0x00000002uL;
+            const std::uint32_t BIT_RELEASE_SCHED = 0x00000004uL;
+            const std::uint32_t BIT_FCALL_RELEASED = 0x00000008uL;
             void triggerReleaseSchedEvent( void );
             bool checkIfReady( void );
             void dispatchTaskFillEventInfo( task *Task );
@@ -108,3 +110,5 @@ namespace qOS {
     extern core& os;
 
 }
+
+#endif /*QOS_CPP_KERNEL*/

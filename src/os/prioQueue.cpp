@@ -4,24 +4,24 @@
 using namespace qOS;
 
 /*============================================================================*/
-prioQueue::prioQueue( queueStack_t *area, const size_t size )
+prioQueue::prioQueue( queueStack_t *area, const std::size_t size )
 {
     critical::enter();
     stack = area;
     this->size = size;
-    for ( size_t i = 0u ; i < size ; ++i ) {
+    for ( std::size_t i = 0u ; i < size ; ++i ) {
         stack[ i ].Task = nullptr;  /*set the priority queue as empty*/
     }
     index = -1;
-     critical::exit();
+    critical::exit();
 }
 /*============================================================================*/
-size_t prioQueue::count( void )
+std::size_t prioQueue::count( void )
 {
-    size_t retValue = (size_t)0u;
+    std::size_t retValue = 0u;
 
     if ( index >= 0 ) {
-        retValue = static_cast<size_t>( index ) + 1u;
+        retValue = static_cast<std::size_t>( index ) + 1u;
     }
 
     return retValue;
