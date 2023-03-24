@@ -1,17 +1,13 @@
-#pragma once
+#ifndef QOS_CPP_CLI
+#define QOS_CPP_CLI
 
 #include "types.hpp"
+#include "util.hpp"
 
 namespace qOS {
-    namespace cli {
 
-        enum commandType : std::uint16_t {
-            CMDTYPE_UNDEF = 0x0000,
-            CMDTYPE_PARA = 0x0100,
-            CMDTYPE_TEST = 0x0200,
-            CMDTYPE_READ = 0x0400,
-            CMDTYPE_PARA = 0x0800,
-        };
+    class commandLineInterface;
+    namespace cli {
 
         enum response : std::int16_t {
             ERROR = -32767,
@@ -23,69 +19,137 @@ namespace qOS {
             OUTPUT = 32767,
         };
 
+        constexpr response ERROR_CODE( int16_t code )
+        {
+            return static_cast<response>( -code );
+        }
+
+        enum commandType : std::uint16_t {
+            UNDEF = 0x0000,
+            PARA = 0x0100,
+            TEST = 0x0200,
+            READ = 0x0400,
+            ACT = 0x0800,
+        };
+
         class input {
             protected:
-                char *storage;
-                volatile index_t index;
-                index_t maxIndex;
-                std::size_t size;
-                volatile bool ready;
+                char *storage{ nullptr };
+                volatile index_t index{ 0u };
+                index_t maxIndex{ 0u };
+                std::size_t size{ 0u };
+                volatile bool ready{ false };
+                void flush( void );
                 input( input const& ) = delete;      /* not copyable*/
                 void operator=( input const& ) = delete;  /* not assignable*/
         };
 
         class _Handler {
             protected:
+                commandLineInterface *instance{ nullptr };
                 void *Command{ nullptr };
-                void *StrData{ nullptr };
-                void *Output{ nullptr };
+                char *StrData{ nullptr };
+                char *Output{ nullptr };
                 void *Data{ nullptr };
                 std::size_t StrLen{ 0u };
-                std::size_t numArgs{ 0u };
-                commandType Type{ CMDTYPE_UNDEF };
+                std::size_t NumArgs{ 0u };
+                commandType Type{ UNDEF };
+                _Handler( _Handler const& ) = delete;      /* not copyable*/
+                void operator=( _Handler const& ) = delete;  /* not assignable*/
             public:
-                char* getArgPtr( index_t n );
-                int* getArgInt( index_t n );
-                float32_t getArgFloat( index_t n );
-                std::uint32_t getArgHex( index_t n );
-                char *getArgString( index_t n, char *pOut );
-                void putChar( const char c );
-                void putString( const char c );
+                char *getStringData( void ) const 
+                {
+                    return StrData;
+                }
+                void *getData( void ) const
+                {
+                    return Data;
+                }
+                std::size_t getStringLength( void ) const
+                {
+                    return StrLen;
+                }
+                std::size_t getNumArgs( void ) const
+                {
+                    return NumArgs;
+                }
+                char* getArgPtr( index_t n ) const;
+                int getArgInt( index_t n ) const;
+                float32_t getArgFloat( index_t n ) const;
+                std::uint32_t getArgHex( index_t n ) const;
+                char* getArgString( index_t n, char *pOut ) const;
+                void output( const char c ) const;
+                void output( const char *s ) const;
+            friend class qOS::commandLineInterface;
         };
         using handler_t = _Handler&;
 
         using commandCallback_t = response (*)( handler_t );
-        using options_t = std::uint16_t ;
-        using putChar_t = void (*)( void*, const char );
+        using options_t = std::uint16_t;
 
         class command {
             protected:
-                commandCallback_t cmdCallback;
-                command* next;
-                options_t cmdOpt;
-                std::size_t cmdLen;
-                void *param;
-                char *Text;
-            public:
+                commandCallback_t cmdCallback{ nullptr };
+                command* next{ nullptr };
+                options_t cmdOpt{ 0u };
+                std::size_t cmdLen{ 0u };
+                void *param{ nullptr };
+                char *Text{ nullptr };
+                command( command const& ) = delete;      /* not copyable*/
+                void operator=( command const& ) = delete;  /* not assignable*/
+            friend class qOS::commandLineInterface;
         };
 
     }
 
     class commandLineInterface : protected cli::input {
         protected:
-            void *first{ nullptr };
+            cli::_Handler handler;
+            cli::command *first{ nullptr };
             const char *ok_rsp{ "OK" };
             const char *er_rsp{ "ERROR" };
             const char *nf_rsp{ "UNKNOWN" };
             const char *id_rsp{ "QuarkTS CLI" };
             const char *eol{ "\r\n" };
-            cli::putChar_t outputFcn{ nullptr };
-            std::size_t sizeOutput;
-            cli::input xInput;
-            cli::_Handler Handler;
+            char delim{ ',' };
+            util::putChar_t outputFcn{ nullptr };
+            std::size_t sizeOutput{ 0u };
             void *owner;
+            bool notify( void );
+            bool preProcessing( cli::command *cmd, char *inputBuffer );
+            std::size_t numOfArgs( const char *str );
+            void handleResponse( cli::response retval );
+            void (*xNotifyFcn)( commandLineInterface *arg) = { nullptr };
+            commandLineInterface( commandLineInterface const& ) = delete;      /* not copyable*/
+            void operator=( commandLineInterface const& ) = delete;  /* not assignable*/
         public:
             commandLineInterface() = default;
-            bool setup( cli::putChar_t outFcn, char *pIntput, const std::size_t sizeInput, char *pOutput, const std::size_t sizeOutput );
+            bool setup( util::putChar_t outFcn, char *pInput, const std::size_t sizeInput, char *pOutput, const std::size_t sizeOutput );
+            bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param );
+            bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt )
+            {
+                return add( cmd, textCommand, cFcn, cmdOpt, nullptr );
+            }
+            bool isrHandler( const char c );
+            bool isrHandler( char *pData, const std::size_t n );
+            bool raise( const char *cmd );
+            bool inputFlush( void );
+            cli::response exec( const char *cmd );
+            bool run( void );
+            void* getOwner( void ) const
+            {
+                return owner;
+            }
+            void setData( void *pData )
+            {
+                handler.Data = pData;
+            }
+        friend class cli::_Handler;
+        friend class core;
     };
+
 }
+
+
+
+#endif /*QOS_CPP_CLI*/

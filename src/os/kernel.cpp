@@ -16,8 +16,11 @@ const priority_t core::HIGHEST_PRIORITY = Q_PRIORITY_LEVELS - 1u;
 
 const notifier_t MAX_NOTIFICATION_VALUE = UINT32_MAX - 1uL;
 
-static void fsmTaskCallback( event_t e );
-
+#if ( Q_ATCLI == 1 )
+    static void fsmTaskCallback( event_t e );
+    static void cliTaskCallback( event_t e );
+    static void cliNotifyFcn( commandLineInterface *cli );
+#endif
 /*============================================================================*/
 core& core::getInstance( void )
 {
@@ -51,6 +54,7 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
     return retValue;
 }
 /*============================================================================*/
+#if ( Q_FSM == 1 )
 static void fsmTaskCallback( event_t e )
 {
     stateMachine *sm = static_cast<stateMachine*>( qOS::os.getTaskRunning().getAttachedObject() );
@@ -73,6 +77,35 @@ bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p,
     }
     return retValue;
 }
+#endif /*Q_FSM*/
+/*============================================================================*/
+#if ( Q_ATCLI == 1 )
+static void cliTaskCallback( event_t e )
+{
+    commandLineInterface *c = static_cast<commandLineInterface*>( qOS::os.getTaskRunning().getAttachedObject() ); 
+    c->setData( &e );
+    c->run();
+}
+/*============================================================================*/
+static void cliNotifyFcn( commandLineInterface *cli )
+{
+    qOS::os.notify( notifyMode::SIMPLE, *static_cast<task*>( cli->getOwner() ), nullptr );
+}
+/*============================================================================*/
+bool core::addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg )
+{
+    bool retValue = false;
+
+    if ( addEventTask( Task, cliTaskCallback, p, arg ) ) {
+        Task.aObj = &cli;
+        cli.owner = &Task;
+        cli.xNotifyFcn = nullptr;
+        retValue = true;
+    }
+    
+    return retValue;
+}
+#endif /*Q_ATCLI*/
 /*============================================================================*/
 task& core::getTaskRunning( void ) const
 {

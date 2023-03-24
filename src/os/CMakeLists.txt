@@ -28,6 +28,8 @@ add_library( ${PROJECT_NAME} STATIC
              prioqueue.cpp
              kernel.cpp
              fsm.cpp
+             util.cpp
+             cli.cpp
            )
 target_include_directories( ${PROJECT_NAME} PUBLIC include )
 target_include_directories( ${PROJECT_NAME} PUBLIC ../config )

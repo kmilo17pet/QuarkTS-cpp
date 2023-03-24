@@ -116,7 +116,7 @@ void queue::copyDataToQueue( const void *itemToQueue, const queueSendMode xPosit
         }
     }
     else {
-        (void)memcpy( static_cast<void*>( reader ), itemToQueue, itemSize );  /*MISRAC2012-Rule-11.8 allowed*/
+        (void)memcpy( static_cast<void*>( reader ), itemToQueue, itemSize );
         reader -= itemSize;
         if ( reader < head ) {
             reader = ( tail - itemSize );

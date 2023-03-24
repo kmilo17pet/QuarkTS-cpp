@@ -11,7 +11,13 @@
 #include "types.hpp"
 #include "task.hpp"
 #include "prioqueue.hpp"
-#include "fsm.hpp"
+
+#if ( Q_FSM == 1 )
+    #include "fsm.hpp"
+#endif
+#if ( Q_ATCLI == 1 )
+    #include "cli.hpp"
+#endif
 
 namespace qOS {
 
@@ -37,7 +43,6 @@ namespace qOS {
             task *yieldTask{ nullptr };
             queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
             prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(queueStack_t) };
-            //_event_t_ eventInfo;
             volatile coreFlags_t flag{ 0uL };
             notificationSpreader_t nSpreader{ nullptr, nullptr };
             std::size_t taskEntries{ 0uL };
@@ -82,6 +87,7 @@ namespace qOS {
             {
                 return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, nullptr );
             }
+            #if ( Q_FSM == 1 )
             bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState init, void *arg );
             bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState init )
             {
@@ -91,6 +97,14 @@ namespace qOS {
             {
                 return addStateMachineTask( Task, m, p, t, taskState::ENABLED, nullptr );
             }
+            #endif
+            #if ( Q_ATCLI == 1 )
+            bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg );
+            bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p )
+            {
+                return addCommandLineInterfaceTask( Task, cli, p );
+            }
+            #endif
             task& getTaskRunning( void ) const;
             bool setIdleTask( taskFcn_t callback );
             bool schedulerRelease( void );

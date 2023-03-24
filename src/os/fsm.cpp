@@ -527,7 +527,7 @@ uint8_t stateMachine::levelsToLCA( fsm::state *target )
     }
     else {
         fsm::state *s, *t;
-        bool xBreak = false; /*to be in compliance with MISRAC2012-Rule-15.5*/
+        bool xBreak = false;
         std::uint8_t n = 0u;
 
         for ( s = source ; ( nullptr != s ) && ( false == xBreak ) ; s = s->parent ) {
