@@ -20,7 +20,7 @@ project( quarkts-cpp
 
 add_library( ${PROJECT_NAME} STATIC
              critical.cpp
-             list.cpp 
+             list.cpp
              clock.cpp
              timer.cpp
              queue.cpp
@@ -30,6 +30,7 @@ add_library( ${PROJECT_NAME} STATIC
              fsm.cpp
              util.cpp
              cli.cpp
+             memory.cpp
            )
 target_include_directories( ${PROJECT_NAME} PUBLIC include )
 target_include_directories( ${PROJECT_NAME} PUBLIC ../config )

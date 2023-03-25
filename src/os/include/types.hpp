@@ -14,4 +14,7 @@ using cycles_t = std::uint32_t ;
 using iteration_t = std::int32_t;
 using priority_t = std::uint8_t;
 
+#define     Q_UNUSED(arg)     (void)(arg)
+#define     Q_NONE            /*EMPTY MACRO*/
+
 #endif /*QOS_CPP_TYPES*/

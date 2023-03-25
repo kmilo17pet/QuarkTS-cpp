@@ -49,6 +49,8 @@
         "streambuf": "cpp",
         "system_error": "cpp",
         "typeinfo": "cpp",
-        "util": "cpp"
+        "util": "cpp",
+        "ctime": "cpp",
+        "ratio": "cpp"
     }
 }

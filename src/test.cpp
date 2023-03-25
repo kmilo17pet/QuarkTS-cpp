@@ -1,10 +1,12 @@
 #include <iostream>
 #include <chrono>
 #include "kernel.hpp"
+#include "coroutine.hpp"
+#include "memory.hpp"
 
 using namespace std;
 
-task t1, t2, t3, t4;
+qOS::task t1, t2, t3, t4;
 qOS::stateMachine m;
 qOS::fsm::state s1, s2;
 
@@ -12,6 +14,19 @@ void idleTask_callback( event_t e )
 {
     if ( e.firstCall() ) {
         cout << "idle task" << endl;
+    }
+    co::reenter {
+        for(;;) {
+            cout<<"hello 1 "<< endl;
+            co::delay( 0.5f );
+            cout<<"hello 2 "<< endl;
+            co::delay( 0.5f );
+            cout<<"hello 3 "<< endl;
+            co::waitUntil( true == true );
+            co::waitUntil( true == true , 0.5f );
+            co::yield;
+            co::restart;
+        }
     }
 }
 
@@ -85,16 +100,17 @@ int main()
     t2.setName( "t2");
     t3.setName( "t3");
     qOS::os.init( clockProvider, 0.001f, idleTask_callback );
-    qOS::os.addTask( t1, task_callback, qOS::core::LOWEST_PRIORITY, 0.5f, task::PERIODIC, qOS::ENABLED, nullptr );
-    qOS::os.addTask( t2, task_callback, qOS::core::HIGHEST_PRIORITY, 0.5f, 10, qOS::ENABLED, nullptr );
-    qOS::os.addTask( t3, task_callback, qOS::core::MEDIUM_PRIORITY, 2.0f, task::PERIODIC, qOS::ENABLED, nullptr );
+    
+    qOS::os.addTask( t1, task_callback, qOS::core::LOWEST_PRIORITY, 0.5f, task::PERIODIC, qOS::ENABLED );
+    qOS::os.addTask( t2, task_callback, qOS::core::HIGHEST_PRIORITY, 0.5f, 10, qOS::ENABLED );
+    qOS::os.addTask( t3, task_callback, qOS::core::MEDIUM_PRIORITY, 2.0f, task::PERIODIC, qOS::ENABLED );
 
     qOS::fsm::timeoutSpec_t tm_specTimeout;
     m.setup( nullptr, s1 );
     m.installTimeoutSpec( tm_specTimeout );
     m.add( s1, s1_callback );
     m.add( s2, s2_callback );
-    qOS::os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 0.1f, qOS::ENABLED, nullptr );
+    qOS::os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 0.1f, qOS::ENABLED );
 
     qOS::os.run();
     for(;;) { }
