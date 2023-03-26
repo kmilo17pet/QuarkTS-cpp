@@ -28,10 +28,15 @@ add_library( ${PROJECT_NAME} STATIC
              prioqueue.cpp
              kernel.cpp
              fsm.cpp
+             coroutine.cpp
              util.cpp
              cli.cpp
              memory.cpp
            )
+
+
+
+set_target_properties( ${PROJECT_NAME}  PROPERTIES CXX_EXTENSIONS OFF)
 target_include_directories( ${PROJECT_NAME} PUBLIC include )
 target_include_directories( ${PROJECT_NAME} PUBLIC ../config )
 target_include_directories( ${PROJECT_NAME} PUBLIC ../os_config )

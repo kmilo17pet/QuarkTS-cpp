@@ -15,7 +15,8 @@ void idleTask_callback( event_t e )
     if ( e.firstCall() ) {
         cout << "idle task" << endl;
     }
-    co::reenter {
+
+    co::reenter() {
         for(;;) {
             cout<<"hello 1 "<< endl;
             co::delay( 0.5f );
@@ -27,6 +28,18 @@ void idleTask_callback( event_t e )
             co::yield;
             co::restart;
         }
+    }
+}
+
+co::handle otherTaskCrHandle;
+co::semaphore sem(1);
+
+void otherTask( event_t e )
+{
+    co::reenter( otherTaskCrHandle ) {
+        co::restart;
+        co::semWait( sem );
+        co::semSignal( sem );
     }
 }
 
