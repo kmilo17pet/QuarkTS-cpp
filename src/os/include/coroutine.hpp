@@ -59,28 +59,28 @@ namespace qOS {
 
         inline void end_( void ) {}
         inline void nop_( void ) {}
-        inline void reenter_( void ) {}
-        inline void reenter_( qOS::co::handle h ) {}
-        inline void yield_( void ) {}
-        inline void delay_( qOS::time_t ) {}
-        inline void waitUntil_( bool condition ) {}
-        inline void waitUntil_( bool condition, qOS::time_t timeout ) {}
-        inline void restart_( void ) {}
-        inline void semWait_( semaphore& sem ) {}
-        inline void semSignal_( semaphore& sem ) {}
+        inline void reenter( void ) {}
+        inline void reenter( qOS::co::handle h ) {}
+        inline void yield( void ) {}
+        inline void delay( qOS::time_t ) {}
+        inline void waitUntil( bool condition ) {}
+        inline void waitUntil( bool condition, qOS::time_t timeout ) {}
+        inline void restart( void ) {}
+        inline void semWait( semaphore& sem ) {}
+        inline void semSignal( semaphore& sem ) {}
     }
 }
 /*============================================================================*/
 #define _co_label_ static_cast<qOS::co::state>( __LINE__ )
 
 /*============================================================================*/
-#define reenter(...)                OVERLOADED_MACRO( reenter, __VA_ARGS__ )
-#define reenter0()                  _co_reenter_intro( Q_NONE )
-#define reenter1( Handle )          _co_reenter_intro( Handle )
+#define reenter(...)                OVERLOADED_MACRO( _reenter, __VA_ARGS__ )
+#define _reenter0()                 _co_reenter_intro( Q_NONE )
+#define _reenter1( Handle )         _co_reenter_intro( Handle )
 
 /*============================================================================*/
 #define _co_reenter_intro( h )                                                 \
-reenter_();                                                                    \
+reenter();                                                                     \
 static qOS::co::_coContext _cr;                                                \
 qOS::co::_coContext *ctx = &_cr;                                               \
 _cr.saveHandle( h );                                                           \
@@ -145,45 +145,42 @@ for ( *_pc = (label) ;; )                                                      \
 /*============================================================================*/
 #define yield _co_yield(_co_label_)
 #define _co_yield(label)                                                       \
-yield_();                                                                      \
+yield();                                                                       \
 _co_save_restore( label, qOS::co::nop_(), Q_NONE, Q_NONE )                     \
 
 /*============================================================================*/
 #define delay( t ) _co_delay(_co_label_ , t)
 #define _co_delay( label, t )                                                  \
-delay_(t);                                                                     \
+delay(t);                                                                      \
 _co_save_restore( label, _cr.delay.set(t) , _co_t_cond(0), qOS::co::end_() )   \
 
 /*============================================================================*/
-#define _wu1( c ) _co_waitUntil(_co_label_ , c )
-#define _co_waitUntil( label, c )                                              \
-waitUntil_(c);                                                                 \
-_co_save_restore( label, qOS::co::nop_(), _co_cond(c), qOS::co::end_() )       \
+#define waitUntil(...)              OVERLOADED_MACRO( _waitUntil, __VA_ARGS__ )
 
-#define _wu2( c, t ) _co_timedWaitUntil(_co_label_ , c, t )
-#define _co_timedWaitUntil( label, c, t )                                      \
-waitUntil_(c,t);                                                               \
-_co_save_restore( label, qOS::co::nop_(), _co_t_cond(c), qOS::co::end_() )     \
+#define _waitUntil1( c )                                                       \
+waitUntil(c);                                                                  \
+_co_save_restore( _co_label_, qOS::co::nop_(), _co_cond(c), qOS::co::end_() )  \
 
-#define _waitGetMacro( _1,_2,NAME,...) NAME
-#define waitUntil(...) _waitGetMacro(__VA_ARGS__, _wu2, _wu1 )(__VA_ARGS__)
+#define _waitUntil2( c, t )                                                    \
+waitUntil(c,t);                                                                \
+_co_save_restore( _co_label_, qOS::co::nop_(), _co_t_cond(c), qOS::co::end_() )\
 
 /*============================================================================*/
 #define restart _co_restart
 #define _co_restart                                                            \
-restart_();                                                                    \
+restart();                                                                     \
 *_pc = qOS::co::state::BEGINNING;                                              \
 goto _co_break_                                                                \
 
 /*============================================================================*/
 #define semWait( sem )                                                         \
-semWait_( sem );                                                               \
+semWait( sem );                                                                \
 _co_save_restore( _co_label_, qOS::co::nop_(), _co_cond( _cr.semTrylock(sem)), \
                   qOS::co::end_() )                                            \
 
 /*============================================================================*/
 #define semSignal( sem )                                                       \
-semSignal_( sem );                                                             \
+semSignal( sem );                                                              \
 _cr.semSignal( sem )                                                           \
 /*============================================================================*/
 #endif /*QOS_CPP_CO*/
