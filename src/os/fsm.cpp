@@ -267,7 +267,7 @@ void stateMachine::timeoutPerformSpecifiedActions( fsm::state *s, fsm::signalID 
 bool stateMachine::installTimeoutSpec( fsm::timeoutSpec_t &ts )
 {
     timeSpec = &ts;
-    for ( std::size_t i = 0u ; i < (size_t)Q_FSM_MAX_TIMEOUTS ; ++i ) {
+    for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
         timeSpec->timeout[ i ].disarm();
         timeSpec->isPeriodic = 0u;
     }
@@ -275,7 +275,7 @@ bool stateMachine::installTimeoutSpec( fsm::timeoutSpec_t &ts )
     return true;
 }
 /*============================================================================*/
-bool fsm::state::setTimeouts( fsm::timeoutStateDefinition_t *tdef, size_t n )
+bool fsm::state::setTimeouts( fsm::timeoutStateDefinition_t *tdef, std::size_t n )
 {
     bool retValue = false;
 
@@ -397,8 +397,8 @@ fsm::psIndex_t stateMachine::getSubscriptionStatus( fsm::signalID s )
 {
     fsm::psIndex_t idx = { fsm::PS_SIGNAL_NOT_FOUND, 0u ,0u };
     std::size_t i, j;
-    const size_t maxSig = (size_t)Q_FSM_PS_SIGNALS_MAX;
-    const size_t maxSub = (size_t)Q_FSM_PS_SUB_PER_SIGNAL_MAX;
+    const std::size_t maxSig = static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX );
+    const std::size_t maxSub = static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
 
     for ( i = 0u ; ( i < maxSig ) && ( fsm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
         if ( s == psSignals[ i ] ) {

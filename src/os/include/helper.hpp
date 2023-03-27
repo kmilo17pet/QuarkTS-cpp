@@ -18,31 +18,31 @@ namespace qOS {
     }
 
     template <typename T>
-    inline void bitSet( T &dst, const size_t xBit ) 
+    inline void bitSet( T &dst, const std::size_t xBit ) 
     {
         dst |= ( 1u << xBit );
     }
 
     template <typename T>
-    inline void bitClear( T &dst, const size_t xBit ) 
+    inline void bitClear( T &dst, const std::size_t xBit ) 
     {
         dst &= ~( 1u << xBit ); 
     }
 
     template <typename T>
-    inline bool bitRead( T dst, const size_t xBit ) 
+    inline bool bitRead( T dst, const std::size_t xBit ) 
     {
         return ( false == ( dst & ( 1u << xBit ) ) ) ? false : true;
     }
 
     template <typename T>
-    inline void bitToggle( T &dst, const size_t xBit ) 
+    inline void bitToggle( T &dst, const std::size_t xBit ) 
     {
         dst ^= ( 1u << xBit );
     }
 
     template <typename T>
-    inline void bitWrite( T &dst, const size_t xBit, const bool value ) 
+    inline void bitWrite( T &dst, const std::size_t xBit, const bool value ) 
     {
         ( value ) ? bitSet( dst, xBit ) : bitClear( dst, xBit );
     }

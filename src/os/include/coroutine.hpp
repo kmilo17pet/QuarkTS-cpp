@@ -33,7 +33,7 @@ namespace qOS {
                 void signal( void );
                 bool tryLock( void );
             public:
-                semaphore( std::size_t init ) : count(init) {}
+                semaphore( std::size_t init ) : count( init ) {}
                 void set( std::size_t val );
             friend class co::_coContext;
         };
@@ -46,7 +46,7 @@ namespace qOS {
                 {
                     h.ctx = this;
                 }
-                void saveHandle( void ) { }
+                inline void saveHandle( void ) { }
                 inline void semSignal( semaphore& s )
                 {
                     s.signal();

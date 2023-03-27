@@ -179,8 +179,8 @@ namespace qOS {
             void timeoutPerformSpecifiedActions( fsm::state *s, fsm::signalID sig );
             fsm::psIndex_t getSubscriptionStatus( fsm::signalID s );
             void transition( fsm::state *target, fsm::historyMode mHistory );
-            uint8_t levelsToLCA( fsm::state *target );
-            void exitUpToLCA( uint8_t lca );
+            std::uint8_t levelsToLCA( fsm::state *target );
+            void exitUpToLCA( std::uint8_t lca );
             void prepareHandler( fsm::signal_t sig, fsm::state *s );
             fsm::status invokeStateCallback( fsm::state *s );
             fsm::state* stateOnExit( fsm::state *s );
