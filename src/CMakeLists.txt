@@ -15,5 +15,5 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/bin)
 
-add_executable ( test_quarkts_cpp test.cpp )
-target_link_libraries( test_quarkts_cpp quarkts-cpp )
+add_executable ( simple_dry_test simple_dry_test.cpp )
+target_link_libraries( simple_dry_test quarkts-cpp )
