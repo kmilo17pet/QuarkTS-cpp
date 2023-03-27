@@ -71,36 +71,36 @@ namespace qOS {
             
             void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback );
             bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState init, void *arg );
-            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState init )
+            inline bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState init )
             {
                 return addTask( Task, callback, p, t, n, init, nullptr );
             }
-            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n )
+            inline bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n )
             {
                 return addTask( Task, callback, p, t, n, taskState::ENABLED, nullptr );
             }
-            bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg )
+            inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg )
             {
                 return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, arg );
             }
-            bool addEventTask( task &Task, taskFcn_t callback, const priority_t p )
+            inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p )
             {
                 return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, nullptr );
             }
             #if ( Q_FSM == 1 )
             bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState init, void *arg );
-            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState init )
+            inline bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState init )
             {
                 return addStateMachineTask( Task, m, p, t, init, nullptr );
             }
-            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t )
+            inline bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t )
             {
                 return addStateMachineTask( Task, m, p, t, taskState::ENABLED, nullptr );
             }
             #endif
             #if ( Q_ATCLI == 1 )
             bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg );
-            bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p )
+            inline bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p )
             {
                 return addCommandLineInterfaceTask( Task, cli, p );
             }

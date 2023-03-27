@@ -196,23 +196,23 @@ namespace qOS {
         public:
             void *mData{ nullptr };
             stateMachine() = default;
-            bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn, void* pData )
+            inline bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn, void* pData )
             {
                 return setup( topFcn, &init, sFcn, pData );
             }
-            bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn )
+            inline bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn )
             {
                 return setup( topFcn, &init, sFcn, nullptr );
             }
-            bool setup( fsm::stateCallback_t topFcn, fsm::state &init )
+            inline bool setup( fsm::stateCallback_t topFcn, fsm::state &init )
             {
                 return setup( topFcn, &init, nullptr, nullptr );
             }
-            bool add( fsm::state &s, fsm::stateCallback_t sFcn, fsm::state &init )
+            inline bool add( fsm::state &s, fsm::stateCallback_t sFcn, fsm::state &init )
             {
                 return top.subscribe( &s, sFcn, &init );
             }
-            bool add( fsm::state &s, fsm::stateCallback_t sFcn )
+            inline bool add( fsm::state &s, fsm::stateCallback_t sFcn )
             {
                 return top.subscribe( &s, sFcn, nullptr );
             }
@@ -222,7 +222,7 @@ namespace qOS {
             {
                 return sendSignal( sig, sData, false );
             }
-            bool sendSignal( fsm::signalID sig )
+            inline bool sendSignal( fsm::signalID sig )
             {
                 return sendSignal( sig, nullptr, false );
             }

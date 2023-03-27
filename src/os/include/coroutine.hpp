@@ -23,7 +23,7 @@ namespace qOS {
                 void try_restart( void );
                 void try_suspend( void );
                 void try_resume( void );
-                void try_set( co::state p  );
+                void try_set( co::state p );
             friend class co::_coContext;
         };
 
@@ -42,16 +42,16 @@ namespace qOS {
             public:
                 co::state label{ co::state::BEGINNING };
                 qOS::timer delay;
-                void saveHandle( co::handle& h )
+                inline void saveHandle( co::handle& h )
                 {
                     h.ctx = this;
                 }
                 void saveHandle( void ) { }
-                void semSignal( semaphore& s )
+                inline void semSignal( semaphore& s )
                 {
                     s.signal();
                 }
-                bool semTrylock( semaphore& s )
+                inline bool semTrylock( semaphore& s )
                 {
                     return s.tryLock();
                 }
@@ -64,7 +64,7 @@ namespace qOS {
         inline void yield_( void ) {}
         inline void delay_( qOS::time_t ) {}
         inline void waitUntil_( bool condition ) {}
-        inline void waitUntil_( bool condition, time_t timeout ) {}
+        inline void waitUntil_( bool condition, qOS::time_t timeout ) {}
         inline void restart_( void ) {}
         inline void semWait_( semaphore& sem ) {}
         inline void semSignal_( semaphore& sem ) {}
@@ -171,7 +171,7 @@ _co_save_restore( label, qOS::co::nop_(), _co_t_cond(c), qOS::co::end_() )     \
 /*============================================================================*/
 #define restart _co_restart
 #define _co_restart                                                            \
-yield_();                                                                      \
+restart_();                                                                    \
 *_pc = qOS::co::state::BEGINNING;                                              \
 goto _co_break_                                                                \
 

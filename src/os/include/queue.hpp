@@ -36,7 +36,7 @@ namespace qOS {
             bool removeFront( void );
             bool receive( void *dst );
             bool send( void *itemToQueue, const queueSendMode pos );
-            bool send( void *itemToQueue )
+            inline bool send( void *itemToQueue )
             {
                 return send( itemToQueue, queueSendMode::TO_BACK );
             }

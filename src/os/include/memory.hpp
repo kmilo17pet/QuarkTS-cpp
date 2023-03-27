@@ -32,7 +32,7 @@ namespace qOS {
                 void insertBlockIntoFreeList( blockConnect_t *xBlock );
                 void init( void );
             public:
-                pool( void *pArea, const std::size_t pSize ) {
+                inline pool( void *pArea, const std::size_t pSize ) {
                     (void)setup( pArea, pSize );
                 }
                 bool setup( void *pArea, const std::size_t pSize );

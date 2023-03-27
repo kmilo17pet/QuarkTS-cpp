@@ -126,7 +126,7 @@ namespace qOS {
             commandLineInterface() = default;
             bool setup( util::putChar_t outFcn, char *pInput, const std::size_t sizeInput, char *pOutput, const std::size_t sizeOutput );
             bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param );
-            bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt )
+            inline bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt )
             {
                 return add( cmd, textCommand, cFcn, cmdOpt, nullptr );
             }
@@ -136,11 +136,11 @@ namespace qOS {
             bool inputFlush( void );
             cli::response exec( const char *cmd );
             bool run( void );
-            void* getOwner( void ) const
+            inline void* getOwner( void ) const
             {
                 return owner;
             }
-            void setData( void *pData )
+            inline void setData( void *pData )
             {
                 handler.Data = pData;
             }

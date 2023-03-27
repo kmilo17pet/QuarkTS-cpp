@@ -89,7 +89,7 @@ namespace qOS {
             listIterator& operator++( int );
             listIterator& operator--( int );
             template <typename T>
-            T get( void ) {
+            inline T get( void ) {
                 return static_cast<T>( current );
             }
     };
