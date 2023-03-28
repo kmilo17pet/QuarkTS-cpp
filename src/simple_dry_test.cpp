@@ -10,6 +10,8 @@ qOS::task t1, t2, t3, t4;
 qOS::stateMachine m;
 qOS::fsm::state s1, s2;
 
+co::position pos1;
+
 void idleTask_callback( event_t e ) 
 {
     if ( e.firstCall() ) {
@@ -19,10 +21,12 @@ void idleTask_callback( event_t e )
     co::reenter() {
         for(;;) {
             cout<<"hello 1 "<< endl;
+            co::getPosition( pos1 );
             co::delay( 0.5f );
             cout<<"hello 2 "<< endl;
             co::delay( 0.5f );
             cout<<"hello 3 "<< endl;
+            co::setPosition( pos1 );
             co::waitUntil( true == true );
             co::waitUntil( true == true , 0.5f );
             co::yield;

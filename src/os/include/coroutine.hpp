@@ -15,6 +15,11 @@ namespace qOS {
         };
         class _coContext;
 
+        class position {
+            public:
+            base_t pos{ 0 };
+        };
+
         class handle {
             protected:
                 co::state prev = { co::state::UNDEFINED };
@@ -66,8 +71,10 @@ namespace qOS {
         inline void waitUntil( bool condition ) {}
         inline void waitUntil( bool condition, qOS::time_t timeout ) {}
         inline void restart( void ) {}
-        inline void semWait( semaphore& sem ) {}
-        inline void semSignal( semaphore& sem ) {}
+        inline void semWait( co::semaphore& sem ) {}
+        inline void semSignal( co::semaphore& sem ) {}
+        inline void getPosition( co::position &var ) {}
+        inline void setPosition( co::position &var ) {}
     }
 }
 /*============================================================================*/
@@ -182,5 +189,32 @@ _co_save_restore( _co_label_, qOS::co::nop_(), _co_cond( _cr.semTrylock(sem)), \
 #define semSignal( sem )                                                       \
 semSignal( sem );                                                              \
 _cr.semSignal( sem )                                                           \
+
 /*============================================================================*/
+#define getPosition( var )   _co_get_pos( var, _co_label_ )
+#define _co_get_pos( var, label )                                              \
+getPosition( var );                                                            \
+var.pos = label;                                                               \
+case ( label ) : qOS::co::nop_()                                               \
+
+/*============================================================================*/
+#define setPosition( var )   co_res_pos( var, _co_label_ )
+#define co_res_pos( var, label )                                               \
+setPosition( var );                                                            \
+for ( *_pc = static_cast<qOS::co::state>( var.pos ) ;; )                       \
+    if ( 1 )                                                                   \
+        switch ( 0 )                                                           \
+            for (;;)                                                           \
+                if ( 1 )                                                       \
+                    goto _co_continue_;                                        \
+                else                                                           \
+                    for (;;)                                                   \
+                        if ( 1 )                                               \
+                            goto _co_break_;                                   \
+                        else /* falls through */                               \
+                            case 0 :                                           \
+
+
 #endif /*QOS_CPP_CO*/
+
+
