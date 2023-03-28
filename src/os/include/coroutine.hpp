@@ -212,7 +212,7 @@ for ( *_pc = static_cast<qOS::co::state>( var.pos ) ;; )                       \
                         if ( 1 )                                               \
                             goto _co_break_;                                   \
                         else /* falls through */                               \
-                            case 0 :                                           \
+                            case 0 : qOS::co::end_()                           \
 
 
 #endif /*QOS_CPP_CO*/
