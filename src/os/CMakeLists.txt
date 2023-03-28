@@ -23,12 +23,11 @@ add_library( ${PROJECT_NAME} STATIC
 
 
 add_compile_options( -std=c++11 -Wall -Wextra -Wpedantic -ansi -Wconversion 
-                     -flto -Wextra -Wimplicit-fallthrough=0 -Wformat-security
-                     -Wduplicated-cond -Wfloat-equal -Wshadow -Wconversion 
-                     -Wsign-conversion -Wlogical-not-parentheses 
-                     -Wnull-dereference  -Wnull-dereference -Wstringop-overflow 
-                     -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing 
-                   )
+           -flto -Wimplicit-fallthrough=0 -Wformat-security
+           -Wduplicated-cond -Wfloat-equal -Wshadow -Wsign-conversion
+           -Wlogical-not-parentheses -Wnull-dereference  -Wstringop-overflow 
+           -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing 
+         )
 set_target_properties( ${PROJECT_NAME}  PROPERTIES CXX_EXTENSIONS OFF)
 target_include_directories( ${PROJECT_NAME} PUBLIC include )
 target_include_directories( ${PROJECT_NAME} PUBLIC ../config )
