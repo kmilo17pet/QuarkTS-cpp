@@ -73,7 +73,7 @@ namespace qOS {
                     NextState = s;
                     TransitionHistory = m;
                 }
-                bool timeoutSet( index_t i, time_t t );
+                bool timeoutSet( index_t i, qOS::time_t t );
                 bool timeoutStop( index_t i );
                 state* thisState( void ) const { return State; }
                 stateMachine* thisMachine( void ) const { return Machine; }

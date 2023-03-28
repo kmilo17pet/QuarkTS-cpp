@@ -113,7 +113,7 @@ namespace qOS {
             taskState getState( void ) const;
             bool setState( taskState s );
             void setIterations( iteration_t iValue );
-            bool setTime( const time_t tValue );
+            bool setTime( const qOS::time_t tValue );
             bool setCallback( taskFcn_t callback );
             bool setData( void *arg );
             bool setName( const char *name );

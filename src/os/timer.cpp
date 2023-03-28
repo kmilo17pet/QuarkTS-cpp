@@ -59,7 +59,7 @@ void timer::disarm( void )
     this->tStart = timer::DISARM_VALUE;
 }
 /*============================================================================*/
-bool timer::freeRun( time_t tTime )
+bool timer::freeRun( qOS::time_t tTime )
 {
     bool retValue = false;
 

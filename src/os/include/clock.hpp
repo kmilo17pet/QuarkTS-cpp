@@ -36,12 +36,12 @@ namespace qOS {
             static bool timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td );
             static bool setTimeBase( const timingBase_t tb );
             static bool setTickProvider( const getTickFcn_t provider );
-            static const time_t NONE;
-            static const time_t IMMEDIATE;
-            static const time_t MINUTE;
-            static const time_t HOUR;
-            static const time_t DAY;
-            static const time_t WEEK;
+            static const qOS::time_t NONE;
+            static const qOS::time_t IMMEDIATE;
+            static const qOS::time_t MINUTE;
+            static const qOS::time_t HOUR;
+            static const qOS::time_t DAY;
+            static const qOS::time_t WEEK;
     };
 
 }
