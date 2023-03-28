@@ -78,7 +78,7 @@ namespace qOS {
                 state* thisState( void ) const { return State; }
                 stateMachine* thisMachine( void ) const { return Machine; }
                 signalID signal( void ) const { return Signal; }
-                status status( void ) const { return Status; }
+                status lastStatus( void ) const { return Status; }
             friend class qOS::fsm::state;
         };
         using handler_t = _Handler&;
@@ -97,7 +97,7 @@ namespace qOS {
             signalID xSignal;
             signalAction_t guard{ nullptr };
             state *nextState{ nullptr };
-            historyMode historyMode{ historyMode::NO_HISTORY };
+            historyMode history{ historyMode::NO_HISTORY };
             void *signalData;
         };
         using transition_t = struct _transition_s;

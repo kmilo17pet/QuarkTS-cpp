@@ -141,7 +141,7 @@ void fsm::state::sweepTransitionTable( fsm::_Handler &h )
                     /*if target state available, set the transition from table*/
                     h.NextState = iTransition->nextState;
                     /*set the history mode form the table*/
-                    h.TransitionHistory = iTransition->historyMode;
+                    h.TransitionHistory = iTransition->history;
                     break;
                 }
             }
