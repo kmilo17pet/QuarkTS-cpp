@@ -31,6 +31,8 @@ namespace qOS {
                 std::size_t freeBytesRemaining{ 0u };
                 void insertBlockIntoFreeList( blockConnect_t *xBlock );
                 void init( void );
+                pool( pool const& ) = delete;      /* not copyable*/
+                void operator=( pool const& ) = delete;  /* not assignable*/
             public:
                 inline pool( void *pArea, const std::size_t pSize ) {
                     (void)setup( pArea, pSize );

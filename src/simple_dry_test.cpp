@@ -20,17 +20,19 @@ void idleTask_callback( event_t e )
 
     co::reenter() {
         for(;;) {
-            cout<<"hello 1 "<< endl;
             co::getPosition( pos1 );
+            cout<<"hello 1 "<< endl;
+            
             co::delay( 0.5f );
             cout<<"hello 2 "<< endl;
             co::delay( 0.5f );
             cout<<"hello 3 "<< endl;
-            co::setPosition( pos1 );
+            
             co::waitUntil( true == true );
             co::waitUntil( true == true , 0.5f );
             co::yield;
             co::restart;
+            co::setPosition( pos1 );
         }
     }
 }
@@ -55,7 +57,7 @@ qOS::fsm::status s1_callback( qOS::fsm::handler_t h )
             h.timeoutSet( 0, 5.0f );
             break;
         case qOS::fsm::SIGNAL_TIMEOUT( 0 ):
-            h.nextState( &s2 );
+            h.nextState( s2 );
             break;
         default:
             break;
@@ -72,7 +74,7 @@ qOS::fsm::status s2_callback( qOS::fsm::handler_t h )
             tmr( 5.0f );
         default:
             if ( tmr() ) {
-                h.nextState( &s1 );
+                h.nextState( s1 );
             }
             break;
     }

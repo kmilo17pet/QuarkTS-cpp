@@ -64,9 +64,9 @@ namespace qOS {
                 void *SignalData{ nullptr };
                 void *Data{ nullptr };
                 void *StateData{ nullptr };
-                void nextState( state *s )
+                void nextState( state &s )
                 {
-                    NextState = s;
+                    NextState = &s;
                 }
                 void nextState( state *s, historyMode m )
                 {

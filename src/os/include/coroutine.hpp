@@ -24,7 +24,10 @@ namespace qOS {
             protected:
                 co::state prev = { co::state::UNDEFINED };
                 _coContext *ctx{ nullptr };
+                handle( handle const& ) = delete;      /* not copyable*/
+                void operator=( handle const& ) = delete;  /* not assignable*/
             public:
+                handle() = default;
                 void try_restart( void );
                 void try_suspend( void );
                 void try_resume( void );
@@ -37,6 +40,8 @@ namespace qOS {
                 std::size_t count{ 1u };
                 void signal( void );
                 bool tryLock( void );
+                semaphore( semaphore const& ) = delete;      /* not copyable*/
+                void operator=( semaphore const& ) = delete;  /* not assignable*/
             public:
                 semaphore( std::size_t init ) : count( init ) {}
                 void set( std::size_t val );
@@ -44,7 +49,11 @@ namespace qOS {
         };
 
         class _coContext {
+            protected:
+                _coContext( _coContext const& ) = delete;      /* not copyable*/
+                void operator=( _coContext const& ) = delete;  /* not assignable*/
             public:
+                _coContext() = default;
                 co::state label{ co::state::BEGINNING };
                 qOS::timer delay;
                 inline void saveHandle( co::handle& h )
