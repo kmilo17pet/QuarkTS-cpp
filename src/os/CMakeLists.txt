@@ -1,20 +1,6 @@
-# QuarkTS OS CMakeLists.txt file
-# Copyright (C) 2012 Eng. Juan Camilo Gómez Cadavid MSc. All Rights Reserved.
-#
-# To make use of the QuarkTS OS on your solution just add the following 
-# directives to the top-level CMakeLists.txt file :
-#
-#     add_subdirectory( <relative/path/to/kernel> )
-#     target_link_libraries( ${PROJECT_NAME} quarkts )
-#
-# If the "qconfig.h" header file is not provided, the latest version will be 
-# downloaded with the default parameters in the ../os_config directory.
-#
-# This file is part of the QuarkTS OS distribution.
-
 cmake_minimum_required( VERSION 3.2 )
 project( quarkts-cpp 
-         VERSION 7.3.2 
+         VERSION 0.0.1 
          DESCRIPTION "An open-source OS for small embedded applications" 
          LANGUAGES CXX )
 
@@ -36,6 +22,13 @@ add_library( ${PROJECT_NAME} STATIC
 
 
 
+add_compile_options( -std=c++11 -Wall -Wextra -Wpedantic -ansi -Wconversion 
+                     -flto -Wextra -Wimplicit-fallthrough=0 -Wformat-security
+                     -Wduplicated-cond -Wfloat-equal -Wshadow -Wconversion 
+                     -Wsign-conversion -Wlogical-not-parentheses 
+                     -Wnull-dereference  -Wnull-dereference -Wstringop-overflow 
+                     -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing 
+                   )
 set_target_properties( ${PROJECT_NAME}  PROPERTIES CXX_EXTENSIONS OFF)
 target_include_directories( ${PROJECT_NAME} PUBLIC include )
 target_include_directories( ${PROJECT_NAME} PUBLIC ../config )

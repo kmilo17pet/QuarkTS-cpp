@@ -43,8 +43,8 @@ namespace qOS {
                 std::size_t getFreeSize( void );
         };
 
-    };
-};
+    }
+}
 
     #if ( Q_DEFAULT_HEAP_SIZE >= 64 )
         void * operator new( std::size_t size);

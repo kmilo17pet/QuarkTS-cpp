@@ -26,7 +26,7 @@ namespace qOS {
         char* utoa( std::uint32_t num, char* str, std::uint8_t base );
         char* itoa( std::int32_t num, char* str, std::uint8_t base );
         char* btoa( const bool num, char *str );
-    };
+    }
 }
 
 #endif /*QOS_CPP_UTIL*/

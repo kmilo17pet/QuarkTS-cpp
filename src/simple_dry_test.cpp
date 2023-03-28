@@ -12,6 +12,7 @@ qOS::fsm::state s1, s2;
 
 co::position pos1;
 
+
 void idleTask_callback( event_t e ) 
 {
     if ( e.firstCall() ) {
@@ -22,12 +23,11 @@ void idleTask_callback( event_t e )
         for(;;) {
             co::getPosition( pos1 );
             cout<<"hello 1 "<< endl;
-            
             co::delay( 0.5f );
             cout<<"hello 2 "<< endl;
             co::delay( 0.5f );
             cout<<"hello 3 "<< endl;
-            
+            co::delay( 0.5f );
             co::waitUntil( true == true );
             co::waitUntil( true == true , 0.5f );
             co::yield;
@@ -42,6 +42,9 @@ co::semaphore sem(1);
 
 void otherTask( event_t e )
 {
+    if ( e.firstCall() ) {
+        cout << "idle task" << endl;
+    }
     co::reenter( otherTaskCrHandle ) {
         co::restart;
         co::semWait( sem );

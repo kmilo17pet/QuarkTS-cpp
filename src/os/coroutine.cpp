@@ -5,26 +5,26 @@ using namespace qOS;
 /*============================================================================*/
 void co::handle::try_restart( void )
 {
-    try_set( co::state::BEGINNING );
+    try_set( co::BEGINNING );
 }
 /*============================================================================*/
 void co::handle::try_suspend( void )
 {
     if ( prev != ctx->label ) {
         prev = ctx->label;
-        try_set( co::state::SUSPENDED );
+        try_set( co::SUSPENDED );
     }
 }
 /*============================================================================*/
 void co::handle::try_resume( void )
 {
-    if ( co::state::SUSPENDED == prev ) {
+    if ( co::SUSPENDED == prev ) {
         try_restart();
     } 
     else {
         try_set( prev );
     }
-    prev = co::state::UNDEFINED;
+    prev = co::UNDEFINED;
 }
 /*============================================================================*/
 void co::handle::try_set( co::state p )

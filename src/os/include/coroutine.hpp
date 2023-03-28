@@ -3,26 +3,25 @@
 
 #include "types.hpp"
 #include "timer.hpp"
-#include "macroutil.hpp"
 
 namespace qOS {
     namespace co {
 
-        enum state : base_t {
-            UNDEFINED = -2,
-            SUSPENDED = -1,
-            BEGINNING =  0,
-        };
+        using state = base_t;
+        const state UNDEFINED = -2;
+        const state SUSPENDED = -1;
+        const state BEGINNING =  0; 
+        
         class _coContext;
 
         class position {
             public:
-            base_t pos{ 0 };
+            state pos{ BEGINNING };
         };
 
         class handle {
             protected:
-                co::state prev = { co::state::UNDEFINED };
+                co::state prev = { co::UNDEFINED };
                 _coContext *ctx{ nullptr };
                 handle( handle const& ) = delete;      /* not copyable*/
                 void operator=( handle const& ) = delete;  /* not assignable*/
@@ -54,7 +53,7 @@ namespace qOS {
                 void operator=( _coContext const& ) = delete;  /* not assignable*/
             public:
                 _coContext() = default;
-                co::state label{ co::state::BEGINNING };
+                co::state label{ co::BEGINNING };
                 qOS::timer delay;
                 inline void saveHandle( co::handle& h )
                 {
@@ -71,31 +70,32 @@ namespace qOS {
                 }
         };
 
-        inline void end_( void ) {}
-        inline void nop_( void ) {}
+        inline void nop( void ) {}
         inline void reenter( void ) {}
-        inline void reenter( qOS::co::handle h ) {}
+        inline void reenter( qOS::co::handle h ) { Q_UNUSED(h); }
         inline void yield( void ) {}
-        inline void delay( qOS::time_t ) {}
-        inline void waitUntil( bool condition ) {}
-        inline void waitUntil( bool condition, qOS::time_t timeout ) {}
+        inline void delay( qOS::time_t t ) { Q_UNUSED(t); }
+        inline void waitUntil( bool condition ) { Q_UNUSED(condition); }
+        inline void waitUntil( bool condition, qOS::time_t timeout ) { Q_UNUSED(condition); Q_UNUSED(timeout); }
         inline void restart( void ) {}
-        inline void semWait( co::semaphore& sem ) {}
-        inline void semSignal( co::semaphore& sem ) {}
-        inline void getPosition( co::position &var ) {}
-        inline void setPosition( co::position &var ) {}
+        inline void semWait( co::semaphore& sem ) { Q_UNUSED(sem); }
+        inline void semSignal( co::semaphore& sem ) { Q_UNUSED(sem); }
+        inline void getPosition( co::position &var ) { Q_UNUSED(var); }
+        inline void setPosition( co::position &var ) { Q_UNUSED(var); }
     }
 }
 /*============================================================================*/
-#define _co_label_ static_cast<qOS::co::state>( __LINE__ )
+#define _co_label_                                  ( __LINE__ )
 
 /*============================================================================*/
-#define reenter(...)                OVERLOADED_MACRO( _reenter, __VA_ARGS__ )
-#define _reenter0()                 _co_reenter_intro( Q_NONE )
-#define _reenter1( Handle )         _co_reenter_intro( Handle )
+#define reenter(...)    _reenter(__VA_ARGS__, _reenter0, _reenter1)(__VA_ARGS__)
+#define _reenter(_1, _reenter1, _reenter0, ...)    _reenter0
+#define _reenter1( Handle )                        _co_reenter_impl( Handle )
+#define _reenter0                             _co_reenter_impl( Q_NONE )
+
 
 /*============================================================================*/
-#define _co_reenter_intro( h )                                                 \
+#define _co_reenter_impl( h )                                                 \
 reenter();                                                                     \
 static qOS::co::_coContext _cr;                                                \
 qOS::co::_coContext *ctx = &_cr;                                               \
@@ -106,8 +106,8 @@ _co_reenter                                                                    \
 // clang-format off
 #define _co_reenter                                                            \
 for ( qOS::co::state *const _pc = &(ctx)->label;                               \
-      qOS::co::state::SUSPENDED != *_pc ;                                      \
-      *_pc = qOS::co::state::SUSPENDED )                                       \
+      qOS::co::SUSPENDED != *_pc ;                                             \
+      *_pc = qOS::co::SUSPENDED )                                              \
     if ( 0 ) {                                                                 \
         goto _co_continue_;                                                    \
         _co_continue_:                                                         \
@@ -121,6 +121,18 @@ for ( qOS::co::state *const _pc = &(ctx)->label;                               \
     else                                                                       \
         switch ( *_pc )                                                        \
             case 0 :                                                           \
+
+/*============================================================================*/
+#define _co_save_restore( label, init_action, pos_label_action )               \
+init_action;                                                                   \
+for ( *_pc = (label) ;; )                                                      \
+    if ( 0 ) {                                                                 \
+        case ( label ) : {                                                     \
+            pos_label_action                                                   \
+            break;                                                             \
+        }                                                                      \
+    }                                                                          \
+    else goto _co_break_                                                       \
 // clang-format on
 
 /*============================================================================*/
@@ -135,64 +147,42 @@ if ( !( (c) || _cr.delay.expired() ) ) {                                       \
     goto _co_break_;                                                           \
 } 
 /*============================================================================*/
-// clang-format off
-#define _co_save_restore( label, init_action, pos_label_action, end_action )   \
-init_action;                                                                   \
-for ( *_pc = (label) ;; )                                                      \
-    if ( 0 ) {                                                                 \
-        case ( label ) : {                                                     \
-            pos_label_action                                                   \
-            break;                                                             \
-        }                                                                      \
-    }                                                                          \
-    else                                                                       \
-        switch ( 0 )                                                           \
-            for (;;)                                                           \
-                if ( 1 )                                                       \
-                    goto _co_continue_;                                        \
-                else                                                           \
-                    for (;;)                                                   \
-                        if ( 1 )                                               \
-                            goto _co_break_;                                   \
-                        else /* falls through */                               \
-                            case 0 : end_action                                \
-// clang-format on
-
-/*============================================================================*/
 #define yield _co_yield(_co_label_)
 #define _co_yield(label)                                                       \
 yield();                                                                       \
-_co_save_restore( label, qOS::co::nop_(), Q_NONE, Q_NONE )                     \
+_co_save_restore( label, qOS::co::nop(), Q_NONE )                              \
 
 /*============================================================================*/
 #define delay( t ) _co_delay(_co_label_ , t)
 #define _co_delay( label, t )                                                  \
 delay(t);                                                                      \
-_co_save_restore( label, _cr.delay.set(t) , _co_t_cond(0), qOS::co::end_() )   \
+_co_save_restore( label, _cr.delay.set(t) , _co_t_cond(0) )                    \
 
 /*============================================================================*/
-#define waitUntil(...)              OVERLOADED_MACRO( _waitUntil, __VA_ARGS__ )
-
-#define _waitUntil1( c )                                                       \
+#define _wu1( c ) _co_waitUntil(_co_label_ , c )
+#define _co_waitUntil( label, c )                                              \
 waitUntil(c);                                                                  \
-_co_save_restore( _co_label_, qOS::co::nop_(), _co_cond(c), qOS::co::end_() )  \
+_co_save_restore( label, qOS::co::nop(), _co_cond(c) )                         \
 
-#define _waitUntil2( c, t )                                                    \
+#define _wu2( c, t ) _co_timedWaitUntil(_co_label_ , c, t )
+#define _co_timedWaitUntil( label, c, t )                                      \
 waitUntil(c,t);                                                                \
-_co_save_restore( _co_label_, qOS::co::nop_(), _co_t_cond(c), qOS::co::end_() )\
+_co_save_restore( label, qOS::co::nop(), _co_t_cond(c) )                       \
+
+#define _waitGetMacro( _1,_2,NAME,...) NAME
+#define waitUntil(...) _waitGetMacro(__VA_ARGS__, _wu2, _wu1 )(__VA_ARGS__)
 
 /*============================================================================*/
 #define restart _co_restart
 #define _co_restart                                                            \
 restart();                                                                     \
-*_pc = qOS::co::state::BEGINNING;                                              \
+*_pc = qOS::co::BEGINNING;                                                     \
 goto _co_break_                                                                \
 
 /*============================================================================*/
 #define semWait( sem )                                                         \
 semWait( sem );                                                                \
-_co_save_restore( _co_label_, qOS::co::nop_(), _co_cond( _cr.semTrylock(sem)), \
-                  qOS::co::end_() )                                            \
+_co_save_restore( _co_label_, qOS::co::nop(), _co_cond( _cr.semTrylock(sem)) ) \
 
 /*============================================================================*/
 #define semSignal( sem )                                                       \
@@ -204,24 +194,14 @@ _cr.semSignal( sem )                                                           \
 #define _co_get_pos( var, label )                                              \
 getPosition( var );                                                            \
 var.pos = label;                                                               \
-case ( label ) : qOS::co::nop_()                                               \
+case ( label ) : qOS::co::nop()                                                \
 
 /*============================================================================*/
 #define setPosition( var )   co_res_pos( var, _co_label_ )
 #define co_res_pos( var, label )                                               \
 setPosition( var );                                                            \
-for ( *_pc = static_cast<qOS::co::state>( var.pos ) ;; )                       \
-    if ( 1 )                                                                   \
-        switch ( 0 )                                                           \
-            for (;;)                                                           \
-                if ( 1 )                                                       \
-                    goto _co_continue_;                                        \
-                else                                                           \
-                    for (;;)                                                   \
-                        if ( 1 )                                               \
-                            goto _co_break_;                                   \
-                        else /* falls through */                               \
-                            case 0 : qOS::co::end_()                           \
+*_pc = var.pos;                                                                \
+goto _co_break_                                                                \
 
 
 #endif /*QOS_CPP_CO*/
