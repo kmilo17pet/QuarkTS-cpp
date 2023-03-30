@@ -45,7 +45,7 @@ namespace qOS {
         };
 
         class _Handler {
-            protected:
+            private:
                 commandLineInterface *instance{ nullptr };
                 void *Command{ nullptr };
                 char *StrData{ nullptr };
@@ -88,7 +88,7 @@ namespace qOS {
         using options_t = std::uint16_t;
 
         class command {
-            protected:
+            private:
                 commandCallback_t cmdCallback{ nullptr };
                 command* next{ nullptr };
                 options_t cmdOpt{ 0u };
@@ -103,7 +103,7 @@ namespace qOS {
     }
 
     class commandLineInterface : protected cli::input {
-        protected:
+        private:
             cli::_Handler handler;
             cli::command *first{ nullptr };
             const char *ok_rsp{ "OK" };

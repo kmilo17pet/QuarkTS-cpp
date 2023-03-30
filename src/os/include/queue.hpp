@@ -11,7 +11,7 @@ namespace qOS {
     };
 
     class queue {
-        protected:
+        private:
             std::uint8_t *head{ nullptr };
             std::uint8_t *tail{ nullptr };
             std::uint8_t *writer{ nullptr };

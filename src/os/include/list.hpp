@@ -17,7 +17,7 @@ namespace qOS {
     using listCompareHandle_t = struct _listCompareHandle_s*;
    
     class node {
-        protected:
+        private:
             node *next = nullptr;
             node *prev = nullptr;
             void init( void ) noexcept;
@@ -41,7 +41,7 @@ namespace qOS {
     class listIterator;
 
     class list : protected node {
-        protected:
+        private:
             node *head{ nullptr };
             node *tail{ nullptr };
             node *iter{ nullptr };
@@ -78,7 +78,7 @@ namespace qOS {
     };
 
     class listIterator {
-        protected:
+        private:
           list *l{ nullptr };
           node *iter{ nullptr };
           void *current{ nullptr };

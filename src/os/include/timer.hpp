@@ -7,7 +7,7 @@
 namespace qOS {
 
     class timer {
-        protected:
+        private:
             qOS::clock_t tStart;
             qOS::clock_t tv;
         public:

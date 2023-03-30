@@ -13,7 +13,7 @@ struct _queueStack_s {
 using queueStack_t = struct _queueStack_s;
 
 class prioQueue {
-    protected:
+    private:
         volatile base_t index = -1;
         queueStack_t *stack;
         std::size_t size;

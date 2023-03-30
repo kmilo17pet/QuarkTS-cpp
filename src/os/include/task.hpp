@@ -84,7 +84,7 @@ namespace qOS {
 
     class task : protected node {
         friend class core;
-        protected:
+        private:
             void *taskData{ nullptr };
             void *asyncData{ nullptr };
             taskFcn_t callback{ nullptr };

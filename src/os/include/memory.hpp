@@ -23,7 +23,7 @@ namespace qOS {
         using blockConnect_t = struct _blockConnect_s;
 
         class pool {
-            protected:
+            private:
                 blockConnect_t *end{ nullptr };
                 blockConnect_t start;
                 std::uint8_t *poolMemory{ nullptr };

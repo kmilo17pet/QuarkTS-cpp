@@ -20,7 +20,7 @@ namespace qOS {
         };
 
         class handle {
-            protected:
+            private:
                 co::state prev = { co::UNDEFINED };
                 _coContext *ctx{ nullptr };
                 handle( handle const& ) = delete;
@@ -35,7 +35,7 @@ namespace qOS {
         };
 
         class semaphore {
-            protected:
+            private:
                 std::size_t count{ 1u };
                 void signal( void ) noexcept;
                 bool tryLock( void ) noexcept;
@@ -49,7 +49,7 @@ namespace qOS {
 
         /*cstat -MISRAC++2008-7-1-2*/
         class _coContext {
-            protected:
+            private:
                 _coContext( _coContext const& ) = delete;
                 void operator=( _coContext const& ) = delete;
             public:

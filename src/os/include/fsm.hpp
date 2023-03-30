@@ -115,7 +115,7 @@ namespace qOS {
         using transition_t = struct _transition_s;
 
         class state {
-            protected:
+            private:
                 state *parent{ nullptr };
                 state *lastRunningChild{ nullptr };
                 state *initState{ nullptr };
@@ -186,7 +186,7 @@ namespace qOS {
     }
 
     class stateMachine : protected sm::_Handler {
-        protected:
+        private:
             sm::state *current{ nullptr };
             sm::state *next{ nullptr };
             sm::state *source{ nullptr };

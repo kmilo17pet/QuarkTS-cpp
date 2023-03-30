@@ -36,7 +36,7 @@ namespace qOS {
     };
 
     class core : protected _Event {
-        protected:
+        private:
             taskFcn_t idleCallback{ nullptr };
             taskFcn_t releaseSchedCallback{ nullptr };
             task *currentTask{ nullptr };
