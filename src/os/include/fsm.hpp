@@ -1,5 +1,5 @@
-#ifndef QOS_CPP_FSML
-#define QOS_CPP_FSML
+#ifndef QOS_CPP_FSM
+#define QOS_CPP_FSM
 
 #include "types.hpp"
 #include "timer.hpp"
@@ -128,8 +128,8 @@ namespace qOS {
                 void sweepTransitionTable( _Handler &h ) noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
-                bool subscribe( sm::state *s, sm::stateCallback_t sFcn, sm::state *init ) noexcept;
-                void topSelf( sm::stateCallback_t topFcn, sm::state *init ) noexcept;
+                bool subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept;
+                void topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept;
             public:
                 state() = default;
                 bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
@@ -148,7 +148,7 @@ namespace qOS {
                 void* getData( void ) noexcept;
                 void setData( void *pData ) noexcept;
                 transition_t* getTransitionTable( void ) noexcept;
-                void setCallback( stateCallback_t sFcn ) noexcept;
+                void setCallback( const stateCallback_t sFcn ) noexcept;
             friend class qOS::stateMachine;
         };
 
@@ -215,7 +215,7 @@ namespace qOS {
             sm::signal_t checkForSignals( sm::signal_t sig ) noexcept;
             stateMachine( stateMachine const& ) = delete;
             void operator=( stateMachine const& ) = delete;
-            bool setup( sm::stateCallback_t topFcn, sm::state *init, sm::surroundingCallback_t sFcn, void* pData ) noexcept;
+            bool setup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept;
         public:
             void *mData{ nullptr };
             stateMachine() = default;
@@ -258,7 +258,7 @@ namespace qOS {
             queue* getQueue( void ) noexcept;
             sm::timeoutSpec* getTimeSpec( void ) noexcept;
             void* getData( void ) noexcept;
-            void setSurrounding( sm::surroundingCallback_t sFcn ) noexcept;
+            void setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept;
             bool subscribeToSignal( sm::signalID s ) noexcept;
             bool unsubscribeFromSignal( sm::signalID s ) noexcept;
             bool run( sm::signal_t sig ) noexcept;
@@ -267,4 +267,4 @@ namespace qOS {
 
 }
 
-#endif /*QOS_CPP_FSML*/
+#endif /*QOS_CPP_FSM*/

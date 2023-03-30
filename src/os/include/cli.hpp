@@ -109,7 +109,7 @@ namespace qOS {
             const char *ok_rsp{ "OK" };
             const char *er_rsp{ "ERROR" };
             const char *nf_rsp{ "UNKNOWN" };
-            const char *id_rsp{ "QuarkTS CLI" };
+            const char *id_rsp{ "" };
             const char *eol{ "\r\n" };
             char delim{ ',' };
             util::putChar_t outputFcn{ nullptr };
@@ -121,7 +121,7 @@ namespace qOS {
             void handleResponse( cli::response retval );
             void (*xNotifyFcn)( commandLineInterface *arg) = { nullptr };
             commandLineInterface( commandLineInterface const& ) = delete;      /* not copyable*/
-            void operator=( commandLineInterface const& ) = delete;  /* not assignable*/
+            void operator=( commandLineInterface const& ) = delete; /* not assignable*/
         public:
             commandLineInterface() = default;
             bool setup( util::putChar_t outFcn, char *pInput, const std::size_t sizeInput, char *pOutput, const std::size_t sizeOutput );

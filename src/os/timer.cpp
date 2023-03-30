@@ -21,21 +21,23 @@ void timer::reload( void ) noexcept
 bool timer::set( qOS::time_t tTime ) noexcept
 {
     bool retValue = false;
-    
+    /*cstat -CERT-FLP36-C*/
     if ( tTime > static_cast<qOS::time_t>( 0 ) ) {
         this->reload();
         tv = clock::convert2Clock( tTime );
         retValue = true;
     }
-
+    /*cstat +CERT-FLP36-C*/
     return retValue;
 }
 /*============================================================================*/
 timer& timer::operator=( qOS::time_t tTime )
 {
+    /*cstat -CERT-FLP36-C*/
     if( tTime > static_cast<qOS::time_t>( 0 ) ) {
         (void)set( tTime );
     }
+    /*cstat +CERT-FLP36-C*/
     else {
         disarm();
     }

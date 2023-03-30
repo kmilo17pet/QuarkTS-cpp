@@ -47,9 +47,9 @@ namespace qOS {
             notificationSpreader_t nSpreader{ nullptr, nullptr };
             std::size_t taskEntries{ 0uL };
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
-            list* waitingList = &coreLists[ Q_PRIORITY_LEVELS ];
-            list* suspendedList = &coreLists[ Q_PRIORITY_LEVELS + 1 ];
-            list* readyList = &coreLists[ 0 ];
+            list* waitingList{ &coreLists[ Q_PRIORITY_LEVELS ] };
+            list* suspendedList{ &coreLists[ Q_PRIORITY_LEVELS + 1 ] };
+            list* readyList{ &coreLists[ 0 ] };
             const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
             const std::uint32_t BIT_INIT = 0x00000001uL;
             const std::uint32_t BIT_FCALL_IDLE = 0x00000002uL;
@@ -60,9 +60,13 @@ namespace qOS {
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
             void dispatch( list * const xList ) noexcept;
             void dispatchIdle( void ) noexcept;
-            /*cstat -MISRAC++2008-8-5-2*/
-            core() = default;
-            /*cstat +MISRAC++2008-8-5-2*/
+            core()
+            {
+                for ( index_t i = 0u ; i < Q_PRIO_QUEUE_SIZE ; ++i ) {
+                    pq_stack[ i ].queueData = nullptr;
+                    pq_stack[ i ].Task = nullptr;
+                }
+            }
         public:
             static const priority_t LOWEST_PRIORITY;
             static const priority_t MEDIUM_PRIORITY;

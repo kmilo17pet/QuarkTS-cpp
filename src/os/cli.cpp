@@ -7,11 +7,9 @@ using namespace qOS;
 static const char *Q_CLI_DEFAULT_AT_COMMAND = "at";
 static const char *Q_CLI_DEFAULT_ID_COMMAND = "atid";
 static const char *Q_CLI_DEFAULT_NOTALLOWED_RSP_STRING = ":NOT ALLOWED";
-/*cstat -MISRAC++2008-0-1-4_b*/
 static const char *Q_CLI_DEFAULT_DEVID_STRING = "QuarkTS CLI";
 static const std::size_t Q_CLI_MIN_INPUT_LENGTH = 3u;
 static const std::size_t Q_CLI_RECOMMENDED_INPUT_SIZE = 128u;
-/*cstat +MISRAC++2008-0-1-4_b*/
 static std::size_t CMD_MASK_ARG_MAX_NUM( cli::options_t opt );
 static std::size_t CMD_MASK_ARG_MIN_NUM( cli::options_t opt );
 
@@ -56,7 +54,7 @@ static char* inputFix( char *s, std::size_t maxlen )
 /*============================================================================*/
 void cli::input::flush( void )
 {
-    (void)memset( storage, 0, size );
+    (void)std::memset( storage, 0, size );
 }
 /*============================================================================*/
 bool commandLineInterface::setup( util::putChar_t outFcn, char *pInput, const std::size_t sizeInput, char *pOutput, const size_t sizeOutput )
@@ -68,10 +66,11 @@ bool commandLineInterface::setup( util::putChar_t outFcn, char *pInput, const st
         this->sizeOutput = sizeOutput;
         handler.Output = pOutput;
         handler.instance = this;
+        id_rsp = Q_CLI_DEFAULT_DEVID_STRING;
         cli::input::storage = pInput;
         cli::input::size = sizeInput;
         cli::input::maxIndex = sizeInput - 1u;
-        (void)memset( handler.Output, 0, this->sizeOutput );
+        (void)std::memset( handler.Output, 0, this->sizeOutput );
         retValue = true;
     }
 
@@ -199,7 +198,7 @@ bool commandLineInterface::preProcessing( cli::command *cmd, char *inputBuffer )
 
     handler.Type = cli::commandType::UNDEF;
     handler.Command = cmd;
-    handler.StrLen = util::strlen( const_cast<const char*>( inputBuffer ), cmd->cmdLen );
+    handler.StrLen = util::strlen( const_cast<const char*>( inputBuffer ), Q_CLI_RECOMMENDED_INPUT_SIZE ) - cmd->cmdLen;
     handler.StrData = const_cast<char*>( &inputBuffer[ cmd->cmdLen ] );
     handler.NumArgs = 0u;
 

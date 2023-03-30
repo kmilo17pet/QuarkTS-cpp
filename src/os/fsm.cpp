@@ -7,7 +7,6 @@ using namespace qOS;
 static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START };
 /*cstat +MISRAC++2008-8-5-2*/
 static stateMachine *psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ];
-
 static const sm::timeoutSpecOption_t OPT_INDEX_MASK = 0x00FFFFFFuL;
 
 const sm::timeoutSpecOption_t sm::TIMEOUT_SET_ENTRY = 0x01000000uL;
@@ -28,7 +27,7 @@ bool sm::_Handler::timeoutStop( index_t i ) noexcept
     return thisMachine()->timeoutStop( i );
 }
 /*============================================================================*/
-bool stateMachine::setup( sm::stateCallback_t topFcn, sm::state *init, sm::surroundingCallback_t sFcn, void* pData ) noexcept
+bool stateMachine::setup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept
 {
     current = nullptr;
     next = nullptr;
@@ -47,7 +46,7 @@ bool stateMachine::setup( sm::stateCallback_t topFcn, sm::state *init, sm::surro
     return true;
 }
 /*============================================================================*/
-void sm::state::topSelf( sm::stateCallback_t topFcn, sm::state *init ) noexcept
+void sm::state::topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept
 {
     lastRunningChild = init;
     initState = init;
@@ -59,7 +58,7 @@ void sm::state::topSelf( sm::stateCallback_t topFcn, sm::state *init ) noexcept
     nTm = 0u;
 }
 /*============================================================================*/
-bool sm::state::subscribe( sm::state *s, sm::stateCallback_t sFcn, sm::state *init ) noexcept
+bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept
 {
     s->lastRunningChild = init;
     s->initState = init;
@@ -121,13 +120,13 @@ void sm::state::sweepTransitionTable( sm::_Handler &h ) noexcept
     n = tEntries;
     
     for ( std::size_t i = 0u ; i < n ; ++i ) {
-        bool transitionAllowed = true; /*allow the transition by default*/
-
         iTransition = &tTable[ i ]; /*get the i-element from the table*/
         if ( ( h.Signal >= sm::signalID::TM_MIN ) && ( h.Signal <= sm::signalID::TM_MAX ) ) {
             h.SignalData = nullptr; /*ignore signal data on timeout signals*/
         }
         if ( ( h.Signal == iTransition->xSignal ) && ( h.SignalData == iTransition->signalData ) ) { /*table entry match*/
+            bool transitionAllowed = true; /*allow the transition by default*/
+
             if ( nullptr != iTransition->guard ) {
                 /*if signal-guard available, run the guard function*/
                 transitionAllowed = iTransition->guard( h ); /*cast allowed, struct layout compatible*/
@@ -379,12 +378,12 @@ sm::transition_t* sm::state::getTransitionTable( void ) noexcept
     return tTable;
 }
 /*============================================================================*/
-void sm::state::setCallback( sm::stateCallback_t sFcn ) noexcept
+void sm::state::setCallback( const sm::stateCallback_t sFcn ) noexcept
 {
     sCallback = sFcn;
 }
 /*============================================================================*/
-void stateMachine::setSurrounding( sm::surroundingCallback_t sFcn ) noexcept
+void stateMachine::setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept
 {
     surrounding = sFcn;
 }
@@ -495,7 +494,9 @@ void stateMachine::transition( sm::state *target, sm::historyMode mHistory ) noe
     }
     else if ( sm::historyMode::SHALLOW_HISTORY == mHistory ) {
         if ( nullptr != target->lastRunningChild ) {
+            /*cstat -MISRAC++2008-7-1-1*/
             sm::state *lrc = target->lastRunningChild;
+            /*cstat -MISRAC++2008-7-1-1*/
             /*restore the default transition in the last running nested state*/
             lrc->lastRunningChild = lrc->initState;
         }

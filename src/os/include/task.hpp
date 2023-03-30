@@ -95,7 +95,7 @@ namespace qOS {
             timer time;
             cycles_t cycles{ 0uL };
             std::size_t entry{ 0xFFFFFFFFuL };
-            iteration_t iterations;
+            iteration_t iterations{ 0 };
             volatile notifier_t notifications{ 0uL };
             volatile taskFlag_t flags{ 0uL };
             priority_t priority;

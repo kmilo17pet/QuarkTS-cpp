@@ -21,7 +21,7 @@
                     <parallelThreads>3</parallelThreads>
                     <enableFalsePositives>1</enableFalsePositives>
                     <messagesLimitEnabled>1</messagesLimitEnabled>
-                    <messagesLimit>100</messagesLimit>
+                    <messagesLimit>1000</messagesLimit>
                     <outputDir>Debug\C-STAT</outputDir>
                 </cstatargs>
                 <cstat_settings>

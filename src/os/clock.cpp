@@ -72,12 +72,12 @@ bool clock::timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td ) no
 bool clock::setTimeBase( const timingBase_t tb ) noexcept
 {
     bool retValue = false;
-
+    /*cstat -CERT-FLP36-C*/
     if ( tb > static_cast<timingBase_t>( 0 ) ) {
         timingBase = tb;
         retValue = true;
     }
-
+    /*cstat +CERT-FLP36-C*/
     return retValue;
 }
 /*============================================================================*/

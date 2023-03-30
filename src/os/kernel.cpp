@@ -21,6 +21,7 @@ const notifier_t MAX_NOTIFICATION_VALUE = UINT32_MAX - 1uL;
     static void cliTaskCallback( event_t e );
     static void cliNotifyFcn( commandLineInterface *cli );
 #endif
+
 /*============================================================================*/
 core& core::getInstance( void ) noexcept
 {
@@ -34,7 +35,6 @@ void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCa
     this->idleCallback = idleCallback;
     (void)clock::setTimeBase( t );
     (void)clock::setTickProvider( tFcn );
-    
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
@@ -50,7 +50,7 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
     Task.entry = core::taskEntries++;
     /*cstat -CERT-EXP39-C_d*/
     Task.pEventInfo = static_cast<_Event*>( this );
-    /*cstat +CERT-EXP39-C_d*/  
+    /*cstat +CERT-EXP39-C_d*/
     return waitingList->insert( &Task, AT_BACK );
 }
 /*============================================================================*/

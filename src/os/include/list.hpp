@@ -42,11 +42,11 @@ namespace qOS {
 
     class list : protected node {
         protected:
-            node *head = nullptr;
-            node *tail = nullptr;
-            node *iter = nullptr;
-            listDirection iDir = listDirection::FORWARD;
-            std::size_t size = 0u;
+            node *head{ nullptr };
+            node *tail{ nullptr };
+            node *iter{ nullptr };
+            listDirection iDir{ listDirection::FORWARD };
+            std::size_t size{ 0u };
             bool isMember( const void * const xNode ) const noexcept;
             void insertAtFront( node * const xNode ) noexcept;
             void insertAtBack( node * const xNode ) noexcept;

@@ -7,8 +7,8 @@
 using namespace qOS;
 
 struct _queueStack_s {
-    task *Task;         /*< A pointer to the task. */
-    void *queueData;    /*< The data to queue. */
+    task *Task{nullptr};         /*< A pointer to the task. */
+    void *queueData{nullptr};    /*< The data to queue. */
 };
 using queueStack_t = struct _queueStack_s;
 
