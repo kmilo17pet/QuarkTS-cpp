@@ -54,7 +54,7 @@ dkms.conf
 build/
 
 check/Debug/
-check/settings/c-stat-check.wsdt
+check/settings/sa_check.wsdt
 # C-stat temp files
 *.pbi
 *.ninja

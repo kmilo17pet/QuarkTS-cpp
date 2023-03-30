@@ -61,7 +61,7 @@ static void fsmTaskCallback( event_t e )
     /*cstat -CERT-EXP36-C_b*/
     stateMachine * const sm = static_cast<stateMachine*>( qOS::os.getTaskRunning().getAttachedObject() );
     /*cstat +CERT-EXP36-C_b*/
-    const fsm::signal_t sig = { fsm::signalID::SIGNAL_NONE, nullptr };
+    const sm::signal_t sig = { sm::signalID::SIGNAL_NONE, nullptr };
     (void)sm->run( sig );
     Q_UNUSED(e);
 } 

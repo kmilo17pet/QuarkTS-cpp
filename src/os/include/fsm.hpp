@@ -9,7 +9,7 @@ namespace qOS {
 
     class stateMachine;
     
-    namespace fsm {
+    namespace sm {
         class state;
 
         enum signalID : std::uint32_t {
@@ -25,7 +25,7 @@ namespace qOS {
 
         constexpr signalID SIGNAL_TIMEOUT( index_t iTm ) 
         {
-            return static_cast<signalID>( signalID::TM_MAX - static_cast<fsm::signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<fsm::signalID>( iTm ) );
+            return static_cast<signalID>( signalID::TM_MAX - static_cast<sm::signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<sm::signalID>( iTm ) );
         }
 
         struct _signal_s {
@@ -91,7 +91,7 @@ namespace qOS {
                 {
                     return Status;
                 }
-            friend class qOS::fsm::state;
+            friend class qOS::sm::state;
         };
         using handler_t = _Handler&;
         using stateCallback_t = status (*)( handler_t );
@@ -128,15 +128,15 @@ namespace qOS {
                 void sweepTransitionTable( _Handler &h ) noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
-                bool subscribe( fsm::state *s, fsm::stateCallback_t sFcn, fsm::state *init ) noexcept;
-                void topSelf( fsm::stateCallback_t topFcn, fsm::state *init ) noexcept;
+                bool subscribe( sm::state *s, sm::stateCallback_t sFcn, sm::state *init ) noexcept;
+                void topSelf( sm::stateCallback_t topFcn, sm::state *init ) noexcept;
             public:
                 state() = default;
-                bool add( fsm::state &s, fsm::stateCallback_t sFcn, fsm::state &init ) noexcept
+                bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
                 {
                     return subscribe( &s, sFcn, &init );
                 }
-                bool add( fsm::state &s, fsm::stateCallback_t sFcn ) noexcept
+                bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
                 {
                     return subscribe( &s, sFcn, nullptr );
                 }
@@ -185,83 +185,83 @@ namespace qOS {
 
     }
 
-    class stateMachine : protected fsm::_Handler {
+    class stateMachine : protected sm::_Handler {
         protected:
-            fsm::state *current{ nullptr };
-            fsm::state *next{ nullptr };
-            fsm::state *source{ nullptr };
+            sm::state *current{ nullptr };
+            sm::state *next{ nullptr };
+            sm::state *source{ nullptr };
             queue *sQueue{ nullptr };
-            fsm::timeoutSpec *timeSpec{ nullptr };
-            fsm::surroundingCallback_t surrounding{ nullptr };
-            fsm::state top;
-            fsm::signal_t signalNot;
+            sm::timeoutSpec *timeSpec{ nullptr };
+            sm::surroundingCallback_t surrounding{ nullptr };
+            sm::state top;
+            sm::signal_t signalNot;
             void *owner{ nullptr };
             void unsubscribeAll( void ) noexcept;
-            bool internalSignalSend( fsm::signalID sig, void *sData, bool isUrgent ) noexcept;
+            bool internalSignalSend( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
             void timeoutCheckSignals( void ) noexcept;
-            void timeoutPerformSpecifiedActions( fsm::state * const s, fsm::signalID sig ) noexcept;
-            fsm::psIndex_t getSubscriptionStatus( fsm::signalID s ) noexcept;
-            void transition( fsm::state *target, fsm::historyMode mHistory ) noexcept;
-            std::uint8_t levelsToLCA( fsm::state *target ) noexcept;
+            void timeoutPerformSpecifiedActions( sm::state * const s, sm::signalID sig ) noexcept;
+            sm::psIndex_t getSubscriptionStatus( sm::signalID s ) noexcept;
+            void transition( sm::state *target, sm::historyMode mHistory ) noexcept;
+            std::uint8_t levelsToLCA( sm::state *target ) noexcept;
             void exitUpToLCA( std::uint8_t lca ) noexcept;
-            void prepareHandler( fsm::signal_t sig, fsm::state *s ) noexcept;
-            fsm::status invokeStateCallback( fsm::state * const s ) noexcept;
-            fsm::state* stateOnExit( fsm::state *s ) noexcept;
-            void stateOnEntry( fsm::state *s ) noexcept;
-            fsm::state* stateOnStart( fsm::state *s ) noexcept;
-            fsm::status stateOnSignal( fsm::state *s, fsm::signal_t sig ) noexcept;
-            void tracePathAndRetraceEntry( fsm::state **trace ) noexcept;
-            void traceOnStart( fsm::state **entryPath ) noexcept;
-            fsm::signal_t checkForSignals( fsm::signal_t sig ) noexcept;
+            void prepareHandler( sm::signal_t sig, sm::state *s ) noexcept;
+            sm::status invokeStateCallback( sm::state * const s ) noexcept;
+            sm::state* stateOnExit( sm::state *s ) noexcept;
+            void stateOnEntry( sm::state *s ) noexcept;
+            sm::state* stateOnStart( sm::state *s ) noexcept;
+            sm::status stateOnSignal( sm::state *s, sm::signal_t sig ) noexcept;
+            void tracePathAndRetraceEntry( sm::state **trace ) noexcept;
+            void traceOnStart( sm::state **entryPath ) noexcept;
+            sm::signal_t checkForSignals( sm::signal_t sig ) noexcept;
             stateMachine( stateMachine const& ) = delete;
             void operator=( stateMachine const& ) = delete;
-            bool setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::surroundingCallback_t sFcn, void* pData ) noexcept;
+            bool setup( sm::stateCallback_t topFcn, sm::state *init, sm::surroundingCallback_t sFcn, void* pData ) noexcept;
         public:
             void *mData{ nullptr };
             stateMachine() = default;
-            inline bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn, void* pData )  noexcept
+            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn, void* pData )  noexcept
             {
                 return setup( topFcn, &init, sFcn, pData );
             }
-            inline bool setup( fsm::stateCallback_t topFcn, fsm::state &init, fsm::surroundingCallback_t sFcn )  noexcept
+            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn )  noexcept
             {
                 return setup( topFcn, &init, sFcn, nullptr );
             }
-            inline bool setup( fsm::stateCallback_t topFcn, fsm::state &init ) noexcept
+            inline bool setup( sm::stateCallback_t topFcn, sm::state &init ) noexcept
             {
                 return setup( topFcn, &init, nullptr, nullptr );
             }
-            inline bool add( fsm::state &s, fsm::stateCallback_t sFcn, fsm::state &init ) noexcept
+            inline bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
             {
                 return top.subscribe( &s, sFcn, &init );
             }
-            inline bool add( fsm::state &s, fsm::stateCallback_t sFcn ) noexcept
+            inline bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
             {
                 return top.subscribe( &s, sFcn, nullptr );
             }
             bool installSignalQueue( queue& q ) noexcept;
-            bool sendSignal( fsm::signalID sig, void *sData, bool isUrgent ) noexcept;
-            bool sendSignal( fsm::signalID sig, void *sData ) noexcept
+            bool sendSignal( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
+            bool sendSignal( sm::signalID sig, void *sData ) noexcept
             {
                 return sendSignal( sig, sData, false );
             }
-            inline bool sendSignal( fsm::signalID sig ) noexcept
+            inline bool sendSignal( sm::signalID sig ) noexcept
             {
                 return sendSignal( sig, nullptr, false );
             }
-            bool sendSignalToSubscribers( fsm::signalID sig, void *sData, bool isUrgent ) noexcept;
-            bool installTimeoutSpec( fsm::timeoutSpec &ts ) noexcept;
+            bool sendSignalToSubscribers( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
+            bool installTimeoutSpec( sm::timeoutSpec &ts ) noexcept;
             bool timeoutSet( index_t xTimeout, qOS::time_t t ) noexcept;
             bool timeoutStop( index_t xTimeout ) noexcept;
-            const fsm::state* getTop( void ) const noexcept;
-            fsm::state* getCurrent( void ) noexcept;
+            const sm::state* getTop( void ) const noexcept;
+            sm::state* getCurrent( void ) noexcept;
             queue* getQueue( void ) noexcept;
-            fsm::timeoutSpec* getTimeSpec( void ) noexcept;
+            sm::timeoutSpec* getTimeSpec( void ) noexcept;
             void* getData( void ) noexcept;
-            void setSurrounding( fsm::surroundingCallback_t sFcn ) noexcept;
-            bool subscribeToSignal( fsm::signalID s ) noexcept;
-            bool unsubscribeFromSignal( fsm::signalID s ) noexcept;
-            bool run( fsm::signal_t sig ) noexcept;
+            void setSurrounding( sm::surroundingCallback_t sFcn ) noexcept;
+            bool subscribeToSignal( sm::signalID s ) noexcept;
+            bool unsubscribeFromSignal( sm::signalID s ) noexcept;
+            bool run( sm::signal_t sig ) noexcept;
         friend class core;
     };
 

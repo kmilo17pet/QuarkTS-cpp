@@ -19,8 +19,10 @@ const std::uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
 const std::uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
 const std::uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
 
-#define TASK_ITER_VALUE( x )                                               \
-( ( ( (x) < 0 ) && ( (x) != PERIODIC ) ) ? -(x) : (x) )                    \
+constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
+{
+    return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x; 
+}
 
 /*============================================================================*/
 void task::setFlags( const std::uint32_t flags, const bool value ) noexcept

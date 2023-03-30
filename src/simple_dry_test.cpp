@@ -8,12 +8,12 @@ using namespace std;
 
 qOS::task t1, t2, t3, t4;
 qOS::stateMachine m;
-qOS::fsm::state s1, s2;
+qOS::sm::state s1, s2;
 
 co::position pos1;
 
-qOS::fsm::timeoutStateDefinition_t LedOn_Timeouts[] = {
-    { 10.0f,  fsm::TIMEOUT_INDEX( 0 ) | fsm::TIMEOUT_SET_ENTRY | fsm::TIMEOUT_RST_EXIT  },
+qOS::sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
+    { 10.0f,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT  },
 };
 
 void idleTask_callback( event_t e ) 
@@ -55,27 +55,27 @@ void otherTask( event_t e )
     }
 }
 
-qOS::fsm::status s1_callback( qOS::fsm::handler_t h )
+qOS::sm::status s1_callback( qOS::sm::handler_t h )
 {
     switch ( h.signal() ) {
-        case qOS::fsm::SIGNAL_ENTRY:
+        case qOS::sm::SIGNAL_ENTRY:
             cout<<"s1_callback"<<endl;
             h.timeoutSet( 0, 5.0f );
             break;
-        case qOS::fsm::SIGNAL_TIMEOUT( 0 ):
+        case qOS::sm::SIGNAL_TIMEOUT( 0 ):
             h.nextState( s2 );
             break;
         default:
             break;
     }
-    return qOS::fsm::status::SUCCESS;
+    return qOS::sm::status::SUCCESS;
 }
 
-qOS::fsm::status s2_callback( qOS::fsm::handler_t h )
+qOS::sm::status s2_callback( qOS::sm::handler_t h )
 {
     static qOS::timer tmr;
     switch ( h.signal() ) {
-        case qOS::fsm::SIGNAL_ENTRY:
+        case qOS::sm::SIGNAL_ENTRY:
             cout<<"s2_callback"<<endl;
             tmr( 5.0f );
         default:
@@ -84,7 +84,7 @@ qOS::fsm::status s2_callback( qOS::fsm::handler_t h )
             }
             break;
     }
-    return qOS::fsm::status::SUCCESS;
+    return qOS::sm::status::SUCCESS;
 }
 
 void task_callback( event_t e )
@@ -133,7 +133,7 @@ int main()
     qOS::os.addTask( t2, task_callback, qOS::core::HIGHEST_PRIORITY, 0.5f, 10, qOS::ENABLED );
     qOS::os.addTask( t3, task_callback, qOS::core::MEDIUM_PRIORITY, 2.0f, task::PERIODIC, qOS::ENABLED );
 
-    qOS::fsm::timeoutSpec tm_specTimeout;
+    qOS::sm::timeoutSpec tm_specTimeout;
     m.setup( nullptr, s1 );
     m.installTimeoutSpec( tm_specTimeout );
     m.add( s1, s1_callback );
