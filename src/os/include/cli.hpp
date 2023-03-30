@@ -114,7 +114,7 @@ namespace qOS {
             char delim{ ',' };
             util::putChar_t outputFcn{ nullptr };
             std::size_t sizeOutput{ 0u };
-            void *owner;
+            void *owner{ nullptr };
             bool notify( void );
             bool preProcessing( cli::command *cmd, char *inputBuffer );
             std::size_t numOfArgs( const char *str );
