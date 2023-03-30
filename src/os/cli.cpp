@@ -262,8 +262,8 @@ bool commandLineInterface::raise( const char *cmd )
         /*qIOUtil_StrLen is known to have no side effects*/
         /*cstat -MISRAC++2008-5-14-1*/
         if ( ( false == readyInput ) && ( util::strlen( cmd, maxToInsert ) <= maxToInsert ) ) {
-            (void)util::strcpy( (char*)cli::input::storage, cmd, maxToInsert );
-            (void)inputFix( (char*)cli::input::storage, maxToInsert );
+            (void)util::strcpy( cli::input::storage, cmd, maxToInsert );
+            (void)inputFix( cli::input::storage, maxToInsert );
             retValue = notify();
         }
         /*cstat +MISRAC++2008-5-14-1*/
