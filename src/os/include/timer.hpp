@@ -12,16 +12,16 @@ namespace qOS {
             qOS::clock_t tv;
         public:
             timer();
-            bool set( qOS::time_t tTime ); 
-            void disarm( void );
-            void reload( void );
-            bool status( void ) const;
-            bool freeRun( qOS::time_t tTime );
-            qOS::clock_t remaining( void ) const;
-            qOS::clock_t elapsed( void ) const;
-            bool expired( void ) const;
-            bool deadLineCheck( void ) const;
-            qOS::clock_t getInterval( void ) const;
+            bool set( qOS::time_t tTime ) noexcept;
+            void disarm( void ) noexcept;
+            void reload( void ) noexcept;
+            bool status( void ) const noexcept;
+            bool freeRun( qOS::time_t tTime ) noexcept;
+            qOS::clock_t remaining( void ) const noexcept;
+            qOS::clock_t elapsed( void ) const noexcept;
+            bool expired( void ) const noexcept;
+            bool deadLineCheck( void ) const noexcept;
+            qOS::clock_t getInterval( void ) const noexcept;
             timer& operator=( qOS::time_t tTime );
             timer& operator=( bool en );
             bool operator()( void );

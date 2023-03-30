@@ -3,54 +3,52 @@
 using namespace qOS;
 
 /*============================================================================*/
-node::node()
-{
-    this->init();
-}
-/*============================================================================*/
-void node::init( void ) 
+void node::init( void ) noexcept
 {
     this->next = nullptr;
     this->prev = nullptr;
     this->container = nullptr;
 }
 /*============================================================================*/
-list::list()
+list::list() noexcept
 {
     clean();
 }
 /*============================================================================*/
-bool list::isMember( const void * const xNode ) const
+bool list::isMember( const void * const xNode ) const noexcept
 {
     bool retValue = false;
     
     if ( nullptr != xNode ) {
-        const node *Node = static_cast< const node* >( xNode );
-        if ( this == static_cast<const list * const>( Node->container ) ) {
+        /*cstat -CERT-EXP36-C_b*/
+        const node * const Node = static_cast<const node*>( xNode );
+        
+        if ( this == static_cast<list*>( Node->container ) ) {
             retValue = true;
         }
+        /*cstat +CERT-EXP36-C_b*/
     }
     
     return retValue;
 }
 /*============================================================================*/
-void list::insertAtFront( node * const xNode )
+void list::insertAtFront( node * const xNode ) noexcept
 {
     xNode->next = this->head;
     this->head->prev = xNode;
     this->head = xNode;
 }
 /*============================================================================*/
-void list::insertAtBack( node * const xNode )
+void list::insertAtBack( node * const xNode ) noexcept
 {
     this->tail->next = xNode;
     xNode->prev = this->tail;
     this->tail = xNode;
 }
 /*============================================================================*/
-node* list::removeFront( void )
+node* list::removeFront( void ) noexcept
 {
-    node *removed = this->head;
+    node * const removed = this->head;
 
     this->head = removed->next;
     if ( nullptr == this->head ) {
@@ -63,9 +61,9 @@ node* list::removeFront( void )
     return removed;
 }
 /*============================================================================*/
-node* list::removeBack( void )
+node* list::removeBack( void ) noexcept
 {
-    node *removed = this->tail;
+    node * const removed = this->tail;
 
     this->tail = removed->prev;
     if ( nullptr == this->tail ) {
@@ -78,25 +76,27 @@ node* list::removeBack( void )
     return removed;
 }
 /*============================================================================*/
-node* list::getNodeAtIndex( const listPosition p ) const
+node* list::getNodeAtIndex( const listPosition p ) const noexcept
 {
     node *iNode;
     base_t iPos = 0;
-    
+    /*cstat -MISRAC++2008-0-1-2_b*/
     for ( iNode = this->head ; ( iPos < static_cast<base_t>( p )  ) && ( nullptr != iNode->next ) ; iNode = iNode->next ) {
         ++iPos;
     }
-
+    /*cstat +MISRAC++2008-0-1-2_b*/
     return iNode;
 }
 /*============================================================================*/
-bool list::insert( void * const xNode, const listPosition p )
+bool list::insert( void * const xNode, const listPosition p ) noexcept
 {
     bool retValue = false;
 
     if ( ( nullptr != xNode ) && ( p >= listPosition::AT_BACK ) ) {
         if ( false == this->isMember( xNode ) ) {
-            node *newNode = static_cast<node*>( xNode );
+            /*cstat -CERT-EXP36-C_b*/
+            node * const newNode = static_cast<node*>( xNode );
+            /*cstat +CERT-EXP36-C_b*/
             newNode->init();
             
             retValue = true;
@@ -107,9 +107,11 @@ bool list::insert( void * const xNode, const listPosition p )
             else if ( listPosition::AT_FRONT == p ) {
                 this->insertAtFront( newNode );
             }
+            /*cstat -MISRAC++2008-0-1-2_a*/
             else if ( listPosition::AT_BACK == p ) {
                 this->insertAtBack( newNode );
             }
+            /*cstat +MISRAC++2008-0-1-2_a*/
             else {
                 node *iNode;
                 iNode = this->getNodeAtIndex( p );
@@ -126,16 +128,16 @@ bool list::insert( void * const xNode, const listPosition p )
     return retValue;
 }
 /*============================================================================*/
-bool list::remove( void * const xNode )
+bool list::remove( void * const xNode ) noexcept
 {
     bool retValue = false;
     
     if ( nullptr != xNode ) {
-        node *toRemove = static_cast<node*>( xNode );
+        /*cstat -CERT-EXP36-C_b*/
+        node * const toRemove = static_cast<node*>( xNode );
+        /*cstat +CERT-EXP36-C_b*/
         
-        if ( nullptr != toRemove->container ) {
-            list *l = static_cast<list*>( toRemove->container );
-            
+        if ( this == toRemove->container ) {
             if ( toRemove == this->head ) {
                 (void)this->removeFront();
             }
@@ -157,26 +159,30 @@ bool list::remove( void * const xNode )
     return retValue;
 }
 /*============================================================================*/
-void* list::remove( void * const xNode, const listPosition p )
+void* list::remove( void * const xNode, const listPosition p ) noexcept
 {
     node *removed = nullptr;
 
     if ( ( nullptr != this->head ) && ( p >= listPosition::AT_BACK ) ) {
         if ( this->isMember( xNode ) ) {
             if ( this->remove( xNode ) ) {
-                removed = static_cast<node*>( xNode ); 
+                /*cstat -CERT-EXP36-C_b*/
+                removed = static_cast<node*>( xNode );
+                /*cstat +CERT-EXP36-C_b*/
             }
         }
         else {
             if ( listPosition::AT_FRONT == p ) {
                 removed = this->removeFront();
             }
+            /*cstat -MISRAC++2008-0-1-2_a*/
             else if ( listPosition::AT_BACK  == p ) {
                 removed = this->removeBack();
             }
+            /*cstat +MISRAC++2008-0-1-2_a*/
             else {
                 node *iNode;
-                base_t lastIndex = ( static_cast<base_t>( p ) - 1 );
+                const base_t lastIndex = ( static_cast<base_t>( p ) - 1 );
 
                 iNode = this->getNodeAtIndex( static_cast<listPosition>( lastIndex ) );
                 removed = iNode->next; /* <-> (inode0) <-> inode1 <-> inode2 */
@@ -193,32 +199,34 @@ void* list::remove( void * const xNode, const listPosition p )
     return removed;
 }
 /*============================================================================*/
-void* list::getFront( void ) const
+void* list::getFront( void ) const noexcept
 {
     return static_cast<void*>( this->head );
 }
 /*============================================================================*/
-void* list::getBack( void ) const
+void* list::getBack( void ) const noexcept
 {
     return static_cast<void*>( this->tail );
 }
 /*============================================================================*/
-bool list::isEmpty( void ) const
+bool list::isEmpty( void ) const noexcept
 {
     return ( nullptr == this->head ) ? true : false;
 }
 /*============================================================================*/
-std::size_t list::length( void ) const
+std::size_t list::length( void ) const noexcept
 {
     return this->size;
 }
 /*============================================================================*/
-bool list::sort( listCompareFcn_t f )
+/*cstat -MISRAC++2008-7-1-2*/
+bool list::sort( listCompareFcn_t f ) noexcept
 {
+/*cstat +MISRAC++2008-7-1-2*/
     bool retValue = false;
 
     if ( nullptr != f ) {
-        std::size_t count = this->size;
+        const std::size_t count = this->size;
 
         if ( count >= 2u ) {
             node *current = nullptr, *before, *after;
@@ -226,7 +234,7 @@ bool list::sort( listCompareFcn_t f )
             bool xRetCmp;
 
             for ( std::size_t i = 1u ; i < count ; ++i ) {
-                std::size_t n = count - i - 1u;
+                const std::size_t n = count - i - 1u;
                 current = this->head;
                 for ( std::size_t j = 0u; j <= n; ++j ) {
                     xHandle.n1 = current;
@@ -278,21 +286,24 @@ bool list::sort( listCompareFcn_t f )
     return retValue;
 }
 /*============================================================================*/
-bool list::swap( void* node1, void* node2 )
+bool list::swap( void* node1, void* node2 ) noexcept
 {
     bool retValue = false;
 
     if ( ( nullptr != node1 ) && ( nullptr != node2 ) && ( node1 != node2 ) ) {
+        /*cstat -CERT-EXP36-C_b*/
         node *n1 = static_cast<node*>( node1 );
         node *n2 = static_cast<node*>( node2 );
-
+        /*cstat +CERT-EXP36-C_b*/
         if ( ( this == n1->container ) && ( n1->container == n2->container ) ) {
             /*nodes are part of the same list*/
             node *tmp1, *tmp2;
 
             if ( n2->next == n1 ) {
+                /*cstat -CERT-EXP36-C_b*/
                 n1 = static_cast<node*>( node2 );
                 n2 = static_cast<node*>( node1 );
+                /*cstat +CERT-EXP36-C_b*/
             }
             tmp1 = n1->prev; /*save links prior swap*/
             tmp2 = n2->next;
@@ -308,7 +319,7 @@ bool list::swap( void* node1, void* node2 )
     return retValue;
 }
 /*============================================================================*/
-void list::givenNodeSwapBoundaries( node *n1, node *n2 )
+void list::givenNodeSwapBoundaries( node *n1, node *n2 ) noexcept
 {
     /*update the list links*/
     if ( this->head == n1 ) {
@@ -331,7 +342,7 @@ void list::givenNodeSwapBoundaries( node *n1, node *n2 )
     }
 }
 /*============================================================================*/
-void list::givenNodeSwapAdjacent( node *n1, node *n2 )
+void list::givenNodeSwapAdjacent( node *n1, node *n2 ) noexcept
 {
     /*check for adjacent nodes*/
     if ( ( ( n1->next == n2 ) && ( n2->prev == n1 ) ) || ( ( n1->prev == n2 ) && ( n2->next == n1 ) ) ) {
@@ -344,7 +355,7 @@ void list::givenNodeSwapAdjacent( node *n1, node *n2 )
     }
 }
 /*============================================================================*/
-void list::givenNodesUpdateOuterLinks( node *n1, node *n2 )
+void list::givenNodesUpdateOuterLinks( node *n1, node *n2 ) noexcept
 {
     if ( nullptr != n1->prev ) {
         n1->prev->next = n1;
@@ -360,7 +371,7 @@ void list::givenNodesUpdateOuterLinks( node *n1, node *n2 )
     }
 }
 /*============================================================================*/
-bool list::move( list *src, const listPosition p)
+bool list::move( list *src, const listPosition p ) noexcept
 {
     bool retValue = false;
 
@@ -380,11 +391,13 @@ bool list::move( list *src, const listPosition p)
                 this->head->prev = src->tail;
                 this->head = src->head;
             }
+            /*cstat -MISRAC++2008-0-1-2_a*/
             else if ( AT_BACK == p ) {
                 this->tail->next = src->head;
                 src->head->prev = this->tail;
                 this->tail = src->tail;
             }
+            /*cstat +MISRAC++2008-0-1-2_a*/
             else { /*insert the new list after the position*/
                 iNode = this->getNodeAtIndex( p );
                 src->tail->next = iNode->next;
@@ -400,34 +413,37 @@ bool list::move( list *src, const listPosition p)
     return retValue;
 }
 /*============================================================================*/
-void list::clean( void )
+void list::clean( void ) noexcept
 {
     this->head = nullptr;
     this->tail = nullptr;
     this->size = 0u;
 }
 /*============================================================================*/
-listIterator list::begin( void ) 
+listIterator list::begin( void ) noexcept
 {
     listIterator it( this, listDirection::FORWARD, nullptr );
     return it;
 }
 /*============================================================================*/
-listIterator list::end( void ) 
+listIterator list::end( void ) noexcept
 {
     listIterator it( this, listDirection::BACKWARD, nullptr );
     return it;
 }
 /*============================================================================*/
-listIterator list::from( void *offset )
+listIterator list::from( void *offset ) noexcept
 {
     listIterator it( this, listDirection::FORWARD, offset );
     return it;
 }
 /*============================================================================*/
-listIterator::listIterator( list *xList, listDirection dir, void *nodeOffset )
+listIterator::listIterator( list *xList, listDirection dir, void *nodeOffset ) noexcept
 {
-    node *ret, *offset = static_cast<node*>( nodeOffset );
+    node *ret;
+    /*cstat -CERT-EXP36-C_b*/
+    node * const offset = static_cast<node*>( nodeOffset );
+    /*cstat +CERT-EXP36-C_b*/
     l = xList;
     if ( listDirection::FORWARD == dir ) {
         ret = ( xList->isMember( nodeOffset) ) ? offset : xList->head;
@@ -440,27 +456,27 @@ listIterator::listIterator( list *xList, listDirection dir, void *nodeOffset )
     current = static_cast<void*>( ret );
 }
 /*============================================================================*/
-bool listIterator::until( void )
+bool listIterator::until( void ) noexcept
 {
     return ( nullptr != current );
 }
 /*============================================================================*/
-bool listIterator::until( void* node )
+bool listIterator::until( void* node ) noexcept
 {
     return ( l->isMember( node) ) && ( node != current );
 }
 /*============================================================================*/
-listIterator& listIterator::operator++( int )
+listIterator& listIterator::operator++( int ) noexcept
 {
-    node *ret = iter;
+    node * const ret = iter;
     iter = ( nullptr != iter ) ? iter->next : nullptr;
     current = static_cast<void*>( ret );
     return *this;
 }
 /*============================================================================*/
-listIterator& listIterator::operator--( int )
+listIterator& listIterator::operator--( int ) noexcept
 {
-    node *ret = iter;
+    node * const ret = iter;
     iter = ( nullptr != iter ) ? iter->prev : nullptr;
     current = static_cast<void*>( ret );
     return *this;

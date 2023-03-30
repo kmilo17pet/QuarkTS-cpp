@@ -23,7 +23,7 @@ const std::uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
 ( ( ( (x) < 0 ) && ( (x) != PERIODIC ) ) ? -(x) : (x) )                    \
 
 /*============================================================================*/
-void task::setFlags( const std::uint32_t flags, const bool value )
+void task::setFlags( const std::uint32_t flags, const bool value ) noexcept
 {
     if ( value ) {
         bitsSet( this->flags, flags );
@@ -33,19 +33,19 @@ void task::setFlags( const std::uint32_t flags, const bool value )
     }
 }
 /*============================================================================*/
-bool task::getFlag( const std::uint32_t flag ) const
+bool task::getFlag( const std::uint32_t flag ) const noexcept
 {
     std::uint32_t xBit;
     xBit = this->flags & flag;
     return ( 0uL != xBit );
 }
 /*============================================================================*/
-priority_t task::getPriority( void ) const
+priority_t task::getPriority( void ) const noexcept
 {
     return priority;
 }
 /*============================================================================*/
-bool task::setPriority( priority_t pValue )
+bool task::setPriority( priority_t pValue ) noexcept
 {
     bool retValue = false;
 
@@ -57,33 +57,35 @@ bool task::setPriority( priority_t pValue )
     return retValue;
 }
 /*============================================================================*/
-cycles_t task::getCycles( void ) const
+cycles_t task::getCycles( void ) const noexcept
 {
     return cycles;
 }
 /*============================================================================*/
-taskState task::getState( void ) const
+taskState task::getState( void ) const noexcept
 {
-    taskState retValue = ASLEEP;
+    taskState retValue;
 
     retValue = static_cast<taskState>( getFlag( BIT_SHUTDOWN ) );
-    if ( retValue ) { /*Task is awaken*/
+    if ( taskState::DISABLED != retValue ) { /*Task is awaken*/
         retValue = static_cast<taskState>( getFlag( BIT_ENABLED ) );
     }
 
     return retValue;
 }
 /*============================================================================*/
-bool task::deadLineReached( void ) const
+bool task::deadLineReached( void ) const noexcept
 {
     bool retValue = false;
 
     if ( getFlag( BIT_ENABLED ) ) {
-        iteration_t iters = iterations;
+        const iteration_t iters = iterations;
         /*task should be periodic or must have available iters*/
         if ( ( TASK_ITER_VALUE( iters ) > 0 ) || ( PERIODIC == iters ) ) {
             /*check the time deadline*/
-            if ( ( 0uL == time.getInterval() ) || time.expired() ) {
+            const clock_t interval = time.getInterval();
+            const bool expired = time.expired();
+            if ( ( 0uL == interval ) || expired ) {
                 retValue = true;
             }
         }
@@ -92,7 +94,7 @@ bool task::deadLineReached( void ) const
     return retValue;
 }
 /*============================================================================*/
-bool task::setState( taskState s )
+bool task::setState( taskState s ) noexcept
 {
     bool retValue = false;
 
@@ -119,9 +121,9 @@ bool task::setState( taskState s )
     return retValue;
 }
 /*============================================================================*/
-void task::setIterations( iteration_t iValue )
+void task::setIterations( iteration_t iValue ) noexcept
 {
-    if ( iValue >= 0u ) {
+    if ( iValue > 0u ) {
         iterations = -iValue;
     }
     else if ( PERIODIC == iValue ) {
@@ -132,18 +134,18 @@ void task::setIterations( iteration_t iValue )
     }
 }
 /*============================================================================*/
-bool task::setTime( const qOS::time_t tValue )
+bool task::setTime( const qOS::time_t tValue ) noexcept
 {
     return time.set( tValue );
 }
 /*============================================================================*/
-bool task::setCallback( taskFcn_t callback )
+bool task::setCallback( const taskFcn_t tCallback ) noexcept
 {
     bool retValue = false;
 
-    if ( callback != this->callback ) {
-        this->callback = callback;
-        #if ( ( Q_FSM == 1 ) || ( Q_ATCLI == 1 ) )
+    if ( tCallback != callback ) {
+        callback = tCallback;
+        #if ( ( Q_FSM == 1 ) || ( Q_CLI == 1 ) )
             aObj = nullptr;
         #endif
         retValue = true;
@@ -152,7 +154,7 @@ bool task::setCallback( taskFcn_t callback )
     return retValue;
 }
 /*============================================================================*/
-bool task::setData( void *arg )
+bool task::setData( void *arg ) noexcept
 {
     bool retValue = false;
 
@@ -164,21 +166,23 @@ bool task::setData( void *arg )
     return retValue;
 }
 /*============================================================================*/
-bool task::setName( const char *name )
+bool task::setName( const char *tName ) noexcept
 {
     bool retValue = false;
-    if ( nullptr != name ) {
-        this->name = name;
+
+    if ( nullptr != tName ) {
+        name = tName;
+        retValue = true;
     }
     return retValue;
 }
 /*============================================================================*/
-const char* task::getName( void ) const
+const char* task::getName( void ) const noexcept
 {
     return ( nullptr != name ) ? name : "nullptr";
 }
 /*============================================================================*/
-trigger task::queueCheckEvents( void )
+trigger task::queueCheckEvents( void ) noexcept
 {
     trigger retValue = trigger::None;
 
@@ -193,7 +197,8 @@ trigger task::queueCheckEvents( void )
 
         qCount = aQueue->count(); /*to avoid side effects*/
         /*check the queue events in the corresponding precedence order*/
-        if ( fullFlag && aQueue->isFull() ) {
+        /*cstat -MISRAC++2008-5-14-1*/
+        if ( fullFlag && aQueue->isFull() ) { /*isFull() is known to not have side effects*/
             retValue = trigger::byQueueFull;
         }
         else if ( ( countFlag ) && ( qCount >= aQueueCount ) ) {
@@ -202,24 +207,25 @@ trigger task::queueCheckEvents( void )
         else if ( receiverFlag && ( qCount > 0u ) ) {
             retValue = trigger::byQueueReceiver;
         }
-        else if ( emptyFlag && aQueue->isEmpty() ) {
+        else if ( emptyFlag && aQueue->isEmpty() ) {  /*isEmpty() is known to not have side effects*/
             /*qQueue_IsEmpty is known to not have side effects*/
             retValue = trigger::byQueueEmpty;
         }
         else {
             /*this case does not need to be handled*/
         }
+        /*cstat +MISRAC++2008-5-14-1*/
     }
 
     return retValue;
 }
 /*============================================================================*/
-std::size_t task::getID( void ) const
+std::size_t task::getID( void ) const noexcept
 {
     return entry;
 }
 /*============================================================================*/
-bool task::attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg )
+bool task::attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg ) noexcept
 {
     bool retValue = false;
 
@@ -235,12 +241,12 @@ bool task::attachQueue( queue &q, const queueLinkMode mode, const std::size_t ar
     return retValue;
 }
 /*============================================================================*/
-void* task::getAttachedObject( void ) const
+void* task::getAttachedObject( void ) noexcept
 {
     return aObj;
 }
 /*============================================================================*/
-event_t task::eventData( void ) const
+event_t task::eventData( void ) const noexcept
 {
     return *pEventInfo;
 }

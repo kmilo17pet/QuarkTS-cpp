@@ -11,60 +11,65 @@ using namespace qOS;
 static bool taskEntryOrderPreserver( listCompareHandle_t h );
 
 const priority_t core::LOWEST_PRIORITY = 0u;
-const priority_t core::MEDIUM_PRIORITY = Q_PRIORITY_LEVELS >> 1u;
-const priority_t core::HIGHEST_PRIORITY = Q_PRIORITY_LEVELS - 1u;
+const priority_t core::MEDIUM_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) >> 1u;
+const priority_t core::HIGHEST_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
 
 const notifier_t MAX_NOTIFICATION_VALUE = UINT32_MAX - 1uL;
 
-#if ( Q_ATCLI == 1 )
+#if ( Q_CLI == 1 )
     static void fsmTaskCallback( event_t e );
     static void cliTaskCallback( event_t e );
     static void cliNotifyFcn( commandLineInterface *cli );
 #endif
 /*============================================================================*/
-core& core::getInstance( void )
+core& core::getInstance( void ) noexcept
 {
     static core instance;
     return instance;
 }
 /*============================================================================*/
-void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback )
+/*cstat -MISRAC++2008-7-1-2*/
+void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback ) noexcept
 {
     this->idleCallback = idleCallback;
     (void)clock::setTimeBase( t );
     (void)clock::setTickProvider( tFcn );
     
 }
+/*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::time_t t, const iteration_t n, const qOS::taskState init, void *arg )
+bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::time_t t, const iteration_t n, const qOS::taskState s, void *arg ) noexcept
 {
-    bool retValue = false;
-
-        Task.setCallback( callback );
-        Task.time.set( t );
-        Task.setData( arg );
-        Task.setPriority( clipUpper( p, MAX_PRIORITY_VALUE ) );
-        Task.setIterations( n );
-        Task.setFlags( task::BIT_SHUTDOWN | task::BIT_ENABLED, true );
-        Task.setState( init );
-        Task.entry = core::taskEntries++;
-        Task.pEventInfo = static_cast<_Event*>( this );
-        retValue = waitingList->insert( &Task, AT_BACK );
-
-    return retValue;
+    (void)Task.setCallback( callback );
+    (void)Task.time.set( t );
+    (void)Task.setData( arg );
+    (void)Task.setPriority( clipUpper( p, MAX_PRIORITY_VALUE ) );
+    (void)Task.setIterations( n );
+    Task.setFlags( task::BIT_SHUTDOWN | task::BIT_ENABLED, true );
+    (void)Task.setState( s );
+    Task.entry = core::taskEntries++;
+    /*cstat -CERT-EXP39-C_d*/
+    Task.pEventInfo = static_cast<_Event*>( this );
+    /*cstat +CERT-EXP39-C_d*/  
+    return waitingList->insert( &Task, AT_BACK );
 }
 /*============================================================================*/
 #if ( Q_FSM == 1 )
+/*cstat -MISRAC++2008-7-1-2*/
 static void fsmTaskCallback( event_t e )
 {
-    stateMachine *sm = static_cast<stateMachine*>( qOS::os.getTaskRunning().getAttachedObject() );
-    fsm::signal_t sig = { fsm::signalID::SIGNAL_NONE, nullptr };
+    /*cstat -CERT-EXP36-C_b*/
+    stateMachine * const sm = static_cast<stateMachine*>( qOS::os.getTaskRunning().getAttachedObject() );
+    /*cstat +CERT-EXP36-C_b*/
+    const fsm::signal_t sig = { fsm::signalID::SIGNAL_NONE, nullptr };
     (void)sm->run( sig );
+    Q_UNUSED(e);
 } 
+/*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::time_t t, const taskState init, void *arg )
+bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::time_t t, const taskState s, void *arg ) noexcept
 {
-    bool retValue = core::addTask( Task, fsmTaskCallback, p, t, task::PERIODIC, init, arg );
+    bool retValue = core::addTask( Task, fsmTaskCallback, p, t, task::PERIODIC, s, arg );
     if ( retValue ) {
         Task.aObj = &m;
         m.owner = &Task;
@@ -79,40 +84,45 @@ bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p,
 }
 #endif /*Q_FSM*/
 /*============================================================================*/
-#if ( Q_ATCLI == 1 )
+#if ( Q_CLI == 1 )
 static void cliTaskCallback( event_t e )
 {
-    commandLineInterface *c = static_cast<commandLineInterface*>( qOS::os.getTaskRunning().getAttachedObject() ); 
+    /*cstat -CERT-EXP36-C_b*/
+    commandLineInterface * const c = static_cast<commandLineInterface*>( qOS::os.getTaskRunning().getAttachedObject() ); 
+    /*cstat +CERT-EXP36-C_b*/
     c->setData( &e );
-    c->run();
+    (void)c->run();
 }
 /*============================================================================*/
 static void cliNotifyFcn( commandLineInterface *cli )
 {
-    qOS::os.notify( notifyMode::SIMPLE, *static_cast<task*>( cli->getOwner() ), nullptr );
+    /*cstat -CERT-EXP36-C_b*/
+    (void)qOS::os.notify( notifyMode::SIMPLE, *static_cast<task*>( cli->getOwner() ), nullptr );
+    /*cstat +CERT-EXP36-C_b*/
 }
 /*============================================================================*/
-bool core::addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg )
+bool core::addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg ) noexcept
 {
     bool retValue = false;
 
     if ( addEventTask( Task, cliTaskCallback, p, arg ) ) {
         Task.aObj = &cli;
         cli.owner = &Task;
-        cli.xNotifyFcn = nullptr;
+        cli.xNotifyFcn = &cliNotifyFcn;
         retValue = true;
     }
     
     return retValue;
 }
-#endif /*Q_ATCLI*/
+#endif /*Q_CLI*/
 /*============================================================================*/
-task& core::getTaskRunning( void ) const
+task& core::getTaskRunning( void ) const noexcept
 {
     return *currentTask;
 }
 /*============================================================================*/
-bool core::setIdleTask( taskFcn_t callback )
+/*cstat -MISRAC++2008-7-1-2*/
+bool core::setIdleTask( taskFcn_t callback ) noexcept
 {
     bool retValue = false;
 
@@ -123,14 +133,16 @@ bool core::setIdleTask( taskFcn_t callback )
 
     return retValue;
 }
+/*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::schedulerRelease( void )
+bool core::schedulerRelease( void ) noexcept
 {
     bitsSet( flag, BIT_RELEASE_SCHED );
     return true;
 }
+/*cstat -MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::setSchedulerReleaseCallback( taskFcn_t callback )
+bool core::setSchedulerReleaseCallback( taskFcn_t callback ) noexcept
 {
     bool retValue = false;
 
@@ -142,13 +154,14 @@ bool core::setSchedulerReleaseCallback( taskFcn_t callback )
     return retValue;
 }
 /*============================================================================*/
-bool core::removeTask( task &Task )
+bool core::removeTask( task &Task ) noexcept
 {
     Task.setFlags( task::BIT_REMOVE_REQUEST, true );
     return true;
 }
+/*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-void core::triggerReleaseSchedEvent( void )
+void core::triggerReleaseSchedEvent( void ) noexcept
 {
     bitsClear( flag, BIT_INIT );
     bitsClear( flag, BIT_RELEASE_SCHED );
@@ -156,14 +169,16 @@ void core::triggerReleaseSchedEvent( void )
     _Event::Trigger = trigger::bySchedulingRelease;
     _Event::TaskData = nullptr;
     if ( nullptr != releaseSchedCallback ) {
-        taskFcn_t callback = releaseSchedCallback;
+        const taskFcn_t callback = releaseSchedCallback;
         /*some low-end compilers cant deal with function-pointers inside structs*/
+        /*cstat -CERT-EXP39-C_d*/
         callback( *static_cast<_Event*>( this) );
+        /*cstat +CERT-EXP39-C_d*/
     }
     bitsSet( flag, BIT_FCALL_IDLE );
 }
 /*============================================================================*/
-bool core::checkIfReady( void )
+bool core::checkIfReady( void ) noexcept
 {
     bool xReady = false;
     trigger trg;
@@ -200,10 +215,12 @@ bool core::checkIfReady( void )
                 xReady = true;
             }
             #if ( Q_QUEUES == 1 )
+            /*cstat -MISRAC++2008-6-2-1*/
             else if ( trigger::None != ( trg = xTask->queueCheckEvents() ) ) {
                 xTask->Trigger = trg;
                 xReady = true;
             }
+            /*cstat +MISRAC++2008-6-2-1*/
             #endif
             else if ( xTask->notifications > 0u ) {
                 xTask->Trigger = trigger::byNotificationSimple;
@@ -220,7 +237,7 @@ bool core::checkIfReady( void )
                 /*task has no available events, put it into a suspended state*/
             }
         }
-        waitingList->remove( nullptr, listPosition::AT_FRONT );
+        (void)waitingList->remove( nullptr, listPosition::AT_FRONT );
         if ( xTask->getFlag( task::BIT_REMOVE_REQUEST ) ) {
             #if ( Q_PRIO_QUEUE_SIZE > 0 )
                 critical::enter();
@@ -231,8 +248,8 @@ bool core::checkIfReady( void )
             xTask->setFlags( task::BIT_REMOVE_REQUEST, false );
         }
         else {
-            list *xList = ( trigger::None != xTask->Trigger ) ? &readyList[ xTask->priority ] : suspendedList;
-            xList->insert( xTask, listPosition::AT_BACK );
+            list * const xList = ( trigger::None != xTask->Trigger ) ? &readyList[ xTask->priority ] : suspendedList;
+            (void)xList->insert( xTask, listPosition::AT_BACK );
         }
     }
     #if ( Q_NOTIFICATION_SPREADER == 1 )
@@ -244,9 +261,9 @@ bool core::checkIfReady( void )
     return xReady;
 }
 /*============================================================================*/
-void core::dispatchTaskFillEventInfo( task *Task )
+void core::dispatchTaskFillEventInfo( task *Task ) noexcept
 {
-    trigger xEvent = Task->Trigger;
+    const trigger xEvent = Task->Trigger;
     iteration_t taskIteration;
     /*
     take the necessary actions before dispatching, depending on the event that
@@ -280,7 +297,7 @@ void core::dispatchTaskFillEventInfo( task *Task )
                 break;
             case trigger::byQueueFull: case trigger::byQueueCount: case trigger::byQueueEmpty:
                 /*the EventData will point to the the linked queue*/
-                _Event::EventData = (void*)Task->aQueue;
+                _Event::EventData = static_cast<void*>( Task->aQueue );
                 break;
         #endif
         #if ( Q_PRIO_QUEUE_SIZE > 0 )
@@ -303,10 +320,10 @@ void core::dispatchTaskFillEventInfo( task *Task )
     currentTask = Task;
 }
 /*============================================================================*/
-void core::dispatch( list *xList )
+void core::dispatch( list * const xList ) noexcept
 {
     for ( auto i = xList->begin() ; i.until() ; i++ ) {
-        auto xTask = i.get<task*>();
+        task * const xTask = i.get<task*>();
         taskFcn_t taskActivities = xTask->callback;
 
         dispatchTaskFillEventInfo( xTask );
@@ -315,7 +332,9 @@ void core::dispatch( list *xList )
         #endif
 
         if ( nullptr != taskActivities ) {
+            /*cstat -CERT-EXP39-C_d*/
             taskActivities( *static_cast<_Event*>( this ) );
+            /*cstat +CERT-EXP39-C_d*/
         }
 
         #if ( Q_ALLOW_YIELD_TO_TASK == 1 )
@@ -325,14 +344,16 @@ void core::dispatch( list *xList )
                 yieldTask = nullptr;
                 if ( nullptr != taskActivities ) {
                     /*yielded task inherits eventData*/
+                    /*cstat -CERT-EXP39-C_d*/
                     taskActivities( *static_cast<_Event*>( this ) );
+                    /*cstat +CERT-EXP39-C_d*/
                 }
             }
         #endif
 
         currentTask = nullptr;
-        xList->remove( nullptr, listPosition::AT_FRONT );
-        waitingList->insert( xTask, listPosition::AT_BACK );
+        (void)xList->remove( nullptr, listPosition::AT_FRONT );
+        (void)waitingList->insert( xTask, listPosition::AT_BACK );
         #if ( Q_QUEUES == 1 )
             if ( trigger::byQueueReceiver == xTask->Trigger ) {
                 /*remove the data from the attached Queue*/
@@ -352,25 +373,29 @@ void core::dispatch( list *xList )
     }
 }
 /*============================================================================*/
-void core::dispatchIdle( void )
+void core::dispatchIdle( void ) noexcept
 {
     _Event::FirstCall = ( false == bitsGet( flag, BIT_FCALL_IDLE ) );
     _Event::TaskData = nullptr;
     _Event::Trigger = trigger::byNoReadyTasks;
+    /*cstat -CERT-EXP39-C_d*/
     idleCallback( *static_cast<_Event*>( this ) ); /*run the idle callback*/
+    /*cstat +CERT-EXP39-C_d*/
     bitsSet( flag, BIT_FCALL_IDLE );
 }
 /*============================================================================*/
-bool core::run( void )
+bool core::run( void ) noexcept
 {
+    /*cstat -MISRAC++2008-0-1-6*/
     bool retValue = false;
+    /*cstat +MISRAC++2008-0-1-6*/
 
     do {
         if ( checkIfReady() ) {
             priority_t xPriorityListIndex = MAX_PRIORITY_VALUE;
 
             do {
-                list* xList = &readyList[ xPriorityListIndex ];
+                list* const xList = &readyList[ xPriorityListIndex ];
                 if ( xList->length() > 0u ) {
                     dispatch( xList );
                 }
@@ -401,16 +426,20 @@ bool core::run( void )
 }
 /*============================================================================*/
 #if ( Q_PRESERVE_TASK_ENTRY_ORDER == 1 )
+/*cstat -MISRAC++2008-7-1-2*/
 static bool taskEntryOrderPreserver( listCompareHandle_t h )
 {
     task *t1, *t2;
+    /*cstat -CERT-EXP36-C_b*/
     t1 = static_cast<task*>( h->n1 );
     t2 = static_cast<task*>( h->n2 );
+    /*cstat +CERT-EXP36-C_b*/
     return ( t1->getID() > t2->getID() );
 }
+/*cstat +MISRAC++2008-7-1-2*/
 #endif
 /*============================================================================*/
-bool core::notify( notifyMode mode, task &Task, void* eventData )
+bool core::notify( notifyMode mode, task &Task, void* eventData ) noexcept
 {
     bool retValue = false;
 
@@ -433,11 +462,11 @@ bool core::notify( notifyMode mode, task &Task, void* eventData )
     return retValue;
 }
 /*============================================================================*/
-bool core::hasPendingNotifications( task &Task )
+bool core::hasPendingNotifications( task &Task ) noexcept
 {
+    /*cstat -MISRAC++2008-0-1-6*/
     bool retValue = false;
-
-
+    /*cstat +MISRAC++2008-0-1-6*/
     if ( Task.notifications > 0u ) {
         retValue = true;
     }
@@ -446,28 +475,29 @@ bool core::hasPendingNotifications( task &Task )
             retValue = priorityQueue.isTaskInside( Task );
         #endif
     }
-    
 
     return retValue;
 }
+/*cstat -MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::eventFlagsModify( task &Task, const taskFlag_t flags, const bool action )
+bool core::eventFlagsModify( task &Task, const taskFlag_t tFlags, const bool action ) noexcept
 {
-    taskFlag_t flagsToSet = Task.flags & task::EVENT_FLAGS_MASK;
+    const taskFlag_t flagsToSet = tFlags & task::EVENT_FLAGS_MASK;
     Task.setFlags( flagsToSet, action );
 
     return true;
 }
 /*============================================================================*/
-taskFlag_t core::eventFlagsRead( task &Task ) const
+taskFlag_t core::eventFlagsRead( task &Task ) const noexcept
 {
     return Task.flags & task::EVENT_FLAGS_MASK;
 }
+/*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clearOnExit, const bool checkForAll )
+bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clearOnExit, const bool checkForAll ) noexcept
 {
     bool retValue = false;
-    taskFlag_t cEventBits = Task.flags & task::EVENT_FLAGS_MASK;
+    const taskFlag_t cEventBits = Task.flags & task::EVENT_FLAGS_MASK;
 
     flagsToCheck &= task::EVENT_FLAGS_MASK;
     if ( false == checkForAll ) {
@@ -487,7 +517,7 @@ bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clea
     return retValue;
 }
 /*============================================================================*/
-task* core::findTaskByName( const char *name )
+task* core::findTaskByName( const char *name ) noexcept
 {
     task *found = nullptr;
 
@@ -497,7 +527,7 @@ task* core::findTaskByName( const char *name )
 
         for ( std::size_t i = 0u ; ( false == r ) && ( i < maxLists ) ; ++i ) {
             for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
-                auto xTask = it.get<task*>();
+                task * const xTask = it.get<task*>();
                 if ( nullptr != xTask->name ) {
                     if ( 0 == strncmp( name, xTask->name, 32u ) ) {
                         found  = xTask;
@@ -512,7 +542,7 @@ task* core::findTaskByName( const char *name )
     return found;
 }
 /*============================================================================*/
-bool core::yieldToTask( task &Task )
+bool core::yieldToTask( task &Task ) noexcept
 {
     bool  retValue = false;
 
@@ -524,11 +554,12 @@ bool core::yieldToTask( task &Task )
     return retValue;
 }
 /*============================================================================*/
-globalState core::getGlobalState( task &Task ) const
+globalState core::getGlobalState( task &Task ) const noexcept
 {
     globalState retValue = globalState::UNDEFINED;
-
-    list *xList = static_cast<list*>( Task.container );
+    /*cstat -CERT-EXP36-C_b*/
+    list * const xList = static_cast<list*>( Task.container );
+    /*cstat +CERT-EXP36-C_b*/
     if ( currentTask == &Task ) {
         retValue = globalState::RUNNING;
     }

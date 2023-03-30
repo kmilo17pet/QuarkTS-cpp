@@ -12,25 +12,25 @@ typedef struct _Handler_s {
 static criticalHandler_t c = { nullptr, nullptr , 0uL };
 
 /*============================================================================*/
-void critical::enter( void )
+void critical::enter( void ) noexcept
 {
     if ( nullptr != c.disable ) {
-        int_disabler_t xDisabler = c.disable;
+        const int_disabler_t xDisabler = c.disable;
 
         c.flags = xDisabler();
     }
 }
 /*============================================================================*/
-void critical::exit( void )
+void critical::exit( void ) noexcept
 {
     if ( nullptr != c.restore ) {
-        int_restorer_t xRestorer = c.restore;
+        const int_restorer_t xRestorer = c.restore;
 
         xRestorer( c.flags );
     }
 }
 /*============================================================================*/
-bool critical::setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn )
+bool critical::setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept
 {
     bool retValue = false;
 

@@ -7,10 +7,11 @@ using namespace qOS;
 static const char *Q_CLI_DEFAULT_AT_COMMAND = "at";
 static const char *Q_CLI_DEFAULT_ID_COMMAND = "atid";
 static const char *Q_CLI_DEFAULT_NOTALLOWED_RSP_STRING = ":NOT ALLOWED";
+/*cstat -MISRAC++2008-0-1-4_b*/
 static const char *Q_CLI_DEFAULT_DEVID_STRING = "QuarkTS CLI";
 static const std::size_t Q_CLI_MIN_INPUT_LENGTH = 3u;
 static const std::size_t Q_CLI_RECOMMENDED_INPUT_SIZE = 128u;
-
+/*cstat +MISRAC++2008-0-1-4_b*/
 static std::size_t CMD_MASK_ARG_MAX_NUM( cli::options_t opt );
 static std::size_t CMD_MASK_ARG_MIN_NUM( cli::options_t opt );
 
@@ -27,20 +28,20 @@ static std::size_t CMD_MASK_ARG_MIN_NUM( cli::options_t opt )
 /*============================================================================*/
 static char* inputFix( char *s, std::size_t maxlen )
 {
-    int i, j = 0;
+    int j = 0;
     int noL = 0;
 
-    for ( i = 0 ; ( (char)'\0' != s[ i ] ) && ( maxlen > 0u ) ; ++i ) {
+    for ( int i = 0 ; ( '\0' != s[ i ] ) && ( maxlen > 0u ) ; ++i ) {
         if ( ( '=' == s[ i ] ) || ( '?' == s[ i ] ) ) {
             noL = 1;
         }
         if ( '\r' == s[ i ] ) {
-            s[ i ] = (char)'\0';
+            s[ i ] = '\0';
             break;
         }
         if ( 0 != isgraph( (int)s[ i ] ) ) {
             if ( 0 == noL ) {
-                s[ j++ ] = (char)tolower( (int)s[ i ] );
+              s[ j++ ] = static_cast<char>( std::tolower( static_cast<int>( s[ i ] ) ) );
             }
             else {
                 s[ j++ ] = s[ i ];
@@ -48,7 +49,7 @@ static char* inputFix( char *s, std::size_t maxlen )
         }
         --maxlen;
     }
-    s[ j ] = (char)'\0';
+    s[ j ] = '\0';
 
     return s;
 }
@@ -92,11 +93,13 @@ bool commandLineInterface::add( cli::command &cmd, char *textCommand, cli::comma
                 cmd.cmdOpt = 0x0FFFu & cmdOpt; /*high nibble not used yet*/
                 cmd.param = param;
                 if ( nullptr != first ) { /*list already has items*/
+                    /*cstat -MISRAC++2008-6-5-2*/
                     for ( iCmd = first ; nullptr != iCmd ; iCmd = iCmd->next ) {
                         if ( &cmd == iCmd ) {
                             break;
                         }
                     }
+                    /*cstat +MISRAC++2008-6-5-2*/
                 }
                 if ( &cmd != iCmd ) {
                     cmd.next = first;
@@ -126,21 +129,25 @@ bool commandLineInterface::notify( void )
 bool commandLineInterface::isrHandler( const char c )
 {
     bool retValue = false;
-    bool readyInput = cli::input::ready;
+    const bool readyInput = cli::input::ready;
     /*isgraph is known to have no-side effects*/
     /*check if the input is available and incoming chars are valid*/
+    /*cstat -MISRAC++2008-5-14-1*/
     if ( ( false == readyInput ) && ( 0 != isgraph( (int)c ) ) ) {
         /*to avoid undefined order of volatile accesses*/
         index_t currentIndex = cli::input::index;
+        /*cstat -CERT-INT30-C_a*/
         cli::input::storage[ currentIndex++ ] = c; /*insert char*/
+        /*cstat +CERT-INT30-C_a*/
         /*put the null-char after to keep the string safe*/
-        cli::input::storage[ currentIndex ] = (char)'\0';
+        cli::input::storage[ currentIndex ] = '\0';
         /*check if the input buffer its reached*/
         if ( currentIndex >= cli::input::maxIndex ) {
             currentIndex = 0u;
         }
         cli::input::index = currentIndex;
     }
+    /*cstat +MISRAC++2008-5-14-1*/
     if ( '\r' == c ) {
         /*end of line received, send the notification to the cli*/
         retValue = notify();
@@ -152,7 +159,7 @@ bool commandLineInterface::isrHandler( const char c )
 bool commandLineInterface::isrHandler( char *pData, const std::size_t n )
 {
     bool retValue = false;
-    bool readyInput = cli::input::ready;
+    const bool readyInput = cli::input::ready;
     const std::size_t maxToInsert = cli::input::maxIndex;
 
     if ( ( n > 0u ) && ( n < maxToInsert ) &&  ( false == readyInput ) ) {
@@ -162,7 +169,7 @@ bool commandLineInterface::isrHandler( char *pData, const std::size_t n )
         else {
             if ( 0 != isgraph( (int)pData[ 0 ] ) ) {
                 /*find the end of line safely*/
-                if ( nullptr != strchr( pData, (int)'\r' ) ) {
+                if ( nullptr != util::strchr( pData, (int)'\r', maxToInsert ) ) {
                     (void)util::strcpy( cli::input::storage, pData, maxToInsert );
                     retValue = notify();
                 }
@@ -178,7 +185,7 @@ std::size_t commandLineInterface::numOfArgs( const char *str )
     std::size_t count = 0u;
 
     while ( '\0' != *str ) {
-        if ( delim == (char)*str++ ) {
+        if ( delim == *str++ ) {
             ++count;
         }
     }
@@ -192,8 +199,8 @@ bool commandLineInterface::preProcessing( cli::command *cmd, char *inputBuffer )
 
     handler.Type = cli::commandType::UNDEF;
     handler.Command = cmd;
-    handler.StrLen = util::strlen( (const char*)inputBuffer, cmd->cmdLen );
-    handler.StrData = (char*)&inputBuffer[ cmd->cmdLen ];
+    handler.StrLen = util::strlen( const_cast<const char*>( inputBuffer ), cmd->cmdLen );
+    handler.StrData = const_cast<char*>( &inputBuffer[ cmd->cmdLen ] );
     handler.NumArgs = 0u;
 
     if ( 0u == handler.StrLen ) { /*command should be an ACT command */
@@ -203,7 +210,7 @@ bool commandLineInterface::preProcessing( cli::command *cmd, char *inputBuffer )
         }
     }
     else {
-        if ( (char)'?' == handler.StrData[ 0 ] ) { /*command should be READ command */
+        if ( '?' == handler.StrData[ 0 ] ) { /*command should be READ command */
             if ( 0u != ( cmd->cmdOpt & static_cast<cli::options_t>( cli::commandType::READ ) ) ) {
                 handler.Type = cli::commandType::READ; /*set the type to READ*/
                 ++handler.StrData; /*move string pointer once*/
@@ -212,8 +219,8 @@ bool commandLineInterface::preProcessing( cli::command *cmd, char *inputBuffer )
             }
         }
         else if ( handler.StrLen >= 2u ) { /*can be at+xx=? or at+xx=...*/
-            if ( (char)'=' == handler.StrData[ 0 ] ) { /*could be a TEST or PARA command*/
-                if ( (char)'?' == handler.StrData[ 1 ] ) {
+            if ( '=' == handler.StrData[ 0 ] ) { /*could be a TEST or PARA command*/
+                if ( '?' == handler.StrData[ 1 ] ) {
                     if ( ( 2u == handler.StrLen ) && ( 0u != ( cmd->cmdOpt & static_cast<cli::options_t>( cli::commandType::TEST ) ) ) ) {
                         /*command should be a TEST Command*/
                         handler.Type = cli::commandType::TEST; /*set the type to TEST*/
@@ -224,8 +231,8 @@ bool commandLineInterface::preProcessing( cli::command *cmd, char *inputBuffer )
                 }
                 else { /*definitely is a PARA command*/
                     if ( 0u != ( cmd->cmdOpt & static_cast<cli::options_t>( cli::commandType::PARA ) ) ) { /*check if is allowed*/
-                        std::size_t argMin = CMD_MASK_ARG_MIN_NUM( cmd->cmdOpt );
-                        std::size_t argMax = CMD_MASK_ARG_MAX_NUM( cmd->cmdOpt );
+                        const std::size_t argMin = CMD_MASK_ARG_MIN_NUM( cmd->cmdOpt );
+                        const std::size_t argMax = CMD_MASK_ARG_MAX_NUM( cmd->cmdOpt );
                         /*get the args count using the default delimiter*/
                         handler.NumArgs = numOfArgs( handler.StrData );
                         if ( ( handler.NumArgs >= argMin ) && ( handler.NumArgs <= argMax ) ) {
@@ -251,14 +258,16 @@ bool commandLineInterface::raise( const char *cmd )
     bool retValue = false;
 
     if ( nullptr != cmd ) {
-        bool readyInput = cli::input::ready;
-        std::size_t maxToInsert = cli::input::maxIndex;
+        const bool readyInput = cli::input::ready;
+        const std::size_t maxToInsert = cli::input::maxIndex;
         /*qIOUtil_StrLen is known to have no side effects*/
-        if ( ( false == readyInput ) && ( strlen( cmd ) <= maxToInsert ) ) {
+        /*cstat -MISRAC++2008-5-14-1*/
+        if ( ( false == readyInput ) && ( util::strlen( cmd, maxToInsert ) <= maxToInsert ) ) {
             (void)util::strcpy( (char*)cli::input::storage, cmd, maxToInsert );
             (void)inputFix( (char*)cli::input::storage, maxToInsert );
             retValue = notify();
         }
+        /*cstat +MISRAC++2008-5-14-1*/
     }
 
     return retValue;
@@ -270,13 +279,14 @@ cli::response commandLineInterface::exec( const char *cmd )
 
     if ( nullptr != cmd ) {
         /*loop over the subscribed commands*/
+        /*cstat -MISRAC++2008-6-5-2*/
         for ( cli::command *iCmd = first ; nullptr != iCmd ; iCmd = iCmd->next ) {
             /*check if the input matches the subscribed command */
             if ( 0 == strncmp( cmd, iCmd->Text, iCmd->cmdLen ) ) {
                 retValue = cli::response::NOT_ALLOWED;
-                if ( true == preProcessing( iCmd, (char*)cmd ) ) {
+                if ( true == preProcessing( iCmd, const_cast<char*>( cmd ) ) ) {
                     /*if success, proceed with the user pos-processing*/
-                    cli::commandCallback_t cmdCallback = iCmd->cmdCallback;
+                    const cli::commandCallback_t cmdCallback = iCmd->cmdCallback;
 
                     if ( cli::commandType::UNDEF == handler.Type ) {
                         retValue = cli::response::ERROR;
@@ -289,6 +299,7 @@ cli::response commandLineInterface::exec( const char *cmd )
                 break;
             }
         }
+        /*cstat +MISRAC++2008-6-5-2*/
     }
 
     return retValue;
@@ -298,7 +309,7 @@ bool commandLineInterface::inputFlush( void )
 {
     cli::input::ready = false;
     cli::input::index = 0u;
-    cli::input::storage[ 0 ] = (char)'\0';
+    cli::input::storage[ 0 ] = '\0';
 
     return true;
 }
@@ -328,14 +339,14 @@ void commandLineInterface::handleResponse( cli::response retval )
                 (void)util::outputString( outputFcn, nullptr, handler.Output, false );
                 break;
             default: /*AT_ERROR_CODE(#) */
-                if ( (base_t)retval < 0 ) {
-                    std::int32_t errorCode = cli::ERROR_CODE( (int32_t)retval );
+                if ( static_cast<base_t>( retval ) < 0 ) {
+                    const std::int32_t errorCode = cli::ERROR_CODE( static_cast<int16_t>( retval ) );
 
                     (void)util::itoa( errorCode, handler.Output, 10u );
                     (void)util::outputString( outputFcn, nullptr, er_rsp, false );
                     outputFcn( nullptr, ':' );
                     (void)util::outputString( outputFcn, nullptr, handler.Output, false );
-                    handler.Output[ 0 ] = (char)'\0';
+                    handler.Output[ 0 ] = '\0';
                 }
                 break;
         }
@@ -348,37 +359,44 @@ bool commandLineInterface::run( void )
     bool retValue = false;
 
     if ( true == cli::input::ready ) { /*a new input has arrived*/
-        cli::response outRetval, cliRetVal;
+        cli::response outRetval;
+        cli::response cliRetVal;
+        /*cstat -MISRAC++2008-7-1-1*/
         char *inputBuffer = cli::input::storage;
-        inputBuffer[ cli::input::maxIndex ] = (char)'\0';
+        /*cstat +MISRAC++2008-7-1-1*/
+        inputBuffer[ cli::input::maxIndex ] = '\0';
         /*remove non-graph chars*/
         (void)inputFix( inputBuffer, cli::input::size );
         /*Validation : set the value for the response lookup table*/
-        if ( 0 == strncmp( (const char*)inputBuffer, Q_CLI_DEFAULT_AT_COMMAND, cli::input::size ) ) {
+        /*cstat -CERT-STR32-C*/
+        if ( 0 == strncmp( const_cast<const char*>( inputBuffer ), Q_CLI_DEFAULT_AT_COMMAND, cli::input::size ) ) {
             outRetval = cli::response::OK;
         }
+        /*cstat -MISRAC++2008-6-2-1*/
         else if ( cli::response::NOT_FOUND != ( cliRetVal = exec( cli::input::storage ) ) ) {
             /*input is one of the subscribed commands*/
             outRetval = cliRetVal;
         }
-        else if ( 0 == strncmp( (const char*)inputBuffer, Q_CLI_DEFAULT_ID_COMMAND, cli::input::size ) ) {
+        /*cstat +MISRAC++2008-6-2-1*/
+        else if ( 0 == strncmp( const_cast<const char*>( inputBuffer ), Q_CLI_DEFAULT_ID_COMMAND, cli::input::size ) ) {
             outRetval = cli::response::DEVID;
         }
-        else if ( strlen( (const char*)inputBuffer ) >= Q_CLI_MIN_INPUT_LENGTH ) {
+        else if ( util::strlen( const_cast<const char*>( inputBuffer ), cli::input::size ) >= Q_CLI_MIN_INPUT_LENGTH ) {
             outRetval = cli::response::NOT_FOUND;
         }
+        /*cstat +CERT-STR32-C*/
         else {
             outRetval = cli::response::NO_RESPONSE; /*nothing to do*/
         }
         /*show the user output if available*/
         if ( nullptr != handler.Output ) {
-            if ( (char)'\0' != handler.Output[ 0 ] ) {
+            if ( '\0' != handler.Output[ 0 ] ) {
                 handleResponse( cli::response::OUTPUT );
             }
         }
         /*print out the command output*/
         handleResponse( outRetval );
-        handler.Output[ 0 ] = (char)'\0';
+        handler.Output[ 0 ] = '\0';
         retValue = inputFlush(); /*flush buffers*/
     }
     
@@ -399,7 +417,7 @@ char* cli::_Handler::getArgPtr( index_t n ) const
                 index_t argc = 0u;
 
                 --n;
-                for ( index_t i = 0u ; (char)'\0' != StrData[ i ] ; ++i ) {
+                for ( index_t i = 0u ; '\0' != StrData[ i ] ; ++i ) {
                     if ( instance->delim == StrData[ i ] ) {
                         if ( ++argc >= static_cast<index_t>( n ) ) {
                             retPtr = &StrData[ i + 1u ];
@@ -421,7 +439,9 @@ int cli::_Handler::getArgInt( index_t n ) const
 /*============================================================================*/
 float32_t cli::_Handler::getArgFloat( index_t n ) const
 {
+    /*cstat -MISRAC++2008-5-0-6 -MISRAC++2008-5-0-3*/
     return util::atof( getArgPtr( n ) );
+    /*cstat +MISRAC++2008-5-0-6 +MISRAC++2008-5-0-3*/
 }
 /*============================================================================*/
 std::uint32_t cli::_Handler::getArgHex( index_t n ) const
@@ -429,18 +449,18 @@ std::uint32_t cli::_Handler::getArgHex( index_t n ) const
     return util::xtou32( getArgPtr( n ) );
 }
 /*============================================================================*/
-char* cli::_Handler::getArgString( index_t n, char *pOut ) const
+char* cli::_Handler::getArgString( index_t n, char *pOut )
 {
     char *retPtr = nullptr;
 
     if ( ( nullptr != pOut ) && ( n > 0u ) ) {
 
         if ( cli::commandType::PARA == Type ) {
-            index_t i, j, argc = 0u;
+            index_t j, argc = 0u;
 
             --n;
             j = 0u;
-            for ( i = 0u ; (char)'\0' != StrData[ i ] ; ++i ) {
+            for ( index_t i = 0u ; '\0' != StrData[ i ] ; ++i ) {
                 if ( argc == n ) {
                     retPtr = pOut;
                     if ( instance->delim == StrData[ i ] ) {

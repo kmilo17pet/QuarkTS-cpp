@@ -30,12 +30,12 @@ namespace qOS {
             clock( clock &other ) = delete;
             void operator=( const clock & ) = delete;
             static getTickFcn_t getTick;
-            static qOS::clock_t convert2Clock( const qOS::time_t t );
-            static qOS::time_t convert2Time( const qOS::clock_t t );
-            static void sysTick( void );
-            static bool timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td );
-            static bool setTimeBase( const timingBase_t tb );
-            static bool setTickProvider( const getTickFcn_t provider );
+            static qOS::clock_t convert2Clock( const qOS::time_t t ) noexcept;
+            static qOS::time_t convert2Time( const qOS::clock_t t ) noexcept;
+            static void sysTick( void ) noexcept;
+            static bool timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td ) noexcept;
+            static bool setTimeBase( const timingBase_t tb ) noexcept;
+            static bool setTickProvider( const getTickFcn_t provider ) noexcept;
             static const qOS::time_t NONE;
             static const qOS::time_t IMMEDIATE;
             static const qOS::time_t MINUTE;

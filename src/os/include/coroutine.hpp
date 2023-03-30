@@ -23,65 +23,67 @@ namespace qOS {
             protected:
                 co::state prev = { co::UNDEFINED };
                 _coContext *ctx{ nullptr };
-                handle( handle const& ) = delete;      /* not copyable*/
-                void operator=( handle const& ) = delete;  /* not assignable*/
+                handle( handle const& ) = delete;
+                void operator=( handle const& ) = delete;
             public:
                 handle() = default;
-                void try_restart( void );
-                void try_suspend( void );
-                void try_resume( void );
-                void try_set( co::state p );
+                void try_restart( void ) noexcept;
+                void try_suspend( void ) noexcept;
+                void try_resume( void ) noexcept;
+                void try_set( co::state p ) noexcept;
             friend class co::_coContext;
         };
 
         class semaphore {
             protected:
                 std::size_t count{ 1u };
-                void signal( void );
-                bool tryLock( void );
-                semaphore( semaphore const& ) = delete;      /* not copyable*/
-                void operator=( semaphore const& ) = delete;  /* not assignable*/
+                void signal( void ) noexcept;
+                bool tryLock( void ) noexcept;
+                semaphore( semaphore const& ) = delete;
+                void operator=( semaphore const& ) = delete;
             public:
                 semaphore( std::size_t init ) : count( init ) {}
-                void set( std::size_t val );
+                void set( std::size_t val ) noexcept;
             friend class co::_coContext;
         };
 
+        /*cstat -MISRAC++2008-7-1-2*/
         class _coContext {
             protected:
-                _coContext( _coContext const& ) = delete;      /* not copyable*/
-                void operator=( _coContext const& ) = delete;  /* not assignable*/
+                _coContext( _coContext const& ) = delete;
+                void operator=( _coContext const& ) = delete;
             public:
                 _coContext() = default;
                 co::state label{ co::BEGINNING };
                 qOS::timer delay;
-                inline void saveHandle( co::handle& h )
+                inline void saveHandle( co::handle& h ) noexcept
                 {
                     h.ctx = this;
                 }
-                inline void saveHandle( void ) { }
-                inline void semSignal( semaphore& s )
+                inline void saveHandle( void ) noexcept {}
+                inline void semSignal( semaphore& s ) noexcept
                 {
                     s.signal();
                 }
-                inline bool semTrylock( semaphore& s )
+                inline bool semTrylock( semaphore& s ) noexcept
                 {
                     return s.tryLock();
                 }
         };
-
-        inline void nop( void ) {}
-        inline void reenter( void ) {}
-        inline void reenter( qOS::co::handle h ) { Q_UNUSED(h); }
-        inline void yield( void ) {}
-        inline void delay( qOS::time_t t ) { Q_UNUSED(t); }
-        inline void waitUntil( bool condition ) { Q_UNUSED(condition); }
-        inline void waitUntil( bool condition, qOS::time_t timeout ) { Q_UNUSED(condition); Q_UNUSED(timeout); }
-        inline void restart( void ) {}
-        inline void semWait( co::semaphore& sem ) { Q_UNUSED(sem); }
-        inline void semSignal( co::semaphore& sem ) { Q_UNUSED(sem); }
-        inline void getPosition( co::position &var ) { Q_UNUSED(var); }
-        inline void setPosition( co::position &var ) { Q_UNUSED(var); }
+        /*cstat -MISRAC++2008-0-1-11*/
+        inline void nop( void ) noexcept {}
+        inline void reenter( void ) noexcept {}
+        inline void reenter( qOS::co::handle h ) noexcept { Q_UNUSED(h); }
+        inline void yield( void ) noexcept {}
+        inline void delay( qOS::time_t t ) noexcept { Q_UNUSED(t); }
+        inline void waitUntil( bool condition ) noexcept { Q_UNUSED(condition); }
+        inline void waitUntil( bool condition, qOS::time_t timeout ) noexcept { Q_UNUSED(condition); Q_UNUSED(timeout); }
+        inline void restart( void ) noexcept {}
+        inline void semWait( co::semaphore& sem ) noexcept { Q_UNUSED(sem); }
+        inline void semSignal( co::semaphore& sem ) noexcept { Q_UNUSED(sem); }
+        inline void getPosition( co::position &var ) noexcept { Q_UNUSED(var); }
+        inline void setPosition( co::position &var ) noexcept { Q_UNUSED(var); }
+        /*cstat +MISRAC++2008-0-1-11 +MISRAC++2008-7-1-2*/
     }
 }
 /*============================================================================*/
@@ -89,9 +91,9 @@ namespace qOS {
 
 /*============================================================================*/
 #define reenter(...)    _reenter(__VA_ARGS__, _reenter0, _reenter1)(__VA_ARGS__)
-#define _reenter(_1, _reenter1, _reenter0, ...)    _reenter0
-#define _reenter1( Handle )                        _co_reenter_impl( Handle )
-#define _reenter0                             _co_reenter_impl( Q_NONE )
+#define _reenter(_1, _reenter1, _reenter0, ...)     _reenter0
+#define _reenter1( Handle )                         _co_reenter_impl( Handle )
+#define _reenter0                                   _co_reenter_impl( Q_NONE )
 
 
 /*============================================================================*/

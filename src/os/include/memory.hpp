@@ -29,18 +29,18 @@ namespace qOS {
                 std::uint8_t *poolMemory{ nullptr };
                 std::size_t poolMemSize{ 0u };
                 std::size_t freeBytesRemaining{ 0u };
-                void insertBlockIntoFreeList( blockConnect_t *xBlock );
-                void init( void );
-                pool( pool const& ) = delete;      /* not copyable*/
-                void operator=( pool const& ) = delete;  /* not assignable*/
+                void insertBlockIntoFreeList( blockConnect_t *xBlock ) noexcept;
+                void init( void ) noexcept;
+                pool( pool const& ) = delete;
+                void operator=( pool const& ) = delete;
             public:
-                inline pool( void *pArea, const std::size_t pSize ) {
+                inline pool( void *pArea, const std::size_t pSize ) noexcept {
                     (void)setup( pArea, pSize );
                 }
-                bool setup( void *pArea, const std::size_t pSize );
-                void free( void *ptr );
-                void* alloc( std::size_t pSize );
-                std::size_t getFreeSize( void );
+                bool setup( void *pArea, const std::size_t pSize ) noexcept;
+                void free( void *ptr ) noexcept;
+                void* alloc( std::size_t pSize ) noexcept;
+                std::size_t getFreeSize( void ) noexcept;
         };
 
     }

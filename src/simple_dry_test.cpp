@@ -12,6 +12,9 @@ qOS::fsm::state s1, s2;
 
 co::position pos1;
 
+qOS::fsm::timeoutStateDefinition_t LedOn_Timeouts[] = {
+    { 10.0f,  fsm::TIMEOUT_INDEX( 0 ) | fsm::TIMEOUT_SET_ENTRY | fsm::TIMEOUT_RST_EXIT  },
+};
 
 void idleTask_callback( event_t e ) 
 {
@@ -118,6 +121,9 @@ uint32_t clockProvider( void ) {
 
 int main()
 {
+
+
+
     t1.setName( "t1");
     t2.setName( "t2");
     t3.setName( "t3");
@@ -127,7 +133,7 @@ int main()
     qOS::os.addTask( t2, task_callback, qOS::core::HIGHEST_PRIORITY, 0.5f, 10, qOS::ENABLED );
     qOS::os.addTask( t3, task_callback, qOS::core::MEDIUM_PRIORITY, 2.0f, task::PERIODIC, qOS::ENABLED );
 
-    qOS::fsm::timeoutSpec_t tm_specTimeout;
+    qOS::fsm::timeoutSpec tm_specTimeout;
     m.setup( nullptr, s1 );
     m.installTimeoutSpec( tm_specTimeout );
     m.add( s1, s1_callback );

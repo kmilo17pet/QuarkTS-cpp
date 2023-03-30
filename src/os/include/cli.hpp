@@ -57,19 +57,19 @@ namespace qOS {
                 _Handler( _Handler const& ) = delete;      /* not copyable*/
                 void operator=( _Handler const& ) = delete;  /* not assignable*/
             public:
-                char *getStringData( void ) const 
+                inline char *getStringData( void ) 
                 {
                     return StrData;
                 }
-                void *getData( void ) const
+                inline void *getData( void )
                 {
                     return Data;
                 }
-                std::size_t getStringLength( void ) const
+                inline std::size_t getStringLength( void ) const
                 {
                     return StrLen;
                 }
-                std::size_t getNumArgs( void ) const
+                inline std::size_t getNumArgs( void ) const
                 {
                     return NumArgs;
                 }
@@ -77,7 +77,7 @@ namespace qOS {
                 int getArgInt( index_t n ) const;
                 float32_t getArgFloat( index_t n ) const;
                 std::uint32_t getArgHex( index_t n ) const;
-                char* getArgString( index_t n, char *pOut ) const;
+                char* getArgString( index_t n, char *pOut );
                 void output( const char c ) const;
                 void output( const char *s ) const;
             friend class qOS::commandLineInterface;
@@ -136,7 +136,7 @@ namespace qOS {
             bool inputFlush( void );
             cli::response exec( const char *cmd );
             bool run( void );
-            inline void* getOwner( void ) const
+            inline void* getOwner( void )
             {
                 return owner;
             }

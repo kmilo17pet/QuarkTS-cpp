@@ -19,30 +19,30 @@ namespace qOS {
             volatile std::size_t itemsWaiting = 0u;
             std::size_t itemsCount = 0u;
             std::size_t itemSize = 0u;
-            void moveReader( void );
-            void copyDataFromQueue( void * const dst );
-            void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ); 
-            queue( queue const& ) = delete;      /* not copyable*/
-            void operator=( queue const& ) = delete;  /* not assignable*/
+            void moveReader( void ) noexcept;
+            void copyDataFromQueue( void * const dst ) noexcept;
+            void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept; 
+            queue( queue const& ) = delete;
+            void operator=( queue const& ) = delete;
         public:
             queue() = default;
-            queue( void *pData, const std::size_t itemSize, const std::size_t itemsCount );
-            bool setup( void *pData, const std::size_t itemSize, const std::size_t itemsCount );
-            void reset( void );
-            bool isEmpty( void ) const;
-            bool isFull( void ) const;
-            std::size_t count( void ) const;
-            std::size_t itemsAvailable( void ) const;
-            bool removeFront( void );
-            bool receive( void *dst );
-            bool send( void *itemToQueue, const queueSendMode pos );
-            inline bool send( void *itemToQueue )
+            queue( void *pData, const std::size_t size, const std::size_t count ) noexcept;
+            bool setup( void *pData, const std::size_t size, const std::size_t count ) noexcept;
+            void reset( void ) noexcept;
+            bool isEmpty( void ) const noexcept;
+            bool isFull( void ) const noexcept;
+            std::size_t count( void ) const noexcept;
+            std::size_t itemsAvailable( void ) const noexcept;
+            bool removeFront( void ) noexcept;
+            bool receive( void *dst ) noexcept;
+            bool send( void *itemToQueue, const queueSendMode pos ) noexcept;
+            inline bool send( void *itemToQueue ) noexcept
             {
                 return send( itemToQueue, queueSendMode::TO_BACK );
             }
-            void* peek( void ) const;
-            bool isReady( void ) const;
-            std::size_t getItemSize( void );
+            void* peek( void ) const noexcept;
+            bool isReady( void ) const noexcept;
+            std::size_t getItemSize( void ) noexcept;
     };
 }
 

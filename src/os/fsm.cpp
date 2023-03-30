@@ -3,37 +3,32 @@
 
 using namespace qOS;
 
+/*cstat -MISRAC++2008-8-5-2*/
 static fsm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { fsm::signalID::SIGNAL_START };
+/*cstat +MISRAC++2008-8-5-2*/
 static stateMachine *psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ];
 
-static const fsm::timeoutSpecOption_t TSOPT_MASK = 0x00FFFFFFuL;
-static const fsm::timeoutSpecOption_t TSOPT_INDEX_MASK = 0x00FFFFFFuL;
+static const fsm::timeoutSpecOption_t OPT_INDEX_MASK = 0x00FFFFFFuL;
 
-
-const fsm::timeoutSpecOption_t stateMachine::TSOPT_SET_ENTRY = 0x01000000uL;
-const fsm::timeoutSpecOption_t stateMachine::TSOPT_RST_ENTRY = 0x02000000uL;
-const fsm::timeoutSpecOption_t stateMachine::TSOPT_SET_EXIT = 0x04000000uL;
-const fsm::timeoutSpecOption_t stateMachine::TSOPT_RST_EXIT = 0x08000000uL;
-const fsm::timeoutSpecOption_t stateMachine::TSOPT_KEEP_IF_SET = 0x10000000uL;
-const fsm::timeoutSpecOption_t stateMachine::TSOPT_PERIODIC = 0x20000000uL;
+const fsm::timeoutSpecOption_t fsm::TIMEOUT_SET_ENTRY = 0x01000000uL;
+const fsm::timeoutSpecOption_t fsm::TIMEOUT_RST_ENTRY = 0x02000000uL;
+const fsm::timeoutSpecOption_t fsm::TIMEOUT_SET_EXIT = 0x04000000uL;
+const fsm::timeoutSpecOption_t fsm::TIMEOUT_RST_EXIT = 0x08000000uL;
+const fsm::timeoutSpecOption_t fsm::TIMEOUT_KEEP_IF_SET = 0x10000000uL;
+const fsm::timeoutSpecOption_t fsm::TIMEOUT_PERIODIC = 0x20000000uL;
 
 /*============================================================================*/
-bool fsm::_Handler::timeoutSet( index_t i, qOS::time_t t )
+bool fsm::_Handler::timeoutSet( index_t i, qOS::time_t t ) noexcept
 {
     return thisMachine()->timeoutSet( i, t );
 }
 /*============================================================================*/
-bool fsm::_Handler::timeoutStop( index_t i )
+bool fsm::_Handler::timeoutStop( index_t i ) noexcept
 {
     return thisMachine()->timeoutStop( i );
 }
 /*============================================================================*/
-constexpr fsm::timeoutSpecOption_t stateMachine::TSOPT_INDEX( index_t i )
-{
-    return ( TSOPT_MASK & static_cast<fsm::timeoutSpecOption_t>( i ) );
-}
-/*============================================================================*/
-bool stateMachine::setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::surroundingCallback_t sFcn, void* pData ) 
+bool stateMachine::setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::surroundingCallback_t sFcn, void* pData ) noexcept
 {
     current = nullptr;
     next = nullptr;
@@ -52,7 +47,7 @@ bool stateMachine::setup( fsm::stateCallback_t topFcn, fsm::state *init, fsm::su
     return true;
 }
 /*============================================================================*/
-void fsm::state::topSelf( fsm::stateCallback_t topFcn, fsm::state *init )
+void fsm::state::topSelf( fsm::stateCallback_t topFcn, fsm::state *init ) noexcept
 {
     lastRunningChild = init;
     initState = init;
@@ -64,7 +59,7 @@ void fsm::state::topSelf( fsm::stateCallback_t topFcn, fsm::state *init )
     nTm = 0u;
 }
 /*============================================================================*/
-bool fsm::state::subscribe( fsm::state *s, fsm::stateCallback_t sFcn, fsm::state *init )
+bool fsm::state::subscribe( fsm::state *s, fsm::stateCallback_t sFcn, fsm::state *init ) noexcept
 {
     s->lastRunningChild = init;
     s->initState = init;
@@ -78,17 +73,17 @@ bool fsm::state::subscribe( fsm::state *s, fsm::stateCallback_t sFcn, fsm::state
     return true;
 }
 /*============================================================================*/
-void stateMachine::unsubscribeAll( void )
+void stateMachine::unsubscribeAll( void ) noexcept
 {
-    for ( std::size_t i = 0u ; i < (std::size_t)Q_FSM_PS_SIGNALS_MAX ; ++i ) {
+    for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX ) ; ++i ) {
         psSignals[ i ] = fsm::signalID::SIGNAL_NONE;
-        for ( std::size_t j = 0u; j < (std::size_t)Q_FSM_PS_SUB_PER_SIGNAL_MAX; ++j ) {
+        for ( std::size_t j = 0u; j < static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) ; ++j ) {
             psSubs[ i ][ j ] = nullptr;
         }
     }
 }
 /*============================================================================*/
-bool fsm::state::setTransitions( fsm::transition_t *table, std::size_t n )
+bool fsm::state::setTransitions( fsm::transition_t *table, std::size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -101,16 +96,17 @@ bool fsm::state::setTransitions( fsm::transition_t *table, std::size_t n )
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::installSignalQueue( queue *q )
+bool stateMachine::installSignalQueue( queue& q ) noexcept
 {
     bool retValue = false;
     #if ( Q_QUEUES == 1 )
-        if ( nullptr != q ) {
-            if ( ( true == q->isReady() ) && ( sizeof(fsm::signal_t) == q->getItemSize() ) ) {
-                sQueue = q; /*install the queue*/
-                retValue = true;
-            }
+        /*cstat -MISRAC++2008-5-14-1*/
+        if ( ( true == q.isReady() ) && ( sizeof(fsm::signal_t) == q.getItemSize() ) ) {
+            sQueue = &q; /*install the queue*/
+            retValue = true;
         }
+        /*cstat +MISRAC++2008-5-14-1*/
+        
     #else
         Q_UNUSED( q );
     #endif
@@ -118,9 +114,9 @@ bool stateMachine::installSignalQueue( queue *q )
     return retValue;
 }
 /*============================================================================*/
-void fsm::state::sweepTransitionTable( fsm::_Handler &h )
+void fsm::state::sweepTransitionTable( fsm::_Handler &h ) noexcept
 {
-    std::size_t i, n;
+    std::size_t n;
     fsm::transition_t *iTransition;
     n = tEntries;
     
@@ -149,7 +145,7 @@ void fsm::state::sweepTransitionTable( fsm::_Handler &h )
     }
 }
 /*============================================================================*/
-bool stateMachine::internalSignalSend( fsm::signalID sig, void *sData, bool isUrgent )
+bool stateMachine::internalSignalSend( fsm::signalID sig, void *sData, bool isUrgent ) noexcept
 {
     bool retValue = false;
     #if ( Q_QUEUES == 1 )
@@ -172,7 +168,7 @@ bool stateMachine::internalSignalSend( fsm::signalID sig, void *sData, bool isUr
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::sendSignal( fsm::signalID sig, void *sData, bool isUrgent )
+bool stateMachine::sendSignal( fsm::signalID sig, void *sData, bool isUrgent ) noexcept
 {
     bool retValue = false;
 
@@ -183,19 +179,19 @@ bool stateMachine::sendSignal( fsm::signalID sig, void *sData, bool isUrgent )
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::sendSignalToSubscribers( fsm::signalID sig, void *sData, bool isUrgent )
+bool stateMachine::sendSignalToSubscribers( fsm::signalID sig, void *sData, bool isUrgent ) noexcept
 {
-    bool retValue = false;
+    std::uint8_t r = 0u;
 
     if ( sig < fsm::signalID::SIGNAL_NONE ) {
         #if ( Q_FSM_PS_SIGNALS_MAX > 0 )  && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
-            const std::size_t maxSig = (std::size_t)Q_FSM_PS_SIGNALS_MAX;
-            const std::size_t maxSub = (std::size_t)Q_FSM_PS_SUB_PER_SIGNAL_MAX;
+            const std::size_t maxSig = static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX );
+            const std::size_t maxSub = static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
             for ( std::size_t i = 0u ; ( i < maxSig ) && ( fsm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
                 if ( sig == psSignals[ i ] ) {
-                    retValue = true;
+                    r = 1u;
                     for ( std::size_t j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
-                        retValue &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent );
+                        r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ? 1u : 0u;
                     }
                     break;
                 }
@@ -203,12 +199,12 @@ bool stateMachine::sendSignalToSubscribers( fsm::signalID sig, void *sData, bool
         #endif
     }
 
-    return retValue;
+    return ( 0u != r )? true : false;
 }
 /*============================================================================*/
-void stateMachine::timeoutCheckSignals( void )
+void stateMachine::timeoutCheckSignals( void ) noexcept
 {
-    for ( std::size_t i = 0u ; i < (std::size_t)Q_FSM_MAX_TIMEOUTS ; ++i ) {
+    for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
         if ( timeSpec->timeout[ i ].expired() ) {
             (void)sendSignal( fsm::SIGNAL_TIMEOUT( i ), nullptr, false );
             if ( 0uL  != ( timeSpec->isPeriodic & ( 1uL <<  i ) ) ) {
@@ -221,35 +217,36 @@ void stateMachine::timeoutCheckSignals( void )
     }
 }
 /*============================================================================*/
-void stateMachine::timeoutPerformSpecifiedActions( fsm::state *s, fsm::signalID sig )
+void stateMachine::timeoutPerformSpecifiedActions( fsm::state * const s, fsm::signalID sig ) noexcept
 {
-    fsm::timeoutStateDefinition_t *tbl = s->tdef;
-    std::size_t n = s->nTm;
+    fsm::timeoutStateDefinition_t * const tbl = s->tdef;
+    const std::size_t n = s->nTm;
 
     if ( ( n > 0u ) && ( nullptr != tbl ) ) {
-        fsm::timeoutSpecOption_t setCheck, resetCheck;
+        fsm::timeoutSpecOption_t setCheck;
+        fsm::timeoutSpecOption_t resetCheck;
 
         if ( fsm::signalID::SIGNAL_ENTRY == sig ) {
-            setCheck = TSOPT_SET_ENTRY;
-            resetCheck = TSOPT_RST_ENTRY;
+            setCheck = fsm::TIMEOUT_SET_ENTRY;
+            resetCheck = fsm::TIMEOUT_RST_ENTRY;
         }
         else {
-            setCheck = TSOPT_SET_EXIT;
-            resetCheck = TSOPT_RST_EXIT;
+            setCheck = fsm::TIMEOUT_SET_EXIT;
+            resetCheck = fsm::TIMEOUT_RST_EXIT;
         }
         for ( std::size_t i = 0u ; i < n ; ++i ) { /*loop table */
-            fsm::timeoutSpecOption_t opt = tbl[ i ].options;
-            index_t index = static_cast<index_t>( opt & TSOPT_INDEX_MASK );
+            const fsm::timeoutSpecOption_t opt = tbl[ i ].options;
+            const index_t index = static_cast<index_t>( opt & OPT_INDEX_MASK );
             /*state match and index is valid?*/
             if ( index < static_cast<index_t>( Q_FSM_MAX_TIMEOUTS ) ) {
-                timer *tmr = &timeSpec->timeout[ index ];
-                qOS::time_t tValue = tbl[ i ].xTimeout;
+                timer * const tmr = &timeSpec->timeout[ index ];
+                const qOS::time_t tValue = tbl[ i ].xTimeout;
 
                 if ( 0uL != ( opt & setCheck ) ) {
-                    if ( 0uL == ( opt & TSOPT_KEEP_IF_SET ) ) {
+                    if ( 0uL == ( opt & fsm::TIMEOUT_KEEP_IF_SET ) ) {
                         (void)tmr->set( tValue );
                     }
-                    if ( 0uL != ( opt & TSOPT_PERIODIC ) ) {
+                    if ( 0uL != ( opt & fsm::TIMEOUT_PERIODIC ) ) {
                         bitSet( timeSpec->isPeriodic, index );
                     }
                     else {
@@ -264,7 +261,7 @@ void stateMachine::timeoutPerformSpecifiedActions( fsm::state *s, fsm::signalID 
     }
 }
 /*============================================================================*/
-bool stateMachine::installTimeoutSpec( fsm::timeoutSpec_t &ts )
+bool stateMachine::installTimeoutSpec( fsm::timeoutSpec &ts ) noexcept
 {
     timeSpec = &ts;
     for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
@@ -275,12 +272,12 @@ bool stateMachine::installTimeoutSpec( fsm::timeoutSpec_t &ts )
     return true;
 }
 /*============================================================================*/
-bool fsm::state::setTimeouts( fsm::timeoutStateDefinition_t *tdef, std::size_t n )
+bool fsm::state::setTimeouts( fsm::timeoutStateDefinition_t *def, std::size_t n ) noexcept
 {
     bool retValue = false;
 
     if ( ( nullptr != tdef ) && ( n > 0u ) ) {
-        tdef = tdef;
+        tdef = def;
         nTm = n;
         retValue = true;
     }
@@ -288,25 +285,24 @@ bool fsm::state::setTimeouts( fsm::timeoutStateDefinition_t *tdef, std::size_t n
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::timeoutSet( index_t xTimeout, qOS::time_t t )
+bool stateMachine::timeoutSet( index_t xTimeout, qOS::time_t t ) noexcept
 {
     bool retValue = false;
 
-    if ( xTimeout <= (index_t)Q_FSM_MAX_TIMEOUTS ) {
+    if ( xTimeout < static_cast<index_t>( Q_FSM_MAX_TIMEOUTS ) ) {
         if ( nullptr != timeSpec ) {
-            timeSpec->timeout[ xTimeout ].set( t );
-            retValue = true;
+            retValue = timeSpec->timeout[ xTimeout ].set( t );
         }
     }
 
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::timeoutStop( index_t xTimeout )
+bool stateMachine::timeoutStop( index_t xTimeout ) noexcept
 {
     bool retValue = false;
 
-    if ( ( nullptr != timeSpec ) && ( xTimeout < (index_t)Q_FSM_MAX_TIMEOUTS ) ) {
+    if ( ( nullptr != timeSpec ) && ( xTimeout < static_cast<index_t>( Q_FSM_MAX_TIMEOUTS ) ) ) {
         #if ( Q_QUEUES == 1 )
             std::size_t cnt;
             fsm::signal_t xSignal;
@@ -316,7 +312,7 @@ bool stateMachine::timeoutStop( index_t xTimeout )
                 if ( true == sQueue->receive( &xSignal ) ) {
                     if ( xSignal.id != fsm::SIGNAL_TIMEOUT( xTimeout ) ) {
                         /*keep non-timeout signals*/
-                        sQueue->send( &xSignal, queueSendMode::TO_BACK );
+                        (void)sQueue->send( &xSignal, queueSendMode::TO_BACK );
                     }
                 }
             }
@@ -328,75 +324,75 @@ bool stateMachine::timeoutStop( index_t xTimeout )
     return retValue;
 }
 /*============================================================================*/
-const fsm::state* stateMachine::getTop( void ) const
+const fsm::state* stateMachine::getTop( void ) const noexcept
 {
     return &top;
 }
 /*============================================================================*/
-fsm::state* stateMachine::getCurrent( void ) const
+fsm::state* stateMachine::getCurrent( void ) noexcept
 {
     return current;
 }
 /*============================================================================*/
-queue* stateMachine::getQueue( void ) const
+queue* stateMachine::getQueue( void ) noexcept
 {
     return sQueue;
 }
 /*============================================================================*/
-fsm::timeoutSpec_t* stateMachine::getTimeSpec( void ) const
+fsm::timeoutSpec* stateMachine::getTimeSpec( void ) noexcept
 {
     return timeSpec;
 }
 /*============================================================================*/
-void* stateMachine::getData( void ) const
+void* stateMachine::getData( void ) noexcept
 {
     return mData;
 }
 /*============================================================================*/
-fsm::state* fsm::state::getInit( void ) const
+fsm::state* fsm::state::getInit( void ) noexcept
 {
     return initState;
 }
 /*============================================================================*/
-fsm::state* fsm::state::getLastState( void ) const
-{   return lastRunningChild;
-
+fsm::state* fsm::state::getLastState( void ) noexcept
+{   
+    return lastRunningChild;
 }
 /*============================================================================*/
-fsm::state* fsm::state::getParent( void ) const
+fsm::state* fsm::state::getParent( void ) noexcept
 {
     return parent;
 }
 /*============================================================================*/
-void* fsm::state::getData( void ) const
+void* fsm::state::getData( void ) noexcept
 {
     return sData;
 }
 /*============================================================================*/
-void fsm::state::setData( void* pData ) 
+void fsm::state::setData( void* pData ) noexcept
 {
     sData = pData;
 }
 /*============================================================================*/
-fsm::transition_t* fsm::state::getTransitionTable( void ) const
+fsm::transition_t* fsm::state::getTransitionTable( void ) noexcept
 {
     return tTable;
 }
 /*============================================================================*/
-void fsm::state::setCallback( fsm::stateCallback_t sFcn )
+void fsm::state::setCallback( fsm::stateCallback_t sFcn ) noexcept
 {
     sCallback = sFcn;
 }
 /*============================================================================*/
-void stateMachine::setSurrounding( fsm::surroundingCallback_t sFcn )
+void stateMachine::setSurrounding( fsm::surroundingCallback_t sFcn ) noexcept
 {
     surrounding = sFcn;
 }
 /*============================================================================*/
-fsm::psIndex_t stateMachine::getSubscriptionStatus( fsm::signalID s )
+fsm::psIndex_t stateMachine::getSubscriptionStatus( fsm::signalID s ) noexcept
 {
     fsm::psIndex_t idx = { fsm::PS_SIGNAL_NOT_FOUND, 0u ,0u };
-    std::size_t i, j;
+    std::size_t i, j = 0u;
     const std::size_t maxSig = static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX );
     const std::size_t maxSub = static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
 
@@ -426,7 +422,7 @@ fsm::psIndex_t stateMachine::getSubscriptionStatus( fsm::signalID s )
     return idx;
 }
 /*============================================================================*/
-bool stateMachine::subscribeToSignal( fsm::signalID s )
+bool stateMachine::subscribeToSignal( fsm::signalID s ) noexcept
 {
     bool retValue = false;
 
@@ -456,7 +452,7 @@ bool stateMachine::subscribeToSignal( fsm::signalID s )
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::unsubscribeFromSignal( fsm::signalID s )
+bool stateMachine::unsubscribeFromSignal( fsm::signalID s ) noexcept
 {
     bool retValue = false;
     #if ( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
@@ -464,7 +460,8 @@ bool stateMachine::unsubscribeFromSignal( fsm::signalID s )
             fsm::psIndex_t r = getSubscriptionStatus( s );
 
             if ( fsm::PS_SUBSCRIBER_FOUND == r.status ) {
-                std::size_t i, li = (std::size_t)Q_FSM_PS_SUB_PER_SIGNAL_MAX - 1u;
+                std::size_t i;
+                std::size_t li = static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) - 1u;
 
                 for ( i = r.sub_slot ; i < li ; ++i ) {
                     psSubs[ r.sig_slot ][ i ] = psSubs[ r.sig_slot ][ i + 1u ];
@@ -473,7 +470,7 @@ bool stateMachine::unsubscribeFromSignal( fsm::signalID s )
 
                 if ( nullptr == psSubs[ r.sig_slot ][ 0 ] ) { /*no subscribers left?*/
                     /*remove the signal from the psSignals list*/
-                    li = (std::size_t)Q_FSM_PS_SIGNALS_MAX - 1u;
+                    li = static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX ) - 1u;
                     for ( i = r.sig_slot ; i < li ; ++i ) {
                         psSignals[ i ] = psSignals[ i + 1u ];
                     }
@@ -488,7 +485,7 @@ bool stateMachine::unsubscribeFromSignal( fsm::signalID s )
     return retValue;
 }
 /*============================================================================*/
-void stateMachine::transition( fsm::state *target, fsm::historyMode mHistory )
+void stateMachine::transition( fsm::state *target, fsm::historyMode mHistory ) noexcept
 {
     exitUpToLCA( levelsToLCA( target ) );
     /*then, handle the required history mode*/
@@ -498,7 +495,7 @@ void stateMachine::transition( fsm::state *target, fsm::historyMode mHistory )
     }
     else if ( fsm::historyMode::SHALLOW_HISTORY == mHistory ) {
         if ( nullptr != target->lastRunningChild ) {
-            fsm::state * lrc = target->lastRunningChild;
+            fsm::state *lrc = target->lastRunningChild;
             /*restore the default transition in the last running nested state*/
             lrc->lastRunningChild = lrc->initState;
         }
@@ -514,7 +511,7 @@ void stateMachine::transition( fsm::state *target, fsm::historyMode mHistory )
     next = target; /*notify SM that there was indeed a transition*/
 }
 /*============================================================================*/
-uint8_t stateMachine::levelsToLCA( fsm::state *target )
+uint8_t stateMachine::levelsToLCA( fsm::state *target ) noexcept
 {
     std::uint8_t xLca = 0u;
 
@@ -531,6 +528,7 @@ uint8_t stateMachine::levelsToLCA( fsm::state *target )
         std::uint8_t n = 0u;
 
         for ( s = source ; ( nullptr != s ) && ( false == xBreak ) ; s = s->parent ) {
+            /*cstat -MISRAC++2008-6-5-2*/
             for ( t = target ; nullptr != t ; t = t->parent ) {
                 if ( s == t ) {
                     xLca = n;
@@ -538,6 +536,7 @@ uint8_t stateMachine::levelsToLCA( fsm::state *target )
                     break;
                 }
             }
+            /*cstat +MISRAC++2008-6-5-2*/
             ++n;
         }
     }
@@ -545,7 +544,7 @@ uint8_t stateMachine::levelsToLCA( fsm::state *target )
     return xLca; /*return # of levels from the current state to the LCA.*/
 }
 /*============================================================================*/
-void stateMachine::exitUpToLCA( std::uint8_t lca )
+void stateMachine::exitUpToLCA( std::uint8_t lca ) noexcept
 {
     fsm::state *s = current;
 
@@ -560,9 +559,11 @@ void stateMachine::exitUpToLCA( std::uint8_t lca )
     current = s;
 }
 /*============================================================================*/
-fsm::status stateMachine::invokeStateCallback( fsm::state *s )
+fsm::status stateMachine::invokeStateCallback( fsm::state * const s ) noexcept
 {
-    fsm::_Handler* pHandler = static_cast<fsm::_Handler*>( this );
+    /*cstat -CERT-EXP39-C_d*/
+    fsm::_Handler * const pHandler = static_cast<fsm::_Handler*>( this );
+    /*cstat CERT-EXP39-C_d*/
     if ( nullptr != surrounding ) {
         fsm::_Handler::Status = fsm::status::BEFORE_ANY;
         surrounding( *pHandler );
@@ -586,7 +587,7 @@ fsm::status stateMachine::invokeStateCallback( fsm::state *s )
     return fsm::_Handler::Status;
 }
 /*============================================================================*/
-void stateMachine::prepareHandler( fsm::signal_t sig, fsm::state *s )
+void stateMachine::prepareHandler( fsm::signal_t sig, fsm::state *s ) noexcept
 {
     fsm::_Handler::Signal = sig.id;
     fsm::_Handler::SignalData = sig.data;
@@ -599,9 +600,9 @@ void stateMachine::prepareHandler( fsm::signal_t sig, fsm::state *s )
     fsm::_Handler::State = s;
 }
 /*============================================================================*/
-fsm::state* stateMachine::stateOnExit( fsm::state *s )
+fsm::state* stateMachine::stateOnExit( fsm::state *s ) noexcept
 {
-    static fsm::signal_t SIG_MSG_EXIT = { fsm::signalID::SIGNAL_EXIT, nullptr };
+    const fsm::signal_t SIG_MSG_EXIT = { fsm::signalID::SIGNAL_EXIT, nullptr };
 
     prepareHandler( SIG_MSG_EXIT, s );
     (void)invokeStateCallback( s );
@@ -613,9 +614,10 @@ fsm::state* stateMachine::stateOnExit( fsm::state *s )
     return s->parent;
 }
 /*============================================================================*/
-void stateMachine::stateOnEntry( fsm::state *s )
+void stateMachine::stateOnEntry( fsm::state *s ) noexcept
 {
-    static fsm::signal_t SIG_MSG_ENTRY = { fsm::signalID::SIGNAL_ENTRY, nullptr };
+    const fsm::signal_t SIG_MSG_ENTRY = { fsm::signalID::SIGNAL_ENTRY, nullptr };
+
     prepareHandler( SIG_MSG_ENTRY, s );
     (void)invokeStateCallback( s );
 
@@ -624,9 +626,9 @@ void stateMachine::stateOnEntry( fsm::state *s )
     }
 }
 /*============================================================================*/
-fsm::state* stateMachine::stateOnStart( fsm::state *s )
+fsm::state* stateMachine::stateOnStart( fsm::state *s ) noexcept
 {
-    static fsm::signal_t SIG_MSG_START = { fsm::signalID::SIGNAL_START, nullptr };
+    const fsm::signal_t SIG_MSG_START = { fsm::signalID::SIGNAL_START, nullptr };
 
     prepareHandler( SIG_MSG_START, s );
     (void)invokeStateCallback( s );
@@ -645,14 +647,16 @@ fsm::state* stateMachine::stateOnStart( fsm::state *s )
     return next;
 }
 /*============================================================================*/
-fsm::status stateMachine::stateOnSignal( fsm::state *s, fsm::signal_t sig )
+fsm::status stateMachine::stateOnSignal( fsm::state *s, fsm::signal_t sig ) noexcept
 {
     fsm::status status;
 
     prepareHandler( sig, s );
     if ( nullptr != s->tTable ) {
         /*evaluate the transition table if available*/
+        /*cstat -CERT-EXP39-C_d*/
         s->sweepTransitionTable( *static_cast<fsm::_Handler*>( this ) );
+        /*cstat +CERT-EXP39-C_d*/
     }
     status = invokeStateCallback( s );
 
@@ -665,7 +669,7 @@ fsm::status stateMachine::stateOnSignal( fsm::state *s, fsm::signal_t sig )
     return status;
 }
 /*============================================================================*/
-void stateMachine::tracePathAndRetraceEntry( fsm::state **trace )
+void stateMachine::tracePathAndRetraceEntry( fsm::state **trace ) noexcept
 {
     fsm::state *s;
     /*
@@ -679,24 +683,27 @@ void stateMachine::tracePathAndRetraceEntry( fsm::state **trace )
     actions.
     */
     *trace = nullptr;
+    /*cstat -MISRAC++2008-6-5-4 -MISRAC++2008-6-5-2*/
     for ( s = next ; s != current ; s = s->parent ) {
         *(++trace) = s; /* trace path to target */
     }
+    /*cstat -MISRAC++2008-6-2-1 +-MISRAC++2008-6-5-4 +MISRAC++2008-6-5-2*/
     while ( nullptr != ( s = *trace-- ) ) { /* retrace entry from LCA */
         stateOnEntry( s );
     }
+    /*cstat +MISRAC++2008-6-2-1*/
     current = next;
     next = nullptr;
 }
 /*============================================================================*/
-void stateMachine::traceOnStart( fsm::state **entryPath )
+void stateMachine::traceOnStart( fsm::state **entryPath ) noexcept
 {
     while ( nullptr != stateOnStart( current ) ) {
         tracePathAndRetraceEntry( entryPath );
     }
 }
 /*============================================================================*/
-fsm::signal_t stateMachine::checkForSignals( fsm::signal_t sig )
+fsm::signal_t stateMachine::checkForSignals( fsm::signal_t sig ) noexcept
 {
     fsm::signal_t xSignal = sig;
 
@@ -733,7 +740,7 @@ fsm::signal_t stateMachine::checkForSignals( fsm::signal_t sig )
     return xSignal;
 }
 /*============================================================================*/
-bool stateMachine::run( fsm::signal_t sig )
+bool stateMachine::run( fsm::signal_t sig ) noexcept
 {
     bool retValue = false;
     fsm::state *entryPath[ Q_FSM_MAX_NEST_DEPTH ];
@@ -747,6 +754,7 @@ bool stateMachine::run( fsm::signal_t sig )
         traceOnStart( entryPath );
     }
     /*evaluate the hierarchy until the signal is handled*/
+    /*cstat -MISRAC++2008-6-5-2*/
     for ( fsm::state *s = current ; nullptr != s ; s = s->parent ) {
         source = s; /* level of outermost event handler */
         if ( fsm::status::SIGNAL_HANDLED == stateOnSignal( s, sig ) ) {
@@ -762,6 +770,7 @@ bool stateMachine::run( fsm::signal_t sig )
             break;/* signal processed */
         }
     }
+    /*cstat +MISRAC++2008-6-5-2*/
     return retValue;
 }
 /*============================================================================*/

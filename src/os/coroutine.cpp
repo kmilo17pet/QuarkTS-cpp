@@ -3,12 +3,12 @@
 using namespace qOS;
 
 /*============================================================================*/
-void co::handle::try_restart( void )
+void co::handle::try_restart( void ) noexcept
 {
     try_set( co::BEGINNING );
 }
 /*============================================================================*/
-void co::handle::try_suspend( void )
+void co::handle::try_suspend( void ) noexcept
 {
     if ( prev != ctx->label ) {
         prev = ctx->label;
@@ -16,7 +16,7 @@ void co::handle::try_suspend( void )
     }
 }
 /*============================================================================*/
-void co::handle::try_resume( void )
+void co::handle::try_resume( void ) noexcept
 {
     if ( co::SUSPENDED == prev ) {
         try_restart();
@@ -27,17 +27,17 @@ void co::handle::try_resume( void )
     prev = co::UNDEFINED;
 }
 /*============================================================================*/
-void co::handle::try_set( co::state p )
+void co::handle::try_set( co::state p ) noexcept
 {
     ctx->label = p;
 }
 /*============================================================================*/
-void co::semaphore::signal( void )
+void co::semaphore::signal( void ) noexcept
 {
     ++count;
 }
 /*============================================================================*/
-bool co::semaphore::tryLock( void )
+bool co::semaphore::tryLock( void ) noexcept
 {
     bool retValue = false;
 
@@ -49,7 +49,7 @@ bool co::semaphore::tryLock( void )
     return retValue;
 }
 /*============================================================================*/
-void co::semaphore::set( std::size_t val )
+void co::semaphore::set( std::size_t val ) noexcept
 {
     count = val;
 }

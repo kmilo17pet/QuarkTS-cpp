@@ -28,7 +28,7 @@
     #define Q_TRACE_VARIABLES           ( 1 )       /**< Used to enable or disable variable tracing and debugging*/
     #define Q_DEBUGTRACE_BUFSIZE        ( 36 )      /**< Size for the debug/trace buffer: 36 bytes should be enough*/
     #define Q_DEBUGTRACE_FULL           ( 1 )       /**< Used to enable or disable a full trace output*/
-    #define Q_ATCLI                     ( 1 )       /**< Used to enable or disable the AT Command Line Interface(CLI)*/
+    #define Q_CLI                       ( 1 )       /**< Used to enable or disable the AT Command Line Interface(CLI)*/
     #define Q_TASK_COUNT_CYCLES         ( 1 )       /**< Used to enable or disable the task cycles counter*/
     #define Q_TASK_EVENT_FLAGS          ( 1 )       /**< Used to enable or disable the task event flags*/
     #define Q_MAX_FTOA_PRECISION        ( 10u )     /**< default qFtoA precision*/

@@ -3,7 +3,7 @@
 using namespace qOS;
 
 static const qOS::time_t TIME_FIX_VALUE = 0.5f;
-static qOS::clock_t internalTick( void );
+static qOS::clock_t internalTick( void ) noexcept;
 static volatile qOS::clock_t sysTick_Epochs  = 0u;
 static timingBase_t timingBase;
 
@@ -25,7 +25,7 @@ qOS::getTickFcn_t clock::getTick = &internalTick;
     const qOS::time_t clock::WEEK = 604800.0f;
 #endif
 /*============================================================================*/
-qOS::clock_t clock::convert2Clock( const qOS::time_t t )
+qOS::clock_t clock::convert2Clock( const qOS::time_t t ) noexcept
 {
     #if ( Q_SETUP_TIME_CANONICAL == 1 )
         return (qOS::clock_t)t;
@@ -44,7 +44,7 @@ qOS::clock_t clock::convert2Clock( const qOS::time_t t )
     #endif
 }
 /*============================================================================*/
-qOS::time_t clock::convert2Time( const qOS::clock_t t )
+qOS::time_t clock::convert2Time( const qOS::clock_t t ) noexcept
 {
     #if ( Q_SETUP_TIME_CANONICAL == 1 )
         return static_cast<qOS::time_t>( t );
@@ -52,22 +52,24 @@ qOS::time_t clock::convert2Time( const qOS::clock_t t )
         #if ( Q_SETUP_TICK_IN_HERTZ == 1 )
             return static_cast<qOS::time_t>( t/timingBase );
         #else
+            /*cstat -CERT-FLP36-C*/
             return static_cast<qOS::time_t>( timingBase*static_cast<qOS::time_t>( t ) );
+            /*cstat +CERT-FLP36-C*/
         #endif
     #endif
 }
 /*============================================================================*/
-void clock::sysTick( void )
+void clock::sysTick( void ) noexcept
 {
     ++sysTick_Epochs;
 }
 /*============================================================================*/
-bool clock::timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td )
+bool clock::timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td ) noexcept
 {
     return ( clock::getTick() - ti >= td );
 }
 /*============================================================================*/
-bool clock::setTimeBase( const timingBase_t tb )
+bool clock::setTimeBase( const timingBase_t tb ) noexcept
 {
     bool retValue = false;
 
@@ -79,12 +81,12 @@ bool clock::setTimeBase( const timingBase_t tb )
     return retValue;
 }
 /*============================================================================*/
-static qOS::clock_t internalTick( void )
+static qOS::clock_t internalTick( void ) noexcept
 {
     return sysTick_Epochs;
 }
 /*============================================================================*/
-bool clock::setTickProvider( const getTickFcn_t provider )
+bool clock::setTickProvider( const getTickFcn_t provider ) noexcept
 {
     bool retValue = false;
 

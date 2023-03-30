@@ -9,9 +9,9 @@ namespace qOS {
     using int_disabler_t = std::uint32_t (*)( void );
 
     namespace critical {
-        void enter( void );
-        void exit( void );
-        bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn );
+        void enter( void ) noexcept;
+        void exit( void ) noexcept;
+        bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept;
     };
 }
 

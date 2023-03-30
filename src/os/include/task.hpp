@@ -23,7 +23,7 @@ namespace qOS {
     } ;
 
     enum class globalState : std::uint8_t {
-        UNDEFINED,  /**< A task should never reach this state(Reserved for internal use) */
+        UNDEFINED,             /**< A task should never reach this state(Reserved for internal use) */
         READY,                 /**< The task has completed preparations for running, but cannot run because a task with a higher precedence is running. */
         WAITING,               /**< The task cannot run because the conditions for running are not in place. */
         SUSPENDED,             /**< The task doesn't take part in what is going on. Normally this state is taken after the ::qRunning state or when the task doesn't reach the ::qReady state*/
@@ -32,20 +32,35 @@ namespace qOS {
 
     class _Event {
         protected:
-            trigger Trigger;
-            bool FirstCall;
-            bool FirstIteration;
-            bool LastIteration;
-            clock_t StartDelay;
+            trigger Trigger{ trigger::None };
+            bool FirstCall{ false };
+            bool FirstIteration{ false };
+            bool LastIteration{ false };
+            clock_t StartDelay{ 0u };
             _Event() = default;
         public:
-            void *TaskData;
-            void *EventData;
-            bool firstCall( void ) const { return FirstCall; }
-            bool firstIteration( void ) const { return FirstIteration; }
-            bool lastIteration( void ) const { return LastIteration; }
-            trigger getTrigger( void ) const { return Trigger; }
-            clock_t startDelay( void ) const { return StartDelay; }
+            void *TaskData{ nullptr };
+            void *EventData{ nullptr };
+            bool firstCall( void ) const noexcept
+            {
+                return FirstCall;
+            }
+            bool firstIteration( void ) const noexcept
+            {
+                return FirstIteration;
+            }
+            bool lastIteration( void ) const noexcept
+            {
+                return LastIteration;
+            }
+            trigger getTrigger( void ) const noexcept
+            {
+                return Trigger;
+            }
+            clock_t startDelay( void ) const noexcept
+            {
+                return StartDelay;
+            }
     };
     using event_t = _Event&;
 
@@ -85,10 +100,10 @@ namespace qOS {
             volatile taskFlag_t flags{ 0uL };
             priority_t priority;
             trigger Trigger{ trigger::None };
-            void setFlags( const std::uint32_t flags, const bool value );
-            bool getFlag( const std::uint32_t flag ) const;
-            bool deadLineReached( void ) const;
-            trigger queueCheckEvents( void );
+            void setFlags( const std::uint32_t flags, const bool value ) noexcept;
+            bool getFlag( const std::uint32_t flag ) const noexcept;
+            bool deadLineReached( void ) const noexcept;
+            trigger queueCheckEvents( void ) noexcept;
             _Event *pEventInfo{ nullptr };
             
             static const std::uint32_t BIT_INIT;
@@ -103,25 +118,25 @@ namespace qOS {
             static const std::uint32_t EVENT_FLAGS_MASK;
             static const std::uint32_t QUEUE_FLAGS_MASK;
 
-            task( task const& ) = delete;      /* not copyable*/
-            void operator=( task const& ) = delete;  /* not assignable*/
+            task( task const& ) = delete;
+            void operator=( task const& ) = delete;
         public:
             task() = default;
-            priority_t getPriority( void ) const;
-            bool setPriority( priority_t pValue );
-            cycles_t getCycles( void ) const;
-            taskState getState( void ) const;
-            bool setState( taskState s );
-            void setIterations( iteration_t iValue );
-            bool setTime( const qOS::time_t tValue );
-            bool setCallback( taskFcn_t callback );
-            bool setData( void *arg );
-            bool setName( const char *name );
-            const char* getName( void ) const;
-            std::size_t getID( void ) const;
-            bool attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg );
-            void* getAttachedObject( void ) const;
-            event_t eventData( void ) const;
+            priority_t getPriority( void ) const noexcept;
+            bool setPriority( priority_t pValue ) noexcept;
+            cycles_t getCycles( void ) const noexcept;
+            taskState getState( void ) const noexcept;
+            bool setState( taskState s ) noexcept;
+            void setIterations( iteration_t iValue ) noexcept;
+            bool setTime( const qOS::time_t tValue ) noexcept;
+            bool setCallback( const taskFcn_t tCallback ) noexcept;
+            bool setData( void *arg ) noexcept;
+            bool setName( const char *tName ) noexcept;
+            const char* getName( void ) const noexcept;
+            std::size_t getID( void ) const noexcept;
+            bool attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg ) noexcept;
+            void* getAttachedObject( void ) noexcept;
+            event_t eventData( void ) const noexcept;
 
             static iteration_t PERIODIC;
             static iteration_t INDEFINITE;

@@ -20,10 +20,13 @@ namespace qOS {
         protected:
             node *next = nullptr;
             node *prev = nullptr;
+            void init( void ) noexcept;
+            node( node const& ) = delete;
+            void operator=( node const& ) = delete;
         public:
             void *container = nullptr;
-            node();
-            void init( void );
+            node() : next(nullptr), prev(nullptr), container(nullptr) {}
+            
         friend class list;
         friend class listIterator;
     };
@@ -44,53 +47,58 @@ namespace qOS {
             node *iter = nullptr;
             listDirection iDir = listDirection::FORWARD;
             std::size_t size = 0u;
-            bool isMember( const void * const xNode ) const;
-            void insertAtFront( node * const xNode );
-            void insertAtBack( node * const xNode );
-            node* removeFront( void );
-            node* removeBack( void );
-            node* getNodeAtIndex( const listPosition p ) const;
-            void givenNodeSwapBoundaries( node *n1, node *n2 );
-            void givenNodeSwapAdjacent( node *n1, node *n2 );
-            void givenNodesUpdateOuterLinks( node *n1, node *n2 );
-            list( list const& ) = delete;      /* not copyable*/
-            void operator=( list const& ) = delete;  /* not assignable*/
+            bool isMember( const void * const xNode ) const noexcept;
+            void insertAtFront( node * const xNode ) noexcept;
+            void insertAtBack( node * const xNode ) noexcept;
+            node* removeFront( void ) noexcept;
+            node* removeBack( void ) noexcept;
+            node* getNodeAtIndex( const listPosition p ) const noexcept;
+            void givenNodeSwapBoundaries( node *n1, node *n2 ) noexcept;
+            void givenNodeSwapAdjacent( node *n1, node *n2 ) noexcept;
+            void givenNodesUpdateOuterLinks( node *n1, node *n2 ) noexcept;
+            list( list const& ) = delete;
+            void operator=( list const& ) = delete;
         public:
-            list();
-            bool insert( void * const xNode, const listPosition p );
-            bool remove( void * const xNode );
-            void* remove( void * const xNode, const listPosition p );
-            void* getFront( void ) const;
-            void* getBack( void ) const;
-            bool isEmpty( void ) const;
-            std::size_t length( void ) const;
-            bool sort( listCompareFcn_t f );
-            bool swap( void* node1, void* node2 );
-            bool move( list *src, const listPosition p );
-            void clean( void );
-            listIterator begin( void );
-            listIterator end( void );
-            listIterator from( void *offset );
+            list() noexcept ;
+            bool insert( void * const xNode, const listPosition p ) noexcept;
+            bool remove( void * const xNode ) noexcept;
+            void* remove( void * const xNode, const listPosition p ) noexcept;
+            void* getFront( void ) const noexcept;
+            void* getBack( void ) const noexcept;
+            bool isEmpty( void ) const noexcept;
+            std::size_t length( void ) const noexcept;
+            bool sort( listCompareFcn_t f ) noexcept;
+            bool swap( void* node1, void* node2 ) noexcept;
+            bool move( list *src, const listPosition p ) noexcept;
+            void clean( void ) noexcept;
+            listIterator begin( void ) noexcept;
+            listIterator end( void ) noexcept;
+            listIterator from( void *offset ) noexcept;
         friend class listIterator;
     };
 
     class listIterator {
         protected:
-            list *l;
-            node *iter = nullptr;
-            void *current = nullptr;
+          list *l{ nullptr };
+          node *iter{ nullptr };
+          void *current{ nullptr };
         public:
             listIterator() = delete;
-            listIterator( list *xList ) : listIterator( xList, listDirection::FORWARD, nullptr ) {}
-            listIterator( list *xList, listDirection dir ) : listIterator( xList, dir, nullptr ) {}
-            listIterator( list *xList, listDirection dir, void *nodeOffset );
-            bool until( void );
-            bool until( void* node );
-            listIterator& operator++( int );
-            listIterator& operator--( int );
+            /*cstat -COP-member-uninit -MISRAC++2008-7-1-2 -MISRAC++2008-0-1-11*/
+            listIterator( list *xList )  noexcept : listIterator( xList, listDirection::FORWARD, nullptr ) {} /*delegate initialization*/
+            listIterator( list *xList, listDirection dir ) noexcept : listIterator( xList, dir, nullptr ) {} /*delegate initialization*/
+            /*cstat -COP-member-uninit +MISRAC++2008-7-1-2 +MISRAC++2008-0-1-11*/
+            listIterator( list *xList, listDirection dir, void *nodeOffset )  noexcept;
+            bool until( void ) noexcept;
+            bool until( void* node ) noexcept;
+            listIterator& operator++( int ) noexcept;
+            listIterator& operator--( int ) noexcept;
             template <typename T>
-            inline T get( void ) {
+            inline T get( void ) noexcept
+            {
+                /*cstat -CERT-EXP36-C_b*/
                 return static_cast<T>( current );
+                /*cstat +CERT-EXP36-C_b*/
             }
     };
 

@@ -9,12 +9,14 @@ static const std::size_t BLOCK_ALLOCATED_BIT = static_cast<std::size_t>( 1u ) <<
 static const std::size_t HEAP_STRUCT_SIZE = ( sizeof(mem::blockConnect_t) + ( BYTE_ALIGN_MASK - static_cast<std::size_t>( 1u ) ) ) & ~BYTE_ALIGN_MASK;
 
 /*============================================================================*/
-bool mem::pool::setup( void *pArea, const std::size_t pSize ) 
+bool mem::pool::setup( void *pArea, const std::size_t pSize ) noexcept
 {
     bool retValue = false;
 
     if ( ( nullptr != pArea ) && ( pSize > 0u ) ) {
+        /*cstat -CERT-EXP36-C_b*/
         poolMemory = static_cast<std::uint8_t*>( pArea );
+        /*cstat +CERT-EXP36-C_b*/
         poolMemSize = pSize;
         freeBytesRemaining = pSize;
         end = nullptr;
@@ -24,15 +26,15 @@ bool mem::pool::setup( void *pArea, const std::size_t pSize )
     return retValue;
 }
 /*============================================================================*/
-void mem::pool::insertBlockIntoFreeList( blockConnect_t *xBlock )
+void mem::pool::insertBlockIntoFreeList( blockConnect_t *xBlock ) noexcept
 {
     mem::blockConnect_t *iterator;
     std::uint8_t *ptr;
 
     for ( iterator = &start ; iterator->next < xBlock ; iterator = iterator->next ) {}
     ptr = reinterpret_cast<std::uint8_t*>( iterator );
-
-    if ( &ptr[ iterator->blockSize ] == (std::uint8_t*)xBlock ) {
+    /*cstat -SEC-NULL-cmp-bef -PTR-null-cmp-bef -CERT-EXP34-C_g*/
+    if ( &ptr[ iterator->blockSize ] == reinterpret_cast<std::uint8_t*>( xBlock ) ) {
         iterator->blockSize += xBlock->blockSize;
         xBlock = iterator;
     }
@@ -49,20 +51,24 @@ void mem::pool::insertBlockIntoFreeList( blockConnect_t *xBlock )
     else {
         xBlock->next = iterator->next;
     }
-
+    /*cstat +SEC-NULL-cmp-bef +PTR-null-cmp-bef +CERT-EXP34-C_g*/
     if ( iterator != xBlock ) {
         iterator->next = xBlock;
     }
 }
 /*============================================================================*/
-void mem::pool::free( void *ptr )
+void mem::pool::free( void *ptr ) noexcept
 {
-    std::uint8_t *pToFree = (std::uint8_t*)ptr;
+    /*cstat -CERT-EXP36-C_b*/
+    std::uint8_t *pToFree = static_cast<std::uint8_t*>( ptr );
+    /*cstat +CERT-EXP36-C_b*/
     if ( nullptr != ptr ) {
         mem::blockConnect_t *xConnect;
 
         pToFree -= HEAP_STRUCT_SIZE;
+        /*cstat -CERT-EXP39-C_d -CERT-EXP36-C_a*/
         xConnect = reinterpret_cast<mem::blockConnect_t*>( pToFree );
+        /*cstat +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         if ( 0u != ( xConnect->blockSize & BLOCK_ALLOCATED_BIT ) ) {
             if ( NULL == xConnect->next ) {
                 /* Free block */
@@ -75,7 +81,7 @@ void mem::pool::free( void *ptr )
     }
 }
 /*============================================================================*/
-void mem::pool::init( void )
+void mem::pool::init( void ) noexcept
 {
     mem::blockConnect_t *firstFreeBlock;
     std::uint8_t  *aligned;
@@ -84,6 +90,7 @@ void mem::pool::init( void )
 
     start.blockSize = static_cast<std::size_t>( 0u );
     start.next = nullptr;
+    /*cstat -CERT-INT36-C -CERT-EXP39-C_d -CERT-EXP36-C_a*/
     address = reinterpret_cast<mem::address_t>( poolMemory );
 
     if ( 0uL != ( address & BYTE_ALIGN_MASK ) ) {
@@ -104,12 +111,13 @@ void mem::pool::init( void )
     end->blockSize = static_cast<std::size_t>( 0u );
     firstFreeBlock = reinterpret_cast<mem::blockConnect_t*>( aligned );
     xAddrTmp = reinterpret_cast<mem::address_t>( firstFreeBlock );
+    /*cstat +CERT-INT36-C +CERT-EXP39-C_d +CERT-EXP36-C_a*/
     firstFreeBlock->blockSize = address - xAddrTmp;
     firstFreeBlock->next = end;
     freeBytesRemaining = firstFreeBlock->blockSize;
 }
 /*============================================================================*/
-void* mem::pool::alloc( std::size_t pSize )
+void* mem::pool::alloc( std::size_t pSize ) noexcept
 {
     void *pAllocated = nullptr;
 
@@ -119,12 +127,14 @@ void* mem::pool::alloc( std::size_t pSize )
     }
 
     if ( pSize > static_cast<std::size_t>( 0u ) ) {
-        std::size_t additional = HEAP_STRUCT_SIZE + Q_BYTE_ALIGNMENT - ( pSize & BYTE_ALIGN_MASK );
+        const std::size_t additional = HEAP_STRUCT_SIZE + Q_BYTE_ALIGNMENT - ( pSize & BYTE_ALIGN_MASK );
         if ( pSize > ( ( ~static_cast<std::size_t>( 0u ) ) - additional ) ) {
             pSize = static_cast<std::size_t>( 0u );
         }
         else {
+            /*cstat -ATH-overflow*/
             pSize += additional;
+            /*cstat +ATH-overflow*/
         }
     }
 
@@ -145,11 +155,15 @@ void* mem::pool::alloc( std::size_t pSize )
                 previousBlock->next = xBlock->next;
                 if ( ( xBlock->blockSize - pSize ) > minBlockSize ) {
                     mem::blockConnect_t *newBlockLink;
+                    /*cstat -MISRAC++2008-7-1-1*/
                     std::uint8_t *pBlockU8 = reinterpret_cast<std::uint8_t*>( xBlock );
-
+                    /*cstat -CERT-EXP39-C_d -CERT-EXP36-C_a +MISRAC++2008-7-1-1*/
                     newBlockLink = reinterpret_cast<mem::blockConnect_t*>( &pBlockU8[ pSize ] );
+                    /*cstat +CERT-EXP39-C_d +CERT-EXP36-C_a*/
                     newBlockLink->blockSize = xBlock->blockSize - pSize;
+                    /*cstat -ATH-overflow*/
                     xBlock->blockSize = pSize;
+                    /*cstat +ATH-overflow*/
                     insertBlockIntoFreeList( newBlockLink );
                 }
                 freeBytesRemaining -= xBlock->blockSize;
@@ -162,7 +176,7 @@ void* mem::pool::alloc( std::size_t pSize )
     return pAllocated;
 }
 /*============================================================================*/
-std::size_t mem::pool::getFreeSize( void )
+std::size_t mem::pool::getFreeSize( void ) noexcept
 {
     std::size_t retValue = poolMemSize;
 
@@ -190,6 +204,7 @@ void * operator new[]( std::size_t size )
     return operator new(size);
 }
 /*============================================================================*/
+/*cstat -MISRAC++2008-7-1-2 -MISRAC++2008-0-1-11 -CPU-delete-void*/
 void * operator new( std::size_t size, void *place ) noexcept
 {
     /* Nothing to do */
@@ -225,5 +240,6 @@ void operator delete[](void* ptr, void* place) noexcept
     (void)place; // unused
     /*Nothing to do*/
 }
+/*cstat +MISRAC++2008-7-1-2 +MISRAC++2008-0-1-11 +CPU-delete-void*/
 /*============================================================================*/
 #endif /*Q_USE_MEM_ALLOCATION_SCHEME*/
