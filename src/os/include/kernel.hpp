@@ -129,7 +129,7 @@ namespace qOS {
             globalState getGlobalState( task &Task ) const noexcept;
     };
 
-    extern core& os;
+    extern core& os; /* skipcq: CXX-W2011 */
 
 }
 
