@@ -1,3 +1,6 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/kmilo17pet/quarkts-cpp/badge)](https://www.codefactor.io/repository/github/kmilo17pet/quarkts-cpp)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b3d75b3d6e2c4733ab87fd8bab6f4dea)](https://app.codacy.com/gh/kmilo17pet/QuarkTS-cpp/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 # qOS: QuarkTS++
 
 qOS is the [QuarkTS](https://github.com/kmilo17pet/QuarkTS) port for C++.
