@@ -98,7 +98,7 @@ namespace qOS {
             iteration_t iterations{ 0 };
             volatile notifier_t notifications{ 0uL };
             volatile taskFlag_t flags{ 0uL };
-            priority_t priority;
+            priority_t priority{ 0u };
             trigger Trigger{ trigger::None };
             void setFlags( const std::uint32_t flags, const bool value ) noexcept;
             bool getFlag( const std::uint32_t flag ) const noexcept;
@@ -114,7 +114,6 @@ namespace qOS {
             static const std::uint32_t BIT_QUEUE_EMPTY;
             static const std::uint32_t BIT_SHUTDOWN;
             static const std::uint32_t BIT_REMOVE_REQUEST;
-
             static const std::uint32_t EVENT_FLAGS_MASK;
             static const std::uint32_t QUEUE_FLAGS_MASK;
 

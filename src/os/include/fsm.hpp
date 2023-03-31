@@ -29,7 +29,7 @@ namespace qOS {
         }
 
         struct _signal_s {
-            signalID id;
+            signalID id{ signalID::SIGNAL_NONE };
             void *data{ nullptr };
         };
         using signal_t = struct _signal_s;
@@ -56,7 +56,7 @@ namespace qOS {
                 state *State{ nullptr };
                 historyMode TransitionHistory{ historyMode::NO_HISTORY };
                 status Status{ SUCCESS };
-                signalID Signal;
+                signalID Signal{ signalID::SIGNAL_NONE };
                 _Handler( _Handler const& ) = delete;      /* not copyable*/
                 void operator=( _Handler const& ) = delete;  /* not assignable*/
             public:
@@ -106,11 +106,11 @@ namespace qOS {
         using timeoutStateDefinition_t = struct _timeoutStateDefinition_s;
 
         struct _transition_s {
-            signalID xSignal;
+            signalID xSignal{ signalID::SIGNAL_NONE };
             signalAction_t guard{ nullptr };
             state *nextState{ nullptr };
             historyMode history{ historyMode::NO_HISTORY };
-            void *signalData;
+            void *signalData{ nullptr };
         };
         using transition_t = struct _transition_s;
 
@@ -168,7 +168,8 @@ namespace qOS {
 
         struct _psIndex_s {
             psReqStatus status;
-            std::size_t sig_slot, sub_slot;
+            std::size_t sig_slot;
+            std::size_t sub_slot;
         };
         using psIndex_t = _psIndex_s;
 

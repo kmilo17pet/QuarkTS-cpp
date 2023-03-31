@@ -13,7 +13,6 @@ static bool taskEntryOrderPreserver( listCompareHandle_t h );
 const priority_t core::LOWEST_PRIORITY = 0u;
 const priority_t core::MEDIUM_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) >> 1u;
 const priority_t core::HIGHEST_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
-
 const notifier_t MAX_NOTIFICATION_VALUE = UINT32_MAX - 1uL;
 
 #if ( Q_CLI == 1 )
@@ -51,7 +50,7 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
     /*cstat -CERT-EXP39-C_d*/
     Task.pEventInfo = static_cast<_Event*>( this );
     /*cstat +CERT-EXP39-C_d*/
-    return waitingList->insert( &Task, AT_BACK );
+    return waitingList.insert( &Task, AT_BACK );
 }
 /*============================================================================*/
 #if ( Q_FSM == 1 )
@@ -111,7 +110,7 @@ bool core::addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, c
         cli.xNotifyFcn = &cliNotifyFcn;
         retValue = true;
     }
-    
+
     return retValue;
 }
 #endif /*Q_CLI*/
@@ -193,11 +192,11 @@ bool core::checkIfReady( void ) noexcept
         }
     #endif
 
-    for( auto i = waitingList->begin() ; i.until() ; i++ ) {
+    for( auto i = waitingList.begin() ; i.until() ; i++ ) {
         xTask = i.get<task*>();
         #if ( Q_NOTIFICATION_SPREADER == 1 )
-            if ( nullptr != nSpreader.mode ) {
-                nSpreader.mode( xTask, nSpreader.eventData );
+            if ( notifyMode::_NONE_ != nSpreader.mode ) {
+                (void)notify( nSpreader.mode, *xTask, nSpreader.eventData );
                 break;
             }
         #endif
@@ -237,7 +236,7 @@ bool core::checkIfReady( void ) noexcept
                 /*task has no available events, put it into a suspended state*/
             }
         }
-        (void)waitingList->remove( nullptr, listPosition::AT_FRONT );
+        (void)waitingList.remove( nullptr, listPosition::AT_FRONT );
         if ( xTask->getFlag( task::BIT_REMOVE_REQUEST ) ) {
             #if ( Q_PRIO_QUEUE_SIZE > 0 )
                 critical::enter();
@@ -248,16 +247,16 @@ bool core::checkIfReady( void ) noexcept
             xTask->setFlags( task::BIT_REMOVE_REQUEST, false );
         }
         else {
-            list * const xList = ( trigger::None != xTask->Trigger ) ? &readyList[ xTask->priority ] : suspendedList;
+            list * const xList = ( trigger::None != xTask->Trigger ) ? &coreLists[ xTask->priority ] : &suspendedList;
             (void)xList->insert( xTask, listPosition::AT_BACK );
         }
     }
     #if ( Q_NOTIFICATION_SPREADER == 1 )
         /*spread operation done, clean-up*/
-        nSpreader.mode = nullptr;
+        nSpreader.mode = notifyMode::_NONE_;
         nSpreader.eventData = nullptr;
     #endif
-    
+
     return xReady;
 }
 /*============================================================================*/
@@ -353,7 +352,7 @@ void core::dispatch( list * const xList ) noexcept
 
         currentTask = nullptr;
         (void)xList->remove( nullptr, listPosition::AT_FRONT );
-        (void)waitingList->insert( xTask, listPosition::AT_BACK );
+        (void)waitingList.insert( xTask, listPosition::AT_BACK );
         #if ( Q_QUEUES == 1 )
             if ( trigger::byQueueReceiver == xTask->Trigger ) {
                 /*remove the data from the attached Queue*/
@@ -395,7 +394,7 @@ bool core::run( void ) noexcept
             priority_t xPriorityListIndex = MAX_PRIORITY_VALUE;
 
             do {
-                list* const xList = &readyList[ xPriorityListIndex ];
+                list* const xList = &coreLists[ xPriorityListIndex ];
                 if ( xList->length() > 0u ) {
                     dispatch( xList );
                 }
@@ -406,11 +405,11 @@ bool core::run( void ) noexcept
                 dispatchIdle();
             }
         }
-        if ( suspendedList->length() > 0u ) {
-            (void)waitingList->move( suspendedList, listPosition::AT_BACK );
+        if ( suspendedList.length() > 0u ) {
+            (void)waitingList.move( suspendedList, listPosition::AT_BACK );
             #if ( Q_PRESERVE_TASK_ENTRY_ORDER == 1 )
                 /*preseve the entry order by sorting the new waiting-list*/
-                (void)waitingList->sort( taskEntryOrderPreserver );
+                (void)waitingList.sort( taskEntryOrderPreserver );
             #endif
         }
     }
@@ -459,6 +458,25 @@ bool core::notify( notifyMode mode, task &Task, void* eventData ) noexcept
         /*nothing to do here*/
     }
 
+    return retValue;
+}
+/*============================================================================*/
+bool core::notify( notifyMode mode, void* eventData ) noexcept
+{
+    bool retValue = false;
+    #if ( Q_NOTIFICATION_SPREADER == 1 )
+        /*do not proceed if any previous operation is in progress*/
+        if ( notifyMode::_NONE_ == nSpreader.mode ) {
+            if ( ( notifyMode::SIMPLE == mode ) || ( notifyMode::QUEUED == mode ) ) {
+                nSpreader.mode = mode;
+                nSpreader.eventData = eventData;
+                retValue = true;
+            }
+        }
+    #else
+        Q_UNUSED( eventData );
+        Q_UNUSED( mode );
+    #endif
     return retValue;
 }
 /*============================================================================*/
@@ -528,6 +546,7 @@ task* core::findTaskByName( const char *name ) noexcept
         for ( std::size_t i = 0u ; ( false == r ) && ( i < maxLists ) ; ++i ) {
             for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
                 task * const xTask = it.get<task*>();
+
                 if ( nullptr != xTask->name ) {
                     if ( 0 == strncmp( name, xTask->name, 32u ) ) {
                         found  = xTask;
@@ -563,10 +582,10 @@ globalState core::getGlobalState( task &Task ) const noexcept
     if ( currentTask == &Task ) {
         retValue = globalState::RUNNING;
     }
-    else if ( waitingList == xList ) {
+    else if ( &waitingList == xList ) {
         retValue = globalState::WAITING;
     }
-    else if ( suspendedList == xList ) {
+    else if ( &suspendedList == xList ) {
         retValue = globalState::SUSPENDED;
     }
     else if ( nullptr == xList ) {
@@ -579,4 +598,3 @@ globalState core::getGlobalState( task &Task ) const noexcept
     return retValue;
 }
 /*============================================================================*/
-

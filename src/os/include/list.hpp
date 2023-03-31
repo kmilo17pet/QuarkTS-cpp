@@ -69,7 +69,7 @@ namespace qOS {
             std::size_t length( void ) const noexcept;
             bool sort( listCompareFcn_t f ) noexcept;
             bool swap( void* node1, void* node2 ) noexcept;
-            bool move( list *src, const listPosition p ) noexcept;
+            bool move( list& src, const listPosition p ) noexcept;
             void clean( void ) noexcept;
             listIterator begin( void ) noexcept;
             listIterator end( void ) noexcept;
@@ -79,15 +79,15 @@ namespace qOS {
 
     class listIterator {
         private:
-          list *l{ nullptr };
-          node *iter{ nullptr };
-          void *current{ nullptr };
+            list *l{ nullptr };
+            node *iter{ nullptr };
+            void *current{ nullptr };
         public:
             listIterator() = delete;
-            listIterator( list *xList, listDirection dir, void *nodeOffset )  noexcept;
+            listIterator( list& xList, listDirection dir, void *nodeOffset )  noexcept;
             /*cstat -COP-member-uninit -MISRAC++2008-7-1-2 -MISRAC++2008-0-1-11*/
-            listIterator( list *xList, listDirection dir ) noexcept : listIterator( xList, dir, nullptr ) {} /*delegate initialization*/
-            listIterator( list *xList ) noexcept : listIterator( xList, listDirection::FORWARD, nullptr ) {} /*delegate initialization*/
+            listIterator( list& xList, listDirection dir ) noexcept : listIterator( xList, dir, nullptr ) {} /*delegate initialization*/
+            listIterator( list& xList ) noexcept : listIterator( xList, listDirection::FORWARD, nullptr ) {} /*delegate initialization*/
             /*cstat -COP-member-uninit +MISRAC++2008-7-1-2 +MISRAC++2008-0-1-11*/
             bool until( void ) noexcept;
             bool until( void* node ) noexcept;

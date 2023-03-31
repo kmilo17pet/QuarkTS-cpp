@@ -95,9 +95,8 @@ namespace qOS {
 #define _reenter1( Handle )                         _co_reenter_impl( Handle )
 #define _reenter0                                   _co_reenter_impl( Q_NONE )
 
-
 /*============================================================================*/
-#define _co_reenter_impl( h )                                                 \
+#define _co_reenter_impl( h )                                                  \
 reenter();                                                                     \
 static qOS::co::_coContext _cr;                                                \
 qOS::co::_coContext *ctx = &_cr;                                               \

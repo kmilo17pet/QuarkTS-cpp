@@ -37,7 +37,7 @@ static char* inputFix( char *s, std::size_t maxlen )
             s[ i ] = '\0';
             break;
         }
-        if ( 0 != isgraph( (int)s[ i ] ) ) {
+        if ( 0 != isgraph( static_cast<int>( s[ i ] ) ) ) {
             if ( 0 == noL ) {
               s[ j++ ] = static_cast<char>( std::tolower( static_cast<int>( s[ i ] ) ) );
             }
@@ -132,7 +132,7 @@ bool commandLineInterface::isrHandler( const char c )
     /*isgraph is known to have no-side effects*/
     /*check if the input is available and incoming chars are valid*/
     /*cstat -MISRAC++2008-5-14-1*/
-    if ( ( false == readyInput ) && ( 0 != isgraph( (int)c ) ) ) {
+    if ( ( false == readyInput ) && ( 0 != isgraph( static_cast<int>( c ) ) ) ) {
         /*to avoid undefined order of volatile accesses*/
         index_t currentIndex = cli::input::index;
         /*cstat -CERT-INT30-C_a*/
@@ -166,9 +166,9 @@ bool commandLineInterface::isrHandler( char *pData, const std::size_t n )
             retValue = isrHandler( pData[ 0 ] );
         }
         else {
-            if ( 0 != isgraph( (int)pData[ 0 ] ) ) {
+            if ( 0 != isgraph( static_cast<int>( pData[ 0 ] ) ) ) {
                 /*find the end of line safely*/
-                if ( nullptr != util::strchr( pData, (int)'\r', maxToInsert ) ) {
+                if ( nullptr != util::strchr( pData, static_cast<int>( '\r' ), maxToInsert ) ) {
                     (void)util::strcpy( cli::input::storage, pData, maxToInsert );
                     retValue = notify();
                 }
@@ -438,9 +438,9 @@ int cli::_Handler::getArgInt( index_t n ) const
 /*============================================================================*/
 float32_t cli::_Handler::getArgFloat( index_t n ) const
 {
-    /*cstat -MISRAC++2008-5-0-6 -MISRAC++2008-5-0-3*/
+    /*cstat -MISRAC++2008-5-0-6 -MISRAC++2008-5-0-3 -CERT-FLP34-C*/
     return util::atof( getArgPtr( n ) );
-    /*cstat +MISRAC++2008-5-0-6 +MISRAC++2008-5-0-3*/
+    /*cstat +MISRAC++2008-5-0-6 +MISRAC++2008-5-0-3 +CERT-FLP34-C*/
 }
 /*============================================================================*/
 std::uint32_t cli::_Handler::getArgHex( index_t n ) const

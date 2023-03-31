@@ -8,8 +8,8 @@ namespace qOS {
 
     class timer {
         private:
-            qOS::clock_t tStart;
-            qOS::clock_t tv;
+            qOS::clock_t tStart{ 0u };
+            qOS::clock_t tv{ 0u };
         public:
             timer();
             bool set( qOS::time_t tTime ) noexcept;

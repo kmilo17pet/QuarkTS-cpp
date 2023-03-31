@@ -11,7 +11,7 @@
     #define Q_ATOF_FULL             ( 0 )
 #endif
 
-#define Q_IO_UTIL_MAX_STRLEN        ( (std::size_t)512u )
+#define Q_IO_UTIL_MAX_STRLEN        ( static_cast<std::size_t>( 512u ) )
 
 using namespace qOS;
 using namespace qOS::util;
@@ -302,7 +302,7 @@ std::uint32_t util::xtou32( const char *s )
                 val = ( val << 4uL ) | static_cast<std::uint32_t>( cxtou8( c ) );
                 ++nParsed;
             }
-            else if ( 0 != isspace( (int)c ) ) {
+            else if ( 0 != isspace( static_cast<int>( c ) ) ) {
                 /*discard any white-space character*/
             }
             else {

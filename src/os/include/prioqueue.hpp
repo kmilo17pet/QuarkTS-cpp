@@ -15,8 +15,8 @@ using queueStack_t = struct _queueStack_s;
 class prioQueue {
     private:
         volatile base_t index = -1;
-        queueStack_t *stack;
-        std::size_t size;
+        queueStack_t *stack{ nullptr };
+        std::size_t size{ 0u };
         prioQueue( prioQueue const& ) = delete;
         void operator=( prioQueue const& ) = delete;
     public:

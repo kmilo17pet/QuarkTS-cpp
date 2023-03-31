@@ -371,43 +371,41 @@ void list::givenNodesUpdateOuterLinks( node *n1, node *n2 ) noexcept
     }
 }
 /*============================================================================*/
-bool list::move( list *src, const listPosition p ) noexcept
+bool list::move( list& src, const listPosition p ) noexcept
 {
     bool retValue = false;
 
-    if ( ( nullptr != src ) && ( p >= listPosition::AT_BACK ) ) {
-        if ( nullptr != src->head) { /*source has items*/
-            node *iNode;
-            for ( listIterator i = src->begin() ; i.until() ; i++ ) {
-                iNode = i.get<node*>();
-                iNode->container = this;
-            }
-            if ( nullptr == this->head ) { /*destination is empty*/
-                this->head = src->head;
-                this->tail = src->tail;
-            }
-            else if ( AT_FRONT == p ) {
-                src->tail->next = this->head;
-                this->head->prev = src->tail;
-                this->head = src->head;
-            }
-            /*cstat -MISRAC++2008-0-1-2_a*/
-            else if ( AT_BACK == p ) {
-                this->tail->next = src->head;
-                src->head->prev = this->tail;
-                this->tail = src->tail;
-            }
-            /*cstat +MISRAC++2008-0-1-2_a*/
-            else { /*insert the new list after the position*/
-                iNode = this->getNodeAtIndex( p );
-                src->tail->next = iNode->next;
-                src->head->prev = iNode;
-                iNode->next = src->head;
-            }
-            this->size += src->size;
-            src->clean(); /*clean up source*/
-            retValue = true;
+    if ( ( nullptr != src.head) && ( p >= listPosition::AT_BACK ) ) {
+        node *iNode;
+        for ( listIterator i = src.begin() ; i.until() ; i++ ) {
+            iNode = i.get<node*>();
+            iNode->container = this;
         }
+        if ( nullptr == this->head ) { /*destination is empty*/
+            this->head = src.head;
+            this->tail = src.tail;
+        }
+        else if ( AT_FRONT == p ) {
+            src.tail->next = this->head;
+            this->head->prev = src.tail;
+            this->head = src.head;
+        }
+        /*cstat -MISRAC++2008-0-1-2_a*/
+        else if ( AT_BACK == p ) {
+            this->tail->next = src.head;
+            src.head->prev = this->tail;
+            this->tail = src.tail;
+        }
+        /*cstat +MISRAC++2008-0-1-2_a*/
+        else { /*insert the new list after the position*/
+            iNode = this->getNodeAtIndex( p );
+            src.tail->next = iNode->next;
+            src.head->prev = iNode;
+            iNode->next = src.head;
+        }
+        this->size += src.size;
+        src.clean(); /*clean up source*/
+        retValue = true;
     }
 
     return retValue;
@@ -422,35 +420,35 @@ void list::clean( void ) noexcept
 /*============================================================================*/
 listIterator list::begin( void ) noexcept
 {
-    listIterator it( this, listDirection::FORWARD, nullptr );
+    listIterator it( *this, listDirection::FORWARD, nullptr );
     return it;
 }
 /*============================================================================*/
 listIterator list::end( void ) noexcept
 {
-    listIterator it( this, listDirection::BACKWARD, nullptr );
+    listIterator it( *this, listDirection::BACKWARD, nullptr );
     return it;
 }
 /*============================================================================*/
 listIterator list::from( void *offset ) noexcept
 {
-    listIterator it( this, listDirection::FORWARD, offset );
+    listIterator it( *this, listDirection::FORWARD, offset );
     return it;
 }
 /*============================================================================*/
-listIterator::listIterator( list *xList, listDirection dir, void *nodeOffset ) noexcept
+listIterator::listIterator( list& xList, listDirection dir, void *nodeOffset ) noexcept
 {
     node *ret;
     /*cstat -CERT-EXP36-C_b*/
     node * const offset = static_cast<node*>( nodeOffset );
     /*cstat +CERT-EXP36-C_b*/
-    l = xList;
+    l = &xList;
     if ( listDirection::FORWARD == dir ) {
-        ret = ( xList->isMember( nodeOffset) ) ? offset : xList->head;
+        ret = ( xList.isMember( nodeOffset ) ) ? offset : xList.head;
         iter = ( nullptr != ret ) ? ret->next : nullptr;
     }
     else {
-        ret = ( xList->isMember( nodeOffset ) ) ? offset : xList->tail;
+        ret = ( xList.isMember( nodeOffset ) ) ? offset : xList.tail;
         iter = ( nullptr != ret ) ? ret->prev : nullptr;
     }
     current = static_cast<void*>( ret );

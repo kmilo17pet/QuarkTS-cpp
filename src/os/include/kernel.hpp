@@ -22,18 +22,17 @@
 namespace qOS {
 
     using coreFlags_t = std::uint32_t ;
-    using notificationSpreaderFcn_t = bool (*)( task * const, void* );
 
+    enum class notifyMode : std::uint8_t {
+        SIMPLE = 0u,
+        QUEUED = 1u,
+        _NONE_ = 3u,
+    };
     struct _notificationSpreader_s {
-        notificationSpreaderFcn_t mode;
+        notifyMode mode;
         void *eventData;
     };
     using notificationSpreader_t = struct _notificationSpreader_s;
-
-    enum class notifyMode : std::uint8_t {
-        SIMPLE,
-        QUEUED
-    };
 
     class core : protected _Event {
         private:
@@ -44,12 +43,12 @@ namespace qOS {
             queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
             prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(queueStack_t) };
             volatile coreFlags_t flag{ 0uL };
-            notificationSpreader_t nSpreader{ nullptr, nullptr };
+            notificationSpreader_t nSpreader{ notifyMode::_NONE_, nullptr };
             std::size_t taskEntries{ 0uL };
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
-            list* waitingList{ &coreLists[ Q_PRIORITY_LEVELS ] };
-            list* suspendedList{ &coreLists[ Q_PRIORITY_LEVELS + 1 ] };
-            list* readyList{ &coreLists[ 0 ] };
+            list& waitingList{ coreLists[ Q_PRIORITY_LEVELS ] };
+            list& suspendedList{ coreLists[ Q_PRIORITY_LEVELS + 1 ] };
+            list& readyList{ coreLists[ 0 ] };
             const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
             const std::uint32_t BIT_INIT = 0x00000001uL;
             const std::uint32_t BIT_FCALL_IDLE = 0x00000002uL;
@@ -60,13 +59,7 @@ namespace qOS {
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
             void dispatch( list * const xList ) noexcept;
             void dispatchIdle( void ) noexcept;
-            core()
-            {
-                for ( index_t i = 0u ; i < Q_PRIO_QUEUE_SIZE ; ++i ) {
-                    pq_stack[ i ].queueData = nullptr;
-                    pq_stack[ i ].Task = nullptr;
-                }
-            }
+            core() = default;
         public:
             static const priority_t LOWEST_PRIORITY;
             static const priority_t MEDIUM_PRIORITY;
@@ -118,6 +111,15 @@ namespace qOS {
             bool removeTask( task &Task ) noexcept;
             bool run( void ) noexcept;
             bool notify( notifyMode mode, task &Task, void* eventData ) noexcept;
+            inline bool notify( notifyMode mode, task &Task ) noexcept
+            {
+                return notify( mode, Task, nullptr );
+            }
+            bool notify( notifyMode mode, void* eventData ) noexcept;
+            inline bool notify( notifyMode mode ) noexcept
+            {
+                return notify( mode, nullptr );
+            }
             bool hasPendingNotifications( task &Task ) noexcept;
             bool eventFlagsModify( task &Task, const taskFlag_t tFlags, const bool action ) noexcept;
             taskFlag_t eventFlagsRead( task &Task ) const noexcept;
