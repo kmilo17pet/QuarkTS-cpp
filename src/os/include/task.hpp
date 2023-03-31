@@ -137,9 +137,9 @@ namespace qOS {
             void* getAttachedObject( void ) noexcept;
             event_t eventData( void ) const noexcept;
 
-            static iteration_t PERIODIC;
-            static iteration_t INDEFINITE;
-            static iteration_t SINGLE_SHOT;
+            static const iteration_t PERIODIC;
+            static const iteration_t INDEFINITE;
+            static const iteration_t SINGLE_SHOT;
     };
 
 }

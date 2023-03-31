@@ -3,9 +3,9 @@
 
 using namespace qOS;
 
-iteration_t task::PERIODIC = INT32_MIN;
-iteration_t task::INDEFINITE = task::PERIODIC;
-iteration_t task::SINGLE_SHOT = 1;
+const iteration_t task::PERIODIC = INT32_MIN;
+const iteration_t task::INDEFINITE = task::PERIODIC;
+const iteration_t task::SINGLE_SHOT = 1;
 
 const std::uint32_t task::BIT_INIT = 0x00000001uL;
 const std::uint32_t task::BIT_ENABLED = 0x00000002uL;

@@ -3,12 +3,12 @@
 using namespace qOS;
 using namespace qOS::critical;
 
-typedef struct _Handler_s {
+struct _Handler_s {
     int_disabler_t disable;     /*< Point to the user-supplied function used to disable the hardware interrupts. */
     int_restorer_t restore;     /*< Point to the user-supplied function used to restore the hardware interrupts. */
     volatile std::uint32_t flags;    /*< To save the current interrupt flags before the disable action is performed. */
-} criticalHandler_t;
-
+};
+using criticalHandler_t = struct _Handler_s;
 static criticalHandler_t c = { nullptr, nullptr , 0uL };
 
 /*============================================================================*/

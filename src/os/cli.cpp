@@ -4,10 +4,10 @@
 
 using namespace qOS;
 
-static const char *Q_CLI_DEFAULT_AT_COMMAND = "at";
-static const char *Q_CLI_DEFAULT_ID_COMMAND = "atid";
-static const char *Q_CLI_DEFAULT_NOTALLOWED_RSP_STRING = ":NOT ALLOWED";
-static const char *Q_CLI_DEFAULT_DEVID_STRING = "QuarkTS CLI";
+static const char * const Q_CLI_DEFAULT_AT_COMMAND = "at";
+static const char * const Q_CLI_DEFAULT_ID_COMMAND = "atid";
+static const char * const Q_CLI_DEFAULT_NOTALLOWED_RSP_STRING = ":NOT ALLOWED";
+static const char * const Q_CLI_DEFAULT_DEVID_STRING = "QuarkTS CLI";
 static const std::size_t Q_CLI_MIN_INPUT_LENGTH = 3u;
 static const std::size_t Q_CLI_RECOMMENDED_INPUT_SIZE = 128u;
 static std::size_t CMD_MASK_ARG_MAX_NUM( cli::options_t opt );
