@@ -134,7 +134,7 @@ namespace qOS {
             const char* getName( void ) const noexcept;
             std::size_t getID( void ) const noexcept;
             bool attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg ) noexcept;
-            void* getAttachedObject( void ) noexcept;
+            void * const & getAttachedObject( void ) const noexcept;
             event_t eventData( void ) const noexcept;
 
             static const iteration_t PERIODIC;

@@ -323,27 +323,27 @@ bool stateMachine::timeoutStop( index_t xTimeout ) noexcept
     return retValue;
 }
 /*============================================================================*/
-const sm::state* stateMachine::getTop( void ) const noexcept
+const sm::state& stateMachine::getTop( void ) const noexcept
 {
-    return &top;
+    return top;
 }
 /*============================================================================*/
-sm::state* stateMachine::getCurrent( void ) noexcept
+sm::state * const & stateMachine::getCurrent( void ) const noexcept
 {
     return current;
 }
 /*============================================================================*/
-queue* stateMachine::getQueue( void ) noexcept
+queue * const & stateMachine::getQueue( void ) const noexcept
 {
     return sQueue;
 }
 /*============================================================================*/
-sm::timeoutSpec* stateMachine::getTimeSpec( void ) noexcept
+sm::timeoutSpec * const & stateMachine::getTimeSpec( void ) const noexcept
 {
     return timeSpec;
 }
 /*============================================================================*/
-void* stateMachine::getData( void ) noexcept
+void * const & stateMachine::getData( void ) const noexcept
 {
     return mData;
 }

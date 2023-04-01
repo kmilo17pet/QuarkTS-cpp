@@ -254,11 +254,11 @@ namespace qOS {
             bool installTimeoutSpec( sm::timeoutSpec &ts ) noexcept;
             bool timeoutSet( index_t xTimeout, qOS::time_t t ) noexcept;
             bool timeoutStop( index_t xTimeout ) noexcept;
-            const sm::state* getTop( void ) const noexcept;
-            sm::state* getCurrent( void ) noexcept;
-            queue* getQueue( void ) noexcept;
-            sm::timeoutSpec* getTimeSpec( void ) noexcept;
-            void* getData( void ) noexcept;
+            const sm::state& getTop( void ) const noexcept;
+            sm::state * const & getCurrent( void ) const noexcept;
+            queue * const & getQueue( void ) const noexcept;
+            sm::timeoutSpec * const & getTimeSpec( void ) const noexcept;
+            void * const & getData( void ) const noexcept;
             void setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept;
             bool subscribeToSignal( sm::signalID s ) noexcept;
             bool unsubscribeFromSignal( sm::signalID s ) noexcept;

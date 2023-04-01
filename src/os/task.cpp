@@ -243,7 +243,7 @@ bool task::attachQueue( queue &q, const queueLinkMode mode, const std::size_t ar
     return retValue;
 }
 /*============================================================================*/
-void* task::getAttachedObject( void ) noexcept
+void * const & task::getAttachedObject( void ) const noexcept
 {
     return aObj;
 }
