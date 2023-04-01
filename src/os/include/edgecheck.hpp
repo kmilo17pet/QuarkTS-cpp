@@ -63,7 +63,6 @@ namespace qOS {
             edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept;
             bool addNode( ec::node& n, void *portAddress, const index_t pinNumber) noexcept;
             bool update( void ) noexcept;
-            ec::pinState getNodeStatue( void ) noexcept;
     };
 
 }
