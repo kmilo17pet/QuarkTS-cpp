@@ -180,7 +180,7 @@
                 </option>
                 <option>
                     <name>DSPExtension</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>TrustZone</name>
@@ -2145,6 +2145,9 @@
     <group>
         <name>include</name>
         <file>
+            <name>$PROJ_DIR$\..\src\os\include\byteBuffer.hpp</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\src\os\include\cli.hpp</name>
         </file>
         <file>
@@ -2155,6 +2158,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\os\include\critical.hpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\os\include\edgecheck.hpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\os\include\fsm.hpp</name>
@@ -2178,6 +2184,9 @@
             <name>$PROJ_DIR$\..\src\os\include\queue.hpp</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\src\os\include\response.hpp</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\src\os\include\task.hpp</name>
         </file>
         <file>
@@ -2191,6 +2200,9 @@
         </file>
     </group>
     <file>
+        <name>$PROJ_DIR$\..\src\os\byteBuffer.cpp</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\..\src\os\cli.cpp</name>
     </file>
     <file>
@@ -2201,6 +2213,9 @@
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\os\critical.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\..\src\os\edgecheck.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\os\fsm.cpp</name>
@@ -2222,6 +2237,9 @@
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\os\queue.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\..\src\os\response.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\os\task.cpp</name>

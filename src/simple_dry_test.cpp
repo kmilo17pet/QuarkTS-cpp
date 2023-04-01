@@ -121,9 +121,6 @@ uint32_t clockProvider( void ) {
 
 int main()
 {
-
-
-
     t1.setName( "t1");
     t2.setName( "t2");
     t3.setName( "t3");

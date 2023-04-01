@@ -341,7 +341,7 @@ void commandLineInterface::handleResponse( cli::response retval )
                 if ( static_cast<base_t>( retval ) < 0 ) {
                     const std::int32_t errorCode = cli::ERROR_CODE( static_cast<int16_t>( retval ) );
 
-                    (void)util::itoa( errorCode, handler.Output, 10u );
+                    (void)util::integerToString( errorCode, handler.Output, 10u );
                     (void)util::outputString( outputFcn, nullptr, er_rsp, false );
                     outputFcn( nullptr, ':' );
                     (void)util::outputString( outputFcn, nullptr, handler.Output, false );
@@ -433,19 +433,19 @@ char* cli::_Handler::getArgPtr( index_t n ) const
 /*============================================================================*/
 int cli::_Handler::getArgInt( index_t n ) const
 {
-    return util::atoi( getArgPtr( n ) );
+    return util::stringToInt( getArgPtr( n ) );
 }
 /*============================================================================*/
 float32_t cli::_Handler::getArgFloat( index_t n ) const
 {
     /*cstat -MISRAC++2008-5-0-6 -MISRAC++2008-5-0-3 -CERT-FLP34-C*/
-    return util::atof( getArgPtr( n ) );
+    return util::stringToFloat( getArgPtr( n ) );
     /*cstat +MISRAC++2008-5-0-6 +MISRAC++2008-5-0-3 +CERT-FLP34-C*/
 }
 /*============================================================================*/
 std::uint32_t cli::_Handler::getArgHex( index_t n ) const
 {
-    return util::xtou32( getArgPtr( n ) );
+    return util::hexStringToUnsigned( getArgPtr( n ) );
 }
 /*============================================================================*/
 char* cli::_Handler::getArgString( index_t n, char *pOut )

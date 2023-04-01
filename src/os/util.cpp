@@ -2,7 +2,7 @@
 #include "helper.hpp"
 #include <cstring>
 #include <cctype>
-
+#include "config.h"
 
 #ifndef  Q_MAX_FTOA_PRECISION
     #define Q_MAX_FTOA_PRECISION    ( 10u )
@@ -21,7 +21,7 @@ static const char * checkStrSign( const char *s, int *sgn );
 static std::size_t xBaseU32toA( std::uint32_t num, char* str, std::uint8_t base );
 static char nibbleToX( std::uint8_t value );
 static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip, bool operation );
-static std::uint8_t cxtou8( const char c ) ;
+static std::uint8_t hexCharToUnsigned( const char c ) ;
 
 /*============================================================================*/
 static const char * discardWhitespaces( const char *s, std::size_t maxlen )
@@ -280,13 +280,13 @@ bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t
     return operationIO( fcn, pStorage, pData, n, aip, true );
 }
 /*============================================================================*/
-static std::uint8_t cxtou8( const char c ) /* <c> should only contain a valid hex character*/
+static std::uint8_t hexCharToUnsigned( const char c ) /* <c> should only contain a valid hex character*/
 {
     const std::uint8_t b = static_cast<std::uint8_t>( c );
     return static_cast<std::uint8_t>( ( ( b & 0xFu ) + ( b >> 6u ) ) | ( ( b >> 3u ) & 0x8u ) );
 }
 /*============================================================================*/
-std::uint32_t util::xtou32( const char *s )
+std::uint32_t util::hexStringToUnsigned( const char *s )
 {
     std::uint32_t val = 0uL;
 
@@ -299,7 +299,7 @@ std::uint32_t util::xtou32( const char *s )
         while ( ( '\0' != *s ) && ( nParsed < 8u ) ) {
             const char c = *s++;
             if ( 0 != isxdigit( static_cast<int>( c ) ) ) {
-                val = ( val << 4uL ) | static_cast<std::uint32_t>( cxtou8( c ) );
+                val = ( val << 4uL ) | static_cast<std::uint32_t>( hexCharToUnsigned( c ) );
                 ++nParsed;
             }
             else if ( 0 != isspace( static_cast<int>( c ) ) ) {
@@ -314,22 +314,22 @@ std::uint32_t util::xtou32( const char *s )
     return val;
 }
 /*============================================================================*/
-float64_t util::atof( const char *s )
+float32_t util::stringToFloat( const char *s )
 {
-    float64_t rez = 0.0, fact;
+    float32_t rez = 0.0f, fact;
     bool point_seen = false;
     int sgn = 1;
     char c;
 
     #if ( Q_ATOF_FULL == 1 )
         int power2 = 0, powerSign = 1;
-        float64_t power = 1.0, eFactor;
+        float32_t power = 1.0f, eFactor;
     #endif
 
     s = discardWhitespaces( s, Q_IO_UTIL_MAX_STRLEN );
     s = checkStrSign( s, &sgn );
     /*cstat -CERT-FLP36-C*/
-    fact = static_cast<float64_t>( sgn );
+    fact = static_cast<float32_t>( sgn );
     /*cstat -MISRAC++2008-6-2-1*/
     while ( '\0' != static_cast<uint8_t>( c = *s ) ) {
         if ( '.' == c ) {
@@ -337,9 +337,9 @@ float64_t util::atof( const char *s )
         }
         else if ( 0 != isdigit( static_cast<int>( c ) ) ) {
             if ( true == point_seen ) {
-                fact *= 0.1;
+                fact *= 0.1f;
             }
-            rez = ( rez * 10.0 ) + ( static_cast<float64_t>( c ) ) - 48.0; /*CERT-FLP36-C deviation allowed*/
+            rez = ( rez * 10.0f ) + ( static_cast<float32_t>( c ) ) - 48.0f; /*CERT-FLP36-C deviation allowed*/
         }
         else {
             break;
@@ -351,7 +351,9 @@ float64_t util::atof( const char *s )
     if ( ( 'e' == *s ) || ( 'E' == *s ) ) {
         s++;
         if ( ( '-' == *s ) || ( '+' == *s ) ) {
+            /*cstat -MISRAC++2008-5-0-3*/
             powerSign = ( '-' == *s ) ? -1 : 1;
+            /*cstat +MISRAC++2008-5-0-3*/
             s++;
         }
         while ( 0 != isdigit( static_cast<int>( *s ) ) ) {
@@ -359,7 +361,7 @@ float64_t util::atof( const char *s )
             s++;
         }
         if ( power2 > 0 ) {
-            eFactor = ( -1 == powerSign ) ? 0.1 : 10.0;
+            eFactor = ( -1 == powerSign ) ? 0.1f : 10.0f;
             while ( 0 != power2 ) {
                 power *= eFactor;
                 --power2;
@@ -373,7 +375,7 @@ float64_t util::atof( const char *s )
     #endif
 }
 /*============================================================================*/
-char* util::ftoa( float32_t num, char *str, std::uint8_t precision )
+char* util::floatToString( float32_t num, char *str, std::uint8_t precision )
 {
     if ( nullptr != str ) {
         std::uint32_t u = 0u;
@@ -411,7 +413,7 @@ char* util::ftoa( float32_t num, char *str, std::uint8_t precision )
             /*cstat +CERT-FLP36-C*/
             str[ i ] = '\0';
         }
-        else if ( 0x7F800000U == u ) {
+        else if ( 0x7F800000u == u ) {
             str[ 0 ] = ( num > 0.0f ) ? '+' : '-';
             (void)util::strcpy( &str[ 1 ] , "inf", 4 );
         }
@@ -423,7 +425,7 @@ char* util::ftoa( float32_t num, char *str, std::uint8_t precision )
     return str;
 }
 /*============================================================================*/
-int util::atoi( const char *s )
+int util::stringToInt( const char *s )
 {
     int retValue = 0;
 
@@ -449,7 +451,7 @@ int util::atoi( const char *s )
     return retValue;
 }
 /*============================================================================*/
-char* util::utoa( std::uint32_t num, char* str, std::uint8_t base )
+char* util::unsignedToString( std::uint32_t num, char* str, std::uint8_t base )
 {
     if ( nullptr != str ) {
         std::size_t i;
@@ -462,7 +464,7 @@ char* util::utoa( std::uint32_t num, char* str, std::uint8_t base )
     return str;
 }
 /*============================================================================*/
-char* util::itoa( std::int32_t num, char* str, std::uint8_t base )
+char* util::integerToString( std::int32_t num, char* str, std::uint8_t base )
 {
     if ( nullptr != str ) {
         std::size_t i = 0u;
@@ -485,7 +487,7 @@ char* util::itoa( std::int32_t num, char* str, std::uint8_t base )
     return str;
 }
 /*============================================================================*/
-char* util::btoa( const bool num, char *str )
+char* util::boolToString( const bool num, char *str )
 {
     if ( nullptr != str ) {
         ( num ) ? (void)util::strcpy( str, "true", 5 )

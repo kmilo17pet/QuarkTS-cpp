@@ -19,13 +19,13 @@ namespace qOS {
         bool printXData( util::putChar_t fcn, void* pStorage, void *pData, std::size_t n );
         bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip );
         bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip );
-        std::uint32_t xtou32( const char *s );
-        float64_t atof( const char *s );
-        char* ftoa( float32_t num, char *str, std::uint8_t precision );
-        int atoi( const char *s );
-        char* utoa( std::uint32_t num, char* str, std::uint8_t base );
-        char* itoa( std::int32_t num, char* str, std::uint8_t base );
-        char* btoa( const bool num, char *str );
+        std::uint32_t hexStringToUnsigned( const char *s );
+        float32_t stringToFloat( const char *s );
+        char* floatToString( float32_t num, char *str, std::uint8_t precision );
+        int stringToInt( const char *s );
+        char* unsignedToString( std::uint32_t num, char* str, std::uint8_t base );
+        char* integerToString( std::int32_t num, char* str, std::uint8_t base );
+        char* boolToString( const bool num, char *str );
     }
 }
 

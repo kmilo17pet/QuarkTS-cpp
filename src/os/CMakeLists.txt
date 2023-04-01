@@ -18,6 +18,9 @@ add_library( ${PROJECT_NAME} STATIC
              util.cpp
              cli.cpp
              memory.cpp
+             bytebuffer.cpp
+             response.cpp
+             edgecheck.cpp
            )
 
 

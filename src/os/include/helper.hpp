@@ -4,43 +4,43 @@
 #include "types.hpp"
 
 namespace qOS {
-
+    /*cstat -CERT-INT34-C_a -MISRAC++2008-5-0-10*/
     template <typename T, typename V>
     inline void bitsSet( T &dst, V xBits )
     {
-        dst |= xBits;
+        dst |= static_cast<T>( xBits );
     }
 
     template <typename T, typename V>
     inline void bitsClear( T &dst, V xBits )
     {
-        dst &= ~xBits;
+        dst &= ~static_cast<T>( xBits );
     }
-    /*cstat -CERT-INT34-C_a*/
+
     template <typename T>
     inline void bitSet( T &dst, const std::size_t xBit )
     {
-        dst |= ( static_cast<T>( 1u ) << xBit );
+        dst |= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
     }
 
     template <typename T>
     inline void bitClear( T &dst, const std::size_t xBit )
     {
-        dst &= ~( static_cast<T>( 1u ) << xBit ); 
+        dst &= ~( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
     }
-    /*cstat +CERT-INT34-C_a*/
+
     template <typename T>
     inline bool bitRead( T dst, const std::size_t xBit )
     {
-        return ( false == ( dst & ( 1u << xBit ) ) ) ? false : true;
+        return ( static_cast<T>( 0u ) == ( dst & ( static_cast<T>( 1u ) << static_cast<T>( xBit ) ) ) ) ? false : true;
     }
 
     template <typename T>
     inline void bitToggle( T &dst, const std::size_t xBit )
     {
-        dst ^= ( 1u << xBit );
+        dst ^= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
     }
-
+    /*cstat +CERT-INT34-C_a +MISRAC++2008-5-0-10*/
     template <typename T>
     inline void bitWrite( T &dst, const std::size_t xBit, const bool value )
     {
