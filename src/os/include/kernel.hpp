@@ -67,7 +67,6 @@ namespace qOS {
             static core& getInstance( void ) noexcept;
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
-            
             void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback ) noexcept;
             bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s, void *arg ) noexcept;
             inline bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s ) noexcept

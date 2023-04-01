@@ -105,7 +105,6 @@ namespace qOS {
             bool deadLineReached( void ) const noexcept;
             trigger queueCheckEvents( void ) noexcept;
             _Event *pEventInfo{ nullptr };
-            
             static const std::uint32_t BIT_INIT;
             static const std::uint32_t BIT_ENABLED;
             static const std::uint32_t BIT_QUEUE_RECEIVER;
@@ -116,7 +115,6 @@ namespace qOS {
             static const std::uint32_t BIT_REMOVE_REQUEST;
             static const std::uint32_t EVENT_FLAGS_MASK;
             static const std::uint32_t QUEUE_FLAGS_MASK;
-
             task( task const& ) = delete;
             void operator=( task const& ) = delete;
         public:
@@ -136,7 +134,6 @@ namespace qOS {
             bool attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg ) noexcept;
             void * const & getAttachedObject( void ) const noexcept;
             event_t eventData( void ) const noexcept;
-
             static const iteration_t PERIODIC;
             static const iteration_t INDEFINITE;
             static const iteration_t SINGLE_SHOT;
