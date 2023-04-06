@@ -17,12 +17,12 @@ const sm::timeoutSpecOption_t sm::TIMEOUT_KEEP_IF_SET = 0x10000000uL;
 const sm::timeoutSpecOption_t sm::TIMEOUT_PERIODIC = 0x20000000uL;
 
 /*============================================================================*/
-bool sm::_Handler::timeoutSet( index_t i, qOS::time_t t ) noexcept
+bool sm::_Handler::timeoutSet( const index_t i, const qOS::time_t t ) noexcept
 {
     return thisMachine()->timeoutSet( i, t );
 }
 /*============================================================================*/
-bool sm::_Handler::timeoutStop( index_t i ) noexcept
+bool sm::_Handler::timeoutStop( const index_t i ) noexcept
 {
     return thisMachine()->timeoutStop( i );
 }
@@ -282,7 +282,7 @@ bool sm::state::setTimeouts( sm::timeoutStateDefinition_t *def, std::size_t n ) 
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::timeoutSet( index_t xTimeout, qOS::time_t t ) noexcept
+bool stateMachine::timeoutSet( const index_t xTimeout, const qOS::time_t t ) noexcept
 {
     bool retValue = false;
 
@@ -295,7 +295,7 @@ bool stateMachine::timeoutSet( index_t xTimeout, qOS::time_t t ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::timeoutStop( index_t xTimeout ) noexcept
+bool stateMachine::timeoutStop( const index_t xTimeout ) noexcept
 {
     bool retValue = false;
 

@@ -64,17 +64,13 @@ namespace qOS {
                 void *SignalData{ nullptr };
                 void *Data{ nullptr };
                 void *StateData{ nullptr };
-                void nextState( state &s ) noexcept
+                void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
                 {
                     NextState = &s;
-                }
-                void nextState( state *s, historyMode m ) noexcept
-                {
-                    NextState = s;
                     TransitionHistory = m;
                 }
-                bool timeoutSet( index_t i, qOS::time_t t ) noexcept;
-                bool timeoutStop( index_t i ) noexcept;
+                bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
+                bool timeoutStop( const index_t i ) noexcept;
                 state* thisState( void ) noexcept
                 {
                     return State;
@@ -220,13 +216,9 @@ namespace qOS {
         public:
             void *mData{ nullptr };
             stateMachine() = default;
-            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn, void* pData = nullptr)  noexcept
+            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn = nullptr, void* pData = nullptr)  noexcept
             {
                 return setup( topFcn, &init, sFcn, pData );
-            }
-            inline bool setup( sm::stateCallback_t topFcn, sm::state &init ) noexcept
-            {
-                return setup( topFcn, &init, nullptr, nullptr );
             }
             inline bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
             {
@@ -240,8 +232,8 @@ namespace qOS {
             bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
             bool sendSignalToSubscribers( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
             bool installTimeoutSpec( sm::timeoutSpec &ts ) noexcept;
-            bool timeoutSet( index_t xTimeout, qOS::time_t t ) noexcept;
-            bool timeoutStop( index_t xTimeout ) noexcept;
+            bool timeoutSet( const index_t xTimeout, const qOS::time_t t ) noexcept;
+            bool timeoutStop( const index_t xTimeout ) noexcept;
             const sm::state& getTop( void ) const noexcept;
             sm::state * const & getCurrent( void ) const noexcept;
             queue * const & getQueue( void ) const noexcept;
