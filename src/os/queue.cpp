@@ -11,8 +11,8 @@ bool queue::setup( void *pData, const std::size_t size, const std::size_t count 
     bool retValue = false;
 
     if ( ( nullptr != pData ) && ( size > 0u ) && ( count > 0u ) ) {
-        this->itemsCount = count; /* Initialise the queue members*/
-        this->itemSize = size;
+        itemsCount = count; /* Initialise the queue members*/
+        itemSize = size;
         /*cstat -CERT-EXP36-C_b*/
         head = static_cast<std::uint8_t*>( pData );
         /*cstat +CERT-EXP36-C_b*/

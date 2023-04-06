@@ -115,9 +115,8 @@ bool stateMachine::installSignalQueue( queue& q ) noexcept
 /*============================================================================*/
 void sm::state::sweepTransitionTable( sm::_Handler &h ) noexcept
 {
-    std::size_t n;
-    sm::transition_t *iTransition;
-    n = tEntries;
+    const std::size_t n = tEntries;
+    const sm::transition_t *iTransition;
     
     for ( std::size_t i = 0u ; i < n ; ++i ) {
         iTransition = &tTable[ i ]; /*get the i-element from the table*/
@@ -262,10 +261,9 @@ void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::sign
 /*============================================================================*/
 bool stateMachine::installTimeoutSpec( sm::timeoutSpec &ts ) noexcept
 {
-    timeSpec = &ts;
     for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
-        timeSpec->timeout[ i ].disarm();
-        timeSpec->isPeriodic = 0u;
+        ts.timeout[ i ].disarm();
+        ts.isPeriodic = 0u;
     }
 
     return true;
@@ -524,13 +522,12 @@ uint8_t stateMachine::levelsToLCA( sm::state *target ) noexcept
         xLca = 1u; /*recursive transition, only a level needs to be performed*/
     }
     else {
-        sm::state *s, *t;
         bool xBreak = false;
         std::uint8_t n = 0u;
 
-        for ( s = source ; ( nullptr != s ) && ( false == xBreak ) ; s = s->parent ) {
+        for ( sm::state *s = source ; ( nullptr != s ) && ( false == xBreak ) ; s = s->parent ) {
             /*cstat -MISRAC++2008-6-5-2*/
-            for ( t = target ; nullptr != t ; t = t->parent ) {
+            for ( sm::state *t = target ; nullptr != t ; t = t->parent ) {
                 if ( s == t ) {
                     xLca = n;
                     xBreak = true;

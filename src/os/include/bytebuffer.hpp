@@ -16,7 +16,7 @@ namespace qOS {
             void operator=( byteBuffer const& ) = delete;
         public:
             byteBuffer() = default;
-            bool setup( volatile std::uint8_t *pBuffer, const size_t length ) noexcept;
+            bool setup( volatile std::uint8_t *pBuffer, const std::size_t length ) noexcept;
             bool put( const std::uint8_t bData ) noexcept;
             bool read( void *dst, const std::size_t n ) noexcept;
             bool get( std::uint8_t *dst ) noexcept;

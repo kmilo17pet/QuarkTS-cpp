@@ -37,8 +37,7 @@ void task::setFlags( const std::uint32_t flags, const bool value ) noexcept
 /*============================================================================*/
 bool task::getFlag( const std::uint32_t flag ) const noexcept
 {
-    std::uint32_t xBit;
-    xBit = this->flags & flag;
+    const std::uint32_t xBit = this->flags & flag;
     return ( 0uL != xBit );
 }
 /*============================================================================*/
@@ -87,6 +86,7 @@ bool task::deadLineReached( void ) const noexcept
             /*check the time deadline*/
             const clock_t interval = time.getInterval();
             const bool expired = time.expired();
+
             if ( ( 0uL == interval ) || expired ) {
                 retValue = true;
             }

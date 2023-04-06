@@ -31,7 +31,7 @@ responseStatus response::received( const char *pattern, const std::size_t n, qOS
     responseStatus retValue = responseStatus::MISSING;
 
     if ( ( false == responseReceived ) && ( 0u == patternLength ) ) {
-        (void)util::strcpy( pattern2Match, (const char*)pattern, maxStrLength );
+        (void)util::strcpy( pattern2Match, pattern, maxStrLength );
         patternLength = ( 0u == n ) ? util::strlen( pattern, maxStrLength ) : n;
         matchedCount = 0u; /*reinitialize the chars match count*/
         responseReceived = false; /*clear the ready flag*/

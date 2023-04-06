@@ -259,7 +259,7 @@ bool commandLineInterface::raise( const char *cmd )
     if ( nullptr != cmd ) {
         const bool readyInput = cli::input::ready;
         const std::size_t maxToInsert = cli::input::maxIndex;
-        /*qIOUtil_StrLen is known to have no side effects*/
+        /*util::strLen is known to have no side effects*/
         /*cstat -MISRAC++2008-5-14-1*/
         if ( ( false == readyInput ) && ( util::strlen( cmd, maxToInsert ) <= maxToInsert ) ) {
             (void)util::strcpy( cli::input::storage, cmd, maxToInsert );

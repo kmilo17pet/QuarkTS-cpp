@@ -10,7 +10,7 @@ const qOS::clock_t timer::REMAINING_IN_DISARMED_STATE = 0xFFFFFFFFuL;
 /*============================================================================*/
 timer::timer()
 {
-    this->disarm();
+    disarm();
 }
 /*============================================================================*/
 void timer::reload( void ) noexcept
@@ -23,7 +23,7 @@ bool timer::set( qOS::time_t tTime ) noexcept
     bool retValue = false;
     /*cstat -CERT-FLP36-C*/
     if ( tTime > static_cast<qOS::time_t>( 0 ) ) {
-        this->reload();
+        reload();
         tv = clock::convert2Clock( tTime );
         retValue = true;
     }
@@ -57,22 +57,22 @@ bool timer::operator()( void )
 /*============================================================================*/
 void timer::disarm( void ) noexcept
 {
-    this->tv = timer::DISARM_VALUE;
-    this->tStart = timer::DISARM_VALUE;
+    tv = timer::DISARM_VALUE;
+    tStart = timer::DISARM_VALUE;
 }
 /*============================================================================*/
 bool timer::freeRun( qOS::time_t tTime ) noexcept
 {
     bool retValue = false;
 
-    if ( timer::ARMED == this->status() ) {
-        if ( this->expired() ) {
-            this->reload();
+    if ( timer::ARMED == status() ) {
+        if ( expired() ) {
+            reload();
             retValue = true;
         }
     }
     else {
-        (void)this->set( tTime );
+        (void)set( tTime );
     }
 
     return retValue;
@@ -90,20 +90,19 @@ void timer::operator()( bool en )
 /*============================================================================*/
 qOS::clock_t timer::elapsed( void ) const noexcept
 {
-    return ( timer::ARMED == this->status() ) ? clock::getTick() - this->tStart : 0u; 
+    return ( timer::ARMED == status() ) ? clock::getTick() - tStart : 0u; 
 }
 /*============================================================================*/
 qOS::clock_t timer::remaining( void ) const noexcept
 {
-    return ( timer::DISARM_VALUE != this->status() ) ? this->tv - this->elapsed() 
-                                                     : timer::REMAINING_IN_DISARMED_STATE; 
+    return ( timer::DISARM_VALUE != status() ) ? tv - elapsed() : timer::REMAINING_IN_DISARMED_STATE; 
 }
 /*============================================================================*/
 bool timer::expired( void ) const noexcept
 {
     bool retValue = false;
     
-    if ( timer::ARMED == this->status() ) {
+    if ( timer::ARMED == status() ) {
         retValue = deadLineCheck();
     }
     
@@ -112,16 +111,16 @@ bool timer::expired( void ) const noexcept
 /*============================================================================*/
 bool timer::status( void ) const noexcept
 {
-    return ( this->tv != 0u );
+    return ( tv != 0u );
 }
 /*============================================================================*/
 bool timer::deadLineCheck( void ) const noexcept
 {
-    return ( clock::getTick() - this->tStart >= this->tv );
+    return ( ( clock::getTick() - tStart ) >= tv );
 }
 /*============================================================================*/
 qOS::clock_t timer::getInterval( void ) const noexcept
 {
-    return this->tv;
+    return tv;
 }
 /*============================================================================*/

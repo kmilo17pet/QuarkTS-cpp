@@ -20,7 +20,7 @@ std::size_t byteBuffer::checkValidPowerOfTwo( std::size_t k ) noexcept
     return ( k < r ) ? ( k * 2u ) : k;
 }
 /*============================================================================*/
-bool byteBuffer::setup( volatile std::uint8_t *pBuffer, const size_t bLength ) noexcept
+bool byteBuffer::setup( volatile std::uint8_t *pBuffer, const std::size_t bLength ) noexcept
 {
     bool retValue = false;
 

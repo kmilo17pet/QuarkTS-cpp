@@ -71,7 +71,6 @@ void edgeCheck::stateUpdate( void )
                                                                          ec::pinState::OFF;
         
         if ( n->prevPinValue != v ) {
-            /*set the edge status*/
             n->status = ( ec::pinState::ON == v ) ? ec::pinState::RISING :
                                                     ec::pinState::FALLING;
         }

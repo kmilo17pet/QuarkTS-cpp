@@ -16,15 +16,15 @@
 using namespace qOS;
 using namespace qOS::util;
 
-static const char * discardWhitespaces( const char *s, std::size_t maxlen );
-static const char * checkStrSign( const char *s, int *sgn );
-static std::size_t xBaseU32toA( std::uint32_t num, char* str, std::uint8_t base );
-static char nibbleToX( std::uint8_t value );
-static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip, bool operation );
-static std::uint8_t hexCharToUnsigned( const char c ) ;
+static const char * discardWhitespaces( const char *s, std::size_t maxlen ) noexcept;
+static const char * checkStrSign( const char *s, int *sgn ) noexcept;
+static std::size_t xBaseU32toA( std::uint32_t num, char* str, std::uint8_t base ) noexcept;
+static char nibbleToX( std::uint8_t value ) noexcept;
+static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip, bool operation ) noexcept;
+static std::uint8_t hexCharToUnsigned( const char c ) noexcept;
 
 /*============================================================================*/
-static const char * discardWhitespaces( const char *s, std::size_t maxlen )
+static const char * discardWhitespaces( const char *s, std::size_t maxlen ) noexcept
 {
     /*cstat -MISRAC++2008-5-14-1*/
     /*isspace is known to not have side effects*/
@@ -36,7 +36,7 @@ static const char * discardWhitespaces( const char *s, std::size_t maxlen )
     return s;
 }
 /*============================================================================*/
-static const char * checkStrSign( const char *s, int *sgn )
+static const char * checkStrSign( const char *s, int *sgn ) noexcept
 {
     if ( '-' == *s ) { /*if negative found*/
         *sgn = -1; /*set the sign*/
@@ -53,7 +53,7 @@ static const char * checkStrSign( const char *s, int *sgn )
     return s;
 }
 /*============================================================================*/
-char* util::strchr( const char *s, int c, std::size_t maxlen )
+char* util::strchr( const char *s, int c, std::size_t maxlen ) noexcept
 {
     char *retValue = nullptr;
     do {
@@ -67,7 +67,7 @@ char* util::strchr( const char *s, int c, std::size_t maxlen )
     return retValue;
 }
 /*============================================================================*/
-std::size_t util::strlen( const char* s, std::size_t maxlen )
+std::size_t util::strlen( const char* s, std::size_t maxlen ) noexcept
 {
     std::size_t count;
 
@@ -86,7 +86,7 @@ std::size_t util::strlen( const char* s, std::size_t maxlen )
     return count;
 }
 /*============================================================================*/
-std::size_t util::strcpy( char * dst, const char * src, std::size_t maxlen )
+std::size_t util::strcpy( char * dst, const char * src, std::size_t maxlen ) noexcept
 {
     const std::size_t srclen = util::strlen( src, Q_IO_UTIL_MAX_STRLEN );
 
@@ -104,7 +104,7 @@ std::size_t util::strcpy( char * dst, const char * src, std::size_t maxlen )
     return srclen;
 }
 /*============================================================================*/
-std::size_t util::strcat( char *dst, const char *src, std::size_t maxlen )
+std::size_t util::strcat( char *dst, const char *src, std::size_t maxlen ) noexcept
 {
     const std::size_t srclen = util::strlen( src, Q_IO_UTIL_MAX_STRLEN );
     const std::size_t dstlen = util::strlen( dst, maxlen);
@@ -128,7 +128,7 @@ std::size_t util::strcat( char *dst, const char *src, std::size_t maxlen )
 }
 /*============================================================================*/
 /*perform conversion of unsigned integer to ASCII. NULL Terminator not included*/
-static std::size_t xBaseU32toA( std::uint32_t num, char* str, std::uint8_t base )
+static std::size_t xBaseU32toA( std::uint32_t num, char* str, std::uint8_t base ) noexcept
 {
     std::size_t i = 0u;
 
@@ -152,7 +152,7 @@ static std::size_t xBaseU32toA( std::uint32_t num, char* str, std::uint8_t base 
     return i;
 }
 /*============================================================================*/
-static char nibbleToX( std::uint8_t value )
+static char nibbleToX( std::uint8_t value ) noexcept
 {
     char ch;
 
@@ -161,7 +161,7 @@ static char nibbleToX( std::uint8_t value )
     return ( ch <= '9' ) ? ch : static_cast<char>( static_cast<std::uint8_t>( ch ) + 7u );
 }
 /*============================================================================*/
-bool util::swapBytes( void *pData, const std::size_t n )
+bool util::swapBytes( void *pData, const std::size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -185,7 +185,7 @@ bool util::swapBytes( void *pData, const std::size_t n )
     return retValue;
 }
 /*============================================================================*/
-bool util::checkEndianness( void )
+bool util::checkEndianness( void ) noexcept
 {
     const std::uint16_t i = 1u;
     /*cstat -CERT-INT36-C*/
@@ -193,7 +193,7 @@ bool util::checkEndianness( void )
     /*cstat +CERT-INT36-C*/
 }
 /*============================================================================*/
-bool util::outputString( util::putChar_t fcn, void* pStorage, const char *s, bool aip )
+bool util::outputString( util::putChar_t fcn, void* pStorage, const char *s, bool aip ) noexcept
 {
     bool retValue = false;
 
@@ -221,7 +221,7 @@ bool util::outputString( util::putChar_t fcn, void* pStorage, const char *s, boo
     return retValue;
 }
 /*============================================================================*/
-bool util::printXData( util::putChar_t fcn, void* pStorage, void *pData, std::size_t n )
+bool util::printXData( util::putChar_t fcn, void* pStorage, void *pData, std::size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -242,7 +242,7 @@ bool util::printXData( util::putChar_t fcn, void* pStorage, void *pData, std::si
     return retValue;
 }
 /*============================================================================*/
-static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip, bool operation )
+static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip, bool operation ) noexcept
 {
     bool retValue = false;
 
@@ -270,23 +270,23 @@ static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const s
     return retValue;
 }
 /*============================================================================*/
-bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip )
+bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip ) noexcept
 {
     return operationIO( fcn, pStorage, pData, n, aip, false );
 }
 /*============================================================================*/
-bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip )
+bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip ) noexcept
 {
     return operationIO( fcn, pStorage, pData, n, aip, true );
 }
 /*============================================================================*/
-static std::uint8_t hexCharToUnsigned( const char c ) /* <c> should only contain a valid hex character*/
+static std::uint8_t hexCharToUnsigned( const char c ) noexcept /* <c> should only contain a valid hex character*/
 {
     const std::uint8_t b = static_cast<std::uint8_t>( c );
     return static_cast<std::uint8_t>( ( ( b & 0xFu ) + ( b >> 6u ) ) | ( ( b >> 3u ) & 0x8u ) );
 }
 /*============================================================================*/
-std::uint32_t util::hexStringToUnsigned( const char *s )
+std::uint32_t util::hexStringToUnsigned( const char *s ) noexcept
 {
     std::uint32_t val = 0uL;
 
@@ -314,7 +314,7 @@ std::uint32_t util::hexStringToUnsigned( const char *s )
     return val;
 }
 /*============================================================================*/
-float32_t util::stringToFloat( const char *s )
+float32_t util::stringToFloat( const char *s ) noexcept
 {
     float32_t rez = 0.0f, fact;
     bool point_seen = false;
@@ -375,7 +375,7 @@ float32_t util::stringToFloat( const char *s )
     #endif
 }
 /*============================================================================*/
-char* util::floatToString( float32_t num, char *str, std::uint8_t precision )
+char* util::floatToString( float32_t num, char *str, std::uint8_t precision ) noexcept
 {
     if ( nullptr != str ) {
         std::uint32_t u = 0u;
@@ -425,7 +425,7 @@ char* util::floatToString( float32_t num, char *str, std::uint8_t precision )
     return str;
 }
 /*============================================================================*/
-int util::stringToInt( const char *s )
+int util::stringToInt( const char *s ) noexcept
 {
     int retValue = 0;
 
@@ -451,7 +451,7 @@ int util::stringToInt( const char *s )
     return retValue;
 }
 /*============================================================================*/
-char* util::unsignedToString( std::uint32_t num, char* str, std::uint8_t base )
+char* util::unsignedToString( std::uint32_t num, char* str, std::uint8_t base ) noexcept
 {
     if ( nullptr != str ) {
         std::size_t i;
@@ -464,7 +464,7 @@ char* util::unsignedToString( std::uint32_t num, char* str, std::uint8_t base )
     return str;
 }
 /*============================================================================*/
-char* util::integerToString( std::int32_t num, char* str, std::uint8_t base )
+char* util::integerToString( std::int32_t num, char* str, std::uint8_t base ) noexcept
 {
     if ( nullptr != str ) {
         std::size_t i = 0u;
@@ -487,7 +487,7 @@ char* util::integerToString( std::int32_t num, char* str, std::uint8_t base )
     return str;
 }
 /*============================================================================*/
-char* util::boolToString( const bool num, char *str )
+char* util::boolToString( const bool num, char *str ) noexcept
 {
     if ( nullptr != str ) {
         ( num ) ? (void)util::strcpy( str, "true", 5 )

@@ -69,12 +69,12 @@ static void fsmTaskCallback( event_t e )
 bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::time_t t, const taskState s, void *arg ) noexcept
 {
     bool retValue = core::addTask( Task, fsmTaskCallback, p, t, task::PERIODIC, s, arg );
+
     if ( retValue ) {
         Task.aObj = &m;
         m.owner = &Task;
         #if ( Q_QUEUES == 1 )
             if ( nullptr != m.sQueue ) {
-                /*bind the queue*/
                 retValue = Task.attachQueue( *m.sQueue, queueLinkMode::QUEUE_COUNT, 1u );
             }
         #endif
@@ -262,37 +262,30 @@ bool core::checkIfReady( void ) noexcept
 /*============================================================================*/
 void core::dispatchTaskFillEventInfo( task *Task ) noexcept
 {
-    const trigger xEvent = Task->Trigger;
-    iteration_t taskIteration;
-    /*
-    take the necessary actions before dispatching, depending on the event that
-    triggered the task
-    */
-    switch ( xEvent ) {
-        case trigger::byTimeElapsed:
-            /*handle the iteration value and the FirstIteration flag*/
-            taskIteration = Task->iterations;
-            _Event::FirstIteration = ( ( task::PERIODIC != taskIteration ) && ( taskIteration < 0 ) );
-            Task->iterations = ( _Event::FirstIteration ) ? -Task->iterations : Task->iterations;
-            if ( task::PERIODIC  != Task->iterations ) {
-                --Task->iterations;
+    switch ( Task->Trigger ) {
+        case trigger::byTimeElapsed: {
+                const iteration_t taskIteration = Task->iterations;
+
+                _Event::FirstIteration = ( ( task::PERIODIC != taskIteration ) && ( taskIteration < 0 ) );
+                Task->iterations = ( _Event::FirstIteration ) ? -Task->iterations : Task->iterations;
+                if ( task::PERIODIC  != Task->iterations ) {
+                    --Task->iterations;
+                }
+                _Event::LastIteration = ( 0 == Task->iterations );
+                if ( _Event::LastIteration ) {
+                    /*When iteration value is reached, the task will be disabled*/
+                    Task->setFlags( task::BIT_ENABLED, false );
+                }
+                _Event::StartDelay = Task->time.elapsed();
+                break;
             }
-            _Event::LastIteration = ( 0 == Task->iterations );
-            if ( _Event::LastIteration ) {
-                /*When iteration value is reached, the task will be disabled*/
-                Task->setFlags( task::BIT_ENABLED, false );
-            }
-            _Event::StartDelay = Task->time.elapsed();
-            break;
         case trigger::byNotificationSimple:
-            /*Transfer async-data to the eventInfo structure*/
-            _Event::EventData = Task->asyncData;
+            _Event::EventData = Task->asyncData; /*Transfer async-data to the eventInfo structure*/
             --Task->notifications;
             break;
         #if ( Q_QUEUES == 1 )
             case trigger::byQueueReceiver:
-                /*the EventData will point to the queue front-data*/
-                _Event::EventData = Task->aQueue->peek();
+                _Event::EventData = Task->aQueue->peek(); /*the EventData will point to the queue front-data*/
                 break;
             case trigger::byQueueFull: case trigger::byQueueCount: case trigger::byQueueEmpty:
                 /*the EventData will point to the the linked queue*/
@@ -428,10 +421,9 @@ bool core::run( void ) noexcept
 /*cstat -MISRAC++2008-7-1-2*/
 static bool taskEntryOrderPreserver( listCompareHandle_t h )
 {
-    task *t1, *t2;
     /*cstat -CERT-EXP36-C_b*/
-    t1 = static_cast<task*>( h->n1 );
-    t2 = static_cast<task*>( h->n2 );
+    task * const t1 = static_cast<task*>( h->n1 );
+    task * const t2 = static_cast<task*>( h->n2 );
     /*cstat +CERT-EXP36-C_b*/
     return ( t1->getID() > t2->getID() );
 }

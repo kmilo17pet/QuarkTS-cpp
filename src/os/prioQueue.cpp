@@ -48,7 +48,7 @@ task* prioQueue::get( void ) noexcept
             }
         }
         /*get the data from the queue*/
-        data = this->stack[ indexTaskToExtract ].queueData;
+        data = stack[ indexTaskToExtract ].queueData;
         /*assign the task to the output*/
         xTask = stack[ indexTaskToExtract ].Task;
         clearIndex( indexTaskToExtract );
