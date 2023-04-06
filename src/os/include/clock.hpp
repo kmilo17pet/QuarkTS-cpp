@@ -29,7 +29,7 @@ namespace qOS {
         public:
             clock( clock &other ) = delete;
             void operator=( const clock & ) = delete;
-            static getTickFcn_t getTick;
+            static getTickFcn_t getTick; /* skipcq: CXX-W2009 */
             static qOS::clock_t convert2Clock( const qOS::time_t t ) noexcept;
             static qOS::time_t convert2Time( const qOS::clock_t t ) noexcept;
             static void sysTick( void ) noexcept;

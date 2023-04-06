@@ -4,10 +4,10 @@ using namespace qOS;
 
 static const qOS::time_t TIME_FIX_VALUE = 0.5f;
 static qOS::clock_t internalTick( void ) noexcept;
-static volatile qOS::clock_t sysTick_Epochs  = 0u;
-static timingBase_t timingBase;
+static volatile qOS::clock_t sysTick_Epochs  = 0u; /* skipcq: CXX-W2009 */
+static timingBase_t timingBase; /* skipcq: CXX-W2009 */
 
-qOS::getTickFcn_t clock::getTick = &internalTick;
+qOS::getTickFcn_t clock::getTick = &internalTick; /* skipcq: CXX-W2009 */
 
 #if ( Q_SETUP_TIME_CANONICAL == 1 )
     const qOS::time_t clock::NONE = 0uL;
