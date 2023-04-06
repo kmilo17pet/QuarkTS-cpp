@@ -26,7 +26,6 @@ namespace qOS {
             void operator=( queue const& ) = delete;
         public:
             queue() = default;
-            queue( void *pData, const std::size_t size, const std::size_t count ) noexcept;
             bool setup( void *pData, const std::size_t size, const std::size_t count ) noexcept;
             void reset( void ) noexcept;
             bool isEmpty( void ) const noexcept;
@@ -35,11 +34,7 @@ namespace qOS {
             std::size_t itemsAvailable( void ) const noexcept;
             bool removeFront( void ) noexcept;
             bool receive( void *dst ) noexcept;
-            bool send( void *itemToQueue, const queueSendMode pos ) noexcept;
-            inline bool send( void *itemToQueue ) noexcept
-            {
-                return send( itemToQueue, queueSendMode::TO_BACK );
-            }
+            bool send( void *itemToQueue, const queueSendMode pos = queueSendMode::TO_BACK ) noexcept;
             void* peek( void ) const noexcept;
             bool isReady( void ) const noexcept;
             std::size_t getItemSize( void ) noexcept;

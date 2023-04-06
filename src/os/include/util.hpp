@@ -15,16 +15,16 @@ namespace qOS {
         std::size_t strcat( char *dst, const char *src, std::size_t maxlen );
         bool swapBytes( void *pData, const std::size_t n );
         bool checkEndianness( void );
-        bool outputString( util::putChar_t fcn, void* pStorage, const char *s, bool aip );
+        bool outputString( util::putChar_t fcn, void* pStorage, const char *s, bool aip = false );
         bool printXData( util::putChar_t fcn, void* pStorage, void *pData, std::size_t n );
-        bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip );
-        bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip );
+        bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip = false );
+        bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip = false );
         std::uint32_t hexStringToUnsigned( const char *s );
         float32_t stringToFloat( const char *s );
-        char* floatToString( float32_t num, char *str, std::uint8_t precision );
+        char* floatToString( float32_t num, char *str, std::uint8_t precision = 10u );
         int stringToInt( const char *s );
-        char* unsignedToString( std::uint32_t num, char* str, std::uint8_t base );
-        char* integerToString( std::int32_t num, char* str, std::uint8_t base );
+        char* unsignedToString( std::uint32_t num, char* str, std::uint8_t base = 10u );
+        char* integerToString( std::int32_t num, char* str, std::uint8_t base = 10u );
         char* boolToString( const bool num, char *str );
     }
 }

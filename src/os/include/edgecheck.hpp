@@ -61,7 +61,7 @@ namespace qOS {
             void operator=( edgeCheck const& ) = delete;
         public:
             edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept;
-            bool addNode( ec::node& n, void *portAddress, const index_t pinNumber) noexcept;
+            bool addNode( ec::node& n, void *portAddress, const index_t pinNumber ) noexcept;
             bool update( void ) noexcept;
     };
 

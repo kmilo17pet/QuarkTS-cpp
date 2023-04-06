@@ -220,13 +220,9 @@ namespace qOS {
         public:
             void *mData{ nullptr };
             stateMachine() = default;
-            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn, void* pData )  noexcept
+            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn, void* pData = nullptr)  noexcept
             {
                 return setup( topFcn, &init, sFcn, pData );
-            }
-            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn )  noexcept
-            {
-                return setup( topFcn, &init, sFcn, nullptr );
             }
             inline bool setup( sm::stateCallback_t topFcn, sm::state &init ) noexcept
             {
@@ -241,16 +237,8 @@ namespace qOS {
                 return top.subscribe( &s, sFcn, nullptr );
             }
             bool installSignalQueue( queue& q ) noexcept;
-            bool sendSignal( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
-            bool sendSignal( sm::signalID sig, void *sData ) noexcept
-            {
-                return sendSignal( sig, sData, false );
-            }
-            inline bool sendSignal( sm::signalID sig ) noexcept
-            {
-                return sendSignal( sig, nullptr, false );
-            }
-            bool sendSignalToSubscribers( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
+            bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
+            bool sendSignalToSubscribers( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
             bool installTimeoutSpec( sm::timeoutSpec &ts ) noexcept;
             bool timeoutSet( index_t xTimeout, qOS::time_t t ) noexcept;
             bool timeoutStop( index_t xTimeout ) noexcept;

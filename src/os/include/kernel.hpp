@@ -68,40 +68,16 @@ namespace qOS {
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
             void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback ) noexcept;
-            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s, void *arg ) noexcept;
-            inline bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s ) noexcept
-            {
-                return addTask( Task, callback, p, t, n, s, nullptr );
-            }
-            inline bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n ) noexcept
-            {
-                return addTask( Task, callback, p, t, n, taskState::ENABLED, nullptr );
-            }
-            inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg ) noexcept
+            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s = taskState::ENABLED, void *arg = nullptr ) noexcept;
+            inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg = nullptr ) noexcept
             {
                 return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, arg );
             }
-            inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p ) noexcept
-            {
-                return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, nullptr );
-            }
             #if ( Q_FSM == 1 )
-            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s, void *arg ) noexcept;
-            inline bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s ) noexcept
-            {
-                return addStateMachineTask( Task, m, p, t, s, nullptr );
-            }
-            inline bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t ) noexcept
-            {
-                return addStateMachineTask( Task, m, p, t, taskState::ENABLED, nullptr );
-            }
+            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s = taskState::ENABLED, void *arg = nullptr ) noexcept;
             #endif
             #if ( Q_CLI == 1 )
-            bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg ) noexcept;
-            inline bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p ) noexcept
-            {
-                return addCommandLineInterfaceTask( Task, cli, p );
-            }
+            bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;
             #endif
             task& getTaskRunning( void ) const noexcept;
             bool setIdleTask( taskFcn_t callback ) noexcept;
@@ -109,16 +85,8 @@ namespace qOS {
             bool setSchedulerReleaseCallback( taskFcn_t callback ) noexcept;
             bool removeTask( task &Task ) noexcept;
             bool run( void ) noexcept;
-            bool notify( notifyMode mode, task &Task, void* eventData ) noexcept;
-            inline bool notify( notifyMode mode, task &Task ) noexcept
-            {
-                return notify( mode, Task, nullptr );
-            }
-            bool notify( notifyMode mode, void* eventData ) noexcept;
-            inline bool notify( notifyMode mode ) noexcept
-            {
-                return notify( mode, nullptr );
-            }
+            bool notify( notifyMode mode, task &Task, void* eventData = nullptr ) noexcept;
+            bool notify( notifyMode mode, void* eventData = nullptr ) noexcept;
             bool hasPendingNotifications( task &Task ) noexcept;
             bool eventFlagsModify( task &Task, const taskFlag_t tFlags, const bool action ) noexcept;
             taskFlag_t eventFlagsRead( task &Task ) const noexcept;

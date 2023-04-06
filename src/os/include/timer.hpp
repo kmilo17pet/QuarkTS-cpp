@@ -12,6 +12,10 @@ namespace qOS {
             qOS::clock_t tv{ 0u };
         public:
             timer();
+            timer( qOS::time_t tTime )
+            {
+                (void)set( tTime );
+            }
             bool set( qOS::time_t tTime ) noexcept;
             void disarm( void ) noexcept;
             void reload( void ) noexcept;

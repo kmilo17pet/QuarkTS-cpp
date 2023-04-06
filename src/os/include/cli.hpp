@@ -125,11 +125,7 @@ namespace qOS {
         public:
             commandLineInterface() = default;
             bool setup( util::putChar_t outFcn, char *pInput, const std::size_t sizeInput, char *pOutput, const std::size_t sizeOutput );
-            bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param );
-            inline bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt )
-            {
-                return add( cmd, textCommand, cFcn, cmdOpt, nullptr );
-            }
+            bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param = nullptr );
             bool isrHandler( const char c );
             bool isrHandler( char *pData, const std::size_t n );
             bool raise( const char *cmd );

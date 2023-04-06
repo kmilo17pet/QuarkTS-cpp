@@ -6,11 +6,6 @@
 using namespace qOS;
 
 /*============================================================================*/
-queue::queue( void *pData, const std::size_t size, const std::size_t count ) noexcept
-{
-    (void)setup( pData, size, count );
-}
-/*============================================================================*/
 bool queue::setup( void *pData, const std::size_t size, const std::size_t count ) noexcept
 {
     bool retValue = false;

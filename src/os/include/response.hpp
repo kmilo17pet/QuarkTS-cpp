@@ -26,11 +26,7 @@ namespace qOS {
             response() = default;
             bool setup( char *xLocBuff, const std::size_t nMax ) noexcept;
             void reset( void ) noexcept;
-            responseStatus received( const char *pattern, const std::size_t n, qOS::time_t t ) noexcept;
-            inline responseStatus received( const char *pattern, const std::size_t n ) noexcept
-            {
-                return received( pattern, n, clock::IMMEDIATE );
-            }
+            responseStatus received( const char *pattern, const std::size_t n, qOS::time_t t = clock::IMMEDIATE ) noexcept;
             bool isrHandler( const char rxChar ) noexcept;
             bool initialized( void ) const noexcept;
     };

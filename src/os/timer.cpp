@@ -46,7 +46,7 @@ timer& timer::operator=( qOS::time_t tTime )
 /*============================================================================*/
 timer& timer::operator=( bool en )
 {
-    ( en )? reload() : disarm();
+    ( en ) ? reload() : disarm();
     return *this;
 }
 /*============================================================================*/
