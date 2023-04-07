@@ -13,7 +13,7 @@ qOS::sm::state s1, s2;
 co::position pos1;
 
 qOS::sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
-    { 10.0f,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT  },
+    { 10.0f,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 };
 
 void idleTask_callback( event_t e ) 
@@ -90,26 +90,26 @@ qOS::sm::status s2_callback( qOS::sm::handler_t h )
 void task_callback( event_t e )
 {
     if ( e.firstCall() ) {
-        cout << "first call "<< qOS::os.getTaskRunning().getName() << endl; 
+        cout << "first call "<< e.self().getName() << endl; 
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        cout << "notified(SIMPLE)! " << qOS::os.getTaskRunning().getName() << endl;
+        cout << "notified(SIMPLE)! " << e.self().getName() << endl;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
         
-        cout << "notified(QUEUED)! " << qOS::os.getTaskRunning().getName() << endl;
+        cout << "notified(QUEUED)! " << e.self().getName() << endl;
     }
 
-    cout << "im task "<< qOS::os.getTaskRunning().getName() << endl;
+    cout << "im task "<< e.self().getName() << endl;
     
     if ( e.lastIteration() ) {
         qOS::os.notify( qOS::notifyMode::QUEUED, t1, nullptr );
         qOS::os.notify( qOS::notifyMode::QUEUED, t1, nullptr );
         qOS::os.notify( qOS::notifyMode::QUEUED, t2, nullptr );
         qOS::os.notify( qOS::notifyMode::QUEUED, t1, nullptr );
-        cout << "last iteration "<< qOS::os.getTaskRunning().getName() << endl; 
+        cout << "last iteration "<< e.self().getName() << endl; 
     }
 }
 
@@ -125,7 +125,8 @@ int main()
     t2.setName( "t2");
     t3.setName( "t3");
     qOS::os.init( clockProvider, 0.001f, idleTask_callback );
-    
+
+    qOS::clock::sysTick();
     qOS::os.addTask( t1, task_callback, qOS::core::LOWEST_PRIORITY, 0.5f, task::PERIODIC, qOS::ENABLED );
     qOS::os.addTask( t2, task_callback, qOS::core::HIGHEST_PRIORITY, 0.5f, 10, qOS::ENABLED );
     qOS::os.addTask( t3, task_callback, qOS::core::MEDIUM_PRIORITY, 2.0f, task::PERIODIC, qOS::ENABLED );
@@ -135,6 +136,7 @@ int main()
     m.installTimeoutSpec( tm_specTimeout );
     m.add( s1, s1_callback );
     m.add( s2, s2_callback );
+
     qOS::os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 0.1f, qOS::ENABLED );
 
     qOS::os.run();

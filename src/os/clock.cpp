@@ -2,12 +2,14 @@
 
 using namespace qOS;
 
-static const qOS::time_t TIME_FIX_VALUE = 0.5f;
-static qOS::clock_t internalTick( void ) noexcept;
-static volatile qOS::clock_t sysTick_Epochs  = 0u; /* skipcq: CXX-W2009 */
-static timingBase_t timingBase; /* skipcq: CXX-W2009 */
-
+volatile qOS::clock_t clock::sysTick_Epochs = 0u; 
 qOS::getTickFcn_t clock::getTick = &internalTick; /* skipcq: CXX-W2009 */
+
+#if ( Q_SETUP_TICK_IN_HERTZ == 1 )
+    timingBase_t clock::timingBase = 0suL;
+#else
+    timingBase_t clock::timingBase = 0.001f;
+#endif
 
 #if ( Q_SETUP_TIME_CANONICAL == 1 )
     const qOS::time_t clock::NONE = 0uL;
@@ -17,6 +19,7 @@ qOS::getTickFcn_t clock::getTick = &internalTick; /* skipcq: CXX-W2009 */
     const qOS::time_t clock::DAY = 86400000uL;
     const qOS::time_t clock::WEEK = 604800000uL;
 #else
+    static const qOS::time_t TIME_FIX_VALUE = 0.5f;
     const qOS::time_t clock::NONE = 0.0f;
     const qOS::time_t clock::IMMEDIATE = 0.0f;
     const qOS::time_t clock::MINUTE = 60.0f;
@@ -81,7 +84,7 @@ bool clock::setTimeBase( const timingBase_t tb ) noexcept
     return retValue;
 }
 /*============================================================================*/
-static qOS::clock_t internalTick( void ) noexcept
+qOS::clock_t clock::internalTick( void ) noexcept
 {
     return sysTick_Epochs;
 }

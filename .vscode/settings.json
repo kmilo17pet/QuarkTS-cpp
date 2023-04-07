@@ -52,5 +52,8 @@
         "util": "cpp",
         "ctime": "cpp",
         "ratio": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "skipcq"
+    ]
 }

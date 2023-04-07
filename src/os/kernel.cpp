@@ -58,7 +58,7 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
 static void fsmTaskCallback( event_t e )
 {
     /*cstat -CERT-EXP36-C_b*/
-    stateMachine * const sm = static_cast<stateMachine*>( qOS::os.getTaskRunning().getAttachedObject() );
+    stateMachine * const sm = static_cast<stateMachine*>( e.self().getAttachedObject() );
     /*cstat +CERT-EXP36-C_b*/
     const sm::signal_t sig = { sm::signalID::SIGNAL_NONE, nullptr };
     (void)sm->run( sig );
@@ -87,7 +87,7 @@ bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p,
 static void cliTaskCallback( event_t e )
 {
     /*cstat -CERT-EXP36-C_b*/
-    commandLineInterface * const c = static_cast<commandLineInterface*>( qOS::os.getTaskRunning().getAttachedObject() ); 
+    commandLineInterface * const c = static_cast<commandLineInterface*>( e.self().getAttachedObject() ); 
     /*cstat +CERT-EXP36-C_b*/
     c->setData( &e );
     (void)c->run();
@@ -114,11 +114,6 @@ bool core::addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, c
     return retValue;
 }
 #endif /*Q_CLI*/
-/*============================================================================*/
-task& core::getTaskRunning( void ) const noexcept
-{
-    return *currentTask;
-}
 /*============================================================================*/
 /*cstat -MISRAC++2008-7-1-2*/
 bool core::setIdleTask( taskFcn_t callback ) noexcept
@@ -309,7 +304,8 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
     _Event::Trigger = Task->Trigger;
     _Event::FirstCall = false == Task->getFlag( task::BIT_INIT );
     _Event::TaskData = Task->taskData;
-    currentTask = Task;
+    _Event::currentTask = Task;
+    //currentTask = Task;
 }
 /*============================================================================*/
 void core::dispatch( list * const xList ) noexcept
@@ -331,8 +327,8 @@ void core::dispatch( list * const xList ) noexcept
 
         #if ( Q_ALLOW_YIELD_TO_TASK == 1 )
             while ( nullptr != yieldTask ) {
-                currentTask = yieldTask;
-                taskActivities = currentTask->callback;
+                _Event::currentTask = yieldTask;
+                taskActivities = _Event::currentTask->callback;
                 yieldTask = nullptr;
                 if ( nullptr != taskActivities ) {
                     /*yielded task inherits eventData*/
