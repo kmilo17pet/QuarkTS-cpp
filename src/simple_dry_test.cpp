@@ -78,6 +78,7 @@ qOS::sm::status s2_callback( qOS::sm::handler_t h )
         case qOS::sm::SIGNAL_ENTRY:
             cout<<"s2_callback"<<endl;
             tmr( 5.0f );
+            break;
         default:
             if ( tmr() ) {
                 h.nextState( s1 );
