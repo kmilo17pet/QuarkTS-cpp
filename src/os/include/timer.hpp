@@ -8,6 +8,13 @@ namespace qOS {
 
     /**
     * @brief A non-blocking Timer object
+    * @details Timers are an essential extension as they allow for accurate and
+    * efficient timekeeping without blocking tasks. Using timers enables the 
+    * embedded application to perform other critical tasks while the timer is 
+    * running in the background. Timers also provide flexibility in the event
+    * that the timer needs to be paused, restarted, or adjusted on the fly.
+    * This can be particularly useful in applications that require dynamic 
+    * timing or have unpredictable event intervals.
     */
     class timer {
         private:

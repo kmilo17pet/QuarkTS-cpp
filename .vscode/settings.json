@@ -54,6 +54,8 @@
         "ratio": "cpp"
     },
     "cSpell.words": [
-        "skipcq"
+        "endverbatim",
+        "skipcq",
+        "stackless"
     ]
 }

@@ -43,7 +43,7 @@ namespace qOS {
         return ( ( i >= 1u ) && ( i <= 20u ) ) ?  0x00001000uL << ( i - 1u ) : 0x00001000uL;
     }
 
-    class core : protected _Event {
+    class core final : protected _Event {
         private:
             taskFcn_t idleCallback{ nullptr };
             taskFcn_t releaseSchedCallback{ nullptr };

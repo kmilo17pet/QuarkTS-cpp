@@ -23,7 +23,7 @@ bool list::isMember( const void * const xNode ) const noexcept
         /*cstat -CERT-EXP36-C_b*/
         const node * const Node = static_cast<const node*>( xNode );
         
-        if ( this == static_cast<list*>( Node->container ) ) {
+        if ( this == Node->container ) {
             retValue = true;
         }
         /*cstat +CERT-EXP36-C_b*/

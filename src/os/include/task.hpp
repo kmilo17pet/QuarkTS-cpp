@@ -81,6 +81,12 @@ namespace qOS {
     };
 
     class task;
+
+    /**
+    * @brief The task argument with all the regarding information of the task
+    * execution.
+    * @note Should be used only in task-callbacks as the only input argument.
+    */
     class _Event {
         protected:
             trigger Trigger{ trigger::None };

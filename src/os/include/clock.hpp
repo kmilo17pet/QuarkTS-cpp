@@ -25,7 +25,7 @@ namespace qOS {
     /**
     * @brief A class to encapsulate the OS clock
     */
-    class clock {
+    class clock final {
         protected:
             static timingBase_t timingBase;
             static volatile qOS::clock_t sysTick_Epochs;

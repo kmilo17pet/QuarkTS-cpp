@@ -125,7 +125,7 @@ namespace qOS {
             * @brief Check if the queue is already initialized by using queue::setup()
             * @return true if the queue is initialized, false if not.
             */
-            bool isReady( void ) const noexcept;
+            bool isInitialized( void ) const noexcept;
             std::size_t getItemSize( void ) noexcept;
     };
 }

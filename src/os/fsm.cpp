@@ -100,7 +100,7 @@ bool stateMachine::installSignalQueue( queue& q ) noexcept
     bool retValue = false;
     #if ( Q_QUEUES == 1 )
         /*cstat -MISRAC++2008-5-14-1*/
-        if ( ( true == q.isReady() ) && ( sizeof(sm::signal_t) == q.getItemSize() ) ) {
+        if ( ( true == q.isInitialized() ) && ( sizeof(sm::signal_t) == q.getItemSize() ) ) {
             sQueue = &q; /*install the queue*/
             retValue = true;
         }

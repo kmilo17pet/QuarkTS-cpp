@@ -74,7 +74,7 @@ bool response::isrHandler( const char rxChar ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool response::initialized( void ) const noexcept
+bool response::isInitialized( void ) const noexcept
 {
     return ( maxStrLength > 0u );
 }

@@ -12,6 +12,9 @@ namespace qOS {
         TIMEOUT,
     };
 
+    /**
+    * @brief A Response Handler object.
+    */
     class response {
         private:
             char *pattern2Match{ nullptr };
@@ -24,11 +27,42 @@ namespace qOS {
             void operator=( response const& ) = delete;
         public:
             response() = default;
+            /**
+            * @brief Initialize the instance of the response handler object
+            * @param[in] xLocBuff A pointer to the memory block where the desired
+            * response will remain.
+            * @param[in] nMax The size of @a xLocBuff
+            * @return On success returns true, otherwise returns false.
+            */
             bool setup( char *xLocBuff, const std::size_t nMax ) noexcept;
+            /**
+            * @brief Reset the Response Handler
+            */
             void reset( void ) noexcept;
+            /**
+            * @brief Non-Blocking response check
+            * @param[in] pattern The data checked in the receiver ISR
+            * @param[in] n The length of the data pointer by @a pattern
+            * (if @a pattern is string, set @a n to 0 to auto-compute the length)
+            * @param[in] t The timeout value.
+            * @return responseStatus::SUCCESS if there is a response acknowledge,
+            * responseStatus::TIMEOUT if timeout expires otherwise returns 
+            * responseStatus::MISSING
+            */
             responseStatus received( const char *pattern, const std::size_t n, qOS::time_t t = clock::IMMEDIATE ) noexcept;
+            /**
+            * @brief ISR receiver for the response handler
+            * @param[in] rxChar The byte-data from the receiver
+            * @return True when the Response handler match the request from
+            * response::received()
+            */
             bool isrHandler( const char rxChar ) noexcept;
-            bool initialized( void ) const noexcept;
+            /**
+            * @brief Check if the response object is already initialized by 
+            * using response::setup()
+            * @return true if the response object is initialized, false if not.
+            */
+            bool isInitialized( void ) const noexcept;
     };
 
 }

@@ -565,7 +565,7 @@ globalState core::getGlobalState( task &Task ) const noexcept
 {
     globalState retValue = globalState::UNDEFINED;
     /*cstat -CERT-EXP36-C_b*/
-    list * const xList = static_cast<list*>( Task.container );
+    list * const xList = Task.getContainer();
     /*cstat +CERT-EXP36-C_b*/
     if ( currentTask == &Task ) {
         retValue = globalState::RUNNING;

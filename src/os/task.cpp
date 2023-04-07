@@ -231,7 +231,7 @@ bool task::attachQueue( queue &q, const queueLinkMode mode, const std::size_t ar
 {
     bool retValue = false;
 
-    if ( q.isReady() ) {
+    if ( q.isInitialized() ) {
         setFlags( static_cast<std::uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0u != arg );
         if ( queueLinkMode::QUEUE_COUNT == mode ) {
             aQueueCount = arg;

@@ -158,7 +158,7 @@ void* queue::peek( void ) const noexcept
     return static_cast<void*>( retValue );
 }
 /*============================================================================*/
-bool queue::isReady( void ) const noexcept
+bool queue::isInitialized( void ) const noexcept
 {
     return ( nullptr != head );
 }
