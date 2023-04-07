@@ -2939,6 +2939,9 @@
         <name>$PROJ_DIR$\..\src\os\prioQueue.cpp</name>
     </file>
     <file>
+        <name>$PROJ_DIR$\..\src\os\include\quarkts++.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\..\src\os\queue.cpp</name>
     </file>
     <file>

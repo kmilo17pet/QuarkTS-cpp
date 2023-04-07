@@ -190,7 +190,9 @@ namespace qOS {
     };
 
     using taskFcn_t = void (*)( event_t );
+    /** @brief A 32-bit unsigned integer type to hold a notification value.*/
     using notifier_t = std::uint32_t;
+    /** @brief A 32-bit unsigned integer type to hold the task flags.*/
     using taskFlag_t = std::uint32_t;
 
     /**
@@ -218,13 +220,15 @@ namespace qOS {
     * non-blocking way and releasing control back to the scheduler as soon as
     * possible (returning).
     * Every task node, must be defined using the qTask_t data-type and the
-    * callback is defined as a function that returns void and takes a qEvent_t
+    * callback is defined as a function that returns void and takes a event_t
     * data structure as its only parameter (This input argument can be used
     * later to get event information.
     *
     * Example :
     * @code{.c}
-    * qOS::task UserTask;
+    * using namespace qOS;
+    * 
+    * task UserTask;
     *
     * void UserTask_Callback( event_t e ) {
     *

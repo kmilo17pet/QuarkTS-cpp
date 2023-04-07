@@ -22,7 +22,7 @@ class prioQueue {
     public:
         void *data = nullptr;
         prioQueue() = delete;
-        prioQueue( queueStack_t *area, const std::size_t size ) noexcept;
+        prioQueue( queueStack_t *area, const std::size_t pq_size ) noexcept;
         std::size_t count( void ) noexcept;
         task* get( void ) noexcept;
         bool isTaskInside( task &Task ) const noexcept;

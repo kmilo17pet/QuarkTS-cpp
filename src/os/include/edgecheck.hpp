@@ -33,7 +33,7 @@ namespace qOS {
                 {
                     return status;
                 }
-                bool setPin( const index_t pinNumber ) noexcept;
+                bool selectPin( const index_t pinNumber ) noexcept;
             friend class qOS::edgeCheck;
         };
 

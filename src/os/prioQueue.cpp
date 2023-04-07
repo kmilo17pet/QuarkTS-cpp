@@ -4,11 +4,11 @@
 using namespace qOS;
 
 /*============================================================================*/
-prioQueue::prioQueue( queueStack_t *area, const std::size_t size ) noexcept
+prioQueue::prioQueue( queueStack_t *area, const std::size_t pq_size ) noexcept
 {
     critical::enter();
     stack = area;
-    this->size = size;
+    size = pq_size;
     for ( std::size_t i = 0u ; i < size ; ++i ) {
         stack[ i ].Task = nullptr;  /*set the priority queue as empty*/
     }

@@ -133,7 +133,7 @@ bool edgeCheck::update( void ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool ec::node::setPin( const index_t pinNumber ) noexcept
+bool ec::node::selectPin( const index_t pinNumber ) noexcept
 {
     bool retValue = false;
 

@@ -71,13 +71,13 @@ namespace qOS {
                 }
                 bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
                 bool timeoutStop( const index_t i ) noexcept;
-                state* thisState( void ) noexcept
+                state& thisState( void ) noexcept
                 {
-                    return State;
+                    return *State;
                 }
-                stateMachine* thisMachine( void ) noexcept
+                stateMachine& thisMachine( void ) noexcept
                 { 
-                    return Machine;
+                    return *Machine;
                 }
                 signalID signal( void ) const noexcept
                 {
@@ -138,9 +138,6 @@ namespace qOS {
                 }
                 bool setTransitions( transition_t *table, std::size_t n ) noexcept;
                 bool setTimeouts( timeoutStateDefinition_t *def, std::size_t n ) noexcept;
-                state* getInit( void ) noexcept;
-                state* getLastState( void ) noexcept;
-                state* getParent( void ) noexcept;
                 void* getData( void ) noexcept;
                 void setData( void *pData ) noexcept;
                 transition_t* getTransitionTable( void ) noexcept;

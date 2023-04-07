@@ -71,11 +71,11 @@ namespace qOS {
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
         public:
-            /** @brief A constant that holds the value of the lowest priority. */
+            /** @brief A constant that holds the value of the lowest priority.*/
             static const priority_t LOWEST_PRIORITY;
-            /** @brief A constant that holds the value of the medium priority. */
+            /** @brief A constant that holds the value of the medium priority.*/
             static const priority_t MEDIUM_PRIORITY;
-            /** @brief A constant that holds the value of the highest priority. */
+            /** @brief A constant that holds the value of the highest priority.*/
             static const priority_t HIGHEST_PRIORITY;
             /**
             * @brief Returns a reference to the OS control instance
@@ -99,32 +99,36 @@ namespace qOS {
             *
             * Example : When tick is already provided
             * @code{.c}
-            * #include "qOS.h"
+            * #include "quarkts++.h"
             * #include "HAL.h"
             *
-            * #define TIMER_TICK   0.001f
+            * #define TIMER_TICK   ( 0.001f )
+            *
+            * using namespace qOS;
             *
             * void main( void ) {
             *     HAL_Init();
-            *     qOS::os.init( HAL_GetTick, TIMER_TICK, IdleTask_Callback );
+            *     os.init( HAL_GetTick, TIMER_TICK, IdleTask_Callback );
             * }
             * @endcode
             *
             * Example : When the tick is not provided
             * @code{.c}
-            * #include "qOS.h"
+            * #include "quarkts++.h"
             * #include "DeviceHeader.h"
             *
-            * #define TIMER_TICK   0.001
+            * #define TIMER_TICK   ( 0.001f )
+            *
+            * using namespace qOS;
             *
             * void Interrupt_Timer0( void ) {
-            *     qOS::clock::sysTick();
+            *     clock::sysTick();
             * }
             *
             * void main( void ) {
             *     MCU_Init();
             *     BSP_Setup_Timer0();
-            *     qOS_Setup( nullptr, TIMER_TICK, IdleTask_Callback );
+            *     os.init( nullptr, TIMER_TICK, IdleTask_Callback );
             *
             * }
             * @endcode

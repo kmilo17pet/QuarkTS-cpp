@@ -1,8 +1,6 @@
 #include <iostream>
 #include <chrono>
-#include "kernel.hpp"
-#include "coroutine.hpp"
-#include "memory.hpp"
+#include "quarkts++.h"
 
 using namespace std;
 

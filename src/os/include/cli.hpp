@@ -40,8 +40,8 @@ namespace qOS {
                 std::size_t size{ 0u };
                 volatile bool ready{ false };
                 void flush( void );
-                input( input const& ) = delete;      /* not copyable*/
-                void operator=( input const& ) = delete;  /* not assignable*/
+                input( input const& ) = delete;
+                void operator=( input const& ) = delete;
         };
 
         class _Handler {
@@ -54,14 +54,14 @@ namespace qOS {
                 std::size_t StrLen{ 0u };
                 std::size_t NumArgs{ 0u };
                 commandType Type{ UNDEF };
-                _Handler( _Handler const& ) = delete;      /* not copyable*/
-                void operator=( _Handler const& ) = delete;  /* not assignable*/
+                _Handler( _Handler const& ) = delete;
+                void operator=( _Handler const& ) = delete;
             public:
-                inline char *getStringData( void ) 
+                inline char* getStringData( void ) 
                 {
                     return StrData;
                 }
-                inline void *getData( void )
+                inline void* getData( void )
                 {
                     return Data;
                 }
@@ -82,8 +82,8 @@ namespace qOS {
                 void output( const char *s ) const;
             friend class qOS::commandLineInterface;
         };
-        using handler_t = _Handler&;
 
+        using handler_t = _Handler&;
         using commandCallback_t = response (*)( handler_t );
         using options_t = std::uint16_t;
 
@@ -95,8 +95,8 @@ namespace qOS {
                 std::size_t cmdLen{ 0u };
                 void *param{ nullptr };
                 char *Text{ nullptr };
-                command( command const& ) = delete;      /* not copyable*/
-                void operator=( command const& ) = delete;  /* not assignable*/
+                command( command const& ) = delete;
+                void operator=( command const& ) = delete;
             friend class qOS::commandLineInterface;
         };
 
@@ -120,8 +120,8 @@ namespace qOS {
             std::size_t numOfArgs( const char *str );
             void handleResponse( cli::response retval );
             void (*xNotifyFcn)( commandLineInterface *arg) = { nullptr };
-            commandLineInterface( commandLineInterface const& ) = delete;      /* not copyable*/
-            void operator=( commandLineInterface const& ) = delete; /* not assignable*/
+            commandLineInterface( commandLineInterface const& ) = delete;
+            void operator=( commandLineInterface const& ) = delete;
         public:
             commandLineInterface() = default;
             bool setup( util::putChar_t outFcn, char *pInput, const std::size_t sizeInput, char *pOutput, const std::size_t sizeOutput );

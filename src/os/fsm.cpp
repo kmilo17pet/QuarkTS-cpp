@@ -19,12 +19,12 @@ const sm::timeoutSpecOption_t sm::TIMEOUT_PERIODIC = 0x20000000uL;
 /*============================================================================*/
 bool sm::_Handler::timeoutSet( const index_t i, const qOS::time_t t ) noexcept
 {
-    return thisMachine()->timeoutSet( i, t );
+    return thisMachine().timeoutSet( i, t );
 }
 /*============================================================================*/
 bool sm::_Handler::timeoutStop( const index_t i ) noexcept
 {
-    return thisMachine()->timeoutStop( i );
+    return thisMachine().timeoutStop( i );
 }
 /*============================================================================*/
 bool stateMachine::setup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept
@@ -344,21 +344,6 @@ sm::timeoutSpec * const & stateMachine::getTimeSpec( void ) const noexcept
 void * const & stateMachine::getData( void ) const noexcept
 {
     return mData;
-}
-/*============================================================================*/
-sm::state* sm::state::getInit( void ) noexcept
-{
-    return initState;
-}
-/*============================================================================*/
-sm::state* sm::state::getLastState( void ) noexcept
-{   
-    return lastRunningChild;
-}
-/*============================================================================*/
-sm::state* sm::state::getParent( void ) noexcept
-{
-    return parent;
 }
 /*============================================================================*/
 void* sm::state::getData( void ) noexcept
