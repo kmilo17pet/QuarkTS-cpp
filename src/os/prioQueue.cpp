@@ -4,13 +4,13 @@
 using namespace qOS;
 
 /*============================================================================*/
-prioQueue::prioQueue( queueStack_t *area, const std::size_t pq_size ) noexcept
+prioQueue::prioQueue( pq::queueStack_t *area, const std::size_t pq_size ) noexcept
 {
     critical::enter();
     stack = area;
     size = pq_size;
     for ( std::size_t i = 0u ; i < size ; ++i ) {
-        stack[ i ].Task = nullptr;  /*set the priority queue as empty*/
+        stack[ i ].pTask = nullptr;  /*set the priority queue as empty*/
     }
     index = -1;
     critical::exit();
@@ -36,11 +36,11 @@ task* prioQueue::get( void ) noexcept
         index_t indexTaskToExtract = 0u;
 
         critical::enter();
-        maxPriority = stack[ 0 ].Task->getPriority();
+        maxPriority = stack[ 0 ].pTask->getPriority();
         /*walk through the queue to find the task with the highest priority*/
         /*loop until all items are checked or if the tail is reached*/
-        for ( index_t i = 1u ; ( i < size ) && ( nullptr != stack[ i ].Task ) ; ++i ) {
-            const priority_t iPriorityValue = stack[ i ].Task->getPriority();
+        for ( index_t i = 1u ; ( i < size ) && ( nullptr != stack[ i ].pTask ) ; ++i ) {
+            const priority_t iPriorityValue = stack[ i ].pTask->getPriority();
             /*check if the queued task has the max priority value*/
             if ( iPriorityValue > maxPriority ) {
                 maxPriority = iPriorityValue; /*Reassign the max value*/
@@ -48,9 +48,9 @@ task* prioQueue::get( void ) noexcept
             }
         }
         /*get the data from the queue*/
-        data = stack[ indexTaskToExtract ].queueData;
+        data = stack[ indexTaskToExtract ].qData;
         /*assign the task to the output*/
-        xTask = stack[ indexTaskToExtract ].Task;
+        xTask = stack[ indexTaskToExtract ].pTask;
         clearIndex( indexTaskToExtract );
         critical::exit();
     }
@@ -67,7 +67,7 @@ bool prioQueue::isTaskInside( task &Task ) const noexcept
         critical::enter();
         /*loop the queue slots to check if the Task is inside*/
         for ( base_t i = 0 ; i < currentQueueIndex ; ++i ) {
-            if ( &Task == stack[ i ].Task ) {
+            if ( &Task == stack[ i ].pTask ) {
                 retValue = true;
                 break;
             }
@@ -86,7 +86,7 @@ bool prioQueue::insert( task &Task, void *pData ) noexcept
 
     /*check if data can be queued*/
     if ( index < queueMaxIndex ) {
-        const queueStack_t tmp{ &Task, pData };
+        const pq::queueStack_t tmp{ &Task, pData };
         /*insert task and the corresponding eventData to the queue*/
         stack[ ++index ] = tmp;
         retValue = true;
@@ -99,7 +99,7 @@ void prioQueue::clearIndex( index_t indexToClear ) noexcept
 {
     const base_t queueIndex = static_cast<base_t>( index ); /*to avoid side effects*/
     
-    stack[ indexToClear ].Task = nullptr; /*set the position in the queue as empty*/
+    stack[ indexToClear ].pTask = nullptr; /*set the position in the queue as empty*/
     for ( index_t j = indexToClear ; static_cast<base_t>( j ) < queueIndex ; ++j ) {
         stack[ j ] = stack[ j + 1u ]; /*shift the remaining items of the queue*/
     }
@@ -109,7 +109,7 @@ void prioQueue::clearIndex( index_t indexToClear ) noexcept
 void prioQueue::cleanUp( const task &Task ) noexcept
 {
     for ( index_t i = 1u ; i < size ; ++i ) {
-        if ( stack[ i ].Task == &Task ) {
+        if ( stack[ i ].pTask == &Task ) {
             clearIndex( i );
         }
     }

@@ -48,8 +48,8 @@ namespace qOS {
             taskFcn_t idleCallback{ nullptr };
             taskFcn_t releaseSchedCallback{ nullptr };
             task *yieldTask{ nullptr };
-            queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
-            prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(queueStack_t) };
+            pq::queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
+            prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(pq::queueStack_t) };
             volatile coreFlags_t flag{ 0uL };
             notificationSpreader_t nSpreader{ notifyMode::_NONE_, nullptr };
             std::size_t taskEntries{ 0uL };

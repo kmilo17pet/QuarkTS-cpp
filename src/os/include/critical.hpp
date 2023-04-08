@@ -32,7 +32,7 @@ namespace qOS {
         * @return true on success. Otherwise return false.
         */
         bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept;
-    };
+    }
 }
 
 #endif /*QOS_CPP_CRITICAL*/

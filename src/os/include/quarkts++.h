@@ -3,7 +3,7 @@
 
 #define QUARKTS_CPP_VERSION         "1.0.1"
 #define QUARKTS_CPP_VERNUM          ( 101u )
-#define QUARKTS_CPP_CAPTION         "QuarkTS-cpp OS " QUARKTS_CPP_VERSION
+#define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config.h"
 #include "types.hpp"
