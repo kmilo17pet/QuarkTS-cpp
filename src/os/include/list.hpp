@@ -5,7 +5,7 @@
 
 namespace qOS {
 
-    enum listPosition : std::int32_t {
+    enum listPosition : int32_t {
         AT_FRONT = -1,
         AT_BACK = -2
     };
@@ -63,7 +63,7 @@ namespace qOS {
             node *tail{ nullptr };
             node *iter{ nullptr };
             listDirection iDir{ listDirection::FORWARD };
-            std::size_t size{ 0u };
+            size_t size{ 0u };
             bool isMember( const void * const xNode ) const noexcept;
             void insertAtFront( node * const xNode ) noexcept;
             void insertAtBack( node * const xNode ) noexcept;
@@ -123,7 +123,7 @@ namespace qOS {
             * @brief Get the number of items inside the list.
             * @return The number of items of the list.
             */
-            std::size_t length( void ) const noexcept;
+            size_t length( void ) const noexcept;
             /**
             * @brief Sort the double linked list using the @a f function to
             * determine the order. The sorting algorithm used by this function compares

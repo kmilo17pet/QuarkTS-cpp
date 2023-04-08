@@ -22,7 +22,7 @@ namespace qOS {
         * @return A pointer to the first occurrence of character in @a s.
         * If the character is not found, the function returns a null pointer.
         */
-        char* strchr( const char *s, int c, std::size_t maxlen ) noexcept;
+        char* strchr( const char *s, int c, size_t maxlen ) noexcept;
         /**
         * @brief Returns the length of the given null-terminated byte string, that
         * is, the number of characters in a character array whose first element is
@@ -36,7 +36,7 @@ namespace qOS {
         * zero if @a str is a null pointer, @a maxlen if the null character was 
         * not found.
         */
-        std::size_t strlen( const char* s, std::size_t maxlen ) noexcept;
+        size_t strlen( const char* s, size_t maxlen ) noexcept;
         /**
         * @brief Copies up to @a (maxlen - 1) characters from the null-terminated
         * string @a src to
@@ -46,7 +46,7 @@ namespace qOS {
         * @param[in] maxlen Maximum number of characters to copy
         * @return The length of @a src
         */
-        std::size_t strcpy( char * dst, const char * src, std::size_t maxlen ) noexcept;
+        size_t strcpy( char * dst, const char * src, size_t maxlen ) noexcept;
         /**
         * @brief appends no more than @a maxlen−len(dst)−1 characters pointed to by 
         * @a src into the array pointed to by @a dst and always terminates the 
@@ -63,14 +63,14 @@ namespace qOS {
         * sum of the lengths of the strings @a dst and @a src or @a n, whichever 
         * is smaller.
         */
-        std::size_t strcat( char *dst, const char *src, std::size_t maxlen ) noexcept;
+        size_t strcat( char *dst, const char *src, size_t maxlen ) noexcept;
         /**
         * @brief Invert the endianess for n bytes of the specified memory location.
         * @param[in,out] pData A pointer to block of data
         * @param[in] n The number of bytes to swap
         * @return true on success, otherwise returns false.
         */
-        bool swapBytes( void *pData, const std::size_t n ) noexcept;
+        bool swapBytes( void *pData, const size_t n ) noexcept;
         /**
         * @brief Check the system endianess
         * @return true if Little-Endian, otherwise returns false.
@@ -93,7 +93,7 @@ namespace qOS {
         * @param[in] n The number of bytes to print out
         * @return true on success, otherwise returns false.
         */
-        bool printXData( util::putChar_t fcn, void* pStorage, void *pData, std::size_t n ) noexcept;
+        bool printXData( util::putChar_t fcn, void* pStorage, void *pData, size_t n ) noexcept;
         /**
         * @brief API interface to write n RAW data through @a fcn
         * @param[in] oFcn The basic output byte function
@@ -103,7 +103,7 @@ namespace qOS {
         * @param[in] aip Auto-increment the storage-pointer
         * @return true on success, otherwise returns false.
         */
-        bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip = false ) noexcept;
+        bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip = false ) noexcept;
         /**
         * @brief API interface to get n RAW data through @a fcn
         * @param[in] iFcn The basic input byte function
@@ -113,7 +113,7 @@ namespace qOS {
         * @param[in] aip Auto-increment the storage-pointer
         * @return true on success, otherwise returns false.
         */
-        bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const std::size_t n, bool aip = false ) noexcept;
+        bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip = false ) noexcept;
         /**
         * @brief Converts the input string consisting of hexadecimal digits into an
         * unsigned integer value. The input parameter should consist exclusively of
@@ -121,9 +121,9 @@ namespace qOS {
         * processed one character at a time, until the function reaches a character
         * which it doesn't recognize (including a null character).
         * @param[in] s The hex string to be converted.
-        * @return The numeric value as @c std::uint32_t.
+        * @return The numeric value as @c uint32_t.
         */
-        std::uint32_t hexStringToUnsigned( const char *s ) noexcept;
+        uint32_t hexStringToUnsigned( const char *s ) noexcept;
         /**
         * @brief Parses the C string @a s, interpreting its content as a floating
         * point number and returns its value as a float( @c float32_t). The function
@@ -153,7 +153,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* floatToString( float32_t num, char *str, std::uint8_t precision = 10u ) noexcept;
+        char* floatToString( float32_t num, char *str, uint8_t precision = 10u ) noexcept;
         /**
         * @brief Parses the C-string @a s interpreting its content as an integral
         * number, which is returned as a value of type int. The function first
@@ -190,7 +190,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* unsignedToString( std::uint32_t num, char* str, std::uint8_t base = 10u ) noexcept;
+        char* unsignedToString( uint32_t num, char* str, uint8_t base = 10u ) noexcept;
         /**
         * @brief Converts an integer value to a null-terminated string using the
         * specified base and stores the result in the array given by @a str
@@ -210,7 +210,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* integerToString( std::int32_t num, char* str, std::uint8_t base = 10u ) noexcept;
+        char* integerToString( int32_t num, char* str, uint8_t base = 10u ) noexcept;
         /**
         * @brief Converts a boolean value to a null-terminated string. Input is
         * considered true with any value different to zero (0).

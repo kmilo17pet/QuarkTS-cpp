@@ -1,10 +1,6 @@
 #ifndef QOS_CPP_KERNEL
 #define QOS_CPP_KERNEL
 
-#include <cstddef>
-#include <cstdint>
-#include <cstdlib>
-#include <cstring>
 #include "config.h"
 #include "list.hpp"
 #include "clock.hpp"
@@ -21,13 +17,13 @@
 
 namespace qOS {
 
-    using coreFlags_t = std::uint32_t ;
+    using coreFlags_t = uint32_t ;
 
     /**
     * @brief An enum that defines the modes in which a notification can be
     * delivered
     */
-    enum class notifyMode : std::uint8_t {
+    enum class notifyMode : uint8_t {
         SIMPLE = 0u,    /**< To notify a task using the simple approach. */
         QUEUED = 1u,    /**< To notify a task using the FIFO priority queue. */
         _NONE_ = 3u,    /**< Do not use this value. Used only internally.*/
@@ -52,16 +48,16 @@ namespace qOS {
             prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(pq::queueStack_t) };
             volatile coreFlags_t flag{ 0uL };
             notificationSpreader_t nSpreader{ notifyMode::_NONE_, nullptr };
-            std::size_t taskEntries{ 0uL };
+            size_t taskEntries{ 0uL };
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
             list& waitingList{ coreLists[ Q_PRIORITY_LEVELS ] };
             list& suspendedList{ coreLists[ Q_PRIORITY_LEVELS + 1 ] };
             list& readyList{ coreLists[ 0 ] };
             const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
-            const std::uint32_t BIT_INIT = 0x00000001uL;
-            const std::uint32_t BIT_FCALL_IDLE = 0x00000002uL;
-            const std::uint32_t BIT_RELEASE_SCHED = 0x00000004uL;
-            const std::uint32_t BIT_FCALL_RELEASED = 0x00000008uL;
+            const uint32_t BIT_INIT = 0x00000001uL;
+            const uint32_t BIT_FCALL_IDLE = 0x00000002uL;
+            const uint32_t BIT_RELEASE_SCHED = 0x00000004uL;
+            const uint32_t BIT_FCALL_RELEASED = 0x00000008uL;
             void triggerReleaseSchedEvent( void ) noexcept;
             bool checkIfReady( void ) noexcept;
             void dispatchTaskFillEventInfo( task *Task ) noexcept;

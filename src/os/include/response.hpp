@@ -19,9 +19,9 @@ namespace qOS {
         private:
             char *pattern2Match{ nullptr };
             timer timeout;
-            std::size_t maxStrLength{ 0u };
-            std::size_t patternLength{ 0u };
-            volatile std::size_t matchedCount{ 0u };
+            size_t maxStrLength{ 0u };
+            size_t patternLength{ 0u };
+            volatile size_t matchedCount{ 0u };
             volatile bool responseReceived{ false };
             response( response const& ) = delete;
             void operator=( response const& ) = delete;
@@ -34,7 +34,7 @@ namespace qOS {
             * @param[in] nMax The size of @a xLocBuff
             * @return On success returns true, otherwise returns false.
             */
-            bool setup( char *xLocBuff, const std::size_t nMax ) noexcept;
+            bool setup( char *xLocBuff, const size_t nMax ) noexcept;
             /**
             * @brief Reset the Response Handler
             */
@@ -49,7 +49,7 @@ namespace qOS {
             * responseStatus::TIMEOUT if timeout expires otherwise returns 
             * responseStatus::MISSING
             */
-            responseStatus received( const char *pattern, const std::size_t n, qOS::time_t t = clock::IMMEDIATE ) noexcept;
+            responseStatus received( const char *pattern, const size_t n, qOS::time_t t = clock::IMMEDIATE ) noexcept;
             /**
             * @brief ISR receiver for the response handler
             * @param[in] rxChar The byte-data from the receiver

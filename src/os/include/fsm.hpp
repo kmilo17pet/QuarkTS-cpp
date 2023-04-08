@@ -12,7 +12,7 @@ namespace qOS {
     namespace sm {
         class state;
 
-        enum signalID : std::uint32_t {
+        enum signalID : uint32_t {
             SIGNAL_START = 0xFFFFFFFFuL,
             SIGNAL_EXIT = 0xFFFFFFFEuL,
             SIGNAL_ENTRY = 0xFFFFFFFDuL,
@@ -34,7 +34,7 @@ namespace qOS {
         };
         using signal_t = struct _signal_s;
 
-        enum status : std::int16_t {
+        enum status : int16_t {
             BEFORE_ANY = -32767,
             ABSENT = -32766,
             FAILURE = -32765,
@@ -42,7 +42,7 @@ namespace qOS {
             SIGNAL_HANDLED = -32763,
         };
 
-        enum class historyMode : std::uint8_t {
+        enum class historyMode : uint8_t {
             NO_HISTORY = 0u,
             SHALLOW_HISTORY,
             DEEP_HISTORY,
@@ -93,7 +93,7 @@ namespace qOS {
         using stateCallback_t = status (*)( handler_t );
         using surroundingCallback_t = void (*)( handler_t );
         using signalAction_t = bool (*)( handler_t );
-        using timeoutSpecOption_t = std::uint32_t;
+        using timeoutSpecOption_t = uint32_t;
 
         struct _timeoutStateDefinition_s{
             qOS::time_t xTimeout;
@@ -119,8 +119,8 @@ namespace qOS {
                 timeoutStateDefinition_t *tdef{ nullptr };
                 transition_t *tTable{ nullptr };
                 void *sData{ nullptr };
-                std::size_t tEntries{ 0u };
-                std::size_t nTm{ 0u };
+                size_t tEntries{ 0u };
+                size_t nTm{ 0u };
                 void sweepTransitionTable( _Handler &h ) noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
@@ -136,8 +136,8 @@ namespace qOS {
                 {
                     return subscribe( &s, sFcn, nullptr );
                 }
-                bool setTransitions( transition_t *table, std::size_t n ) noexcept;
-                bool setTimeouts( timeoutStateDefinition_t *def, std::size_t n ) noexcept;
+                bool setTransitions( transition_t *table, size_t n ) noexcept;
+                bool setTimeouts( timeoutStateDefinition_t *def, size_t n ) noexcept;
                 void* getData( void ) noexcept;
                 void setData( void *pData ) noexcept;
                 transition_t* getTransitionTable( void ) noexcept;
@@ -146,7 +146,7 @@ namespace qOS {
         };
 
         class timeoutSpec {
-            std::uint32_t isPeriodic{ 0u };
+            uint32_t isPeriodic{ 0u };
             timer timeout[ Q_FSM_MAX_TIMEOUTS ];
             friend class qOS::stateMachine;
         };
@@ -161,8 +161,8 @@ namespace qOS {
 
         struct _psIndex_s {
             psReqStatus status;
-            std::size_t sig_slot;
-            std::size_t sub_slot;
+            size_t sig_slot;
+            size_t sub_slot;
         };
         using psIndex_t = _psIndex_s;
 
@@ -196,8 +196,8 @@ namespace qOS {
             void timeoutPerformSpecifiedActions( sm::state * const s, sm::signalID sig ) noexcept;
             sm::psIndex_t getSubscriptionStatus( sm::signalID s ) noexcept;
             void transition( sm::state *target, sm::historyMode mHistory ) noexcept;
-            std::uint8_t levelsToLCA( sm::state *target ) noexcept;
-            void exitUpToLCA( std::uint8_t lca ) noexcept;
+            uint8_t levelsToLCA( sm::state *target ) noexcept;
+            void exitUpToLCA( uint8_t lca ) noexcept;
             void prepareHandler( sm::signal_t sig, sm::state *s ) noexcept;
             sm::status invokeStateCallback( sm::state * const s ) noexcept;
             sm::state* stateOnExit( sm::state *s ) noexcept;

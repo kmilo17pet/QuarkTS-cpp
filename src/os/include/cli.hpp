@@ -9,14 +9,14 @@ namespace qOS {
     class commandLineInterface;
     namespace cli {
 
-        enum response : std::int16_t {
+        enum response : int16_t {
             ERROR = -32767,
             NOT_ALLOWED = -32766,
             NO_RESPONSE = 0,
             OK = 1,
             DEVID = 32765,
             NOT_FOUND = 32766,
-            OUTPUT = 32767,
+            OUTPUT_RESPONSE = 32767,
         };
 
         constexpr response ERROR_CODE( int16_t code )
@@ -24,7 +24,7 @@ namespace qOS {
             return static_cast<response>( -code );
         }
 
-        enum commandType : std::uint16_t {
+        enum commandType : uint16_t {
             UNDEF = 0x0000,
             PARA = 0x0100,
             TEST = 0x0200,
@@ -37,7 +37,7 @@ namespace qOS {
                 char *storage{ nullptr };
                 volatile index_t index{ 0u };
                 index_t maxIndex{ 0u };
-                std::size_t size{ 0u };
+                size_t size{ 0u };
                 volatile bool ready{ false };
                 void flush( void );
                 input( input const& ) = delete;
@@ -51,8 +51,8 @@ namespace qOS {
                 char *StrData{ nullptr };
                 char *Output{ nullptr };
                 void *Data{ nullptr };
-                std::size_t StrLen{ 0u };
-                std::size_t NumArgs{ 0u };
+                size_t StrLen{ 0u };
+                size_t NumArgs{ 0u };
                 commandType Type{ UNDEF };
                 _Handler( _Handler const& ) = delete;
                 void operator=( _Handler const& ) = delete;
@@ -65,18 +65,18 @@ namespace qOS {
                 {
                     return Data;
                 }
-                inline std::size_t getStringLength( void ) const
+                inline size_t getStringLength( void ) const
                 {
                     return StrLen;
                 }
-                inline std::size_t getNumArgs( void ) const
+                inline size_t getNumArgs( void ) const
                 {
                     return NumArgs;
                 }
                 char* getArgPtr( index_t n ) const;
                 int getArgInt( index_t n ) const;
                 float32_t getArgFloat( index_t n ) const;
-                std::uint32_t getArgHex( index_t n ) const;
+                uint32_t getArgHex( index_t n ) const;
                 char* getArgString( index_t n, char *pOut );
                 void output( const char c ) const;
                 void output( const char *s ) const;
@@ -85,14 +85,14 @@ namespace qOS {
 
         using handler_t = _Handler&;
         using commandCallback_t = response (*)( handler_t );
-        using options_t = std::uint16_t;
+        using options_t = uint16_t;
 
         class command {
             private:
                 commandCallback_t cmdCallback{ nullptr };
                 command* next{ nullptr };
                 options_t cmdOpt{ 0u };
-                std::size_t cmdLen{ 0u };
+                size_t cmdLen{ 0u };
                 void *param{ nullptr };
                 char *Text{ nullptr };
                 command( command const& ) = delete;
@@ -113,21 +113,21 @@ namespace qOS {
             const char *eol{ "\r\n" };
             char delim{ ',' };
             util::putChar_t outputFcn{ nullptr };
-            std::size_t sizeOutput{ 0u };
+            size_t sizeOutput{ 0u };
             void *owner{ nullptr };
             bool notify( void );
             bool preProcessing( cli::command *cmd, char *inputBuffer );
-            std::size_t numOfArgs( const char *str );
+            size_t numOfArgs( const char *str );
             void handleResponse( cli::response retval );
             void (*xNotifyFcn)( commandLineInterface *arg) = { nullptr };
             commandLineInterface( commandLineInterface const& ) = delete;
             void operator=( commandLineInterface const& ) = delete;
         public:
             commandLineInterface() = default;
-            bool setup( util::putChar_t outFcn, char *pInput, const std::size_t sizeInput, char *pOutput, const std::size_t sizeOutput );
+            bool setup( util::putChar_t outFcn, char *pInput, const size_t sizeInput, char *pOutput, const size_t sizeOutput );
             bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param = nullptr );
             bool isrHandler( const char c );
-            bool isrHandler( char *pData, const std::size_t n );
+            bool isrHandler( char *pData, const size_t n );
             bool raise( const char *cmd );
             bool inputFlush( void );
             cli::response exec( const char *cmd );

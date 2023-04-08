@@ -7,17 +7,17 @@ const iteration_t task::PERIODIC = INT32_MIN;
 const iteration_t task::INDEFINITE = task::PERIODIC;
 const iteration_t task::SINGLE_SHOT = 1;
 
-const std::uint32_t task::BIT_INIT = 0x00000001uL;
-const std::uint32_t task::BIT_ENABLED = 0x00000002uL;
-const std::uint32_t task::BIT_QUEUE_RECEIVER = 0x00000004uL;
-const std::uint32_t task::BIT_QUEUE_FULL = 0x00000008uL;
-const std::uint32_t task::BIT_QUEUE_COUNT = 0x00000010uL;
-const std::uint32_t task::BIT_QUEUE_EMPTY = 0x00000020uL;
-const std::uint32_t task::BIT_SHUTDOWN = 0x00000040uL;
-const std::uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
+const uint32_t task::BIT_INIT = 0x00000001uL;
+const uint32_t task::BIT_ENABLED = 0x00000002uL;
+const uint32_t task::BIT_QUEUE_RECEIVER = 0x00000004uL;
+const uint32_t task::BIT_QUEUE_FULL = 0x00000008uL;
+const uint32_t task::BIT_QUEUE_COUNT = 0x00000010uL;
+const uint32_t task::BIT_QUEUE_EMPTY = 0x00000020uL;
+const uint32_t task::BIT_SHUTDOWN = 0x00000040uL;
+const uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
 
-const std::uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
-const std::uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
+const uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
+const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
 
 constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
 {
@@ -25,19 +25,19 @@ constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
 }
 
 /*============================================================================*/
-void task::setFlags( const std::uint32_t flags, const bool value ) noexcept
+void task::setFlags( const uint32_t flags, const bool value ) noexcept
 {
     if ( value ) {
-        bitsSet( this->flags, flags );
+        bits::multipleSet( this->flags, flags );
     }
     else {
-        bitsClear( this->flags, flags );
+        bits::multipleClear( this->flags, flags );
     }
 }
 /*============================================================================*/
-bool task::getFlag( const std::uint32_t flag ) const noexcept
+bool task::getFlag( const uint32_t flag ) const noexcept
 {
-    const std::uint32_t xBit = this->flags & flag;
+    const uint32_t xBit = this->flags & flag;
     return ( 0uL != xBit );
 }
 /*============================================================================*/
@@ -125,7 +125,7 @@ bool task::setState( taskState s ) noexcept
 /*============================================================================*/
 void task::setIterations( iteration_t iValue ) noexcept
 {
-    if ( iValue > 0u ) {
+    if ( iValue > 0 ) {
         iterations = -iValue;
     }
     else if ( PERIODIC == iValue ) {
@@ -190,7 +190,7 @@ trigger task::queueCheckEvents( void ) noexcept
 
     if ( nullptr != aQueue ) {
         bool fullFlag, countFlag, receiverFlag, emptyFlag;
-        std::size_t qCount; /*current queue count*/
+        size_t qCount; /*current queue count*/
 
         fullFlag = getFlag( BIT_QUEUE_FULL );
         countFlag = getFlag( BIT_QUEUE_COUNT );
@@ -222,17 +222,17 @@ trigger task::queueCheckEvents( void ) noexcept
     return retValue;
 }
 /*============================================================================*/
-std::size_t task::getID( void ) const noexcept
+size_t task::getID( void ) const noexcept
 {
     return entry;
 }
 /*============================================================================*/
-bool task::attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg ) noexcept
+bool task::attachQueue( queue &q, const queueLinkMode mode, const size_t arg ) noexcept
 {
     bool retValue = false;
 
     if ( q.isInitialized() ) {
-        setFlags( static_cast<std::uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0u != arg );
+        setFlags( static_cast<uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0u != arg );
         if ( queueLinkMode::QUEUE_COUNT == mode ) {
             aQueueCount = arg;
         }

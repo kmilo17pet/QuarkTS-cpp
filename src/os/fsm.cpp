@@ -74,15 +74,15 @@ bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::sta
 /*============================================================================*/
 void stateMachine::unsubscribeAll( void ) noexcept
 {
-    for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX ) ; ++i ) {
+    for ( size_t i = 0u ; i < static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX ) ; ++i ) {
         psSignals[ i ] = sm::signalID::SIGNAL_NONE;
-        for ( std::size_t j = 0u; j < static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) ; ++j ) {
+        for ( size_t j = 0u; j < static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) ; ++j ) {
             psSubs[ i ][ j ] = nullptr;
         }
     }
 }
 /*============================================================================*/
-bool sm::state::setTransitions( sm::transition_t *table, std::size_t n ) noexcept
+bool sm::state::setTransitions( sm::transition_t *table, size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -115,10 +115,10 @@ bool stateMachine::installSignalQueue( queue& q ) noexcept
 /*============================================================================*/
 void sm::state::sweepTransitionTable( sm::_Handler &h ) noexcept
 {
-    const std::size_t n = tEntries;
+    const size_t n = tEntries;
     const sm::transition_t *iTransition;
     
-    for ( std::size_t i = 0u ; i < n ; ++i ) {
+    for ( size_t i = 0u ; i < n ; ++i ) {
         iTransition = &tTable[ i ]; /*get the i-element from the table*/
         if ( ( h.Signal >= sm::signalID::TM_MIN ) && ( h.Signal <= sm::signalID::TM_MAX ) ) {
             h.SignalData = nullptr; /*ignore signal data on timeout signals*/
@@ -149,7 +149,9 @@ bool stateMachine::internalSignalSend( sm::signalID sig, void *sData, bool isUrg
     #if ( Q_QUEUES == 1 )
         /*check if the state-machine has a signal queue*/
         if ( nullptr != sQueue ) {
-            sm::signal_t sig_msg = { sig, sData };
+            sm::signal_t sig_msg;
+            sig_msg.id = sig;
+            sig_msg.data = sData;
 
             retValue = sQueue->send( &sig_msg, isUrgent ? queueSendMode::TO_FRONT : queueSendMode::TO_BACK );
         }
@@ -179,16 +181,16 @@ bool stateMachine::sendSignal( sm::signalID sig, void *sData, bool isUrgent ) no
 /*============================================================================*/
 bool stateMachine::sendSignalToSubscribers( sm::signalID sig, void *sData, bool isUrgent ) noexcept
 {
-    std::uint8_t r = 0u;
+    uint8_t r = 0u;
 
     if ( sig < sm::signalID::SIGNAL_NONE ) {
         #if ( Q_FSM_PS_SIGNALS_MAX > 0 )  && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
-            const std::size_t maxSig = static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX );
-            const std::size_t maxSub = static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
-            for ( std::size_t i = 0u ; ( i < maxSig ) && ( sm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
+            const size_t maxSig = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX );
+            const size_t maxSub = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
+            for ( size_t i = 0u ; ( i < maxSig ) && ( sm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
                 if ( sig == psSignals[ i ] ) {
                     r = 1u;
-                    for ( std::size_t j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
+                    for ( size_t j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
                         r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ? 1u : 0u;
                     }
                     break;
@@ -202,7 +204,7 @@ bool stateMachine::sendSignalToSubscribers( sm::signalID sig, void *sData, bool 
 /*============================================================================*/
 void stateMachine::timeoutCheckSignals( void ) noexcept
 {
-    for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
+    for ( size_t i = 0u ; i < static_cast<size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
         if ( timeSpec->timeout[ i ].expired() ) {
             (void)sendSignal( sm::SIGNAL_TIMEOUT( i ), nullptr, false );
             if ( 0uL  != ( timeSpec->isPeriodic & ( 1uL <<  i ) ) ) {
@@ -218,7 +220,7 @@ void stateMachine::timeoutCheckSignals( void ) noexcept
 void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::signalID sig ) noexcept
 {
     sm::timeoutStateDefinition_t * const tbl = s->tdef;
-    const std::size_t n = s->nTm;
+    const size_t n = s->nTm;
 
     if ( ( n > 0u ) && ( nullptr != tbl ) ) {
         sm::timeoutSpecOption_t setCheck;
@@ -232,7 +234,7 @@ void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::sign
             setCheck = sm::TIMEOUT_SET_EXIT;
             resetCheck = sm::TIMEOUT_RST_EXIT;
         }
-        for ( std::size_t i = 0u ; i < n ; ++i ) { /*loop table */
+        for ( size_t i = 0u ; i < n ; ++i ) { /*loop table */
             const sm::timeoutSpecOption_t opt = tbl[ i ].options;
             const index_t index = static_cast<index_t>( opt & OPT_INDEX_MASK );
             /*state match and index is valid?*/
@@ -245,10 +247,10 @@ void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::sign
                         (void)tmr->set( tValue );
                     }
                     if ( 0uL != ( opt & sm::TIMEOUT_PERIODIC ) ) {
-                        bitSet( timeSpec->isPeriodic, index );
+                        bits::singleSet( timeSpec->isPeriodic, index );
                     }
                     else {
-                        bitClear( timeSpec->isPeriodic, index );
+                        bits::singleClear( timeSpec->isPeriodic, index );
                     }
                 }
                 if ( 0uL != ( opt & resetCheck ) ) {
@@ -261,7 +263,7 @@ void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::sign
 /*============================================================================*/
 bool stateMachine::installTimeoutSpec( sm::timeoutSpec &ts ) noexcept
 {
-    for ( std::size_t i = 0u ; i < static_cast<std::size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
+    for ( size_t i = 0u ; i < static_cast<size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
         ts.timeout[ i ].disarm();
         ts.isPeriodic = 0u;
     }
@@ -269,7 +271,7 @@ bool stateMachine::installTimeoutSpec( sm::timeoutSpec &ts ) noexcept
     return true;
 }
 /*============================================================================*/
-bool sm::state::setTimeouts( sm::timeoutStateDefinition_t *def, std::size_t n ) noexcept
+bool sm::state::setTimeouts( sm::timeoutStateDefinition_t *def, size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -301,7 +303,7 @@ bool stateMachine::timeoutStop( const index_t xTimeout ) noexcept
 
     if ( ( nullptr != timeSpec ) && ( xTimeout < static_cast<index_t>( Q_FSM_MAX_TIMEOUTS ) ) ) {
         #if ( Q_QUEUES == 1 )
-            std::size_t cnt;
+            size_t cnt;
             sm::signal_t xSignal;
 
             cnt = sQueue->count();
@@ -374,9 +376,9 @@ void stateMachine::setSurrounding( const sm::surroundingCallback_t sFcn ) noexce
 sm::psIndex_t stateMachine::getSubscriptionStatus( sm::signalID s ) noexcept
 {
     sm::psIndex_t idx = { sm::PS_SIGNAL_NOT_FOUND, 0u ,0u };
-    std::size_t i, j = 0u;
-    const std::size_t maxSig = static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX );
-    const std::size_t maxSub = static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
+    size_t i, j = 0u;
+    const size_t maxSig = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX );
+    const size_t maxSub = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
 
     for ( i = 0u ; ( i < maxSig ) && ( sm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
         if ( s == psSignals[ i ] ) {
@@ -442,8 +444,8 @@ bool stateMachine::unsubscribeFromSignal( sm::signalID s ) noexcept
             sm::psIndex_t r = getSubscriptionStatus( s );
 
             if ( sm::PS_SUBSCRIBER_FOUND == r.status ) {
-                std::size_t i;
-                std::size_t li = static_cast<std::size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) - 1u;
+                size_t i;
+                size_t li = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) - 1u;
 
                 for ( i = r.sub_slot ; i < li ; ++i ) {
                     psSubs[ r.sig_slot ][ i ] = psSubs[ r.sig_slot ][ i + 1u ];
@@ -452,7 +454,7 @@ bool stateMachine::unsubscribeFromSignal( sm::signalID s ) noexcept
 
                 if ( nullptr == psSubs[ r.sig_slot ][ 0 ] ) { /*no subscribers left?*/
                     /*remove the signal from the psSignals list*/
-                    li = static_cast<std::size_t>( Q_FSM_PS_SIGNALS_MAX ) - 1u;
+                    li = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX ) - 1u;
                     for ( i = r.sig_slot ; i < li ; ++i ) {
                         psSignals[ i ] = psSignals[ i + 1u ];
                     }
@@ -497,7 +499,7 @@ void stateMachine::transition( sm::state *target, sm::historyMode mHistory ) noe
 /*============================================================================*/
 uint8_t stateMachine::levelsToLCA( sm::state *target ) noexcept
 {
-    std::uint8_t xLca = 0u;
+    uint8_t xLca = 0u;
 
     /*
     To discover which exit actions to execute, it is necessary to find the
@@ -508,7 +510,7 @@ uint8_t stateMachine::levelsToLCA( sm::state *target ) noexcept
     }
     else {
         bool xBreak = false;
-        std::uint8_t n = 0u;
+        uint8_t n = 0u;
 
         for ( sm::state *s = source ; ( nullptr != s ) && ( false == xBreak ) ; s = s->parent ) {
             /*cstat -MISRAC++2008-6-5-2*/
@@ -527,7 +529,7 @@ uint8_t stateMachine::levelsToLCA( sm::state *target ) noexcept
     return xLca; /*return # of levels from the current state to the LCA.*/
 }
 /*============================================================================*/
-void stateMachine::exitUpToLCA( std::uint8_t lca ) noexcept
+void stateMachine::exitUpToLCA( uint8_t lca ) noexcept
 {
     sm::state *s = current;
 
@@ -585,7 +587,8 @@ void stateMachine::prepareHandler( sm::signal_t sig, sm::state *s ) noexcept
 /*============================================================================*/
 sm::state* stateMachine::stateOnExit( sm::state *s ) noexcept
 {
-    const sm::signal_t SIG_MSG_EXIT = { sm::signalID::SIGNAL_EXIT, nullptr };
+    sm::signal_t SIG_MSG_EXIT;
+    SIG_MSG_EXIT.id = sm::signalID::SIGNAL_EXIT;
 
     prepareHandler( SIG_MSG_EXIT, s );
     (void)invokeStateCallback( s );
@@ -599,7 +602,8 @@ sm::state* stateMachine::stateOnExit( sm::state *s ) noexcept
 /*============================================================================*/
 void stateMachine::stateOnEntry( sm::state *s ) noexcept
 {
-    const sm::signal_t SIG_MSG_ENTRY = { sm::signalID::SIGNAL_ENTRY, nullptr };
+    sm::signal_t SIG_MSG_ENTRY;
+    SIG_MSG_ENTRY.id = sm::signalID::SIGNAL_ENTRY;
 
     prepareHandler( SIG_MSG_ENTRY, s );
     (void)invokeStateCallback( s );
@@ -611,7 +615,8 @@ void stateMachine::stateOnEntry( sm::state *s ) noexcept
 /*============================================================================*/
 sm::state* stateMachine::stateOnStart( sm::state *s ) noexcept
 {
-    const sm::signal_t SIG_MSG_START = { sm::signalID::SIGNAL_START, nullptr };
+    sm::signal_t SIG_MSG_START;
+    SIG_MSG_START.id = sm::signalID::SIGNAL_START;
 
     prepareHandler( SIG_MSG_START, s );
     (void)invokeStateCallback( s );

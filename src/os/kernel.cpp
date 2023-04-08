@@ -60,7 +60,7 @@ static void fsmTaskCallback( event_t e )
     /*cstat -CERT-EXP36-C_b*/
     stateMachine * const sm = static_cast<stateMachine*>( e.self().getAttachedObject() );
     /*cstat +CERT-EXP36-C_b*/
-    const sm::signal_t sig = { sm::signalID::SIGNAL_NONE, nullptr };
+    const sm::signal_t sig;
     (void)sm->run( sig );
     Q_UNUSED(e);
 } 
@@ -131,7 +131,7 @@ bool core::setIdleTask( taskFcn_t callback ) noexcept
 /*============================================================================*/
 bool core::schedulerRelease( void ) noexcept
 {
-    bitsSet( flag, BIT_RELEASE_SCHED );
+    bits::multipleSet( flag, BIT_RELEASE_SCHED );
     return true;
 }
 /*cstat -MISRAC++2008-7-1-2*/
@@ -157,9 +157,9 @@ bool core::removeTask( task &Task ) noexcept
 /*============================================================================*/
 void core::triggerReleaseSchedEvent( void ) noexcept
 {
-    bitsClear( flag, BIT_INIT );
-    bitsClear( flag, BIT_RELEASE_SCHED );
-    _Event::FirstCall = ( false == bitsGet( flag, BIT_FCALL_RELEASED ) );
+    bits::multipleClear( flag, BIT_INIT );
+    bits::multipleClear( flag, BIT_RELEASE_SCHED );
+    _Event::FirstCall = ( false == bits::multipleGet( flag, BIT_FCALL_RELEASED ) );
     _Event::Trigger = trigger::bySchedulingRelease;
     _Event::TaskData = nullptr;
     if ( nullptr != releaseSchedCallback ) {
@@ -169,7 +169,7 @@ void core::triggerReleaseSchedEvent( void ) noexcept
         callback( *static_cast<_Event*>( this) );
         /*cstat +CERT-EXP39-C_d*/
     }
-    bitsSet( flag, BIT_FCALL_IDLE );
+    bits::multipleSet( flag, BIT_FCALL_IDLE );
 }
 /*============================================================================*/
 bool core::checkIfReady( void ) noexcept
@@ -363,13 +363,13 @@ void core::dispatch( list * const xList ) noexcept
 /*============================================================================*/
 void core::dispatchIdle( void ) noexcept
 {
-    _Event::FirstCall = ( false == bitsGet( flag, BIT_FCALL_IDLE ) );
+    _Event::FirstCall = ( false == bits::multipleGet( flag, BIT_FCALL_IDLE ) );
     _Event::TaskData = nullptr;
     _Event::Trigger = trigger::byNoReadyTasks;
     /*cstat -CERT-EXP39-C_d*/
     idleCallback( *static_cast<_Event*>( this ) ); /*run the idle callback*/
     /*cstat +CERT-EXP39-C_d*/
-    bitsSet( flag, BIT_FCALL_IDLE );
+    bits::multipleSet( flag, BIT_FCALL_IDLE );
 }
 /*============================================================================*/
 bool core::run( void ) noexcept
@@ -403,7 +403,7 @@ bool core::run( void ) noexcept
         }
     }
     #if ( Q_ALLOW_SCHEDULER_RELEASE == 1 )
-        while ( false == bitsGet( flag, BIT_RELEASE_SCHED ) );
+        while ( false == bits::multipleGet( flag, BIT_RELEASE_SCHED ) );
         triggerReleaseSchedEvent(); /*check for a scheduling-release request*/
         retValue = true;
     #else
@@ -528,10 +528,10 @@ task* core::findTaskByName( const char *name ) noexcept
     task *found = nullptr;
 
     if ( nullptr != name ) {
-        const std::size_t maxLists = sizeof( coreLists )/sizeof( coreLists[ 0 ] );
+        const size_t maxLists = sizeof( coreLists )/sizeof( coreLists[ 0 ] );
         bool r = false;
 
-        for ( std::size_t i = 0u ; ( false == r ) && ( i < maxLists ) ; ++i ) {
+        for ( size_t i = 0u ; ( false == r ) && ( i < maxLists ) ; ++i ) {
             for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
                 task * const xTask = it.get<task*>();
 

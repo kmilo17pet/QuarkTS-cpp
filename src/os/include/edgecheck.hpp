@@ -14,8 +14,8 @@ namespace qOS {
             UNKNOWN = -1,
             OFF = 0,
             ON = 1,
-            RISING = 2,
-            FALLING = 3,
+            RISING_EDGE = 2,
+            FALLING_EDGE = 3,
         };
 
         class node {

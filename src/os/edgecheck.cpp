@@ -12,30 +12,30 @@ static bool read32bit( void *addr, index_t pinNumber );
 static bool read8bit( void *addr, index_t pinNumber )
 {
     /*cstat -CERT-EXP36-C_b*/
-    std::uint8_t * const reg = static_cast<std::uint8_t*>( addr ); 
+    uint8_t * const reg = static_cast<uint8_t*>( addr ); 
     /*cstat +CERT-EXP36-C_b*/
-    return bitRead( reg[ 0 ], pinNumber );
+    return bits::singleRead( reg[ 0 ], pinNumber );
 }
 /*============================================================================*/
 static bool read16bit( void *addr, index_t pinNumber )
 {
     /*cstat -CERT-EXP36-C_b*/
-    std::uint16_t * const reg = static_cast<std::uint16_t*>( addr ); 
+    uint16_t * const reg = static_cast<uint16_t*>( addr ); 
     /*cstat +CERT-EXP36-C_b*/
-    return bitRead( reg[ 0 ], pinNumber );
+    return bits::singleRead( reg[ 0 ], pinNumber );
 }
 /*============================================================================*/
 static bool read32bit( void *addr, index_t pinNumber )
 {
     /*cstat -CERT-EXP36-C_b*/
-    std::uint32_t * const reg = static_cast<std::uint32_t*>( addr ); 
+    uint32_t * const reg = static_cast<uint32_t*>( addr ); 
     /*cstat +CERT-EXP36-C_b*/
-    return bitRead( reg[ 0 ], pinNumber );
+    return bits::singleRead( reg[ 0 ], pinNumber );
 }
 /*============================================================================*/
 void edgeCheck::stateCheck( void )
 {
-    std::size_t nodeChange = 0u;
+    size_t nodeChange = 0u;
     /*cstat -MISRAC++2008-6-5-2*/
     for ( ec::node *n = head ; nullptr != n ; n = n->next ) {
         /*cstat +MISRAC++2008-6-5-2*/
@@ -71,8 +71,8 @@ void edgeCheck::stateUpdate( void )
                                                                          ec::pinState::OFF;
         
         if ( n->prevPinValue != v ) {
-            n->status = ( ec::pinState::ON == v ) ? ec::pinState::RISING :
-                                                    ec::pinState::FALLING;
+            n->status = ( ec::pinState::ON == v ) ? ec::pinState::RISING_EDGE :
+                                                    ec::pinState::FALLING_EDGE;
         }
         n->prevPinValue = v; /*keep the previous level*/
     }

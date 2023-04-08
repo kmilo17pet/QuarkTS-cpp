@@ -19,15 +19,15 @@ namespace qOS {
             volatile base_t index{ -1 };
             void *data{ nullptr };
             pq::queueStack_t *stack{ nullptr };
-            std::size_t size{ 0u };
+            size_t size{ 0u };
             void clearIndex( index_t indexToClear ) noexcept;
             prioQueue( prioQueue const& ) = delete;
             void operator=( prioQueue const& ) = delete;
         protected:
             prioQueue() = delete;
             ~prioQueue() {}
-            prioQueue( pq::queueStack_t *area, const std::size_t pq_size ) noexcept;
-            std::size_t count( void ) noexcept;
+            prioQueue( pq::queueStack_t *area, const size_t pq_size ) noexcept;
+            size_t count( void ) noexcept;
             task* get( void ) noexcept;
             bool isTaskInside( task &Task ) const noexcept;
             bool insert( task &Task, void *pData ) noexcept;

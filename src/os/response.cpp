@@ -4,7 +4,7 @@
 using namespace qOS;
 
 /*============================================================================*/
-bool response::setup( char *xLocBuff, const std::size_t nMax ) noexcept
+bool response::setup( char *xLocBuff, const size_t nMax ) noexcept
 {
     bool retValue = false;
 
@@ -26,7 +26,7 @@ void response::reset( void ) noexcept
     timeout.disarm();
 }
 /*============================================================================*/
-responseStatus response::received( const char *pattern, const std::size_t n, qOS::time_t t ) noexcept
+responseStatus response::received( const char *pattern, const size_t n, qOS::time_t t ) noexcept
 {
     responseStatus retValue = responseStatus::MISSING;
 

@@ -4,24 +4,24 @@
 using namespace qOS;
 
 /*============================================================================*/
-prioQueue::prioQueue( pq::queueStack_t *area, const std::size_t pq_size ) noexcept
+prioQueue::prioQueue( pq::queueStack_t *area, const size_t pq_size ) noexcept
 {
     critical::enter();
     stack = area;
     size = pq_size;
-    for ( std::size_t i = 0u ; i < size ; ++i ) {
+    for ( size_t i = 0u ; i < size ; ++i ) {
         stack[ i ].pTask = nullptr;  /*set the priority queue as empty*/
     }
     index = -1;
     critical::exit();
 }
 /*============================================================================*/
-std::size_t prioQueue::count( void ) noexcept
+size_t prioQueue::count( void ) noexcept
 {
-    std::size_t retValue = 0u;
+    size_t retValue = 0u;
 
     if ( hasElements() ) {
-        retValue = static_cast<std::size_t>( index ) + 1u;
+        retValue = static_cast<size_t>( index ) + 1u;
     }
 
     return retValue;
@@ -86,9 +86,11 @@ bool prioQueue::insert( task &Task, void *pData ) noexcept
 
     /*check if data can be queued*/
     if ( index < queueMaxIndex ) {
-        const pq::queueStack_t tmp{ &Task, pData };
-        /*insert task and the corresponding eventData to the queue*/
-        stack[ ++index ] = tmp;
+        pq::queueStack_t tmp;
+        
+        tmp.pTask = &Task;
+        tmp.qData = pData;
+        stack[ ++index ] = tmp; /*insert task and eventData to the queue*/
         retValue = true;
     }
     return retValue;

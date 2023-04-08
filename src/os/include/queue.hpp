@@ -38,13 +38,13 @@ namespace qOS {
     */
     class queue {
         private:
-            std::uint8_t *head{ nullptr };
-            std::uint8_t *tail{ nullptr };
-            std::uint8_t *writer{ nullptr };
-            std::uint8_t *reader{ nullptr };
-            volatile std::size_t itemsWaiting = 0u;
-            std::size_t itemsCount = 0u;
-            std::size_t itemSize = 0u;
+            uint8_t *head{ nullptr };
+            uint8_t *tail{ nullptr };
+            uint8_t *writer{ nullptr };
+            uint8_t *reader{ nullptr };
+            volatile size_t itemsWaiting = 0u;
+            size_t itemsCount = 0u;
+            size_t itemSize = 0u;
             void moveReader( void ) noexcept;
             void copyDataFromQueue( void * const dst ) noexcept;
             void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept; 
@@ -60,7 +60,7 @@ namespace qOS {
             * @param[in] count The maximum number of items the queue can hold.
             * @return true on success, otherwise returns false.
             */
-            bool setup( void *pData, const std::size_t size, const std::size_t count ) noexcept;
+            bool setup( void *pData, const size_t size, const size_t count ) noexcept;
             /**
             * @brief Resets a queue to its original empty state.
             */
@@ -79,13 +79,13 @@ namespace qOS {
             * @brief Returns the number of items in the Queue
             * @return The number of elements in the queue
             */
-            std::size_t count( void ) const noexcept;
+            size_t count( void ) const noexcept;
             /**
             * @brief Returns the number of available slots to hold items inside 
             * the queue.
             * @return The number of available slots in the queue.
             */
-            std::size_t itemsAvailable( void ) const noexcept;
+            size_t itemsAvailable( void ) const noexcept;
             /**
             * @brief Remove the data located at the front of the Queue
             * @return true if data was removed from the Queue, otherwise returns
@@ -126,7 +126,7 @@ namespace qOS {
             * @return true if the queue is initialized, false if not.
             */
             bool isInitialized( void ) const noexcept;
-            std::size_t getItemSize( void ) noexcept;
+            size_t getItemSize( void ) noexcept;
     };
 }
 

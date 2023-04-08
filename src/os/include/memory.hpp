@@ -18,7 +18,7 @@ namespace qOS {
         using address_t = size_t;
         struct _blockConnect_s {
             struct _blockConnect_s *next{ nullptr };
-            std::size_t blockSize{ 0u };
+            size_t blockSize{ 0u };
         };
         using blockConnect_t = struct _blockConnect_s;
 
@@ -26,29 +26,29 @@ namespace qOS {
             private:
                 blockConnect_t *end{ nullptr };
                 blockConnect_t start;
-                std::uint8_t *poolMemory{ nullptr };
-                std::size_t poolMemSize{ 0u };
-                std::size_t freeBytesRemaining{ 0u };
+                uint8_t *poolMemory{ nullptr };
+                size_t poolMemSize{ 0u };
+                size_t freeBytesRemaining{ 0u };
                 void insertBlockIntoFreeList( blockConnect_t *xBlock ) noexcept;
                 void init( void ) noexcept;
                 pool( pool const& ) = delete;
                 void operator=( pool const& ) = delete;
             public:
-                inline pool( void *pArea, const std::size_t pSize ) noexcept {
+                inline pool( void *pArea, const size_t pSize ) noexcept {
                     (void)setup( pArea, pSize );
                 }
-                bool setup( void *pArea, const std::size_t pSize ) noexcept;
+                bool setup( void *pArea, const size_t pSize ) noexcept;
                 void free( void *ptr ) noexcept;
-                void* alloc( std::size_t pSize ) noexcept;
-                std::size_t getFreeSize( void ) noexcept;
+                void* alloc( size_t pSize ) noexcept;
+                size_t getFreeSize( void ) noexcept;
         };
 
     }
 }
 
     #if ( Q_DEFAULT_HEAP_SIZE >= 64 )
-        void * operator new( std::size_t size);
-        void * operator new[]( std::size_t size);
+        void * operator new( size_t size);
+        void * operator new[]( size_t size);
 
         void operator delete(void * ptr) noexcept;
         void operator delete[](void * ptr) noexcept;

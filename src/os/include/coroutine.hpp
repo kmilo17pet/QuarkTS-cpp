@@ -39,14 +39,14 @@ namespace qOS {
         /** @brief A Co-Routine Semaphore*/
         class semaphore {
             private:
-                std::size_t count{ 1u };
+                size_t count{ 1u };
                 void signal( void ) noexcept;
                 bool tryLock( void ) noexcept;
                 semaphore( semaphore const& ) = delete;
                 void operator=( semaphore const& ) = delete;
             public:
-                semaphore( std::size_t init ) : count( init ) {}
-                void set( std::size_t val ) noexcept;
+                semaphore( size_t init ) : count( init ) {}
+                void set( size_t val ) noexcept;
             friend class co::_coContext;
         };
 

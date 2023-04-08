@@ -4,53 +4,57 @@
 #include "types.hpp"
 
 namespace qOS {
-    /*cstat -CERT-INT34-C_a -MISRAC++2008-5-0-10*/
-    template <typename T, typename V>
-    inline void bitsSet( T &dst, V xBits )
-    {
-        dst |= static_cast<T>( xBits );
-    }
 
-    template <typename T, typename V>
-    inline void bitsClear( T &dst, V xBits )
-    {
-        dst &= ~static_cast<T>( xBits );
-    }
+    namespace bits {
+        /*cstat -CERT-INT34-C_a -MISRAC++2008-5-0-10*/
+        template <typename T, typename V>
+        inline void multipleSet( T &dst, V xBits )
+        {
+            dst |= static_cast<T>( xBits );
+        }
 
-    template <typename T>
-    inline void bitSet( T &dst, const std::size_t xBit )
-    {
-        dst |= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
-    }
+        template <typename T, typename V>
+        inline void multipleClear( T &dst, V xBits )
+        {
+            dst &= ~static_cast<T>( xBits );
+        }
 
-    template <typename T>
-    inline void bitClear( T &dst, const std::size_t xBit )
-    {
-        dst &= ~( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
-    }
+        template <typename T>
+        inline void singleSet( T &dst, const size_t xBit )
+        {
+            dst |= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
+        }
 
-    template <typename T>
-    inline bool bitRead( T dst, const std::size_t xBit )
-    {
-        return ( static_cast<T>( 0u ) == ( dst & ( static_cast<T>( 1u ) << static_cast<T>( xBit ) ) ) ) ? false : true;
-    }
+        template <typename T>
+        inline void singleClear( T &dst, const size_t xBit )
+        {
+            dst &= ~( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
+        }
 
-    template <typename T>
-    inline void bitToggle( T &dst, const std::size_t xBit )
-    {
-        dst ^= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
-    }
-    /*cstat +CERT-INT34-C_a +MISRAC++2008-5-0-10*/
-    template <typename T>
-    inline void bitWrite( T &dst, const std::size_t xBit, const bool value )
-    {
-        ( value ) ? bitSet( dst, xBit ) : bitClear( dst, xBit );
-    }
+        template <typename T>
+        inline bool singleRead( T dst, const size_t xBit )
+        {
+            return ( static_cast<T>( 0u ) == ( dst & ( static_cast<T>( 1u ) << static_cast<T>( xBit ) ) ) ) ? false : true;
+        }
 
-    template <typename T, typename V>
-    inline bool bitsGet( T reg, V xBits )
-    {
-        return ( 0u != ( reg & xBits) ) ? true : false;
+        template <typename T>
+        inline void singleToggle( T &dst, const size_t xBit )
+        {
+            dst ^= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
+        }
+        /*cstat +CERT-INT34-C_a +MISRAC++2008-5-0-10*/
+        template <typename T>
+        inline void singleWrite( T &dst, const size_t xBit, const bool value )
+        {
+            ( value ) ? bitSet( dst, xBit ) : bitClear( dst, xBit );
+        }
+
+        template <typename T, typename V>
+        inline bool multipleGet( T reg, V xBits )
+        {
+            return ( 0u != ( reg & xBits) ) ? true : false;
+        }
+
     }
 
     template <typename T>
@@ -77,49 +81,49 @@ namespace qOS {
         return ( x >= Low ) && ( x <= High );
     }
 
-    inline std::uint8_t byteNibbleHigh( std::uint8_t x )
+    inline uint8_t byteNibbleHigh( uint8_t x )
     {
-        return static_cast<std::uint8_t>( x >> 4u );
+        return static_cast<uint8_t>( x >> 4u );
     }
 
-    inline std::uint8_t byteNibbleLow( std::uint8_t x )
+    inline uint8_t byteNibbleLow( uint8_t x )
     {
-        return static_cast<std::uint8_t>( x & 0x0Fu );
+        return static_cast<uint8_t>( x & 0x0Fu );
     }
 
-    inline std::uint8_t byteMergeNibbles( std::uint8_t h, std::uint8_t l )
+    inline uint8_t byteMergeNibbles( uint8_t h, uint8_t l )
     {
-        return static_cast<std::uint8_t>( ( h << 4u ) | ( 0x0Fu & l ) );
+        return static_cast<uint8_t>( ( h << 4u ) | ( 0x0Fu & l ) );
     }
 
-    inline std::uint16_t wordByteHigh( std::uint16_t x )
+    inline uint16_t wordByteHigh( uint16_t x )
     {
-        return static_cast<std::uint16_t>( x >> 8u );
+        return static_cast<uint16_t>( x >> 8u );
     }
 
-    inline std::uint16_t wordByteLow( std::uint16_t x )
+    inline uint16_t wordByteLow( uint16_t x )
     {
-        return static_cast<std::uint16_t>( x & 0x00FFu );
+        return static_cast<uint16_t>( x & 0x00FFu );
     }
 
-    inline std::uint16_t wordMergeNibbles( std::uint16_t h, std::uint16_t l )
+    inline uint16_t wordMergeNibbles( uint16_t h, uint16_t l )
     {
-        return static_cast<std::uint16_t>( ( h << 8u ) | ( 0x00FFu & l ) );
+        return static_cast<uint16_t>( ( h << 8u ) | ( 0x00FFu & l ) );
     }
 
-    inline std::uint32_t dWordWordHigh( std::uint32_t x )
+    inline uint32_t dWordWordHigh( uint32_t x )
     {
-        return static_cast<std::uint32_t>( x >> 16u );
+        return static_cast<uint32_t>( x >> 16u );
     }
 
-    inline std::uint32_t dWordWordLow( std::uint32_t x )
+    inline uint32_t dWordWordLow( uint32_t x )
     {
-        return static_cast<std::uint32_t>( x & 0xFFFFu );
+        return static_cast<uint32_t>( x & 0xFFFFu );
     }
 
-    inline std::uint32_t dwordMergeWords( std::uint32_t h, std::uint32_t l )
+    inline uint32_t dwordMergeWords( uint32_t h, uint32_t l )
     {
-        return static_cast<std::uint32_t>( ( h << 16u ) | ( 0xFFFFu & l ) );
+        return static_cast<uint32_t>( ( h << 16u ) | ( 0xFFFFu & l ) );
     }
 
 }

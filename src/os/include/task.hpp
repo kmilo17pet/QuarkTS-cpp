@@ -12,7 +12,7 @@ namespace qOS {
     * @brief An enum with all the possible values for the event_t::getTrigger()
     * method.
     */
-    enum class trigger : std::uint8_t {
+    enum class trigger : uint8_t {
         /**
         * @brief To indicate the absence of trigger. Reserved for internal use.
         */
@@ -72,7 +72,7 @@ namespace qOS {
         byNoReadyTasks
     };
 
-    enum class globalState : std::uint8_t {
+    enum class globalState : uint8_t {
         UNDEFINED,  /**< A task should never reach this state(Reserved for internal use) */
         READY,      /**< The task has completed preparations for running, but cannot run because a task with a higher precedence is running. */
         WAITING,    /**< The task cannot run because the conditions for running are not in place. */
@@ -182,7 +182,7 @@ namespace qOS {
     * @brief An enum that defines the modes in which a queue can be linked
     * to a task
     */
-    enum queueLinkMode : std::uint32_t {
+    enum queueLinkMode : uint32_t {
         QUEUE_RECEIVER = 4u,    /**< This mode will trigger the task if there are elements in the queue. Data will be extracted automatically in every trigger and will be available in the qEvent_t::EventData field.*/
         QUEUE_FULL = 8u,        /**< This mode will trigger the task if the queue is full. A pointer to the queue will be available in the qEvent_t::EventData field.*/
         QUEUE_COUNT = 16u,      /**< This mode will trigger the task if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the qEvent_t::EventData field.*/
@@ -191,9 +191,9 @@ namespace qOS {
 
     using taskFcn_t = void (*)( event_t );
     /** @brief A 32-bit unsigned integer type to hold a notification value.*/
-    using notifier_t = std::uint32_t;
+    using notifier_t = uint32_t;
     /** @brief A 32-bit unsigned integer type to hold the task flags.*/
-    using taskFlag_t = std::uint32_t;
+    using taskFlag_t = uint32_t;
 
     /**
     * @brief A task node object
@@ -248,31 +248,31 @@ namespace qOS {
             taskFcn_t callback{ nullptr };
             void *aObj{ nullptr };
             queue *aQueue{ nullptr };
-            std::size_t aQueueCount{ 0uL };
+            size_t aQueueCount{ 0uL };
             const char *name{ nullptr };
             timer time;
             cycles_t cycles{ 0uL };
-            std::size_t entry{ 0xFFFFFFFFuL };
+            size_t entry{ static_cast<size_t>( 0xFFFFFFFFu ) };
             iteration_t iterations{ 0 };
             volatile notifier_t notifications{ 0uL };
             volatile taskFlag_t flags{ 0uL };
             priority_t priority{ 0u };
             trigger Trigger{ trigger::None };
-            void setFlags( const std::uint32_t flags, const bool value ) noexcept;
-            bool getFlag( const std::uint32_t flag ) const noexcept;
+            void setFlags( const uint32_t flags, const bool value ) noexcept;
+            bool getFlag( const uint32_t flag ) const noexcept;
             bool deadLineReached( void ) const noexcept;
             trigger queueCheckEvents( void ) noexcept;
             _Event *pEventInfo{ nullptr };
-            static const std::uint32_t BIT_INIT;
-            static const std::uint32_t BIT_ENABLED;
-            static const std::uint32_t BIT_QUEUE_RECEIVER;
-            static const std::uint32_t BIT_QUEUE_FULL;
-            static const std::uint32_t BIT_QUEUE_COUNT;
-            static const std::uint32_t BIT_QUEUE_EMPTY;
-            static const std::uint32_t BIT_SHUTDOWN;
-            static const std::uint32_t BIT_REMOVE_REQUEST;
-            static const std::uint32_t EVENT_FLAGS_MASK;
-            static const std::uint32_t QUEUE_FLAGS_MASK;
+            static const uint32_t BIT_INIT;
+            static const uint32_t BIT_ENABLED;
+            static const uint32_t BIT_QUEUE_RECEIVER;
+            static const uint32_t BIT_QUEUE_FULL;
+            static const uint32_t BIT_QUEUE_COUNT;
+            static const uint32_t BIT_QUEUE_EMPTY;
+            static const uint32_t BIT_SHUTDOWN;
+            static const uint32_t BIT_REMOVE_REQUEST;
+            static const uint32_t EVENT_FLAGS_MASK;
+            static const uint32_t QUEUE_FLAGS_MASK;
             task( task const& ) = delete;
             void operator=( task const& ) = delete;
         public:
@@ -359,7 +359,7 @@ namespace qOS {
             * @return A pointer to the string containing the task name.
             */
             const char* getName( void ) const noexcept;
-            std::size_t getID( void ) const noexcept;
+            size_t getID( void ) const noexcept;
             /**
             * @brief Attach a queue to the Task.
             * @param[in] q The queue object
@@ -388,7 +388,7 @@ namespace qOS {
             * will act as a detach action.
             * @return Returns true on success, otherwise returns false.
             */
-            bool attachQueue( queue &q, const queueLinkMode mode, const std::size_t arg = 1u ) noexcept;
+            bool attachQueue( queue &q, const queueLinkMode mode, const size_t arg = 1u ) noexcept;
             void * const & getAttachedObject( void ) const noexcept;
             event_t eventData( void ) const noexcept;
             /** @brief A constant to indicate that the task will run every time 

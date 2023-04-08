@@ -5,8 +5,8 @@
 
 namespace qOS {
 
-    using int_restorer_t = void (*)( std::uint32_t );
-    using int_disabler_t = std::uint32_t (*)( void );
+    using int_restorer_t = void (*)( uint32_t );
+    using int_disabler_t = uint32_t (*)( void );
 
     namespace critical {
         /**

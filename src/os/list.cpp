@@ -214,7 +214,7 @@ bool list::isEmpty( void ) const noexcept
     return ( nullptr == head ) ? true : false;
 }
 /*============================================================================*/
-std::size_t list::length( void ) const noexcept
+size_t list::length( void ) const noexcept
 {
     return size;
 }
@@ -226,17 +226,17 @@ bool list::sort( listCompareFcn_t f ) noexcept
     bool retValue = false;
 
     if ( nullptr != f ) {
-        const std::size_t count = size;
+        const size_t count = size;
 
         if ( count >= 2u ) {
             node *current = nullptr, *before, *after;
             struct _listCompareHandle_s xHandle;
             bool xRetCmp;
 
-            for ( std::size_t i = 1u ; i < count ; ++i ) {
-                const std::size_t n = count - i - 1u;
+            for ( size_t i = 1u ; i < count ; ++i ) {
+                const size_t n = count - i - 1u;
                 current = head;
-                for ( std::size_t j = 0u; j <= n; ++j ) {
+                for ( size_t j = 0u; j <= n; ++j ) {
                     xHandle.n1 = current;
                     xHandle.n2 = current->next;
                     xRetCmp = f( &xHandle );

@@ -41,7 +41,7 @@ bool co::semaphore::tryLock( void ) noexcept
 {
     bool retValue = false;
 
-    if ( count > static_cast<std::size_t>( 0u ) ) {
+    if ( count > static_cast<size_t>( 0u ) ) {
         retValue = true; /*break the Wait operation*/
         --count;
     }
@@ -49,7 +49,7 @@ bool co::semaphore::tryLock( void ) noexcept
     return retValue;
 }
 /*============================================================================*/
-void co::semaphore::set( std::size_t val ) noexcept
+void co::semaphore::set( size_t val ) noexcept
 {
     count = val;
 }
