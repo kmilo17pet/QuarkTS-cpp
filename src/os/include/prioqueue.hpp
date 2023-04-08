@@ -32,6 +32,10 @@ namespace qOS {
             bool isTaskInside( task &Task ) const noexcept;
             bool insert( task &Task, void *pData ) noexcept;
             void cleanUp( const task &Task ) noexcept;
+            inline bool hasElements( void ) noexcept
+            {
+                return ( index >= 0 );
+            }
         friend class core; /*only core can use this class*/
     };
 

@@ -20,7 +20,7 @@ std::size_t prioQueue::count( void ) noexcept
 {
     std::size_t retValue = 0u;
 
-    if ( index >= 0 ) {
+    if ( hasElements() ) {
         retValue = static_cast<std::size_t>( index ) + 1u;
     }
 
@@ -31,7 +31,7 @@ task* prioQueue::get( void ) noexcept
 {
     task *xTask = nullptr;
 
-    if ( index >= 0 ) { /*queue has elements*/
+    if ( hasElements() ) { /*queue has elements*/
         priority_t maxPriority;
         index_t indexTaskToExtract = 0u;
 
