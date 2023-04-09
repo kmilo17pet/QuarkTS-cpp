@@ -3,15 +3,18 @@
 
 #include "include/types.hpp"
 #include "include/timer.hpp"
+#include "include/macro_overload.hpp"
 
 namespace qOS {
     namespace co {
 
         using state = base_t;
+        /*cstat -MISRAC++2008-0-1-4_b*/
         const state UNDEFINED = -2;
         const state SUSPENDED = -1;
         const state BEGINNING =  0;
-        
+        /*cstat +MISRAC++2008-0-1-4_b*/
+
         class _coContext;
 
         /** @brief A placeholder for the Co-Routine current position or progress*/
@@ -215,10 +218,9 @@ namespace qOS {
 #define _co_label_                                  ( __LINE__ )
 
 /*============================================================================*/
-#define reenter(...)    _reenter(__VA_ARGS__, _reenter0, _reenter1)(__VA_ARGS__)
-#define _reenter(_1, _reenter1, _reenter0, ...)     _reenter0
-#define _reenter1( Handle )                         _co_reenter_impl( Handle )
-#define _reenter0                                   _co_reenter_impl( Q_NONE )
+#define reenter_0()                     _co_reenter_impl(Q_NONE)
+#define reenter_1(h)                    _co_reenter_impl(h)
+#define reenter(...)                    MACRO_OVERLOAD( reenter_ , __VA_ARGS__ )
 
 /*============================================================================*/
 #define _co_reenter_impl( h )                                                  \
@@ -285,19 +287,17 @@ delay(t);                                                                      \
 _co_save_restore( label, _cr.delay.set(t) , _co_t_cond(0) )                    \
 
 /*============================================================================*/
-#define _wu1( c ) _co_waitUntil(_co_label_ , c )
+#define _wu_1( c ) _co_waitUntil(_co_label_ , c )
 #define _co_waitUntil( label, c )                                              \
 waitUntil(c);                                                                  \
 _co_save_restore( label, qOS::co::nop(), _co_cond(c) )                         \
 
-#define _wu2( c, t ) _co_timedWaitUntil(_co_label_ , c, t )
+#define _wu_2( c, t ) _co_timedWaitUntil(_co_label_ , c, t )
 #define _co_timedWaitUntil( label, c, t )                                      \
 waitUntil(c,t);                                                                \
 _co_save_restore( label, qOS::co::nop(), _co_t_cond(c) )                       \
 
-#define _waitGetMacro( _1,_2,NAME,...) NAME
-#define waitUntil(...) _waitGetMacro(__VA_ARGS__, _wu2, _wu1 )(__VA_ARGS__)
-
+#define waitUntil(...)                    MACRO_OVERLOAD( _wu_ , __VA_ARGS__ )
 /*============================================================================*/
 #define timeoutExpired()              timeoutExpired(), _cr.delay.expired()
 
