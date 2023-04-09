@@ -191,7 +191,8 @@ bool stateMachine::sendSignalToSubscribers( sm::signalID sig, void *sData, bool 
                 if ( sig == psSignals[ i ] ) {
                     r = 1u;
                     for ( size_t j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
-                        r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ? 1u : 0u;
+                        r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ? 
+                        static_cast<uint8_t>( 1u ) : static_cast<uint8_t>( 0u );
                     }
                     break;
                 }

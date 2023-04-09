@@ -124,7 +124,7 @@ namespace qOS {
             void operator=( commandLineInterface const& ) = delete;
         public:
             commandLineInterface() = default;
-            bool setup( util::putChar_t outFcn, char *pInput, const size_t sizeInput, char *pOutput, const size_t sizeOutput );
+            bool setup( util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut );
             bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param = nullptr );
             bool isrHandler( const char c );
             bool isrHandler( char *pData, const size_t n );

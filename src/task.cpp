@@ -25,13 +25,13 @@ constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
 }
 
 /*============================================================================*/
-void task::setFlags( const uint32_t flags, const bool value ) noexcept
+void task::setFlags( const uint32_t xFlags, const bool value ) noexcept
 {
     if ( value ) {
-        bits::multipleSet( this->flags, flags );
+        bits::multipleSet( this->flags, xFlags );
     }
     else {
-        bits::multipleClear( this->flags, flags );
+        bits::multipleClear( this->flags, xFlags );
     }
 }
 /*============================================================================*/

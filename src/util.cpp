@@ -268,12 +268,12 @@ static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const s
     return retValue;
 }
 /*============================================================================*/
-bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip ) noexcept
+bool util::outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip ) noexcept
 {
     return operationIO( fcn, pStorage, pData, n, aip, false );
 }
 /*============================================================================*/
-bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip ) noexcept
+bool util::inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip ) noexcept
 {
     return operationIO( fcn, pStorage, pData, n, aip, true );
 }

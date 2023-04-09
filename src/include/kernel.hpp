@@ -129,7 +129,7 @@ namespace qOS {
             * }
             * @endcode
             */
-            void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback ) noexcept;
+            void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. The task is scheduled to run
             * every @a t seconds, @a n times and executing @a callback method on

@@ -258,7 +258,7 @@ namespace qOS {
             volatile taskFlag_t flags{ 0uL };
             priority_t priority{ 0u };
             trigger Trigger{ trigger::None };
-            void setFlags( const uint32_t flags, const bool value ) noexcept;
+            void setFlags( const uint32_t xFlags, const bool value ) noexcept;
             bool getFlag( const uint32_t flag ) const noexcept;
             bool deadLineReached( void ) const noexcept;
             trigger queueCheckEvents( void ) noexcept;

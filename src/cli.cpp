@@ -55,19 +55,19 @@ void cli::input::flush( void )
     (void)memset( storage, 0, size );
 }
 /*============================================================================*/
-bool commandLineInterface::setup( util::putChar_t outFcn, char *pInput, const size_t sizeInput, char *pOutput, const size_t sizeOutput )
+bool commandLineInterface::setup( util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut )
 {
     bool retValue = false;
 
     if ( nullptr != outFcn ) {
         outputFcn = outFcn;
-        this->sizeOutput = sizeOutput;
+        sizeOutput = sizeOut;
         handler.Output = pOutput;
         handler.instance = this;
         id_rsp = Q_CLI_DEFAULT_DEVID_STRING;
         cli::input::storage = pInput;
-        cli::input::size = sizeInput;
-        cli::input::maxIndex = sizeInput - 1u;
+        cli::input::size = sizeIn;
+        cli::input::maxIndex = sizeIn - 1u;
         (void)memset( handler.Output, 0, this->sizeOutput );
         retValue = true;
     }

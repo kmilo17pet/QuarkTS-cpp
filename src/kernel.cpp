@@ -29,9 +29,9 @@ core& core::getInstance( void ) noexcept
 }
 /*============================================================================*/
 /*cstat -MISRAC++2008-7-1-2*/
-void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t idleCallback ) noexcept
+void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle ) noexcept
 {
-    this->idleCallback = idleCallback;
+    this->idleCallback = callbackIdle;
     (void)clock::setTimeBase( t );
     (void)clock::setTickProvider( tFcn );
 }
