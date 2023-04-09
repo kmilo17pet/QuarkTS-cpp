@@ -99,7 +99,7 @@
                 <option>
                     <name>GBECoreSlave</name>
                     <version>32</version>
-                    <state>34</state>
+                    <state>39</state>
                 </option>
                 <option>
                     <name>OGUseCmsis</name>
@@ -347,8 +347,7 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>$PROJ_DIR$\..\src\config</state>
-                    <state>$PROJ_DIR$\..\src\os\include</state>
+                    <state>$PROJ_DIR$\..\src</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2143,114 +2142,120 @@
         </settings>
     </configuration>
     <group>
+        <name>config</name>
+        <file>
+            <name>$PROJ_DIR$\..\src\config\config.h</name>
+        </file>
+    </group>
+    <group>
         <name>include</name>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\byteBuffer.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\bytebuffer.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\cli.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\cli.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\clock.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\clock.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\coroutine.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\coroutine.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\critical.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\critical.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\edgecheck.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\edgecheck.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\fsm.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\fsm.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\helper.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\helper.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\kernel.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\kernel.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\list.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\list.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\memory.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\memory.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\prioqueue.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\prioqueue.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\queue.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\queue.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\response.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\response.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\task.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\task.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\timer.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\timer.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\types.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\types.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\os\include\util.hpp</name>
+            <name>$PROJ_DIR$\..\src\include\util.hpp</name>
         </file>
     </group>
     <file>
-        <name>$PROJ_DIR$\..\src\os\byteBuffer.cpp</name>
+        <name>$PROJ_DIR$\..\src\bytebuffer.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\cli.cpp</name>
+        <name>$PROJ_DIR$\..\src\cli.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\clock.cpp</name>
+        <name>$PROJ_DIR$\..\src\clock.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\coroutine.cpp</name>
+        <name>$PROJ_DIR$\..\src\coroutine.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\critical.cpp</name>
+        <name>$PROJ_DIR$\..\src\critical.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\edgecheck.cpp</name>
+        <name>$PROJ_DIR$\..\src\edgecheck.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\fsm.cpp</name>
+        <name>$PROJ_DIR$\..\src\fsm.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\kernel.cpp</name>
+        <name>$PROJ_DIR$\..\src\kernel.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\list.cpp</name>
+        <name>$PROJ_DIR$\..\src\list.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\main.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\memory.cpp</name>
+        <name>$PROJ_DIR$\..\src\memory.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\prioQueue.cpp</name>
+        <name>$PROJ_DIR$\..\src\prioqueue.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\include\quarkts++.h</name>
+        <name>$PROJ_DIR$\..\src\quarkts++.h</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\queue.cpp</name>
+        <name>$PROJ_DIR$\..\src\queue.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\response.cpp</name>
+        <name>$PROJ_DIR$\..\src\response.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\task.cpp</name>
+        <name>$PROJ_DIR$\..\src\task.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\timer.cpp</name>
+        <name>$PROJ_DIR$\..\src\timer.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\os\util.cpp</name>
+        <name>$PROJ_DIR$\..\src\util.cpp</name>
     </file>
 </project>

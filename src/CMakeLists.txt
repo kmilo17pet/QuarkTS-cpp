@@ -1,25 +1,34 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required( VERSION 3.2 )
+project( quarkts-cpp 
+         VERSION 0.0.1 
+         DESCRIPTION "An open-source OS for small embedded applications" 
+         LANGUAGES CXX )
 
-project(test_quarkts_cpp)
-
-add_subdirectory( os )
-include_directories( os/include )
-
-set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/bin)
+add_library( ${PROJECT_NAME} STATIC
+             critical.cpp
+             list.cpp
+             clock.cpp
+             timer.cpp
+             queue.cpp
+             task.cpp
+             prioqueue.cpp
+             kernel.cpp
+             fsm.cpp
+             coroutine.cpp
+             util.cpp
+             cli.cpp
+             memory.cpp
+             bytebuffer.cpp
+             response.cpp
+             edgecheck.cpp
+           )
 
 add_compile_options( -std=c++11 -Wall -Wextra -Wpedantic -ansi -Wconversion 
-                     -flto -Wimplicit-fallthrough=0 -Wformat-security
-                     -Wduplicated-cond -Wfloat-equal -Wshadow -Wsign-conversion
-                     -Wlogical-not-parentheses -Wnull-dereference  -Wstringop-overflow 
-                     -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing 
-                   )
-add_executable ( simple_dry_test simple_dry_test.cpp )
-target_link_libraries( simple_dry_test quarkts-cpp )
+           -flto -Wimplicit-fallthrough=0 -Wformat-security
+           -Wduplicated-cond -Wfloat-equal -Wshadow -Wsign-conversion
+           -Wlogical-not-parentheses -Wnull-dereference  -Wstringop-overflow 
+           -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing 
+         )
+set_target_properties( ${PROJECT_NAME}  PROPERTIES CXX_EXTENSIONS OFF)
+target_include_directories( ${PROJECT_NAME} PUBLIC ../src )
+
