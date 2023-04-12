@@ -55,7 +55,7 @@ namespace qOS {
             (void)util::unsignedToString( t.getID(), tout.buffer, 10 );
             (void)util::outputString( tout.writeChar , "T{ \"" );
             (void)util::outputString( tout.writeChar , t.getName() );
-            (void)util::outputString( tout.writeChar , "\", #:" );
+            (void)util::outputString( tout.writeChar , "\", " );
             (void)util::outputString( tout.writeChar , tout.buffer );
             (void)util::outputString( tout.writeChar , ", " );
             (void)util::outputString( tout.writeChar , state[ t.getState() ]);

@@ -7,6 +7,7 @@
 #######################################
 
 os	KEYWORD1
+trace KEYWORD1
 task	KEYWORD1
 sm	KEYWORD1
 queue	KEYWORD1
@@ -247,7 +248,10 @@ stringToInt	KEYWORD2
 unsignedToString	KEYWORD2
 integerToString	KEYWORD2
 boolToString	KEYWORD2
-
+log	KEYWORD2
+log	KEYWORD2
+var	KEYWORD2
+setOutputFcn KEYWORD2
 
 #######################################
 # Constants(LITERAL1)
