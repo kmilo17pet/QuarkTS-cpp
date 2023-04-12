@@ -4,26 +4,29 @@ project( quarkts-cpp
          DESCRIPTION "An open-source OS for small embedded applications" 
          LANGUAGES CXX )
 
-add_library( ${PROJECT_NAME} STATIC
-             critical.cpp
-             list.cpp
-             clock.cpp
-             timer.cpp
-             queue.cpp
-             task.cpp
-             prioqueue.cpp
-             kernel.cpp
-             fsm.cpp
-             coroutine.cpp
-             util.cpp
-             cli.cpp
-             memory.cpp
-             bytebuffer.cpp
-             response.cpp
-             edgecheck.cpp
+add_library( ${PROJECT_NAME} INTERFACE )
+
+target_sources( ${PROJECT_NAME} INTERFACE
+             "${CMAKE_CURRENT_LIST_DIR}/critical.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/list.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/clock.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/timer.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/queue.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/task.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/prioqueue.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/kernel.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/fsm.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/coroutine.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/util.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/cli.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/memory.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/bytebuffer.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/response.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/edgecheck.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/trace.cpp"
            )
 
-target_compile_options( ${PROJECT_NAME} PRIVATE
+target_compile_options( ${PROJECT_NAME} INTERFACE
            $<$<COMPILE_LANGUAGE:CXX>:
                -std=c++11 -Wall -Wextra -Wpedantic -Wconversion
                -flto -Wimplicit-fallthrough=0 -Wformat-security
@@ -38,5 +41,5 @@ target_compile_options( ${PROJECT_NAME} PRIVATE
             >
 )
 set_target_properties( ${PROJECT_NAME}  PROPERTIES CXX_EXTENSIONS OFF)
-target_include_directories( ${PROJECT_NAME} PUBLIC ../src )
+target_include_directories( ${PROJECT_NAME} INTERFACE ${PROJECT_SOURCE_DIR} )
 

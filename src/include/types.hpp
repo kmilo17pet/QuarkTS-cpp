@@ -55,7 +55,9 @@ using iteration_t = int32_t;
 */
 using priority_t = uint8_t;
 
+/*! @cond */
 #define     Q_UNUSED(arg)     (void)(arg)
 #define     Q_NONE            /*EMPTY MACRO*/
+/*! @endcond */
 
 #endif /*QOS_CPP_TYPES*/

@@ -317,37 +317,37 @@ void commandLineInterface::handleResponse( cli::response retval )
 
         switch ( retval ) { /*handle the command-callback response*/
             case cli::response::ERROR:
-                (void)util::outputString( outputFcn, nullptr, er_rsp, false );
+                (void)util::outputString( outputFcn, er_rsp );
                 break;
             case cli::response::OK:
-                (void)util::outputString( outputFcn, nullptr, ok_rsp, false );
+                (void)util::outputString( outputFcn, ok_rsp );
                 break;
             case cli::response::NOT_ALLOWED:
-                (void)util::outputString( outputFcn, nullptr, er_rsp, false );
-                (void)util::outputString( outputFcn, nullptr, Q_CLI_DEFAULT_NOTALLOWED_RSP_STRING, false );
+                (void)util::outputString( outputFcn, er_rsp );
+                (void)util::outputString( outputFcn, Q_CLI_DEFAULT_NOTALLOWED_RSP_STRING );
                 break;
             case cli::response::DEVID:
-                (void)util::outputString( outputFcn, nullptr, id_rsp, false );
+                (void)util::outputString( outputFcn, id_rsp );
                 break;
             case cli::response::NOT_FOUND:
-                (void)util::outputString( outputFcn, nullptr, nf_rsp, false );
+                (void)util::outputString( outputFcn, nf_rsp );
                 break;
             case cli::response::OUTPUT_RESPONSE:
-                (void)util::outputString( outputFcn, nullptr, handler.Output, false );
+                (void)util::outputString( outputFcn, handler.Output );
                 break;
             default: /*AT_ERROR_CODE(#) */
                 if ( static_cast<base_t>( retval ) < 0 ) {
                     const int32_t errorCode = cli::ERROR_CODE( static_cast<int16_t>( retval ) );
 
                     (void)util::integerToString( errorCode, handler.Output, 10u );
-                    (void)util::outputString( outputFcn, nullptr, er_rsp, false );
+                    (void)util::outputString( outputFcn, er_rsp );
                     outputFcn( nullptr, ':' );
-                    (void)util::outputString( outputFcn, nullptr, handler.Output, false );
+                    (void)util::outputString( outputFcn, handler.Output );
                     handler.Output[ 0 ] = '\0';
                 }
                 break;
         }
-        (void)util::outputString( outputFcn, nullptr, eol , false );
+        (void)util::outputString( outputFcn, eol );
     }
 }
 /*============================================================================*/
@@ -483,6 +483,6 @@ void cli::_Handler::output( const char c ) const
 /*============================================================================*/
 void cli::_Handler::output( const char *s ) const
 {
-    (void)util::outputString( instance->outputFcn, nullptr, s, false );
+    (void)util::outputString( instance->outputFcn, s );
 }
 /*============================================================================*/

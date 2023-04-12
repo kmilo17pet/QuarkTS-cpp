@@ -1,5 +1,5 @@
-#include <iostream>
 #include <chrono>
+#include <stdio.h>
 #include "quarkts++.h"
 
 using namespace std;
@@ -18,16 +18,16 @@ sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
 void idleTask_callback( event_t e ) 
 {
     if ( e.firstCall() ) {
-        cout << "idle task" << endl;
+        trace::log << "idle task" << trace::endl;
     }
     co::reenter() {
         for(;;) {
             co::getPosition( pos1 );
-            cout<<"hello 1 "<< endl;
+            trace::log << "sec 1"<< trace::endl;
             co::delay( 0.5f );
-            cout<<"hello 2 "<< endl;
+            trace::log <<"sec 2"<< trace::endl;
             co::delay( 0.5f );
-            cout<<"hello 3 "<< endl;
+            trace::log <<"sec 3"<< trace::endl;
             co::delay( 0.5f );
             co::waitUntil( true == true );
             co::waitUntil( true == true , 0.5f );
@@ -47,7 +47,7 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        cout << "idle task" << endl;
+        trace::log << "idle task" << trace::endl;
     }
     co::reenter( otherTaskCrHandle ) {
         co::restart;
@@ -60,7 +60,7 @@ sm::status s1_callback( sm::handler_t h )
 {
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            cout<<"s1_callback"<<endl;
+            trace::log<<"s1_callback"<< trace::endl;
             h.timeoutSet( 0, 5.0f );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
@@ -77,7 +77,7 @@ sm::status s2_callback( sm::handler_t h )
     static timer tmr;
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            cout<<"s2_callback"<<endl;
+            trace::log<<"s2_callback"<< trace::endl;
             tmr( 5.0f );
             break;
         default:
@@ -91,28 +91,32 @@ sm::status s2_callback( sm::handler_t h )
 
 void task_callback( event_t e )
 {
+    trace::log << e.self() << trace::endl;
+
     if ( e.firstCall() ) {
-        cout << "first call "<< e.self().getName() << endl; 
+        trace::log << "first call "<< e.self().getName() << trace::endl; 
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        cout << "notified(SIMPLE)! " << e.self().getName() << endl;
+        trace::log << "notified(SIMPLE)! " << e.self().getName() << trace::endl;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
         
-        cout << "notified(QUEUED)! " << e.self().getName() << endl;
+        trace::log << "notified(QUEUED)! " << e.self().getName() << trace::endl;
     }
-
-    cout << "im task "<< e.self().getName() << endl;
-    
+   
     if ( e.lastIteration() ) {
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t2, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
-        cout << "last iteration "<< e.self().getName() << endl; 
+        trace::log << "last iteration "<< e.self().getName() << trace::endl; 
     }
+
+    int someValue = 457;
+    trace::log<<"test trace "<< trace::oct << trace::var(someValue) <<" afdas" << trace::endl;
+
 }
 
 uint32_t clockProvider( void ) {
@@ -120,9 +124,15 @@ uint32_t clockProvider( void ) {
     return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 
+void putCharFcn( void* stp, char c ) {
+    (void)stp;
+    putchar(c);
+}
+
 
 int main()
 {
+    trace::setOutputFcn( &putCharFcn );
     t1.setName( "t1");
     t2.setName( "t2");
     t3.setName( "t3");

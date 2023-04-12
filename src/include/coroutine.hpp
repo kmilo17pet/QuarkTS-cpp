@@ -53,6 +53,7 @@ namespace qOS {
             friend class co::_coContext;
         };
 
+        /*! @cond */
         /*cstat -MISRAC++2008-7-1-2*/
         class _coContext {
             private:
@@ -77,7 +78,9 @@ namespace qOS {
                 }
         };
         /*cstat -MISRAC++2008-0-1-11*/
+
         inline void nop( void ) noexcept {}
+        /*! @endcond */
 
         /**
         * @brief Defines a Coroutine segment. The co::reenter() statement is used 

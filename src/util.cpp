@@ -191,7 +191,7 @@ bool util::checkEndianness( void ) noexcept
     /*cstat +CERT-INT36-C*/
 }
 /*============================================================================*/
-bool util::outputString( util::putChar_t fcn, void* pStorage, const char *s, bool aip ) noexcept
+bool util::outputString( util::putChar_t fcn, const char *s, void* pStorage, bool aip ) noexcept
 {
     bool retValue = false;
 
@@ -219,7 +219,7 @@ bool util::outputString( util::putChar_t fcn, void* pStorage, const char *s, boo
     return retValue;
 }
 /*============================================================================*/
-bool util::printXData( util::putChar_t fcn, void* pStorage, void *pData, size_t n ) noexcept
+bool util::printXData( util::putChar_t fcn, void *pData, size_t n, void* pStorage ) noexcept
 {
     bool retValue = false;
 
@@ -268,12 +268,12 @@ static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const s
     return retValue;
 }
 /*============================================================================*/
-bool util::outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip ) noexcept
+bool util::outputRAW( const ioFcn_t fcn, void *pData, const size_t n, void* pStorage, bool aip ) noexcept
 {
     return operationIO( fcn, pStorage, pData, n, aip, false );
 }
 /*============================================================================*/
-bool util::inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip ) noexcept
+bool util::inputRAW( const ioFcn_t fcn, void *pData, const size_t n, void* pStorage, bool aip ) noexcept
 {
     return operationIO( fcn, pStorage, pData, n, aip, true );
 }

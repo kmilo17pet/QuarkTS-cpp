@@ -22,6 +22,6 @@
 #include "include/bytebuffer.hpp"
 #include "include/edgecheck.hpp"
 #include "include/response.hpp"
-
+#include "include/trace.hpp"
 
 #endif /*QOS_CPP_H*/

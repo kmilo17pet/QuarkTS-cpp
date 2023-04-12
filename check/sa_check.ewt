@@ -2902,6 +2902,9 @@
             <name>$PROJ_DIR$\..\src\include\timer.hpp</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\src\include\trace.hpp</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\src\include\types.hpp</name>
         </file>
         <file>
@@ -2958,6 +2961,9 @@
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\timer.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\..\src\trace.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\util.cpp</name>

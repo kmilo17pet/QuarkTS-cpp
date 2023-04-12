@@ -32,6 +32,7 @@ namespace qOS {
             ACT = 0x0800,
         };
 
+        /*! @cond */
         class input {
             protected:
                 char *storage{ nullptr };
@@ -43,6 +44,7 @@ namespace qOS {
                 input( input const& ) = delete;
                 void operator=( input const& ) = delete;
         };
+        /*! @endcond */
 
         class _Handler {
             private:

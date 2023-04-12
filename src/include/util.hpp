@@ -84,7 +84,7 @@ namespace qOS {
         * @param[in] AIP Auto-Increment the storage-pointer
         * @return tue on success, otherwise returns false.
         */
-        bool outputString( util::putChar_t fcn, void* pStorage, const char *s, bool aip = false ) noexcept;
+        bool outputString( util::putChar_t fcn, const char *s, void* pStorage = nullptr, bool aip = false ) noexcept;
         /**
         * @brief API interface to write data in HEX notation through @a fcn
         * @param[in] fcn The basic output byte function
@@ -93,7 +93,7 @@ namespace qOS {
         * @param[in] n The number of bytes to print out
         * @return true on success, otherwise returns false.
         */
-        bool printXData( util::putChar_t fcn, void* pStorage, void *pData, size_t n ) noexcept;
+        bool printXData( util::putChar_t fcn, void *pData, size_t n, void* pStorage = nullptr ) noexcept;
         /**
         * @brief API interface to write n RAW data through @a fcn
         * @param[in] oFcn The basic output byte function
@@ -103,7 +103,7 @@ namespace qOS {
         * @param[in] aip Auto-increment the storage-pointer
         * @return true on success, otherwise returns false.
         */
-        bool outputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip = false ) noexcept;
+        bool outputRAW( const ioFcn_t fcn, void *pData, const size_t n, void* pStorage = nullptr, bool aip = false ) noexcept;
         /**
         * @brief API interface to get n RAW data through @a fcn
         * @param[in] iFcn The basic input byte function
@@ -113,7 +113,7 @@ namespace qOS {
         * @param[in] aip Auto-increment the storage-pointer
         * @return true on success, otherwise returns false.
         */
-        bool inputRAW( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip = false ) noexcept;
+        bool inputRAW( const ioFcn_t fcn, void *pData, const size_t n, void* pStorage = nullptr, bool aip = false ) noexcept;
         /**
         * @brief Converts the input string consisting of hexadecimal digits into an
         * unsigned integer value. The input parameter should consist exclusively of

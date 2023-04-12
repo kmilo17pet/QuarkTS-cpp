@@ -17,7 +17,7 @@
     #define Q_PRESERVE_TASK_ENTRY_ORDER ( 1 )       /**< If enabled, kernel will preserve the tasks entry order every OS scheduling cycle*/
     #define Q_MEMORY_MANAGER            ( 1 )       /**< Used to enable or disable the Memory Manager*/
     #define Q_BYTE_ALIGNMENT            ( 8 )       /**< Byte alignment used by the memory manager*/
-    #define Q_DEFAULT_HEAP_SIZE         ( 512 )     /**< The default heap size for the memory manager*/
+    #define Q_DEFAULT_HEAP_SIZE         ( 0 )     /**< The default heap size for the memory manager*/
     #define Q_NOTIFICATION_SPREADER     ( 1 )       /**< Used to enable or disable the spread notification functionality*/
     #define Q_FSM                       ( 1 )       /**< Used to enable or disable the Finite State Machine (FSM) module */
     #define Q_FSM_MAX_NEST_DEPTH        ( 5 )       /**< The max depth of nesting for the Finite State Machines (FSM) module*/
