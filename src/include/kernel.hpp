@@ -41,7 +41,7 @@ namespace qOS {
 
     class core final : protected _Event {
         private:
-            taskFcn_t idleCallback{ nullptr };
+            task idle;
             taskFcn_t releaseSchedCallback{ nullptr };
             task *yieldTask{ nullptr };
             pq::queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
@@ -129,7 +129,7 @@ namespace qOS {
             * }
             * @endcode
             */
-            void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle ) noexcept;
+            void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. The task is scheduled to run
             * every @a t seconds, @a n times and executing @a callback method on

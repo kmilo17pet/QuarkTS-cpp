@@ -43,6 +43,13 @@ namespace qOS {
             return tout;
         }
 
+        _trace& operator<<( _trace& tout, const float32_t& v )
+        {
+            (void)util::floatToString( v, tout.buffer );
+            (void)util::outputString( tout.writeChar, tout.buffer );
+            return tout;
+        }
+
         _trace& operator<<( _trace& tout, const tout_base& f )
         {
             tout.base = f.base;

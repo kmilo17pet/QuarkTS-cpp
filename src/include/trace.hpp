@@ -7,6 +7,27 @@
 #include "include/task.hpp"
 #include "include/timer.hpp"
 
+#define _TRACE_STRINGIFY(x)              #x
+#define _TRACE_TOSTRING(x)               _TRACE_STRINGIFY( x )
+
+#if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
+    #define _TRACE_CURRENT_FUNCTION __PRETTY_FUNCTION__
+#elif defined(__DMC__) && (__DMC__ >= 0x810)
+    #define _TRACE_CURRENT_FUNCTION __PRETTY_FUNCTION__
+#elif defined(__FUNCSIG__)
+    #define _TRACE_CURRENT_FUNCTION __FUNCSIG__
+#elif (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
+    #define _TRACE_CURRENT_FUNCTION __FUNCTION__
+#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
+    #define _TRACE_CURRENT_FUNCTION __FUNC__
+#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901)
+    #define _TRACE_CURRENT_FUNCTION __func__
+#elif defined(__cplusplus) && (__cplusplus >= 201103)
+    #define _TRACE_CURRENT_FUNCTION __func__
+#else
+    #define _TRACE_CURRENT_FUNCTION "(unknown)"
+#endif
+
 namespace qOS {
     namespace trace {
 
@@ -37,6 +58,7 @@ namespace qOS {
             friend _trace& operator<<( _trace& tout, const char * s );
             friend _trace& operator<<( _trace& tout, const int32_t& v );
             friend _trace& operator<<( _trace& tout, const uint32_t& v );
+            friend _trace& operator<<( _trace& tout, const float32_t& v );
             friend _trace& operator<<( _trace& tout, const tout_base& f );
 
             friend _trace& operator<<( _trace& tout, const task& t );
@@ -57,13 +79,8 @@ namespace qOS {
     }
 }
 
-#define _TRACE_STRINGIFY(x)              #x
-#define _TRACE_TOSTRING(x)               _TRACE_STRINGIFY( x )
-
 #define var(v)  var( _TRACE_STRINGIFY(v) ) << '=' << v
-#define log     log();qOS::trace::_trace_out<< '[' << qOS::trace::dec << qOS::clock::getTick() << "] " << __func__ << ":" _TRACE_TOSTRING(__LINE__) " - "
+#define log     log();qOS::trace::_trace_out<< '[' << qOS::trace::dec << qOS::clock::getTick() << "] " << _TRACE_CURRENT_FUNCTION << ":" _TRACE_TOSTRING(__LINE__) " - "
 #define msg     msg();qOS::trace::_trace_out
-
-
 
 #endif /*QOS_CPP_TRACE*/

@@ -31,9 +31,13 @@ core& core::getInstance( void ) noexcept
 /*cstat -MISRAC++2008-7-1-2*/
 void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle ) noexcept
 {
-    this->idleCallback = callbackIdle;
     (void)clock::setTimeBase( t );
     (void)clock::setTickProvider( tFcn );
+    idle.setName( "idle" );
+    idle.setPriority( core::LOWEST_PRIORITY );
+    idle.setState( taskState::DISABLED );
+    idle.setCallback( callbackIdle );
+    idle.entry = 0u;
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
@@ -46,7 +50,7 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
     (void)Task.setIterations( n );
     Task.setFlags( task::BIT_SHUTDOWN | task::BIT_ENABLED, true );
     (void)Task.setState( s );
-    Task.entry = core::taskEntries++;
+    Task.entry = ++core::taskEntries;
     /*cstat -CERT-EXP39-C_d*/
     Task.pEventInfo = static_cast<_Event*>( this );
     /*cstat +CERT-EXP39-C_d*/
@@ -118,14 +122,7 @@ bool core::addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, c
 /*cstat -MISRAC++2008-7-1-2*/
 bool core::setIdleTask( taskFcn_t callback ) noexcept
 {
-    bool retValue = false;
-
-    if ( callback != idleCallback ) {
-        idleCallback = callback;
-        retValue = true;
-    }
-
-    return retValue;
+    return idle.setCallback( callback );
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
@@ -366,8 +363,9 @@ void core::dispatchIdle( void ) noexcept
     _Event::FirstCall = ( false == bits::multipleGet( flag, BIT_FCALL_IDLE ) );
     _Event::TaskData = nullptr;
     _Event::Trigger = trigger::byNoReadyTasks;
+    _Event::currentTask = &idle;
     /*cstat -CERT-EXP39-C_d*/
-    idleCallback( *static_cast<_Event*>( this ) ); /*run the idle callback*/
+    idle.callback( *static_cast<_Event*>( this ) ); /*run the idle callback*/
     /*cstat +CERT-EXP39-C_d*/
     bits::multipleSet( flag, BIT_FCALL_IDLE );
 }
@@ -390,7 +388,7 @@ bool core::run( void ) noexcept
             } while( 0u != xPriorityListIndex-- );
         }
         else {
-            if ( nullptr != idleCallback ) {
+            if ( nullptr != idle.callback ) {
                 dispatchIdle();
             }
         }
