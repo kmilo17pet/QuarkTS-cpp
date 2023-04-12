@@ -60,7 +60,18 @@ namespace qOS {
             (void)util::outputString( tout.writeChar , ", " );
             (void)util::outputString( tout.writeChar , state[ t.getState() ]);
             (void)util::outputString( tout.writeChar , " } " );
+            return tout;
+        }
 
+        _trace& operator<<( _trace& tout, const qOS::timer& t )
+        {
+            (void)util::outputString( tout.writeChar , "t{ E:" );
+            (void)util::unsignedToString( t.elapsed(), tout.buffer, 10 );
+            (void)util::outputString( tout.writeChar , tout.buffer );
+            (void)util::outputString( tout.writeChar , "\", R: " );
+            (void)util::unsignedToString( t.remaining(), tout.buffer, 10 );
+            (void)util::outputString( tout.writeChar , tout.buffer );
+            (void)util::outputString( tout.writeChar , " } " );
             return tout;
         }
     }

@@ -268,6 +268,7 @@ bool stateMachine::installTimeoutSpec( sm::timeoutSpec &ts ) noexcept
         ts.timeout[ i ].disarm();
         ts.isPeriodic = 0u;
     }
+    timeSpec = &ts;
 
     return true;
 }

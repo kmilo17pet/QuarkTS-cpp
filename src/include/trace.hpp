@@ -5,6 +5,7 @@
 #include "include/util.hpp"
 #include "include/clock.hpp"
 #include "include/task.hpp"
+#include "include/timer.hpp"
 
 namespace qOS {
     namespace trace {
@@ -39,6 +40,7 @@ namespace qOS {
             friend _trace& operator<<( _trace& tout, const tout_base& f );
 
             friend _trace& operator<<( _trace& tout, const task& t );
+            friend _trace& operator<<( _trace& tout, const qOS::timer& t );
         };
 
         extern _trace& _trace_out;
