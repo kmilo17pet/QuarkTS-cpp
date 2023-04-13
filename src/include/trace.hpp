@@ -42,6 +42,14 @@ namespace qOS {
         extern const tout_base oct;
         extern const tout_base bin;
         extern const char * const endl;
+        extern const char * const nrm;
+        extern const char * const red;
+        extern const char * const grn;
+        extern const char * const yel;
+        extern const char * const blu;
+        extern const char * const mag;
+        extern const char * const cyn;
+        extern const char * const wht;
 
         class _trace final {
             private:
@@ -58,6 +66,7 @@ namespace qOS {
             friend _trace& operator<<( _trace& tout, const char * s );
             friend _trace& operator<<( _trace& tout, const int32_t& v );
             friend _trace& operator<<( _trace& tout, const uint32_t& v );
+            friend _trace& operator<<( _trace& tout, const void * const p );
             friend _trace& operator<<( _trace& tout, const float32_t& v );
             friend _trace& operator<<( _trace& tout, const tout_base& f );
 

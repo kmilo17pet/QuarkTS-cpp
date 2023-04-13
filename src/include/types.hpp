@@ -29,9 +29,19 @@ using base_t = int;
 using byte_t = uint8_t;
 
 /**
+* @brief A type to instantiate an unsigned variable
+*/
+using unsigned_t = uintptr_t;
+
+/**
 * @brief A type to instantiate a single-precision variable of 32-bits IEEE 754.
 */
 using float32_t = float;  /*this is not always true in some compilers*/
+
+/**
+* @brief A type to instantiate a single-precision variable of 64-bits IEEE 754.
+*/
+using float64_t = double;  /*this is not always true in some compilers*/
 
 /**
 * @brief A type to instantiate an OS index variable. Can store the maximum

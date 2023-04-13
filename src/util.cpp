@@ -16,7 +16,7 @@ using namespace qOS::util;
 
 static const char * discardWhitespaces( const char *s, size_t maxlen ) noexcept;
 static const char * checkStrSign( const char *s, int *sgn ) noexcept;
-static size_t xBaseU32toA( uint32_t num, char* str, uint8_t base ) noexcept;
+static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept;
 static char nibbleToX( uint8_t value ) noexcept;
 static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip, bool operation ) noexcept;
 static uint8_t hexCharToUnsigned( const char c ) noexcept;
@@ -126,7 +126,7 @@ size_t util::strcat( char *dst, const char *src, size_t maxlen ) noexcept
 }
 /*============================================================================*/
 /*perform conversion of unsigned integer to ASCII. NULL Terminator not included*/
-static size_t xBaseU32toA( uint32_t num, char* str, uint8_t base ) noexcept
+static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept
 {
     size_t i = 0u;
 
@@ -136,7 +136,7 @@ static size_t xBaseU32toA( uint32_t num, char* str, uint8_t base ) noexcept
     }
     else {
         while ( 0uL != num ) { /*Process individual digits*/
-            const uint32_t r = num % static_cast<uint32_t>( base );
+            const unsigned_t r = num % static_cast<unsigned_t>( base );
             /*cstat -CERT-INT30-C_a*/
             str[ i++ ] = ( r > 9uL ) ? /*i++ never wraps*/
                 static_cast<char>( static_cast<uint8_t>( r - 10uL ) + static_cast<uint8_t>( 'A' ) ) :
@@ -449,7 +449,7 @@ int util::stringToInt( const char *s ) noexcept
     return retValue;
 }
 /*============================================================================*/
-char* util::unsignedToString( uint32_t num, char* str, uint8_t base ) noexcept
+char* util::unsignedToString( unsigned_t num, char* str, uint8_t base ) noexcept
 {
     if ( nullptr != str ) {
         size_t i;

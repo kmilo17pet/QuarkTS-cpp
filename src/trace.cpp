@@ -3,7 +3,14 @@
 
 namespace qOS {
     const char * const trace::endl = "\r\n";
-
+    const char * const trace::nrm = "\x1B[0m";
+    const char * const trace::red = "\x1B[31m";
+    const char * const trace::grn = "\x1B[32m";
+    const char * const trace::yel = "\x1B[33m";
+    const char * const trace::blu = "\x1B[34m";
+    const char * const trace::mag = "\x1B[35m";
+    const char * const trace::cyn = "\x1B[36m";
+    const char * const trace::wht = "\x1B[37m";
     namespace trace {
         _trace& _trace_out = _trace::getInstance();
         const tout_base dec( 10u );
@@ -39,6 +46,14 @@ namespace qOS {
         _trace& operator<<( _trace& tout, const uint32_t& v )
         {
             (void)util::unsignedToString( v, tout.buffer, tout.base );
+            (void)util::outputString( tout.writeChar, tout.buffer );
+            return tout;
+        }
+
+        _trace& operator<<( _trace& tout, const void * const p )
+        {
+            (void)util::unsignedToString( reinterpret_cast<size_t>( p ), tout.buffer, 10u );
+            (void)util::outputString( tout.writeChar, "p@0x" );
             (void)util::outputString( tout.writeChar, tout.buffer );
             return tout;
         }

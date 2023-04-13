@@ -61,7 +61,7 @@ sm::status s1_callback( sm::handler_t h )
 {
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<<"s1_callback"<< trace::endl;
+            trace::log<< trace::cyn <<"s1_callback"<< trace::nrm << trace::endl;
             h.timeoutSet( 0, 5000 );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
@@ -81,7 +81,7 @@ sm::status s2_callback( sm::handler_t h )
 
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<<"s2_callback"<< trace::endl;
+            trace::log<< trace::cyn  << "s2_callback"<< trace::nrm << trace::endl;
             tmr( 5000u );
             break;
         default:
@@ -98,7 +98,7 @@ void task_callback( event_t e )
     trace::log << e.self() << trace::endl;
 
     if ( e.firstCall() ) {
-        trace::log << "first call "<< e.self().getName() << trace::endl; 
+        trace::log << trace::grn << "first call "<< e.self().getName() << trace::endl << trace::nrm; 
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
@@ -118,7 +118,8 @@ void task_callback( event_t e )
     }
 
     int someValue = 457;
-    trace::log<<"test trace "<< trace::oct << trace::var(someValue) <<" afdas" << trace::endl;
+    int *ptr = &someValue;
+    trace::log << trace::red <<"test trace "<< trace::oct << trace::var(someValue)<< "  " << ptr <<" afdas" << trace::nrm << trace::endl;
 
 }
 

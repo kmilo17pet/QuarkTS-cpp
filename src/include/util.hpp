@@ -190,7 +190,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* unsignedToString( uint32_t num, char* str, uint8_t base = 10u ) noexcept;
+        char* unsignedToString( unsigned_t num, char* str, uint8_t base = 10u ) noexcept;
         /**
         * @brief Converts an integer value to a null-terminated string using the
         * specified base and stores the result in the array given by @a str
