@@ -6,9 +6,13 @@ volatile qOS::clock_t clock::sysTick_Epochs = 0u;
 qOS::getTickFcn_t clock::getTick = &internalTick; /* skipcq: CXX-W2009 */
 
 #if ( Q_SETUP_TICK_IN_HERTZ == 1 )
-    timingBase_t clock::timingBase = 0suL;
+    timingBase_t clock::timingBase = 0uL;
 #else
-    timingBase_t clock::timingBase = 0.001f;
+    #if ( Q_SETUP_TIME_CANONICAL == 1 )
+        timingBase_t clock::timingBase = 1u;
+    #else
+        timingBase_t clock::timingBase = 0.001f;
+    #endif
 #endif
 
 #if ( Q_SETUP_TIME_CANONICAL == 1 )
@@ -31,7 +35,7 @@ qOS::getTickFcn_t clock::getTick = &internalTick; /* skipcq: CXX-W2009 */
 qOS::clock_t clock::convert2Clock( const qOS::time_t t ) noexcept
 {
     #if ( Q_SETUP_TIME_CANONICAL == 1 )
-        return (qOS::clock_t)t;
+        return static_cast<qOS::clock_t>( t );
     #else
         #if ( Q_SETUP_TICK_IN_HERTZ == 1 )
             return static_cast<qOS::clock_t>( static_cast<qOS::clock_t>( t )*timingBase );

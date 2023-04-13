@@ -33,10 +33,10 @@ void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callba
 {
     (void)clock::setTimeBase( t );
     (void)clock::setTickProvider( tFcn );
-    idle.setName( "idle" );
-    idle.setPriority( core::LOWEST_PRIORITY );
-    idle.setState( taskState::DISABLED );
-    idle.setCallback( callbackIdle );
+    (void)idle.setName( "idle" );
+    (void)idle.setPriority( core::LOWEST_PRIORITY );
+    (void)idle.setState( taskState::DISABLED );
+    (void)idle.setCallback( callbackIdle );
     idle.entry = 0u;
 }
 /*cstat +MISRAC++2008-7-1-2*/

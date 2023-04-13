@@ -11,7 +11,7 @@
 
     /*==================================================  CONFIGURATION FLAGS  =======================================================*/
     #define Q_PRIORITY_LEVELS           ( 3 )       /**< The number of priorities available to the application tasks*/
-    #define Q_SETUP_TIME_CANONICAL      ( 0 )       /**< If enabled, kernel assumes the timing Base to 1mS(1KHz). All time specifications for tasks and STimers must be set in mS*/
+    #define Q_SETUP_TIME_CANONICAL      ( 1 )       /**< If enabled, kernel assumes the timing Base to 1mS(1KHz). All time specifications for tasks and STimers must be set in mS*/
     #define Q_SETUP_TICK_IN_HERTZ       ( 0 )       /**< If enabled, the timing base will be taken as frequency(Hz) instead of period(S)*/
     #define Q_PRIO_QUEUE_SIZE           ( 10 )      /**< The size of the priority queue (use a 0(zero) value to disable it)*/
     #define Q_PRESERVE_TASK_ENTRY_ORDER ( 1 )       /**< If enabled, kernel will preserve the tasks entry order every OS scheduling cycle*/

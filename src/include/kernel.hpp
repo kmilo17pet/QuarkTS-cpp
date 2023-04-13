@@ -89,8 +89,9 @@ namespace qOS {
             * @param[in] t (Optional) This parameter specifies the ISR background
             * timer base-time. This can be the period in seconds(Floating-point
             * format) or frequency in Herzt(if @c Q_SETUP_TICK_IN_HERTZ is enabled).
-            * @param[in] idleCallback  Callback function to the Idle Task. To
-            * disable the Idle-Task activities, pass @c NULL as argument.
+            * @param[in] callbackIdle  Callback function to the Idle Task. To
+            * disable the Idle-Task activities, ignore this parameter of pass 
+            * @c nullptr as argument.
             * @return true on success. Otherwise return false.
             *
             * Example : When tick is already provided
@@ -130,6 +131,55 @@ namespace qOS {
             * @endcode
             */
             void init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle = nullptr ) noexcept;
+            /**
+            * @brief Task Scheduler initialization. This core method is required
+            * and must be called once in the application main thread before any 
+            * task is being added to the OS.
+            * @param[in] tFcn The function that provides the tick value. If the user
+            * application uses the qOS::clock::sysTick() from the ISR, this 
+            * parameter can be @c nullptr.
+            * @note Function should take void and return a 32bit value.
+            * @param[in] callbackIdle  Callback function to the Idle Task. To
+            * disable the Idle-Task activities, ignore this parameter of pass 
+            * @c nullptr as argument.
+            * @return true on success. Otherwise return false.
+            *
+            * Example : When tick is already provided
+            * @code{.c}
+            * #include "quarkts++.h"
+            * #include "HAL.h"
+            *
+            * using namespace qOS;
+            *
+            * void main( void ) {
+            *     HAL_Init();
+            *     os.init( HAL_GetTick, IdleTask_Callback );
+            * }
+            * @endcode
+            *
+            * Example : When the tick is not provided
+            * @code{.c}
+            * #include "quarkts++.h"
+            * #include "DeviceHeader.h"
+            *
+            * using namespace qOS;
+            *
+            * void Interrupt_Timer0( void ) {
+            *     clock::sysTick();
+            * }
+            *
+            * void main( void ) {
+            *     MCU_Init();
+            *     BSP_Setup_Timer0();
+            *     os.init( nullptr, IdleTask_Callback );
+            *
+            * }
+            * @endcode
+            */
+            inline void init( const getTickFcn_t tFcn, taskFcn_t callbackIdle = nullptr ) noexcept
+            {
+                init( tFcn, 1u, callbackIdle );
+            }
             /**
             * @brief Add a task to the scheduling scheme. The task is scheduled to run
             * every @a t seconds, @a n times and executing @a callback method on
