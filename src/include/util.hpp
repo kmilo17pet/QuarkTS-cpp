@@ -142,7 +142,7 @@ namespace qOS {
         * If the converted value would be out of the range of representable values
         * by a float( @c qFloat32_t ), it causes undefined behavior
         */
-        float32_t stringToFloat( const char *s ) noexcept;
+        float64_t stringToFloat( const char *s ) noexcept;
         /**
         * @brief Converts a float value to a formatted string.
         * @param[in] num Value to be converted to a string.
@@ -153,7 +153,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* floatToString( float32_t num, char *str, uint8_t precision = 10u ) noexcept;
+        char* floatToString( float64_t num, char *str, uint8_t precision = 10u ) noexcept;
         /**
         * @brief Parses the C-string @a s interpreting its content as an integral
         * number, which is returned as a value of type int. The function first

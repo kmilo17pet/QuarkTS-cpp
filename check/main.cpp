@@ -10,12 +10,12 @@ void idleTask_Callback( event_t e ) {
   }
 
   co::reenter() {
-    co::delay( 0.5f );
+    co::delay( 500 );
     co::restart;
   }
 }
 
 int main() {
-  os.init( nullptr, 0.001f, idleTask_Callback );
+  os.init( nullptr, idleTask_Callback );
   return 0;
 }

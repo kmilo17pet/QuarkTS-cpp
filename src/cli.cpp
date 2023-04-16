@@ -437,7 +437,7 @@ int cli::_Handler::getArgInt( index_t n ) const
 float32_t cli::_Handler::getArgFloat( index_t n ) const
 {
     /*cstat -MISRAC++2008-5-0-6 -MISRAC++2008-5-0-3 -CERT-FLP34-C*/
-    return util::stringToFloat( getArgPtr( n ) );
+    return static_cast<float32_t>( util::stringToFloat( getArgPtr( n ) ) );
     /*cstat +MISRAC++2008-5-0-6 +MISRAC++2008-5-0-3 +CERT-FLP34-C*/
 }
 /*============================================================================*/

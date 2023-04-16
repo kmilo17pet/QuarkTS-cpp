@@ -59,7 +59,7 @@ namespace qOS {
             * @note The OS must be running before using STimers.
             * @note The expiration time should be at least, two times greater than
             * the clock-Tick.
-            * @param[in] tTime The expiration time(Must be specified in seconds).
+            * @param[in] tTime The expiration time.
             * @return Returns true on success, otherwise, returns false.
             * @note A disarmed timer also returns false.
             */

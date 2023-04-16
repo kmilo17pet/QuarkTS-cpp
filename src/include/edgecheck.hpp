@@ -10,7 +10,7 @@ namespace qOS {
 
     namespace ec {
 
-        enum pinState {
+        enum class pinState {
             UNKNOWN = -1,
             OFF = 0,
             ON = 1,

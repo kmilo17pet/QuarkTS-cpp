@@ -182,13 +182,13 @@ namespace qOS {
             }
             /**
             * @brief Add a task to the scheduling scheme. The task is scheduled to run
-            * every @a t seconds, @a n times and executing @a callback method on
+            * every @a t time units, @a n times and executing @a callback method on
             * every pass.
             * @param[in] Task The task node.
             * @param[in] callbackFcn A pointer to a void callback method with a qOS::event_t
             * parameter as input argument.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS(max)]
-            * @param[in] t Execution interval defined in seconds.
+            * @param[in] t Execution interval (time).
             * For immediate execution use t = clock::IMMEDIATE.
             * @param[in] n Number of task executions (Integer value). For indefinite
             * execution ( @a n = #qPeriodic or #qIndefinite ). Tasks do not
@@ -227,7 +227,7 @@ namespace qOS {
             #if ( Q_FSM == 1 )
             /**
             * @brief Add a task to the scheduling scheme running a dedicated
-            * state-machine. The task is scheduled to run every @a t seconds in
+            * state-machine. The task is scheduled to run every @a t time units in
             * #qPeriodic mode. The event info will be available as a generic pointer
             * inside the sm::handler_t::Data field.
             * @pre The State-machine object should be previously configured with 
@@ -236,8 +236,8 @@ namespace qOS {
             * @param[in] Task  A pointer to the task node.
             * @param[in] m  A pointer to the Finite State-Machine (FSM) object.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
-            * @param[in] t Execution interval defined in seconds (floating-point
-            * format). For immediate execution (tValue = #qTimeImmediate).
+            * @param[in] t Execution time interval. For immediate execution 
+            * (tValue = #qTimeImmediate).
             * @param[in] init Specifies the initial operational state of the task
             * (#qEnabled, #qDisabled, #qAsleep or #qAwake(implies #qEnabled)).
             * @param[in] arg Represents the task arguments. All arguments must be

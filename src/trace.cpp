@@ -3,6 +3,7 @@
 
 namespace qOS {
     const char * const trace::endl = "\r\n";
+    const char * const trace::end = "\x1B[0m\r\n";
     const char * const trace::nrm = "\x1B[0m";
     const char * const trace::red = "\x1B[31m";
     const char * const trace::grn = "\x1B[32m";
@@ -11,8 +12,9 @@ namespace qOS {
     const char * const trace::mag = "\x1B[35m";
     const char * const trace::cyn = "\x1B[36m";
     const char * const trace::wht = "\x1B[37m";
+
     namespace trace {
-        _trace& _trace_out = _trace::getInstance();
+         _trace& _trace_out = _trace::getInstance();
         const tout_base dec( 10u );
         const tout_base hex( 16u );
         const tout_base oct( 8u );
@@ -39,48 +41,102 @@ namespace qOS {
         _trace& operator<<( _trace& tout, const int32_t& v )
         {
             (void)util::integerToString( static_cast<int32_t>( v ), tout.buffer, tout.base );
+            if ( '\0' != tout.preFix[ 0 ] ) {
+                (void)util::outputString( tout.writeChar, tout.preFix );
+            } 
             (void)util::outputString( tout.writeChar, tout.buffer );
+            tout.writeChar( nullptr, ' ' );
             return tout;
         }
 
         _trace& operator<<( _trace& tout, const uint32_t& v )
         {
-            (void)util::unsignedToString( v, tout.buffer, tout.base );
+            (void)util::unsignedToString( static_cast<unsigned_t>( v ), tout.buffer, tout.base );
+            if ( '\0' != tout.preFix[ 0 ] ) {
+                (void)util::outputString( tout.writeChar, tout.preFix );
+            } 
             (void)util::outputString( tout.writeChar, tout.buffer );
+            tout.writeChar( nullptr, ' ' );
             return tout;
         }
+
+        #if UINTPTR_MAX > UINT32_MAX
+        _trace& operator<<( _trace& tout, const unsigned_t& v )
+        {
+            (void)util::unsignedToString( v, tout.buffer, tout.base );
+            if ( '\0' != tout.preFix[ 0 ] ) {
+                (void)util::outputString( tout.writeChar, tout.preFix );
+            } 
+            (void)util::outputString( tout.writeChar, tout.buffer );
+            tout.writeChar( nullptr, ' ' );
+            return tout;
+        }
+        #endif
 
         _trace& operator<<( _trace& tout, const void * const p )
         {
-            (void)util::unsignedToString( reinterpret_cast<size_t>( p ), tout.buffer, 10u );
+            /*cstat -CERT-INT36-C*/
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), tout.buffer, 10u );
+            /*cstat +CERT-INT36-C*/
             (void)util::outputString( tout.writeChar, "p@0x" );
             (void)util::outputString( tout.writeChar, tout.buffer );
+            tout.writeChar( nullptr, ' ' );
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const float32_t& v )
+        _trace& operator<<( _trace& tout, const float64_t& v )
         {
             (void)util::floatToString( v, tout.buffer );
             (void)util::outputString( tout.writeChar, tout.buffer );
+            tout.writeChar( nullptr, ' ' );
             return tout;
         }
 
         _trace& operator<<( _trace& tout, const tout_base& f )
         {
             tout.base = f.base;
+            switch( f.base ) {
+                case 2u:
+                    (void)util::strcpy( tout.preFix, "0b", sizeof(tout.preFix) );
+                    break;
+                case 8u:
+                    (void)util::strcpy( tout.preFix, "0", sizeof(tout.preFix) );
+                    break;
+                case 16u:
+                    (void)util::strcpy( tout.preFix, "0x", sizeof(tout.preFix) );
+                    break;
+                default:
+                    (void)memset( tout.preFix, 0, sizeof(tout.preFix) );
+                    break;
+            }
             return tout;
         }
 
         _trace& operator<<( _trace& tout, const task& t )
         {
-            const char *state[ 4 ] = {"disabled","enabled","awake","asleep"};
             (void)util::unsignedToString( t.getID(), tout.buffer, 10 );
             (void)util::outputString( tout.writeChar , "T{ \"" );
             (void)util::outputString( tout.writeChar , t.getName() );
             (void)util::outputString( tout.writeChar , "\", " );
             (void)util::outputString( tout.writeChar , tout.buffer );
             (void)util::outputString( tout.writeChar , ", " );
-            (void)util::outputString( tout.writeChar , state[ t.getState() ]);
+            switch ( t.getState() ) {
+                case taskState::DISABLED:
+                    (void)util::outputString( tout.writeChar , "disabled" );
+                    break;
+                case taskState::ENABLED:
+                    (void)util::outputString( tout.writeChar , "enabled" );
+                    break;
+                case taskState::AWAKE:
+                    (void)util::outputString( tout.writeChar , "awake" );
+                    break;
+                case taskState::ASLEEP:
+                    (void)util::outputString( tout.writeChar , "asleep" );
+                    break;
+                default:
+                    break;
+            }
+            
             (void)util::outputString( tout.writeChar , " } " );
             return tout;
         }
@@ -90,12 +146,34 @@ namespace qOS {
             (void)util::outputString( tout.writeChar , "t{ E:" );
             (void)util::unsignedToString( t.elapsed(), tout.buffer, 10 );
             (void)util::outputString( tout.writeChar , tout.buffer );
-            (void)util::outputString( tout.writeChar , "\", R: " );
+            (void)util::outputString( tout.writeChar , ", R: " );
             (void)util::unsignedToString( t.remaining(), tout.buffer, 10 );
             (void)util::outputString( tout.writeChar , tout.buffer );
             (void)util::outputString( tout.writeChar , " } " );
             return tout;
         }
+        /*cstat -CERT-INT36-C*/
+        _trace& operator<<( _trace& tout, const qOS::stateMachine& sm )
+        {
+            (void)util::outputString( tout.writeChar , "SM{ T: 0x" );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &sm.getTop() ), tout.buffer, 16 );
+            (void)util::outputString( tout.writeChar , tout.buffer );
+            (void)util::outputString( tout.writeChar , ", C: 0x" );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( sm.getCurrent() ), tout.buffer, 16 );
+            (void)util::outputString( tout.writeChar , tout.buffer );
+            (void)util::outputString( tout.writeChar , " } " );
+            return tout;
+        }
+
+        _trace& operator<<( _trace& tout, const qOS::sm::state& s )
+        {
+            (void)util::outputString( tout.writeChar , "s{ 0x" );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &s ), tout.buffer, 16 );
+            (void)util::outputString( tout.writeChar , tout.buffer );
+            (void)util::outputString( tout.writeChar , " } " );
+            return tout;
+        }
+        /*cstat +CERT-INT36-C*/
     }
 
 }

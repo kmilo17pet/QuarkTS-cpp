@@ -15,20 +15,29 @@ sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
     { 10000,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 };
 
-void idleTask_callback( event_t e ) 
+void idleTask_callback( event_t e );
+void otherTask( event_t e );
+sm::status s1_callback( sm::handler_t h );
+sm::status s2_callback( sm::handler_t h );
+void task_callback( event_t e );
+
+uint32_t clockProvider( void );
+void putCharFcn( void* stp, char c );
+
+void idleTask_callback( event_t e )
 {
     if ( e.firstCall() ) {
-        trace::log << "idle task" << trace::endl;
+        trace::log << "idle task" << trace::end;
     }
     co::reenter() {
         for(;;) {
             co::getPosition( pos1 );
-            trace::log << e.self() << trace::endl;
-            trace::log << "sec 1"<< trace::endl;
+            trace::log << e.self() << trace::end;
+            trace::log << "sec 1"<< trace::end;
             co::delay( 500 );
-            trace::log <<"sec 2"<< trace::endl;
+            trace::log <<"sec 2"<< trace::end;
             co::delay( 500 );
-            trace::log <<"sec 3"<< trace::endl;
+            trace::log <<"sec 3"<< trace::end;
             co::delay( 500 );
             co::waitUntil( true == true );
             co::waitUntil( true == true , 500 );
@@ -48,7 +57,7 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        trace::log << "idle task" << trace::endl;
+        trace::log << "idle task" << trace::end;
     }
     co::reenter( otherTaskCrHandle ) {
         co::restart;
@@ -61,7 +70,7 @@ sm::status s1_callback( sm::handler_t h )
 {
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<< trace::cyn <<"s1_callback"<< trace::nrm << trace::endl;
+            trace::log<< trace::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< trace::end;
             h.timeoutSet( 0, 5000 );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
@@ -77,11 +86,11 @@ sm::status s2_callback( sm::handler_t h )
 {
     static timer tmr;
 
-    trace::log << trace::var(tmr) << trace::endl;
+    trace::log << trace::var(tmr) << trace::end;
 
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<< trace::cyn  << "s2_callback"<< trace::nrm << trace::endl;
+            trace::log<< trace::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< trace::end;
             tmr( 5000u );
             break;
         default:
@@ -95,18 +104,18 @@ sm::status s2_callback( sm::handler_t h )
 
 void task_callback( event_t e )
 {
-    trace::log << e.self() << trace::endl;
+    trace::log << e.self() << trace::end;
 
     if ( e.firstCall() ) {
-        trace::log << trace::grn << "first call "<< e.self().getName() << trace::endl << trace::nrm; 
+        trace::log << trace::grn << "first call "<< e.self().getName() << trace::end;
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        trace::log << "notified(SIMPLE)! " << e.self().getName() << trace::endl;
+        trace::log << "notified(SIMPLE)! " << e.self().getName() << trace::end;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
-        trace::log << "notified(QUEUED)! " << e.self().getName() << trace::endl;
+        trace::log << "notified(QUEUED)! " << e.self().getName() << trace::end;
     }
    
     if ( e.lastIteration() ) {
@@ -114,12 +123,12 @@ void task_callback( event_t e )
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t2, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
-        trace::log << "last iteration "<< e.self().getName() << trace::endl; 
+        trace::log << "last iteration "<< e.self().getName() << trace::end;
     }
 
     int someValue = 457;
     int *ptr = &someValue;
-    trace::log << trace::red <<"test trace "<< trace::oct << trace::var(someValue)<< "  " << ptr <<" afdas" << trace::nrm << trace::endl;
+    trace::log << trace::red <<"test trace "<< trace::dec << trace::var(someValue)<< "  " << ptr << trace::end;
 
 }
 
@@ -136,7 +145,10 @@ void putCharFcn( void* stp, char c ) {
 
 int main()
 {
+    queue somequeue, sigueue;
+    int queueArea[ 8 ];
     trace::setOutputFcn( &putCharFcn );
+    trace::log << -3.1416 << -3.1416f << trace::end;
     t1.setName( "t1");
     t2.setName( "t2");
     t3.setName( "t3");

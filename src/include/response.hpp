@@ -6,7 +6,7 @@
 
 namespace qOS {
 
-    enum responseStatus {
+    enum class responseStatus {
         MISSING = 0,
         SUCCESS,
         TIMEOUT,

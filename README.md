@@ -22,9 +22,9 @@ QuarkTS++ is developed using a formal and rigorous process framed in compliance 
 
  :construction: :construction_worker: Currently under development... :construction_worker: :construction:
 
-:warning: currently qOS is in an early stage of development, any contribution is more than welcome :blush:
+:warning: currently QuarkTS++ is in an early stage of development, any contribution is more than welcome :blush:
 
-QuarkTS++ builds with many different compilers, some of which are more advanced than others. For that reason QuarkTS++ does not use any of the features or syntax that have been introduced to the C++ language by, or since, the C++11 standard.
+QuarkTS++ builds with many different compilers, some of which are more advanced than others. For that reason, QuarkTS++ does not use any of the features or syntax that have been introduced to the C++ language by, or since, the C++11 standard.
 
 ### how to build
 

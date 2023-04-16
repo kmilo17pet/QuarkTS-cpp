@@ -171,7 +171,7 @@ namespace qOS {
     };
     using event_t = _Event&;
 
-    enum taskState {
+    enum class taskState {
         DISABLED = 0,
         ENABLED = 1,
         AWAKE = 2,
@@ -182,7 +182,7 @@ namespace qOS {
     * @brief An enum that defines the modes in which a queue can be linked
     * to a task
     */
-    enum queueLinkMode : uint32_t {
+    enum class queueLinkMode : uint32_t {
         QUEUE_RECEIVER = 4u,    /**< This mode will trigger the task if there are elements in the queue. Data will be extracted automatically in every trigger and will be available in the qEvent_t::EventData field.*/
         QUEUE_FULL = 8u,        /**< This mode will trigger the task if the queue is full. A pointer to the queue will be available in the qEvent_t::EventData field.*/
         QUEUE_COUNT = 16u,      /**< This mode will trigger the task if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the qEvent_t::EventData field.*/

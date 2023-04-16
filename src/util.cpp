@@ -312,22 +312,22 @@ uint32_t util::hexStringToUnsigned( const char *s ) noexcept
     return val;
 }
 /*============================================================================*/
-float32_t util::stringToFloat( const char *s ) noexcept
+float64_t util::stringToFloat( const char *s ) noexcept
 {
-    float32_t rez = 0.0f, fact;
+    float64_t rez = 0.0, fact;
     bool point_seen = false;
     int sgn = 1;
     char c;
 
     #if ( Q_ATOF_FULL == 1 )
         int power2 = 0, powerSign = 1;
-        float32_t power = 1.0f, eFactor;
+        float64_t power = 1.0, eFactor;
     #endif
 
     s = discardWhitespaces( s, Q_IO_UTIL_MAX_STRLEN );
     s = checkStrSign( s, &sgn );
     /*cstat -CERT-FLP36-C*/
-    fact = static_cast<float32_t>( sgn );
+    fact = static_cast<float64_t>( sgn );
     /*cstat -MISRAC++2008-6-2-1*/
     while ( '\0' != static_cast<uint8_t>( c = *s ) ) {
         if ( '.' == c ) {
@@ -337,7 +337,7 @@ float32_t util::stringToFloat( const char *s ) noexcept
             if ( true == point_seen ) {
                 fact *= 0.1f;
             }
-            rez = ( rez * 10.0f ) + ( static_cast<float32_t>( c ) ) - 48.0f; /*CERT-FLP36-C deviation allowed*/
+            rez = ( rez * 10.0 ) + ( static_cast<float64_t>( c ) ) - 48.0; /*CERT-FLP36-C deviation allowed*/
         }
         else {
             break;
@@ -359,7 +359,7 @@ float32_t util::stringToFloat( const char *s ) noexcept
             s++;
         }
         if ( power2 > 0 ) {
-            eFactor = ( -1 == powerSign ) ? 0.1f : 10.0f;
+            eFactor = ( -1 == powerSign ) ? 0.1 : 10.0;
             while ( 0 != power2 ) {
                 power *= eFactor;
                 --power2;
@@ -373,7 +373,7 @@ float32_t util::stringToFloat( const char *s ) noexcept
     #endif
 }
 /*============================================================================*/
-char* util::floatToString( float32_t num, char *str, uint8_t precision ) noexcept
+char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcept
 {
     if ( nullptr != str ) {
         uint32_t u = 0u;
@@ -396,7 +396,7 @@ char* util::floatToString( float32_t num, char *str, uint8_t precision ) noexcep
 
             intPart = static_cast<uint32_t>( num );
             /*cstat -CERT-FLP36-C*/
-            num -= static_cast<float32_t>( intPart );
+            num -= static_cast<float64_t>( intPart );
             i += xBaseU32toA( intPart, &str[ i ], 10u );
             if ( precision > 0u ) {
                 str[ i++ ] = '.';
@@ -405,7 +405,7 @@ char* util::floatToString( float32_t num, char *str, uint8_t precision ) noexcep
                     num *= 10.0f;
                     c = static_cast<char>( num );
                     str[ i++ ] = static_cast<char>( static_cast<uint8_t>( c ) + '0' );
-                    num -= static_cast<float32_t>( c );
+                    num -= static_cast<float64_t>( c );
                 }
             }
             /*cstat +CERT-FLP36-C*/

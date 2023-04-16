@@ -40,15 +40,15 @@ namespace qOS {
             */
             static getTickFcn_t getTick; /* skipcq: CXX-W2009 */
             /**
-            * @brief Convert the specified input time(seconds) to time(epochs)
-            * @param[in]  t Time in seconds
+            * @brief Convert the specified input time to clock epochs
+            * @param[in] t Time input
             * @return time (t) in epochs
             */
             static qOS::clock_t convert2Clock( const qOS::time_t t ) noexcept;
             /**
-            * @brief Convert the specified input time(epochs) to time(seconds)
+            * @brief Convert the specified input clock epochs to time
             * @param[in] t Time in epochs
-            * @return time (t) in seconds
+            * @return time (t)
             */
             static qOS::time_t convert2Time( const qOS::clock_t t ) noexcept;
             /**

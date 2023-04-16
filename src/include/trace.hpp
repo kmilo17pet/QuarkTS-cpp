@@ -5,6 +5,7 @@
 #include "include/util.hpp"
 #include "include/clock.hpp"
 #include "include/task.hpp"
+#include "include/fsm.hpp"
 #include "include/timer.hpp"
 
 #define _TRACE_STRINGIFY(x)              #x
@@ -42,6 +43,7 @@ namespace qOS {
         extern const tout_base oct;
         extern const tout_base bin;
         extern const char * const endl;
+        extern const char * const end;
         extern const char * const nrm;
         extern const char * const red;
         extern const char * const grn;
@@ -57,21 +59,27 @@ namespace qOS {
                 _trace( _trace &other ) = delete;
                 void operator=( const _trace & ) = delete;
             public:
-                char buffer[64] = {0};
+                char buffer[ 64 ] = { 0 };
+                char preFix[ 5 ] = { 0 };
                 uint8_t base = { 10u };
                 util::putChar_t writeChar{ nullptr };
                 static _trace& getInstance( void ) noexcept;
-           
             friend _trace& operator<<( _trace& tout, const char c );
             friend _trace& operator<<( _trace& tout, const char * s );
             friend _trace& operator<<( _trace& tout, const int32_t& v );
             friend _trace& operator<<( _trace& tout, const uint32_t& v );
+            #if UINTPTR_MAX >= UINT32_MAX
+                friend _trace& operator<<( _trace& tout, const unsigned_t& v );
+            #endif
+            
             friend _trace& operator<<( _trace& tout, const void * const p );
-            friend _trace& operator<<( _trace& tout, const float32_t& v );
+            friend _trace& operator<<( _trace& tout, const float64_t& v );
             friend _trace& operator<<( _trace& tout, const tout_base& f );
 
             friend _trace& operator<<( _trace& tout, const task& t );
             friend _trace& operator<<( _trace& tout, const qOS::timer& t );
+            friend _trace& operator<<( _trace& tout, const qOS::stateMachine& sm );
+            friend _trace& operator<<( _trace& tout, const qOS::sm::state& s );
         };
 
         extern _trace& _trace_out;
@@ -86,10 +94,17 @@ namespace qOS {
         inline void msg(void) {}
         inline const char * var( const char * vname ){ return vname; }
     }
+
 }
 
+
+#define _logHeader()                                                           \
+qOS::trace::_trace_out<< "[ " << qOS::trace::dec <<                            \
+static_cast<unsigned_t>( qOS::clock::getTick() ) << "] " <<                    \
+_TRACE_CURRENT_FUNCTION << ":" _TRACE_TOSTRING(__LINE__) " - "                 \
+
 #define var(v)  var( _TRACE_STRINGIFY(v) ) << '=' << v
-#define log     log();qOS::trace::_trace_out<< '[' << qOS::trace::dec << qOS::clock::getTick() << "] " << _TRACE_CURRENT_FUNCTION << ":" _TRACE_TOSTRING(__LINE__) " - "
+#define log     log();_logHeader()
 #define msg     msg();qOS::trace::_trace_out
 
 #endif /*QOS_CPP_TRACE*/
