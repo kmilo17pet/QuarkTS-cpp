@@ -8,6 +8,13 @@
 #include "include/fsm.hpp"
 #include "include/timer.hpp"
 
+#if defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD )
+    #include <Arduino.h>
+#else
+    #include <string>
+#endif
+
+
 #define _TRACE_STRINGIFY(x)              #x
 #define _TRACE_TOSTRING(x)               _TRACE_STRINGIFY( x )
 
@@ -38,6 +45,18 @@ namespace qOS {
                 tout_base(uint8_t b) : base(b) {}
         };
 
+        class mem {
+            public:
+                size_t n;
+                mem( size_t nb ) : n( nb ) {}
+        };
+
+        class pre {
+            public:
+                uint8_t precision;
+                pre( uint8_t p ) : precision( p ) {}
+        };
+
         extern const tout_base dec;
         extern const tout_base hex;
         extern const tout_base oct;
@@ -58,30 +77,41 @@ namespace qOS {
                 _trace() = default;
                 _trace( _trace &other ) = delete;
                 void operator=( const _trace & ) = delete;
-            public:
-                char buffer[ 64 ] = { 0 };
-                char preFix[ 5 ] = { 0 };
+
                 uint8_t base = { 10u };
+                size_t n{ 0u };
+                uint8_t precision { 6u };
+                char buffer[ 21 ] = { 0 };
+                char preFix[ 5 ] = { 0 };
                 util::putChar_t writeChar{ nullptr };
+            public:
                 static _trace& getInstance( void ) noexcept;
+            friend void setOutputFcn( util::putChar_t fcn );
             friend _trace& operator<<( _trace& tout, const char c );
             friend _trace& operator<<( _trace& tout, const char * s );
             friend _trace& operator<<( _trace& tout, const int32_t& v );
-            friend _trace& operator<<( _trace& tout, const uint32_t& v );
-            #if UINTPTR_MAX >= UINT32_MAX
-                friend _trace& operator<<( _trace& tout, const unsigned_t& v );
+            #if ULONG_MAX > UINT32_MAX
+                friend _trace& operator<<( _trace& tout, const uint32_t& v );
             #endif
+            friend _trace& operator<<( _trace& tout, const unsigned_t& v );
             
             friend _trace& operator<<( _trace& tout, const void * const p );
             friend _trace& operator<<( _trace& tout, const float64_t& v );
             friend _trace& operator<<( _trace& tout, const tout_base& f );
+            friend _trace& operator<<( _trace& tout, const mem& m );
+            friend _trace& operator<<( _trace& tout, const pre& m );
 
             friend _trace& operator<<( _trace& tout, const task& t );
             friend _trace& operator<<( _trace& tout, const qOS::timer& t );
             friend _trace& operator<<( _trace& tout, const qOS::stateMachine& sm );
             friend _trace& operator<<( _trace& tout, const qOS::sm::state& s );
-        };
 
+            #if defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD )
+                friend _trace& operator<<( _trace& tout, const String & s );
+            #else
+                friend _trace& operator<<( _trace& tout, const string & s );
+            #endif
+        };
         extern _trace& _trace_out;
 
         inline void setOutputFcn( util::putChar_t fcn )
@@ -97,11 +127,10 @@ namespace qOS {
 
 }
 
-
 #define _logHeader()                                                           \
-qOS::trace::_trace_out<< "[ " << qOS::trace::dec <<                            \
-static_cast<unsigned_t>( qOS::clock::getTick() ) << "] " <<                    \
-_TRACE_CURRENT_FUNCTION << ":" _TRACE_TOSTRING(__LINE__) " - "                 \
+qOS::trace::_trace_out << "[ " << qOS::trace::dec <<                           \
+static_cast<unsigned long>( qOS::clock::getTick() )                            \
+<< "] " << _TRACE_CURRENT_FUNCTION << ":" _TRACE_TOSTRING(__LINE__) " - "      \
 
 #define var(v)  var( _TRACE_STRINGIFY(v) ) << '=' << v
 #define log     log();_logHeader()

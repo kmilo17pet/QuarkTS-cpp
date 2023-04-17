@@ -35,7 +35,7 @@ void core::init( const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callba
     (void)clock::setTickProvider( tFcn );
     (void)idle.setName( "idle" );
     (void)idle.setPriority( core::LOWEST_PRIORITY );
-    (void)idle.setState( taskState::DISABLED );
+    (void)idle.setState( taskState::DISABLED_STATE );
     (void)idle.setCallback( callbackIdle );
     idle.entry = 0u;
 }

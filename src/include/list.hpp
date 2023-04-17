@@ -166,7 +166,7 @@ namespace qOS {
             * @return true if the move operation is performed successfully, 
             * otherwise returns false
             */
-            bool move( list& src, const listPosition p ) noexcept;
+            bool move( list& src, const listPosition p = listPosition::AT_BACK ) noexcept;
             void clean( void ) noexcept;
             /**
             * @brief Returns an iterator pointing to the first element in the 
@@ -196,7 +196,7 @@ namespace qOS {
             void *current{ nullptr };
         public:
             listIterator() = delete;
-            listIterator( list& xList, listDirection dir = listDirection::FORWARD, void *nodeOffset = nullptr )  noexcept;
+            listIterator( list& xList, listDirection dir = listDirection::FORWARD, void *nodeOffset = nullptr ) noexcept;
             bool until( void ) noexcept;
             bool until( void* node ) noexcept;
             listIterator& operator++( int ) noexcept;

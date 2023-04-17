@@ -51,7 +51,8 @@
         "typeinfo": "cpp",
         "util": "cpp",
         "ctime": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "climits": "cpp"
     },
     "cSpell.words": [
         "endcond",

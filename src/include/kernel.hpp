@@ -206,7 +206,7 @@ namespace qOS {
             * and pass a pointer to that structure.
             * @return Returns true on success, otherwise returns false.
             */
-            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s = taskState::ENABLED, void *arg = nullptr ) noexcept;
+            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. This API creates a task with
             * a taskState::DISABLED state by default, so this task will be executed only, when
@@ -222,7 +222,7 @@ namespace qOS {
             */
             inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg = nullptr ) noexcept
             {
-                return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED, arg );
+                return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED_STATE, arg );
             }
             #if ( Q_FSM == 1 )
             /**
@@ -244,7 +244,7 @@ namespace qOS {
             * passed by reference and cast to @c void*.
             * @return Returns #qTrue on success, otherwise returns #qFalse.
             */
-            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s = taskState::ENABLED, void *arg = nullptr ) noexcept;
+            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             #endif
             #if ( Q_CLI == 1 )
             bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;

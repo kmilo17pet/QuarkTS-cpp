@@ -1,7 +1,7 @@
 #include "include/trace.hpp"
 
-
 namespace qOS {
+    /*cstat -MISRAC++2008-0-1-4_b*/
     const char * const trace::endl = "\r\n";
     const char * const trace::end = "\x1B[0m\r\n";
     const char * const trace::nrm = "\x1B[0m";
@@ -12,7 +12,7 @@ namespace qOS {
     const char * const trace::mag = "\x1B[35m";
     const char * const trace::cyn = "\x1B[36m";
     const char * const trace::wht = "\x1B[37m";
-
+    /*cstat +MISRAC++2008-0-1-4_b*/
     namespace trace {
          _trace& _trace_out = _trace::getInstance();
         const tout_base dec( 10u );
@@ -48,7 +48,7 @@ namespace qOS {
             tout.writeChar( nullptr, ' ' );
             return tout;
         }
-
+        #if ULONG_MAX > UINT32_MAX
         _trace& operator<<( _trace& tout, const uint32_t& v )
         {
             (void)util::unsignedToString( static_cast<unsigned_t>( v ), tout.buffer, tout.base );
@@ -59,8 +59,7 @@ namespace qOS {
             tout.writeChar( nullptr, ' ' );
             return tout;
         }
-
-        #if UINTPTR_MAX > UINT32_MAX
+        #endif
         _trace& operator<<( _trace& tout, const unsigned_t& v )
         {
             (void)util::unsignedToString( v, tout.buffer, tout.base );
@@ -71,7 +70,6 @@ namespace qOS {
             tout.writeChar( nullptr, ' ' );
             return tout;
         }
-        #endif
 
         _trace& operator<<( _trace& tout, const void * const p )
         {
@@ -80,13 +78,19 @@ namespace qOS {
             /*cstat +CERT-INT36-C*/
             (void)util::outputString( tout.writeChar, "p@0x" );
             (void)util::outputString( tout.writeChar, tout.buffer );
+            if ( tout.n > 0u ) {
+                (void)util::outputString( tout.writeChar, " = [ " );
+                (void)util::printXData( tout.writeChar, const_cast<void*>( p ), tout.n, false );
+                tout.n  = 0u;
+                tout.writeChar( nullptr, ']' );
+            }
             tout.writeChar( nullptr, ' ' );
             return tout;
         }
 
         _trace& operator<<( _trace& tout, const float64_t& v )
         {
-            (void)util::floatToString( v, tout.buffer );
+            (void)util::floatToString( v, tout.buffer, tout.precision );
             (void)util::outputString( tout.writeChar, tout.buffer );
             tout.writeChar( nullptr, ' ' );
             return tout;
@@ -112,6 +116,18 @@ namespace qOS {
             return tout;
         }
 
+        _trace& operator<<( _trace& tout, const mem& m )
+        {
+            tout.n = m.n;
+            return tout;
+        }
+
+        _trace& operator<<( _trace& tout, const pre& m )
+        {
+            tout.precision = m.precision;
+            return tout;
+        }
+
         _trace& operator<<( _trace& tout, const task& t )
         {
             (void)util::unsignedToString( t.getID(), tout.buffer, 10 );
@@ -121,16 +137,16 @@ namespace qOS {
             (void)util::outputString( tout.writeChar , tout.buffer );
             (void)util::outputString( tout.writeChar , ", " );
             switch ( t.getState() ) {
-                case taskState::DISABLED:
+                case taskState::DISABLED_STATE:
                     (void)util::outputString( tout.writeChar , "disabled" );
                     break;
-                case taskState::ENABLED:
+                case taskState::ENABLED_STATE:
                     (void)util::outputString( tout.writeChar , "enabled" );
                     break;
-                case taskState::AWAKE:
+                case taskState::AWAKE_STATE:
                     (void)util::outputString( tout.writeChar , "awake" );
                     break;
-                case taskState::ASLEEP:
+                case taskState::ASLEEP_STATE:
                     (void)util::outputString( tout.writeChar , "asleep" );
                     break;
                 default:
@@ -174,6 +190,15 @@ namespace qOS {
             return tout;
         }
         /*cstat +CERT-INT36-C*/
+        #if defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD )
+        _trace& operator<<( _trace& tout, const String & s )
+        #else
+        _trace& operator<<( _trace& tout, const string & s )
+        #endif
+        {
+            (void)util::outputString( tout.writeChar, s.c_str() );
+            return tout;
+        } 
     }
 
 }

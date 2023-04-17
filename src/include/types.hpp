@@ -7,12 +7,14 @@
     #include <stdlib.h>
     #include <string.h>
     #include <ctype.h>
+    #include <limits.h>
 #else 
     #include <cstddef>
     #include <cstdint>
     #include <cstdlib>
     #include <cstring>
     #include <cctype>
+    #include <climits>
 #endif
 
 using namespace std;
@@ -31,7 +33,7 @@ using byte_t = uint8_t;
 /**
 * @brief A type to instantiate an unsigned variable
 */
-using unsigned_t = uintptr_t;
+using unsigned_t = unsigned long;
 
 /**
 * @brief A type to instantiate a single-precision variable of 32-bits IEEE 754.
@@ -64,6 +66,11 @@ using iteration_t = int32_t;
 * @brief A type to instantiate a variable to hold the priority value of a task.
 */
 using priority_t = uint8_t;
+
+/**
+* @brief A type to instantiate a variable to hold a time count.
+*/
+using timeCount_t = unsigned long;
 
 /*! @cond */
 #define     Q_UNUSED(arg)     (void)(arg)

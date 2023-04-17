@@ -37,7 +37,7 @@ namespace qOS {
             friend class qOS::edgeCheck;
         };
 
-        enum reg {
+        enum class reg {
             SIZE_8_BIT,
             SIZE_16_BIT,
             SIZE_32_BIT,

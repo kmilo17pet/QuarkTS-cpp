@@ -68,7 +68,7 @@ taskState task::getState( void ) const noexcept
     taskState retValue;
 
     retValue = static_cast<taskState>( getFlag( BIT_SHUTDOWN ) );
-    if ( taskState::DISABLED != retValue ) { /*Task is awaken*/
+    if ( taskState::DISABLED_STATE != retValue ) { /*Task is awaken*/
         retValue = static_cast<taskState>( getFlag( BIT_ENABLED ) );
     }
 
@@ -101,18 +101,18 @@ bool task::setState( taskState s ) noexcept
     bool retValue = false;
 
     switch ( s ) {
-        case taskState::DISABLED: case taskState::ENABLED:
+        case taskState::DISABLED_STATE: case taskState::ENABLED_STATE:
             if ( s != static_cast<taskState>( getFlag( BIT_ENABLED ) ) ) {
                 setFlags( BIT_ENABLED, static_cast<bool>( s ) );
                 time.reload();
             }
             retValue = true;
             break;
-        case taskState::ASLEEP:
+        case taskState::ASLEEP_STATE:
             setFlags( BIT_SHUTDOWN, false );
             retValue = true;
             break;
-        case taskState::AWAKE:
+        case taskState::AWAKE_STATE:
             setFlags( BIT_SHUTDOWN, true );
             retValue = true;
             break;

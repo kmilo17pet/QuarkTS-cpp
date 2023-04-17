@@ -136,7 +136,7 @@ static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept
     }
     else {
         while ( 0uL != num ) { /*Process individual digits*/
-            const unsigned_t r = num % static_cast<unsigned_t>( base );
+            const unsigned long r = num % static_cast<unsigned long>( base );
             /*cstat -CERT-INT30-C_a*/
             str[ i++ ] = ( r > 9uL ) ? /*i++ never wraps*/
                 static_cast<char>( static_cast<uint8_t>( r - 10uL ) + static_cast<uint8_t>( 'A' ) ) :
@@ -219,7 +219,7 @@ bool util::outputString( util::putChar_t fcn, const char *s, void* pStorage, boo
     return retValue;
 }
 /*============================================================================*/
-bool util::printXData( util::putChar_t fcn, void *pData, size_t n, void* pStorage ) noexcept
+bool util::printXData( util::putChar_t fcn, void *pData, size_t n, bool eol, void* pStorage ) noexcept
 {
     bool retValue = false;
 
@@ -232,8 +232,10 @@ bool util::printXData( util::putChar_t fcn, void *pData, size_t n, void* pStorag
             fcn( pStorage, nibbleToX( pdat[ i ] & 0x0Fu ) );
             fcn( pStorage, ' ' );
         }
-        fcn( pStorage, '\r' );
-        fcn( pStorage, '\n' );
+        if ( eol ) {
+            fcn( pStorage, '\r' );
+            fcn( pStorage, '\n' );
+        }
         retValue = true;
     }
 

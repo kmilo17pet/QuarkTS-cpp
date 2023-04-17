@@ -172,10 +172,10 @@ namespace qOS {
     using event_t = _Event&;
 
     enum class taskState {
-        DISABLED = 0,
-        ENABLED = 1,
-        AWAKE = 2,
-        ASLEEP = 3,
+        DISABLED_STATE = 0,
+        ENABLED_STATE = 1,
+        AWAKE_STATE = 2,
+        ASLEEP_STATE = 3,
     };
 
     /**

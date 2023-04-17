@@ -93,7 +93,7 @@ namespace qOS {
         * @param[in] n The number of bytes to print out
         * @return true on success, otherwise returns false.
         */
-        bool printXData( util::putChar_t fcn, void *pData, size_t n, void* pStorage = nullptr ) noexcept;
+        bool printXData( util::putChar_t fcn, void *pData, size_t n, bool eol = true, void* pStorage = nullptr ) noexcept;
         /**
         * @brief API interface to write n RAW data through @a fcn
         * @param[in] oFcn The basic output byte function

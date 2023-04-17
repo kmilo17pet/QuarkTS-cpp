@@ -21,8 +21,9 @@ sm::status s1_callback( sm::handler_t h );
 sm::status s2_callback( sm::handler_t h );
 void task_callback( event_t e );
 
-uint32_t clockProvider( void );
 void putCharFcn( void* stp, char c );
+
+unsigned long sysClock( void );
 
 void idleTask_callback( event_t e )
 {
@@ -91,7 +92,7 @@ sm::status s2_callback( sm::handler_t h )
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
             trace::log<< trace::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< trace::end;
-            tmr( 5000u );
+            tmr( 5000uL );
             break;
         default:
             if ( tmr() ) {
@@ -132,7 +133,7 @@ void task_callback( event_t e )
 
 }
 
-uint32_t clockProvider( void ) {
+unsigned long sysClock( void ) {
     using namespace std::chrono;
     return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
@@ -145,14 +146,15 @@ void putCharFcn( void* stp, char c ) {
 
 int main()
 {
-    queue somequeue, sigueue;
-    int queueArea[ 8 ];
+    uint32_t x = 0xFFAA2211;
+    double y = -3.1416;
     trace::setOutputFcn( &putCharFcn );
-    trace::log << -3.1416 << -3.1416f << trace::end;
+    trace::log << trace::pre(8) <<trace::var(y) << trace::end; 
+    trace::log<< trace::var(x) << trace::mem( sizeof(x) ) << &x << trace::end;
     t1.setName( "t1");
     t2.setName( "t2");
     t3.setName( "t3");
-    os.init( clockProvider, idleTask_callback );
+    os.init( sysClock, idleTask_callback );
 
     os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 500u, task::PERIODIC );
     os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 500u, 10u );
@@ -165,6 +167,7 @@ int main()
     m.add( s2, s2_callback );
     os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 100u );
     
+
     os.run();
     for(;;) { }
 

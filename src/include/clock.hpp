@@ -6,10 +6,10 @@
 
 namespace qOS {
 
-    using clock_t = uint32_t ;
+    using clock_t = timeCount_t;
 
     #if ( Q_SETUP_TIME_CANONICAL == 1 )
-        using time_t = uint32_t;
+        using time_t = timeCount_t;
     #else
         using time_t = float32_t;
     #endif
