@@ -190,7 +190,7 @@ namespace qOS {
             return tout;
         }
         /*cstat +CERT-INT36-C*/
-        #if defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD )
+        #if defined( ARDUINO_PLATFORM )
         _trace& operator<<( _trace& tout, const String & s )
         #else
         _trace& operator<<( _trace& tout, const string & s )

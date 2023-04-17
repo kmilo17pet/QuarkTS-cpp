@@ -7,14 +7,14 @@ namespace qOS {
 
     namespace bits {
         /*cstat -CERT-INT34-C_a -MISRAC++2008-5-0-10*/
-        template <typename T, typename V>
-        inline void multipleSet( T &dst, V xBits )
+        template <typename T, typename W>
+        inline void multipleSet( T &dst, W xBits )
         {
             dst |= static_cast<T>( xBits );
         }
 
-        template <typename T, typename V>
-        inline void multipleClear( T &dst, V xBits )
+        template <typename T, typename W>
+        inline void multipleClear( T &dst, W xBits )
         {
             dst &= ~static_cast<T>( xBits );
         }
@@ -49,8 +49,8 @@ namespace qOS {
             ( value ) ? bitSet( dst, xBit ) : bitClear( dst, xBit );
         }
 
-        template <typename T, typename V>
-        inline bool multipleGet( T reg, V xBits )
+        template <typename T, typename W>
+        inline bool multipleGet( T reg, W xBits )
         {
             return ( 0u != ( reg & xBits) ) ? true : false;
         }

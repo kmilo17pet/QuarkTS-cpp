@@ -187,7 +187,7 @@ bool util::checkEndianness( void ) noexcept
 {
     const uint16_t i = 1u;
     /*cstat -CERT-INT36-C*/
-    return static_cast<bool>( *reinterpret_cast<uint8_t*>( i ) );
+    return ( reinterpret_cast<const uint8_t*>( &i )[ 0 ] == 1u );
     /*cstat +CERT-INT36-C*/
 }
 /*============================================================================*/

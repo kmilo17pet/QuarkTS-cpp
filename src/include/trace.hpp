@@ -8,7 +8,7 @@
 #include "include/fsm.hpp"
 #include "include/timer.hpp"
 
-#if defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD )
+#if defined( ARDUINO_PLATFORM )
     #include <Arduino.h>
 #else
     #include <string>
@@ -106,7 +106,7 @@ namespace qOS {
             friend _trace& operator<<( _trace& tout, const qOS::stateMachine& sm );
             friend _trace& operator<<( _trace& tout, const qOS::sm::state& s );
 
-            #if defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD )
+            #if defined( ARDUINO_PLATFORM )
                 friend _trace& operator<<( _trace& tout, const String & s );
             #else
                 friend _trace& operator<<( _trace& tout, const string & s );
