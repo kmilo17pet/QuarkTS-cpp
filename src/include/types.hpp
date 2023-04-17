@@ -1,7 +1,7 @@
 #ifndef QOS_CPP_TYPES
 #define QOS_CPP_TYPES
 
-#if ( __cplusplus < 201103L || defined __AVR_ARCH__ )
+#if ( __cplusplus < 201103L || defined __AVR_ARCH__ || defined STM8Sxx )
     #include <stddef.h>
     #include <stdint.h>
     #include <stdlib.h>

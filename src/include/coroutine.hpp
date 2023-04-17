@@ -79,7 +79,7 @@ namespace qOS {
         };
         /*cstat -MISRAC++2008-0-1-11*/
 
-        inline void nop( void ) noexcept {}
+        inline void noIntr( void ) noexcept {}
         /*! @endcond */
 
         /**
@@ -281,7 +281,7 @@ if ( !( (c) || _cr.delay.expired() ) ) {                                       \
 #define yield _co_yield(_co_label_)
 #define _co_yield(label)                                                       \
 yield();                                                                       \
-_co_save_restore( label, qOS::co::nop(), Q_NONE )                              \
+_co_save_restore( label, qOS::co::noIntr(), Q_NONE )                           \
 
 /*============================================================================*/
 #define delay( t ) _co_delay(_co_label_ , t)
@@ -293,12 +293,12 @@ _co_save_restore( label, _cr.delay.set(t) , _co_t_cond(0) )                    \
 #define _wu_1( c ) _co_waitUntil(_co_label_ , c )
 #define _co_waitUntil( label, c )                                              \
 waitUntil(c);                                                                  \
-_co_save_restore( label, qOS::co::nop(), _co_cond(c) )                         \
+_co_save_restore( label, qOS::co::noIntr(), _co_cond(c) )                      \
 
 #define _wu_2( c, t ) _co_timedWaitUntil(_co_label_ , c, t )
 #define _co_timedWaitUntil( label, c, t )                                      \
 waitUntil(c,t);                                                                \
-_co_save_restore( label, qOS::co::nop(), _co_t_cond(c) )                       \
+_co_save_restore( label, qOS::co::noIntr(), _co_t_cond(c) )                    \
 
 #define waitUntil(...)                    MACRO_OVERLOAD( _wu_ , __VA_ARGS__ )
 /*============================================================================*/
@@ -314,7 +314,7 @@ goto _co_break_                                                                \
 /*============================================================================*/
 #define semWait( sem )                                                         \
 semWait( sem );                                                                \
-_co_save_restore( _co_label_, qOS::co::nop(), _co_cond( _cr.semTrylock(sem)) ) \
+_co_save_restore( _co_label_, qOS::co::noIntr(), _co_cond( _cr.semTrylock(sem)) ) \
 
 /*============================================================================*/
 #define semSignal( sem )                                                       \
@@ -326,7 +326,7 @@ _cr.semSignal( sem )                                                           \
 #define _co_get_pos( var, label )                                              \
 getPosition( var );                                                            \
 var.pos = label;                                                               \
-case ( label ) : qOS::co::nop()                                                \
+case ( label ) : qOS::co::noIntr()                                             \
 
 /*============================================================================*/
 #define setPosition( var )   co_res_pos( var, _co_label_ )
