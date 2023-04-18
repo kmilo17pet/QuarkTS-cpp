@@ -23,7 +23,6 @@ constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
 {
     return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x; 
 }
-
 /*============================================================================*/
 void task::setFlags( const uint32_t xFlags, const bool value ) noexcept
 {

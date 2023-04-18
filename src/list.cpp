@@ -461,7 +461,7 @@ bool listIterator::until( void ) noexcept
 /*============================================================================*/
 bool listIterator::until( void* node ) noexcept
 {
-    return ( l->isMember( node) ) && ( node != current );
+    return ( l->isMember( node ) ) && ( node != current );
 }
 /*============================================================================*/
 listIterator& listIterator::operator++( int ) noexcept

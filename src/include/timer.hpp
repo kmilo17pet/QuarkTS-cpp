@@ -56,7 +56,7 @@ namespace qOS {
             * expiration. When the time expires, the STimer gets armed immediately
             * taking the specified time.
             * @note After the timer expiration, this method re-arms the timer
-            * @note The OS must be running before using STimers.
+            * @note The OS must be running before using a timer.
             * @note The expiration time should be at least, two times greater than
             * the clock-Tick.
             * @param[in] tTime The expiration time.
@@ -87,13 +87,13 @@ namespace qOS {
             bool operator()( void );
             bool operator()( qOS::time_t tTime );
             void operator()( bool en );
-            /** @brief Constant that defines the status of an armed STimer*/
+            /** @brief Constant that defines the status of an armed timer*/
             static const bool ARMED;
-            /** @brief Constant that defines the status of a disarmed STimer*/
+            /** @brief Constant that defines the status of a disarmed timer*/
             static const bool DISARMED;
-            /** @brief Constant that defines the value of a disarmed STimer*/
+            /** @brief Constant that defines the value of a disarmed timer*/
             static const qOS::clock_t DISARM_VALUE;
-            /** @brief Constant that defines the value that a disarmed STimer 
+            /** @brief Constant that defines the value that a disarmed timer 
             * returns when the remaining time is requested.
             */
             static const qOS::clock_t REMAINING_IN_DISARMED_STATE;
