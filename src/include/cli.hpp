@@ -87,16 +87,24 @@ namespace qOS {
                 _Handler() = default;
             public:
                 /**
+                * @brief Retrieve the he incoming command type.*
+                * @return The command type.
+                */
+                inline commandType getType( void ) const
+                {
+                    return Type;
+                }
+                /**
                 * @brief  The string data received after the detected command.
                 * @return The string data
                 */
-                inline char* getStringData( void ) 
+                inline char* getStringData( void )
                 {
                     return StrData;
                 }
                 /**
                 * @brief Retrieve a pointer to the user-defined data - Storage Pointer.
-                * @return A ponter to the user-defined data.
+                * @return A pointer to the user-defined data.
                 */
                 inline void* getData( void )
                 {
@@ -109,24 +117,109 @@ namespace qOS {
                 {
                     return StrLen;
                 }
+                /**
+                * @brief Retrieve the number of arguments of the incoming AT command.
+                * only available if Type = commandType::PARA
+                * @return The number of arguments of the incoming AT command
+                */
                 inline size_t getNumArgs( void ) const
                 {
                     return NumArgs;
                 }
+                /**
+                * @brief Helper method to get the pointer where the desired argument
+                * starts.
+                * @param[in] n The number of the argument
+                * @return A pointer to the desired argument. @c NULL pointer if the
+                * argument is not present.
+                */
                 char* getArgPtr( index_t n ) const;
+                /**
+                * @brief Helper method to get the @a n argument parsed as integer from
+                * the incoming AT command.
+                * @see util::stringToInteger()
+                * @param[in] n The number of the argument
+                * @return The argument parsed as integer. Same behavior of
+                * util::stringToInteger(). If argument not found returns 0.
+                */
                 int getArgInt( index_t n ) const;
+                /**
+                * @brief Helper method to get the @a n argument parsed as float from
+                * the incoming AT command.
+                * @see util::stringToFloat()
+                * @param[in] n The number of the argument
+                * @return The argument parsed as Float. Same behavior of util::stringToFloat().
+                * If argument not found returns 0.0f
+                */
                 float32_t getArgFloat( index_t n ) const;
+                /**
+                * @brief Helper method to get the @a n HEX argument parsed @c uint32_t
+                * from the incoming AT command.
+                * @see util::hexStringToUnsigned()
+                * @param[in] n The number of the argument
+                * @return The HEX argument parsed as @c uint32_t. Same behavior of
+                * util::hexStringToUnsigned()(). If argument not found returns 0.
+                */
                 uint32_t getArgHex( index_t n ) const;
+                /**
+                * @brief Helper method to get the @a n argument parsed as string from
+                * the incoming AT command.
+                * @param[in] n The number of the argument
+                * @param[out] pOut Array in memory where to store the resulting
+                * null-terminated string.
+                * @return Same as @a out on success, otherwise returns @c nullptr.
+                */
                 char* getArgString( index_t n, char *pOut );
+                /**
+                * @brief Helper method for printing a character to the CLI output.
+                * It displays only one character at a time.
+                * @param[in] c The ASCII character.
+                * @return none.
+                */
                 void output( const char c ) const;
+                /**
+                * @brief Writes a string to CLI output without the @c EOF string appended
+                * at the end.
+                * @param[in] s This is the C string to be written.
+                * @return none.
+                */
                 void output( const char *s ) const;
             friend class qOS::commandLineInterface;
         };
 
         using handler_t = _Handler&;
+
+        /**
+        * @brief Pointer to function : An AT-Command callback
+        *
+        * Example :
+        * @code{.c}
+        * cli::response commandCallback_example( cli::handler_t h ) {
+        *       cli::response retValue = cli::response::ERROR;
+        *       switch ( h.getType() ) {
+        *           case commandType::ACT :
+        *               h.output( "Test message" );
+        *               retValue = cli::response::OK;
+        *               break;
+        *           default:
+        *               break;
+        *       }
+        *       return retValue;
+        * }
+        * @endcode
+        * @param h A reference to the CLI command handler instance
+        * @return The command response.
+        */
         using commandCallback_t = response (*)( handler_t );
+
+        /**
+        * @brief A typedef that holds the options for an AT-Command object
+        */
         using options_t = uint16_t;
 
+        /**
+        * @brief An AT-Command object
+        */
         class command {
             private:
                 commandCallback_t cmdCallback{ nullptr };
@@ -142,6 +235,14 @@ namespace qOS {
 
     }
 
+    /**
+    * @brief An AT Command Line Interface (CLI) object
+    * @details Before starting the CLI development, the corresponding instance
+    * must be defined.
+    *
+    * The instance should be initialized using the commandLineInterface::setup()
+    * method.
+    */
     class commandLineInterface : protected cli::input {
         private:
             cli::_Handler handler;
@@ -164,13 +265,91 @@ namespace qOS {
             void operator=( commandLineInterface const& ) = delete;
         public:
             commandLineInterface() = default;
+            /**
+            * @brief Setup an instance of the AT Command Line Interface.
+            * @see core::addCommandLineInterfaceTask()
+            * @note CLI Built-in strings will be written to their default values.
+            * @param[in] outFcn The basic output-char wrapper function. All the CLI
+            * responses will be printed-out through this function.
+            * @param[in] pInput A memory location to store the cli input (Mandatory)
+            * @param[in] sizeIn The size of the memory allocated in @a pInput
+            * @param[in] pOutput A memory location to store the CLI output
+            * @param[in] sizeOut The size of the memory allocated in @a pOutput
+            * @return @c true on success, otherwise return @c false.
+            */
             bool setup( util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut );
+            /**
+            * @brief This function subscribes the CLI instance to a specific command
+            * with an associated @a Callback function, so that next time the required
+            * command is sent to the CLI input, the callback function will be executed.
+            * The CLI parser only analyze commands that follows the extended AT-Commands
+            * syntax (the + char can be ignored).
+            * @param[in] cmd The AT command object.
+            * @param[in] textCommand The string (name) of the command we want to
+            * subscribe to. Since this service only handles AT commands, this string has
+            * to begin by the "at" characters and should be in lower case.
+            * @param[in] cFcn The handler of the callback function associated to the
+            * command.
+            * Prototype: @code cli::response xCallback( cli::handler_t h ) @endcode
+            * @param[in] cmdOpt This flag combines with a bitwise OR the following
+            * information:
+            *
+            * commandType::PARA  : @c AT+cmd=x,y is allowed. The execution of the
+            * callback function also depends on whether the number of argument is valid
+            * or not. Information about number of arguments is combined with a bitwise
+            * 'OR' : ::commandType::PARA | 0xXY , where X which defines maximum
+            * argument number for incoming command and Y which defines minimum argument
+            * number for incoming command
+            *
+            * commandType::TEST  : @c "AT+cmd=?" is allowed.
+            *
+            * commandType::READ  : @c "AT+cmd?" is allowed.
+            *
+            * commandType::ACT   : @c AT+cmd is allowed.
+            *
+            * @param[in] param User storage pointer.
+            * @return @c true on success, otherwise return @c false.
+            */
             bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param = nullptr );
+            /**
+            * @brief Feed the CLI input with a single character. This call is mandatory
+            * from an interrupt context. Put it inside the desired peripheral's ISR.
+            * @param[in] c The incoming byte/char to the input.
+            * @return @c true when the CLI is ready to process the input, otherwise
+            * return @c false
+            */
             bool isrHandler( const char c );
+            /**
+            * @brief Feed the CLI input with a string. This call is mandatory
+            * from an interrupt context. Put it inside the desired peripheral's ISR.
+            * @param[in] pData The incoming string.
+            * @param[in] n The length of the string.
+            * @return @c true when the CLI is ready to process the input, otherwise
+            * return @c false
+            */
             bool isrHandler( char *pData, const size_t n );
+            /**
+            * @brief Sends a command to the Command Line Interface instance.
+            * @param[in] cmd The command string, including arguments if required.
+            * @return @c true when the CLI accepts the input. If busy, return @c false
+            */
             bool raise( const char *cmd );
+            /**
+            * @brief Flush the CLI input buffer.
+            * @return @c true on success, otherwise return @c false
+            */
             bool inputFlush( void );
+            /**
+            * @brief Try to execute the requested command.
+            * @param[in] cmd The command string, including arguments if required.
+            * @return The response output for the requested command.
+            */
             cli::response exec( const char *cmd );
+            /**
+            * @brief Run the AT Command Line Interface when the input is ready.
+            * @see core::addCommandLineInterfaceTask()
+            * @return @c true on success, otherwise return @c false
+            */
             bool run( void );
             inline void* getOwner( void )
             {
