@@ -88,14 +88,6 @@ namespace qOS {
             static const qOS::time_t NONE;
             /** @brief To specify a non-wait time value.*/
             static const qOS::time_t IMMEDIATE;
-            /** @brief Conversion factor from seconds to minutes.*/
-            static const qOS::time_t MINUTE;
-            /** @brief Conversion factor from seconds to hours.*/
-            static const qOS::time_t HOUR;
-            /** @brief Conversion factor from seconds to days.*/
-            static const qOS::time_t DAY;
-            /** @brief Conversion factor from seconds to weeks.*/
-            static const qOS::time_t WEEK;
     };
 
 }

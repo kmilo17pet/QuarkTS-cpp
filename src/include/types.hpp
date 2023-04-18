@@ -1,7 +1,11 @@
 #ifndef QOS_CPP_TYPES
 #define QOS_CPP_TYPES
 
-#if ( __cplusplus < 201103L || defined __AVR_ARCH__ || defined STM8Sxx )
+#if defined( ARDUINO ) || defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD ) || defined( ENERGIA_ARCH_MSP430ELF )
+    #define ARDUINO_PLATFORM
+#endif
+
+#if ( __cplusplus < 201103L || defined ( __AVR_ARCH__ ) || defined( ARDUINO_PLATFORM ) || defined ( STM8Sxx ) )
     #include <stddef.h>
     #include <stdint.h>
     #include <stdlib.h>
@@ -17,9 +21,7 @@
     #include <climits>
 #endif
 
-#if defined( ARDUINO ) || defined( ARDUINO_ARCH_AVR) || defined( ARDUINO_ARCH_SAMD ) || defined( ENERGIA_ARCH_MSP430ELF )
-    #define ARDUINO_PLATFORM
-#endif
+
 
 using namespace std;
 

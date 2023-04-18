@@ -9,6 +9,10 @@ namespace qOS {
     class commandLineInterface;
     namespace cli {
 
+        /**
+        * @brief an enumeration to define the possible values that can be returned
+        * from the callback of a command.
+        */
         enum response : int16_t {
             ERROR = -32767,
             NOT_ALLOWED = -32766,
@@ -19,17 +23,29 @@ namespace qOS {
             OUTPUT_RESPONSE = 32767,
         };
 
+        /**
+        * @brief Used to indicate an error code as return value inside a
+        * command-callback.
+        * This code is defined by the application writer and should be a value
+        * between @c 1 and @c 32766.
+        *
+        * For example, a return value of cli::ERROR_CODE(15), will print out the
+        * string @c ERROR:15.
+        */
         constexpr response ERROR_CODE( int16_t code )
         {
             return static_cast<response>( -code );
         }
 
+        /**
+        * @brief An enum to describe the available AT command types.
+        */
         enum commandType : uint16_t {
-            UNDEF = 0x0000,
-            PARA = 0x0100,
-            TEST = 0x0200,
-            READ = 0x0400,
-            ACT = 0x0800,
+            UNDEF = 0x0000, /**< Was not able to detected a correct input command*/
+            PARA = 0x0100,  /**< Command that receives parameters (comma separated arguments after the equal(=) symbol) : @c "AT+cmd=x,y" */
+            TEST = 0x0200,  /**< Command in test mode (no arguments allowed): @c "AT+cmd=?" */
+            READ = 0x0400,  /**< Command to query information(data allowed after the ? symbol)  : @c "AT+cmd?" */
+            ACT = 0x0800,   /**< Command to perform an action (no arguments allowed) : @c AT+cmd */
         };
 
         /*! @cond */
@@ -46,6 +62,16 @@ namespace qOS {
         };
         /*! @endcond */
 
+        /**
+        * @brief The command argument with all the regarding information of the
+        * incoming AT command.
+        * @details From the callback context, can be used to print out extra 
+        * information as a command response, parse the command parameters, and 
+        * query properties with crucial information about the
+        * detected command, like the type, the number of arguments, and the
+        * subsequent string after the command text.
+        * @note Should be used only in command-callbacks as the only input argument.
+        */
         class _Handler {
             private:
                 commandLineInterface *instance{ nullptr };
@@ -59,14 +85,25 @@ namespace qOS {
                 _Handler( _Handler const& ) = delete;
                 void operator=( _Handler const& ) = delete;
             public:
+                /**
+                * @brief  The string data received after the detected command.
+                * @return The string data
+                */
                 inline char* getStringData( void ) 
                 {
                     return StrData;
                 }
+                /**
+                * @brief Retrieve a pointer to the user-defined data - Storage Pointer.
+                * @return A ponter to the user-defined data.
+                */
                 inline void* getData( void )
                 {
                     return Data;
                 }
+                /**
+                * @brief The length of the string@a StrData.
+                */
                 inline size_t getStringLength( void ) const
                 {
                     return StrLen;

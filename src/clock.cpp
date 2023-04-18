@@ -18,18 +18,10 @@ qOS::getTickFcn_t clock::getTick = &internalTick; /* skipcq: CXX-W2009 */
 #if ( Q_SETUP_TIME_CANONICAL == 1 )
     const qOS::time_t clock::NONE = 0uL;
     const qOS::time_t clock::IMMEDIATE = 0uL;
-    const qOS::time_t clock::MINUTE = 60000uL;
-    const qOS::time_t clock::HOUR = 3600000uL;
-    const qOS::time_t clock::DAY = 86400000uL;
-    const qOS::time_t clock::WEEK = 604800000uL;
 #else
     static const qOS::time_t TIME_FIX_VALUE = 0.5f;
     const qOS::time_t clock::NONE = 0.0f;
     const qOS::time_t clock::IMMEDIATE = 0.0f;
-    const qOS::time_t clock::MINUTE = 60.0f;
-    const qOS::time_t clock::HOUR = 3600.0f;
-    const qOS::time_t clock::DAY = 86400.0f;
-    const qOS::time_t clock::WEEK = 604800.0f;
 #endif
 /*============================================================================*/
 qOS::clock_t clock::convert2Clock( const qOS::time_t t ) noexcept
