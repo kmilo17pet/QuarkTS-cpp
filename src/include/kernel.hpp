@@ -52,7 +52,6 @@ namespace qOS {
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
             list& waitingList;
             list& suspendedList;
-            list& readyList;
             const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
             const uint32_t BIT_INIT = 0x00000001uL;
             const uint32_t BIT_FCALL_IDLE = 0x00000002uL;
@@ -63,7 +62,7 @@ namespace qOS {
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
             void dispatch( list * const xList ) noexcept;
             void dispatchIdle( void ) noexcept;
-            core() : waitingList( coreLists[ Q_PRIORITY_LEVELS ] ), suspendedList( coreLists[ Q_PRIORITY_LEVELS + 1 ] ), readyList( coreLists[ 0 ] ) {}
+            core() : waitingList( coreLists[ Q_PRIORITY_LEVELS ] ), suspendedList( coreLists[ Q_PRIORITY_LEVELS + 1 ] ) {}
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
         public:

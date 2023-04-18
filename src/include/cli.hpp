@@ -57,8 +57,8 @@ namespace qOS {
                 size_t size{ 0u };
                 volatile bool ready{ false };
                 void flush( void );
-                input( input const& ) = delete;
                 void operator=( input const& ) = delete;
+                input() {}
         };
         /*! @endcond */
 
@@ -84,6 +84,7 @@ namespace qOS {
                 commandType Type{ UNDEF };
                 _Handler( _Handler const& ) = delete;
                 void operator=( _Handler const& ) = delete;
+                _Handler() = default;
             public:
                 /**
                 * @brief  The string data received after the detected command.
