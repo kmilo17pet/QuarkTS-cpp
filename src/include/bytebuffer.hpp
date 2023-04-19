@@ -21,19 +21,19 @@ namespace qOS {
             /**
             * @brief Initialize the Byte-sized buffer instance
             * @param[in] pBuffer Block of memory or array of data
-            * @param[in] length The size of the buffer(Must be a power of two)
+            * @param[in] blength The size of the buffer(Must be a power of two)
             */
-            byteBuffer( volatile uint8_t *pBuffer, const size_t length )
+            byteBuffer( volatile uint8_t *pBuffer, const size_t blength )
             {
-                (void)setup( pBuffer, length );
+                (void)setup( pBuffer, blength );
             }
             /**
             * @brief Initialize the Byte-sized buffer
             * @param[in] pBuffer Block of memory or array of data
-            * @param[in] length The size of the buffer(Must be a power of two)
+            * @param[in] blength The size of the buffer(Must be a power of two)
             * @return @c true on success, otherwise returns @c false.
             */
-            bool setup( volatile uint8_t *pBuffer, const size_t length ) noexcept;
+            bool setup( volatile uint8_t *pBuffer, const size_t blength ) noexcept;
             /**
             * @brief Adds an element of data to the Byte-sized buffer
             * @param[in] bData The data to be added

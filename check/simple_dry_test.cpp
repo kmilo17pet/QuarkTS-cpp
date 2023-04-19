@@ -58,7 +58,7 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        trace::log << "idle task" << trace::end;
+        trace::log << e.self() << trace::end;
     }
     co::reenter( otherTaskCrHandle ) {
         co::restart;
@@ -108,15 +108,15 @@ void task_callback( event_t e )
     trace::log << e.self() << trace::end;
 
     if ( e.firstCall() ) {
-        trace::log << trace::grn << "first call "<< e.self().getName() << trace::end;
+        trace::log << trace::grn << "first call "<< e.self() << trace::end;
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        trace::log << "notified(SIMPLE)! " << e.self().getName() << trace::end;
+        trace::log << "notified(SIMPLE)! " << e.self() << trace::end;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
-        trace::log << "notified(QUEUED)! " << e.self().getName() << trace::end;
+        trace::log << "notified(QUEUED)! " << e.self() << trace::end;
     }
    
     if ( e.lastIteration() ) {
@@ -124,7 +124,7 @@ void task_callback( event_t e )
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t2, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
-        trace::log << "last iteration "<< e.self().getName() << trace::end;
+        trace::log << "last iteration "<< e.self() << trace::end;
     }
 
     int someValue = 457;
@@ -155,7 +155,7 @@ int main()
     t2.setName( "t2");
     t3.setName( "t3");
     os.init( sysClock, idleTask_callback );
-
+    
     os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 500u, task::PERIODIC );
     os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 500u, 10u );
     os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2000u, task::PERIODIC );
@@ -166,7 +166,6 @@ int main()
     m.add( s1, s1_callback );
     m.add( s2, s2_callback );
     os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 100u );
-    
 
     os.run();
     for(;;) { }

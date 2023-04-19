@@ -19,8 +19,17 @@ namespace qOS {
 
         /** @brief A placeholder for the Co-Routine current position or progress*/
         class position {
-            public:
             state pos{ BEGINNING };
+            public:
+                state operator()(void) const
+                {
+                    return pos;
+                }
+                position& operator=( co::state l )
+                {
+                    pos = l;
+                    return *this;
+                }
         };
 
         /** @brief A Co-Routine handle*/
@@ -59,10 +68,10 @@ namespace qOS {
             private:
                 _coContext( _coContext const& ) = delete;
                 void operator=( _coContext const& ) = delete;
+                co::state label{ co::BEGINNING };
+                qOS::timer tm;
             public:
                 _coContext() = default;
-                co::state label{ co::BEGINNING };
-                qOS::timer delay;
                 inline void saveHandle( co::handle& h ) noexcept
                 {
                     h.ctx = this;
@@ -76,10 +85,36 @@ namespace qOS {
                 {
                     return s.tryLock();
                 }
+                inline _coContext& operator=( co::state l )
+                {
+                    label = l;
+                    return *this;
+                }
+                inline co::state operator()( void )
+                {
+                    return label;
+                }
+                inline void operator()( qOS::time_t t ) 
+                {
+                    (void)tm.set( t );
+                }
+                inline bool operator==( const co::state l ) const
+                {
+                    return l == label;
+                }
+                inline bool operator!=( const co::state l ) const
+                {
+                    return l != label;
+                }
+                inline bool timeout( void ) const 
+                {
+                    return tm.expired();
+                }
+            friend class handle;
         };
         /*cstat -MISRAC++2008-0-1-11*/
 
-        inline void noIntr( void ) noexcept {}
+        inline void crNOP( void ) noexcept {}
         /*! @endcond */
 
         /**
@@ -221,24 +256,17 @@ namespace qOS {
 #define _co_label_                                  ( __LINE__ )
 
 /*============================================================================*/
-#define reenter_0()                     _co_reenter_impl(Q_NONE)
-#define reenter_1(h)                    _co_reenter_impl(h)
+#define reenter_0()                     _co_reenter( Q_NONE )
+#define reenter_1(h)                    _co_reenter( h )
 #define reenter(...)                    MACRO_OVERLOAD( reenter_ , __VA_ARGS__ )
 
 /*============================================================================*/
-#define _co_reenter_impl( h )                                                  \
+// clang-format off
+#define _co_reenter( h )                                                       \
 reenter();                                                                     \
 static qOS::co::_coContext _cr;                                                \
-qOS::co::_coContext *ctx = &_cr;                                               \
 _cr.saveHandle( h );                                                           \
-_co_reenter                                                                    \
-
-/*============================================================================*/
-// clang-format off
-#define _co_reenter                                                            \
-for ( qOS::co::state *const _pc = &(ctx)->label;                               \
-      qOS::co::SUSPENDED != *_pc ;                                             \
-      *_pc = qOS::co::SUSPENDED )                                              \
+for ( ; _cr != qOS::co::SUSPENDED ; _cr = qOS::co::SUSPENDED )                 \
     if ( 0 ) {                                                                 \
         goto _co_continue_;                                                    \
         _co_continue_:                                                         \
@@ -250,13 +278,13 @@ for ( qOS::co::state *const _pc = &(ctx)->label;                               \
         break;                                                                 \
     }                                                                          \
     else                                                                       \
-        switch ( *_pc )                                                        \
+        switch ( _cr() )                                                       \
             case 0 :                                                           \
 
 /*============================================================================*/
-#define _co_save_restore( label, init_action, pos_label_action )               \
+#define _coSaveRestore( label, init_action, pos_label_action )                 \
 init_action;                                                                   \
-for ( *_pc = (label) ;; )                                                      \
+for ( _cr = (label) ;; )                                                       \
     if ( 0 ) {                                                                 \
         case ( label ) : {                                                     \
             pos_label_action                                                   \
@@ -274,47 +302,47 @@ if ( !(c) ) {                                                                  \
 
 /*============================================================================*/
 #define _co_t_cond( c )                                                        \
-if ( !( (c) || _cr.delay.expired() ) ) {                                       \
+if ( !( (c) || _cr.timeout() ) ) {                                             \
     goto _co_break_;                                                           \
 } 
 /*============================================================================*/
 #define yield _co_yield(_co_label_)
 #define _co_yield(label)                                                       \
 yield();                                                                       \
-_co_save_restore( label, qOS::co::noIntr(), Q_NONE )                           \
+_coSaveRestore( label, qOS::co::crNOP(), Q_NONE )                              \
 
 /*============================================================================*/
 #define delay( t ) _co_delay(_co_label_ , t)
 #define _co_delay( label, t )                                                  \
 delay(t);                                                                      \
-_co_save_restore( label, _cr.delay.set(t) , _co_t_cond(0) )                    \
+_coSaveRestore( label, _cr(t) , _co_t_cond(0) )                                \
 
 /*============================================================================*/
 #define _wu_1( c ) _co_waitUntil(_co_label_ , c )
 #define _co_waitUntil( label, c )                                              \
 waitUntil(c);                                                                  \
-_co_save_restore( label, qOS::co::noIntr(), _co_cond(c) )                      \
+_coSaveRestore( label, qOS::co::crNOP(), _co_cond(c) )                         \
 
 #define _wu_2( c, t ) _co_timedWaitUntil(_co_label_ , c, t )
 #define _co_timedWaitUntil( label, c, t )                                      \
 waitUntil(c,t);                                                                \
-_co_save_restore( label, qOS::co::noIntr(), _co_t_cond(c) )                    \
+_coSaveRestore( label, qOS::co::crNOP(), _co_t_cond(c) )                       \
 
 #define waitUntil(...)                    MACRO_OVERLOAD( _wu_ , __VA_ARGS__ )
 /*============================================================================*/
-#define timeoutExpired()              timeoutExpired(), _cr.delay.expired()
+#define timeoutExpired()              timeoutExpired(), _cr.timeout()
 
 /*============================================================================*/
 #define restart _co_restart
 #define _co_restart                                                            \
 restart();                                                                     \
-*_pc = qOS::co::BEGINNING;                                                     \
+_cr = qOS::co::BEGINNING;                                                      \
 goto _co_break_                                                                \
 
 /*============================================================================*/
 #define semWait( sem )                                                         \
 semWait( sem );                                                                \
-_co_save_restore( _co_label_, qOS::co::noIntr(), _co_cond( _cr.semTrylock(sem)) ) \
+_coSaveRestore( _co_label_, qOS::co::crNOP(), _co_cond( _cr.semTrylock(sem)) ) \
 
 /*============================================================================*/
 #define semSignal( sem )                                                       \
@@ -325,14 +353,14 @@ _cr.semSignal( sem )                                                           \
 #define getPosition( var )   _co_get_pos( var, _co_label_ )
 #define _co_get_pos( var, label )                                              \
 getPosition( var );                                                            \
-var.pos = label;                                                               \
-case ( label ) : qOS::co::noIntr()                                             \
+var = label;                                                                   \
+case ( label ) : qOS::co::crNOP()                                              \
 
 /*============================================================================*/
 #define setPosition( var )   co_res_pos( var, _co_label_ )
 #define co_res_pos( var, label )                                               \
 setPosition( var );                                                            \
-*_pc = var.pos;                                                                \
+_cr = var();                                                                   \
 goto _co_break_                                                                \
 
 
