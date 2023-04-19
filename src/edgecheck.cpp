@@ -36,9 +36,9 @@ static bool read32bit( void *addr, index_t pinNumber )
 void edgeCheck::stateCheck( void )
 {
     size_t nodeChange = 0u;
-    /*cstat -MISRAC++2008-6-5-2*/
-    for ( ec::node *n = head ; nullptr != n ; n = n->next ) {
-        /*cstat +MISRAC++2008-6-5-2*/
+
+    for ( auto i = nodes.begin(); i.until() ; i++ ) {
+        ec::inNode * const n = i.get<ec::inNode*>();
         const ec::pinState v = ( true == reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
                                                                          ec::pinState::OFF;
         if ( n->prevPinValue != v ) {
@@ -64,9 +64,8 @@ void edgeCheck::stateWait( void )
 /*============================================================================*/
 void edgeCheck::stateUpdate( void )
 {
-    /*cstat -MISRAC++2008-6-5-2*/
-    for ( ec::node *n = head ; nullptr != n ; n = n->next ) {
-        /*cstat +MISRAC++2008-6-5-2*/
+    for ( auto i = nodes.begin(); i.until() ; i++ ) {
+        ec::inNode * const n = i.get<ec::inNode*>();
         const ec::pinState v = ( true == reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
                                                                          ec::pinState::OFF;
         
@@ -105,17 +104,15 @@ edgeCheck::edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept
     start = clock::getTick();
 }
 /*============================================================================*/
-bool edgeCheck::addNode( ec::node& n, void *portAddress, const index_t pinNumber) noexcept
+bool edgeCheck::add( ec::inNode& n, void *portAddress, const index_t pinNumber) noexcept
 {
     bool retValue = false;
 
     if ( ( nullptr != portAddress ) && ( pinNumber < 32u ) ) {
         n.xPort = portAddress;
         n.xPin = pinNumber;
-        n.next = head;
         n.prevPinValue = ( true == reader( n.xPort, n.xPin ) ) ? ec::pinState::ON : ec::pinState::OFF;
-        head = &n;
-        retValue = true;
+        retValue = nodes.insert( &n );
     }
 
     return retValue;
@@ -133,7 +130,7 @@ bool edgeCheck::update( void ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool ec::node::selectPin( const index_t pinNumber ) noexcept
+bool ec::inNode::selectPin( const index_t pinNumber ) noexcept
 {
     bool retValue = false;
 

@@ -2,6 +2,7 @@
 #define QOS_EDGE_CHECK
 
 #include "include/types.hpp"
+#include "include/list.hpp"
 #include "include/clock.hpp"
 
 namespace qOS {
@@ -21,17 +22,16 @@ namespace qOS {
         /**
         * @brief An input node object for edge checking.
         */
-        class node {
+        class inNode : protected node {
             private:
-                node *next{ nullptr };
                 void *xPort{ nullptr };
                 pinState prevPinValue{ pinState::UNKNOWN  };
                 pinState status{ pinState::UNKNOWN };
                 index_t xPin{ 0u };
-                node( node const& ) = delete;
-                void operator=( node const& ) = delete;
+                inNode( inNode const& ) = delete;
+                void operator=( inNode const& ) = delete;
             public:
-                node() = default;
+                inNode() = default;
                 /**
                 * @brief Query the status of the specified input-node.
                 * @return The status of the input node.
@@ -67,11 +67,11 @@ namespace qOS {
     */
     class edgeCheck {
         private:
+            list nodes;
             void stateCheck( void );
             void stateWait( void );
             void stateUpdate( void );
             void (edgeCheck::* state)( void ) = nullptr;
-            ec::node *head{ nullptr};
             qOS::clock_t start{ 0u };
             qOS::clock_t debounceTime{ 0u };
             ec::nodeReaderFcn_t reader{ nullptr };
@@ -96,7 +96,7 @@ namespace qOS {
             * @param[in] pinNumber The specified Pin to read from PortAddress
             * @return @c true on success. Otherwise @c false.
             */
-            bool addNode( ec::node& n, void *portAddress, const index_t pinNumber ) noexcept;
+            bool add( ec::inNode& n, void *portAddress, const index_t pinNumber ) noexcept;
             /**
             * @brief Update the status of all nodes inside the Input Edge-Check instance
             * (Non-Blocking call).

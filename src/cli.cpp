@@ -84,26 +84,11 @@ bool commandLineInterface::add( cli::command &cmd, char *textCommand, cli::comma
         if ( cmd.cmdLen >= 2u ) {
             /*command should start with an <at> at the beginning */
             if ( ( 'a' == textCommand[ 0 ] ) && ( 't' == textCommand[ 1 ] ) ) {
-                cli::command  *iCmd = nullptr;
                 cmd.Text = textCommand;
                 cmd.cmdCallback = cFcn; /*install the callback*/
                 cmd.cmdOpt = 0x0FFFu & cmdOpt; /*high nibble not used yet*/
                 cmd.param = param;
-                if ( nullptr != first ) { /*list already has items*/
-                    /*cstat -MISRAC++2008-6-5-2*/
-                    for ( iCmd = first ; nullptr != iCmd ; iCmd = iCmd->next ) {
-                        if ( &cmd == iCmd ) {
-                            break;
-                        }
-                    }
-                    /*cstat +MISRAC++2008-6-5-2*/
-                }
-                if ( &cmd != iCmd ) {
-                    cmd.next = first;
-                    /*command inserted at the beginning of the list*/
-                    first = &cmd;
-                    retValue = true;
-                }
+                retValue = subscribed.insert( &cmd );
             }
         }
     }
@@ -275,28 +260,23 @@ cli::response commandLineInterface::exec( const char *cmd )
     cli::response retValue = cli::response::NOT_FOUND;
 
     if ( nullptr != cmd ) {
-        /*loop over the subscribed commands*/
-        /*cstat -MISRAC++2008-6-5-2*/
-        for ( cli::command *iCmd = first ; nullptr != iCmd ; iCmd = iCmd->next ) {
+        for ( auto i = subscribed.begin(); i.until(); i++ ) {
+            cli::command * const iCmd = i.get<cli::command*>();
             /*check if the input matches the subscribed command */
             if ( 0 == strncmp( cmd, iCmd->Text, iCmd->cmdLen ) ) {
                 retValue = cli::response::NOT_ALLOWED;
                 if ( true == preProcessing( iCmd, const_cast<char*>( cmd ) ) ) {
                     /*if success, proceed with the user pos-processing*/
-                    const cli::commandCallback_t cmdCallback = iCmd->cmdCallback;
-
                     if ( cli::commandType::UNDEF == handler.Type ) {
                         retValue = cli::response::ERROR;
                     }
                     else {
-                        /*invoke the callback*/
-                        retValue = cmdCallback( handler );
+                        retValue = iCmd->cmdCallback( handler ); /*invoke the callback*/
                     }
                 }
                 break;
             }
         }
-        /*cstat +MISRAC++2008-6-5-2*/
     }
 
     return retValue;

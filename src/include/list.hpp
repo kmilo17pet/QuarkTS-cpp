@@ -10,18 +10,6 @@ namespace qOS {
         AT_BACK = -2
     };
 
-    /**
-    * @brief Handle of the list::sort() method that is passed as an argument to
-    * the compare function.
-    * @note The user must verify the input nodes to return a boolean value
-    * that determines the order in which the nodes should be ordered
-    */
-    struct _listCompareHandle_s {
-        void *n1;                 /**< Points to the node that is currently being processed*/
-        void *n2;                 /**< Points to the node that is currently being processed*/
-    };
-    using listCompareHandle_t = struct _listCompareHandle_s*;
-
     class list;
     /**
     * @brief A list-node object (Used internally)
@@ -45,7 +33,7 @@ namespace qOS {
         friend class listIterator;
     };
 
-    using listCompareFcn_t = bool (*)( listCompareHandle_t );
+    using listCompareFcn_t = bool (*)( const void *, const void * );
 
     enum class listDirection {
         FORWARD,

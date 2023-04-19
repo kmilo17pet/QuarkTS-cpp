@@ -8,7 +8,7 @@ namespace qOS {
 
 using namespace qOS;
 
-static bool taskEntryOrderPreserver( listCompareHandle_t h );
+static bool taskEntryOrderPreserver( const void *n1, const void *n2 );
 
 const priority_t core::LOWEST_PRIORITY = 0u;
 const priority_t core::MEDIUM_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) >> 1u;
@@ -412,16 +412,14 @@ bool core::run( void ) noexcept
 }
 /*============================================================================*/
 #if ( Q_PRESERVE_TASK_ENTRY_ORDER == 1 )
-/*cstat -MISRAC++2008-7-1-2*/
-static bool taskEntryOrderPreserver( listCompareHandle_t h )
+static bool taskEntryOrderPreserver( const void *n1, const void *n2 )
 {
     /*cstat -CERT-EXP36-C_b*/
-    task * const t1 = static_cast<task*>( h->n1 );
-    task * const t2 = static_cast<task*>( h->n2 );
+    const task * const t1 = static_cast<const task*>( n1 );
+    const task * const t2 = static_cast<const task*>( n2 );
     /*cstat +CERT-EXP36-C_b*/
     return ( t1->getID() > t2->getID() );
 }
-/*cstat +MISRAC++2008-7-1-2*/
 #endif
 /*============================================================================*/
 bool core::notify( notifyMode mode, task &Task, void* eventData ) noexcept

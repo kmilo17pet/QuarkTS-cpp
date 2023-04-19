@@ -230,16 +230,13 @@ bool list::sort( listCompareFcn_t f ) noexcept
 
         if ( count >= 2u ) {
             node *current = nullptr, *before, *after;
-            struct _listCompareHandle_s xHandle;
             bool xRetCmp;
 
             for ( size_t i = 1u ; i < count ; ++i ) {
                 const size_t n = count - i - 1u;
                 current = head;
                 for ( size_t j = 0u; j <= n; ++j ) {
-                    xHandle.n1 = current;
-                    xHandle.n2 = current->next;
-                    xRetCmp = f( &xHandle );
+                    xRetCmp = f( current, current->next );
                     if ( true == xRetCmp ) { /*compare adjacent nodes*/
                         before = current->prev;
                         after = current->next;

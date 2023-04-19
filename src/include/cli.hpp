@@ -2,6 +2,7 @@
 #define QOS_CPP_CLI
 
 #include "include/types.hpp"
+#include "include/list.hpp"
 #include "include/util.hpp"
 
 namespace qOS {
@@ -220,10 +221,9 @@ namespace qOS {
         /**
         * @brief An AT-Command object
         */
-        class command {
+        class command : protected node {
             private:
                 commandCallback_t cmdCallback{ nullptr };
-                command* next{ nullptr };
                 options_t cmdOpt{ 0u };
                 size_t cmdLen{ 0u };
                 void *param{ nullptr };
@@ -245,8 +245,8 @@ namespace qOS {
     */
     class commandLineInterface : protected cli::input {
         private:
+            list subscribed;
             cli::_Handler handler;
-            cli::command *first{ nullptr };
             const char *ok_rsp{ "OK" };
             const char *er_rsp{ "ERROR" };
             const char *nf_rsp{ "UNKNOWN" };
