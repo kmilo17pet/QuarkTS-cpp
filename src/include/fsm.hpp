@@ -320,12 +320,47 @@ namespace qOS {
         };
         using psIndex_t = _psIndex_s;
 
+        /**
+        * @brief This timeout-specification option its used to specify that the
+        * engine should set the timeout when the specified state its entering.
+        * @note Can be combined with a bitwise OR
+        */
         extern const timeoutSpecOption_t TIMEOUT_SET_ENTRY;
+        /**
+        * @brief This timeout-specification option its used to specify that the
+        * engine should reset the timeout when the specified state its entering.
+        * @note Can be combined with a bitwise OR
+        */
         extern const timeoutSpecOption_t TIMEOUT_RST_ENTRY;
+        /**
+        * @brief This timeout-specification option its used to specify that the
+        * engine should set the timeout when the specified state its exiting*.
+        * @note Can be combined with a bitwise OR
+        */
         extern const timeoutSpecOption_t TIMEOUT_SET_EXIT;
+        /**
+        * @brief This timeout-specification option its used to specify that the
+        * engine should reset the timeout when the specified state its exiting*.
+        * @note Can be combined with a bitwise OR
+        */
         extern const timeoutSpecOption_t TIMEOUT_RST_EXIT;
+        /**
+        * @brief This timeout-specification option its used to specify that the
+        * engine should set the timeout only if it is in reset state.
+        * @note Can be combined with a bitwise OR
+        */
         extern const timeoutSpecOption_t TIMEOUT_KEEP_IF_SET;
+        /**
+        * @brief This timeout-specification option its used setup the timeout in
+        * periodic mode.
+        * @note Can be combined with a bitwise OR
+        */
         extern const timeoutSpecOption_t TIMEOUT_PERIODIC;
+        /**
+        * @brief Timeout-specification option. Should be used to specify the timeout
+        * index.
+        * @note Can be combined with a bitwise OR
+        */
         constexpr timeoutSpecOption_t TIMEOUT_INDEX( index_t i )
         {
             return ( 0x00FFFFFFuL & static_cast<timeoutSpecOption_t>( i ) );

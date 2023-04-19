@@ -39,11 +39,13 @@
 namespace qOS {
     namespace trace {
 
+        /*! @cond */
         class tout_base {
             public:
                 uint8_t base;
                 tout_base(uint8_t b) : base(b) {}
         };
+        /*! @endcond */
 
         class mem {
             public:
@@ -72,6 +74,7 @@ namespace qOS {
         extern const char * const cyn;
         extern const char * const wht;
 
+        /*! @cond */
         class _trace final {
             private:
                 _trace() = default;
@@ -113,6 +116,7 @@ namespace qOS {
             #endif
         };
         extern _trace& _trace_out;
+        /*! @endcond */
 
         inline void setOutputFcn( util::putChar_t fcn )
         {
@@ -127,10 +131,12 @@ namespace qOS {
 
 }
 
+/*! @cond */
 #define _logHeader()                                                           \
 qOS::trace::_trace_out << "[ " << qOS::trace::dec <<                           \
 static_cast<unsigned long>( qOS::clock::getTick() )                            \
 << "] " << _TRACE_CURRENT_FUNCTION << ":" _TRACE_TOSTRING(__LINE__) " - "      \
+/*! @endcond */
 
 #define var(v)  var( _TRACE_STRINGIFY(v) ) << '=' << v
 #define log     log();_logHeader()

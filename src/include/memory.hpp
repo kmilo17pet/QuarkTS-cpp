@@ -14,13 +14,23 @@
 namespace qOS {
     namespace mem {
 
+        /*! @cond */
         using address_t = size_t;
         struct _blockConnect_s {
             struct _blockConnect_s *next{ nullptr };
             size_t blockSize{ 0u };
         };
         using blockConnect_t = struct _blockConnect_s;
+        /*! @endcond */
 
+        /**
+        * @brief A Memory Pool object
+        * @details A memory pool its a special resource that allows memory blocks to
+        * be dynamically allocated from a user-designated memory region. Instead of
+        * typical pools with fixed-size block allocation, the pools in QuarkTS++ can
+        * be of any size, thereby the user is responsible for selecting the
+        * appropriate memory pool to allocate data with the same size.
+        */
         class pool {
             private:
                 blockConnect_t *end{ nullptr };
@@ -33,13 +43,61 @@ namespace qOS {
                 pool( pool const& ) = delete;
                 void operator=( pool const& ) = delete;
             public:
+                /**
+                * @brief Initializes a memory pool instance. 
+                * @param[in] pArea A pointer to a memory block @c uint8_t statically
+                * allocated to act as Heap of the memory pool. The size of this block should
+                * match the @a pSize argument.
+                * @param[in] pSize The size of the memory block pointed by @a pArea
+                * @return Returns @c true on success, otherwise, returns @c false.
+                */
                 inline pool( void *pArea, const size_t pSize ) noexcept {
                     (void)setup( pArea, pSize );
                 }
+                /**
+                * @brief Initializes a memory pool instance. This function should be called
+                * once before any heap memory request.
+                * @param[in] pArea A pointer to a memory block @c uint8_t statically
+                * allocated to act as Heap of the memory pool. The size of this block should
+                * match the @a pSize argument.
+                * @param[in] pSize The size of the memory block pointed by @a pArea
+                * @return Returns @c true on success, otherwise, returns @c false.
+                */
                 bool setup( void *pArea, const size_t pSize ) noexcept;
+                /**
+                * @brief Deallocates the space previously allocated by mem::pool::alloc().
+                * Deallocation will be performed in the selected memory pool.
+                * If @a ptr is a @c nullptr pointer, the function does nothing.
+                * The behavior is undefined if selected memory pool has not been initialized.
+                * The behavior is undefined if the value of @a ptr  does not equal a value
+                * returned earlier by mem::pool::alloc().
+                * The behavior is undefined if the memory area referred to by @a ptr has
+                * already been deallocated, that is, mem::pool::free() has already been called with
+                * @a ptr as the argument and no calls to mem::pool::alloc() resulted in a pointer
+                * equal to @a ptr afterwards. The behavior is undefined if after mem::pool::free()
+                * returns, an access is made through the pointer @a ptr.
+                * @attention This method is NOT interrupt-safe.
+                * @param[in] ptr to the memory to deallocate
+                * @return none.
+                */
                 void free( void *ptr ) noexcept;
+                /**
+                * @brief Allocate a block of memory that is @a pSize bytes large. 
+                * If the requested memory can be allocated, a pointer is 
+                * returned to the beginning of the memory block.
+                * @attention This method is NOT interrupt-safe.
+                * @param[in] pSize Size of the memory block in bytes.
+                * @return If the request is successful then a pointer to the memory block is
+                * returned. If the function failed to allocate the requested block of memory
+                * , a @c nullptr pointer is returned.
+                */
                 void* alloc( size_t pSize ) noexcept;
-                size_t getFreeSize( void ) noexcept;
+                /**
+                * @brief Returns the total amount of heap space that remains unallocated for
+                * the memory pool.
+                * @return The size of the unallocated heap.
+                */
+                size_t getFreeSize( void ) const noexcept;
         };
 
     }

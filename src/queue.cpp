@@ -161,7 +161,7 @@ bool queue::isInitialized( void ) const noexcept
     return ( nullptr != head );
 }
 /*============================================================================*/
-size_t queue::getItemSize( void ) noexcept
+size_t queue::getItemSize( void ) const noexcept
 {
     return itemSize;
 }

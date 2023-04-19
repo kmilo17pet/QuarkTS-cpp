@@ -18,6 +18,9 @@ namespace qOS {
             FALLING_EDGE = 3,
         };
 
+        /**
+        * @brief An input node object for edge checking.
+        */
         class node {
             private:
                 node *next{ nullptr };
@@ -29,23 +32,39 @@ namespace qOS {
                 void operator=( node const& ) = delete;
             public:
                 node() = default;
+                /**
+                * @brief Query the status of the specified input-node.
+                * @return The status of the input node.
+                */
                 inline pinState getStatus( void ) const noexcept
                 {
                     return status;
                 }
+                /**
+                * @brief Set/Change the pin number for the provided node.
+                * @param[in] pinNumber The specified Pin to read from PortAddress.
+                * @return @c true on success. Otherwise @c false.
+                */
                 bool selectPin( const index_t pinNumber ) noexcept;
             friend class qOS::edgeCheck;
         };
 
+        /**
+        * @brief An enum class to specify the input register size for edge checking.
+        */
         enum class reg {
             SIZE_8_BIT,
             SIZE_16_BIT,
             SIZE_32_BIT,
         };
+        /*! @cond  */
         using nodeReaderFcn_t = bool (*)( void *, index_t );
+        /*! @endcond  */
     }
 
-
+    /**
+    * @brief An I/O edge check object.
+    */
     class edgeCheck {
         private:
             void stateCheck( void );
@@ -60,8 +79,29 @@ namespace qOS {
             edgeCheck( edgeCheck const& ) = delete;
             void operator=( edgeCheck const& ) = delete;
         public:
+            /**
+            * @brief Initialize a I/O Edge-Check instance
+            * @param[in] rSize The specific-core register size: ec::reg::SIZE_8_BIT, 
+            * ec::reg::SIZE_16_BIT or ec::reg::SIZE_32_BIT(Default)
+            * @param[in] debounceTime The specified time to bypass the bounce of the
+            * input nodes
+            * @return @c true on success. Otherwise @c false.
+            */
             edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept;
+            /**
+            * @brief Add an input node to the Edge-Check instance
+            * @param[in] n An input-Node object
+            * @param[in] portAddress The address of the core PORTx-register to read the
+            * levels of the specified PinNumber
+            * @param[in] pinNumber The specified Pin to read from PortAddress
+            * @return @c true on success. Otherwise @c false.
+            */
             bool addNode( ec::node& n, void *portAddress, const index_t pinNumber ) noexcept;
+            /**
+            * @brief Update the status of all nodes inside the Input Edge-Check instance
+            * (Non-Blocking call).
+            * @return @c true on success. Otherwise @c false.
+            */
             bool update( void ) noexcept;
     };
 

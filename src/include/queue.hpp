@@ -126,7 +126,7 @@ namespace qOS {
             * @return true if the queue is initialized, false if not.
             */
             bool isInitialized( void ) const noexcept;
-            size_t getItemSize( void ) noexcept;
+            size_t getItemSize( void ) const noexcept;
     };
 }
 

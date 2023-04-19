@@ -4,6 +4,8 @@
 #include "include/types.hpp"
 #include "include/task.hpp"
 
+/*! @cond */
+
 namespace qOS {
 
     namespace pq {
@@ -40,5 +42,7 @@ namespace qOS {
     };
 
 }
+
+/*! @endcond */
 
 #endif /*QOS_CPP_PRIO_QUEUE*/

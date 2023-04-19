@@ -176,7 +176,7 @@ void* mem::pool::alloc( size_t pSize ) noexcept
     return pAllocated;
 }
 /*============================================================================*/
-size_t mem::pool::getFreeSize( void ) noexcept
+size_t mem::pool::getFreeSize( void ) const noexcept
 {
     size_t retValue = poolMemSize;
 
