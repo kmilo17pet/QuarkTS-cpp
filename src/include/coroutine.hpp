@@ -5,13 +5,13 @@
 #include "include/timer.hpp"
 #include "include/macro_overload.hpp"
 
-/** \addtogroup  qcoroutines
-* @brief API interface for the @ref q_qcoroutines extension.
-*  @{
-*/
-
 namespace qOS {
     namespace co {
+
+        /** \addtogroup  qcoroutines
+        * @brief API interface for the @ref q_qcoroutines extension.
+        *  @{
+        */
 
         using state = base_t;
         /*cstat -MISRAC++2008-0-1-4_b*/
@@ -27,6 +27,7 @@ namespace qOS {
         /** @brief A placeholder for the Co-Routine current position or progress*/
         class position {
             state pos{ BEGINNING };
+            /*! @cond  */
             public:
                 state operator()(void) const
                 {
@@ -37,6 +38,7 @@ namespace qOS {
                     pos = l;
                     return *this;
                 }
+            /*! @endcond  */
         };
 
         /** @brief A Co-Routine handle*/
@@ -48,9 +50,22 @@ namespace qOS {
                 void operator=( handle const& ) = delete;
             public:
                 handle() = default;
+                /**
+                * @brief Try to execute the co::restart() statement externally.
+                */
                 void try_restart( void ) noexcept;
+                /**
+                * @brief Try to suspend the coroutine execution externally.
+                */
                 void try_suspend( void ) noexcept;
+                /**
+                * @brief Try to resume the coroutine execution externally after
+                * a suspend operation.
+                */
                 void try_resume( void ) noexcept;
+                /**
+                * @brief Try to execute co::setPosition() statement externally.
+                */
                 void try_set( co::state p ) noexcept;
             friend class co::_coContext;
         };
@@ -64,7 +79,23 @@ namespace qOS {
                 semaphore( semaphore const& ) = delete;
                 void operator=( semaphore const& ) = delete;
             public:
+                /**
+                * @brief Initializes a coroutine semaphore with a value for the counter. Internally,
+                * the semaphores use an @c size_t to represent the counter, therefore
+                * the @a init argument should be within range of this type.
+                * @see co::semWait()
+                * @see co::semSignal()
+                * @param[in] init The initial count of the semaphore.
+                */
                 semaphore( size_t init ) : count( init ) {}
+                /**
+                * @brief Set the coroutine semaphore with a value for the counter. Internally,
+                * the semaphores use an @c size_t to represent the counter, therefore
+                * the @a val argument should be within range of this type.
+                * @see co::semWait()
+                * @see co::semSignal()
+                * @param[in] val The initial count of the semaphore.
+                */
                 void set( size_t val ) noexcept;
             friend class co::_coContext;
         };
@@ -129,6 +160,7 @@ namespace qOS {
         * to declare the starting point of a Coroutine. It should be placed at 
         * the start of the function in which the Coroutine runs.
         * @warning Only one segment is allowed inside a task.
+        * 
         * Example:
         * @code{.c}
         * co::reenter() {
@@ -145,6 +177,7 @@ namespace qOS {
         * the Coroutine runs.
         * @param[in] h The handle of a coroutine.
         * @warning Only one segment is allowed inside a task.
+        * 
         * Example:
         * @code{.c}
         * co::reenter( handle ) {
@@ -234,7 +267,7 @@ namespace qOS {
         * @brief Carries out the "signal" operation on the semaphore. The signal
         * operation increments the counter inside the semaphore, which eventually
         * will cause waiting Co-routines to continue executing.
-        * @see co::semWait
+        * @see co::semWait()
         * @param[in] sem The co::semaphore object in which the operation is executed
         * @return none.
         */
@@ -251,12 +284,14 @@ namespace qOS {
 
         /**
         * @brief Restores the Co-Routine position saved in @a var
-        * @see co::getPosition
+        * @see co::getPosition()
         * @param[in,out] var The variable of type co::position that contains the
         * position to be restored.
         */
         inline void setPosition( co::position &var ) noexcept { Q_UNUSED(var); }
         /*cstat +MISRAC++2008-0-1-11 +MISRAC++2008-7-1-2*/
+
+        /** @}*/
     }
 }
 /*============================================================================*/
@@ -372,8 +407,6 @@ _cr = var();                                                                   \
 goto _co_break_                                                                \
 
 /*! @endcond  */
-
-/** @}*/
 
 #endif /*QOS_CPP_CO*/
 

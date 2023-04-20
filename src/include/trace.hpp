@@ -39,6 +39,11 @@
 namespace qOS {
     namespace trace {
 
+        /** @addtogroup qtrace
+        * @brief API interfaces to print out trace and debug messages.
+        *  @{
+        */
+
         /*! @cond */
         class tout_base {
             public:
@@ -47,31 +52,156 @@ namespace qOS {
         };
         /*! @endcond */
 
+        /**
+        * @brief Class that sets the number of bytes to be traced when a pointer
+        * for a pointer variable
+        * Example:
+        * @code{.c}
+        * uin32_t myNumber = 0xAABBCCDD;
+        * trace::log << trace::mem( sizeof(myNumber ) ) << &myNumber << trace::endl;
+        * @endcode
+        */
         class mem {
             public:
                 size_t n;
                 mem( size_t nb ) : n( nb ) {}
         };
 
+        /**
+        * @brief Class that sets the decimal precision to be used to format 
+        * floating-point values on trace operations.
+        * Example:
+        * @code{.c}
+        * float myNumber = 3.5787154;
+        * trace::log << trace::pre( 5 ) << myNumber << trace::endl;
+        * @endcode
+        */
         class pre {
             public:
                 uint8_t precision;
                 pre( uint8_t p ) : precision( p ) {}
         };
 
+        /**
+        * @brief Modifies the default numeric base to decimal for integer 
+        * trace output
+        * Example:
+        * @code{.c}
+        * uint16_t myNumber = 1000;
+        * trace::log << trace::dec << myNumber << trace::endl;
+        * @endcode
+        */
         extern const tout_base dec;
+        /**
+        * @brief Modifies the default numeric base to hexadecimal for integer 
+        * trace output
+        * Example:
+        * @code{.c}
+        * uint16_t myNumber = 1000;
+        * trace::log << trace::hex << myNumber << trace::endl;
+        * @endcode
+        */
         extern const tout_base hex;
+        /**
+        * @brief Modifies the default numeric base to octal for integer 
+        * trace output
+        * Example:
+        * @code{.c}
+        * uint16_t myNumber = 1000;
+        * trace::log << trace::oct << myNumber << trace::endl;
+        * @endcode
+        */
         extern const tout_base oct;
+        /**
+        * @brief Modifies the default numeric base to binary for integer 
+        * trace output
+        * Example:
+        * @code{.c}
+        * uint16_t myNumber = 1000;
+        * trace::log << trace::bin << myNumber << trace::endl;
+        * @endcode
+        */
         extern const tout_base bin;
+        /**
+        * @brief Inserts a new-line character to the trace output.
+        * Example:
+        * @code{.c}
+        * trace::log << "hello world!" << trace::endl;
+        * @endcode
+        */
         extern const char * const endl;
+        /**
+        * @brief Inserts a new-line character to the trace output and restore
+        * the default color
+        * Example:
+        * @code{.c}
+        * trace::log << "hello world!" << trace::end;
+        * @endcode
+        */
         extern const char * const end;
+        /**
+        * @brief Set colored output to "normal" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::nrm <<"normal colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const nrm;
+        /**
+        * @brief Set colored output to "red" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::red <<"red colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const red;
+        /**
+        * @brief Set colored output to "green" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::grn <<"green colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const grn;
+        /**
+        * @brief Set colored output to "yellow" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::yel <<"yellow colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const yel;
+        /**
+        * @brief Set colored output to "blue" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::blu <<"blue colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const blu;
+        /**
+        * @brief Set colored output to "magenta" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::mag <<"magenta colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const mag;
+        /**
+        * @brief Set colored output to "cyan" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::cyn <<"cyan colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const cyn;
+        /**
+        * @brief Set colored output to "white" after the usage of this statement
+        * Example:
+        * @code{.c}
+        * trace::log << trace::wht <<"white colored!" << trace::end;
+        * @endcode
+        */
         extern const char * const wht;
 
         /*! @cond */
@@ -127,6 +257,8 @@ namespace qOS {
         inline void log(void) {}
         inline void msg(void) {}
         inline const char * var( const char * vname ){ return vname; }
+
+        /** @}*/
     }
 
 }

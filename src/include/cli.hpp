@@ -5,14 +5,15 @@
 #include "include/list.hpp"
 #include "include/util.hpp"
 
-/** @addtogroup  qatcli AT Command Line Interface
-* @brief API for the @ref qatcli extension.
-*  @{
-*/
 namespace qOS {
 
     class commandLineInterface;
     namespace cli {
+
+        /** @addtogroup  qatcli AT Command Line Interface
+        * @brief API for the @ref qatcli extension.
+        *  @{
+        */
 
         /**
         * @brief an enumeration to define the possible values that can be returned
@@ -366,9 +367,8 @@ namespace qOS {
         friend class cli::_Handler;
         friend class core;
     };
-
+    /** @}*/
 }
 
-/** @}*/
 
 #endif /*QOS_CPP_CLI*/

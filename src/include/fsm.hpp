@@ -5,16 +5,22 @@
 #include "include/timer.hpp"
 #include "include/queue.hpp"
 
-/** @addtogroup  qfsm Finite State Machines
- * @brief API interface of the @ref q_fsm extension.
- *  @{
- */
-
 namespace qOS {
+
+
+    /** @addtogroup  qfsm Finite State Machines
+     * @brief API interface of the @ref q_fsm extension.
+     *  @{
+     */
 
     class stateMachine;
     
     namespace sm {
+
+        /** @addtogroup  qfsm 
+         *  @{
+         */
+
         class state;
 
         /**
@@ -41,14 +47,14 @@ namespace qOS {
             return static_cast<signalID>( signalID::TM_MAX - static_cast<sm::signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<sm::signalID>( iTm ) );
         }
 
-        struct _signal_s {
-            signalID id{ signalID::SIGNAL_NONE };
-            void *data{ nullptr };
-        };
         /**
          * @brief The type to be used as a container variable for a signal.
          */
-        using signal_t = struct _signal_s;
+        class signal_t {
+            public:
+                signalID id{ signalID::SIGNAL_NONE };  /**< The signal ID*/
+                void *data{ nullptr };                 /**< The signal data*/
+        };
 
         enum status : int16_t {
             BEFORE_ANY = -32767,
@@ -70,6 +76,7 @@ namespace qOS {
 
         class _Handler {
             protected:
+                /*! @cond  */
                 state *StartState{ nullptr };
                 state *NextState{ nullptr };
                 stateMachine* Machine{ nullptr };
@@ -79,6 +86,7 @@ namespace qOS {
                 signalID Signal{ signalID::SIGNAL_NONE };
                 _Handler( _Handler const& ) = delete;      /* not copyable*/
                 void operator=( _Handler const& ) = delete;  /* not assignable*/
+                /*! @endcond  */
             public:
                 _Handler() = default;
                 void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
@@ -118,6 +126,10 @@ namespace qOS {
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
                 bool timeoutStop( const index_t i ) noexcept;
+                /**
+                * @brief Get a reference to state being evaluated.
+                * @return A reference to the state being evaluated..
+                */
                 state& thisState( void ) noexcept
                 {
                     return *State;
@@ -230,11 +242,13 @@ namespace qOS {
         using timeoutStateDefinition_t = struct _timeoutStateDefinition_s;
 
         struct _transition_s {
+            /*! @cond  */
             signalID xSignal{ signalID::SIGNAL_NONE };
             signalAction_t guard{ nullptr };
             state *nextState{ nullptr };
             historyMode history{ historyMode::NO_HISTORY };
             void *signalData{ nullptr };
+            /*! @endcond  */
         };
         /**
         * @brief This structure should be used to define an item for a state
@@ -327,16 +341,33 @@ namespace qOS {
                 * @note The lookup table should be an array of type
                 * timeoutStateDefinition_t with @a n elements matching { time, options }.
                 * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
-                * @param[in] tdef  The lookup table matching the requested timeout values
+                * @param[in] def The lookup table matching the requested timeout values
                 * with their respective options.
                 * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
-                * @param[in] n The number of elements inside @a tdef.
+                * @param[in] n The number of elements inside @a def.
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
                 bool setTimeouts( timeoutStateDefinition_t *def, size_t n ) noexcept;
+                /**
+                * @brief Retrieve the state data or storage-pointer
+                * @return The state data or storage-pointer.
+                */
                 void* getData( void ) noexcept;
+                /**
+                * @brief Set the state data or storage-pointer
+                * @param[in] pData The state data or storage-pointer.
+                */
                 void setData( void *pData ) noexcept;
+                /**
+                * @brief Retrieve a pointer to the state transition table
+                * @return A pointer to the state transition table if available, 
+                * otherwise return @c nullptr.
+                */
                 transition_t* getTransitionTable( void ) noexcept;
+                /**
+                * @brief Set/Change the state callback
+                * @param[in] sFcn The state callback function.
+                */
                 void setCallback( const stateCallback_t sFcn ) noexcept;
             friend class qOS::stateMachine;
         };
@@ -412,6 +443,7 @@ namespace qOS {
             return ( 0x00FFFFFFuL & static_cast<timeoutSpecOption_t>( i ) );
         }
 
+        /** @}*/
     }
 
     /**
@@ -435,6 +467,7 @@ namespace qOS {
             sm::state top;
             sm::signal_t signalNot;
             void *owner{ nullptr };
+            void *mData{ nullptr };
             void unsubscribeAll( void ) noexcept;
             bool internalSignalSend( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
             void timeoutCheckSignals( void ) noexcept;
@@ -456,7 +489,6 @@ namespace qOS {
             void operator=( stateMachine const& ) = delete;
             bool setup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept;
         public:
-            void *mData{ nullptr };
             stateMachine() = default;
             /**
             * @brief Initializes a Finite State Machine (FSM).
@@ -477,8 +509,6 @@ namespace qOS {
             /**
             * @brief Add the specified state to the stateMachine "Top" state
             * @param[in] s The state object.
-            * @param[in] parent A pointer to the parent state (Use #QSM_STATE_TOP) if
-            * the parent is the top state.
             * @param[in] sFcn The handler function associated to the state.
             *
             * Prototype: @code sm::status xCallback( sm::handler_t h ) @endcode
@@ -495,8 +525,6 @@ namespace qOS {
             * @brief This function adds the specified state to the stateMachine
             * "Top" state
             * @param[in] s The state object.
-            * @param[in] parent A pointer to the parent state (Use #QSM_STATE_TOP) if
-            * the parent is the top state.
             * @param[in] sFcn The handler function associated to the state.
             *
             * Prototype: @code sm::status xCallback( sm::handler_t h ) @endcode
@@ -510,7 +538,7 @@ namespace qOS {
             * @brief Install a signal queue to the provided Finite State Machine (FSM).
             * @pre Queue object should be previously initialized by using
             * queue::setup()
-            * @attention Queue item size = sizeof( @ref qSM_Signal_t )
+            * @attention Queue item size = sizeof( @ref sm::signal_t )
             * @param[in] q The queue to be installed.
             * @return @c true on success, otherwise return @c false.
             */
@@ -563,7 +591,7 @@ namespace qOS {
             * timed signals within states.
             * @attention This feature its only available if the FSM has a signal-queue
             * installed.
-            * @pre This feature depends on the @ref timers extension. Make sure the
+            * @pre This feature depends on the @ref qstimers extension. Make sure the
             * time base is functional.
             * @note You can increase the number of available timeouts instances by
             * changing the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c qconfig.h
@@ -595,11 +623,37 @@ namespace qOS {
             * @return Returns @c true on success, otherwise returns @c false.
             */
             bool timeoutStop( const index_t xTimeout ) noexcept;
+            /**
+            * @brief Retrieve a reference to the Top state of
+            * @return A reference tot the Top state.
+            */
             const sm::state& getTop( void ) const noexcept;
+            /**
+            * @brief Retrieve a reference to the state currently being evaluated
+            * @return A reference tot the current state.
+            */
             sm::state * const & getCurrent( void ) const noexcept;
+            /**
+            * @brief Get a pointer to the installed queue if available
+            * @return A pointer to the installed queue if available, 
+            * otherwise returns @c nullptr.
+            */
             queue * const & getQueue( void ) const noexcept;
+            /**
+            * @brief Get a pointer to the installed timeout specification if available
+            * @return A pointer to the installed timeout specification if available, 
+            * otherwise returns @c nullptr.
+            */
             sm::timeoutSpec * const & getTimeSpec( void ) const noexcept;
+            /**
+            * @brief Retrieve the state machine data or storage-pointer
+            * @return The state machine data or storage-pointer.
+            */
             void * const & getData( void ) const noexcept;
+            /**
+            * @brief Set the state-machine surrounding callback
+            * @param[in] sFcn The surrounding callback function.
+            */
             void setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept;
             /**
             * @brief Subscribe state machine to a particular signal
@@ -630,9 +684,9 @@ namespace qOS {
             bool run( sm::signal_t sig ) noexcept;
         friend class core;
     };
-
+    /** @}*/
 }
 
-/** @}*/
+
 
 #endif /*QOS_CPP_FSM*/

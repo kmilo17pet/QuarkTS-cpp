@@ -3,6 +3,7 @@
 using namespace qOS;
 using namespace qOS::critical;
 
+/*! @cond  */
 struct _Handler_s {
     int_disabler_t disable;     /*< Point to the user-supplied function used to disable the hardware interrupts. */
     int_restorer_t restore;     /*< Point to the user-supplied function used to restore the hardware interrupts. */
@@ -10,6 +11,7 @@ struct _Handler_s {
 };
 using criticalHandler_t = struct _Handler_s;
 static criticalHandler_t c = { nullptr, nullptr , 0uL };
+/*! @endcond  */
 
 /*============================================================================*/
 void critical::enter( void ) noexcept

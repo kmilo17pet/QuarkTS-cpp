@@ -21,7 +21,12 @@
     #include <climits>
 #endif
 
-
+/** @addtogroup  qtypes
+* @brief Sets of types having specified widths used to design the entire OS.
+* It also define macros directives to perform specific actions and options
+* for some OS APIs.
+* @{
+*/
 
 using namespace std;
 
@@ -82,5 +87,7 @@ using timeCount_t = unsigned long;
 #define     Q_UNUSED(arg)     (void)(arg)
 #define     Q_NONE            /*EMPTY MACRO*/
 /*! @endcond */
+
+/** @}*/
 
 #endif /*QOS_CPP_TYPES*/

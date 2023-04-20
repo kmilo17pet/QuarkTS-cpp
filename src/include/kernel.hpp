@@ -15,17 +15,19 @@
     #include "cli.hpp"
 #endif
 
-/** @addtogroup qtaskcreation
- * @brief Kernel API interface to create/remove tasks and perform special
- * OS operations.
- * @pre Before using any scheduler interface, you must first configure and 
- * initialize the operating system using core::init()
- *  @{
- */
-
 namespace qOS {
 
+    /** @addtogroup qtaskcreation
+     * @brief Kernel API interface to create/remove tasks and perform special
+     * OS operations.
+     * @pre Before using any scheduler interface, you must first configure and 
+     * initialize the operating system using core::init()
+     *  @{
+     */
+
+    /*! @cond  */
     using coreFlags_t = uint32_t ;
+    /*! @endcond  */
 
     /**
     * @brief An enum that defines the modes in which a notification can be
@@ -34,17 +36,24 @@ namespace qOS {
     enum class notifyMode : uint8_t {
         SIMPLE = 0u,    /**< To notify a task using the simple approach. */
         QUEUED = 1u,    /**< To notify a task using the FIFO priority queue. */
+        /*! @cond  */
         _NONE_ = 3u,    /**< Do not use this value. Used only internally.*/
+        /*! @endcond  */
     };
 
-    /** @cond*/
+    /*! @cond  */
     struct _notificationSpreader_s {
         notifyMode mode;
         void *eventData;
     };
-    /** @endcond*/
     using notificationSpreader_t = struct _notificationSpreader_s;
+    /*! @endcond  */
 
+    /**
+    * @brief Event flag selector function
+    * @param[in] i The desired event-flag, a value between 1 and 20
+    * @return @c The event flag mask identifier.
+    */
     constexpr taskFlag_t EVENT_FLAG( index_t i )
     {
         return ( ( i >= 1u ) && ( i <= 20u ) ) ?  0x00001000uL << ( i - 1u ) : 0x00001000uL;
@@ -199,21 +208,22 @@ namespace qOS {
             * every @a t time units, @a n times and executing @a callback method on
             * every pass.
             * @param[in] Task The task node.
-            * @param[in] callbackFcn A pointer to a void callback method with a qOS::event_t
+            * @param[in] callback A pointer to a void callback method with a qOS::event_t
             * parameter as input argument.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS(max)]
             * @param[in] t Execution interval (time).
             * For immediate execution use t = clock::IMMEDIATE.
             * @param[in] n Number of task executions (Integer value). For indefinite
-            * execution ( @a n = #qPeriodic or #qIndefinite ). Tasks do not
+            * execution ( @a n = task::PERIODIC or task::INDEFINITE ). Tasks do not
             * remember the number of iteration set initially. After the
             * iterations are done, internal iteration counter is 0. To perform
             * another set of iterations, set the number of iterations again.
             * @note Tasks which performed all their iterations put their own state to
-            * #qDisabled.
+            * taskState::DISABLED_STATE.
             * @note Asynchronous triggers do not affect the iteration counter.
-            * @param[in] init Specifies the initial operational state of the task
-            * (#qEnabled, #qDisabled, #qAsleep or #qAwake(implies #qEnabled)).
+            * @param[in] s Specifies the initial operational state of the task
+            * (taskState::ENABLED_STATE, taskState::DISABLED_STATE, 
+            * taskState::AWAKE_STATE or taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)).
             * @param[in] arg Represents the task arguments. All arguments must be passed
             * by reference and cast to @c void* . Only one argument is allowed, so, for
             * multiple arguments, create a structure that contains all of the arguments
@@ -227,7 +237,7 @@ namespace qOS {
             * asynchronous events occurs. However, this behavior can be changed in
             * execution time using task::setTime() or task::setIterations().
             * @param[in] Task The task node.
-            * @param[in] callbackFcn A pointer to a the task callback method with a
+            * @param[in] callback A pointer to a the task callback method with a
             * event_t parameter as input argument.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @param[in] arg Represents the task arguments. All arguments must be passed
@@ -242,7 +252,7 @@ namespace qOS {
             /**
             * @brief Add a task to the scheduling scheme running a dedicated
             * state-machine. The task is scheduled to run every @a t time units in
-            * #qPeriodic mode. The event info will be available as a generic pointer
+            * task::PERIODIC mode. The event info will be available as a generic pointer
             * inside the sm::handler_t::Data field.
             * @pre The State-machine object should be previously configured with 
             * qStateMachine_Setup()
@@ -251,9 +261,10 @@ namespace qOS {
             * @param[in] m  A pointer to the Finite State-Machine (FSM) object.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @param[in] t Execution time interval. For immediate execution 
-            * (tValue = #qTimeImmediate).
-            * @param[in] init Specifies the initial operational state of the task
-            * (#qEnabled, #qDisabled, #qAsleep or #qAwake(implies #qEnabled)).
+            * (tValue = clock::IMMEDIATE).
+            * @param[in] s Specifies the initial operational state of the task
+            * (taskState::ENABLED_STATE, taskState::DISABLED_STATE, 
+            * taskState::AWAKE_STATE or taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)).
             * @param[in] arg Represents the task arguments. All arguments must be
             * passed by reference and cast to @c void*.
             * @return Returns @c true on success, otherwise returns @c false.
@@ -265,12 +276,22 @@ namespace qOS {
             #endif
             /**
             * @brief Set/Change the callback for the Idle-task
-            * @param[in] callbackFcn A pointer to a void callback method with a qOS::event_t
+            * @param[in] callback A pointer to a void callback method with a qOS::event_t
             * parameter as input argument. To disable pass @c nullptr as argument.
             * @return @c true on success. Otherwise return @c false.
             */
             bool setIdleTask( taskFcn_t callback ) noexcept;
+            /**
+            * @brief Disables the kernel scheduling. The main thread will continue
+            * after the core::run() call.
+            */
             bool schedulerRelease( void ) noexcept;
+            /**
+            * @brief Set/Change the scheduler release callback function
+            * @param[in] callback A pointer to a void callback method with a
+            * event parameter as input argument.
+            * @return @c true on success. Otherwise return @c false.
+            */
             bool setSchedulerReleaseCallback( taskFcn_t callback ) noexcept;
             /**
             * @brief Remove the task from the scheduling scheme.
@@ -291,14 +312,14 @@ namespace qOS {
             * If mode = notifyMode::SIMPLE, the method marks the task as 
             * ready for execution and the scheduler planner will launch the task
             * immediately according to the scheduling rules (even
-            * if task is disabled) and setting the event_t::Trigger flag to
-            * ::byNotificationSimple. 
+            * if task is disabled) and setting the event_t::trigger flag to
+            * trigger::byNotificationSimple. 
             * If mode = notifyMode::QUEUED, the notification will insert the 
             * notification in the FIFO priority queue. The scheduler get this 
             * notification as an asynchronous event and the task will be ready 
             * for execution according to the queue order (determined by priority),
             * even if task is in a disabled or sleep operational state. When extracted,
-            * the scheduler will set event_t::Trigger flag to  ::byNotificationQueued.
+            * the scheduler will set event_t::Trigger flag to  trigger::byNotificationQueued.
             * Specific user-data can be passed through, and will be available inside the
             * event_t::EventData field, only in corresponding launch. If the task is in
             * a @c qSleep operation state, the scheduler will change the operational state
@@ -324,9 +345,53 @@ namespace qOS {
             * progress.
             */
             bool notify( notifyMode mode, void* eventData = nullptr ) noexcept;
+            /**
+            * @brief Check if the supplied task has pending notifications 
+            * @note Operation will be performed in the next scheduling cycle.
+            * @param[in] Task The task node
+            * @return @c true if the task has pending notifications, @c false if not.
+            */
             bool hasPendingNotifications( task &Task ) noexcept;
+            /**
+            * @brief Modify the EventFlags for the provided task.
+            * @note Any EventFlag set will cause a task activation.
+            * @param[in] Task The task node.
+            * @param[in] tFlags The flags to modify. Can be combined with a bitwise
+            * OR. @c EVENT_FLAG(1) | @c EVENT_FLAG(2) | ... | @c EVENT_FLAG(20)
+            * @param[in] action @c true to set the flags or @c false to clear them.
+            * @return @c true on success. Otherwise return @c false.
+            */
             bool eventFlagsModify( task &Task, const taskFlag_t tFlags, const bool action ) noexcept;
+            /**
+            * @brief Returns the current value of the task's EventFlags.
+            * @param Task The task node.
+            * @return The EventFlag value of the task.
+            */
             taskFlag_t eventFlagsRead( task &Task ) const noexcept;
+            /**
+            * @brief Check for flags set to @c true inside the task Event-Flags.
+            * @param[in] Task The task node.
+            * @param[in] flagsToCheck A bitwise value that indicates the flags to
+            * test inside the EventFlags.
+            * Can be combined with a bitwise OR.
+            * @c EVENT_FLAG(1) | @c EVENT_FLAG(2) | ... | @c EVENT_FLAG(20)
+            * @param[in] clearOnExit If is set to @c true then any flags set in the
+            * value passed as the
+            * @a FlagsToCheck parameter will be cleared in the event group before
+            * this function returns only when the condition is meet.
+            * @param[in] checkForAll Used to create either a logical AND test (where
+            * all flags must be set) or a logical OR test (where one or more flags
+            * must be set) as follows:
+            *
+            * If is set to @c true, this API will return @c true when either all the
+            * flags set in the value passed as the @a flagsToCheck parameter are
+            * set in the task's EventFlags.
+            *
+            * If is set to @c false, this API will return @c true when any of the
+            * flags set in the value passed as the @a flagsToCheck parameter are set
+            * in the task's EventFlags.
+            * @return @c true if the condition is meet, otherwise return @c false.
+            */
             bool eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clearOnExit = true, const bool checkForAll = false ) noexcept;
             /**
             * @brief Tries to find the first task that matches the name provided.
@@ -347,9 +412,9 @@ namespace qOS {
             /**
             * @brief Retrieve the task global-state.
             * @param[in] Task The task node.
-            * @return One of the available global states : ::WAITING, ::SUSPENDED,
-            * ::RUNNING, ::READY.
-            * Return ::UNDEFINED if the current task its passing through a
+            * @return One of the available global states : globalState::WAITING,
+            * globalState::SUSPENDED, globalState::RUNNING, globalState::READY.
+            * Return globalState::UNDEFINED if the current task its passing through a
             * current kernel transaction
             */
             globalState getGlobalState( task &Task ) const noexcept;
@@ -357,7 +422,8 @@ namespace qOS {
     /** @brief The predefined instance of the OS kernel interface */
     extern core& os; /* skipcq: CXX-W2011 */
 
+    /** @}*/
 }
-/** @}*/
+
 
 #endif /*QOS_CPP_KERNEL*/

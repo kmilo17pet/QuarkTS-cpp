@@ -4,13 +4,13 @@
 #include "include/types.hpp"
 #include "include/timer.hpp"
 
-/** @addtogroup qresponse Response handler
-* @brief API to simplify the handling of requested responses from terminal
-* interfaces.
-*  @{
-*/
-
 namespace qOS {
+
+    /** @addtogroup qresponse Response handler
+    * @brief API to simplify the handling of requested responses from terminal
+    * interfaces.
+    *  @{
+    */
 
     enum class responseStatus {
         MISSING = 0,
@@ -70,9 +70,8 @@ namespace qOS {
             */
             bool isInitialized( void ) const noexcept;
     };
-
+    
+    /** @}*/
 }
-
-/** @}*/
 
 #endif /*QOS_RESPONSE*/

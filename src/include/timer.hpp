@@ -4,14 +4,14 @@
 #include "include/types.hpp"
 #include "include/clock.hpp"
 
-/** @addtogroup qstimers Timers
-* @brief API interface for the @ref q_stimers extension.
-* @pre This extension requires the operating system is previously initialized
-* with core::init() with a functional time-base. Please read @ref q_timmingapproach .
-*  @{
-*/
-
 namespace qOS {
+
+    /** @addtogroup qstimers Timers
+    * @brief API interface for the @ref q_stimers extension.
+    * @pre This extension requires the operating system is previously initialized
+    * with core::init() with a functional time-base. Please read @ref q_timmingapproach .
+    *  @{
+    */
 
     /**
     * @brief A non-blocking Timer object
@@ -29,6 +29,14 @@ namespace qOS {
             qOS::clock_t tv{ 0u };
         public:
             timer();
+            /**
+            * @brief Initializes the instance of the timer with the specified
+            * expiration time. Timer will start armed.
+            * @note The OS must be running before using timers.
+            * @note The expiration time should be at least, two times greater than
+            * the clock-Tick.
+            * @param[in] tTime The expiration time.
+            */
             timer( qOS::time_t tTime )
             {
                 (void)set( tTime );
@@ -106,12 +114,10 @@ namespace qOS {
             static const qOS::clock_t REMAINING_IN_DISARMED_STATE;
     };
 
+    /** @}*/
 }
 
 bool operator==( const qOS::timer& obj, bool value );
-
-
-/** @}*/
 
 #endif /*QOS_CPP_TIMER*/
 

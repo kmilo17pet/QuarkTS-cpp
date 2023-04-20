@@ -5,16 +5,21 @@
 #include "include/list.hpp"
 #include "include/clock.hpp"
 
-/** @addtogroup qedgecheck I/O Groups for edge checking
-* @brief An interface to manage and simplify the value(with edge-checking)
-* of incoming digital-signal groups.
-*  @{
-*/
 namespace qOS {
 
-    class edgeCheck;
 
+    /** @addtogroup qedgecheck I/O Groups for edge checking
+    * @brief An interface to manage and simplify the value(with edge-checking)
+    * of incoming digital-signal groups.
+    *  @{
+    */
+
+    class edgeCheck;
     namespace ec {
+
+        /** @addtogroup qedgecheck
+        *  @{
+        */
 
         enum class pinState {
             UNKNOWN = -1,
@@ -65,6 +70,8 @@ namespace qOS {
         /*! @cond  */
         using nodeReaderFcn_t = bool (*)( void *, index_t );
         /*! @endcond  */
+
+        /** @}*/
     }
 
     /**
@@ -88,7 +95,7 @@ namespace qOS {
             * @brief Initialize a I/O Edge-Check instance
             * @param[in] rSize The specific-core register size: ec::reg::SIZE_8_BIT, 
             * ec::reg::SIZE_16_BIT or ec::reg::SIZE_32_BIT(Default)
-            * @param[in] debounceTime The specified time to bypass the bounce of the
+            * @param[in] timeDebounce The specified time to bypass the bounce of the
             * input nodes
             * @return @c true on success. Otherwise @c false.
             */
@@ -109,6 +116,8 @@ namespace qOS {
             */
             bool update( void ) noexcept;
     };
+
+    /** @}*/
 
 }
 

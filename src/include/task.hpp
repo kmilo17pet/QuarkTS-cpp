@@ -6,16 +6,15 @@
 #include "include/list.hpp"
 #include "include/queue.hpp"
 
-
-/** @addtogroup qtaskmanip
-* @brief API interface to manage tasks.
-* @pre In order to be able to manage a task, make sure the task has already 
-* been added to the scheduling scheme bt using core::addTask(), 
-* core::addEventTask(), core::addStateMachineTask() or core::addCommandLineInterfaceTask().
-*  @{
-*/
-
 namespace qOS {
+
+    /** @addtogroup qtaskmanip
+    * @brief API interface to manage tasks.
+    * @pre In order to be able to manage a task, make sure the task has already 
+    * been added to the scheduling scheme bt using core::addTask(), 
+    * core::addEventTask(), core::addStateMachineTask() or core::addCommandLineInterfaceTask().
+    *  @{
+    */
 
     /**
     * @brief An enum with all the possible values for the event_t::getTrigger()
@@ -89,7 +88,9 @@ namespace qOS {
         RUNNING     /**< The task is currently being executed. */
     };
 
+    /*! @cond  */
     class task;
+    /*! @endcond  */
 
     /**
     * @brief The task argument with all the regarding information of the task
@@ -98,6 +99,7 @@ namespace qOS {
     */
     class _Event {
         protected:
+            /*! @cond  */
             trigger Trigger{ trigger::None };
             bool FirstCall{ false };
             bool FirstIteration{ false };
@@ -105,6 +107,7 @@ namespace qOS {
             clock_t StartDelay{ 0u };
             task* currentTask{ nullptr };
             _Event() = default;
+            /*! @endcond  */
         public:
             /**
             * @brief Task arguments defined at the time of its creation.
@@ -114,8 +117,8 @@ namespace qOS {
             /**
             * @brief Associated data of the event. Specific data will reside here
             * according to the event source. This field will have a @c nullptr value when
-            * the trigger gets one of this values: ::byTimeElapsed, ::byEventFlags
-            * and ::byNoReadyTasks.
+            * the trigger gets one of this values: trigger::byTimeElapsed, 
+            * trigger::byEventFlags and trigger::byNoReadyTasks.
             */
             void *EventData{ nullptr };
             /**
@@ -164,7 +167,7 @@ namespace qOS {
             * relative to when it was scheduled
             * A value of 0 (zero) indicates that task started right on time per
             * schedule.This parameter will be only available on timed tasks. when
-            * @c qOS::trigger == ::byTimeElapsed
+            * @c qOS::trigger == trigger::byTimeElapsed
             */
             clock_t startDelay( void ) const noexcept
             {
@@ -178,12 +181,46 @@ namespace qOS {
                 return *currentTask;
             }
     };
+    /**
+    * @brief The task argument with all the regarding information of the task
+    * execution.
+    * @see @ref _Event
+    * @note Should be used only in task-callbacks as the only input argument.
+    */
     using event_t = _Event&;
 
+    /**
+    * @brief An enum that defines the possible task operational states
+    * @details Each task has independent operating states from those globally 
+    * controlled by the scheduler. These states can be handled by the application
+    * writer to modify the event flow to the task and consequently, affect the 
+    * transition to the globalState::READY global state
+    */
     enum class taskState {
+        /**
+        * @brief In this state, the time events will be discarded. This 
+        * operational state is available when the @c ENABLE bit is cleared.
+        */
         DISABLED_STATE = 0,
+        /**
+        * @brief The task can catch all the events. This operational state is 
+        * available when the @c ENABLE bit is set.
+        */
         ENABLED_STATE = 1,
+        /**
+        * @brief In this state, the task is conceptually in an alert mode, 
+        * handling most of the available events. This operational state is 
+        * available when the @c SHUTDOWN bit is set, allowing the next operational 
+        * states to be available:
+        */
         AWAKE_STATE = 2,
+        /**
+        * @brief Task operability is put into a deep doze mode, so the task 
+        * can not be triggered by the lower precedence events. This operational 
+        * state is available when the @c SHUTDOWN bit is cleared. The task can exit
+        * from this operational state when it receives a high precedence event 
+        * (a queued notification) or using the task::setState() method.
+        */
         ASLEEP_STATE = 3,
     };
 
@@ -286,6 +323,10 @@ namespace qOS {
             void operator=( task const& ) = delete;
         public:
             task() = default;
+            /**
+            * @brief Retrieve the current task priority.
+            * @return The task priority value.
+            */
             priority_t getPriority( void ) const noexcept;
             /**
             * @brief Set/Change the task priority value
@@ -426,7 +467,7 @@ namespace qOS {
             /**
             * @brief Set the task name
             * @note Name should be unique.
-            * @param[in] name A raw-string with the task name
+            * @param[in] tName A raw-string with the task name
             * @return @c true on success. Otherwise return @c false.
             */
             bool setName( const char *tName ) noexcept;
@@ -435,6 +476,10 @@ namespace qOS {
             * @return A pointer to the string containing the task name.
             */
             const char* getName( void ) const noexcept;
+            /**
+            * @brief Retrieves the Task ID number
+            * @return The task ID
+            */
             size_t getID( void ) const noexcept;
             /**
             * @brief Attach a queue to the Task.
@@ -465,7 +510,15 @@ namespace qOS {
             * @return Returns @c true on success, otherwise returns @c false.
             */
             bool attachQueue( queue &q, const queueLinkMode mode, const size_t arg = 1u ) noexcept;
+            /**
+            * @brief Retrieves the Task attached object
+            * @return A @c void pointer to the attached object.
+            */
             void * const & getAttachedObject( void ) const noexcept;
+            /**
+            * @brief Retrieves the last task event data
+            * @return The event data at its last execution status.
+            */
             event_t eventData( void ) const noexcept;
             /** @brief A constant to indicate that the task will run every time 
             * its timeout has expired.
@@ -481,7 +534,8 @@ namespace qOS {
             static const iteration_t SINGLE_SHOT;
     };
 
+    /** @}*/
 }
-/** @}*/
+
 
 #endif /*QOS_CPP_TASK*/

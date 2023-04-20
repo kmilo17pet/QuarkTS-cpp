@@ -4,11 +4,12 @@
 #include "include/types.hpp"
 #include "config/config.h"
 
-/** @addtogroup qclock
-* @brief Clock and time manipulation interface used by the entire OS.
-* @{
-*/
 namespace qOS {
+
+    /** @addtogroup qclock
+    * @brief Clock and time manipulation interface used by the entire OS.
+    * @{
+    */
 
     using clock_t = timeCount_t;
 
@@ -94,8 +95,9 @@ namespace qOS {
             static const qOS::time_t IMMEDIATE;
     };
 
+    /** @}*/
 }
 
-/** @}*/
+
 
 #endif /*QOS_CPP_CLOCK*/

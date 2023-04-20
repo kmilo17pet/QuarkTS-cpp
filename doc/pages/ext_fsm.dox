@@ -66,16 +66,16 @@
 * state machine is determined upon construction. In this FSM implementation, 
 * there is no distinction between composite states(states containing substates) 
 * and leaf states. All states are potentially composite. The API 
-* qStateMachine_StateSubscribe() should be used to initialize the state and 
+* stateMachine::stateSubscribe() should be used to initialize the state and 
 * define its position in the topology. 
 *
-* A state callback-functions takes a qSM_Handler_t object as input argument and
+* A state callback-functions takes a sm::handler_t object as input argument and
 * returns a @ref qSM_Status_t value. An example is shown in the following code snippet:
 *
 *  @code{.c}
-*  qSM_Status_t ExampleState_Callback( qSM_Handler_t h ) {
+*  sm::status ExampleState_Callback( sm::handler_t h ) {
 *      /* TODO: State code */
-*      return qSM_STATUS_EXIT_SUCCESS;
+*      return sm::status::SUCCESS;
 *  }
 *  @endcode
 *
@@ -85,8 +85,8 @@
 * The usage of this object it's required to make the FSM moves between states 
 * and additionally get extra data. The provided attributes are:
 *
-* - qSM_Handler_t::NextState : Desired next state. The application writer should 
-* change this field to another state to produce a state transition in the next 
+* - sm::handler_t::NextState() : Desired next state. The application writer should 
+* use this method passing another state to produce a state transition in the next 
 * FSM's cycle. Changing this field will only take effect when the state is 
 * executed under user custom-defined signals or in the absence of signals 
 * #QSM_SIGNAL_NONE.
@@ -94,19 +94,19 @@
 * application writer should change this field to set the initial transition if
 * the current state is a parent(or composite state). Changing this field 
 * attribute only takes effect when the state is executed under the 
-* #QSM_SIGNAL_START signal. 
+* signalID::SIGNAL_START signal. 
 * - qSM_Handler_t::Signal (read-only) : Received signal. Can have any of the 
 * following values:
-*     - #QSM_SIGNAL_NONE if no signal is available.
-*     - #QSM_SIGNAL_ENTRY if the current state has just entered from another state.
-*     - #QSM_SIGNAL_START to set nested initial transitions by using the 
+*     - signalID::SIGNAL_NONE if no signal is available.
+*     - signalID::SIGNAL_ENTRY if the current state has just entered from another state.
+*     - signalID::SIGNAL_START to set nested initial transitions by using the 
 *       qSM_Handler_t::StartState attribute.
-*     - #QSM_SIGNAL_EXIT if the current state has just exited to another state.
+*     - signalID::SIGNAL_EXIT if the current state has just exited to another state.
 *     - Any other user-defined signal will reside here, including the 
-*     #QSM_SIGNAL_TIMEOUT signals.
-* - qSM_Handler_t::SignalData (read-only) : Pointer to the data associated with
+*     sm::SIGNAL_TIMEOUT() signals.
+* - sm::handler_t::SignalData (read-only) : Pointer to the data associated with
 * the signal. For internal signals, including timeout signals, its value will 
-* be @c NULL.
+* be @c nullptr.
 * - qSM_Handler_t::TransitionHistory : Use this option if the transition is to 
 * a composite state. This attribute defines how the story should be handled. 
 * If this field is not established, ::qSM_TRANSITION_NO_HISTORY is assumed. 
@@ -148,21 +148,21 @@
 * use of the handler.
 *
 *  @code{.c}
-*  qSM_Status_t ExampleState_Callback ( qSM_Handler_t h ) {
-*      switch ( h->Signal ) {
-*          case QSM_SIGNAL_START:
+*  sm::status ExampleState_Callback ( sm::handler_t h ) {
+*      switch ( h.signal() ) {
+*          case signalID::SIGNAL_START:
 *              break;
-*          case QSM_SIGNAL_ENTRY:
+*          case signalID::SIGNAL_ENTRY:
 *              break;
-*          case QSM_SIGNAL_EXIT:
+*          case signalID::SIGNAL_EXIT:
 *              break;
 *          case USER_DEFINED_SIGNAL :
-*              h->NextState = &OtherState; /*transition*/
+*              h.nextState( OtherState ); /*transition*/
 *              break;
 *          default:
 *              break;
 *      }
-*      return qSM_STATUS_EXIT_SUCCESS;
+*      return sm::status::SUCCESS;
 *  }
 *  @endcode 
 *
@@ -171,9 +171,9 @@
 * established at the moment of the FSM setup. The values allowed to return are
 * listed below.
 *
-* - ::qSM_STATUS_EXIT_SUCCESS
-* - ::qSM_STATUS_EXIT_FAILURE
-* - ::qSM_STATUS_SIGNAL_HANDLED
+* - sm::status::SUCCESS
+* - sm::status::FAILURE
+* - sm::status::SIGNAL_HANDLED
 * - Any other integer value between @c -32762 and @c 32767
 *
 * To code initial transitions, the application writer should catch the 
@@ -184,8 +184,8 @@
 * attribute of the qSM_Handler_t argument. The developer is free to write and 
 * control state transitions. Transitions are only allowed under the availability
 * of user custom-defined signals. Regular transitions are not allowed at an 
-* entry point (#QSM_SIGNAL_ENTRY), exit point (#QSM_SIGNAL_EXIT), or a start 
-* point (#QSM_SIGNAL_START).
+* entry point (signalID::SIGNAL_ENTRY), exit point (signalID::SIGNAL_EXIT), or a start 
+* point (signalID::SIGNAL_START).
 *
 * @note User should not target the top state in a transition and use it as 
 * transition source either. The only customizable aspect of the top state is 

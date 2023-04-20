@@ -131,7 +131,7 @@ This file is part of the QuarkTS++ OS distribution.
 */
 
 /**
-*  @defgroup qstimers Software-Timers
+*  @defgroup qstimers Timers
 *  @ingroup qmodules
 */
 

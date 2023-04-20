@@ -3,12 +3,12 @@
 
 #include "include/types.hpp"
 
-/** @addtogroup qqueues
-* @brief API interface to create and handle @ref  q_queues.
-* @{
-*/
-
 namespace qOS {
+
+    /** @addtogroup qqueues
+    * @brief API interface to create and handle @ref  q_queues.
+    * @{
+    */
 
     /**
     * @brief An enum that defines the modes in which a item should be inserted 
@@ -133,8 +133,9 @@ namespace qOS {
             bool isInitialized( void ) const noexcept;
             size_t getItemSize( void ) const noexcept;
     };
+
+    /** @}*/
 }
 
-/** @}*/
 
 #endif /*QOS_CPP_QUEUE*/

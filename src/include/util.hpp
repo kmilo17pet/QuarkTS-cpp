@@ -3,13 +3,14 @@
 
 #include "include/types.hpp"
 
-/** @addtogroup qioutils I/O Utils
-* @brief API for input/output utilities and safe string interfaces.
-*  @{
-*/
-namespace qOS {
 
+namespace qOS {
     namespace util {
+
+        /** @addtogroup qioutils I/O Utils
+        * @brief API for input/output utilities and safe string interfaces.
+        *  @{
+        */
         using putChar_t = void (*)( void* , const char );
         using ioFcn_t = char (*)( void *, const char );
 
@@ -226,9 +227,10 @@ namespace qOS {
         * parameter @a str.
         */
         char* boolToString( const bool num, char *str ) noexcept;
-    }
-}
 
-/** @}*/
+        /** @}*/
+    }
+    
+}
 
 #endif /*QOS_CPP_UTIL*/

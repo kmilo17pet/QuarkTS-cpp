@@ -3,17 +3,23 @@
 
 #include "include/types.hpp"
 
-/** @addtogroup qcritical
-* @brief APIs to handle entry/exit actions in @ref q_critical.
-*  @{
-*/
-
 namespace qOS {
+
+    /** @addtogroup qcritical
+    * @brief APIs to handle entry/exit actions in @ref q_critical.
+    *  @{
+    */
 
     using int_restorer_t = void (*)( uint32_t );
     using int_disabler_t = uint32_t (*)( void );
 
     namespace critical {
+
+        /** @addtogroup qcritical
+        * @brief APIs to handle entry/exit actions in @ref q_critical.
+        *  @{
+        */
+
         /**
         * @brief Enter a critical section. This function invokes the @b Disabler
         * function if available.
@@ -37,9 +43,11 @@ namespace qOS {
         * @return true on success. Otherwise return false.
         */
         bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept;
-    }
-}
 
-/** @}*/
+        /** @}*/
+    }
+
+    /** @}*/
+}
 
 #endif /*QOS_CPP_CRITICAL*/
