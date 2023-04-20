@@ -1,14 +1,11 @@
 var hierarchy =
 [
-    [ "qOS::_Event", "classq_o_s_1_1___event.html", [
-      [ "qOS::core", "classq_o_s_1_1core.html", null ]
-    ] ],
+    [ "qOS::_Event", "classq_o_s_1_1___event.html", null ],
     [ "qOS::cli::_Handler", "classq_o_s_1_1cli_1_1___handler.html", null ],
     [ "qOS::sm::_Handler", "classq_o_s_1_1sm_1_1___handler.html", [
       [ "qOS::stateMachine", "classq_o_s_1_1state_machine.html", null ]
     ] ],
     [ "_Handler_s", "struct___handler__s.html", null ],
-    [ "qOS::_notificationSpreader_s", "structq_o_s_1_1__notification_spreader__s.html", null ],
     [ "qOS::sm::_psIndex_s", "structq_o_s_1_1sm_1_1__ps_index__s.html", null ],
     [ "qOS::sm::_signal_s", "structq_o_s_1_1sm_1_1__signal__s.html", null ],
     [ "qOS::sm::_timeoutStateDefinition_s", "structq_o_s_1_1sm_1_1__timeout_state_definition__s.html", null ],

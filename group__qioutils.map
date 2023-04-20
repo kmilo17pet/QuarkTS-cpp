@@ -6,11 +6,10 @@
 <area shape="rect" id="node5" href="$group__qcritical.html" title="APIs to handle entry/exit actions in Critical sections." alt="" coords="327,203,389,228"/>
 <area shape="rect" id="node6" href="$group__qedgecheck.html" title="An interface to manage and simplify the value(with edge&#45;checking) of incoming digital&#45;signal groups." alt="" coords="291,253,425,293"/>
 <area shape="rect" id="node7" href="$group__qfsm.html" title="API interface of the Finite State Machines (FSM) extension." alt="" coords="285,317,431,343"/>
-<area shape="rect" id="node8" title="API for input/output utilities and safe string interfaces." alt="" coords="121,289,192,315"/>
+<area shape="rect" id="node8" title="API for input/output utilities and safe string interfaces." alt="" coords="121,260,192,285"/>
 <area shape="rect" id="node9" href="$group__qqueues.html" title="API interface to create and handle Queues." alt="" coords="325,367,391,392"/>
 <area shape="rect" id="node10" href="$group__qresponse.html" title="API to simplify the handling of requested responses from terminal interfaces." alt="" coords="295,416,421,441"/>
 <area shape="rect" id="node11" href="$group__qstimers.html" title="API interface for the STimers extension." alt="" coords="299,465,417,491"/>
-<area shape="rect" id="node12" href="$group__qtaskcreation.html" title="Kernel API interface to create/remove tasks and perform special OS operations." alt="" coords="291,515,425,540"/>
-<area shape="rect" id="node13" href="$group__qtaskmanip.html" title="API interface to manage tasks." alt="" coords="301,564,415,589"/>
-<area shape="rect" id="node14" href="$group__qutility.html" title=" " alt="" coords="5,289,72,315"/>
+<area shape="rect" id="node12" href="$group__qtaskmanip.html" title="API interface to manage tasks." alt="" coords="301,515,415,540"/>
+<area shape="rect" id="node13" href="$group__qutility.html" title=" " alt="" coords="5,260,72,285"/>
 </map>

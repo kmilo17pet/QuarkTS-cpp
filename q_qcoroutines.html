@@ -163,164 +163,164 @@ Overview</h1>
 </ul>
 <h1><a class="anchor" id="q_coroutine_code"></a>
 Coding a Co-Routine</h1>
-<p >The application writer just needs to create the body of the Co-Routine . This means starting a Co-Routine segment with #qCR_Begin and end with #qCR_End statement . From now on, yields and blocking calls from the Co-Routine scope are allowed.</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( qEvent_t e ) {</div>
-<div class="line">    qCR_Begin {</div>
-<div class="line">        <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
-<div class="line">            qCR_Yield;</div>
-<div class="line">        }</div>
-<div class="line">        DoTheEventProcessing();</div>
-<div class="line">        qCR_Delay( WAIT_TIME_S );</div>
-<div class="line">        PerformActions();</div>
-<div class="line">    } qCR_End;</div>
+<p >The application writer just needs to create the body of the Co-Routine . This means starting a Co-Routine segment with co::reenter() statement . From now on, yields and blocking calls from the Co-Routine scope are allowed.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( event_t e ) {</div>
+<div class="line">    co::reenter() {</div>
+<div class="line">        <span class="keywordflow">for</span> (;;) {</div>
+<div class="line">            <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
+<div class="line">                co::yield;</div>
+<div class="line">            }</div>
+<div class="line">            DoTheEventProcessing();</div>
+<div class="line">            co::delay( WAIT_TIME_S );</div>
+<div class="line">            PerformActions();</div>
+<div class="line">       }</div>
+<div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p >The #qCR_Begin statement should be placed at the start of the task function in which the Co-routine runs. All C statements above the #qCR_Begin will be executed as if they were in an endless-loop each time the task is scheduled.</p>
-<p >A #qCR_Yield statement return the CPU control back to the scheduler but saving the execution progress, thereby allowing other processing tasks to take place in the system. With the next task activation, the Co-Routine will resume the execution after the last #qCR_Yield statement.</p>
+</div><!-- fragment --><p >The co::reenter() statement should be placed at the start of the task function in which the Co-routine runs.</p>
+<p >A co::yield() statement return the CPU control back to the scheduler but saving the execution progress, thereby allowing other processing tasks to take place in the system. With the next task activation, the Co-Routine will resume the execution after the last co::yield() statement.</p>
 <dl class="section note"><dt>Note</dt><dd>Co-Routine statements can only be invoked from the scope of the Co-Routine. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Do not use an endless-loop inside a Co-routine ,this behavior it's already hardcoded within the segment definition.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>You should but an endless-loop inside a Co-routine, this behavior is not hardcoded within the segment definition.</dd></dl>
 <h1><a class="anchor" id="q_coroutine_blocking"></a>
 Blocking calls in a Co-routine</h1>
 <p >Blocking calls inside a Co-Routine should be made with the provided statements, all of them with a common feature: an implicit yield.</p>
-<p >A widely used procedure is to wait for a fixed period of time. For this, the #qCR_Delay should be used. This statement makes an apparent blocking over the application flow, but to be precise, a yield is performed until the requested time expires, this allows other tasks to be executed until the blocking call finish. This "yielding until condition meet" behavior its the common pattern among the other blocking statements.</p>
-<p >Another common blocking call is #qCR_WaitUntil. This statement takes a condition argument, a logical expression that will be performed when the Co-Routine resumes their execution. As mentioned before, this type of statement exposes the expected behavior, yielding until the condition is met.</p>
-<p >An additional wait statement #qCR_TimedWaitUntil is also provided. This one sets a timeout for the logical condition to be met, with a similar behavior of #qCR_WaitUntil.</p>
+<p >A widely used procedure is to wait for a fixed period of time. For this, the co::delay() should be used. This statement makes an apparent blocking over the application flow, but to be precise, a yield is performed until the requested time expires, this allows other tasks to be executed until the blocking call finish. This "yielding until condition meet" behavior its the common pattern among the other blocking statements.</p>
+<p >Another common blocking call is co::waitUntil(). This statement takes a condition argument, a logical expression that will be performed when the Co-Routine resumes their execution. As mentioned before, this type of statement exposes the expected behavior, yielding until the condition is met.</p>
+<p >An additional overload of this co::waitUntil() is also provided. This one sets a timeout for the logical condition to be met.</p>
 <p >Optionally, the Do-Until structure gives to application writer the ability to perform a multi-line job before the yield, allowing more complex actions to being performed after the Co-Routine resumes:</p>
 <div class="fragment"><div class="line">qCR_Do {</div>
 <div class="line">    <span class="comment">/* Job : a set of instructions*/</span></div>
 <div class="line">} qCR_Until( Condition );</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_coroutine_example1"></a>
 Co-Routine usage example</h1>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> Sender_Task( qEvent_t e ) {</div>
-<div class="line">    <span class="keyword">static</span> qSTimer_t timeout;</div>
-<div class="line">    qCR_Begin {</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> Sender_Task( event_t e ) {</div>
+<div class="line">    co::reenter() {</div>
 <div class="line">        Send_Packet();</div>
 <div class="line">        <span class="comment">/* Wait until an acknowledgment has been received, or until</span></div>
 <div class="line"><span class="comment">         * the timer expires. If the timer expires, we should send</span></div>
 <div class="line"><span class="comment">         * the packet again.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        qSTimer_Set( &amp;timeout, TIMEOUT_TIME );</div>
-<div class="line">        qCR_WaitUntil( PacketACK_Received() || qSTimer_Expired(&amp;timeout));</div>
-<div class="line">    } qCR_End;</div>
+<div class="line">        co::waitUntil( PacketACK_Received(), TIMEOUT_TIME );</div>
+<div class="line">        co::restart; </div>
+<div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> Receiver_Task( qEvent_t e ) {</div>
-<div class="line">    qCR_Begin {</div>
+<div class="line"><span class="keywordtype">void</span> Receiver_Task( event_t e ) {</div>
+<div class="line">    co::reenter() {</div>
 <div class="line">        <span class="comment">/* Wait until a packet has been received*/</span></div>
-<div class="line">        qCR_WaitUntil( Packet_Received() );</div>
+<div class="line">        co::waitUntil( Packet_Received() );</div>
 <div class="line">        Send_Acknowledgement();</div>
-<div class="line">    } qCR_End;</div>
+<div class="line">        co::restart; </div>
+<div class="line">    };</div>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_coroutine_positions"></a>
 Positional jumps</h1>
 <p >This feature provides positional local jumps, control flow that deviates from the usual Co-Routine call.</p>
-<p >The complementary statements #qCR_PositionGet and #qCR_PositionRestore provide this functionality. The first one saves the Co-Routine state at some point of their execution into <code>CRPos</code>, a variable of type qCR_Position_t , that can be used at some later point of program execution by #qCR_PositionRestore to restore the Co-Routine state to the one saved by #qCR_PositionGet into CRPos. This process can be imagined to be a "jump" back to the point of program execution where #qCR_PositionGet saved the Co-Routine environment.</p>
+<p >The complementary statements co::getPosition() and co::setPosition() provide this functionality. The first one saves the Co-Routine state at some point of their execution into <code>CRPos</code>, a variable of type co::position , that can be used at some later point of program execution by co::setPosition() to restore the Co-Routine state to the one saved by co::getPosition() into CRPos. This process can be imagined to be a "jump" back to the point of program execution where co::getPosition() saved the Co-Routine environment.</p>
 <h1><a class="anchor" id="q_coroutine_semaphores"></a>
 Semaphores</h1>
 <p >This extension implements counting semaphores on top of Co-Routines. Semaphores are a synchronization primitive that provide two operations: <em>wait</em> and <em>signal</em>. The <em>wait</em> operation checks the semaphore counter and blocks the Co-Routine if the counter is zero. The <em>signal</em> operation increases the semaphore counter but does not block. If another Co-Routine has blocked waiting for the semaphore that is signaled, the blocked Co-Routines will become runnable again.</p>
-<p >Semaphores are referenced by handles, a variable of type qCR_Semaphore_t and must be initialized with #qCR_SemInit before any usage. Here, a value for the counter is required. Internally, semaphores use an <code>uint32_t</code> to represent the counter, therefore the value argument should be within range of this data-type.</p>
-<p >To perform the |a wait operation, the #qCR_SemWait statement should be used. The wait operation causes the Co-routine to block while the counter is zero. When the counter reaches a value larger than zero, the Co-Routine will continue.</p>
-<p >Finally, #qCR_SemSignal carries out the <em>signal</em> operation on the semaphore. This signaling increments the counter inside the semaphore, which eventually will cause waiting Coroutines to continue executing.</p>
+<p >Semaphores are referenced by handles, a variable of type co::semaphore and must be initialized at time of creating with its own constructor. Here, a value for the counter is required. Internally, semaphores use an <code>size_t</code> to represent the counter, therefore the value argument should be within range of this data-type.</p>
+<p >To perform the |a wait operation, the co::semWait() statement should be used. The wait operation causes the Co-routine to block while the counter is zero. When the counter reaches a value larger than zero, the Co-Routine will continue.</p>
+<p >Finally, co::semSignal() carries out the <em>signal</em> operation on the semaphore. This signaling increments the counter inside the semaphore, which eventually will cause waiting Coroutines to continue executing.</p>
 <h1><a class="anchor" id="q_coroutine_example2"></a>
 Co-Routine example with semaphores.</h1>
 <p >The following example shows how to implement the bounded buffer problem using Co-Routines and semaphores. The example uses two tasks: one that produces items and other that consumes items.</p>
-<p >Note that there is no need for a mutex to guard the <code>add_to_buffer()</code> and <code>get_from_buffer()</code> functions because of the implicit locking semantics of Co-Routines, so it will never be preempted and will never block except in an explicit #qCR_SemWait statement.</p>
+<p >Note that there is no need for a mutex to guard the <code>add_to_buffer()</code> and <code>get_from_buffer()</code> functions because of the implicit locking semantics of Co-Routines, so it will never be preempted and will never block except in an explicit co::semWait() statement.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;AppLibrary.h&quot;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"><span class="preprocessor">#define NUM_ITEMS    ( 32 )</span></div>
 <div class="line"><span class="preprocessor">#define BUFSIZE      ( 8 )</span></div>
 <div class="line"> </div>
-<div class="line">qTask_t ProducerTask, ConsumerTask;</div>
-<div class="line">qCR_Semaphore_t mutex, full, empty;</div>
+<div class="line">task_t ProducerTask, ConsumerTask;</div>
+<div class="line">co::semaphore mutex( 1 ), full( BUFSIZE ), empty( 0 );</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> ProducerTask_Callback( qEvent_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> ProducerTask_Callback( event_t e ) {</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> produced;</div>
 <div class="line">    </div>
-<div class="line">    qCR_Begin {</div>
+<div class="line">    co::reenter() {</div>
 <div class="line">        <span class="keywordflow">for</span> ( produced = 0 ; produced &lt; NUM_ITEMS ; ++produced ) {</div>
-<div class="line">            qCR_SemWait( &amp;full );</div>
-<div class="line">            qCR_SemWait( &amp;mutex );</div>
-<div class="line">    </div>
+<div class="line">            co::semWait( full );</div>
+<div class="line">            co::semWait( mutex );</div>
+<div class="line"> </div>
 <div class="line">            add_to_buffer( produce_item() );</div>
-<div class="line">      </div>
-<div class="line">            qCR_SemSignal( &amp;mutex );</div>
-<div class="line">            qCR_SemSignal( &amp;empty );</div>
+<div class="line"> </div>
+<div class="line">            co::semSignal( mutex );</div>
+<div class="line">            co::semSignal( empty );</div>
 <div class="line">        }</div>
-<div class="line">    } qCR_End;</div>
+<div class="line">        co::restart;</div>
+<div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> ConsumerTask_Callback( qEvent_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> ConsumerTask_Callback( event_t e ) {</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> consumed;</div>
 <div class="line">    </div>
-<div class="line">    qCR_Begin {</div>
+<div class="line">    co::reenter() {</div>
 <div class="line">        <span class="keywordflow">for</span> ( consumed = 0 ; consumed &lt; NUM_ITEMS ; ++consumed ) {</div>
-<div class="line">            qCR_SemWait( &amp;empty );</div>
-<div class="line">            qCR_SemWait( &amp;mutex );</div>
+<div class="line">            co::semWait( empty );</div>
+<div class="line">            co::semWait( mutex );</div>
 <div class="line">    </div>
 <div class="line">            consume_item( get_from_buffer() );</div>
-<div class="line">            qCR_SemSignal( &amp;mutex );</div>
-<div class="line">            qCR_SemSignal( &amp;full );</div>
+<div class="line">            co::semSignal( mutex );</div>
+<div class="line">            co::semSignal( full );</div>
 <div class="line">        }</div>
-<div class="line">    } qCR_End;</div>
+<div class="line">    };</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> IdleTask_Callback( qEvent_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> IdleTask_Callback( event_t e ) {</div>
 <div class="line">    <span class="comment">/*nothing to do*/</span></div>
 <div class="line">} </div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
 <div class="line">    HAL_Init();</div>
 <div class="line"> </div>
-<div class="line">    qOS_Setup( HAL_GetTick, 0.001f, IdleTask_Callback );</div>
-<div class="line">    qCR_SemInit( &amp;empty, 0 );</div>
-<div class="line">    qCR_SemInit( &amp;full, BUFSIZE );</div>
-<div class="line">    qCR_SemInit( &amp;mutex, 1 );</div>
+<div class="line">    os.init( HAL_GetTick, IdleTask_Callback );</div>
 <div class="line">    </div>
-<div class="line">    qOS_Add_Task( &amp;ProducerTask, ProducerTask_Callback,</div>
-<div class="line">                  qMedium_Priority, 0.1, qPeriodic, qEnabled, NULL );</div>
-<div class="line">    qOS_Add_Task( &amp;ConsumerTask, ConsumerTask_Callback,</div>
-<div class="line">                  qMedium_Priority, 0.1, qPeriodic, qEnabled, NULL );</div>
-<div class="line">    qOS_Run();</div>
+<div class="line">    os.addTask( ProducerTask, ProducerTask_Callback, core::MEDIUM_PRIORITY, </div>
+<div class="line">                100, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">    os.addTask( ConsumerTask, ConsumerTask_Callback, core::MEDIUM_PRIORITY, </div>
+<div class="line">                100, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">    os.run();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_coroutine_ext"></a>
 External control</h1>
 <p >In certain situations, it may be necessary to control the flow of execution outside of the segment that defines the Co-routine itself. This is typically done to defer or resume the Co-routine in response to specific occurrences that arise in other contexts, such as tasks or interrupts.</p>
-<p >To address these specific scenarios, a handler for the Co-routine must be defined, which is a variable of type qCR_Handle_t. Additionally, to initiate the scope of the target Co-routine, the statement #qCR_BeginWithHandle should be used instead of #qCR_Begin.</p>
-<div class="fragment"><div class="line">qCR_Handle_t xHandleCR = NULL; <span class="comment">/*NULL initialization are strictly necessary*/</span></div>
+<p >To address these specific scenarios, a handler for the Co-routine must be defined, which is a variable of type co::handle. Additionally, to initiate the scope of the target Co-routine, the statement co::reenter should be used taking this handler as argument.</p>
+<div class="fragment"><div class="line">co::handle xHandleCR;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> AnotherTask_Callback( qEvent_t e) {</div>
+<div class="line"><span class="keywordtype">void</span> AnotherTask_Callback( event_t e ) {</div>
 <div class="line">    <span class="keywordtype">int</span> UserInput = 0;</div>
 <div class="line">    <span class="keywordflow">if</span> ( e-&gt;FirstIteration ) {</div>
-<div class="line">        qCR_ExternControl( xHandleCR, qCR_RESUME, 0 );</div>
+<div class="line">        xHandleCR.try_resume();</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( e-&gt;LastIteration ) {</div>
-<div class="line">        qCR_ExternControl( xHandleCR, qCR_SUSPEND, 0 );</div>
+<div class="line">        xHandleCR.try_suspend();;</div>
 <div class="line">    }</div>
 <div class="line">    UserInput = GetTerminalInput( );</div>
 <div class="line">    <span class="keywordflow">if</span> ( UserInput == USR_RESTART ) {</div>
-<div class="line">        qCR_ExternControl( xHandleCR, qCR_RESTART, 0 );</div>
+<div class="line">        xHandleCR.try_restart();</div>
 <div class="line">    }</div>
 <div class="line">    Perform_AnotherTask_Activities();</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( qEvent_t e ) {</div>
-<div class="line">    qCR_BeginWithHandle( xHandleCR ) { <span class="comment">/*externally controlled*/</span></div>
+<div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( event_t e ) {</div>
+<div class="line">    co::reenter( xHandleCR ) { <span class="comment">/*externally controlled*/</span></div>
 <div class="line">        <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
-<div class="line">            qCR_Yield;</div>
+<div class="line">            co::yield;</div>
 <div class="line">        }</div>
 <div class="line">        RunFirstJob();</div>
-<div class="line">        qCR_Delay( WAIT_TIME );</div>
+<div class="line">        co::delay( WAIT_TIME );</div>
 <div class="line">        SecondJobStatus = RunSecondJob();</div>
-<div class="line">        qCR_TimedWaitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );</div>
+<div class="line">        co::waitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );</div>
 <div class="line">        CleanUpStatus = CleanupJob();</div>
-<div class="line">        qCR_WaitUntil( SomeVar &gt; SomeValue );</div>
+<div class="line">        co::waitUntil( SomeVar &gt; SomeValue );</div>
 <div class="line">    } qCR_End;</div>
 <div class="line">}</div>
-</div><!-- fragment --><p >As shown in the code snippet above, the Co-routine handle its globally declared to enable other contexts to access it. The example demonstrates how another task can control the Coroutine using the qCR_ExternControl() API. It's important to note that the actions performed by this API can only be effective after the handle instantiation, which is a one-time operation that occurs during the first call of the Co-routine.</p>
-<dl class="section note"><dt>Note</dt><dd>A <code>NULL</code> initialization its mandatory on qCR_Handle_t variables. Undefined behavior may occur if this step is ignored. </dd></dl>
+</div><!-- fragment --><p >As shown in the code snippet above, the Co-routine handle its globally declared to enable other contexts to access it. The example demonstrates how another task can control the Coroutine using the "try_" methods API. It's important to note that the actions performed by this API can only be effective after the handle instantiation, which is a one-time operation that occurs during the first call of the Co-routine. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['medium_5fpriority_0',['MEDIUM_PRIORITY',['../classq_o_s_1_1core.html#a9a14879b60c13ded224ed8109e8df877',1,'qOS::core']]]
+  ['remaining_5fin_5fdisarmed_5fstate_0',['REMAINING_IN_DISARMED_STATE',['../classq_o_s_1_1timer.html#a0ea11df33f2cf56f4470e12320c9fce3',1,'qOS::timer']]]
 ];

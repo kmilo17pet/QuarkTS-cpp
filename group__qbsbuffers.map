@@ -1,6 +1,6 @@
 <map id="Byte&#45;Sized buffers" name="Byte&#45;Sized buffers">
 <area shape="rect" id="node1" href="$group__qatcli.html" title="API for the AT Command Line Interface extension." alt="" coords="323,5,505,31"/>
-<area shape="rect" id="node2" title="An interrupt&#45;safe byte&#45;sized ring buffer interface." alt="" coords="121,293,248,319"/>
+<area shape="rect" id="node2" title="An interrupt&#45;safe byte&#45;sized ring buffer interface." alt="" coords="121,268,248,293"/>
 <area shape="rect" id="node3" href="$group__qclock.html" title="Clock and time manipulation interface used by the entire OS." alt="" coords="387,55,441,80"/>
 <area shape="rect" id="node4" href="$group__qcoroutines.html" title="API interface for the Co&#45;Routines extension." alt="" coords="367,104,461,129"/>
 <area shape="rect" id="node5" href="$group__qcritical.html" title="APIs to handle entry/exit actions in Critical sections." alt="" coords="383,153,445,179"/>
@@ -10,7 +10,6 @@
 <area shape="rect" id="node9" href="$group__qqueues.html" title="API interface to create and handle Queues." alt="" coords="381,367,447,392"/>
 <area shape="rect" id="node10" href="$group__qresponse.html" title="API to simplify the handling of requested responses from terminal interfaces." alt="" coords="351,416,477,441"/>
 <area shape="rect" id="node11" href="$group__qstimers.html" title="API interface for the STimers extension." alt="" coords="355,465,473,491"/>
-<area shape="rect" id="node12" href="$group__qtaskcreation.html" title="Kernel API interface to create/remove tasks and perform special OS operations." alt="" coords="347,515,481,540"/>
-<area shape="rect" id="node13" href="$group__qtaskmanip.html" title="API interface to manage tasks." alt="" coords="357,564,471,589"/>
-<area shape="rect" id="node14" href="$group__qutility.html" title=" " alt="" coords="5,293,72,319"/>
+<area shape="rect" id="node12" href="$group__qtaskmanip.html" title="API interface to manage tasks." alt="" coords="357,515,471,540"/>
+<area shape="rect" id="node13" href="$group__qutility.html" title=" " alt="" coords="5,268,72,293"/>
 </map>

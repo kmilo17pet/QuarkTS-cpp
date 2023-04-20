@@ -30,11 +30,9 @@ var annotated_dup =
         [ "pre", "classq_o_s_1_1trace_1_1pre.html", null ]
       ] ],
       [ "_Event", "classq_o_s_1_1___event.html", "classq_o_s_1_1___event" ],
-      [ "_notificationSpreader_s", "structq_o_s_1_1__notification_spreader__s.html", null ],
       [ "byteBuffer", "classq_o_s_1_1byte_buffer.html", "classq_o_s_1_1byte_buffer" ],
       [ "clock", "classq_o_s_1_1clock.html", null ],
       [ "commandLineInterface", "classq_o_s_1_1command_line_interface.html", "classq_o_s_1_1command_line_interface" ],
-      [ "core", "classq_o_s_1_1core.html", "classq_o_s_1_1core" ],
       [ "edgeCheck", "classq_o_s_1_1edge_check.html", "classq_o_s_1_1edge_check" ],
       [ "list", "classq_o_s_1_1list.html", "classq_o_s_1_1list" ],
       [ "listIterator", "classq_o_s_1_1list_iterator.html", null ],

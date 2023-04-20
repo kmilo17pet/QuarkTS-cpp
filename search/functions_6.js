@@ -11,14 +11,12 @@ var searchData=
   ['getdata_8',['getData',['../classq_o_s_1_1cli_1_1___handler.html#a5d84a5c2fb4bd11841799368942590d3',1,'qOS::cli::_Handler']]],
   ['getfreesize_9',['getFreeSize',['../classq_o_s_1_1mem_1_1pool.html#a7e310a544856ebaeac79caec3a9f026e',1,'qOS::mem::pool']]],
   ['getfront_10',['getFront',['../classq_o_s_1_1list.html#a451cd6b721407f725c125e3ceca1d9c3',1,'qOS::list']]],
-  ['getglobalstate_11',['getGlobalState',['../classq_o_s_1_1core.html#a83e09d1047d3b45f98c00c2f83196afb',1,'qOS::core']]],
-  ['getinstance_12',['getInstance',['../classq_o_s_1_1core.html#a6e6ca06cbc217c6a66787a1c0fd5f54e',1,'qOS::core']]],
-  ['getname_13',['getName',['../classq_o_s_1_1task.html#acc22fcf2bb3bbbd4c2736f0434a2c45a',1,'qOS::task']]],
-  ['getnumargs_14',['getNumArgs',['../classq_o_s_1_1cli_1_1___handler.html#ae47a2eacf3c53b77e643f2d0d6d3e813',1,'qOS::cli::_Handler']]],
-  ['getstate_15',['getState',['../classq_o_s_1_1task.html#a01c9dfe56b44e5b80dd2be4f5c16383a',1,'qOS::task']]],
-  ['getstatus_16',['getStatus',['../classq_o_s_1_1ec_1_1in_node.html#ae61455ce4d1f0e52b3882e6ac662cd8b',1,'qOS::ec::inNode']]],
-  ['getstringdata_17',['getStringData',['../classq_o_s_1_1cli_1_1___handler.html#a040db3771924ae3db7e7a73ea9edd090',1,'qOS::cli::_Handler']]],
-  ['getstringlength_18',['getStringLength',['../classq_o_s_1_1cli_1_1___handler.html#ab206c293fefcbc6d48c1820b5aa5ac2c',1,'qOS::cli::_Handler']]],
-  ['gettrigger_19',['getTrigger',['../classq_o_s_1_1___event.html#ae45bf685d8277435afc200316b0736fe',1,'qOS::_Event']]],
-  ['gettype_20',['getType',['../classq_o_s_1_1cli_1_1___handler.html#a8dc89a794c338bb7ed1e1f762dabd654',1,'qOS::cli::_Handler']]]
+  ['getname_11',['getName',['../classq_o_s_1_1task.html#acc22fcf2bb3bbbd4c2736f0434a2c45a',1,'qOS::task']]],
+  ['getnumargs_12',['getNumArgs',['../classq_o_s_1_1cli_1_1___handler.html#ae47a2eacf3c53b77e643f2d0d6d3e813',1,'qOS::cli::_Handler']]],
+  ['getstate_13',['getState',['../classq_o_s_1_1task.html#a01c9dfe56b44e5b80dd2be4f5c16383a',1,'qOS::task']]],
+  ['getstatus_14',['getStatus',['../classq_o_s_1_1ec_1_1in_node.html#ae61455ce4d1f0e52b3882e6ac662cd8b',1,'qOS::ec::inNode']]],
+  ['getstringdata_15',['getStringData',['../classq_o_s_1_1cli_1_1___handler.html#a040db3771924ae3db7e7a73ea9edd090',1,'qOS::cli::_Handler']]],
+  ['getstringlength_16',['getStringLength',['../classq_o_s_1_1cli_1_1___handler.html#ab206c293fefcbc6d48c1820b5aa5ac2c',1,'qOS::cli::_Handler']]],
+  ['gettrigger_17',['getTrigger',['../classq_o_s_1_1___event.html#ae45bf685d8277435afc200316b0736fe',1,'qOS::_Event']]],
+  ['gettype_18',['getType',['../classq_o_s_1_1cli_1_1___handler.html#a8dc89a794c338bb7ed1e1f762dabd654',1,'qOS::cli::_Handler']]]
 ];
