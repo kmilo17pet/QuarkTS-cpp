@@ -62,33 +62,33 @@
 * Usage example:
 * - Scenario 1 : When tick is already provided
 *  @code{.c}
-*  #include "QuarkTS.h"
+*  #include "quarkts++.h"
 *  #include "HAL.h"
 *
-*  #define TIMER_TICK 0.001 /* 1ms */
+*  using namespace qOS;
 *
 *  void main( void ) {
 *      HAL_Init();
-*      qOS_Setup( HAL_GetTick , TIMER_TICK , IdleTask_Callback );
+*      os.init( HAL_GetTick , IdleTask_Callback );
 *      // TODO: add Tasks to the scheduler scheme and run the OS
 *  }
 *  @endcode
 *
 * - Scenario 2 : When the tick is not provided
 *  @code{.c}
-*  #include "QuarkTS.h"
+*  #include "quarkts++.h"
 *  #include "DeviceHeader.h"
 *
-*  #define TIMER_TICK       ( 0.001f ) /* 1ms */
+*  using namespace qOS;
 *
 *  void Interrupt_Timer0( void ) {
-*      qClock_SysTick();
+*      clock::sysTick();
 *  }
 * 
 *  void main( void ) {
        MCU_Init();
 *      HAL_Init();
-*      qOS_Setup( NULL , TIMER_TICK , IdleTask_Callback );
+*      os.init( NULL , IdleTask_Callback );
 *      // TODO: add Tasks to the scheduler scheme and run the OS
 *  }
 *  @endcode
