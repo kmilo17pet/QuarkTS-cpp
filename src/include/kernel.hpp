@@ -15,6 +15,14 @@
     #include "cli.hpp"
 #endif
 
+/** @addtogroup qtaskcreation
+ * @brief Kernel API interface to create/remove tasks and perform special
+ * OS operations.
+ * @pre Before using any scheduler interface, you must first configure and 
+ * initialize the operating system using core::init()
+ *  @{
+ */
+
 namespace qOS {
 
     using coreFlags_t = uint32_t ;
@@ -91,7 +99,7 @@ namespace qOS {
             * @param[in] callbackIdle  Callback function to the Idle Task. To
             * disable the Idle-Task activities, ignore this parameter of pass 
             * @c nullptr as argument.
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             *
             * Example : When tick is already provided
             * @code{.c}
@@ -141,7 +149,7 @@ namespace qOS {
             * @param[in] callbackIdle  Callback function to the Idle Task. To
             * disable the Idle-Task activities, ignore this parameter of pass 
             * @c nullptr as argument.
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             *
             * Example : When tick is already provided
             * @code{.c}
@@ -203,7 +211,7 @@ namespace qOS {
             * by reference and cast to @c void* . Only one argument is allowed, so, for
             * multiple arguments, create a structure that contains all of the arguments
             * and pass a pointer to that structure.
-            * @return Returns true on success, otherwise returns false.
+            * @return Returns @c true on success, otherwise returns @c false.
             */
             bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /**
@@ -217,7 +225,7 @@ namespace qOS {
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @param[in] arg Represents the task arguments. All arguments must be passed
             * by reference and cast to @c void*. 
-            * @return Returns true on success, otherwise returns false.
+            * @return Returns @c true on success, otherwise returns @c false.
             */
             inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg = nullptr ) noexcept
             {
@@ -241,7 +249,7 @@ namespace qOS {
             * (#qEnabled, #qDisabled, #qAsleep or #qAwake(implies #qEnabled)).
             * @param[in] arg Represents the task arguments. All arguments must be
             * passed by reference and cast to @c void*.
-            * @return Returns #qTrue on success, otherwise returns #qFalse.
+            * @return Returns @c true on success, otherwise returns @c false.
             */
             bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             #endif
@@ -252,7 +260,7 @@ namespace qOS {
             * @brief Set/Change the callback for the Idle-task
             * @param[in] callbackFcn A pointer to a void callback method with a qOS::event_t
             * parameter as input argument. To disable pass @c nullptr as argument.
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             */
             bool setIdleTask( taskFcn_t callback ) noexcept;
             bool schedulerRelease( void ) noexcept;
@@ -260,14 +268,14 @@ namespace qOS {
             /**
             * @brief Remove the task from the scheduling scheme.
             * @param[in] Task The task node.
-            * @return Returns true if success, otherwise returns false.
+            * @return Returns @c true if success, otherwise returns @c false.
             */
             bool removeTask( task &Task ) noexcept;
             /**
             * @brief Executes the scheduling scheme. It must be called once after the
             * task pool has been defined.
             * @note This call keeps the application in an endless loop.
-            * @return true if a release action its performed. In a normal scenario,
+            * @return @c true if a release action its performed. In a normal scenario,
             * this function never returns.
             */
             bool run( void ) noexcept;
@@ -295,7 +303,7 @@ namespace qOS {
             * or notifyMode::QUEUED.
             * @param[in] Task The task node.
             * @param[in] eventData Specific event user-data.
-            * @return true on success. Otherwise false.
+            * @return @c true on success. Otherwise @c false.
             */
             bool notify( notifyMode mode, task &Task, void* eventData = nullptr ) noexcept;
             /**
@@ -305,7 +313,7 @@ namespace qOS {
             * @param[in] mode the method used to spread the event: notifyMode::SIMPLE
             * or notifyMode::QUEUED.
             * @param[in] eventData Specific event user-data.
-            * @return true if success. false if any other spread operation is in
+            * @return @c true if success. false if any other spread operation is in
             * progress.
             */
             bool notify( notifyMode mode, void* eventData = nullptr ) noexcept;
@@ -326,7 +334,7 @@ namespace qOS {
             * @warning Yielding from the IDLE task is not allowed.
             * @param[in] Task The the task to which current control will
             * be yielded.
-            * @return Returns true if success, otherwise returns false.
+            * @return Returns @c true if success, otherwise returns @c false.
             */
             bool yieldToTask( task &Task ) noexcept;
             /**
@@ -339,9 +347,10 @@ namespace qOS {
             */
             globalState getGlobalState( task &Task ) const noexcept;
     };
-
+    /*The QuarkTS++ kernel interface*/
     extern core& os; /* skipcq: CXX-W2011 */
 
 }
+/** @}*/
 
 #endif /*QOS_CPP_KERNEL*/

@@ -5,6 +5,11 @@
 #include "include/timer.hpp"
 #include "include/macro_overload.hpp"
 
+/** \addtogroup  qcoroutines
+* @brief API interface for the @ref q_qcoroutines extension.
+*  @{
+*/
+
 namespace qOS {
     namespace co {
 
@@ -15,7 +20,9 @@ namespace qOS {
         const state BEGINNING =  0;
         /*cstat +MISRAC++2008-0-1-4_b*/
 
+        /*! @cond  */
         class _coContext;
+        /*! @endcond  */
 
         /** @brief A placeholder for the Co-Routine current position or progress*/
         class position {
@@ -253,6 +260,7 @@ namespace qOS {
     }
 }
 /*============================================================================*/
+/*! @cond  */
 #define _co_label_                                  ( __LINE__ )
 
 /*============================================================================*/
@@ -363,6 +371,9 @@ setPosition( var );                                                            \
 _cr = var();                                                                   \
 goto _co_break_                                                                \
 
+/*! @endcond  */
+
+/** @}*/
 
 #endif /*QOS_CPP_CO*/
 

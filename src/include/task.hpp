@@ -6,6 +6,15 @@
 #include "include/list.hpp"
 #include "include/queue.hpp"
 
+
+/** @addtogroup qtaskmanip
+* @brief API interface to manage tasks.
+* @pre In order to be able to manage a task, make sure the task has already 
+* been added to the scheduling scheme bt using core::addTask(), 
+* core::addEventTask(), core::addStateMachineTask() or core::addCommandLineInterfaceTask().
+*  @{
+*/
+
 namespace qOS {
 
     /**
@@ -281,7 +290,7 @@ namespace qOS {
             /**
             * @brief Set/Change the task priority value
             * @param[in] pValue Priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             */
             bool setPriority( priority_t pValue ) noexcept;
             /**
@@ -313,9 +322,76 @@ namespace qOS {
             *
             * taskState::AWAKE : Put the task into the previous state before it 
             * was put in the sleep state.( @c SHUTDOWN_Bit=1 )
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             */
             bool setState( taskState s ) noexcept;
+            /**
+            * @brief Put the task into a disabled state.
+            * @see task::setState()
+            * @return @c true on success. Otherwise return @c false.
+            */
+            inline bool suspend( void ) noexcept
+            {
+                return setState( taskState::DISABLED_STATE );
+            }
+            /**
+            * @brief Put the task into a disabled state.
+            * @see task::setState()
+            * @return @c true on success. Otherwise return @c false.
+            */
+            inline bool disable( void ) noexcept
+            {
+                return setState( taskState::DISABLED_STATE );
+            }
+            /**
+            * @brief Put the task into a enabled state.
+            * @see task::setState()
+            * @return @c true on success. Otherwise return @c false.
+            */
+            inline bool resume( void ) noexcept
+            {
+                return setState( taskState::ENABLED_STATE );
+            }
+            /**
+            * @brief Put the task into a enabled state.
+            * @see task::setState()
+            * @return @c true on success. Otherwise return @c false.
+            */
+            inline bool enable( void ) noexcept
+            {
+                return setState( taskState::ENABLED_STATE );
+            }
+            /**
+            * @brief Put the task into a sleep state. The task can't be triggered
+            * by the lower precedence events.
+            * @note Only the higher precedence events (Queued Notifications) can
+            * wake up the task.
+            * @see task::setState()
+            * @return @c true on success. Otherwise return @c false.
+            */
+            inline bool asleep( void ) noexcept
+            {
+                return setState( taskState::ASLEEP_STATE );
+            }
+            /**
+            * @brief Put the task into a normal operation state. Here the task
+            * will be able to catch any kind of events.
+            * @see task::setState()
+            * @return @c true on success. Otherwise return @c false.
+            */
+            inline bool awake( void ) noexcept
+            {
+                return setState( taskState::AWAKE_STATE );
+            }
+            /**
+            * @brief Retrieve the enabled/disabled state
+            * @see task::getState()
+            * @return @c true if the task in on Enabled state, otherwise returns @c false.
+            */
+            inline bool isEnabled( void ) const noexcept
+            {
+                return ( taskState::ENABLED_STATE == getState() );
+            }
             /**
             * @brief Set/Change the number of task iterations
             * @param[in] iValue Number of task executions (Integer value). For
@@ -330,7 +406,7 @@ namespace qOS {
             * @brief Set/Change the Task execution interval
             * @param[in] tValue Execution interval. For immediate execution 
             * (@a tValue = clock::IMMEDIATE).
-            * @return true on success, otherwise returns false.
+            * @return @c true on success, otherwise returns @c false.
             */
             bool setTime( const qOS::time_t tValue ) noexcept;
             /**
@@ -338,20 +414,20 @@ namespace qOS {
             * @note This function can be used to detach a state-machine from a task
             * @param[in] tCallback A pointer to a void callback method with a 
             * event_t parameter as input argument.
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             */
             bool setCallback( const taskFcn_t tCallback ) noexcept;
             /**
             * @brief Set the task data
             * @param[in] arg The task storage pointer. User data.
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             */
             bool setData( void *arg ) noexcept;
             /**
             * @brief Set the task name
             * @note Name should be unique.
             * @param[in] name A raw-string with the task name
-            * @return true on success. Otherwise return false.
+            * @return @c true on success. Otherwise return @c false.
             */
             bool setName( const char *tName ) noexcept;
             /**
@@ -386,7 +462,7 @@ namespace qOS {
             * If the queueLinkMode::QUEUE_COUNT mode is specified, this value
             * will be used to check the element count of the queue. A zero value
             * will act as a detach action.
-            * @return Returns true on success, otherwise returns false.
+            * @return Returns @c true on success, otherwise returns @c false.
             */
             bool attachQueue( queue &q, const queueLinkMode mode, const size_t arg = 1u ) noexcept;
             void * const & getAttachedObject( void ) const noexcept;
@@ -406,5 +482,6 @@ namespace qOS {
     };
 
 }
+/** @}*/
 
 #endif /*QOS_CPP_TASK*/

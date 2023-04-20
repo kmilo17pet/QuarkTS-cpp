@@ -3,6 +3,11 @@
 
 #include "include/types.hpp"
 
+/** @addtogroup qqueues
+* @brief API interface to create and handle @ref  q_queues.
+* @{
+*/
+
 namespace qOS {
 
     /**
@@ -129,5 +134,7 @@ namespace qOS {
             size_t getItemSize( void ) const noexcept;
     };
 }
+
+/** @}*/
 
 #endif /*QOS_CPP_QUEUE*/

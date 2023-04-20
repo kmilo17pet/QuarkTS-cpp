@@ -69,14 +69,14 @@ namespace qOS {
             * @param[in] p The position where the node will be inserted. Could be
             * listPosition::AT_FRONT, listPosition::AT_BACK or any other index 
             * number where the node will be inserted after.
-            * @return true if the item was successfully added to the list, otherwise
-            * returns false
+            * @return @c true if the item was successfully added to the list, otherwise
+            * returns @c false
             */
             bool insert( void * const xNode, const listPosition p = listPosition::AT_BACK ) noexcept;
             /**
             * @brief If the node is member of a list, the node will be removed from it.
             * @param[in] node A pointer to the node.
-            * @return true on Success. false if removal can't be performed.
+            * @return @c true on Success. @c false if removal can't be performed.
             */
             bool remove( void * const xNode ) noexcept;
             /**
@@ -127,7 +127,7 @@ namespace qOS {
             * The function defines the order of the elements by returning a Boolean data,
             * where a #qTrue value indicates that element pointed by @a node1 goes
             * after the element pointed to by @a node2.
-            * @return true if at least one reordering is performed over the list.
+            * @return @c true if at least one reordering is performed over the list.
             */
             bool sort( listCompareFcn_t f ) noexcept;
             /**
@@ -137,8 +137,8 @@ namespace qOS {
             * of the boundaries.
             * @param[in] node1 Pointer to the first node.
             * @param[in] node2 Pointer to the second node.
-            * @return true if the swap operation is performed. Otherwise returns
-            * false.
+            * @return @c true if the swap operation is performed. Otherwise returns
+            * @c false.
             */
             bool swap( void* node1, void* node2 ) noexcept;
             /**
@@ -149,8 +149,8 @@ namespace qOS {
             * @param[in] p The position where @a src list will be inserted. 
             * Could be listPosition::AT_FRONT, listPosition::AT_BACK or any 
             * other index number.
-            * @return true if the move operation is performed successfully, 
-            * otherwise returns false
+            * @return @c true if the move operation is performed successfully, 
+            * otherwise returns @c false
             */
             bool move( list& src, const listPosition p = listPosition::AT_BACK ) noexcept;
             void clean( void ) noexcept;

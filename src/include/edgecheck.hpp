@@ -5,6 +5,11 @@
 #include "include/list.hpp"
 #include "include/clock.hpp"
 
+/** @addtogroup qedgecheck I/O Groups for edge checking
+* @brief An interface to manage and simplify the value(with edge-checking)
+* of incoming digital-signal groups.
+*  @{
+*/
 namespace qOS {
 
     class edgeCheck;
@@ -106,4 +111,6 @@ namespace qOS {
     };
 
 }
+
+/** @}*/
 #endif /*QOS_EDGE_CHECK*/

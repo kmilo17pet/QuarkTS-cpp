@@ -4,6 +4,13 @@
 #include "include/types.hpp"
 #include "include/clock.hpp"
 
+/** @addtogroup qstimers Timers
+* @brief API interface for the @ref q_stimers extension.
+* @pre This extension requires the operating system is previously initialized
+* with core::init() with a functional time-base. Please read @ref q_timmingapproach .
+*  @{
+*/
+
 namespace qOS {
 
     /**
@@ -102,6 +109,9 @@ namespace qOS {
 }
 
 bool operator==( const qOS::timer& obj, bool value );
+
+
+/** @}*/
 
 #endif /*QOS_CPP_TIMER*/
 

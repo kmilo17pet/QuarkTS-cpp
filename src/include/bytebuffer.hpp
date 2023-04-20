@@ -3,6 +3,10 @@
 
 #include "include/types.hpp"
 
+/** @addtogroup qbsbuffers Byte-Sized Buffers
+ * @brief An interrupt-safe byte-sized ring buffer interface.
+ *  @{
+ */
 namespace qOS {
 
     /**
@@ -80,4 +84,6 @@ namespace qOS {
     };
 
 }
+/** @}*/
+
 #endif /*QOS_BYTE_BUFFER*/

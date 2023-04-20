@@ -3,6 +3,10 @@
 
 #include "include/types.hpp"
 
+/** @addtogroup qioutils I/O Utils
+* @brief API for input/output utilities and safe string interfaces.
+*  @{
+*/
 namespace qOS {
 
     namespace util {
@@ -224,5 +228,7 @@ namespace qOS {
         char* boolToString( const bool num, char *str ) noexcept;
     }
 }
+
+/** @}*/
 
 #endif /*QOS_CPP_UTIL*/

@@ -4,6 +4,12 @@
 #include "include/types.hpp"
 #include "include/timer.hpp"
 
+/** @addtogroup qresponse Response handler
+* @brief API to simplify the handling of requested responses from terminal
+* interfaces.
+*  @{
+*/
+
 namespace qOS {
 
     enum class responseStatus {
@@ -66,4 +72,7 @@ namespace qOS {
     };
 
 }
+
+/** @}*/
+
 #endif /*QOS_RESPONSE*/

@@ -3,6 +3,11 @@
 
 #include "include/types.hpp"
 
+/** @addtogroup qcritical
+* @brief APIs to handle entry/exit actions in @ref q_critical.
+*  @{
+*/
+
 namespace qOS {
 
     using int_restorer_t = void (*)( uint32_t );
@@ -34,5 +39,7 @@ namespace qOS {
         bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept;
     }
 }
+
+/** @}*/
 
 #endif /*QOS_CPP_CRITICAL*/

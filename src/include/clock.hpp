@@ -4,6 +4,10 @@
 #include "include/types.hpp"
 #include "config/config.h"
 
+/** @addtogroup qclock
+* @brief Clock and time manipulation interface used by the entire OS.
+* @{
+*/
 namespace qOS {
 
     using clock_t = timeCount_t;
@@ -91,5 +95,7 @@ namespace qOS {
     };
 
 }
+
+/** @}*/
 
 #endif /*QOS_CPP_CLOCK*/
