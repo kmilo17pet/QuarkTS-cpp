@@ -84,7 +84,7 @@ namespace qOS {
         UNDEFINED,  /**< A task should never reach this state(Reserved for internal use) */
         READY,      /**< The task has completed preparations for running, but cannot run because a task with a higher precedence is running. */
         WAITING,    /**< The task cannot run because the conditions for running are not in place. */
-        SUSPENDED,  /**< The task doesn't take part in what is going on. Normally this state is taken after the ::qRunning state or when the task doesn't reach the ::qReady state*/
+        SUSPENDED,  /**< The task doesn't take part in what is going on. Normally this state is taken after the globalState::RUNNING state or when the task doesn't reach the globalState::READY state*/
         RUNNING     /**< The task is currently being executed. */
     };
 
@@ -92,12 +92,14 @@ namespace qOS {
     class task;
     /*! @endcond  */
 
+
+    #ifdef DOXYGEN
     /**
     * @brief The task argument with all the regarding information of the task
     * execution.
-    * @note Should be used only in task-callbacks as the only input argument.
+    * @note Should be used only inside task-callbacks as the only input argument.
     */
-    class _Event {
+    class event_t {
         protected:
             /*! @cond  */
             trigger Trigger{ trigger::None };
@@ -181,13 +183,49 @@ namespace qOS {
                 return *currentTask;
             }
     };
-    /**
-    * @brief The task argument with all the regarding information of the task
-    * execution.
-    * @see @ref _Event
-    * @note Should be used only in task-callbacks as the only input argument.
-    */
+    #endif
+
+    /*! @cond  */
+    class _Event {
+        protected:
+            trigger Trigger{ trigger::None };
+            bool FirstCall{ false };
+            bool FirstIteration{ false };
+            bool LastIteration{ false };
+            clock_t StartDelay{ 0u };
+            task* currentTask{ nullptr };
+            _Event() = default;
+        public:
+            void *TaskData{ nullptr };
+            void *EventData{ nullptr };
+            bool firstCall( void ) const noexcept
+            {
+                return FirstCall;
+            }
+            bool firstIteration( void ) const noexcept
+            {
+                return FirstIteration;
+            }
+            bool lastIteration( void ) const noexcept
+            {
+                return LastIteration;
+            }
+            trigger getTrigger( void ) const noexcept
+            {
+                return Trigger;
+            }
+            clock_t startDelay( void ) const noexcept
+            {
+                return StartDelay;
+            }
+            task& self( void ) noexcept
+            {
+                return *currentTask;
+            }
+    };
     using event_t = _Event&;
+    /*! @endcond  */
+
 
     /**
     * @brief An enum that defines the possible task operational states
@@ -238,8 +276,16 @@ namespace qOS {
     using taskFcn_t = void (*)( event_t );
     /** @brief A 32-bit unsigned integer type to hold a notification value.*/
     using notifier_t = uint32_t;
+
+    /** @addtogroup qeventflags
+    * @brief API interface for the built-in-task @ref qeventflags.
+    *  @{
+    */
+
     /** @brief A 32-bit unsigned integer type to hold the task flags.*/
     using taskFlag_t = uint32_t;
+
+    /** @}*/
 
     /**
     * @brief A task node object

@@ -56,6 +56,10 @@ namespace qOS {
                 void *data{ nullptr };                 /**< The signal data*/
         };
 
+        /**
+        * @brief This enumeration defines the built-in state-execution status values
+        * that can be used as return value in a state callback.
+        */
         enum status : int16_t {
             BEFORE_ANY = -32767,
             ABSENT = -32766,
@@ -74,9 +78,16 @@ namespace qOS {
             DEEP_HISTORY,
         };
 
-        class _Handler {
+        #ifdef DOXYGEN
+        /**
+        * @brief The state callback argument to handle the state-machine dynamics and
+        * provide execution information. Some methods can be written to perform
+        * state-transitions.
+        * @note Should be used only in state-callbacks as the only input argument.
+        */
+        class handler_t {
             protected:
-                /*! @cond  */
+                /*! @cond */
                 state *StartState{ nullptr };
                 state *NextState{ nullptr };
                 stateMachine* Machine{ nullptr };
@@ -86,9 +97,11 @@ namespace qOS {
                 signalID Signal{ signalID::SIGNAL_NONE };
                 _Handler( _Handler const& ) = delete;      /* not copyable*/
                 void operator=( _Handler const& ) = delete;  /* not assignable*/
-                /*! @endcond  */
+                /*! @endcond */
             public:
+                /*! @cond */
                 _Handler() = default;
+                /*! @endcond */
                 void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
                 void *Data{ nullptr };          /**< The user storage pointer. If the FSM its running as a task, this will point to the event_t structure*/
                 void *StateData{ nullptr };     /**< The state user storage pointer*/
@@ -162,7 +175,52 @@ namespace qOS {
                 }
             friend class qOS::sm::state;
         };
+        #endif
+
+        /*! @cond  */
+        class _Handler {
+            protected:
+                state *StartState{ nullptr };
+                state *NextState{ nullptr };
+                stateMachine* Machine{ nullptr };
+                state *State{ nullptr };
+                historyMode TransitionHistory{ historyMode::NO_HISTORY };
+                status Status{ SUCCESS };
+                signalID Signal{ signalID::SIGNAL_NONE };
+                _Handler( _Handler const& ) = delete;      /* not copyable*/
+                void operator=( _Handler const& ) = delete;  /* not assignable*/
+            public:
+                _Handler() = default;
+                void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
+                void *Data{ nullptr };          /**< The user storage pointer. If the FSM its running as a task, this will point to the event_t structure*/
+                void *StateData{ nullptr };     /**< The state user storage pointer*/
+                void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
+                {
+                    NextState = &s;
+                    TransitionHistory = m;
+                }
+                bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
+                bool timeoutStop( const index_t i ) noexcept;
+                state& thisState( void ) noexcept
+                {
+                    return *State;
+                }
+                stateMachine& thisMachine( void ) noexcept
+                { 
+                    return *Machine;
+                }
+                signalID signal( void ) const noexcept
+                {
+                    return Signal;
+                }
+                status lastStatus( void ) const noexcept
+                {
+                    return Status;
+                }
+            friend class qOS::sm::state;
+        };
         using handler_t = _Handler&;
+        /*! @endcond  */
 
         /**
         * @brief Pointer to a function that represents a state callback
@@ -231,25 +289,28 @@ namespace qOS {
         */
         using timeoutSpecOption_t = uint32_t;
 
+        /*! @cond  */
         struct _timeoutStateDefinition_s{
             qOS::time_t xTimeout;
             timeoutSpecOption_t options;
         };
+        /*! @endcond  */
+
         /**
         * @brief This type should be used to define an item for a 
         * timeout-specification table.
         */
         using timeoutStateDefinition_t = struct _timeoutStateDefinition_s;
 
+        /*! @cond  */
         struct _transition_s {
-            /*! @cond  */
             signalID xSignal{ signalID::SIGNAL_NONE };
             signalAction_t guard{ nullptr };
             state *nextState{ nullptr };
             historyMode history{ historyMode::NO_HISTORY };
             void *signalData{ nullptr };
-            /*! @endcond  */
         };
+        /*! @endcond  */
         /**
         * @brief This structure should be used to define an item for a state
         * transition table.
@@ -390,11 +451,14 @@ namespace qOS {
             PS_SUBSCRIBER_SLOTS_FULL
         };
 
+        /*! @cond  */
         struct _psIndex_s {
             psReqStatus status;
             size_t sig_slot;
             size_t sub_slot;
         };
+        /*! @endcond  */
+
         using psIndex_t = _psIndex_s;
 
         /**

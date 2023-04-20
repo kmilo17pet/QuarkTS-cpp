@@ -37,12 +37,58 @@
 #endif
 
 namespace qOS {
+
+    /** @addtogroup qtrace
+    * @brief API interfaces to print out trace and debug messages.
+    *  @{
+    */
+    
+    #ifdef DOXYGEN
+        /**
+        * @brief The global class to output trace streams. Its usage requires
+        * one the following static methods: trace::log() or trace::msg()
+        */
+        class trace {
+            public:
+                /**
+                * @brief Specify a new trace output with detailed information of the
+                * caller.
+                * @note Should be used only at the beginning of trace stream;
+                * Example:
+                * @code{.c}
+                * trace::log << "some message" << trace::endl;
+                * @endcode
+                */
+                static void* log;
+                /**
+                * @brief Specify a new trace output without detailed information of the 
+                * caller.
+                * @note Should be used only at the beginning of trace stream;
+                * Example:
+                * @code{.c}
+                * trace::msg << "some message" << trace::endl;
+                * @endcode
+                */
+                static void* msg;
+                /**
+                * @brief Specify that the variable given by @a v should be printed
+                * with its own name  :  <var::name> = <var::value>
+                * @param[in] v variable to be traced
+                * @code{.c}
+                * int myVariable;
+                * trace::log << trace::var( myVariable ) << trace::endl;
+                * @endcode
+                */
+                static void var( const void &v );
+        };
+    #endif
+
     namespace trace {
 
         /** @addtogroup qtrace
-        * @brief API interfaces to print out trace and debug messages.
         *  @{
         */
+
 
         /*! @cond */
         class tout_base {
@@ -54,7 +100,7 @@ namespace qOS {
 
         /**
         * @brief Class that sets the number of bytes to be traced when a pointer
-        * for a pointer variable
+        * is being used after.
         * Example:
         * @code{.c}
         * uin32_t myNumber = 0xAABBCCDD;
@@ -248,19 +294,27 @@ namespace qOS {
         extern _trace& _trace_out;
         /*! @endcond */
 
+        /**
+        * @brief Set the output method for the trace stream.
+        * @param[in] fcn The basic output byte function.
+        * @return none.
+        */
         inline void setOutputFcn( util::putChar_t fcn )
         {
             if ( nullptr != fcn ) {
                 _trace_out.writeChar = fcn;
             }
         }
+
+        /*! @cond */
         inline void log(void) {}
         inline void msg(void) {}
         inline const char * var( const char * vname ){ return vname; }
+        /*! @endcond */
 
         /** @}*/
     }
-
+    /** @}*/
 }
 
 /*! @cond */
@@ -268,10 +322,12 @@ namespace qOS {
 qOS::trace::_trace_out << "[ " << qOS::trace::dec <<                           \
 static_cast<unsigned long>( qOS::clock::getTick() )                            \
 << "] " << _TRACE_CURRENT_FUNCTION << ":" _TRACE_TOSTRING(__LINE__) " - "      \
-/*! @endcond */
+
 
 #define var(v)  var( _TRACE_STRINGIFY(v) ) << '=' << v
 #define log     log();_logHeader()
 #define msg     msg();qOS::trace::_trace_out
+
+/*! @endcond */
 
 #endif /*QOS_CPP_TRACE*/

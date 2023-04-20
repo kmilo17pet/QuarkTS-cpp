@@ -31,8 +31,8 @@
 using namespace std;
 
 /**
-* @brief A type to instantiate a integer-base variable. This type is
-* compiler implementation-defined.
+* @brief A type to instantiate a integer-base variable. This size of this type is
+* implementation-defined.
 */
 using base_t = int;
 

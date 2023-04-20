@@ -48,7 +48,7 @@ namespace qOS {
             * @note The expiration time should be at least, two times greater than
             * the clock-Tick.
             * @param[in] tTime The expiration time.
-            * @return Returns true on success, otherwise, returns false.
+            * @return Returns @c true on success, otherwise, returns @c false.
             */
             bool set( qOS::time_t tTime ) noexcept;
             /**
@@ -60,6 +60,10 @@ namespace qOS {
             * @note Timer should be armed before this operation
             */
             void reload( void ) noexcept;
+            /**
+            * @brief Get the current status of the Timer (Armed or Disarmed)
+            * @return @c true when armed, otherwise @c false when disarmed.
+            */
             bool status( void ) const noexcept;
             /**
             * @brief Non-Blocking timer check with automatic arming.
@@ -75,8 +79,8 @@ namespace qOS {
             * @note The expiration time should be at least, two times greater than
             * the clock-Tick.
             * @param[in] tTime The expiration time.
-            * @return Returns true on success, otherwise, returns false.
-            * @note A disarmed timer also returns false.
+            * @return Returns @c true on success, otherwise, returns @c false.
+            * @note A disarmed timer also returns @c false.
             */
             bool freeRun( qOS::time_t tTime ) noexcept;
             /**
@@ -95,12 +99,53 @@ namespace qOS {
             * @note A disarmed timer also returns false.
             */
             bool expired( void ) const noexcept;
+            /**
+            * @brief Check if the specified deadline for has been reached.
+            * @return @c true if the deadline has been reached, otherwise, returns @c false.
+            */
             bool deadLineCheck( void ) const noexcept;
+            /**
+            * @brief Retrieve the timer interval value
+            * @return The interval value in epochs.
+            */
             qOS::clock_t getInterval( void ) const noexcept;
+            /**
+            * @brief Set the expiration time for a timer and gets armed immediately
+            * @note The OS must be running before using timers.
+            * @note The expiration time should be at least, two times greater than
+            * the clock-Tick.
+            * @param[in] tTime The expiration time.
+            */
             timer& operator=( qOS::time_t tTime );
+            /**
+            * @brief Disarms of reload the timer
+            * @note The OS must be running before using timers.
+            * @note The expiration time should be at least, two times greater than
+            * the clock-Tick.
+            * @param[in] en @c true for reload of @c false to disarm.
+            */
             timer& operator=( bool en );
+            /**
+            * @brief Non-Blocking timer check
+            * @return Returns true when timer expires, otherwise, returns false.
+            * @note A disarmed timer also returns false.
+            */
             bool operator()( void );
+            /**
+            * @brief Set the expiration time for a timer and gets armed immediately
+            * @note The OS must be running before using timers.
+            * @note The expiration time should be at least, two times greater than
+            * the clock-Tick.
+            * @param[in] tTime The expiration time.
+            */
             bool operator()( qOS::time_t tTime );
+            /**
+            * @brief Disarms of reload the timer
+            * @note The OS must be running before using timers.
+            * @note The expiration time should be at least, two times greater than
+            * the clock-Tick.
+            * @param[in] en @c true for reload of @c false to disarm.
+            */
             void operator()( bool en );
             /** @brief Constant that defines the status of an armed timer*/
             static const bool ARMED;

@@ -5,7 +5,7 @@
 * QuarkTS++ include some basic macros to print out debugging messages. Messages 
 * can be simple text or the value of variables in specific base formats. 
 * To use the trace macros, a single-char output function must be defined using
-* the qTrace_Set_OutputFcn() macro.
+* the trace::setOutputFcn() function.
 *
 * A single-char output function should follow this prototype:
 *
@@ -22,21 +22,33 @@
 *
 * @section q_trace_viewvars Viewing variables
 * For viewing or tracing a variable (up to 32-bit data) through debug, one of 
-* the following macros are available: #qTrace_Var or #qDebug_Var.
+* the following statements are available: trace::log or trace::msg.
 *
-* The only difference between qTrace_ and Debug, is that @c qTrace_ macros, 
-* print out additional information provided by the @c __FILE__ , @c __LINE__ and
-* @c __func__ built-in preprocessing macros, mostly available in common C 
-* compilers.
+* The only difference between trace::log and trace::msg, is that trace starting
+* with @c log , print out additional information provided by the @c __FILE__ , 
+* @c __LINE__ and @c __func__ built-in preprocessing macros, mostly available 
+* in common C++ compilers.
 *
 * @section q_trace_mblock Viewing a memory block
-* For tracing memory from a specified target address, one of the following
-* macros are available: #qTrace_Mem or  #qDebug_Mem.
+* For tracing memory from a specified target address, you should use the trace::mem()
+* specifier to define the number of bytes to be visualized of the memory block 
+* that shuold be given after as a pointer.
 *
 * @section q_trace_usage Usage
 * In the example below, an UART output function is coded to act as the printer.
 * Here, the target MCU is an ARM-Cortex M0 with the UART1 as the selected 
 * peripheral for this purpose.
+*
+*  @code{.c}
+*  int main( void ) {
+*      uint16_t block[ 4 ] = { 451, 477, 1025, 354 };
+*      float other = 4.5f;
+*
+*      trace::setOutputFcn( putUART1 );
+*      trace::log << mem( sizeof(block) ) << block << trace::endl;
+*      trace::log << mem( sizeof(float) ) << &other << trace::endl;
+*  }
+*  @endcode
 *
 *  @code{.c}
 *  void putUART1 ( void *sp , const char c ) {
@@ -52,7 +64,7 @@
 *
 *  @code{.c}
 *  int main( void ) {
-*      qTrace_Set_OutputFcn( putUART1 );
+*      trace::setOutputFcn( putUART1 );
 *      ...
 *      ...
 *  }
@@ -61,16 +73,16 @@
 * After that, trace macros will be available for use.
 *
 *  @code{.c}
-*  void IO_TASK_Callback ( qEvent_t e ) {
-*      static qUINT32_t Counter = 0;
+*  void IO_TASK_Callback ( event_t e ) {
+*      static uint32_t Counter = 0;
 *      float Sample;
 *      ...
 *      ...
-*      qTrace_Message( "IO TASK running..." );
+*      trace::log << "IO TASK running..." << trace::endl;
 *      Counter++;
-*      qTrace_Variable( Counter , UnsignedDecimal );
+*      trace::log << Counter << trace::endl;
 *      Sample = SensorGetSample ();
-*      qTrace_Variable( Sample , Float );
+*      trace::log << Sample << trace::endl;
 *      ...
 *      ...
 *  }

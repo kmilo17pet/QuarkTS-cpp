@@ -14,13 +14,14 @@ namespace qOS {
         */
 
         using state = base_t;
+        /*! @cond  */
+
         /*cstat -MISRAC++2008-0-1-4_b*/
         const state UNDEFINED = -2;
         const state SUSPENDED = -1;
         const state BEGINNING =  0;
         /*cstat +MISRAC++2008-0-1-4_b*/
 
-        /*! @cond  */
         class _coContext;
         /*! @endcond  */
 

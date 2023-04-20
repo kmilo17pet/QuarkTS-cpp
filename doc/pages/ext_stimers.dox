@@ -1,11 +1,11 @@
-/*! @page q_stimers STimers
+/*! @page q_stimers Timers
 * @tableofcontents
 *
 * @section q_stimers_overview Overview
-* STimers are an essential extension as they allow for accurate and efficient 
+* The QuarkTS++ Timers are an essential extension as they allow for accurate and efficient 
 * timekeeping without blocking tasks. Using STimers enables the embedded 
 * application to perform other critical tasks while the timer is running in the
-* background. STimers also provide flexibility in the event that the timer 
+* background. Timers also provide flexibility in the event that the timer 
 * needs to be paused, restarted, or adjusted on the fly. This can be 
 * particularly useful in applications that require dynamic timing or have 
 * unpredictable event intervals.
@@ -54,19 +54,15 @@
 * <b> Features </b>
 *
 * - Provides a non-blocking equivalent to delay function.
-* - Each STimer encapsulates its own expiration (timeout) time.
+* - Each Timer encapsulates its own expiration (timeout) time.
 * - Provides elapsed and remaining time APIs.
-* - As mentioned before, STimers uses the same kernel clock source, this means 
+* - As mentioned before, QuarkTS++ timers uses the same kernel clock source, this means 
 * the time-elapsed calculation uses the qClock_GetTick() API, therefore, the time
 * resolution has the same value passed when the scheduler has been initialized
-* with qOS_Setup()
+* with core::init()
 *
 * @section q_stimerusage Using a STimer
-* A STimer is referenced by a handle, a variable of type qSTimer_t and 
-* preferably, should be initialized by the @c QSTIMER_INITIALIZER constant
-* before any usage.
-*
-* To use them, the code should follow a specific pattern that deals with the 
+* To use timers, the code should follow a specific pattern that deals with the 
 * states of this object. All related APIs are designed to be non-blocking, this
 * means there are ideal for use in cooperative environments such as the one provided 
 * by the OS itself. To minimize the implementation, this object is intentionally
@@ -76,37 +72,37 @@
 * value and a @a Disarmed timer is the opposite, which means that it does not 
 * have a preset value, so consequently, it is not running at all.
 *
-* The arming action can be performed with qSTimer_Set() or qSTimer_FreeRun() and
-* disarming with qSTimer_Disarm().
-* For qSTimer_FreeRun(), it checks the timer and performs the arming. If
+* The arming action can be performed with timer::set() or timer::freeRun() and
+* disarming with timer::disarm().
+* For timer::freeRun(), it checks the timer and performs the arming. If
 * disarmed, it gets armed immediately with the specified time. If armed, the 
 * time argument is ignored and the API only checks for expiration. When the time
-* expires, the STimer gets armed immediately taking the specified time.
+* expires, the Timer gets armed immediately taking the specified time.
 *
 * All possible checking actions are also provided for this object, including 
-* qSTimer_Elapsed(), qSTimer_Remaining() and qSTimer_Expired() , with the last 
+* timer::elapsed(), timer::remaining() and timer::expired() , with the last 
 * one being the most commonly used for timing applications. Finally, to get the 
 * current status of the STimer (check if is @a Armed or @a Disarmed) the 
-* qSTimer_Status() API should be used.
+* timer::status() API should be used.
 *
 * @section q_stimerexample STimer example
 * The example below shows a simple usage of this object. It is noteworthy that
-* arming is performed once using the qEvent_t::FirstCall flag. This prevents the timer
+* arming is performed once using the event_t::FirstCall() flag. This prevents the timer
 * from being re-armed every time the task runs. After the timer expires, it
 * should be disarmed explicitly
 *
 *  @code{.c}
-*  void Example_Task( qEvent_t e ) {
-*      static qSTimer_t timeout = QSTIMER_INITIALIZER;
-*      if ( e->FirstCall ) {
+*  void Example_Task( event_t e ) {
+*      static timer_t timeout;
+*      if ( e.firstCall() ) {
 *          /*Arming the stimer for  3.5 seg*/
-*          qSTimer_Set( &timeout, 3.5f );
+*          timeout.set( 3500 );
 *      }
 *      
 *      /*non-blocking delay, true when timeout expires*/
-*      if ( qSTimer_Expired( &timeout ) ) {
+*      if ( timeout.expired() ) {
 *          /* TODO: Code when STimer expires */
-*          qSTimer_Disarm( &timeout );
+*          timeout.disarm();
 *      }
 *      else return; /*Yield*/
 *  }

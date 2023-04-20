@@ -14,6 +14,11 @@
 namespace qOS {
     namespace mem {
 
+        /** @addtogroup qmemmang
+        * @brief API interface for the @ref q_memmang extension.
+        *  @{
+        */
+
         /*! @cond */
         using address_t = size_t;
         struct _blockConnect_s {
@@ -100,6 +105,7 @@ namespace qOS {
                 size_t getFreeSize( void ) const noexcept;
         };
 
+        /** @}*/
     }
 }
 

@@ -68,6 +68,8 @@ namespace qOS {
         };
         /*! @endcond */
 
+
+        #ifdef DOXYGEN
         /**
         * @brief The command argument with all the regarding information of the
         * incoming AT command.
@@ -78,12 +80,11 @@ namespace qOS {
         * subsequent string after the command text.
         * @note Should be used only in command-callbacks as the only input argument.
         */
-        class _Handler {
+        class handler_t {
             private:
                 commandLineInterface *instance{ nullptr };
                 void *Command{ nullptr };
                 char *StrData{ nullptr };
-                char *Output{ nullptr };
                 void *Data{ nullptr };
                 size_t StrLen{ 0u };
                 size_t NumArgs{ 0u };
@@ -182,18 +183,68 @@ namespace qOS {
                 * @param[in] c The ASCII character.
                 * @return none.
                 */
-                void output( const char c ) const;
+                void writeOut( const char c ) const;
                 /**
                 * @brief Writes a string to CLI output without the @c EOF string appended
                 * at the end.
                 * @param[in] s This is the C string to be written.
                 * @return none.
                 */
-                void output( const char *s ) const;
+                void writeOut( const char *s ) const;
+                /**
+                * @brief The CLI output buffer. Can be written by the user.
+                */
+                char *output{ nullptr };
             friend class qOS::commandLineInterface;
         };
+        #endif
 
+        /*! @cond  */
+        class _Handler {
+            private:
+                commandLineInterface *instance{ nullptr };
+                void *Command{ nullptr };
+                char *StrData{ nullptr };
+                void *Data{ nullptr };
+                size_t StrLen{ 0u };
+                size_t NumArgs{ 0u };
+                commandType Type{ UNDEF };
+                _Handler( _Handler const& ) = delete;
+                void operator=( _Handler const& ) = delete;
+                _Handler() = default;
+            public:
+                inline commandType getType( void ) const
+                {
+                    return Type;
+                }
+                inline char* getStringData( void )
+                {
+                    return StrData;
+                }
+                inline void* getData( void )
+                {
+                    return Data;
+                }
+                inline size_t getStringLength( void ) const
+                {
+                    return StrLen;
+                }
+                inline size_t getNumArgs( void ) const
+                {
+                    return NumArgs;
+                }
+                char* getArgPtr( index_t n ) const;
+                int getArgInt( index_t n ) const;
+                float32_t getArgFloat( index_t n ) const;
+                uint32_t getArgHex( index_t n ) const;
+                char* getArgString( index_t n, char *pOut );
+                void writeOut( const char c ) const;
+                void writeOut( const char *s ) const;
+                char *output{ nullptr };
+            friend class qOS::commandLineInterface;
+        };
         using handler_t = _Handler&;
+        /*! @endcond  */
 
         /**
         * @brief Pointer to function : An AT-Command callback

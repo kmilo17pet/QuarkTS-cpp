@@ -29,6 +29,11 @@ namespace qOS {
     using coreFlags_t = uint32_t ;
     /*! @endcond  */
 
+    /** @addtogroup qnot
+    * @brief API interface for task @ref q_notifications
+    *  @{
+    */
+
     /**
     * @brief An enum that defines the modes in which a notification can be
     * delivered
@@ -49,6 +54,13 @@ namespace qOS {
     using notificationSpreader_t = struct _notificationSpreader_s;
     /*! @endcond  */
 
+    /** @}*/
+
+
+    /** @addtogroup qeventflags
+    *  @{
+    */
+
     /**
     * @brief Event flag selector function
     * @param[in] i The desired event-flag, a value between 1 and 20
@@ -58,6 +70,8 @@ namespace qOS {
     {
         return ( ( i >= 1u ) && ( i <= 20u ) ) ?  0x00001000uL << ( i - 1u ) : 0x00001000uL;
     }
+
+    /** @}*/
 
     /**
     * @brief The class to interface the OS
@@ -307,6 +321,12 @@ namespace qOS {
             * this function never returns.
             */
             bool run( void ) noexcept;
+
+            /** @addtogroup qnot
+            * @brief API interface for task @ref q_notifications
+            *  @{
+            */
+
             /**
             * @brief Sends a notification generating an asynchronous event.
             * If mode = notifyMode::SIMPLE, the method marks the task as 
@@ -352,6 +372,14 @@ namespace qOS {
             * @return @c true if the task has pending notifications, @c false if not.
             */
             bool hasPendingNotifications( task &Task ) noexcept;
+
+            /** @}*/
+
+            /** @addtogroup qeventflags
+            * @brief API interface for the built-in-task @ref qeventflags.
+            *  @{
+            */
+
             /**
             * @brief Modify the EventFlags for the provided task.
             * @note Any EventFlag set will cause a task activation.
@@ -398,6 +426,9 @@ namespace qOS {
             * @param[in] name The string with the name to find.
             * @return A pointer to the task node if found, otherwise returns @c nullptr.
             */
+
+            /** @}*/
+
             task* findTaskByName( const char *name ) noexcept;
             /**
             * @brief Yield the control of the current running task to another task.

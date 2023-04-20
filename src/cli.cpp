@@ -62,13 +62,13 @@ bool commandLineInterface::setup( util::putChar_t outFcn, char *pInput, const si
     if ( nullptr != outFcn ) {
         outputFcn = outFcn;
         sizeOutput = sizeOut;
-        handler.Output = pOutput;
+        handler.output = pOutput;
         handler.instance = this;
         id_rsp = Q_CLI_DEFAULT_DEVID_STRING;
         cli::input::storage = pInput;
         cli::input::size = sizeIn;
         cli::input::maxIndex = sizeIn - 1u;
-        (void)memset( handler.Output, 0, this->sizeOutput );
+        (void)memset( handler.output, 0, this->sizeOutput );
         retValue = true;
     }
 
@@ -313,17 +313,17 @@ void commandLineInterface::handleResponse( cli::response retval )
                 (void)util::outputString( outputFcn, nf_rsp );
                 break;
             case cli::response::OUTPUT_RESPONSE:
-                (void)util::outputString( outputFcn, handler.Output );
+                (void)util::outputString( outputFcn, handler.output );
                 break;
             default: /*AT_ERROR_CODE(#) */
                 if ( static_cast<base_t>( retval ) < 0 ) {
                     const int32_t errorCode = cli::ERROR_CODE( static_cast<int16_t>( retval ) );
 
-                    (void)util::integerToString( errorCode, handler.Output, 10u );
+                    (void)util::integerToString( errorCode, handler.output, 10u );
                     (void)util::outputString( outputFcn, er_rsp );
                     outputFcn( nullptr, ':' );
-                    (void)util::outputString( outputFcn, handler.Output );
-                    handler.Output[ 0 ] = '\0';
+                    (void)util::outputString( outputFcn, handler.output );
+                    handler.output[ 0 ] = '\0';
                 }
                 break;
         }
@@ -366,14 +366,14 @@ bool commandLineInterface::run( void )
             outRetval = cli::response::NO_RESPONSE; /*nothing to do*/
         }
         /*show the user output if available*/
-        if ( nullptr != handler.Output ) {
-            if ( '\0' != handler.Output[ 0 ] ) {
+        if ( nullptr != handler.output ) {
+            if ( '\0' != handler.output[ 0 ] ) {
                 handleResponse( cli::response::OUTPUT_RESPONSE );
             }
         }
         /*print out the command output*/
         handleResponse( outRetval );
-        handler.Output[ 0 ] = '\0';
+        handler.output[ 0 ] = '\0';
         retValue = inputFlush(); /*flush buffers*/
     }
     
@@ -456,12 +456,12 @@ char* cli::_Handler::getArgString( index_t n, char *pOut )
     return retPtr;
 }
 /*============================================================================*/
-void cli::_Handler::output( const char c ) const
+void cli::_Handler::writeOut( const char c ) const
 {
     instance->outputFcn( nullptr, c );
 }
 /*============================================================================*/
-void cli::_Handler::output( const char *s ) const
+void cli::_Handler::writeOut( const char *s ) const
 {
     (void)util::outputString( instance->outputFcn, s );
 }

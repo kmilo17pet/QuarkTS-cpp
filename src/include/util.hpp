@@ -11,7 +11,47 @@ namespace qOS {
         * @brief API for input/output utilities and safe string interfaces.
         *  @{
         */
+
+        /**
+        * @brief Pointer to function that write-out a single character
+        * @note  User should use bare-metal code to implement this function.
+        * Example :
+        * @code{.c}
+        * void BSP_PutChar( void *sp, const char c ) {
+        *       (void)sp;
+        *       HAL_UARTWriteByte( c );
+        * }
+        * @endcode
+        * @param[in] sp The user storage pointer.
+        * @param[in] c The character to write out.
+        * @return none.
+        */
         using putChar_t = void (*)( void* , const char );
+
+        /**
+        * @brief Pointer to function that perform a single character I/O operation
+        * @note  User should use bare-metal code to implement this function.
+        * Example 1: Input operation
+        * @code{.c}
+        * char BSP_GetChar( void *sp, const char in ) {
+        *       (void)sp;
+        *       (void)in;
+        *       return HAL_UARTReceiveByte( );
+        * }
+        * @endcode
+        * Example 2: Ouput operation
+        * @code{.c}
+        * char BSP_GetChar( void *sp, char in ) {
+        *       (void)sp;
+        *       HAL_UARTPutByte( in );
+        *       return 0u;
+        * }
+        * @endcode
+        * @param[in] sp The user storage pointer.
+        * @param[in] in The byte to write out.
+        * @return If an input operation is performed, this function should return
+        * the byte read from the input.
+        */
         using ioFcn_t = char (*)( void *, const char );
 
         /**

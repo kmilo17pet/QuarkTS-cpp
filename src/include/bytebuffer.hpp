@@ -6,7 +6,7 @@
 
 namespace qOS {
 
-    /** @addtogroup qbsbuffers Byte-Sized Buffers
+    /** @addtogroup qbsbuffers Byte-Sized buffers
      * @brief An interrupt-safe byte-sized ring buffer interface.
      *  @{
      */
@@ -84,7 +84,7 @@ namespace qOS {
             */
             size_t count( void ) const noexcept;
     };
-    
+
     /** @}*/
 }
 
