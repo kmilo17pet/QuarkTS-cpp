@@ -154,7 +154,7 @@ Overview</h1>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
- <em>Coroutines in QuarkTS</em> </center><p >The QuarkTS implementation uses the Duff's device approach, and is heavily inspired by the Knuth method, <a href="https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html" style="font-weight:bold">Simon Tatham's Co-Routines in C</a> and <a href="http://dunkels.com/adam/pt/index.html" style="font-weight:bold">Adam Dunkels Protothreads</a> . This means that a local-continuation variable is used to preserve the current state of execution at a particular place of the Co-Routine scope but without any call history or local variables. This brings benefits to lower RAM usage, but at the cost of some restrictions on how a Co-routine can be used.</p>
+ <em>Coroutines in QuarkTS++</em> </center><p >The QuarkTS++ implementation uses the Duff's device approach, and is heavily inspired by the Knuth method, <a href="https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html" style="font-weight:bold">Simon Tatham's Co-Routines in C</a> and <a href="http://dunkels.com/adam/pt/index.html" style="font-weight:bold">Adam Dunkels Protothreads</a> . This means that a local-continuation variable is used to preserve the current state of execution at a particular place of the Co-Routine scope but without any call history or local variables. This brings benefits to lower RAM usage, but at the cost of some restrictions on how a Co-routine can be used.</p>
 <p ><b> Limitations and restrictions </b></p>
 <ul>
 <li>The stack of a Co-Routine is not maintained when a yield is performed. This means variables allocated on the stack will loose their values. To overcome this, a variable that must maintain its value across a blocking call must be declared as <code>static</code>.</li>
@@ -225,7 +225,7 @@ Co-Routine example with semaphores.</h1>
 <p >The following example shows how to implement the bounded buffer problem using Co-Routines and semaphores. The example uses two tasks: one that produces items and other that consumes items.</p>
 <p >Note that there is no need for a mutex to guard the <code>add_to_buffer()</code> and <code>get_from_buffer()</code> functions because of the implicit locking semantics of Co-Routines, so it will never be preempted and will never block except in an explicit #qCR_SemWait statement.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;AppLibrary.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#define NUM_ITEMS    ( 32 )</span></div>

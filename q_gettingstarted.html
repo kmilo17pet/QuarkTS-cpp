@@ -130,8 +130,8 @@ $(document).ready(function(){initNavTree('q_gettingstarted.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#q_getos">Getting the OS</a><ul><li class="level2"><a href="#q_cloneos">Cloning QuarkTS</a></li>
-<li class="level2"><a href="#q_submodule">Including QuarkTS as a git sub-module</a></li>
+<ul><li class="level1"><a href="#q_getos">Getting the OS</a><ul><li class="level2"><a href="#q_cloneos">Cloning QuarkTS++</a></li>
+<li class="level2"><a href="#q_submodule">Including QuarkTS++ as a git sub-module</a></li>
 <li class="level2"><a href="#q_getqconfig">Get a copy of the OS configuration file</a></li>
 </ul>
 </li>
@@ -145,14 +145,14 @@ $(document).ready(function(){initNavTree('q_gettingstarted.html',''); initResiza
 <div class="textblock"><h1><a class="anchor" id="q_getos"></a>
 Getting the OS</h1>
 <p >Download the latest release from the official repository :</p>
-<p ><a href="https://github.com/kmilo17pet/QuarkTS/releases" style="font-weight:bold">QuarkTS Releases</a></p>
+<p ><a href="https://github.com/kmilo17pet/QuarkTS/releases" style="font-weight:bold">QuarkTS++ Releases</a></p>
 <p >Unpack the release package and add the sources files to your project.</p>
 <h2><a class="anchor" id="q_cloneos"></a>
-Cloning QuarkTS</h2>
+Cloning QuarkTS++</h2>
 <p >You only need to clone the <code>kernel</code> branch as follows:</p>
 <div class="fragment"><div class="line">git clone -b kernel https://github.com/kmilo17pet/QuarkTS.git</div>
 </div><!-- fragment --><h2><a class="anchor" id="q_submodule"></a>
-Including QuarkTS as a git sub-module</h2>
+Including QuarkTS++ as a git sub-module</h2>
 <p >Add the OS kernel as a submodule to your project:</p>
 <div class="fragment"><div class="line">git submodule add -b kernel https://github.com/kmilo17pet/QuarkTS.git &lt;destination path&gt;</div>
 </div><!-- fragment --><p >Then, run the initialize command to fetch the code for the first time:</p>
@@ -161,20 +161,20 @@ Including QuarkTS as a git sub-module</h2>
 <div class="fragment"><div class="line">git submodule update --remote</div>
 </div><!-- fragment --><h2><a class="anchor" id="q_getqconfig"></a>
 Get a copy of the OS configuration file</h2>
-<p >The file <code>qconfig.h</code> provides specific <a class="el" href="q_foundations.html#q_configmacros">Configuration macros</a> to customize several aspects of the OS. In order to build your solution with QuarkTS, you should provided your own copy of this configuration file. You can obtain a copy with the default configuration by issuing the following command:</p>
+<p >The file <code>qconfig.h</code> provides specific <a class="el" href="q_foundations.html#q_configmacros">Configuration macros</a> to customize several aspects of the OS. In order to build your solution with QuarkTS++, you should provided your own copy of this configuration file. You can obtain a copy with the default configuration by issuing the following command:</p>
 <div class="fragment"><div class="line">curl https://raw.githubusercontent.com/kmilo17pet/QuarkTS/master/src/config/qconfig.h -o &lt;destination path&gt;/qconfig.h</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_firststeps"></a>
 First steps</h1>
-<p >Include the source files to your project. Also, make sure you add a copy of the file <code>qconfig.h</code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code>QuarkTS.h</code> and setup the instance of the kernel using the qOS_Setup() inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
-<p >File <code>main.c</code> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#define TIMER_TICK       ( 0.001f ) </span><span class="comment">// 1ms</span></div>
+<p >Include the source files to your project. Also, make sure you add a copy of the file <code>qconfig.h</code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code>quarkts++</code>.h and setup the instance of the kernel using the qOS_Setup() inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
+<p >File <code>main.c</code> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    <span class="comment">//device startup with hardware-specific code</span></div>
 <div class="line">    HardwareSetup();</div>
 <div class="line">    Configure_Periodic_Timer_Interrupt_1ms();</div>
 <div class="line">    <span class="comment">//end of device startup with hardware-specific code</span></div>
-<div class="line">    qOS_Setup( NULL , TIMER_TICK , IdleTask_Callback );</div>
+<div class="line">    os.init( <span class="keyword">nullptr</span> , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p >In the above code, the following considerations should be taken:</p><ul>
@@ -188,39 +188,39 @@ Two simple demonstrative examples</h1>
 <h2><a class="anchor" id="q_os_example1"></a>
 A simple scheduling</h2>
 <p >This example demonstrates a simple environment setup for multiple tasks. Initially, only <code>task1</code> and <code>task2</code> are enabled. <code>task1</code> runs every 2 seconds 10 times and then stops. <code>task2</code> runs every 3 seconds indefinitely. <code>task1</code> enables <code>task3</code> at its first run. <code>task3</code> run every 5 seconds. <code>task1</code> disables <code>task3</code> on its last iteration and change <code>task2</code> to run every 1/2 seconds. In the end, <code>task2</code> is the only task running every 1/2 seconds.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;BSP.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#define TIMER_TICK       ( 0.001f )   </span><span class="comment">/* 1ms */</span><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
-<div class="line">qTask_t task1, task2, task3; <span class="comment">/*task nodes*/</span></div>
+<div class="line">task task1, task2, task3; <span class="comment">/*task nodes*/</span></div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> interrupt Timer0_ISR( <span class="keywordtype">void</span> ) {</div>
-<div class="line">    qClock_SysTick();</div>
+<div class="line">    clock::sysTick();</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> Task1_Callback( qEvent_t e ) {</div>
-<div class="line">    BSP_UART1_WriteString( <span class="stringliteral">&quot;Task1&quot;</span> );</div>
+<div class="line"><span class="keywordtype">void</span> Task1_Callback( event_t e ) {</div>
+<div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> ( e-&gt;FirstIteration ) {</div>
-<div class="line">        qTask_Resume( &amp;Task3 );</div>
+<div class="line">    <span class="keywordflow">if</span> ( e.firstIteration() ) {</div>
+<div class="line">        task3.setState( taskState::ENABLED );</div>
 <div class="line">    }</div>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">if</span> ( e-&gt;LastIteration ) {</div>
-<div class="line">        qTask_Suspend( &amp;Task3 );</div>
-<div class="line">        qTask_Set_Time( &amp;Task2, 0.5 );</div>
+<div class="line">        e.self().setState( taskState::SUSPENDED );</div>
+<div class="line">        e.self().setTime( 500 );</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> Task2_Callback( qEvent_t e ) {</div>
-<div class="line">    BSP_UART1_WriteString( <span class="stringliteral">&quot;Task2&quot;</span> );</div>
+<div class="line"><span class="keywordtype">void</span> Task2_Callback( event_t e ) {</div>
+<div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> Task3_Callback( qEvent_t e ) {</div>
-<div class="line">    BSP_UART1_WriteString( <span class="stringliteral">&quot;Task3&quot;</span> );</div>
+<div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
@@ -228,11 +228,11 @@ A simple scheduling</h2>
 <div class="line">    <span class="comment">/*function to fire an interrupt at 1ms - timer tick*/</span></div>
 <div class="line">    Configure_Periodic_Timer0_Interrupt_1ms();</div>
 <div class="line">    </div>
-<div class="line">    qOS_Setup( NULL, TIMER_TICK, NULL );</div>
-<div class="line">    qOS_Add_Task( &amp;Task1, Task1_Callback, 50, 2.0f, 10, qEnabled, NULL );</div>
-<div class="line">    qOS_Add_Task( &amp;Task2, Task2_Callback, 50, 3.0f, qPeriodic, qEnabled, NULL );</div>
-<div class="line">    qOS_Add_Task( &amp;Task2, Task3_Callback, 50, 5.0f, qPeriodic, qDisabled, NULL );</div>
-<div class="line">    qOS_Run();</div>
+<div class="line">    os.init( <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span> );</div>
+<div class="line">    os.addTask( Task1, Task1_Callback, 50, 2000, 10, taskState::ENABLED );</div>
+<div class="line">    os.addTask( Task2, Task2_Callback, 50, 3000, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">    os.addTask( Task2, Task3_Callback, 50, 5000, task::PERIODIC, taskState::DISABLED );</div>
+<div class="line">    os.run();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>

@@ -152,7 +152,7 @@ $(document).ready(function(){initNavTree('q_events.html',''); initResizable(); }
 </div>
 <div class="textblock"><h1><a class="anchor" id="eventdata"></a>
 Retrieving the event data</h1>
-<p >In the QuarkTS OS, tasks can be triggered from multiple event sources including time-elapsed, notifications, queues and event-flags. This can lead to several situations that must be handled by the application writer from the task context, for example:</p>
+<p >In the QuarkTS++ OS, tasks can be triggered from multiple event sources including time-elapsed, notifications, queues and event-flags. This can lead to several situations that must be handled by the application writer from the task context, for example:</p>
 <ul>
 <li>What is the event source that triggers the task execution?</li>
 <li>How to get the event-associated data?</li>
@@ -175,8 +175,8 @@ The Time-Elapsed event</h1>
 <li>If a task has a finite number of iterations, the scheduler will disable the task when the number of iterations reaches the programmed value.</li>
 <li>Tasks always have an inherent time lag that can be noticed even more, when the programmed time interval is too low (see figure below). In a real-time context, it is important to reduce this time lag or jitter, to an acceptable level for the application.</li>
 </ul>
-<dl class="section remark"><dt>Remarks</dt><dd>QuarkTS uses the TTA approach to trigger time-elapsed events as explained here <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>QuarkTS can generally meet a time deadline if you use lightweight code in the callbacks and there is a reduced pool of pending tasks, so it can be considered a soft real-time scheduler, however, it cannot meet a deadline deterministically like a hard real-time OS.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>QuarkTS++ uses the TTA approach to trigger time-elapsed events as explained here <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>QuarkTS++ can generally meet a time deadline if you use lightweight code in the callbacks and there is a reduced pool of pending tasks, so it can be considered a soft real-time scheduler, however, it cannot meet a deadline deterministically like a hard real-time OS.</dd></dl>
 <center>  
 <!DOCTYPE html>
 <html>
@@ -278,7 +278,7 @@ Sending notifications</h3>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span> <span class="comment">/*hardware dependent code*/</span></div>
-<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line">qTask_t taskA, taskB;</div>
 <div class="line"><span class="keywordtype">void</span> taskA_Callback( qEvent_t e );</div>
@@ -391,11 +391,11 @@ Attach a queue to a task</h3>
 <dl class="section note"><dt>Note</dt><dd>For the ::qQueueMode_Receiver mode, data from the front of the queue will be received automatically in every trigger, this involves a data removal after the task is served. During the respective task execution, the EventData field of the qEvent_t structure will be pointing to the extracted data. For the other modes, the qEvent_t::EventData field will point to the queue that triggered the event.</dd></dl>
 <h3><a class="anchor" id="q_queueexample"></a>
 A queue example</h3>
-<p >This example shows the usage of QuarkTS queues. The application is the classic producer/consumer example. The producer task puts data into the queue. When the queue reaches a specific item count, the consumer task is triggered to start fetching data from the queue. Here, both tasks are attached to the queue.</p>
+<p >This example shows the usage of QuarkTS++ queues. The application is the classic producer/consumer example. The producer task puts data into the queue. When the queue reaches a specific item count, the consumer task is triggered to start fetching data from the queue. Here, both tasks are attached to the queue.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#define TIMER_TICK       ( 0.001f )  </span><span class="comment">/* 1ms */</span><span class="preprocessor"></span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
@@ -498,7 +498,7 @@ Using the task Event-flags</h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#define TIMER_TICK       ( 0.001f ) </span><span class="comment">/* 1ms */</span><span class="preprocessor"></span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*event flags application definitions */</span></div>

@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('q_memmang.html',''); initResizable(); 
 </div>
 <div class="textblock"><h1><a class="anchor" id="q_memmang_overview"></a>
 Overview</h1>
-<p >The QuarkTS OS is designed to support the development of safe-critical embedded applications. Dynamic memory allocation is not permitted for kernel design, as it may result in out-of-storage run-time failures that are undesirable. However, some applications can be easily deployed using this allocation scheme, making a safe and portable implementation crucial for user code.</p>
+<p >The QuarkTS++ OS is designed to support the development of safe-critical embedded applications. Dynamic memory allocation is not permitted for kernel design, as it may result in out-of-storage run-time failures that are undesirable. However, some applications can be easily deployed using this allocation scheme, making a safe and portable implementation crucial for user code.</p>
 <p >In a typical C environment, memory allocation can be achieved using standard library functions like <code>malloc()</code> and <code>free()</code>. However, they may not be appropriate for most embedded applications, as they may not be available on small microcontrollers or could consume a substantial amount of code space. Furthermore, dynamic memory allocation has several implementation-defined behaviors and potential issues such as fragmentation.</p>
 <p >To address these concerns, the OS offers its own memory management interface for dynamic allocation as a fully kernel-independent extension. Instead of calling <code>malloc()</code> or <code>free()</code>, the application can use qMalloc() to allocate RAM, and qFree() to free it when necessary. These functions have the same prototypes as their standard C library counterparts.</p>
 <h1><a class="anchor" id="q_memmang_principle"></a>
@@ -161,16 +161,16 @@ Principle of operation</h1>
 <dl class="section attention"><dt>Attention</dt><dd>The application is not exempt from memory leaks if the user does not perform adequate memory management. Here, the worst-case scenario can occur in the absence of free memory.</dd></dl>
 <h1><a class="anchor" id="q_memmang_pools"></a>
 Memory pools</h1>
-<p >A memory pool is a special resource that allows memory blocks to be dynamically allocated from a user-designated memory region. Instead of typical pools with fixed size block allocation, the pools in QuarkTS can be of any size, thereby the user is responsible for selecting the appropriate memory pool to allocate data with the same size.</p>
+<p >A memory pool is a special resource that allows memory blocks to be dynamically allocated from a user-designated memory region. Instead of typical pools with fixed size block allocation, the pools in QuarkTS++ can be of any size, thereby the user is responsible for selecting the appropriate memory pool to allocate data with the same size.</p>
 <p >The default memory management unit resides in a memory pool object. Also called the <em>"default pool"</em>. The total amount of available heap space in the default memory pool is set by <code>Q_DEFAULT_HEAP_SIZE</code>, which is defined in <code>qconfig.h</code>.</p>
-<p >Besides the default pool, any number of additional memory pools can be defined. Like any other object in QuarkTS, memory pools are referenced by handles, a variable of type qMemMang_Pool_t and should be initialized before use with the qMemMang_Pool_Setup() API function.</p>
+<p >Besides the default pool, any number of additional memory pools can be defined. Like any other object in QuarkTS++, memory pools are referenced by handles, a variable of type qMemMang_Pool_t and should be initialized before use with the qMemMang_Pool_Setup() API function.</p>
 <p >To perform operations in another memory pool, besides the default pool, an explicit switch should be performed using qMemMang_Pool_Select(). Here, a pointer to the target pool should be passed as input argument. From now on, every call to qMalloc(), or qFree() will run over the newly selected memory pool. To return to the default pool, a new call to qMemMang_Pool_Select() is required passing <code>NULL</code> as input argument.</p>
 <p >To keep track of the memory usage, the qMemMang_Get_FreeSize() API function returns the number of free bytes in the memory pool at the time the function is called.</p>
 <h1><a class="anchor" id="q_memmang_usage"></a>
 Usage example</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;Core.h&quot;</span></div>
 <div class="line"> </div>

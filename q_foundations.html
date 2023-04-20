@@ -197,7 +197,7 @@ Timing Approach</h1>
 </ul>
 <h1><a class="anchor" id="q_tasks"></a>
 Tasks</h1>
-<p >Like many operating systems, the basic unit of work is the task. Tasks can perform certain functions, which could require periodic or one-time execution, update specific variables or wait for specific events. Tasks also could be controlling specific hardware or be triggered by hardware interrupts. In the QuarkTS OS, a task is seen as a node concept that links together:</p>
+<p >Like many operating systems, the basic unit of work is the task. Tasks can perform certain functions, which could require periodic or one-time execution, update specific variables or wait for specific events. Tasks also could be controlling specific hardware or be triggered by hardware interrupts. In the QuarkTS++ OS, a task is seen as a node concept that links together:</p>
 <ul>
 <li>Program code performing specific task activities (callback function)</li>
 <li>Execution interval (time)</li>
@@ -222,7 +222,7 @@ Tasks</h1>
 <div class="line"><span class="keywordtype">void</span> UserTask_Callback( qEvent_t eventdata ) {</div>
 <div class="line">    <span class="comment">// TODO : Task code</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>All tasks in QuarkTS must ensure their completion to return the CPU control back to the scheduler to follow the <a class="el" href="q_foundations.html#rtcmodel">RTC(Run To Completion) model</a>, otherwise, the scheduler will hold the execution state for that task, preventing the activation of other tasks.</dd></dl>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>All tasks in QuarkTS++ must ensure their completion to return the CPU control back to the scheduler to follow the <a class="el" href="q_foundations.html#rtcmodel">RTC(Run To Completion) model</a>, otherwise, the scheduler will hold the execution state for that task, preventing the activation of other tasks.</dd></dl>
 <h2><a class="anchor" id="q_idletask"></a>
 The idle task</h2>
 <p >It's a special task loaded by the OS scheduler when there is nothing else to do (no task in the whole scheme has reached the ready state). The idle task is already hard-coded into the kernel, ensuring that at least, one task is able to run. Additionally, the OS setup this task with the lowest possible priority to ensure that does not use any CPU time if there are higher priority application tasks able to run. The idle task doesn't perform any active functions, but the user can decide if it should perform some activities defining a callback function for it. This could be done at the beginning of the kernel setup. Of course, the callback must follow the same function prototype for tasks. </p><dl class="section note"><dt>Note</dt><dd>To disable the idle-task activities, a <code>NULL</code> should be passed as argument on qOS_Setup() or qOS_Set_IdleTask().</dd></dl>
@@ -292,7 +292,7 @@ Global states and scheduling rules</h1>
 <li><code>qRunning</code> : The task is currently being executed.</li>
 <li><code>qSuspended</code> : The task doesn't take part in what is going on. Normally this state is taken after the <code>qRunning</code> state or when the task does not reach the <code>qReady</code> state.</li>
 </ul>
-<p >The presence of a task in a particular list indicates the task's state. There are many ready lists as defined in the <code>Q_PRIORITY_LEVELS</code> macro. To select the target ready list, the OS uses the user-assigned priority between 0 (the lowest priority) and <code>Q_PRIORITY_LEVELS-1</code> (the highest priority). For instance, if <code>Q_PRIORITY_LEVELS</code> is set to 5, then QuarkTS will use 5 priority levels or ready lists: 0 (lowest priority), 1, 2, 3, and 4 (highest priority).</p>
+<p >The presence of a task in a particular list indicates the task's state. There are many ready lists as defined in the <code>Q_PRIORITY_LEVELS</code> macro. To select the target ready list, the OS uses the user-assigned priority between 0 (the lowest priority) and <code>Q_PRIORITY_LEVELS-1</code> (the highest priority). For instance, if <code>Q_PRIORITY_LEVELS</code> is set to 5, then QuarkTS++ will use 5 priority levels or ready lists: 0 (lowest priority), 1, 2, 3, and 4 (highest priority).</p>
 <center>  
   <!DOCTYPE html>
   <html>
@@ -304,7 +304,7 @@ Global states and scheduling rules</h1>
   <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
   </body>
   </html>
-   <em>OS lists</em> </center><p >Except for the idle task, a task exists in one of these states. As the real-time embedded system runs, each task moves from one state to another (moving it from one list to another), according to the logic of a simple finite state machine (FSM). The figure above illustrates the typical flowchart used by QuarkTS to handle the task's states, with brief descriptions of the state transitions, additionally you may also notice the interaction between the scheduler and the dispatcher.</p>
+   <em>OS lists</em> </center><p >Except for the idle task, a task exists in one of these states. As the real-time embedded system runs, each task moves from one state to another (moving it from one list to another), according to the logic of a simple finite state machine (FSM). The figure above illustrates the typical flowchart used by QuarkTS++ to handle the task's states, with brief descriptions of the state transitions, additionally you may also notice the interaction between the scheduler and the dispatcher.</p>
 <p >The OS assumes that none of the tasks does a block anywhere during the <code>qRunning</code> state. Based on the round-robin fashion, each ready task runs in turn from every ready list. The developer should take care to monitor their system execution times to make sure during the worst case, when all tasks have to execute, all of the deadlines are still met.</p>
 <h2><a class="anchor" id="q_osrules"></a>
 Rules</h2>
@@ -352,7 +352,7 @@ Additional operational states</h3>
 <h1><a class="anchor" id="q_critical"></a>
 Critical sections</h1>
 <p >Since the kernel is non-preemptive, the only critical section that must be handled are the shared resources accessed from the ISR context. Perhaps, the most obvious way of achieving mutual exclusion is to allow the kernel to disable interrupts before it enters their critical section and then, enable interrupts after it leaves its critical section.</p>
-<p >By disabling interrupts, the CPU will be unable to change the current context. This guarantees that the currently running job can use a shared resource without another context accessing it. But, disabling interrupts, is a major undertaking. At best, the system will not be able to service interrupts for the time the current job is doing in its critical section, however, in QuarkTS, these critical sections are handled as quickly as possible.</p>
+<p >By disabling interrupts, the CPU will be unable to change the current context. This guarantees that the currently running job can use a shared resource without another context accessing it. But, disabling interrupts, is a major undertaking. At best, the system will not be able to service interrupts for the time the current job is doing in its critical section, however, in QuarkTS++, these critical sections are handled as quickly as possible.</p>
 <p >Considering that the kernel is hardware-independent, the application writer should provide the necessary piece of code to enable and disable interrupts.</p>
 <p >For this, the qCritical_SetInterruptsED() API should be used. In this way, communication between ISR and tasks using queued notifications or data queues is performed safely.</p>
 <p >In some systems, disabling the global IRQ flags is not enough, as they don't save/restore state of interrupt, so here, the <code>qUINT32_t</code> argument and return value in both functions (<code>Disabler</code> and <code>Restorer</code>) becomes relevant, because they can be used by the application writer to save and restore the current interrupt configuration. So, when a critical section is performed, the <code>Disabler</code>, in addition to disabling the interrupts, returns the current configuration to be retained by the kernel, later when the critical section finish, this retained value is passed to <code>Restorer</code> to bring back the saved configuration.</p>
