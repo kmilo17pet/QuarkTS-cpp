@@ -2,10 +2,10 @@
 * @tableofcontents
 *
 * @section q_about About the OS
-* QuarkTS is an open-source operating system that is built on top of a 
-* <em>RTC cooperative quasistatic scheduler</em>. Its simplified kernel 
-* implements a specialized round-robin scheme using a linked-chain approach and 
-* an event-queue to provide true FIFO priority scheduling.
+* QuarkTS++ (The C++ port of QuarkTS) is an open-source operating system that is
+* built on top of a  <em>RTC cooperative quasistatic scheduler</em>. Its 
+* simplified kernel implements a specialized round-robin scheme using a 
+* linked-chain approach and an event-queue to provide true FIFO priority scheduling.
 * 
 * <b> Why cooperative? </b>
 *
@@ -17,12 +17,12 @@
 *
 * <b> What is it made for? </b>
 
-* The design goal of QuarkTS is to achieve its stated functionality using a 
+* The design goal of QuarkTS++ is to achieve its stated functionality using a 
 * small, simple, and (most importantly) robust implementation to make it 
 * suitable on resource-constrained microcontrollers, where a full-preemptive RTOS
 * is an overkill and their inclusion adds unnecessary complexity to the firmware 
 * development. In addition with a @ref q_fsm support, @ref q_qcoroutines, time 
-* control and the inter-task communication primitives, QuarkTS provides a modern
+* control and the inter-task communication primitives, QuarkTS++ provides a modern
 * environment to build stable and predictable event-driven multitasking embedded
 * software. Their modularity and reliability make this OS a great choice to 
 * develop efficiently a wide range of applications in low-cost devices, 
@@ -39,7 +39,7 @@
 * complexity of a full RTOS, while keeping the taste of a robust and safe one.
 *
 * @section q_license License
-* QuarkTS is licensed under the MIT License. You may copy, distribute and modify
+* QuarkTS++ is licensed under the MIT License. You may copy, distribute and modify
 * the software without any restriction, including without limitation the rights 
 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
 * copies of the OS, and to permit persons to whom the OS is furnished to do so. 
@@ -51,10 +51,10 @@
 * 
 *
 * @section q_hardwarecompatibility Hardware compatibility
-* QuarkTS has no direct hardware dependencies, so it is portable to many 
+* QuarkTS++ has no direct hardware dependencies, so it is portable to many 
 * platforms and C compilers. 
 * 
-* The following cores have been powered with QuarkTS successfully:
+* The following cores have been powered with QuarkTS++ successfully:
 *
 * - ARM cores(ATMEL, STM32, LPC, Kinetis, Nordic and others)
 * - 8Bit AVR, 8051, STM8
@@ -63,26 +63,26 @@
 *
 * @section q_codstandard Development process and coding standard
 * QuarkTS is developed using a formal and rigorous process framed in compliance
-* of the <a style="font-weight:bold" href="https://www.misra.org.uk/">MISRA C 2012</a>
+* of the <a style="font-weight:bold" href="https://www.misra.org.uk/">MISRA C++ 2008</a>
 * and <a style="font-weight:bold" href="https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard">SEI CERT coding standard</a>
 * guidelines and complemented with multiple static-analysis checks targeted to
 * safe critical applications.
 *
-* Simply using QuarkTS in an application, does not mean developers can make a 
+* Simply using QuarkTS++ in an application, does not mean developers can make a 
 * claim related to the development process and compliance of the OS to any 
 * requirements or product specification, without first, following a recognized 
 * system-wide conformance verification process. Conformance evidence must then 
 * be presented, audited and accepted by a recognized and relevant independent 
 * assessment organization. Without undergoing this process of due diligence, no
-* claim can be made as to the suitability of QuarkTS to be used in any safety or
+* claim can be made as to the suitability of QuarkTS++ to be used in any safety or
 * otherwise commercially critical application.
 *
 * Besides the previous information, the OS sets the following clarifications 
 * regarding coding policies and naming conventions:
 *
-* - All the QuarkTS implementation follows the <b>ANSI C99</b> standard strictly.
+* - All the QuarkTS implementation follows the <b>C++11</b> standard strictly.
 * - Dynamic memory allocation is banned to conform the industry standards for
-* safety-critical software: @b MISRA-C, @b DO178B, @b IEC-61508, @b ISO-26262 
+* safety-critical software: @b MISRA-C++, @b DO178B, @b IEC-61508, @b ISO-26262 
 * and so on.
 * - Because errors in string manipulation have long been recognized as a leading
 * source of buffer overflows in C, several mitigation strategies have been
@@ -100,10 +100,9 @@
 * @c qFunction, @c qEnumValue, @c QCONSTANT, @c qType_t, ...)
 * - Other than the pre-fix, most macros used for constants are written in all 
 * upper case.
-* - Almost all functions returns a boolean value of type @c qBool_t, where a
-* @c qTrue - @c 1u
-* value indicates a successful procedure and @c qFalse - @c 0u, the failure of 
-* the procedure
+* - Almost all functions returns a boolean value of type @c bool, where a
+* @c true - @c 1u value indicates a successful procedure and @c false - @c 0u, 
+* the failure of the procedure
 * 
 * @section q_memusage Memory usage
 * As a quasi-static scheduler is implemented here, dynamic scheduling is not 
