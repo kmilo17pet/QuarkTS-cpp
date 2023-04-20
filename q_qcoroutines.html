@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: Co-Routines</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTScpp" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v7.3.2</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('q_qcoroutines.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Co-Routines </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#q_qcoroutines_overview">Overview</a></li>
+<li class="level1"><a href="#q_coroutine_code">Coding a Co-Routine</a></li>
+<li class="level1"><a href="#q_coroutine_blocking">Blocking calls in a Co-routine</a></li>
+<li class="level1"><a href="#q_coroutine_example1">Co-Routine usage example</a></li>
+<li class="level1"><a href="#q_coroutine_positions">Positional jumps</a></li>
+<li class="level1"><a href="#q_coroutine_semaphores">Semaphores</a></li>
+<li class="level1"><a href="#q_coroutine_example2">Co-Routine example with semaphores.</a></li>
+<li class="level1"><a href="#q_coroutine_ext">External control</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="q_qcoroutines_overview"></a>
+Overview</h1>
+<p >A task coded as a Co-Routine, is just a task that allows multiple entry points for suspending and resuming execution at certain locations, this feature can bring benefits by improving the task cooperative scheme and providing a linear code execution for event-driven systems without complex state machines or full multithreading.</p>
+<center>  
+<!DOCTYPE html>
+<html>
+<head>
+<title>coroutines</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.2,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-19T18:53:51.655Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;TUBuhUjvMgM2ZADYfpx0\&quot; version=\&quot;20.4.1\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;9UbcoEgD98S6Um2omTv-\&quot; name=\&quot;Página-1\&quot;&gt;7Vhdb5swFP01PC4yEELy2NBk1bpO1TJp614mB1ywauzMOF/79bsOhmBI0mZVtapqeIjvse+9vj72scDxo3zzUeJFdiMSwhwPJRvHv3Q8z3VRAH8a2VbIoARSSRMD7YEZ/UMMiAy6pAkprIFKCKbowgZjwTmJlYVhKcXaHnYvmJ11gVPSAWYxZl30O01UVlcx2ndcEZpmJvXQC8uOHFeDTSVFhhOxbkD+xPEjKYQqW/kmIkwvXrUupd/0SG89MUm4eorDdZwOiPfz+svlchV94jdzMbr9YKKsMFuagh1vgPOF44/5vNB/v6Ovv8YkpRyGOeEYuhmkG88ltFLdajvocY9DvV7vFYbSxd5RovfIe6UvNL0QdhnS6Se8TL47HGpbnTgpljwhetMi6F5nVJHZAse6dw0aA1imcgaWC81CSfFAIsGE3Hn7CIXTKRyB8T1lrMK54ERDgqspzinTWvR5GdMEQ+pI8ELo5CZYdcw949EIPkT6MfjMTLm2S+1ytY0ZTTkYjNyrusYVkYpsjp5et9YEEFMicqLkFoYYh6FRESOjo8DI6LohSmhYYllDj1yvb8TQCGFah95rBTSMXJwhHV5HOr7h4gGQi+dR2iQO1jyKJkFJ6BEuTm+BiiWgWFdj74ErwlZE0RgfJb9yd1+Awj56IoWDF2LQfxf/N6eubz7U+/XxL9rj9Uev7f7oH7s/nsnpm70/Ohz+9wskOHCBtKgjPLnQr2FgzZmIH75lcJlYfNnk1m9J6Aknrn1uWhSPd88hilvkV6yVkoClqqYsoLQKm1JWTRmKalobqn402nd69r0wMOblxlSzM7bGKBeKJJ23z0d3Q4PtAHXJrjBJGFZ0ZYc/tANMhltBIXG92dxw2EONn+fbey90e31/VP+GdvxCLGVMTMjmO2k3ixXWRSGyI8HKp0R1IgFBeNsYttADipPltBIhdHJmXjBsF3zWeBe5pxN0Z3S2Q/+8ElzU/kLwqMPg3CkFlgM0SqL2ElNv5EOqA+b+e0g5fP9VyZ/8BQ==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>
+ <em>Coroutines in QuarkTS</em> </center><p >The QuarkTS implementation uses the Duff's device approach, and is heavily inspired by the Knuth method, <a href="https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html" style="font-weight:bold">Simon Tatham's Co-Routines in C</a> and <a href="http://dunkels.com/adam/pt/index.html" style="font-weight:bold">Adam Dunkels Protothreads</a> . This means that a local-continuation variable is used to preserve the current state of execution at a particular place of the Co-Routine scope but without any call history or local variables. This brings benefits to lower RAM usage, but at the cost of some restrictions on how a Co-routine can be used.</p>
+<p ><b> Limitations and restrictions </b></p>
+<ul>
+<li>The stack of a Co-Routine is not maintained when a yield is performed. This means variables allocated on the stack will loose their values. To overcome this, a variable that must maintain its value across a blocking call must be declared as <code>static</code>.</li>
+<li>Calls to API functions that could cause the Co-Routine to block, can only be made from the Co-Routine function itself - not from within a function called by the Co-Routine.</li>
+<li>The implementation does not permit yielding or blocking calls to be made from within a <code>switch</code> statement.</li>
+</ul>
+<h1><a class="anchor" id="q_coroutine_code"></a>
+Coding a Co-Routine</h1>
+<p >The application writer just needs to create the body of the Co-Routine . This means starting a Co-Routine segment with #qCR_Begin and end with #qCR_End statement . From now on, yields and blocking calls from the Co-Routine scope are allowed.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( qEvent_t e ) {</div>
+<div class="line">    qCR_Begin {</div>
+<div class="line">        <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
+<div class="line">            qCR_Yield;</div>
+<div class="line">        }</div>
+<div class="line">        DoTheEventProcessing();</div>
+<div class="line">        qCR_Delay( WAIT_TIME_S );</div>
+<div class="line">        PerformActions();</div>
+<div class="line">    } qCR_End;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p >The #qCR_Begin statement should be placed at the start of the task function in which the Co-routine runs. All C statements above the #qCR_Begin will be executed as if they were in an endless-loop each time the task is scheduled.</p>
+<p >A #qCR_Yield statement return the CPU control back to the scheduler but saving the execution progress, thereby allowing other processing tasks to take place in the system. With the next task activation, the Co-Routine will resume the execution after the last #qCR_Yield statement.</p>
+<dl class="section note"><dt>Note</dt><dd>Co-Routine statements can only be invoked from the scope of the Co-Routine. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Do not use an endless-loop inside a Co-routine ,this behavior it's already hardcoded within the segment definition.</dd></dl>
+<h1><a class="anchor" id="q_coroutine_blocking"></a>
+Blocking calls in a Co-routine</h1>
+<p >Blocking calls inside a Co-Routine should be made with the provided statements, all of them with a common feature: an implicit yield.</p>
+<p >A widely used procedure is to wait for a fixed period of time. For this, the #qCR_Delay should be used. This statement makes an apparent blocking over the application flow, but to be precise, a yield is performed until the requested time expires, this allows other tasks to be executed until the blocking call finish. This "yielding until condition meet" behavior its the common pattern among the other blocking statements.</p>
+<p >Another common blocking call is #qCR_WaitUntil. This statement takes a condition argument, a logical expression that will be performed when the Co-Routine resumes their execution. As mentioned before, this type of statement exposes the expected behavior, yielding until the condition is met.</p>
+<p >An additional wait statement #qCR_TimedWaitUntil is also provided. This one sets a timeout for the logical condition to be met, with a similar behavior of #qCR_WaitUntil.</p>
+<p >Optionally, the Do-Until structure gives to application writer the ability to perform a multi-line job before the yield, allowing more complex actions to being performed after the Co-Routine resumes:</p>
+<div class="fragment"><div class="line">qCR_Do {</div>
+<div class="line">    <span class="comment">/* Job : a set of instructions*/</span></div>
+<div class="line">} qCR_Until( Condition );</div>
+</div><!-- fragment --><h1><a class="anchor" id="q_coroutine_example1"></a>
+Co-Routine usage example</h1>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> Sender_Task( qEvent_t e ) {</div>
+<div class="line">    <span class="keyword">static</span> qSTimer_t timeout;</div>
+<div class="line">    qCR_Begin {</div>
+<div class="line">        Send_Packet();</div>
+<div class="line">        <span class="comment">/* Wait until an acknowledgment has been received, or until</span></div>
+<div class="line"><span class="comment">         * the timer expires. If the timer expires, we should send</span></div>
+<div class="line"><span class="comment">         * the packet again.</span></div>
+<div class="line"><span class="comment">         */</span></div>
+<div class="line">        qSTimer_Set( &amp;timeout, TIMEOUT_TIME );</div>
+<div class="line">        qCR_WaitUntil( PacketACK_Received() || qSTimer_Expired(&amp;timeout));</div>
+<div class="line">    } qCR_End;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/*===================================================================*/</span></div>
+<div class="line"><span class="keywordtype">void</span> Receiver_Task( qEvent_t e ) {</div>
+<div class="line">    qCR_Begin {</div>
+<div class="line">        <span class="comment">/* Wait until a packet has been received*/</span></div>
+<div class="line">        qCR_WaitUntil( Packet_Received() );</div>
+<div class="line">        Send_Acknowledgement();</div>
+<div class="line">    } qCR_End;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="q_coroutine_positions"></a>
+Positional jumps</h1>
+<p >This feature provides positional local jumps, control flow that deviates from the usual Co-Routine call.</p>
+<p >The complementary statements #qCR_PositionGet and #qCR_PositionRestore provide this functionality. The first one saves the Co-Routine state at some point of their execution into <code>CRPos</code>, a variable of type qCR_Position_t , that can be used at some later point of program execution by #qCR_PositionRestore to restore the Co-Routine state to the one saved by #qCR_PositionGet into CRPos. This process can be imagined to be a "jump" back to the point of program execution where #qCR_PositionGet saved the Co-Routine environment.</p>
+<h1><a class="anchor" id="q_coroutine_semaphores"></a>
+Semaphores</h1>
+<p >This extension implements counting semaphores on top of Co-Routines. Semaphores are a synchronization primitive that provide two operations: <em>wait</em> and <em>signal</em>. The <em>wait</em> operation checks the semaphore counter and blocks the Co-Routine if the counter is zero. The <em>signal</em> operation increases the semaphore counter but does not block. If another Co-Routine has blocked waiting for the semaphore that is signaled, the blocked Co-Routines will become runnable again.</p>
+<p >Semaphores are referenced by handles, a variable of type qCR_Semaphore_t and must be initialized with #qCR_SemInit before any usage. Here, a value for the counter is required. Internally, semaphores use an <code>uint32_t</code> to represent the counter, therefore the value argument should be within range of this data-type.</p>
+<p >To perform the |a wait operation, the #qCR_SemWait statement should be used. The wait operation causes the Co-routine to block while the counter is zero. When the counter reaches a value larger than zero, the Co-Routine will continue.</p>
+<p >Finally, #qCR_SemSignal carries out the <em>signal</em> operation on the semaphore. This signaling increments the counter inside the semaphore, which eventually will cause waiting Coroutines to continue executing.</p>
+<h1><a class="anchor" id="q_coroutine_example2"></a>
+Co-Routine example with semaphores.</h1>
+<p >The following example shows how to implement the bounded buffer problem using Co-Routines and semaphores. The example uses two tasks: one that produces items and other that consumes items.</p>
+<p >Note that there is no need for a mutex to guard the <code>add_to_buffer()</code> and <code>get_from_buffer()</code> functions because of the implicit locking semantics of Co-Routines, so it will never be preempted and will never block except in an explicit #qCR_SemWait statement.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;AppLibrary.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define NUM_ITEMS    ( 32 )</span></div>
+<div class="line"><span class="preprocessor">#define BUFSIZE      ( 8 )</span></div>
+<div class="line"> </div>
+<div class="line">qTask_t ProducerTask, ConsumerTask;</div>
+<div class="line">qCR_Semaphore_t mutex, full, empty;</div>
+<div class="line"><span class="comment">/*===================================================================*/</span></div>
+<div class="line"><span class="keywordtype">void</span> ProducerTask_Callback( qEvent_t e ) {</div>
+<div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> produced;</div>
+<div class="line">    </div>
+<div class="line">    qCR_Begin {</div>
+<div class="line">        <span class="keywordflow">for</span> ( produced = 0 ; produced &lt; NUM_ITEMS ; ++produced ) {</div>
+<div class="line">            qCR_SemWait( &amp;full );</div>
+<div class="line">            qCR_SemWait( &amp;mutex );</div>
+<div class="line">    </div>
+<div class="line">            add_to_buffer( produce_item() );</div>
+<div class="line">      </div>
+<div class="line">            qCR_SemSignal( &amp;mutex );</div>
+<div class="line">            qCR_SemSignal( &amp;empty );</div>
+<div class="line">        }</div>
+<div class="line">    } qCR_End;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/*===================================================================*/</span></div>
+<div class="line"><span class="keywordtype">void</span> ConsumerTask_Callback( qEvent_t e ) {</div>
+<div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> consumed;</div>
+<div class="line">    </div>
+<div class="line">    qCR_Begin {</div>
+<div class="line">        <span class="keywordflow">for</span> ( consumed = 0 ; consumed &lt; NUM_ITEMS ; ++consumed ) {</div>
+<div class="line">            qCR_SemWait( &amp;empty );</div>
+<div class="line">            qCR_SemWait( &amp;mutex );</div>
+<div class="line">    </div>
+<div class="line">            consume_item( get_from_buffer() );</div>
+<div class="line">            qCR_SemSignal( &amp;mutex );</div>
+<div class="line">            qCR_SemSignal( &amp;full );</div>
+<div class="line">        }</div>
+<div class="line">    } qCR_End;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/*===================================================================*/</span></div>
+<div class="line"><span class="keywordtype">void</span> IdleTask_Callback( qEvent_t e ) {</div>
+<div class="line">    <span class="comment">/*nothing to do*/</span></div>
+<div class="line">} </div>
+<div class="line"><span class="comment">/*===================================================================*/</span></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
+<div class="line">    HAL_Init();</div>
+<div class="line"> </div>
+<div class="line">    qOS_Setup( HAL_GetTick, 0.001f, IdleTask_Callback );</div>
+<div class="line">    qCR_SemInit( &amp;empty, 0 );</div>
+<div class="line">    qCR_SemInit( &amp;full, BUFSIZE );</div>
+<div class="line">    qCR_SemInit( &amp;mutex, 1 );</div>
+<div class="line">    </div>
+<div class="line">    qOS_Add_Task( &amp;ProducerTask, ProducerTask_Callback,</div>
+<div class="line">                  qMedium_Priority, 0.1, qPeriodic, qEnabled, NULL );</div>
+<div class="line">    qOS_Add_Task( &amp;ConsumerTask, ConsumerTask_Callback,</div>
+<div class="line">                  qMedium_Priority, 0.1, qPeriodic, qEnabled, NULL );</div>
+<div class="line">    qOS_Run();</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="q_coroutine_ext"></a>
+External control</h1>
+<p >In certain situations, it may be necessary to control the flow of execution outside of the segment that defines the Co-routine itself. This is typically done to defer or resume the Co-routine in response to specific occurrences that arise in other contexts, such as tasks or interrupts.</p>
+<p >To address these specific scenarios, a handler for the Co-routine must be defined, which is a variable of type qCR_Handle_t. Additionally, to initiate the scope of the target Co-routine, the statement #qCR_BeginWithHandle should be used instead of #qCR_Begin.</p>
+<div class="fragment"><div class="line">qCR_Handle_t xHandleCR = NULL; <span class="comment">/*NULL initialization are strictly necessary*/</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">/*===================================================================*/</span></div>
+<div class="line"><span class="keywordtype">void</span> AnotherTask_Callback( qEvent_t e) {</div>
+<div class="line">    <span class="keywordtype">int</span> UserInput = 0;</div>
+<div class="line">    <span class="keywordflow">if</span> ( e-&gt;FirstIteration ) {</div>
+<div class="line">        qCR_ExternControl( xHandleCR, qCR_RESUME, 0 );</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">if</span> ( e-&gt;LastIteration ) {</div>
+<div class="line">        qCR_ExternControl( xHandleCR, qCR_SUSPEND, 0 );</div>
+<div class="line">    }</div>
+<div class="line">    UserInput = GetTerminalInput( );</div>
+<div class="line">    <span class="keywordflow">if</span> ( UserInput == USR_RESTART ) {</div>
+<div class="line">        qCR_ExternControl( xHandleCR, qCR_RESTART, 0 );</div>
+<div class="line">    }</div>
+<div class="line">    Perform_AnotherTask_Activities();</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/*===================================================================*/</span></div>
+<div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( qEvent_t e ) {</div>
+<div class="line">    qCR_BeginWithHandle( xHandleCR ) { <span class="comment">/*externally controlled*/</span></div>
+<div class="line">        <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
+<div class="line">            qCR_Yield;</div>
+<div class="line">        }</div>
+<div class="line">        RunFirstJob();</div>
+<div class="line">        qCR_Delay( WAIT_TIME );</div>
+<div class="line">        SecondJobStatus = RunSecondJob();</div>
+<div class="line">        qCR_TimedWaitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );</div>
+<div class="line">        CleanUpStatus = CleanupJob();</div>
+<div class="line">        qCR_WaitUntil( SomeVar &gt; SomeValue );</div>
+<div class="line">    } qCR_End;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p >As shown in the code snippet above, the Co-routine handle its globally declared to enable other contexts to access it. The example demonstrates how another task can control the Coroutine using the qCR_ExternControl() API. It's important to note that the actions performed by this API can only be effective after the handle instantiation, which is a one-time operation that occurs during the first call of the Co-routine.</p>
+<dl class="section note"><dt>Note</dt><dd>A <code>NULL</code> initialization its mandatory on qCR_Handle_t variables. Undefined behavior may occur if this step is ignored. </dd></dl>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="q_extensions.html">Extensions</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>
