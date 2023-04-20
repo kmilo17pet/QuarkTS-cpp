@@ -46,56 +46,55 @@
 *
 * @section q_coroutine_code Coding a Co-Routine
 * The application writer just needs to create the body of the Co-Routine . This
-* means starting a Co-Routine segment with #qCR_Begin and end with #qCR_End 
-* statement . From now on, yields and blocking calls from the Co-Routine scope 
-* are allowed.
+* means starting a Co-Routine segment with co::reenter() statement . From now on,
+* yields and blocking calls from the Co-Routine scope are allowed.
 *
 *  @code{.c}
-*  void CoroutineTask_Callback( qEvent_t e ) {
-*      qCR_Begin {
-*          if ( EventNotComing() ) {
-*              qCR_Yield;
-*          }
-*          DoTheEventProcessing();
-*          qCR_Delay( WAIT_TIME_S );
-*          PerformActions();
-*      } qCR_End;
+*  void CoroutineTask_Callback( event_t e ) {
+*      co::reenter() {
+*          for (;;) {
+*              if ( EventNotComing() ) {
+*                  co::yield;
+*              }
+*              DoTheEventProcessing();
+*              co::delay( WAIT_TIME_S );
+*              PerformActions();
+*         }
+*      }
 *  }
 *  @endcode
 *
-* The #qCR_Begin statement should be placed at the start of the task function 
-* in which the Co-routine runs. All C statements above the #qCR_Begin will be 
-* executed as if they were in an endless-loop each time the task is scheduled.
+* The co::reenter() statement should be placed at the start of the task function 
+* in which the Co-routine runs. 
 *
-* A #qCR_Yield statement return the CPU control back to the scheduler but saving
+* A co::yield() statement return the CPU control back to the scheduler but saving
 * the  execution progress, thereby allowing other processing tasks to take place
 * in the system. With the next task activation, the Co-Routine will resume the
-* execution after the last #qCR_Yield statement.
+* execution after the last co::yield() statement.
 *
 * @note Co-Routine statements can only be invoked from the scope of the 
 * Co-Routine.
-* @remark Do not use an endless-loop inside a Co-routine ,this behavior it's 
-* already hardcoded within the segment definition.
+* @remark You should but an endless-loop inside a Co-routine, this behavior is  
+* not hardcoded within the segment definition.
 *
 * @section q_coroutine_blocking Blocking calls in a Co-routine
 * Blocking calls inside a Co-Routine should be made with the provided
 * statements, all of them with a common feature: an implicit yield.
 *
 * A widely used procedure is to wait for a fixed period of time. For this, the 
-* #qCR_Delay should be used. This statement makes an apparent blocking over the
+* co::delay() should be used. This statement makes an apparent blocking over the
 * application flow, but to be precise, a yield is performed until the requested 
 * time expires, this allows other tasks to be executed until the blocking call 
 * finish. This "yielding until condition meet" behavior its the common pattern 
 * among the other blocking statements.
 *
-* Another common blocking call is #qCR_WaitUntil. This statement takes a 
+* Another common blocking call is co::waitUntil(). This statement takes a 
 * condition argument, a logical expression that will be performed when the 
 * Co-Routine resumes their execution. As mentioned before, this type of 
 * statement exposes the expected behavior, yielding until the condition is met.
 *
-* An additional wait statement #qCR_TimedWaitUntil is also provided. This one
-* sets a timeout for the logical condition to be met, with a similar behavior 
-* of #qCR_WaitUntil.
+* An additional overload of this co::waitUntil() is also provided. This one
+* sets a timeout for the logical condition to be met.
 *
 * Optionally, the Do-Until structure gives to application writer the ability to 
 * perform a multi-line job before the yield, allowing more complex actions to
@@ -110,25 +109,25 @@
 * @section q_coroutine_example1 Co-Routine usage example
 *
 *  @code{.c}
-*  void Sender_Task( qEvent_t e ) {
-*      static qSTimer_t timeout;
-*      qCR_Begin {
+*  void Sender_Task( event_t e ) {
+*      co::reenter() {
 *          Send_Packet();
 *          /* Wait until an acknowledgment has been received, or until
 *           * the timer expires. If the timer expires, we should send
 *           * the packet again.
 *           */
-*          qSTimer_Set( &timeout, TIMEOUT_TIME );
-*          qCR_WaitUntil( PacketACK_Received() || qSTimer_Expired(&timeout));
-*      } qCR_End;
+*          co::waitUntil( PacketACK_Received(), TIMEOUT_TIME );
+*          co::restart; 
+*      }
 *  }
 *  /*===================================================================*/
-*  void Receiver_Task( qEvent_t e ) {
-*      qCR_Begin {
+*  void Receiver_Task( event_t e ) {
+*      co::reenter() {
 *          /* Wait until a packet has been received*/
-*          qCR_WaitUntil( Packet_Received() );
+*          co::waitUntil( Packet_Received() );
 *          Send_Acknowledgement();
-*      } qCR_End;
+*          co::restart; 
+*      };
 *  }
 *  @endcode
 *
@@ -136,14 +135,14 @@
 * This feature provides positional local jumps, control flow that deviates from 
 * the usual Co-Routine call.
 *
-* The complementary statements #qCR_PositionGet and #qCR_PositionRestore provide
+* The complementary statements co::getPosition() and co::setPosition() provide
 * this
 * functionality. The first one saves the Co-Routine state at some point of their 
-* execution into @c CRPos, a variable of type @ref qCR_Position_t , that can be used
-* at some later point of program execution by #qCR_PositionRestore to restore 
-* the Co-Routine state to the one saved by #qCR_PositionGet into CRPos. This 
+* execution into @c CRPos, a variable of type @ref co::position , that can be used
+* at some later point of program execution by co::setPosition() to restore 
+* the Co-Routine state to the one saved by co::getPosition() into CRPos. This 
 * process can be imagined to be a "jump" back to the point of program execution 
-* where #qCR_PositionGet saved the Co-Routine environment.
+* where co::getPosition() saved the Co-Routine environment.
 * 
 * @section q_coroutine_semaphores Semaphores
 * This extension implements counting semaphores on top of Co-Routines. 
@@ -154,18 +153,18 @@
 * waiting for the semaphore that is signaled, the blocked Co-Routines will
 * become runnable again.
 *
-* Semaphores are referenced by handles, a variable of type qCR_Semaphore_t and 
-* must be initialized with #qCR_SemInit before any usage. Here, a value for the
-* counter is required. Internally, semaphores use an @c uint32_t to represent 
+* Semaphores are referenced by handles, a variable of type co::semaphore and 
+* must be initialized at time of creating with its own constructor. Here, a value for the
+* counter is required. Internally, semaphores use an @c size_t to represent 
 * the counter, therefore the value argument should be within range of this 
 * data-type.
 * 
-* To perform the |a wait operation, the #qCR_SemWait statement should be used. 
+* To perform the |a wait operation, the co::semWait() statement should be used. 
 * The wait operation causes the Co-routine to block while the counter is zero. 
 * When the counter reaches a value larger than zero, the Co-Routine will 
 * continue.
 * 
-* Finally, #qCR_SemSignal carries out the @a signal operation on the semaphore. 
+* Finally, co::semSignal() carries out the @a signal operation on the semaphore. 
 * This signaling increments the counter inside the semaphore, which eventually 
 * will cause waiting Coroutines to continue executing.
 *
@@ -177,67 +176,66 @@
 * Note that there is no need for a mutex to guard the @c add_to_buffer() and 
 * @c get_from_buffer() functions because of the implicit locking semantics of 
 * Co-Routines, so it will never be preempted and will never block except in an 
-* explicit #qCR_SemWait statement.
+* explicit co::semWait() statement.
 * 
 *  @code{.c}
 *  #include "HAL.h"
 *  #include "quarkts++.h"
 *  #include "AppLibrary.h"
 *  
+*  using namespace qOS;
 *  #define NUM_ITEMS    ( 32 )
 *  #define BUFSIZE      ( 8 )
 *  
-*  qTask_t ProducerTask, ConsumerTask;
-*  qCR_Semaphore_t mutex, full, empty;
+*  task_t ProducerTask, ConsumerTask;
+*  co::semaphore mutex( 1 ), full( BUFSIZE ), empty( 0 );
 *  /*===================================================================*/
-*  void ProducerTask_Callback( qEvent_t e ) {
+*  void ProducerTask_Callback( event_t e ) {
 *      static int produced;
 *      
-*      qCR_Begin {
+*      co::reenter() {
 *          for ( produced = 0 ; produced < NUM_ITEMS ; ++produced ) {
-*              qCR_SemWait( &full );
-*              qCR_SemWait( &mutex );
-*      
+*              co::semWait( full );
+*              co::semWait( mutex );
+* 
 *              add_to_buffer( produce_item() );
-*        
-*              qCR_SemSignal( &mutex );
-*              qCR_SemSignal( &empty );
+* 
+*              co::semSignal( mutex );
+*              co::semSignal( empty );
 *          }
-*      } qCR_End;
+           co::restart;
+*      }
 *  }
 *  /*===================================================================*/
-*  void ConsumerTask_Callback( qEvent_t e ) {
+*  void ConsumerTask_Callback( event_t e ) {
 *      static int consumed;
 *      
-*      qCR_Begin {
+*      co::reenter() {
 *          for ( consumed = 0 ; consumed < NUM_ITEMS ; ++consumed ) {
-*              qCR_SemWait( &empty );
-*              qCR_SemWait( &mutex );
+*              co::semWait( empty );
+*              co::semWait( mutex );
 *      
 *              consume_item( get_from_buffer() );
-*              qCR_SemSignal( &mutex );
-*              qCR_SemSignal( &full );
+*              co::semSignal( mutex );
+*              co::semSignal( full );
 *          }
-*      } qCR_End;
+*      };
 *  }
 *  /*===================================================================*/
-*  void IdleTask_Callback( qEvent_t e ) {
+*  void IdleTask_Callback( event_t e ) {
 *      /*nothing to do*/
 *  } 
 *  /*===================================================================*/
 *  int main(void) {
 *      HAL_Init();
 * 
-*      qOS_Setup( HAL_GetTick, 0.001f, IdleTask_Callback );
-*      qCR_SemInit( &empty, 0 );
-*      qCR_SemInit( &full, BUFSIZE );
-*      qCR_SemInit( &mutex, 1 );
+*      os.init( HAL_GetTick, IdleTask_Callback );
 *      
-*      qOS_Add_Task( &ProducerTask, ProducerTask_Callback,
-*                    qMedium_Priority, 0.1, qPeriodic, qEnabled, NULL );
-*      qOS_Add_Task( &ConsumerTask, ConsumerTask_Callback,
-*                    qMedium_Priority, 0.1, qPeriodic, qEnabled, NULL );
-*      qOS_Run();
+*      os.addTask( ProducerTask, ProducerTask_Callback, core::MEDIUM_PRIORITY, 
+                   100, task::PERIODIC, taskState::ENABLED );
+*      os.addTask( ConsumerTask, ConsumerTask_Callback, core::MEDIUM_PRIORITY, 
+                   100, task::PERIODIC, taskState::ENABLED );
+*      os.run();
 *      return 0;
 *  }
 *  @endcode
@@ -249,52 +247,49 @@
 * that arise in other contexts, such as tasks or interrupts.
 *
 * To address these specific scenarios, a handler for the Co-routine must be 
-* defined, which is a variable of type @ref qCR_Handle_t. Additionally, to 
-* initiate the scope of the target Co-routine, the statement #qCR_BeginWithHandle 
-* should be used instead of #qCR_Begin.
+* defined, which is a variable of type @ref co::handle. Additionally, to 
+* initiate the scope of the target Co-routine, the statement co::reenter 
+* should be used taking this handler as argument.
 * 
 *  @code{.c}
-*  qCR_Handle_t xHandleCR = NULL; /*NULL initialization are strictly necessary*/
+*  co::handle xHandleCR;
 *  
 *  /*===================================================================*/
-*  void AnotherTask_Callback( qEvent_t e) {
+*  void AnotherTask_Callback( event_t e ) {
 *      int UserInput = 0;
 *      if ( e->FirstIteration ) {
-*          qCR_ExternControl( xHandleCR, qCR_RESUME, 0 );
+*          xHandleCR.try_resume();
 *      }
 *      if ( e->LastIteration ) {
-*          qCR_ExternControl( xHandleCR, qCR_SUSPEND, 0 );
+*          xHandleCR.try_suspend();;
 *      }
 *      UserInput = GetTerminalInput( );
 *      if ( UserInput == USR_RESTART ) {
-*          qCR_ExternControl( xHandleCR, qCR_RESTART, 0 );
+*          xHandleCR.try_restart();
 *      }
 *      Perform_AnotherTask_Activities();
 *  }
 *  /*===================================================================*/
-*  void CoroutineTask_Callback( qEvent_t e ) {
-*      qCR_BeginWithHandle( xHandleCR ) { /*externally controlled*/
+*  void CoroutineTask_Callback( event_t e ) {
+*      co::reenter( xHandleCR ) { /*externally controlled*/
 *          if ( EventNotComing() ) {
-*              qCR_Yield;
+*              co::yield;
 *          }
 *          RunFirstJob();
-*          qCR_Delay( WAIT_TIME );
+*          co::delay( WAIT_TIME );
 *          SecondJobStatus = RunSecondJob();
-*          qCR_TimedWaitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );
+*          co::waitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );
 *          CleanUpStatus = CleanupJob();
-*          qCR_WaitUntil( SomeVar > SomeValue );
+*          co::waitUntil( SomeVar > SomeValue );
 *      } qCR_End;
 *  }
 *  @endcode
 *
 * As shown in the code snippet above, the Co-routine handle its globally declared
 * to enable other contexts to access it. The example demonstrates  how  another 
-* task can control the Coroutine using the qCR_ExternControl() API. It's 
+* task can control the Coroutine using the "try_" methods API. It's 
 * important to note that the actions performed by this API can only be effective
 * after the handle instantiation, which is a one-time operation that occurs 
 * during the first call of the Co-routine.
-*
-* @note A @c NULL initialization its mandatory on @ref qCR_Handle_t variables. 
-* Undefined behavior may occur if this step is ignored.
 *
 */

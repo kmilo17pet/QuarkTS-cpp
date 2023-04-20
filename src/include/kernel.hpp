@@ -36,10 +36,13 @@ namespace qOS {
         QUEUED = 1u,    /**< To notify a task using the FIFO priority queue. */
         _NONE_ = 3u,    /**< Do not use this value. Used only internally.*/
     };
+
+    /** @cond*/
     struct _notificationSpreader_s {
         notifyMode mode;
         void *eventData;
     };
+    /** @endcond*/
     using notificationSpreader_t = struct _notificationSpreader_s;
 
     constexpr taskFlag_t EVENT_FLAG( index_t i )
@@ -47,6 +50,10 @@ namespace qOS {
         return ( ( i >= 1u ) && ( i <= 20u ) ) ?  0x00001000uL << ( i - 1u ) : 0x00001000uL;
     }
 
+    /**
+    * @brief The class to interface the OS
+    * @note Use the predefined os instance
+    */
     class core final : protected _Event {
         private:
             task idle;
@@ -347,7 +354,7 @@ namespace qOS {
             */
             globalState getGlobalState( task &Task ) const noexcept;
     };
-    /*The QuarkTS++ kernel interface*/
+    /** @brief The predefined instance of the OS kernel interface */
     extern core& os; /* skipcq: CXX-W2011 */
 
 }
