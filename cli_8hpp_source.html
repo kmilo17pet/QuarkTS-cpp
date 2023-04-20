@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: cli.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTScpp" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v7.3.2</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('cli_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">cli.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef QOS_CPP_CLI</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define QOS_CPP_CLI</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;include/types.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;include/list.hpp&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;include/util.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span>qOS {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">class </span>commandLineInterface;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">namespace </span>cli {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">enum</span> response : int16_t {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            ERROR = -32767,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            NOT_ALLOWED = -32766,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            NO_RESPONSE = 0,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            OK = 1,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            DEVID = 32765,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            NOT_FOUND = 32766,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            OUTPUT_RESPONSE = 32767,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        };</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">constexpr</span> response ERROR_CODE( int16_t code )</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>response<span class="keyword">&gt;</span>( -code );</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">enum</span> commandType : uint16_t {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            UNDEF = 0x0000, </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            PARA = 0x0100,  </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            TEST = 0x0200,  </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            READ = 0x0400,  </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            ACT = 0x0800,   </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        };</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">class </span>input {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <span class="keywordtype">char</span> *storage{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keyword">volatile</span> index_t index{ 0u };</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                index_t maxIndex{ 0u };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="keywordtype">size_t</span> size{ 0u };</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                <span class="keyword">volatile</span> <span class="keywordtype">bool</span> ready{ <span class="keyword">false</span> };</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <span class="keywordtype">void</span> flush( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordtype">void</span> operator=( input <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                input() {}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        };</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classq_o_s_1_1cli_1_1___handler.html">   80</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">_Handler</a> {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                <a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a> *instance{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keywordtype">void</span> *Command{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordtype">char</span> *StrData{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="keywordtype">char</span> *Output{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordtype">void</span> *Data{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                <span class="keywordtype">size_t</span> StrLen{ 0u };</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                <span class="keywordtype">size_t</span> NumArgs{ 0u };</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                commandType Type{ UNDEF };</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                <a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">_Handler</a>( <a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">_Handler</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                <span class="keywordtype">void</span> operator=( <a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">_Handler</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                <a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">_Handler</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classq_o_s_1_1cli_1_1___handler.html#a8dc89a794c338bb7ed1e1f762dabd654">   98</a></span>                <span class="keyword">inline</span> commandType <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a8dc89a794c338bb7ed1e1f762dabd654">getType</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    <span class="keywordflow">return</span> Type;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classq_o_s_1_1cli_1_1___handler.html#a040db3771924ae3db7e7a73ea9edd090">  106</a></span>                <span class="keyword">inline</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a040db3771924ae3db7e7a73ea9edd090">getStringData</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                    <span class="keywordflow">return</span> StrData;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classq_o_s_1_1cli_1_1___handler.html#a5d84a5c2fb4bd11841799368942590d3">  114</a></span>                <span class="keyword">inline</span> <span class="keywordtype">void</span>* <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a5d84a5c2fb4bd11841799368942590d3">getData</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                    <span class="keywordflow">return</span> Data;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classq_o_s_1_1cli_1_1___handler.html#ab206c293fefcbc6d48c1820b5aa5ac2c">  121</a></span>                <span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#ab206c293fefcbc6d48c1820b5aa5ac2c">getStringLength</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                    <span class="keywordflow">return</span> StrLen;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="classq_o_s_1_1cli_1_1___handler.html#ae47a2eacf3c53b77e643f2d0d6d3e813">  130</a></span>                <span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#ae47a2eacf3c53b77e643f2d0d6d3e813">getNumArgs</a>( <span class="keywordtype">void</span> )<span class="keyword"> const</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="keyword">                </span>{</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                    <span class="keywordflow">return</span> NumArgs;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                <span class="keywordtype">char</span>* <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a17085dc24f37114cb5b492bb5892c144">getArgPtr</a>( index_t n ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>                <span class="keywordtype">int</span> <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a6eaaedfa64bb9c9e97698f808e23899f">getArgInt</a>( index_t n ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                float32_t <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a881a73a3b8513d309bd98af8503c44a4">getArgFloat</a>( index_t n ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                uint32_t <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#ae77729147039358a767030e1e5fcbd80">getArgHex</a>( index_t n ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                <span class="keywordtype">char</span>* <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a1605c3f4c7656be075e442c11b0d96a7">getArgString</a>( index_t n, <span class="keywordtype">char</span> *pOut );</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a7719470f2343fc72c68ef1f29dc48778">output</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> c ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                <span class="keywordtype">void</span> <a class="code hl_function" href="classq_o_s_1_1cli_1_1___handler.html#a7719470f2343fc72c68ef1f29dc48778">output</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *s ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">qOS::commandLineInterface</a>;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        };</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keyword">using</span> handler_t = _Handler&amp;;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keyword">using</span> commandCallback_t = <a class="code hl_class" href="classq_o_s_1_1response.html">response</a> (*)( handler_t );</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keyword">using</span> options_t = uint16_t;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="classq_o_s_1_1cli_1_1command.html">  228</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1cli_1_1command.html">command</a> : <span class="keyword">protected</span> <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                commandCallback_t cmdCallback{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                options_t cmdOpt{ 0u };</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                <span class="keywordtype">size_t</span> cmdLen{ 0u };</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                <span class="keywordtype">void</span> *param{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                <span class="keywordtype">char</span> *Text{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                <a class="code hl_class" href="classq_o_s_1_1cli_1_1command.html">command</a>( <a class="code hl_class" href="classq_o_s_1_1cli_1_1command.html">command</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                <span class="keywordtype">void</span> operator=( <a class="code hl_class" href="classq_o_s_1_1cli_1_1command.html">command</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">qOS::commandLineInterface</a>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        };</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    }</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classq_o_s_1_1command_line_interface.html">  250</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a> : <span class="keyword">protected</span> cli::input {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            <a class="code hl_class" href="classq_o_s_1_1list.html">list</a> subscribed;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            <a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">cli::_Handler</a> handler;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>            <span class="keyword">const</span> <span class="keywordtype">char</span> *ok_rsp{ <span class="stringliteral">&quot;OK&quot;</span> };</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>            <span class="keyword">const</span> <span class="keywordtype">char</span> *er_rsp{ <span class="stringliteral">&quot;ERROR&quot;</span> };</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            <span class="keyword">const</span> <span class="keywordtype">char</span> *nf_rsp{ <span class="stringliteral">&quot;UNKNOWN&quot;</span> };</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            <span class="keyword">const</span> <span class="keywordtype">char</span> *id_rsp{ <span class="stringliteral">&quot;&quot;</span> };</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <span class="keyword">const</span> <span class="keywordtype">char</span> *eol{ <span class="stringliteral">&quot;\r\n&quot;</span> };</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <span class="keywordtype">char</span> delim{ <span class="charliteral">&#39;,&#39;</span> };</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            util::putChar_t outputFcn{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keywordtype">size_t</span> sizeOutput{ 0u };</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            <span class="keywordtype">void</span> *owner{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            <span class="keywordtype">bool</span> notify( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <span class="keywordtype">bool</span> preProcessing( <a class="code hl_class" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> *cmd, <span class="keywordtype">char</span> *inputBuffer );</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            <span class="keywordtype">size_t</span> numOfArgs( <span class="keyword">const</span> <span class="keywordtype">char</span> *str );</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            <span class="keywordtype">void</span> handleResponse( cli::response retval );</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            void (*xNotifyFcn)( <a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a> *arg) = { <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            <a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a>( <a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            <span class="keywordtype">void</span> operator=( <a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            <a class="code hl_class" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1command_line_interface.html#a69e706db3cf304ea8aa6e95c5708c067">setup</a>( util::putChar_t outFcn, <span class="keywordtype">char</span> *pInput, <span class="keyword">const</span> <span class="keywordtype">size_t</span> sizeIn, <span class="keywordtype">char</span> *pOutput, <span class="keyword">const</span> <span class="keywordtype">size_t</span> sizeOut );</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1command_line_interface.html#a644e9a38169afbd2019d5672a27daa34">add</a>( <a class="code hl_class" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;cmd, <span class="keywordtype">char</span> *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, <span class="keywordtype">void</span> *param = <span class="keyword">nullptr</span> );</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1command_line_interface.html#a941188ce6f70346fabacaeb7e4fdf9b6">isrHandler</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> c );</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1command_line_interface.html#a941188ce6f70346fabacaeb7e4fdf9b6">isrHandler</a>( <span class="keywordtype">char</span> *pData, <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>            <span class="keywordtype">bool</span> <span class="keyword">raise</span>( <span class="keyword">const</span> <span class="keywordtype">char</span> *cmd );</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1command_line_interface.html#a99736d5775bf8e4447d107b261365c1e">inputFlush</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>            cli::response <a class="code hl_function" href="classq_o_s_1_1command_line_interface.html#ac4aa4363a90a5c9c56ddd301f2642c94">exec</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *cmd );</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1command_line_interface.html#a2cfdccc972a81890a4def1d0132061bc">run</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            <span class="keyword">inline</span> <span class="keywordtype">void</span>* getOwner( <span class="keywordtype">void</span> )</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>            {</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>                <span class="keywordflow">return</span> owner;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>            }</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> setData( <span class="keywordtype">void</span> *pData )</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            {</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>                handler.Data = pData;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>            }</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">cli::_Handler</a>;</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1core.html">core</a>;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    };</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>}</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_CPP_CLI*/</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html">qOS::cli::_Handler</a></div><div class="ttdoc">The command argument with all the regarding information of the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:80</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a040db3771924ae3db7e7a73ea9edd090"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a040db3771924ae3db7e7a73ea9edd090">qOS::cli::_Handler::getStringData</a></div><div class="ttdeci">char * getStringData(void)</div><div class="ttdoc">The string data received after the detected command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:106</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a1605c3f4c7656be075e442c11b0d96a7"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a1605c3f4c7656be075e442c11b0d96a7">qOS::cli::_Handler::getArgString</a></div><div class="ttdeci">char * getArgString(index_t n, char *pOut)</div><div class="ttdoc">Helper method to get the n argument parsed as string from the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.cpp:429</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a17085dc24f37114cb5b492bb5892c144"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a17085dc24f37114cb5b492bb5892c144">qOS::cli::_Handler::getArgPtr</a></div><div class="ttdeci">char * getArgPtr(index_t n) const</div><div class="ttdoc">Helper method to get the pointer where the desired argument starts.</div><div class="ttdef"><b>Definition:</b> cli.cpp:384</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a5d84a5c2fb4bd11841799368942590d3"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a5d84a5c2fb4bd11841799368942590d3">qOS::cli::_Handler::getData</a></div><div class="ttdeci">void * getData(void)</div><div class="ttdoc">Retrieve a pointer to the user-defined data - Storage Pointer.</div><div class="ttdef"><b>Definition:</b> cli.hpp:114</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a6eaaedfa64bb9c9e97698f808e23899f"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a6eaaedfa64bb9c9e97698f808e23899f">qOS::cli::_Handler::getArgInt</a></div><div class="ttdeci">int getArgInt(index_t n) const</div><div class="ttdoc">Helper method to get the n argument parsed as integer from the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.cpp:412</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a7719470f2343fc72c68ef1f29dc48778"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a7719470f2343fc72c68ef1f29dc48778">qOS::cli::_Handler::output</a></div><div class="ttdeci">void output(const char c) const</div><div class="ttdoc">Helper method for printing a character to the CLI output. It displays only one character at a time.</div><div class="ttdef"><b>Definition:</b> cli.cpp:459</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a881a73a3b8513d309bd98af8503c44a4"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a881a73a3b8513d309bd98af8503c44a4">qOS::cli::_Handler::getArgFloat</a></div><div class="ttdeci">float32_t getArgFloat(index_t n) const</div><div class="ttdoc">Helper method to get the n argument parsed as float from the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.cpp:417</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_a8dc89a794c338bb7ed1e1f762dabd654"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#a8dc89a794c338bb7ed1e1f762dabd654">qOS::cli::_Handler::getType</a></div><div class="ttdeci">commandType getType(void) const</div><div class="ttdoc">Retrieve the he incoming command type.*.</div><div class="ttdef"><b>Definition:</b> cli.hpp:98</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_ab206c293fefcbc6d48c1820b5aa5ac2c"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#ab206c293fefcbc6d48c1820b5aa5ac2c">qOS::cli::_Handler::getStringLength</a></div><div class="ttdeci">size_t getStringLength(void) const</div><div class="ttdoc">The length of the stringStrData.</div><div class="ttdef"><b>Definition:</b> cli.hpp:121</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_ae47a2eacf3c53b77e643f2d0d6d3e813"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#ae47a2eacf3c53b77e643f2d0d6d3e813">qOS::cli::_Handler::getNumArgs</a></div><div class="ttdeci">size_t getNumArgs(void) const</div><div class="ttdoc">Retrieve the number of arguments of the incoming AT command. only available if Type = commandType::PA...</div><div class="ttdef"><b>Definition:</b> cli.hpp:130</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html_ae77729147039358a767030e1e5fcbd80"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html#ae77729147039358a767030e1e5fcbd80">qOS::cli::_Handler::getArgHex</a></div><div class="ttdeci">uint32_t getArgHex(index_t n) const</div><div class="ttdoc">Helper method to get the n HEX argument parsed uint32_t from the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.cpp:424</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1command_html"><div class="ttname"><a href="classq_o_s_1_1cli_1_1command.html">qOS::cli::command</a></div><div class="ttdoc">An AT-Command object.</div><div class="ttdef"><b>Definition:</b> cli.hpp:228</div></div>
+<div class="ttc" id="aclassq_o_s_1_1command_line_interface_html"><div class="ttname"><a href="classq_o_s_1_1command_line_interface.html">qOS::commandLineInterface</a></div><div class="ttdoc">An AT Command Line Interface (CLI) object.</div><div class="ttdef"><b>Definition:</b> cli.hpp:250</div></div>
+<div class="ttc" id="aclassq_o_s_1_1command_line_interface_html_a2cfdccc972a81890a4def1d0132061bc"><div class="ttname"><a href="classq_o_s_1_1command_line_interface.html#a2cfdccc972a81890a4def1d0132061bc">qOS::commandLineInterface::run</a></div><div class="ttdeci">bool run(void)</div><div class="ttdoc">Run the AT Command Line Interface when the input is ready.</div><div class="ttdef"><b>Definition:</b> cli.cpp:334</div></div>
+<div class="ttc" id="aclassq_o_s_1_1command_line_interface_html_a644e9a38169afbd2019d5672a27daa34"><div class="ttname"><a href="classq_o_s_1_1command_line_interface.html#a644e9a38169afbd2019d5672a27daa34">qOS::commandLineInterface::add</a></div><div class="ttdeci">bool add(cli::command &amp;cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param=nullptr)</div><div class="ttdoc">This function subscribes the CLI instance to a specific command with an associated Callback function,...</div><div class="ttdef"><b>Definition:</b> cli.cpp:78</div></div>
+<div class="ttc" id="aclassq_o_s_1_1command_line_interface_html_a69e706db3cf304ea8aa6e95c5708c067"><div class="ttname"><a href="classq_o_s_1_1command_line_interface.html#a69e706db3cf304ea8aa6e95c5708c067">qOS::commandLineInterface::setup</a></div><div class="ttdeci">bool setup(util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut)</div><div class="ttdoc">Setup an instance of the AT Command Line Interface.</div><div class="ttdef"><b>Definition:</b> cli.cpp:58</div></div>
+<div class="ttc" id="aclassq_o_s_1_1command_line_interface_html_a941188ce6f70346fabacaeb7e4fdf9b6"><div class="ttname"><a href="classq_o_s_1_1command_line_interface.html#a941188ce6f70346fabacaeb7e4fdf9b6">qOS::commandLineInterface::isrHandler</a></div><div class="ttdeci">bool isrHandler(const char c)</div><div class="ttdoc">Feed the CLI input with a single character. This call is mandatory from an interrupt context....</div><div class="ttdef"><b>Definition:</b> cli.cpp:111</div></div>
+<div class="ttc" id="aclassq_o_s_1_1command_line_interface_html_a99736d5775bf8e4447d107b261365c1e"><div class="ttname"><a href="classq_o_s_1_1command_line_interface.html#a99736d5775bf8e4447d107b261365c1e">qOS::commandLineInterface::inputFlush</a></div><div class="ttdeci">bool inputFlush(void)</div><div class="ttdoc">Flush the CLI input buffer.</div><div class="ttdef"><b>Definition:</b> cli.cpp:285</div></div>
+<div class="ttc" id="aclassq_o_s_1_1command_line_interface_html_ac4aa4363a90a5c9c56ddd301f2642c94"><div class="ttname"><a href="classq_o_s_1_1command_line_interface.html#ac4aa4363a90a5c9c56ddd301f2642c94">qOS::commandLineInterface::exec</a></div><div class="ttdeci">cli::response exec(const char *cmd)</div><div class="ttdoc">Try to execute the requested command.</div><div class="ttdef"><b>Definition:</b> cli.cpp:258</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html"><div class="ttname"><a href="classq_o_s_1_1core.html">qOS::core</a></div><div class="ttdef"><b>Definition:</b> kernel.hpp:50</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html"><div class="ttname"><a href="classq_o_s_1_1list.html">qOS::list</a></div><div class="ttdoc">A list object (Generic double-linked)</div><div class="ttdef"><b>Definition:</b> list.hpp:48</div></div>
+<div class="ttc" id="aclassq_o_s_1_1node_html"><div class="ttname"><a href="classq_o_s_1_1node.html">qOS::node</a></div><div class="ttdoc">A list-node object (Used internally)</div><div class="ttdef"><b>Definition:</b> list.hpp:17</div></div>
+<div class="ttc" id="aclassq_o_s_1_1response_html"><div class="ttname"><a href="classq_o_s_1_1response.html">qOS::response</a></div><div class="ttdoc">A Response Handler object.</div><div class="ttdef"><b>Definition:</b> response.hpp:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li><li class="navelem"><b>cli.hpp</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

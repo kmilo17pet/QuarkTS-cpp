@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: qOS::sm::state Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTScpp" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v7.3.2</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classq_o_s_1_1sm_1_1state.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="classq_o_s_1_1sm_1_1state-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">qOS::sm::state Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A state object.  
+ <a href="classq_o_s_1_1sm_1_1state.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="fsm_8hpp_source.html">fsm.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a9e9e639662e875b11df5675aa455ae39"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39">add</a> (<a class="el" href="classq_o_s_1_1sm_1_1state.html">sm::state</a> &amp;s, sm::stateCallback_t sFcn, <a class="el" href="classq_o_s_1_1sm_1_1state.html">sm::state</a> &amp;init) noexcept</td></tr>
+<tr class="memdesc:a9e9e639662e875b11df5675aa455ae39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the specified state as a child state.  <a href="classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39">More...</a><br /></td></tr>
+<tr class="separator:a9e9e639662e875b11df5675aa455ae39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f7206e427f7a84a0e21d18a52719959"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a3f7206e427f7a84a0e21d18a52719959">add</a> (<a class="el" href="classq_o_s_1_1sm_1_1state.html">sm::state</a> &amp;s, sm::stateCallback_t sFcn) noexcept</td></tr>
+<tr class="memdesc:a3f7206e427f7a84a0e21d18a52719959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the specified state as a child state.  <a href="classq_o_s_1_1sm_1_1state.html#a3f7206e427f7a84a0e21d18a52719959">More...</a><br /></td></tr>
+<tr class="separator:a3f7206e427f7a84a0e21d18a52719959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87b8a49872e7905584488b89cf687bd1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a87b8a49872e7905584488b89cf687bd1">setTransitions</a> (<a class="el" href="structq_o_s_1_1sm_1_1__transition__s.html">transition_t</a> *table, size_t n) noexcept</td></tr>
+<tr class="memdesc:a87b8a49872e7905584488b89cf687bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Installs a table with the outgoing transitions for this state.  <a href="classq_o_s_1_1sm_1_1state.html#a87b8a49872e7905584488b89cf687bd1">More...</a><br /></td></tr>
+<tr class="separator:a87b8a49872e7905584488b89cf687bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a801aef3c9d1cdaab65112bb7f1e80e92"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a801aef3c9d1cdaab65112bb7f1e80e92">setTimeouts</a> (<a class="el" href="structq_o_s_1_1sm_1_1__timeout_state_definition__s.html">timeoutStateDefinition_t</a> *def, size_t n) noexcept</td></tr>
+<tr class="memdesc:a801aef3c9d1cdaab65112bb7f1e80e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup fixed timeouts for the specified state using a lookup-table.  <a href="classq_o_s_1_1sm_1_1state.html#a801aef3c9d1cdaab65112bb7f1e80e92">More...</a><br /></td></tr>
+<tr class="separator:a801aef3c9d1cdaab65112bb7f1e80e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a128a3f9bd421170f32adc472bc695697"><td class="memItemLeft" align="right" valign="top"><a id="a128a3f9bd421170f32adc472bc695697" name="a128a3f9bd421170f32adc472bc695697"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>getData</b> (void) noexcept</td></tr>
+<tr class="separator:a128a3f9bd421170f32adc472bc695697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d04745f151361e45fb70241fb1e3546"><td class="memItemLeft" align="right" valign="top"><a id="a9d04745f151361e45fb70241fb1e3546" name="a9d04745f151361e45fb70241fb1e3546"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setData</b> (void *pData) noexcept</td></tr>
+<tr class="separator:a9d04745f151361e45fb70241fb1e3546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14f74253cc6c024e15f52a278db5fd0"><td class="memItemLeft" align="right" valign="top"><a id="ac14f74253cc6c024e15f52a278db5fd0" name="ac14f74253cc6c024e15f52a278db5fd0"></a>
+<a class="el" href="structq_o_s_1_1sm_1_1__transition__s.html">transition_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getTransitionTable</b> (void) noexcept</td></tr>
+<tr class="separator:ac14f74253cc6c024e15f52a278db5fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4a676287832d089ce9dde9ee3a69bb1"><td class="memItemLeft" align="right" valign="top"><a id="ae4a676287832d089ce9dde9ee3a69bb1" name="ae4a676287832d089ce9dde9ee3a69bb1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setCallback</b> (const stateCallback_t sFcn) noexcept</td></tr>
+<tr class="separator:ae4a676287832d089ce9dde9ee3a69bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:acd87719420916c47dafcb4865fb5cb2e"><td class="memItemLeft" align="right" valign="top"><a id="acd87719420916c47dafcb4865fb5cb2e" name="acd87719420916c47dafcb4865fb5cb2e"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::stateMachine</b></td></tr>
+<tr class="separator:acd87719420916c47dafcb4865fb5cb2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A state object. </p>
+<p >States are represented as instances of the state object. One important attribute of this object is the callback function, which is used to describe the behavior specific to the state. Also there is a pointer to the parent state to define nesting of the state and its place in the hierarchical topology.</p>
+<p >So concrete state machine are built by adding an arbitrary number states and defining callback functions.</p>
+<p >State machines are constructed by composition, therefore, the topology of a state machine is determined upon construction. In this FSM implementation, there are not distinction between composite states(states containing sub-states) and leaf states. All states are potentially composite.</p>
+<p >The APIs <a class="el" href="classq_o_s_1_1state_machine.html#a8948aa0009e6bb0987a466c10f674278" title="Add the specified state to the stateMachine &quot;Top&quot; state.">stateMachine::add()</a> and <a class="el" href="classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39" title="Add the specified state as a child state.">state::add()</a> should be used to initialize the state and define its position in the topology. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3f7206e427f7a84a0e21d18a52719959" name="a3f7206e427f7a84a0e21d18a52719959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7206e427f7a84a0e21d18a52719959">&#9670;&nbsp;</a></span>add() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1sm_1_1state.html">sm::state</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sm::stateCallback_t&#160;</td>
+          <td class="paramname"><em>sFcn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add the specified state as a child state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The state object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sFcn</td><td>The handler function associated to the state.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Prototype: </p><div class="fragment"><div class="line">sm::status xCallback( sm::handler_t h ) </div>
+</div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a9e9e639662e875b11df5675aa455ae39" name="a9e9e639662e875b11df5675aa455ae39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e9e639662e875b11df5675aa455ae39">&#9670;&nbsp;</a></span>add() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1sm_1_1state.html">sm::state</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sm::stateCallback_t&#160;</td>
+          <td class="paramname"><em>sFcn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1sm_1_1state.html">sm::state</a> &amp;&#160;</td>
+          <td class="paramname"><em>init</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add the specified state as a child state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The state object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sFcn</td><td>The handler function associated to the state.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Prototype: </p><div class="fragment"><div class="line">sm::status xCallback( sm::handler_t h ) </div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>The first child-state to be executed if the subscribed state its a parent in an hierarchical pattern. (default transition). You can ignore this argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a801aef3c9d1cdaab65112bb7f1e80e92" name="a801aef3c9d1cdaab65112bb7f1e80e92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a801aef3c9d1cdaab65112bb7f1e80e92">&#9670;&nbsp;</a></span>setTimeouts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sm::state::setTimeouts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1__timeout_state_definition__s.html">sm::timeoutStateDefinition_t</a> *&#160;</td>
+          <td class="paramname"><em>def</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Setup fixed timeouts for the specified state using a lookup-table. </p>
+<dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type timeoutStateDefinition_t with <em>n</em> elements matching { time, options }. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1state_machine.html#a7762bb9b4664c5dc40c2bee0a3f73bd5" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::installSignalQueue()</a>, <a class="el" href="classq_o_s_1_1state_machine.html#a165e39faaf792c755f9ca55d78a7ffb2" title="Install the Timeout-specification object to target FSM to allow timed signals within states.">stateMachine::installTimeoutSpec()</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tdef</td><td>The lookup table matching the requested timeout values with their respective options. <pre class="fragment">{ [Timeout value], [Options(Combined with a bitwise OR)] } </pre> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements inside <em>tdef</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a87b8a49872e7905584488b89cf687bd1" name="a87b8a49872e7905584488b89cf687bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87b8a49872e7905584488b89cf687bd1">&#9670;&nbsp;</a></span>setTransitions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sm::state::setTransitions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1__transition__s.html">sm::transition_t</a> *&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Installs a table with the outgoing transitions for this state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">table</td><td>An array of entries of type qSM_Transition_t with the outgoing transitions. Each entry relates signals, actions and the target state using the following layout: <pre class="fragment">{ [Signal], [Action/Guard], [Target state], [History Mode] } </pre> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements inside <em>table</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>qOS</b></li><li class="navelem"><b>sm</b></li><li class="navelem"><a class="el" href="classq_o_s_1_1sm_1_1state.html">state</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

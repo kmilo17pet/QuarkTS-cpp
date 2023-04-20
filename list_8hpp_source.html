@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: list.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTScpp" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v7.3.2</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('list_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">list.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef QOS_CPP_LIST</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define QOS_CPP_LIST</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;include/types.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>qOS {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">enum</span> listPosition : int32_t {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        AT_FRONT = -1,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        AT_BACK = -2</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    };</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">class </span>list;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classq_o_s_1_1node.html">   17</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1node.html">node</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *next{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *prev{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <a class="code hl_class" href="classq_o_s_1_1list.html">list</a> *container{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordtype">void</span> init( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a>( <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordtype">void</span> operator=( <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keyword">inline</span> <a class="code hl_class" href="classq_o_s_1_1list.html">list</a>* getContainer( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="keywordflow">return</span> container;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a>() : next(<span class="keyword">nullptr</span>), prev(<span class="keyword">nullptr</span>), container(<span class="keyword">nullptr</span>) {}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1list.html">list</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    };</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">using</span> listCompareFcn_t = bool (*)( <span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> * );</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">enum class</span> listDirection {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        FORWARD,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        BACKWARD</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    };</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">class </span>listIterator;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classq_o_s_1_1list.html">   48</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1list.html">list</a> : <span class="keyword">protected</span> <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *head{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *tail{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordtype">size_t</span> size{ 0u };</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordtype">bool</span> isMember( <span class="keyword">const</span> <span class="keywordtype">void</span> * <span class="keyword">const</span> xNode ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordtype">void</span> insertAtFront( <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> * <span class="keyword">const</span> xNode ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordtype">void</span> insertAtBack( <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> * <span class="keyword">const</span> xNode ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a>* removeFront( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a>* removeBack( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a>* getNodeAtIndex( <span class="keyword">const</span> listPosition p ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordtype">void</span> givenNodeSwapBoundaries( <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *n1, <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *n2 ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordtype">void</span> givenNodeSwapAdjacent( <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *n1, <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *n2 ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordtype">void</span> givenNodesUpdateOuterLinks( <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *n1, <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *n2 ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <a class="code hl_class" href="classq_o_s_1_1list.html">list</a>( <a class="code hl_class" href="classq_o_s_1_1list.html">list</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordtype">void</span> operator=( <a class="code hl_class" href="classq_o_s_1_1list.html">list</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <a class="code hl_class" href="classq_o_s_1_1list.html">list</a>() <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1list.html#a97ec95a12b86f5086c81757fc7b28888">insert</a>( <span class="keywordtype">void</span> * <span class="keyword">const</span> xNode, <span class="keyword">const</span> listPosition p = listPosition::AT_BACK ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1list.html#a293ed72f30fdf6ca3f77942129cd4a0d">remove</a>( <span class="keywordtype">void</span> * <span class="keyword">const</span> xNode ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordtype">void</span>* <a class="code hl_function" href="classq_o_s_1_1list.html#a293ed72f30fdf6ca3f77942129cd4a0d">remove</a>( <span class="keywordtype">void</span> * <span class="keyword">const</span> xNode, <span class="keyword">const</span> listPosition p ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordtype">void</span>* <a class="code hl_function" href="classq_o_s_1_1list.html#a451cd6b721407f725c125e3ceca1d9c3">getFront</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordtype">void</span>* <a class="code hl_function" href="classq_o_s_1_1list.html#ac1ac04a47f5ec51ecb2b27db62dd9a64">getBack</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1list.html#a969fa23996d1dc9d4fdac1aa701e3bb9">isEmpty</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keywordtype">size_t</span> <a class="code hl_function" href="classq_o_s_1_1list.html#a7f93cdd93a5ea1d5c46f76218d884517">length</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed">sort</a>( listCompareFcn_t f ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1list.html#a21271a03c391469c809c6ed27fba92ff">swap</a>( <span class="keywordtype">void</span>* node1, <span class="keywordtype">void</span>* node2 ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1list.html#a9ae9c2c33f31e4598a90489320129083">move</a>( <a class="code hl_class" href="classq_o_s_1_1list.html">list</a>&amp; src, <span class="keyword">const</span> listPosition p = listPosition::AT_BACK ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordtype">void</span> clean( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            <a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a> <a class="code hl_function" href="classq_o_s_1_1list.html#afa53780fbc5c26fef679124c4e57f4cb">begin</a>( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            <a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a> <a class="code hl_function" href="classq_o_s_1_1list.html#af28ba404be2fdc108e1e1393edd67fab">end</a>( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a> <a class="code hl_function" href="classq_o_s_1_1list.html#aab5ca9e9f3d1a763adfe83a25e5bc949">from</a>( <span class="keywordtype">void</span> *offset ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a>;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    };</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classq_o_s_1_1list_iterator.html">  178</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a> {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            <a class="code hl_class" href="classq_o_s_1_1list.html">list</a> *l{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> *iter{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            <span class="keywordtype">void</span> *current{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a>( <a class="code hl_class" href="classq_o_s_1_1list.html">list</a>&amp; xList, listDirection dir = listDirection::FORWARD, <span class="keywordtype">void</span> *nodeOffset = <span class="keyword">nullptr</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <span class="keywordtype">bool</span> until( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            <span class="keywordtype">bool</span> until( <span class="keywordtype">void</span>* <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            <a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a>&amp; operator++( <span class="keywordtype">int</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            <a class="code hl_class" href="classq_o_s_1_1list_iterator.html">listIterator</a>&amp; operator--( <span class="keywordtype">int</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="keyword">inline</span> T get( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                <span class="comment">/*cstat -CERT-EXP36-C_b*/</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( current );</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                <span class="comment">/*cstat +CERT-EXP36-C_b*/</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    };</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>}</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_CPP_LIST*/</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html"><div class="ttname"><a href="classq_o_s_1_1list.html">qOS::list</a></div><div class="ttdoc">A list object (Generic double-linked)</div><div class="ttdef"><b>Definition:</b> list.hpp:48</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a21271a03c391469c809c6ed27fba92ff"><div class="ttname"><a href="classq_o_s_1_1list.html#a21271a03c391469c809c6ed27fba92ff">qOS::list::swap</a></div><div class="ttdeci">bool swap(void *node1, void *node2) noexcept</div><div class="ttdoc">Swap two nodes that belongs to the list by changing its own links.</div><div class="ttdef"><b>Definition:</b> list.cpp:286</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a293ed72f30fdf6ca3f77942129cd4a0d"><div class="ttname"><a href="classq_o_s_1_1list.html#a293ed72f30fdf6ca3f77942129cd4a0d">qOS::list::remove</a></div><div class="ttdeci">bool remove(void *const xNode) noexcept</div><div class="ttdoc">If the node is member of a list, the node will be removed from it.</div><div class="ttdef"><b>Definition:</b> list.cpp:131</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a430dd107b2203333efc5ca39c7fbb2ed"><div class="ttname"><a href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed">qOS::list::sort</a></div><div class="ttdeci">bool sort(listCompareFcn_t f) noexcept</div><div class="ttdoc">Sort the double linked list using the f function to determine the order. The sorting algorithm used b...</div><div class="ttdef"><b>Definition:</b> list.cpp:223</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a451cd6b721407f725c125e3ceca1d9c3"><div class="ttname"><a href="classq_o_s_1_1list.html#a451cd6b721407f725c125e3ceca1d9c3">qOS::list::getFront</a></div><div class="ttdeci">void * getFront(void) const noexcept</div><div class="ttdoc">Get a pointer to the front item of the list.</div><div class="ttdef"><b>Definition:</b> list.cpp:202</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a7f93cdd93a5ea1d5c46f76218d884517"><div class="ttname"><a href="classq_o_s_1_1list.html#a7f93cdd93a5ea1d5c46f76218d884517">qOS::list::length</a></div><div class="ttdeci">size_t length(void) const noexcept</div><div class="ttdoc">Get the number of items inside the list.</div><div class="ttdef"><b>Definition:</b> list.cpp:217</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a969fa23996d1dc9d4fdac1aa701e3bb9"><div class="ttname"><a href="classq_o_s_1_1list.html#a969fa23996d1dc9d4fdac1aa701e3bb9">qOS::list::isEmpty</a></div><div class="ttdeci">bool isEmpty(void) const noexcept</div><div class="ttdoc">Check if the list is empty.</div><div class="ttdef"><b>Definition:</b> list.cpp:212</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a97ec95a12b86f5086c81757fc7b28888"><div class="ttname"><a href="classq_o_s_1_1list.html#a97ec95a12b86f5086c81757fc7b28888">qOS::list::insert</a></div><div class="ttdeci">bool insert(void *const xNode, const listPosition p=listPosition::AT_BACK) noexcept</div><div class="ttdoc">Insert an item into the list.</div><div class="ttdef"><b>Definition:</b> list.cpp:91</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a9ae9c2c33f31e4598a90489320129083"><div class="ttname"><a href="classq_o_s_1_1list.html#a9ae9c2c33f31e4598a90489320129083">qOS::list::move</a></div><div class="ttdeci">bool move(list &amp;src, const listPosition p=listPosition::AT_BACK) noexcept</div><div class="ttdoc">Moves(or merge) the entire list src to the given list. After the move operation, this function leaves...</div><div class="ttdef"><b>Definition:</b> list.cpp:371</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_aab5ca9e9f3d1a763adfe83a25e5bc949"><div class="ttname"><a href="classq_o_s_1_1list.html#aab5ca9e9f3d1a763adfe83a25e5bc949">qOS::list::from</a></div><div class="ttdeci">listIterator from(void *offset) noexcept</div><div class="ttdoc">Returns an iterator pointing to the element given by offset in the list container.</div><div class="ttdef"><b>Definition:</b> list.cpp:430</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_ac1ac04a47f5ec51ecb2b27db62dd9a64"><div class="ttname"><a href="classq_o_s_1_1list.html#ac1ac04a47f5ec51ecb2b27db62dd9a64">qOS::list::getBack</a></div><div class="ttdeci">void * getBack(void) const noexcept</div><div class="ttdoc">Get a pointer to the back item of the list.</div><div class="ttdef"><b>Definition:</b> list.cpp:207</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_af28ba404be2fdc108e1e1393edd67fab"><div class="ttname"><a href="classq_o_s_1_1list.html#af28ba404be2fdc108e1e1393edd67fab">qOS::list::end</a></div><div class="ttdeci">listIterator end(void) noexcept</div><div class="ttdoc">Returns an iterator pointing to the last element in the list container.</div><div class="ttdef"><b>Definition:</b> list.cpp:424</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_afa53780fbc5c26fef679124c4e57f4cb"><div class="ttname"><a href="classq_o_s_1_1list.html#afa53780fbc5c26fef679124c4e57f4cb">qOS::list::begin</a></div><div class="ttdeci">listIterator begin(void) noexcept</div><div class="ttdoc">Returns an iterator pointing to the first element in the list container.</div><div class="ttdef"><b>Definition:</b> list.cpp:418</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_iterator_html"><div class="ttname"><a href="classq_o_s_1_1list_iterator.html">qOS::listIterator</a></div><div class="ttdef"><b>Definition:</b> list.hpp:178</div></div>
+<div class="ttc" id="aclassq_o_s_1_1node_html"><div class="ttname"><a href="classq_o_s_1_1node.html">qOS::node</a></div><div class="ttdoc">A list-node object (Used internally)</div><div class="ttdef"><b>Definition:</b> list.hpp:17</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li><li class="navelem"><b>list.hpp</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,891 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: qOS::task Class Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTScpp" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v7.3.2</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classq_o_s_1_1task.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
+<a href="classq_o_s_1_1task-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">qOS::task Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>A task node object.  
+ <a href="classq_o_s_1_1task.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="task_8hpp_source.html">task.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for qOS::task:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1task__inherit__graph.svg" width="94" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for qOS::task:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1task__coll__graph.svg" width="94" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ac30978d584081375d2b2b7e9b149573c"><td class="memItemLeft" align="right" valign="top"><a id="ac30978d584081375d2b2b7e9b149573c" name="ac30978d584081375d2b2b7e9b149573c"></a>
+priority_t&#160;</td><td class="memItemRight" valign="bottom"><b>getPriority</b> (void) const noexcept</td></tr>
+<tr class="separator:ac30978d584081375d2b2b7e9b149573c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87307b1f566d53d55ceb2975da308d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#ab87307b1f566d53d55ceb2975da308d7">setPriority</a> (priority_t pValue) noexcept</td></tr>
+<tr class="memdesc:ab87307b1f566d53d55ceb2975da308d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the task priority value.  <a href="classq_o_s_1_1task.html#ab87307b1f566d53d55ceb2975da308d7">More...</a><br /></td></tr>
+<tr class="separator:ab87307b1f566d53d55ceb2975da308d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e18aa387560150895bda737ddc1c70"><td class="memItemLeft" align="right" valign="top">cycles_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#aa5e18aa387560150895bda737ddc1c70">getCycles</a> (void) const noexcept</td></tr>
+<tr class="memdesc:aa5e18aa387560150895bda737ddc1c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of task activations.  <a href="classq_o_s_1_1task.html#aa5e18aa387560150895bda737ddc1c70">More...</a><br /></td></tr>
+<tr class="separator:aa5e18aa387560150895bda737ddc1c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c9dfe56b44e5b80dd2be4f5c16383a"><td class="memItemLeft" align="right" valign="top">taskState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a01c9dfe56b44e5b80dd2be4f5c16383a">getState</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a01c9dfe56b44e5b80dd2be4f5c16383a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the task operational state.  <a href="classq_o_s_1_1task.html#a01c9dfe56b44e5b80dd2be4f5c16383a">More...</a><br /></td></tr>
+<tr class="separator:a01c9dfe56b44e5b80dd2be4f5c16383a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaac5b4097aa450dc78d57b8f2ed3d56c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c">setState</a> (taskState s) noexcept</td></tr>
+<tr class="memdesc:aaac5b4097aa450dc78d57b8f2ed3d56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the task operational state.  <a href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c">More...</a><br /></td></tr>
+<tr class="separator:aaac5b4097aa450dc78d57b8f2ed3d56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bf5d2fa8de8929aa2d45dade2c32740"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a9bf5d2fa8de8929aa2d45dade2c32740">suspend</a> (void) noexcept</td></tr>
+<tr class="memdesc:a9bf5d2fa8de8929aa2d45dade2c32740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put the task into a disabled state.  <a href="classq_o_s_1_1task.html#a9bf5d2fa8de8929aa2d45dade2c32740">More...</a><br /></td></tr>
+<tr class="separator:a9bf5d2fa8de8929aa2d45dade2c32740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b6aeaa5fc154554b70f8c8f0b4984d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a4b6aeaa5fc154554b70f8c8f0b4984d0">disable</a> (void) noexcept</td></tr>
+<tr class="memdesc:a4b6aeaa5fc154554b70f8c8f0b4984d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put the task into a disabled state.  <a href="classq_o_s_1_1task.html#a4b6aeaa5fc154554b70f8c8f0b4984d0">More...</a><br /></td></tr>
+<tr class="separator:a4b6aeaa5fc154554b70f8c8f0b4984d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeb29d20256efc116b5a7027ce2ed9c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#aeeb29d20256efc116b5a7027ce2ed9c0">resume</a> (void) noexcept</td></tr>
+<tr class="memdesc:aeeb29d20256efc116b5a7027ce2ed9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put the task into a enabled state.  <a href="classq_o_s_1_1task.html#aeeb29d20256efc116b5a7027ce2ed9c0">More...</a><br /></td></tr>
+<tr class="separator:aeeb29d20256efc116b5a7027ce2ed9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a496308de8f95998921d6611bd101a8fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a496308de8f95998921d6611bd101a8fc">enable</a> (void) noexcept</td></tr>
+<tr class="memdesc:a496308de8f95998921d6611bd101a8fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put the task into a enabled state.  <a href="classq_o_s_1_1task.html#a496308de8f95998921d6611bd101a8fc">More...</a><br /></td></tr>
+<tr class="separator:a496308de8f95998921d6611bd101a8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4d5af2b94b2eabcc82d31b0202561d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d">asleep</a> (void) noexcept</td></tr>
+<tr class="memdesc:aaf4d5af2b94b2eabcc82d31b0202561d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put the task into a sleep state. The task can't be triggered by the lower precedence events.  <a href="classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d">More...</a><br /></td></tr>
+<tr class="separator:aaf4d5af2b94b2eabcc82d31b0202561d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a002d22fb2cfcf829724e0f48f9caf292"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292">awake</a> (void) noexcept</td></tr>
+<tr class="memdesc:a002d22fb2cfcf829724e0f48f9caf292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put the task into a normal operation state. Here the task will be able to catch any kind of events.  <a href="classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292">More...</a><br /></td></tr>
+<tr class="separator:a002d22fb2cfcf829724e0f48f9caf292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad50d2873186a55f5db82b14a4dd14879"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#ad50d2873186a55f5db82b14a4dd14879">isEnabled</a> (void) const noexcept</td></tr>
+<tr class="memdesc:ad50d2873186a55f5db82b14a4dd14879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the enabled/disabled state.  <a href="classq_o_s_1_1task.html#ad50d2873186a55f5db82b14a4dd14879">More...</a><br /></td></tr>
+<tr class="separator:ad50d2873186a55f5db82b14a4dd14879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a792722feb8e3d5c688ef43933daa1250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a792722feb8e3d5c688ef43933daa1250">setIterations</a> (iteration_t iValue) noexcept</td></tr>
+<tr class="memdesc:a792722feb8e3d5c688ef43933daa1250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the number of task iterations.  <a href="classq_o_s_1_1task.html#a792722feb8e3d5c688ef43933daa1250">More...</a><br /></td></tr>
+<tr class="separator:a792722feb8e3d5c688ef43933daa1250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c0e85f22ffad1e4867e6d00e186e3fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a2c0e85f22ffad1e4867e6d00e186e3fb">setTime</a> (const qOS::time_t tValue) noexcept</td></tr>
+<tr class="memdesc:a2c0e85f22ffad1e4867e6d00e186e3fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the Task execution interval.  <a href="classq_o_s_1_1task.html#a2c0e85f22ffad1e4867e6d00e186e3fb">More...</a><br /></td></tr>
+<tr class="separator:a2c0e85f22ffad1e4867e6d00e186e3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c5809e7c14f6ce50155a3575127c6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a77c5809e7c14f6ce50155a3575127c6d">setCallback</a> (const taskFcn_t tCallback) noexcept</td></tr>
+<tr class="memdesc:a77c5809e7c14f6ce50155a3575127c6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the task callback function.  <a href="classq_o_s_1_1task.html#a77c5809e7c14f6ce50155a3575127c6d">More...</a><br /></td></tr>
+<tr class="separator:a77c5809e7c14f6ce50155a3575127c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24629151babd0389e144ec282250d0df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a24629151babd0389e144ec282250d0df">setData</a> (void *arg) noexcept</td></tr>
+<tr class="memdesc:a24629151babd0389e144ec282250d0df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the task data.  <a href="classq_o_s_1_1task.html#a24629151babd0389e144ec282250d0df">More...</a><br /></td></tr>
+<tr class="separator:a24629151babd0389e144ec282250d0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89fd47378f74788afa7c73938555bb0b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a89fd47378f74788afa7c73938555bb0b">setName</a> (const char *tName) noexcept</td></tr>
+<tr class="memdesc:a89fd47378f74788afa7c73938555bb0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the task name.  <a href="classq_o_s_1_1task.html#a89fd47378f74788afa7c73938555bb0b">More...</a><br /></td></tr>
+<tr class="separator:a89fd47378f74788afa7c73938555bb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc22fcf2bb3bbbd4c2736f0434a2c45a"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#acc22fcf2bb3bbbd4c2736f0434a2c45a">getName</a> (void) const noexcept</td></tr>
+<tr class="memdesc:acc22fcf2bb3bbbd4c2736f0434a2c45a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the task name.  <a href="classq_o_s_1_1task.html#acc22fcf2bb3bbbd4c2736f0434a2c45a">More...</a><br /></td></tr>
+<tr class="separator:acc22fcf2bb3bbbd4c2736f0434a2c45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6446f477bac03d7ad0204f43451bd2d4"><td class="memItemLeft" align="right" valign="top"><a id="a6446f477bac03d7ad0204f43451bd2d4" name="a6446f477bac03d7ad0204f43451bd2d4"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getID</b> (void) const noexcept</td></tr>
+<tr class="separator:a6446f477bac03d7ad0204f43451bd2d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a168ac358a678484223fcc95882487a3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a168ac358a678484223fcc95882487a3f">attachQueue</a> (<a class="el" href="classq_o_s_1_1queue.html">queue</a> &amp;q, const queueLinkMode mode, const size_t arg=1u) noexcept</td></tr>
+<tr class="memdesc:a168ac358a678484223fcc95882487a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attach a queue to the Task.  <a href="classq_o_s_1_1task.html#a168ac358a678484223fcc95882487a3f">More...</a><br /></td></tr>
+<tr class="separator:a168ac358a678484223fcc95882487a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65be36221b03ecf2de750a5f1d71ff17"><td class="memItemLeft" align="right" valign="top"><a id="a65be36221b03ecf2de750a5f1d71ff17" name="a65be36221b03ecf2de750a5f1d71ff17"></a>
+void *const &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAttachedObject</b> (void) const noexcept</td></tr>
+<tr class="separator:a65be36221b03ecf2de750a5f1d71ff17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a923b467e2358782247afd2817e5e3fb6"><td class="memItemLeft" align="right" valign="top"><a id="a923b467e2358782247afd2817e5e3fb6" name="a923b467e2358782247afd2817e5e3fb6"></a>
+<a class="el" href="classq_o_s_1_1___event.html">event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>eventData</b> (void) const noexcept</td></tr>
+<tr class="separator:a923b467e2358782247afd2817e5e3fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a7239e8580f4c2f69da6b822f99be7fab"><td class="memItemLeft" align="right" valign="top"><a id="a7239e8580f4c2f69da6b822f99be7fab" name="a7239e8580f4c2f69da6b822f99be7fab"></a>
+static const iteration_t&#160;</td><td class="memItemRight" valign="bottom"><b>PERIODIC</b></td></tr>
+<tr class="memdesc:a7239e8580f4c2f69da6b822f99be7fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant to indicate that the task will run every time its timeout has expired. <br /></td></tr>
+<tr class="separator:a7239e8580f4c2f69da6b822f99be7fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23b24c7e0032ed40bd7e80ef3b3e8c63"><td class="memItemLeft" align="right" valign="top"><a id="a23b24c7e0032ed40bd7e80ef3b3e8c63" name="a23b24c7e0032ed40bd7e80ef3b3e8c63"></a>
+static const iteration_t&#160;</td><td class="memItemRight" valign="bottom"><b>INDEFINITE</b></td></tr>
+<tr class="memdesc:a23b24c7e0032ed40bd7e80ef3b3e8c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as PERIODIC. A constant to indicate that the task will run every time its timeout has expired. <br /></td></tr>
+<tr class="separator:a23b24c7e0032ed40bd7e80ef3b3e8c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8de4f3e6d6766a5c9af3f1c769e1a73"><td class="memItemLeft" align="right" valign="top"><a id="ac8de4f3e6d6766a5c9af3f1c769e1a73" name="ac8de4f3e6d6766a5c9af3f1c769e1a73"></a>
+static const iteration_t&#160;</td><td class="memItemRight" valign="bottom"><b>SINGLE_SHOT</b></td></tr>
+<tr class="memdesc:ac8de4f3e6d6766a5c9af3f1c769e1a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant to indicate that the task will be executed only once after its time has expired. <br /></td></tr>
+<tr class="separator:ac8de4f3e6d6766a5c9af3f1c769e1a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:af764561c544bacc1b90b526ee8d3c708"><td class="memItemLeft" align="right" valign="top"><a id="af764561c544bacc1b90b526ee8d3c708" name="af764561c544bacc1b90b526ee8d3c708"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
+<tr class="separator:af764561c544bacc1b90b526ee8d3c708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classq_o_s_1_1node"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classq_o_s_1_1node')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classq_o_s_1_1node.html">qOS::node</a></td></tr>
+<tr class="memitem:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node"><td class="memItemLeft" align="right" valign="top"><a id="a14ad556d2634b1faf3ce9767efbb9136" name="a14ad556d2634b1faf3ce9767efbb9136"></a>
+<a class="el" href="classq_o_s_1_1list.html">list</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getContainer</b> (void) noexcept</td></tr>
+<tr class="separator:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A task node object. </p>
+<p >Like many operating systems, the basic unit of work is the task. Tasks can perform certain functions, which could require periodic or one-time execution, update of specific variables or waiting for specific events. Tasks also could be controlling specific hardware or be triggered by hardware interrupts. In the QuarkTS OS, a task is seen as a node concept that links together:</p>
+<ul>
+<li>Program code performing specific task activities (callback function)</li>
+<li>Execution interval (time)</li>
+<li>Number of execution (iterations)</li>
+<li>Event-based data</li>
+</ul>
+<p >The OS uses a Task Control Block(TCB) to represent each task, storing essential information about task management and execution. Part of this information also includes link-pointers that allows it to be part of one of the lists available in the Kernel Control Block (KCB).</p>
+<p >Each task performs its activities via a callback function and each of them is responsible for supporting cooperative multitasking by being “good neighbors”, i.e., running their callback methods quickly in a non-blocking way and releasing control back to the scheduler as soon as possible (returning). Every task node, must be defined using the qTask_t data-type and the callback is defined as a function that returns void and takes a event_t data structure as its only parameter (This input argument can be used later to get event information.</p>
+<p >Example : </p><div class="fragment"><div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"> </div>
+<div class="line">task UserTask;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> UserTask_Callback( event_t e ) {</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section attention"><dt>Attention</dt><dd>All tasks in QuarkTS must ensure their completion to return the CPU control back to the scheduler, otherwise, the scheduler will hold the execution-state for that task, preventing the activation of other tasks. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Do not access any member of this structure directly. </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaf4d5af2b94b2eabcc82d31b0202561d" name="aaf4d5af2b94b2eabcc82d31b0202561d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf4d5af2b94b2eabcc82d31b0202561d">&#9670;&nbsp;</a></span>asleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::task::asleep </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Put the task into a sleep state. The task can't be triggered by the lower precedence events. </p>
+<dl class="section note"><dt>Note</dt><dd>Only the higher precedence events (Queued Notifications) can wake up the task. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c" title="Set the task operational state.">task::setState()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a168ac358a678484223fcc95882487a3f" name="a168ac358a678484223fcc95882487a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a168ac358a678484223fcc95882487a3f">&#9670;&nbsp;</a></span>attachQueue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool task::attachQueue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1queue.html">queue</a> &amp;&#160;</td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const queueLinkMode&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>arg</em> = <code>1u</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Attach a queue to the Task. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">q</td><td>The queue object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>Attach mode. This implies the event that will trigger the task according to one of the following modes:</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>queueLinkMode::QUEUE_RECEIVER : The task will be triggered if there are elements in the Queue. Data will be extracted automatically in every trigger and will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
+<p >queueLinkMode::QUEUE_FULL : The task will be triggered if the Queue is full. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
+<p >queueLinkMode::QUEUE_COUNT : The task will be triggered if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
+<p >queueLinkMode::QUEUE_EMPTY : The task will be triggered if the queue is empty. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>This argument defines if the queue will be attached (1u) or detached (0u) from the task. If the queueLinkMode::QUEUE_COUNT mode is specified, this value will be used to check the element count of the queue. A zero value will act as a detach action. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a002d22fb2cfcf829724e0f48f9caf292" name="a002d22fb2cfcf829724e0f48f9caf292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a002d22fb2cfcf829724e0f48f9caf292">&#9670;&nbsp;</a></span>awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::task::awake </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Put the task into a normal operation state. Here the task will be able to catch any kind of events. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c" title="Set the task operational state.">task::setState()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a4b6aeaa5fc154554b70f8c8f0b4984d0" name="a4b6aeaa5fc154554b70f8c8f0b4984d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b6aeaa5fc154554b70f8c8f0b4984d0">&#9670;&nbsp;</a></span>disable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::task::disable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Put the task into a disabled state. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c" title="Set the task operational state.">task::setState()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a496308de8f95998921d6611bd101a8fc" name="a496308de8f95998921d6611bd101a8fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a496308de8f95998921d6611bd101a8fc">&#9670;&nbsp;</a></span>enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::task::enable </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Put the task into a enabled state. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c" title="Set the task operational state.">task::setState()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="aa5e18aa387560150895bda737ddc1c70" name="aa5e18aa387560150895bda737ddc1c70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e18aa387560150895bda737ddc1c70">&#9670;&nbsp;</a></span>getCycles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cycles_t task::getCycles </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the number of task activations. </p>
+<dl class="section return"><dt>Returns</dt><dd>An unsigned long value containing the number of task activations. </dd></dl>
+
+</div>
+</div>
+<a id="acc22fcf2bb3bbbd4c2736f0434a2c45a" name="acc22fcf2bb3bbbd4c2736f0434a2c45a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc22fcf2bb3bbbd4c2736f0434a2c45a">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * task::getName </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the task name. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the string containing the task name. </dd></dl>
+
+</div>
+</div>
+<a id="a01c9dfe56b44e5b80dd2be4f5c16383a" name="a01c9dfe56b44e5b80dd2be4f5c16383a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c9dfe56b44e5b80dd2be4f5c16383a">&#9670;&nbsp;</a></span>getState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">taskState task::getState </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the task operational state. </p>
+<dl class="section return"><dt>Returns</dt><dd>taskState::ENABLED or taskState::DISABLED if the task is taskState::AWAKEN. taskState::ASLEEP if the task is in a Sleep operational state. </dd></dl>
+
+</div>
+</div>
+<a id="ad50d2873186a55f5db82b14a4dd14879" name="ad50d2873186a55f5db82b14a4dd14879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad50d2873186a55f5db82b14a4dd14879">&#9670;&nbsp;</a></span>isEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::task::isEnabled </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the enabled/disabled state. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1task.html#a01c9dfe56b44e5b80dd2be4f5c16383a" title="Retrieve the task operational state.">task::getState()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the task in on Enabled state, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="aeeb29d20256efc116b5a7027ce2ed9c0" name="aeeb29d20256efc116b5a7027ce2ed9c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeb29d20256efc116b5a7027ce2ed9c0">&#9670;&nbsp;</a></span>resume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::task::resume </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Put the task into a enabled state. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c" title="Set the task operational state.">task::setState()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a77c5809e7c14f6ce50155a3575127c6d" name="a77c5809e7c14f6ce50155a3575127c6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c5809e7c14f6ce50155a3575127c6d">&#9670;&nbsp;</a></span>setCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool task::setCallback </td>
+          <td>(</td>
+          <td class="paramtype">const taskFcn_t&#160;</td>
+          <td class="paramname"><em>tCallback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set/Change the task callback function. </p>
+<dl class="section note"><dt>Note</dt><dd>This function can be used to detach a state-machine from a task </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tCallback</td><td>A pointer to a void callback method with a event_t parameter as input argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a24629151babd0389e144ec282250d0df" name="a24629151babd0389e144ec282250d0df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24629151babd0389e144ec282250d0df">&#9670;&nbsp;</a></span>setData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool task::setData </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the task data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>The task storage pointer. User data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a792722feb8e3d5c688ef43933daa1250" name="a792722feb8e3d5c688ef43933daa1250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a792722feb8e3d5c688ef43933daa1250">&#9670;&nbsp;</a></span>setIterations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void task::setIterations </td>
+          <td>(</td>
+          <td class="paramtype">iteration_t&#160;</td>
+          <td class="paramname"><em>iValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set/Change the number of task iterations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">iValue</td><td>Number of task executions (Integer value). For indefinite execution (<em>iValue</em> = os.PERIODIC or os.INDEFINITE). Tasks do not remember the number of iteration set initially. After the iterations are done, internal iteration counter is 0. If you need to perform another set of iterations, you need to set the number of iterations again and resume. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a89fd47378f74788afa7c73938555bb0b" name="a89fd47378f74788afa7c73938555bb0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89fd47378f74788afa7c73938555bb0b">&#9670;&nbsp;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool task::setName </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>tName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the task name. </p>
+<dl class="section note"><dt>Note</dt><dd>Name should be unique. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>A raw-string with the task name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ab87307b1f566d53d55ceb2975da308d7" name="ab87307b1f566d53d55ceb2975da308d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab87307b1f566d53d55ceb2975da308d7">&#9670;&nbsp;</a></span>setPriority()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool task::setPriority </td>
+          <td>(</td>
+          <td class="paramtype">priority_t&#160;</td>
+          <td class="paramname"><em>pValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set/Change the task priority value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pValue</td><td>Priority Value. [0(min) - <code>Q_PRIORITY_LEVELS</code> (max)] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="aaac5b4097aa450dc78d57b8f2ed3d56c" name="aaac5b4097aa450dc78d57b8f2ed3d56c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaac5b4097aa450dc78d57b8f2ed3d56c">&#9670;&nbsp;</a></span>setState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool task::setState </td>
+          <td>(</td>
+          <td class="paramtype">taskState&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the task operational state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Use one of the following values:</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>taskState::ENABLED : Task will be able to catch all the events. ( <code>ENABLE_Bit=1</code> )</p>
+<p >taskState::DISABLED : Time events will be discarded. The task catch asynchronous events. ( <code>ENABLE_Bit=0</code>)</p>
+<p >taskState::ASLEEP : Put the task into a sleep operability state. The task can't be triggered by the lower precedence events. ( <code>SHUTDOWN_Bit=0</code>)</p>
+<p >taskState::AWAKE : Put the task into the previous state before it was put in the sleep state.( <code>SHUTDOWN_Bit=1</code> ) </p><dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a2c0e85f22ffad1e4867e6d00e186e3fb" name="a2c0e85f22ffad1e4867e6d00e186e3fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c0e85f22ffad1e4867e6d00e186e3fb">&#9670;&nbsp;</a></span>setTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool task::setTime </td>
+          <td>(</td>
+          <td class="paramtype">const qOS::time_t&#160;</td>
+          <td class="paramname"><em>tValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set/Change the Task execution interval. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tValue</td><td>Execution interval. For immediate execution (<em>tValue</em> = <a class="el" href="classq_o_s_1_1clock.html#a7c97887da1bf02370c733b8c80c20b57" title="To specify a non-wait time value.">clock::IMMEDIATE</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a9bf5d2fa8de8929aa2d45dade2c32740" name="a9bf5d2fa8de8929aa2d45dade2c32740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bf5d2fa8de8929aa2d45dade2c32740">&#9670;&nbsp;</a></span>suspend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::task::suspend </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Put the task into a disabled state. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c" title="Set the task operational state.">task::setState()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>qOS</b></li><li class="navelem"><a class="el" href="classq_o_s_1_1task.html">task</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

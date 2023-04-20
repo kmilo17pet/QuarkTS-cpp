@@ -174,9 +174,10 @@ Timing Approach</h1>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Init();</div>
-<div class="line">    os.init( HAL_GetTick , IdleTask_Callback );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( HAL_GetTick , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a9dab08cadc8d5547f6dbab6fdd0d45ff"><div class="ttname"><a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:32</div></div>
 </div><!-- fragment --></li>
 <li>Scenario 2 : When the tick is not provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;DeviceHeader.h&quot;</span></div>
@@ -190,7 +191,7 @@ Timing Approach</h1>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    MCU_Init();</div>
 <div class="line">    HAL_Init();</div>
-<div class="line">    os.init( NULL , IdleTask_Callback );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( NULL , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
 </div><!-- fragment --></li>

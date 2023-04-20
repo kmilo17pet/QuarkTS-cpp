@@ -145,16 +145,16 @@ $(document).ready(function(){initNavTree('q_gettingstarted.html',''); initResiza
 <div class="textblock"><h1><a class="anchor" id="q_getos"></a>
 Getting the OS</h1>
 <p >Download the latest release from the official repository :</p>
-<p ><a href="https://github.com/kmilo17pet/QuarkTS/releases" style="font-weight:bold">QuarkTS++ Releases</a></p>
+<p ><a href="https://github.com/kmilo17pet/QuarkTS-cpp/releases" style="font-weight:bold">QuarkTS++ Releases</a></p>
 <p >Unpack the release package and add the sources files to your project.</p>
 <h2><a class="anchor" id="q_cloneos"></a>
 Cloning QuarkTS++</h2>
 <p >You only need to clone the <code>kernel</code> branch as follows:</p>
-<div class="fragment"><div class="line">git clone -b kernel https://github.com/kmilo17pet/QuarkTS.git</div>
+<div class="fragment"><div class="line">git clone -b kernel https://github.com/kmilo17pet/QuarkTS-cpp</div>
 </div><!-- fragment --><h2><a class="anchor" id="q_submodule"></a>
 Including QuarkTS++ as a git sub-module</h2>
 <p >Add the OS kernel as a submodule to your project:</p>
-<div class="fragment"><div class="line">git submodule add -b kernel https://github.com/kmilo17pet/QuarkTS.git &lt;destination path&gt;</div>
+<div class="fragment"><div class="line">git submodule add -b kernel https://github.com/kmilo17pet/QuarkTS-cpp.git &lt;destination path&gt;</div>
 </div><!-- fragment --><p >Then, run the initialize command to fetch the code for the first time:</p>
 <div class="fragment"><div class="line">git submodule update --init</div>
 </div><!-- fragment --><p >To update the submodule to the latest just run:</p>
@@ -162,7 +162,7 @@ Including QuarkTS++ as a git sub-module</h2>
 </div><!-- fragment --><h2><a class="anchor" id="q_getqconfig"></a>
 Get a copy of the OS configuration file</h2>
 <p >The file <code>qconfig.h</code> provides specific <a class="el" href="q_foundations.html#q_configmacros">Configuration macros</a> to customize several aspects of the OS. In order to build your solution with QuarkTS++, you should provided your own copy of this configuration file. You can obtain a copy with the default configuration by issuing the following command:</p>
-<div class="fragment"><div class="line">curl https://raw.githubusercontent.com/kmilo17pet/QuarkTS/master/src/config/qconfig.h -o &lt;destination path&gt;/qconfig.h</div>
+<div class="fragment"><div class="line">curl https://raw.githubusercontent.com/kmilo17pet/QuarkTS-cpp/main/src/config/qconfig.h -o &lt;destination path&gt;/qconfig.h</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_firststeps"></a>
 First steps</h1>
 <p >Include the source files to your project. Also, make sure you add a copy of the file <code>qconfig.h</code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code>quarkts++</code>.h and setup the instance of the kernel using the qOS_Setup() inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
@@ -174,9 +174,10 @@ First steps</h1>
 <div class="line">    HardwareSetup();</div>
 <div class="line">    Configure_Periodic_Timer_Interrupt_1ms();</div>
 <div class="line">    <span class="comment">//end of device startup with hardware-specific code</span></div>
-<div class="line">    os.init( <span class="keyword">nullptr</span> , IdleTask_Callback );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( <span class="keyword">nullptr</span> , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a9dab08cadc8d5547f6dbab6fdd0d45ff"><div class="ttname"><a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:32</div></div>
 </div><!-- fragment --><p >In the above code, the following considerations should be taken:</p><ul>
 <li>The function qOS_Setup() must be called before any interaction with the OS.</li>
 <li>The procedure <code>HardwareSetup()</code> should be a function with all the hardware instructions needed to initialize the target system.</li>
@@ -228,14 +229,16 @@ A simple scheduling</h2>
 <div class="line">    <span class="comment">/*function to fire an interrupt at 1ms - timer tick*/</span></div>
 <div class="line">    Configure_Periodic_Timer0_Interrupt_1ms();</div>
 <div class="line">    </div>
-<div class="line">    os.init( <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span> );</div>
-<div class="line">    os.addTask( Task1, Task1_Callback, 50, 2000, 10, taskState::ENABLED );</div>
-<div class="line">    os.addTask( Task2, Task2_Callback, 50, 3000, task::PERIODIC, taskState::ENABLED );</div>
-<div class="line">    os.addTask( Task2, Task3_Callback, 50, 5000, task::PERIODIC, taskState::DISABLED );</div>
-<div class="line">    os.run();</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span> );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a>( Task1, Task1_Callback, 50, 2000, 10, taskState::ENABLED );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a>( Task2, Task2_Callback, 50, 3000, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a>( Task2, Task3_Callback, 50, 5000, task::PERIODIC, taskState::DISABLED );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">run</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_ab3ffe569156600e392e688c74ab68134"><div class="ttname"><a href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:44</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_af544e4dc0c995270ff1e87f01f87fc79"><div class="ttname"><a href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:373</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="q_os_example2"></a>
 Using the task argument</h2>
 <p >When adding tasks, they can accept a parameter of type pointer to void <code>void*</code> also called the storage pointer. This parameter could be used for multiple applications, including storage, task identification, duplication removal and others. The following example shows the usage of this argument to avoid callback duplication among tasks with the same behavior.</p>

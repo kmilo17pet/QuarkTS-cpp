@@ -1,0 +1,5 @@
+<map id="qOS::stateMachine" name="qOS::stateMachine">
+<area shape="rect" id="node1" title="A FSM(Finite State Machine) object." alt="" coords="5,5,137,32"/>
+<area shape="rect" id="node2" href="$classq_o_s_1_1sm_1_1___handler.html" title=" " alt="" coords="79,124,210,151"/>
+<area shape="rect" id="node3" href="$classq_o_s_1_1sm_1_1state.html" title="A state object." alt="" coords="162,5,269,32"/>
+</map>

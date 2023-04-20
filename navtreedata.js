@@ -86,13 +86,25 @@ var NAVTREE =
         ] ]
       ] ]
     ] ],
-    [ "Extensions", "q_extensions.html", "q_extensions" ]
+    [ "Extensions", "q_extensions.html", "q_extensions" ],
+    [ "Modules", "modules.html", "modules" ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"annotated.html",
+"q_fsm.html#q_fsm_example2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

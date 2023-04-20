@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: Class Members - Functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTScpp" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v7.3.2</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
+<li>add()&#160;:&#160;<a class="el" href="classq_o_s_1_1command_line_interface.html#a644e9a38169afbd2019d5672a27daa34">qOS::commandLineInterface</a>, <a class="el" href="classq_o_s_1_1edge_check.html#ac056e231d74a329b399008dc3129871b">qOS::edgeCheck</a>, <a class="el" href="classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39">qOS::sm::state</a>, <a class="el" href="classq_o_s_1_1state_machine.html#a8948aa0009e6bb0987a466c10f674278">qOS::stateMachine</a></li>
+<li>addEventTask()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">qOS::core</a></li>
+<li>addStateMachineTask()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#ae31fe2a7633545a8ccdb6ea388904236">qOS::core</a></li>
+<li>addTask()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">qOS::core</a></li>
+<li>alloc()&#160;:&#160;<a class="el" href="classq_o_s_1_1mem_1_1pool.html#a36d431e46c4f7846ad61c45614792a07">qOS::mem::pool</a></li>
+<li>asleep()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d">qOS::task</a></li>
+<li>attachQueue()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a168ac358a678484223fcc95882487a3f">qOS::task</a></li>
+<li>awake()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292">qOS::task</a></li>
+</ul>
+
+
+<h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<li>begin()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#afa53780fbc5c26fef679124c4e57f4cb">qOS::list</a></li>
+<li>byteBuffer()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#ab5447bda5dfcb3fcb7156c0ba56773ed">qOS::byteBuffer</a></li>
+</ul>
+
+
+<h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>convert2Clock()&#160;:&#160;<a class="el" href="classq_o_s_1_1clock.html#ade68d14679999f62ab56e0e03327af4f">qOS::clock</a></li>
+<li>convert2Time()&#160;:&#160;<a class="el" href="classq_o_s_1_1clock.html#af7fe799553c8502a0a47d1eb3ed57edf">qOS::clock</a></li>
+<li>count()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#a122bc3ba6f789a4d25e9aafc0870f7a5">qOS::byteBuffer</a>, <a class="el" href="classq_o_s_1_1queue.html#ab7a7a6b3433374a02cad9bc72d7fd9c6">qOS::queue</a></li>
+</ul>
+
+
+<h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
+<li>disable()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a4b6aeaa5fc154554b70f8c8f0b4984d0">qOS::task</a></li>
+<li>disarm()&#160;:&#160;<a class="el" href="classq_o_s_1_1timer.html#a515d7a3880ae61994017858e8b9008d2">qOS::timer</a></li>
+</ul>
+
+
+<h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
+<li>edgeCheck()&#160;:&#160;<a class="el" href="classq_o_s_1_1edge_check.html#a772b1cb71c7f4f45f2aefcfce635c347">qOS::edgeCheck</a></li>
+<li>elapsed()&#160;:&#160;<a class="el" href="classq_o_s_1_1timer.html#a53bab501a8a98e97cfcd89efb2533a4a">qOS::timer</a></li>
+<li>enable()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a496308de8f95998921d6611bd101a8fc">qOS::task</a></li>
+<li>end()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#af28ba404be2fdc108e1e1393edd67fab">qOS::list</a></li>
+<li>exec()&#160;:&#160;<a class="el" href="classq_o_s_1_1command_line_interface.html#ac4aa4363a90a5c9c56ddd301f2642c94">qOS::commandLineInterface</a></li>
+<li>expired()&#160;:&#160;<a class="el" href="classq_o_s_1_1timer.html#aa00cc8eb66779658598f8a47d2dc214d">qOS::timer</a></li>
+</ul>
+
+
+<h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>findTaskByName()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#a1f3c292c21b6c1f312b46d5362048f61">qOS::core</a></li>
+<li>firstCall()&#160;:&#160;<a class="el" href="classq_o_s_1_1___event.html#a65f3e0b29f4c0491581991b0cf086250">qOS::_Event</a></li>
+<li>firstIteration()&#160;:&#160;<a class="el" href="classq_o_s_1_1___event.html#a502a4475657e3daff22a416469161fd5">qOS::_Event</a></li>
+<li>free()&#160;:&#160;<a class="el" href="classq_o_s_1_1mem_1_1pool.html#aeca1a15ebfa666e2fa4607127bc99db7">qOS::mem::pool</a></li>
+<li>freeRun()&#160;:&#160;<a class="el" href="classq_o_s_1_1timer.html#a65381978e1075b3b1b6ffba255d7af21">qOS::timer</a></li>
+<li>from()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#aab5ca9e9f3d1a763adfe83a25e5bc949">qOS::list</a></li>
+</ul>
+
+
+<h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
+<li>get()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#ae29695be9aef8aa7f76c96e7ca486c6c">qOS::byteBuffer</a></li>
+<li>getArgFloat()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a881a73a3b8513d309bd98af8503c44a4">qOS::cli::_Handler</a></li>
+<li>getArgHex()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#ae77729147039358a767030e1e5fcbd80">qOS::cli::_Handler</a></li>
+<li>getArgInt()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a6eaaedfa64bb9c9e97698f808e23899f">qOS::cli::_Handler</a></li>
+<li>getArgPtr()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a17085dc24f37114cb5b492bb5892c144">qOS::cli::_Handler</a></li>
+<li>getArgString()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a1605c3f4c7656be075e442c11b0d96a7">qOS::cli::_Handler</a></li>
+<li>getBack()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#ac1ac04a47f5ec51ecb2b27db62dd9a64">qOS::list</a></li>
+<li>getCycles()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#aa5e18aa387560150895bda737ddc1c70">qOS::task</a></li>
+<li>getData()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a5d84a5c2fb4bd11841799368942590d3">qOS::cli::_Handler</a></li>
+<li>getFreeSize()&#160;:&#160;<a class="el" href="classq_o_s_1_1mem_1_1pool.html#a7e310a544856ebaeac79caec3a9f026e">qOS::mem::pool</a></li>
+<li>getFront()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#a451cd6b721407f725c125e3ceca1d9c3">qOS::list</a></li>
+<li>getGlobalState()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#a83e09d1047d3b45f98c00c2f83196afb">qOS::core</a></li>
+<li>getInstance()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#a6e6ca06cbc217c6a66787a1c0fd5f54e">qOS::core</a></li>
+<li>getName()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#acc22fcf2bb3bbbd4c2736f0434a2c45a">qOS::task</a></li>
+<li>getNumArgs()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#ae47a2eacf3c53b77e643f2d0d6d3e813">qOS::cli::_Handler</a></li>
+<li>getState()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a01c9dfe56b44e5b80dd2be4f5c16383a">qOS::task</a></li>
+<li>getStatus()&#160;:&#160;<a class="el" href="classq_o_s_1_1ec_1_1in_node.html#ae61455ce4d1f0e52b3882e6ac662cd8b">qOS::ec::inNode</a></li>
+<li>getStringData()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a040db3771924ae3db7e7a73ea9edd090">qOS::cli::_Handler</a></li>
+<li>getStringLength()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#ab206c293fefcbc6d48c1820b5aa5ac2c">qOS::cli::_Handler</a></li>
+<li>getTrigger()&#160;:&#160;<a class="el" href="classq_o_s_1_1___event.html#ae45bf685d8277435afc200316b0736fe">qOS::_Event</a></li>
+<li>getType()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a8dc89a794c338bb7ed1e1f762dabd654">qOS::cli::_Handler</a></li>
+</ul>
+
+
+<h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<li>init()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core</a></li>
+<li>inputFlush()&#160;:&#160;<a class="el" href="classq_o_s_1_1command_line_interface.html#a99736d5775bf8e4447d107b261365c1e">qOS::commandLineInterface</a></li>
+<li>insert()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#a97ec95a12b86f5086c81757fc7b28888">qOS::list</a></li>
+<li>installSignalQueue()&#160;:&#160;<a class="el" href="classq_o_s_1_1state_machine.html#a7762bb9b4664c5dc40c2bee0a3f73bd5">qOS::stateMachine</a></li>
+<li>installTimeoutSpec()&#160;:&#160;<a class="el" href="classq_o_s_1_1state_machine.html#a165e39faaf792c755f9ca55d78a7ffb2">qOS::stateMachine</a></li>
+<li>isEmpty()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#a425cf34f1040fcb213fc8f023a5b19dc">qOS::byteBuffer</a>, <a class="el" href="classq_o_s_1_1list.html#a969fa23996d1dc9d4fdac1aa701e3bb9">qOS::list</a>, <a class="el" href="classq_o_s_1_1queue.html#a340a65e5a33a4597f689308c60eee1fe">qOS::queue</a></li>
+<li>isEnabled()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#ad50d2873186a55f5db82b14a4dd14879">qOS::task</a></li>
+<li>isFull()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#a167c3dd6300b1493e953babde8e25d8a">qOS::byteBuffer</a>, <a class="el" href="classq_o_s_1_1queue.html#ad387bf3914ea6812b8a5582a8a1aac0a">qOS::queue</a></li>
+<li>isInitialized()&#160;:&#160;<a class="el" href="classq_o_s_1_1queue.html#a58ede420ec6370c097ebe75d2fa8f7c1">qOS::queue</a>, <a class="el" href="classq_o_s_1_1response.html#a4d797981127cce16ef8f32872b42645a">qOS::response</a></li>
+<li>isrHandler()&#160;:&#160;<a class="el" href="classq_o_s_1_1command_line_interface.html#a941188ce6f70346fabacaeb7e4fdf9b6">qOS::commandLineInterface</a>, <a class="el" href="classq_o_s_1_1response.html#a8d7559b1e14219ca16c3ddbd6ea024cc">qOS::response</a></li>
+<li>itemsAvailable()&#160;:&#160;<a class="el" href="classq_o_s_1_1queue.html#a92cee64bbc1eb19f83bf0deb14a50524">qOS::queue</a></li>
+</ul>
+
+
+<h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<li>lastIteration()&#160;:&#160;<a class="el" href="classq_o_s_1_1___event.html#ae7c844238c13e1267d55cf57d9bc4cc8">qOS::_Event</a></li>
+<li>lastStatus()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1___handler.html#a658e64aa366d982b5fa304b38851a617">qOS::sm::_Handler</a></li>
+<li>length()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#a7f93cdd93a5ea1d5c46f76218d884517">qOS::list</a></li>
+</ul>
+
+
+<h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>move()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#a9ae9c2c33f31e4598a90489320129083">qOS::list</a></li>
+</ul>
+
+
+<h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<li>nextState()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1___handler.html#a35c358ecf162da3f5538a46c9c736b55">qOS::sm::_Handler</a></li>
+<li>notify()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0">qOS::core</a></li>
+</ul>
+
+
+<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>output()&#160;:&#160;<a class="el" href="classq_o_s_1_1cli_1_1___handler.html#a7719470f2343fc72c68ef1f29dc48778">qOS::cli::_Handler</a></li>
+</ul>
+
+
+<h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
+<li>peek()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#a33dcef8da0f37339a049cab4b2f55874">qOS::byteBuffer</a>, <a class="el" href="classq_o_s_1_1queue.html#a8167607c08f7d809189767e37d9ee883">qOS::queue</a></li>
+<li>pool()&#160;:&#160;<a class="el" href="classq_o_s_1_1mem_1_1pool.html#ac9e3988282addb3648fae80d3fcf310f">qOS::mem::pool</a></li>
+<li>put()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#a2476613590497e74630600c2ed9819e3">qOS::byteBuffer</a></li>
+</ul>
+
+
+<h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>raise()&#160;:&#160;<a class="el" href="classq_o_s_1_1command_line_interface.html#a1f1c6c07336f3ebc48e318a08b4cab1d">qOS::commandLineInterface</a></li>
+<li>read()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#a9b057792e57149a4f78d4cd666d8a4e9">qOS::byteBuffer</a></li>
+<li>receive()&#160;:&#160;<a class="el" href="classq_o_s_1_1queue.html#a8eb18ab5ea810ff4216bdcaef89d2340">qOS::queue</a></li>
+<li>received()&#160;:&#160;<a class="el" href="classq_o_s_1_1response.html#a2d7df0ed650d081d071893add969305b">qOS::response</a></li>
+<li>reload()&#160;:&#160;<a class="el" href="classq_o_s_1_1timer.html#a98fb2a46965eb64d805b587895f9cad2">qOS::timer</a></li>
+<li>remaining()&#160;:&#160;<a class="el" href="classq_o_s_1_1timer.html#acae2aa1f3befc41accabe68712df631e">qOS::timer</a></li>
+<li>remove()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#a293ed72f30fdf6ca3f77942129cd4a0d">qOS::list</a></li>
+<li>removeFront()&#160;:&#160;<a class="el" href="classq_o_s_1_1queue.html#af484413ee07ae825c869c8079e4cbaea">qOS::queue</a></li>
+<li>removeTask()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#a09cc4c2562ef6580936c68b54076fb88">qOS::core</a></li>
+<li>reset()&#160;:&#160;<a class="el" href="classq_o_s_1_1queue.html#ad577bebb74137348d79cabb17b2737dd">qOS::queue</a>, <a class="el" href="classq_o_s_1_1response.html#abceb2ca3cb74679bd4f0d8012990c82d">qOS::response</a></li>
+<li>resume()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#aeeb29d20256efc116b5a7027ce2ed9c0">qOS::task</a></li>
+<li>run()&#160;:&#160;<a class="el" href="classq_o_s_1_1command_line_interface.html#a2cfdccc972a81890a4def1d0132061bc">qOS::commandLineInterface</a>, <a class="el" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">qOS::core</a>, <a class="el" href="classq_o_s_1_1state_machine.html#a64bdcab09bcfe108a266b16b8d3d0d0f">qOS::stateMachine</a></li>
+</ul>
+
+
+<h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>selectPin()&#160;:&#160;<a class="el" href="classq_o_s_1_1ec_1_1in_node.html#a19259879dc4862af929f30eeb0b686de">qOS::ec::inNode</a></li>
+<li>self()&#160;:&#160;<a class="el" href="classq_o_s_1_1___event.html#a3765c1f6c2b4bdfcca2a7e3883f8d4ca">qOS::_Event</a></li>
+<li>send()&#160;:&#160;<a class="el" href="classq_o_s_1_1queue.html#a1dfd011bb923f82b2f7aab36ee904982">qOS::queue</a></li>
+<li>sendSignal()&#160;:&#160;<a class="el" href="classq_o_s_1_1state_machine.html#a8e340478de91d979fda0baa201aea6c3">qOS::stateMachine</a></li>
+<li>sendSignalToSubscribers()&#160;:&#160;<a class="el" href="classq_o_s_1_1state_machine.html#aafdff3e8e94e2f3a801ae65ac0112966">qOS::stateMachine</a></li>
+<li>set()&#160;:&#160;<a class="el" href="classq_o_s_1_1timer.html#a18875c63a30b9c9b542106f97183d6a4">qOS::timer</a></li>
+<li>setCallback()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a77c5809e7c14f6ce50155a3575127c6d">qOS::task</a></li>
+<li>setData()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a24629151babd0389e144ec282250d0df">qOS::task</a></li>
+<li>setIdleTask()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#a5e1f14187cc3123f8395d452cda96ff1">qOS::core</a></li>
+<li>setIterations()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a792722feb8e3d5c688ef43933daa1250">qOS::task</a></li>
+<li>setName()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a89fd47378f74788afa7c73938555bb0b">qOS::task</a></li>
+<li>setPriority()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#ab87307b1f566d53d55ceb2975da308d7">qOS::task</a></li>
+<li>setState()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#aaac5b4097aa450dc78d57b8f2ed3d56c">qOS::task</a></li>
+<li>setTickProvider()&#160;:&#160;<a class="el" href="classq_o_s_1_1clock.html#a9e2681c0f420100f50ed89fa80f801ab">qOS::clock</a></li>
+<li>setTime()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a2c0e85f22ffad1e4867e6d00e186e3fb">qOS::task</a></li>
+<li>setTimeBase()&#160;:&#160;<a class="el" href="classq_o_s_1_1clock.html#a4b88d0ceb814d12582d652e8a017ea70">qOS::clock</a></li>
+<li>setTimeouts()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1state.html#a801aef3c9d1cdaab65112bb7f1e80e92">qOS::sm::state</a></li>
+<li>setTransitions()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1state.html#a87b8a49872e7905584488b89cf687bd1">qOS::sm::state</a></li>
+<li>setup()&#160;:&#160;<a class="el" href="classq_o_s_1_1byte_buffer.html#ad9d2017062e9e3690f3d0e9f4307e906">qOS::byteBuffer</a>, <a class="el" href="classq_o_s_1_1command_line_interface.html#a69e706db3cf304ea8aa6e95c5708c067">qOS::commandLineInterface</a>, <a class="el" href="classq_o_s_1_1mem_1_1pool.html#a2d529512a39afd59d3920d4990b6ddd3">qOS::mem::pool</a>, <a class="el" href="classq_o_s_1_1queue.html#a8f49aef39c6e48b8fa9a307dd0362dc3">qOS::queue</a>, <a class="el" href="classq_o_s_1_1response.html#ae8e951c3c8bdbf065b0f81e110991afc">qOS::response</a>, <a class="el" href="classq_o_s_1_1state_machine.html#a408a336915c438e3a9aaa49914aa002e">qOS::stateMachine</a></li>
+<li>signal()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1___handler.html#aaf8094a5a0ae5fb334b6a11babf5a603">qOS::sm::_Handler</a></li>
+<li>sort()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed">qOS::list</a></li>
+<li>startDelay()&#160;:&#160;<a class="el" href="classq_o_s_1_1___event.html#ac9d92c69f9ffa8297e91df83ac7b867f">qOS::_Event</a></li>
+<li>subscribeToSignal()&#160;:&#160;<a class="el" href="classq_o_s_1_1state_machine.html#aaf2ecd3f4e39ef7d623cb0f1f0414060">qOS::stateMachine</a></li>
+<li>suspend()&#160;:&#160;<a class="el" href="classq_o_s_1_1task.html#a9bf5d2fa8de8929aa2d45dade2c32740">qOS::task</a></li>
+<li>swap()&#160;:&#160;<a class="el" href="classq_o_s_1_1list.html#a21271a03c391469c809c6ed27fba92ff">qOS::list</a></li>
+<li>sysTick()&#160;:&#160;<a class="el" href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">qOS::clock</a></li>
+</ul>
+
+
+<h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
+<li>thisMachine()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1___handler.html#a8809b68004fcf098087f2fd9f06345ce">qOS::sm::_Handler</a></li>
+<li>timeDeadLineCheck()&#160;:&#160;<a class="el" href="classq_o_s_1_1clock.html#a7f9dbf1ce98ded4a6d19a87a4663906c">qOS::clock</a></li>
+<li>timeoutSet()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1___handler.html#a1d28e49b762403115f72c4e881604320">qOS::sm::_Handler</a>, <a class="el" href="classq_o_s_1_1state_machine.html#ab09cf24f2e5bcdbe04834f8f21586a45">qOS::stateMachine</a></li>
+<li>timeoutStop()&#160;:&#160;<a class="el" href="classq_o_s_1_1sm_1_1___handler.html#a164258a90b3370053ec2a849a93cb8eb">qOS::sm::_Handler</a>, <a class="el" href="classq_o_s_1_1state_machine.html#a36ee4b9d1d32217f26b90abb24bb3066">qOS::stateMachine</a></li>
+</ul>
+
+
+<h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
+<li>unsubscribeFromSignal()&#160;:&#160;<a class="el" href="classq_o_s_1_1state_machine.html#aa830fb7007b8d128529f042b8e56a904">qOS::stateMachine</a></li>
+<li>update()&#160;:&#160;<a class="el" href="classq_o_s_1_1edge_check.html#a3861a2b74b75a55f70c5c2d5b38b3ff2">qOS::edgeCheck</a></li>
+</ul>
+
+
+<h3><a id="index_y" name="index_y"></a>- y -</h3><ul>
+<li>yieldToTask()&#160;:&#160;<a class="el" href="classq_o_s_1_1core.html#ac416dd693488788542a971c4484c39da">qOS::core</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>
