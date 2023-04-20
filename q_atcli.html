@@ -247,7 +247,7 @@ Writing a command callback</h1>
 <div class="line">            Response = qATCLI_OK;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> qATCLI_CMDTYPE_READ:</div>
-<div class="line">            strcpy( h-&gt;Output , <span class="stringliteral">&quot;Test message after the callback&quot;</span> );</div>
+<div class="line">            <a class="code hl_function" href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">strcpy</a>( h-&gt;Output , <span class="stringliteral">&quot;Test message after the callback&quot;</span> );</div>
 <div class="line">            Response = qATCLI_OK;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> qATCLI_CMDTYPE_ACT:</div>
@@ -259,6 +259,7 @@ Writing a command callback</h1>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> Response;</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qioutils_html_gaf00b0cd32560782fbd2b70f67150d0a4"><div class="ttname"><a href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">qOS::util::strcpy</a></div><div class="ttdeci">size_t strcpy(char *dst, const char *src, size_t maxlen) noexcept</div><div class="ttdoc">Copies up to (maxlen - 1) characters from the null-terminated string src to dst, null-terminating the...</div><div class="ttdef"><b>Definition:</b> util.cpp:87</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_atcli_inputh"></a>
 Handling the input</h1>
 <p >Input handling is simplified using the provided APIs. The qATCLI_ISRHandler() and qATCLI_ISRHandlerBlock() functions are intended to be used from the interrupt context. This avoids any kind of polling implementation and allows the CLI application to be designed using an event-driven pattern.</p>
@@ -357,7 +358,7 @@ A CLI example</h1>
 <div class="line">   </div>
 <div class="line">    <span class="keywordflow">switch</span> ( param-&gt;Type ) {</div>
 <div class="line">        <span class="keywordflow">case</span> qATCLI_CMDTYPE_ACT: <span class="comment">/*&lt; AT+info */</span></div>
-<div class="line">            strcpy( h-&gt;Output, <span class="stringliteral">&quot;Compilation: &quot;</span> __DATE__ <span class="stringliteral">&quot; &quot;</span> __TIME__ );</div>
+<div class="line">            <a class="code hl_function" href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">strcpy</a>( h-&gt;Output, <span class="stringliteral">&quot;Compilation: &quot;</span> __DATE__ <span class="stringliteral">&quot; &quot;</span> __TIME__ );</div>
 <div class="line">            RetValue = qATCLI_NORESPONSE;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        default :</div>

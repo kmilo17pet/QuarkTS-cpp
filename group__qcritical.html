@@ -126,6 +126,9 @@ $(document).ready(function(){initNavTree('group__qcritical.html',''); initResiza
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Critical<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -135,11 +138,138 @@ $(document).ready(function(){initNavTree('group__qcritical.html',''); initResiza
 <div class="dynheader">
 Collaboration diagram for Critical:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__qcritical.svg" width="506" height="546"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__qcritical.svg" width="247" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:gac93b1a4231800d82b28a9f25f01f1867"><td class="memItemLeft" align="right" valign="top"><a id="gac93b1a4231800d82b28a9f25f01f1867" name="gac93b1a4231800d82b28a9f25f01f1867"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::int_restorer_t</b> = void(*)(uint32_t)</td></tr>
+<tr class="separator:gac93b1a4231800d82b28a9f25f01f1867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5799cabfdffb3f30a7897479239b0139"><td class="memItemLeft" align="right" valign="top"><a id="ga5799cabfdffb3f30a7897479239b0139" name="ga5799cabfdffb3f30a7897479239b0139"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::int_disabler_t</b> = uint32_t(*)(void)</td></tr>
+<tr class="separator:ga5799cabfdffb3f30a7897479239b0139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga1355881dd15a03e4b7a7aadf4a2a8252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#ga1355881dd15a03e4b7a7aadf4a2a8252">qOS::critical::enter</a> (void) noexcept</td></tr>
+<tr class="memdesc:ga1355881dd15a03e4b7a7aadf4a2a8252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enter a critical section. This function invokes the <b>Disabler</b> function if available.  <a href="group__qcritical.html#ga1355881dd15a03e4b7a7aadf4a2a8252">More...</a><br /></td></tr>
+<tr class="separator:ga1355881dd15a03e4b7a7aadf4a2a8252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4bf023b86dc2222baa432a5a125510d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d">qOS::critical::exit</a> (void) noexcept</td></tr>
+<tr class="memdesc:gae4bf023b86dc2222baa432a5a125510d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit a critical section. This function invokes the <b>Enabler</b> function if available.  <a href="group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d">More...</a><br /></td></tr>
+<tr class="separator:gae4bf023b86dc2222baa432a5a125510d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e2b0a0a873cf6bef7f29f8aae7c73e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3">qOS::critical::setInterruptsED</a> (const int_restorer_t rFcn, const int_disabler_t dFcn) noexcept</td></tr>
+<tr class="memdesc:ga9e2b0a0a873cf6bef7f29f8aae7c73e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to communicate safely from Interrupts using queued-notifications or queues.  <a href="group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3">More...</a><br /></td></tr>
+<tr class="separator:ga9e2b0a0a873cf6bef7f29f8aae7c73e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >APIs to handle entry/exit actions in <a class="el" href="q_foundations.html#q_critical">Critical sections</a>. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga1355881dd15a03e4b7a7aadf4a2a8252" name="ga1355881dd15a03e4b7a7aadf4a2a8252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1355881dd15a03e4b7a7aadf4a2a8252">&#9670;&nbsp;</a></span>enter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::critical::enter </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enter a critical section. This function invokes the <b>Disabler</b> function if available. </p>
+<dl class="section note"><dt>Note</dt><dd>Please see <a class="el" href="group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3" title="Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to commun...">critical::setInterruptsED()</a> </dd></dl>
+
+</div>
+</div>
+<a id="gae4bf023b86dc2222baa432a5a125510d" name="gae4bf023b86dc2222baa432a5a125510d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae4bf023b86dc2222baa432a5a125510d">&#9670;&nbsp;</a></span>exit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::critical::exit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exit a critical section. This function invokes the <b>Enabler</b> function if available. </p>
+<dl class="section note"><dt>Note</dt><dd>Please see <a class="el" href="group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3" title="Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to commun...">critical::setInterruptsED()</a> </dd></dl>
+
+</div>
+</div>
+<a id="ga9e2b0a0a873cf6bef7f29f8aae7c73e3" name="ga9e2b0a0a873cf6bef7f29f8aae7c73e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9e2b0a0a873cf6bef7f29f8aae7c73e3">&#9670;&nbsp;</a></span>setInterruptsED()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::critical::setInterruptsED </td>
+          <td>(</td>
+          <td class="paramtype">const int_restorer_t&#160;</td>
+          <td class="paramname"><em>rFcn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int_disabler_t&#160;</td>
+          <td class="paramname"><em>dFcn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to communicate safely from Interrupts using queued-notifications or queues. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rFcn</td><td>The function with hardware specific code that enables or restores interrupts. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dFcn</td><td>The function with hardware specific code that disables interrupts. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success. Otherwise return false. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

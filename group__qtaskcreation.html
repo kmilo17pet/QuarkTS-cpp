@@ -126,20 +126,121 @@ $(document).ready(function(){initNavTree('group__qtaskcreation.html',''); initRe
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Scheduler Interface<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Kernel API interface to create/remove tasks and perform special OS operations.  
-</p>
+<a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Scheduler Interface:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="group__qtaskcreation.svg" width="319" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html">qOS::core</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The class to interface the OS.  <a href="classq_o_s_1_1core.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga5af9c877b9d556d828c72c01702aa193"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtaskcreation.html#ga5af9c877b9d556d828c72c01702aa193">qOS::notifyMode</a> : uint8_t { <a class="el" href="group__qtaskcreation.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09">notifyMode::SIMPLE</a>
+, <a class="el" href="group__qtaskcreation.html#gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae">notifyMode::QUEUED</a>
+ }</td></tr>
+<tr class="memdesc:ga5af9c877b9d556d828c72c01702aa193"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum that defines the modes in which a notification can be delivered.  <a href="group__qtaskcreation.html#ga5af9c877b9d556d828c72c01702aa193">More...</a><br /></td></tr>
+<tr class="separator:ga5af9c877b9d556d828c72c01702aa193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga7f7273ea1c026d4c8a7ba52ec39e6442"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qtaskmanip.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtaskcreation.html#ga7f7273ea1c026d4c8a7ba52ec39e6442">qOS::EVENT_FLAG</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i)</td></tr>
+<tr class="memdesc:ga7f7273ea1c026d4c8a7ba52ec39e6442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event flag selector function.  <a href="group__qtaskcreation.html#ga7f7273ea1c026d4c8a7ba52ec39e6442">More...</a><br /></td></tr>
+<tr class="separator:ga7f7273ea1c026d4c8a7ba52ec39e6442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga501a22419157104b982c3a32d871fe21"><td class="memItemLeft" align="right" valign="top"><a id="ga501a22419157104b982c3a32d871fe21" name="ga501a22419157104b982c3a32d871fe21"></a>
+<a class="el" href="classq_o_s_1_1core.html">core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::os</b></td></tr>
+<tr class="memdesc:ga501a22419157104b982c3a32d871fe21"><td class="mdescLeft">&#160;</td><td class="mdescRight">The predefined instance of the OS kernel interface. <br /></td></tr>
+<tr class="separator:ga501a22419157104b982c3a32d871fe21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Kernel API interface to create/remove tasks and perform special OS operations. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>Before using any scheduler interface, you must first configure and initialize the operating system using core::init() </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Before using any scheduler interface, you must first configure and initialize the operating system using <a class="el" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">core::init()</a> </dd></dl>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga5af9c877b9d556d828c72c01702aa193" name="ga5af9c877b9d556d828c72c01702aa193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5af9c877b9d556d828c72c01702aa193">&#9670;&nbsp;</a></span>notifyMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="group__qtaskcreation.html#ga5af9c877b9d556d828c72c01702aa193">qOS::notifyMode</a> : uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An enum that defines the modes in which a notification can be delivered. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09" name="gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09"></a>SIMPLE&#160;</td><td class="fielddoc"><p >To notify a task using the simple approach. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae" name="gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae"></a>QUEUED&#160;</td><td class="fielddoc"><p >To notify a task using the FIFO priority queue. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga7f7273ea1c026d4c8a7ba52ec39e6442" name="ga7f7273ea1c026d4c8a7ba52ec39e6442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7f7273ea1c026d4c8a7ba52ec39e6442">&#9670;&nbsp;</a></span>EVENT_FLAG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="group__qtaskmanip.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> qOS::EVENT_FLAG </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Event flag selector function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The desired event-flag, a value between 1 and 20 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>The</code> event flag mask identifier. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

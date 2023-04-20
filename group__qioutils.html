@@ -126,6 +126,9 @@ $(document).ready(function(){initNavTree('group__qioutils.html',''); initResizab
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">I/O Utils<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -135,11 +138,927 @@ $(document).ready(function(){initNavTree('group__qioutils.html',''); initResizab
 <div class="dynheader">
 Collaboration diagram for I/O Utils:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__qioutils.svg" width="455" height="546"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__qioutils.svg" width="196" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga590b120a141394c83550952547d27555"><td class="memItemLeft" align="right" valign="top"><a id="ga590b120a141394c83550952547d27555" name="ga590b120a141394c83550952547d27555"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::util::putChar_t</b> = void(*)(void *, const char)</td></tr>
+<tr class="separator:ga590b120a141394c83550952547d27555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaf436491ddc3a5341177e1ac0aa54bbe"><td class="memItemLeft" align="right" valign="top"><a id="gaaf436491ddc3a5341177e1ac0aa54bbe" name="gaaf436491ddc3a5341177e1ac0aa54bbe"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::util::ioFcn_t</b> = char(*)(void *, const char)</td></tr>
+<tr class="separator:gaaf436491ddc3a5341177e1ac0aa54bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gaeb1cf14c3cbe5ba82565afb4368b7683"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaeb1cf14c3cbe5ba82565afb4368b7683">qOS::util::strchr</a> (const char *s, int c, size_t maxlen) noexcept</td></tr>
+<tr class="memdesc:gaeb1cf14c3cbe5ba82565afb4368b7683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the first occurrence of character in the C string <em>s</em>. The terminating null-character is considered part of the C string. Therefore, it can also be located in order to retrieve a pointer to the end of a string.  <a href="group__qioutils.html#gaeb1cf14c3cbe5ba82565afb4368b7683">More...</a><br /></td></tr>
+<tr class="separator:gaeb1cf14c3cbe5ba82565afb4368b7683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac830bc0765afa6da8423ceb0870ba64d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gac830bc0765afa6da8423ceb0870ba64d">qOS::util::strlen</a> (const char *s, size_t maxlen) noexcept</td></tr>
+<tr class="memdesc:gac830bc0765afa6da8423ceb0870ba64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of the given null-terminated byte string, that is, the number of characters in a character array whose first element is pointed to by <em>str</em> up to and not including the first null character. The function returns zero if <em>str</em> is a null pointer and returns <em>maxlen</em> if the null character was not found in the first <em>maxlen</em> bytes of <em>str</em>.  <a href="group__qioutils.html#gac830bc0765afa6da8423ceb0870ba64d">More...</a><br /></td></tr>
+<tr class="separator:gac830bc0765afa6da8423ceb0870ba64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf00b0cd32560782fbd2b70f67150d0a4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">qOS::util::strcpy</a> (char *dst, const char *src, size_t maxlen) noexcept</td></tr>
+<tr class="memdesc:gaf00b0cd32560782fbd2b70f67150d0a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies up to <em></em>(maxlen - 1) characters from the null-terminated string <em>src</em> to <em>dst</em>, null-terminating the result.  <a href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">More...</a><br /></td></tr>
+<tr class="separator:gaf00b0cd32560782fbd2b70f67150d0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1877d86a8e6add07e15a0d78b38a35d1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga1877d86a8e6add07e15a0d78b38a35d1">qOS::util::strcat</a> (char *dst, const char *src, size_t maxlen) noexcept</td></tr>
+<tr class="memdesc:ga1877d86a8e6add07e15a0d78b38a35d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">appends no more than <em>maxlen−len(dst)−1</em> characters pointed to by <em>src</em> into the array pointed to by <em>dst</em> and always terminates the result with a null character if <em>maxlen</em> is greater than zero. Both the strings <em>dst</em> and <em>src</em> must be terminated with a null character on entry the function and a byte for the terminating null should be included in <em>maxlen</em>.  <a href="group__qioutils.html#ga1877d86a8e6add07e15a0d78b38a35d1">More...</a><br /></td></tr>
+<tr class="separator:ga1877d86a8e6add07e15a0d78b38a35d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3347a994becbaffa432b2b56c9e48a58"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga3347a994becbaffa432b2b56c9e48a58">qOS::util::swapBytes</a> (void *pData, const size_t n) noexcept</td></tr>
+<tr class="memdesc:ga3347a994becbaffa432b2b56c9e48a58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invert the endianess for n bytes of the specified memory location.  <a href="group__qioutils.html#ga3347a994becbaffa432b2b56c9e48a58">More...</a><br /></td></tr>
+<tr class="separator:ga3347a994becbaffa432b2b56c9e48a58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3bb292da10a661f16f625bc914bf9f9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d">qOS::util::checkEndianness</a> (void) noexcept</td></tr>
+<tr class="memdesc:ga3bb292da10a661f16f625bc914bf9f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the system endianess.  <a href="group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d">More...</a><br /></td></tr>
+<tr class="separator:ga3bb292da10a661f16f625bc914bf9f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa52986572af92eced6edf56209ee5ec2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2">qOS::util::outputString</a> (util::putChar_t fcn, const char *s, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
+<tr class="memdesc:gaa52986572af92eced6edf56209ee5ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to write a string through <em>fcn</em>.  <a href="group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2">More...</a><br /></td></tr>
+<tr class="separator:gaa52986572af92eced6edf56209ee5ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga595d57a0b27862c5d4d028e3ece14c67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67">qOS::util::printXData</a> (util::putChar_t fcn, void *pData, size_t n, bool eol=true, void *pStorage=nullptr) noexcept</td></tr>
+<tr class="memdesc:ga595d57a0b27862c5d4d028e3ece14c67"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to write data in HEX notation through <em>fcn</em>.  <a href="group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67">More...</a><br /></td></tr>
+<tr class="separator:ga595d57a0b27862c5d4d028e3ece14c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga057bcfe88c1239c40169daaff9055383"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga057bcfe88c1239c40169daaff9055383">qOS::util::outputRAW</a> (const ioFcn_t fcn, void *pData, const size_t n, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
+<tr class="memdesc:ga057bcfe88c1239c40169daaff9055383"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to write n RAW data through <em>fcn</em>.  <a href="group__qioutils.html#ga057bcfe88c1239c40169daaff9055383">More...</a><br /></td></tr>
+<tr class="separator:ga057bcfe88c1239c40169daaff9055383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad16b6f751febd5914646970a812e636e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gad16b6f751febd5914646970a812e636e">qOS::util::inputRAW</a> (const ioFcn_t fcn, void *pData, const size_t n, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
+<tr class="memdesc:gad16b6f751febd5914646970a812e636e"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to get n RAW data through <em>fcn</em>.  <a href="group__qioutils.html#gad16b6f751febd5914646970a812e636e">More...</a><br /></td></tr>
+<tr class="separator:gad16b6f751febd5914646970a812e636e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga502fd95e84b13046162174db24a665a5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga502fd95e84b13046162174db24a665a5">qOS::util::hexStringToUnsigned</a> (const char *s) noexcept</td></tr>
+<tr class="memdesc:ga502fd95e84b13046162174db24a665a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the input string consisting of hexadecimal digits into an unsigned integer value. The input parameter should consist exclusively of hexadecimal digits, with optional whitespaces. The string will be processed one character at a time, until the function reaches a character which it doesn't recognize (including a null character).  <a href="group__qioutils.html#ga502fd95e84b13046162174db24a665a5">More...</a><br /></td></tr>
+<tr class="separator:ga502fd95e84b13046162174db24a665a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtypes.html#ga5e9a37eab818d71cd4a6a9344e776c7b">float64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d">qOS::util::stringToFloat</a> (const char *s) noexcept</td></tr>
+<tr class="memdesc:gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the C string <em>s</em>, interpreting its content as a floating point number and returns its value as a float( <code>float32_t</code>). The function first discards as many whitespace characters (as in isspace) as necessary until the first non-whitespace character is found. Then, starting from this character, takes as many characters as possible that are valid following a syntax resembling that of floating point literals, and interprets them as a numerical value. The rest of the string after the last valid character is ignored and has no effect on the behavior of this function.  <a href="group__qioutils.html#gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d">More...</a><br /></td></tr>
+<tr class="separator:gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac74928b5c05059b0f5daa5e0dea687c9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gac74928b5c05059b0f5daa5e0dea687c9">qOS::util::floatToString</a> (<a class="el" href="group__qtypes.html#ga5e9a37eab818d71cd4a6a9344e776c7b">float64_t</a> num, char *str, uint8_t precision=10u) noexcept</td></tr>
+<tr class="memdesc:gac74928b5c05059b0f5daa5e0dea687c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a float value to a formatted string.  <a href="group__qioutils.html#gac74928b5c05059b0f5daa5e0dea687c9">More...</a><br /></td></tr>
+<tr class="separator:gac74928b5c05059b0f5daa5e0dea687c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d7f19fb7e6919221a9a567daca5ff94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga7d7f19fb7e6919221a9a567daca5ff94">qOS::util::stringToInt</a> (const char *s) noexcept</td></tr>
+<tr class="memdesc:ga7d7f19fb7e6919221a9a567daca5ff94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the C-string <em>s</em> interpreting its content as an integral number, which is returned as a value of type int. The function first discards as many whitespace characters (as in <code>isspace</code>) as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many base-10 digits as possible, and interprets them as a numerical value. The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function. If the first sequence of non-whitespace characters in <em>s</em> is not a valid integral number, or if no such sequence exists because either <em>s</em> is empty or it contains only whitespace characters, no conversion is performed and zero is returned.  <a href="group__qioutils.html#ga7d7f19fb7e6919221a9a567daca5ff94">More...</a><br /></td></tr>
+<tr class="separator:ga7d7f19fb7e6919221a9a567daca5ff94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga599dbfc3b307c816a292f37251be7612"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga599dbfc3b307c816a292f37251be7612">qOS::util::unsignedToString</a> (<a class="el" href="group__qtypes.html#gae2d1a31d7a2b9ad60ebeebd0b151f7d6">unsigned_t</a> num, char *str, uint8_t base=10u) noexcept</td></tr>
+<tr class="memdesc:ga599dbfc3b307c816a292f37251be7612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an unsigned value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. The argument <em>str</em> should be an array long enough to contain any possible value: <code>"sizeof(int)*8+1"</code> for radix=2, i.e. 17 bytes in 16-bits platforms and 33 in 32-bits platforms.  <a href="group__qioutils.html#ga599dbfc3b307c816a292f37251be7612">More...</a><br /></td></tr>
+<tr class="separator:ga599dbfc3b307c816a292f37251be7612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1601e2bd4f649a37f83ebd8f6ba442c6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga1601e2bd4f649a37f83ebd8f6ba442c6">qOS::util::integerToString</a> (int32_t num, char *str, uint8_t base=10u) noexcept</td></tr>
+<tr class="memdesc:ga1601e2bd4f649a37f83ebd8f6ba442c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an integer value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. If base is 10 and value is negative, the resulting string is preceded with a minus sign (-). With any other base, value is always considered unsigned.  <a href="group__qioutils.html#ga1601e2bd4f649a37f83ebd8f6ba442c6">More...</a><br /></td></tr>
+<tr class="separator:ga1601e2bd4f649a37f83ebd8f6ba442c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef815a06206e5a3aea9f23c4a6068f31"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaef815a06206e5a3aea9f23c4a6068f31">qOS::util::boolToString</a> (const bool num, char *str) noexcept</td></tr>
+<tr class="memdesc:gaef815a06206e5a3aea9f23c4a6068f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a boolean value to a null-terminated string. Input is considered true with any value different to zero (0). The argument <em>str</em> should be an array long enough to contain the output.  <a href="group__qioutils.html#gaef815a06206e5a3aea9f23c4a6068f31">More...</a><br /></td></tr>
+<tr class="separator:gaef815a06206e5a3aea9f23c4a6068f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API for input/output utilities and safe string interfaces. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="gaef815a06206e5a3aea9f23c4a6068f31" name="gaef815a06206e5a3aea9f23c4a6068f31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaef815a06206e5a3aea9f23c4a6068f31">&#9670;&nbsp;</a></span>boolToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * qOS::util::boolToString </td>
+          <td>(</td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts a boolean value to a null-terminated string. Input is considered true with any value different to zero (0). The argument <em>str</em> should be an array long enough to contain the output. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Value to be converted to a string. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">str</td><td>Array in memory where to store the resulting null-terminated string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the resulting null-terminated string, same as parameter <em>str</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga3bb292da10a661f16f625bc914bf9f9d" name="ga3bb292da10a661f16f625bc914bf9f9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3bb292da10a661f16f625bc914bf9f9d">&#9670;&nbsp;</a></span>checkEndianness()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::util::checkEndianness </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check the system endianess. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if Little-Endian, otherwise returns false. </dd></dl>
+
+</div>
+</div>
+<a id="gac74928b5c05059b0f5daa5e0dea687c9" name="gac74928b5c05059b0f5daa5e0dea687c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac74928b5c05059b0f5daa5e0dea687c9">&#9670;&nbsp;</a></span>floatToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * qOS::util::floatToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#ga5e9a37eab818d71cd4a6a9344e776c7b">float64_t</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>precision</em> = <code>10u</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts a float value to a formatted string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Value to be converted to a string. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">str</td><td>Array in memory where to store the resulting null-terminated string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">precision</td><td>Desired number of significant fractional digits in the string. (default = 10u ) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the resulting null-terminated string, same as parameter <em>str</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga502fd95e84b13046162174db24a665a5" name="ga502fd95e84b13046162174db24a665a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga502fd95e84b13046162174db24a665a5">&#9670;&nbsp;</a></span>hexStringToUnsigned()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t qOS::util::hexStringToUnsigned </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts the input string consisting of hexadecimal digits into an unsigned integer value. The input parameter should consist exclusively of hexadecimal digits, with optional whitespaces. The string will be processed one character at a time, until the function reaches a character which it doesn't recognize (including a null character). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The hex string to be converted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The numeric value as <code>uint32_t</code>. </dd></dl>
+
+</div>
+</div>
+<a id="gad16b6f751febd5914646970a812e636e" name="gad16b6f751febd5914646970a812e636e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad16b6f751febd5914646970a812e636e">&#9670;&nbsp;</a></span>inputRAW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::util::inputRAW </td>
+          <td>(</td>
+          <td class="paramtype">const ioFcn_t&#160;</td>
+          <td class="paramname"><em>fcn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pStorage</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>aip</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>API interface to get n RAW data through <em>fcn</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">iFcn</td><td>The basic input byte function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pData</td><td>A pointer to the block where the read data will be saved </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of bytes to get </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aip</td><td>Auto-increment the storage-pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+
+</div>
+</div>
+<a id="ga1601e2bd4f649a37f83ebd8f6ba442c6" name="ga1601e2bd4f649a37f83ebd8f6ba442c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1601e2bd4f649a37f83ebd8f6ba442c6">&#9670;&nbsp;</a></span>integerToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * qOS::util::integerToString </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10u</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts an integer value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. If base is 10 and value is negative, the resulting string is preceded with a minus sign (-). With any other base, value is always considered unsigned. </p>
+<p >The argument <em>str</em> should be an array long enough to contain any possible value: (sizeof(int)*8+1) for radix=2, i.e. 17 bytes in 16-bits platforms and 33 in 32-bits platforms. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Value to be converted to a string. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">str</td><td>Array in memory where to store the resulting null-terminated string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">base</td><td>Numerical base used to represent the value as a string, between 2 and 36, where 10 means decimal base, 16 hexadecimal, 8 octal, and 2 binary. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the resulting null-terminated string, same as parameter <em>str</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga057bcfe88c1239c40169daaff9055383" name="ga057bcfe88c1239c40169daaff9055383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga057bcfe88c1239c40169daaff9055383">&#9670;&nbsp;</a></span>outputRAW()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::util::outputRAW </td>
+          <td>(</td>
+          <td class="paramtype">const ioFcn_t&#160;</td>
+          <td class="paramname"><em>fcn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pStorage</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>aip</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>API interface to write n RAW data through <em>fcn</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">oFcn</td><td>The basic output byte function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>A pointer to the block of data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of bytes that will be transferred to the output </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aip</td><td>Auto-increment the storage-pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+
+</div>
+</div>
+<a id="gaa52986572af92eced6edf56209ee5ec2" name="gaa52986572af92eced6edf56209ee5ec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa52986572af92eced6edf56209ee5ec2">&#9670;&nbsp;</a></span>outputString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::util::outputString </td>
+          <td>(</td>
+          <td class="paramtype">util::putChar_t&#160;</td>
+          <td class="paramname"><em>fcn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pStorage</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>aip</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>API interface to write a string through <em>fcn</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fcn</td><td>The basic output byte function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string to be written </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">AIP</td><td>Auto-Increment the storage-pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tue on success, otherwise returns false. </dd></dl>
+
+</div>
+</div>
+<a id="ga595d57a0b27862c5d4d028e3ece14c67" name="ga595d57a0b27862c5d4d028e3ece14c67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga595d57a0b27862c5d4d028e3ece14c67">&#9670;&nbsp;</a></span>printXData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::util::printXData </td>
+          <td>(</td>
+          <td class="paramtype">util::putChar_t&#160;</td>
+          <td class="paramname"><em>fcn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>eol</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pStorage</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>API interface to write data in HEX notation through <em>fcn</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fcn</td><td>The basic output byte function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>A pointer to the block of data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of bytes to print out </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+
+</div>
+</div>
+<a id="ga1877d86a8e6add07e15a0d78b38a35d1" name="ga1877d86a8e6add07e15a0d78b38a35d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1877d86a8e6add07e15a0d78b38a35d1">&#9670;&nbsp;</a></span>strcat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t qOS::util::strcat </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>appends no more than <em>maxlen−len(dst)−1</em> characters pointed to by <em>src</em> into the array pointed to by <em>dst</em> and always terminates the result with a null character if <em>maxlen</em> is greater than zero. Both the strings <em>dst</em> and <em>src</em> must be terminated with a null character on entry the function and a byte for the terminating null should be included in <em>maxlen</em>. </p>
+<dl class="section note"><dt>Note</dt><dd>The behavior of this function is undefined if copying takes place between objects that overlap. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The destination string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>The source string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">maxlen</td><td>Maximum number of characters to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>returns the number of characters it tried to copy, which is the sum of the lengths of the strings <em>dst</em> and <em>src</em> or <em>n</em>, whichever is smaller. </dd></dl>
+
+</div>
+</div>
+<a id="gaeb1cf14c3cbe5ba82565afb4368b7683" name="gaeb1cf14c3cbe5ba82565afb4368b7683"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeb1cf14c3cbe5ba82565afb4368b7683">&#9670;&nbsp;</a></span>strchr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * qOS::util::strchr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a pointer to the first occurrence of character in the C string <em>s</em>. The terminating null-character is considered part of the C string. Therefore, it can also be located in order to retrieve a pointer to the end of a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Pointer to the null-terminated byte string to be examined </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>Character to be located. It is passed as its int promotion, but it is internally converted back to char for the comparison. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">maxlen</td><td>Maximum number of characters to examine </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the first occurrence of character in <em>s</em>. If the character is not found, the function returns a null pointer. </dd></dl>
+
+</div>
+</div>
+<a id="gaf00b0cd32560782fbd2b70f67150d0a4" name="gaf00b0cd32560782fbd2b70f67150d0a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf00b0cd32560782fbd2b70f67150d0a4">&#9670;&nbsp;</a></span>strcpy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t qOS::util::strcpy </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copies up to <em></em>(maxlen - 1) characters from the null-terminated string <em>src</em> to <em>dst</em>, null-terminating the result. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The destination string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>The source string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">maxlen</td><td>Maximum number of characters to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The length of <em>src</em> </dd></dl>
+
+</div>
+</div>
+<a id="gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d" name="gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d">&#9670;&nbsp;</a></span>stringToFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qtypes.html#ga5e9a37eab818d71cd4a6a9344e776c7b">float64_t</a> qOS::util::stringToFloat </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses the C string <em>s</em>, interpreting its content as a floating point number and returns its value as a float( <code>float32_t</code>). The function first discards as many whitespace characters (as in isspace) as necessary until the first non-whitespace character is found. Then, starting from this character, takes as many characters as possible that are valid following a syntax resembling that of floating point literals, and interprets them as a numerical value. The rest of the string after the last valid character is ignored and has no effect on the behavior of this function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string beginning with the representation of a floating-point number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, the function returns the converted floating point number as a float( <code>qFloat32_t</code> ) value. If no valid conversion could be performed, the function returns zero (0.0f). If the converted value would be out of the range of representable values by a float( <code>qFloat32_t</code> ), it causes undefined behavior </dd></dl>
+
+</div>
+</div>
+<a id="ga7d7f19fb7e6919221a9a567daca5ff94" name="ga7d7f19fb7e6919221a9a567daca5ff94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7d7f19fb7e6919221a9a567daca5ff94">&#9670;&nbsp;</a></span>stringToInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qOS::util::stringToInt </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parses the C-string <em>s</em> interpreting its content as an integral number, which is returned as a value of type int. The function first discards as many whitespace characters (as in <code>isspace</code>) as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many base-10 digits as possible, and interprets them as a numerical value. The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function. If the first sequence of non-whitespace characters in <em>s</em> is not a valid integral number, or if no such sequence exists because either <em>s</em> is empty or it contains only whitespace characters, no conversion is performed and zero is returned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string beginning with the representation of a integer number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, the function returns the converted integral number as an int value. If the converted value would be out of the range of representable values by an <code>int</code>, it causes undefined behavior. </dd></dl>
+
+</div>
+</div>
+<a id="gac830bc0765afa6da8423ceb0870ba64d" name="gac830bc0765afa6da8423ceb0870ba64d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac830bc0765afa6da8423ceb0870ba64d">&#9670;&nbsp;</a></span>strlen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t qOS::util::strlen </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>maxlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the length of the given null-terminated byte string, that is, the number of characters in a character array whose first element is pointed to by <em>str</em> up to and not including the first null character. The function returns zero if <em>str</em> is a null pointer and returns <em>maxlen</em> if the null character was not found in the first <em>maxlen</em> bytes of <em>str</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Pointer to the null-terminated byte string to be examined </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">maxlen</td><td>Maximum number of characters to examine </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The length of the null-terminated byte string <em>str</em> on success, zero if <em>str</em> is a null pointer, <em>maxlen</em> if the null character was not found. </dd></dl>
+
+</div>
+</div>
+<a id="ga3347a994becbaffa432b2b56c9e48a58" name="ga3347a994becbaffa432b2b56c9e48a58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3347a994becbaffa432b2b56c9e48a58">&#9670;&nbsp;</a></span>swapBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::util::swapBytes </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Invert the endianess for n bytes of the specified memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pData</td><td>A pointer to block of data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of bytes to swap </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+
+</div>
+</div>
+<a id="ga599dbfc3b307c816a292f37251be7612" name="ga599dbfc3b307c816a292f37251be7612"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga599dbfc3b307c816a292f37251be7612">&#9670;&nbsp;</a></span>unsignedToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * qOS::util::unsignedToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#gae2d1a31d7a2b9ad60ebeebd0b151f7d6">unsigned_t</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10u</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts an unsigned value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. The argument <em>str</em> should be an array long enough to contain any possible value: <code>"sizeof(int)*8+1"</code> for radix=2, i.e. 17 bytes in 16-bits platforms and 33 in 32-bits platforms. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>Value to be converted to a string. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">str</td><td>Array in memory where to store the resulting null-terminated string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">base</td><td>Numerical base used to represent the value as a string, between 2 and 36, where 10 means decimal base, 16 hexadecimal, 8 octal, and 2 binary. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the resulting null-terminated string, same as parameter <em>str</em>. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

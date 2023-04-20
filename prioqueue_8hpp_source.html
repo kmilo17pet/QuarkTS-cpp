@@ -147,11 +147,11 @@ $(document).ready(function(){initNavTree('prioqueue_8hpp_source.html',''); initR
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">class </span>prioQueue {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keyword">volatile</span> base_t index{ -1 };</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keyword">volatile</span> <a class="code hl_typedef" href="group__qtypes.html#ga16b527d381bf20ae99c52d4c8b982a43">base_t</a> index{ -1 };</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="keywordtype">void</span> *data{ <span class="keyword">nullptr</span> };</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            pq::queueStack_t *stack{ <span class="keyword">nullptr</span> };</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordtype">size_t</span> size{ 0u };</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordtype">void</span> clearIndex( index_t indexToClear ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordtype">void</span> clearIndex( <a class="code hl_typedef" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> indexToClear ) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            prioQueue( prioQueue <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordtype">void</span> operator=( prioQueue <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">protected</span>:</div>
@@ -173,6 +173,8 @@ $(document).ready(function(){initNavTree('prioqueue_8hpp_source.html',''); initR
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_CPP_PRIO_QUEUE*/</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agroup__qtypes_html_ga16b527d381bf20ae99c52d4c8b982a43"><div class="ttname"><a href="group__qtypes.html#ga16b527d381bf20ae99c52d4c8b982a43">base_t</a></div><div class="ttdeci">int base_t</div><div class="ttdoc">A type to instantiate a integer-base variable. This type is compiler implementation-defined.</div><div class="ttdef"><b>Definition:</b> types.hpp:37</div></div>
+<div class="ttc" id="agroup__qtypes_html_ga3f38acd6cf545937a16254ff779ec4ba"><div class="ttname"><a href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a></div><div class="ttdeci">size_t index_t</div><div class="ttdoc">A type to instantiate an OS index variable. Can store the maximum size of a theoretically possible ob...</div><div class="ttdef"><b>Definition:</b> types.hpp:64</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

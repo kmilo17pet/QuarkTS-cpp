@@ -6,9 +6,9 @@ var annotated_dup =
         [ "command", "classq_o_s_1_1cli_1_1command.html", null ]
       ] ],
       [ "co", null, [
-        [ "handle", "classq_o_s_1_1co_1_1handle.html", null ],
+        [ "handle", "classq_o_s_1_1co_1_1handle.html", "classq_o_s_1_1co_1_1handle" ],
         [ "position", "classq_o_s_1_1co_1_1position.html", null ],
-        [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html", null ]
+        [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html", "classq_o_s_1_1co_1_1semaphore" ]
       ] ],
       [ "ec", null, [
         [ "inNode", "classq_o_s_1_1ec_1_1in_node.html", "classq_o_s_1_1ec_1_1in_node" ]
@@ -19,9 +19,9 @@ var annotated_dup =
       [ "sm", null, [
         [ "_Handler", "classq_o_s_1_1sm_1_1___handler.html", "classq_o_s_1_1sm_1_1___handler" ],
         [ "_psIndex_s", "structq_o_s_1_1sm_1_1__ps_index__s.html", null ],
-        [ "_signal_s", "structq_o_s_1_1sm_1_1__signal__s.html", null ],
         [ "_timeoutStateDefinition_s", "structq_o_s_1_1sm_1_1__timeout_state_definition__s.html", null ],
         [ "_transition_s", "structq_o_s_1_1sm_1_1__transition__s.html", null ],
+        [ "signal_t", "classq_o_s_1_1sm_1_1signal__t.html", "classq_o_s_1_1sm_1_1signal__t" ],
         [ "state", "classq_o_s_1_1sm_1_1state.html", "classq_o_s_1_1sm_1_1state" ],
         [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ]
       ] ],
@@ -33,6 +33,7 @@ var annotated_dup =
       [ "byteBuffer", "classq_o_s_1_1byte_buffer.html", "classq_o_s_1_1byte_buffer" ],
       [ "clock", "classq_o_s_1_1clock.html", null ],
       [ "commandLineInterface", "classq_o_s_1_1command_line_interface.html", "classq_o_s_1_1command_line_interface" ],
+      [ "core", "classq_o_s_1_1core.html", "classq_o_s_1_1core" ],
       [ "edgeCheck", "classq_o_s_1_1edge_check.html", "classq_o_s_1_1edge_check" ],
       [ "list", "classq_o_s_1_1list.html", "classq_o_s_1_1list" ],
       [ "listIterator", "classq_o_s_1_1list_iterator.html", null ],
@@ -42,6 +43,5 @@ var annotated_dup =
       [ "stateMachine", "classq_o_s_1_1state_machine.html", "classq_o_s_1_1state_machine" ],
       [ "task", "classq_o_s_1_1task.html", "classq_o_s_1_1task" ],
       [ "timer", "classq_o_s_1_1timer.html", "classq_o_s_1_1timer" ]
-    ] ],
-    [ "_Handler_s", "struct___handler__s.html", null ]
+    ] ]
 ];

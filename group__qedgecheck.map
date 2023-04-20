@@ -1,15 +1,4 @@
 <map id="I/O Groups for edge checking" name="I/O Groups for edge checking">
-<area shape="rect" id="node1" href="$group__qatcli.html" title="API for the AT Command Line Interface extension." alt="" coords="331,5,513,31"/>
-<area shape="rect" id="node2" href="$group__qbsbuffers.html" title="An interrupt&#45;safe byte&#45;sized ring buffer interface." alt="" coords="359,55,485,80"/>
-<area shape="rect" id="node3" href="$group__qclock.html" title="Clock and time manipulation interface used by the entire OS." alt="" coords="395,104,449,129"/>
-<area shape="rect" id="node4" href="$group__qcoroutines.html" title="API interface for the Co&#45;Routines extension." alt="" coords="375,153,469,179"/>
-<area shape="rect" id="node5" href="$group__qcritical.html" title="APIs to handle entry/exit actions in Critical sections." alt="" coords="391,203,453,228"/>
-<area shape="rect" id="node6" title="An interface to manage and simplify the value(with edge&#45;checking) of incoming digital&#45;signal groups." alt="" coords="121,245,256,285"/>
-<area shape="rect" id="node7" href="$group__qfsm.html" title="API interface of the Finite State Machines (FSM) extension." alt="" coords="349,252,495,277"/>
-<area shape="rect" id="node8" href="$group__qioutils.html" title="API for input/output utilities and safe string interfaces." alt="" coords="387,301,457,327"/>
-<area shape="rect" id="node9" href="$group__qqueues.html" title="API interface to create and handle Queues." alt="" coords="389,351,455,376"/>
-<area shape="rect" id="node10" href="$group__qresponse.html" title="API to simplify the handling of requested responses from terminal interfaces." alt="" coords="359,400,485,425"/>
-<area shape="rect" id="node11" href="$group__qstimers.html" title="API interface for the STimers extension." alt="" coords="363,449,481,475"/>
-<area shape="rect" id="node12" href="$group__qtaskmanip.html" title="API interface to manage tasks." alt="" coords="365,499,479,524"/>
-<area shape="rect" id="node13" href="$group__qutility.html" title=" " alt="" coords="5,252,72,277"/>
+<area shape="rect" id="node1" title="An interface to manage and simplify the value(with edge&#45;checking) of incoming digital&#45;signal groups." alt="" coords="120,5,255,45"/>
+<area shape="rect" id="node2" href="$group__qutility.html" title=" " alt="" coords="5,13,72,38"/>
 </map>

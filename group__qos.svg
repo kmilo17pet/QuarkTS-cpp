@@ -96,7 +96,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="group__qtypes.html" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="group__qtypes.html" target="_top" xlink:title="Sets of types having specified widths used to design the entire OS. It also define macros directives ...">
 <polygon fill="white" stroke="black" points="242,-19 147,-19 147,0 242,0 242,-19"/>
 <text text-anchor="middle" x="194.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">Types and macros</text>
 </a>

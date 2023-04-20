@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1queue.html',''); initRes
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classq_o_s_1_1queue-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">qOS::queue Class Reference</div></div>
+  <div class="headertitle"><div class="title">qOS::queue Class Reference<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a> &raquo; <a class="el" href="group__qpriv.html">Inter-Task communication</a> &raquo; <a class="el" href="group__qqueues.html">Queues</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -165,7 +165,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> (void) noex
 <tr class="memitem:a8eb18ab5ea810ff4216bdcaef89d2340"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#a8eb18ab5ea810ff4216bdcaef89d2340">receive</a> (void *dst) noexcept</td></tr>
 <tr class="memdesc:a8eb18ab5ea810ff4216bdcaef89d2340"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive an item from a queue (and removes it). The item is received by copy so a buffer of adequate size must be provided. The number of bytes copied into the buffer was defined when the queue was created.  <a href="classq_o_s_1_1queue.html#a8eb18ab5ea810ff4216bdcaef89d2340">More...</a><br /></td></tr>
 <tr class="separator:a8eb18ab5ea810ff4216bdcaef89d2340"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1dfd011bb923f82b2f7aab36ee904982"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#a1dfd011bb923f82b2f7aab36ee904982">send</a> (void *itemToQueue, const queueSendMode pos=queueSendMode::TO_BACK) noexcept</td></tr>
+<tr class="memitem:a1dfd011bb923f82b2f7aab36ee904982"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#a1dfd011bb923f82b2f7aab36ee904982">send</a> (void *itemToQueue, const <a class="el" href="group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22">queueSendMode</a> pos=queueSendMode::TO_BACK) noexcept</td></tr>
 <tr class="memdesc:a1dfd011bb923f82b2f7aab36ee904982"><td class="mdescLeft">&#160;</td><td class="mdescRight">Post an item to the the queue. The item is queued by copy, not by reference.  <a href="classq_o_s_1_1queue.html#a1dfd011bb923f82b2f7aab36ee904982">More...</a><br /></td></tr>
 <tr class="separator:a1dfd011bb923f82b2f7aab36ee904982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8167607c08f7d809189767e37d9ee883"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#a8167607c08f7d809189767e37d9ee883">peek</a> (void) const noexcept</td></tr>
@@ -440,7 +440,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (vo
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const queueSendMode&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22">queueSendMode</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>queueSendMode::TO_BACK</code>&#160;</td>
         </tr>
         <tr>

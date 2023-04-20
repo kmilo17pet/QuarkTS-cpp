@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1edge_check.html',''); in
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classq_o_s_1_1edge_check-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">qOS::edgeCheck Class Reference</div></div>
+  <div class="headertitle"><div class="title">qOS::edgeCheck Class Reference<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a> &raquo; <a class="el" href="group__qedgecheck.html">I/O Groups for edge checking</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -140,10 +140,10 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1edge_check.html',''); in
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a772b1cb71c7f4f45f2aefcfce635c347"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1edge_check.html#a772b1cb71c7f4f45f2aefcfce635c347">edgeCheck</a> (ec::reg rSize, const qOS::clock_t timeDebounce) noexcept</td></tr>
+<tr class="memitem:a772b1cb71c7f4f45f2aefcfce635c347"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1edge_check.html#a772b1cb71c7f4f45f2aefcfce635c347">edgeCheck</a> (<a class="el" href="group__qedgecheck.html#ga87f4cb15ec91bfbd3cf6d8507bbd0aeb">ec::reg</a> rSize, const qOS::clock_t timeDebounce) noexcept</td></tr>
 <tr class="memdesc:a772b1cb71c7f4f45f2aefcfce635c347"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a I/O Edge-Check instance.  <a href="classq_o_s_1_1edge_check.html#a772b1cb71c7f4f45f2aefcfce635c347">More...</a><br /></td></tr>
 <tr class="separator:a772b1cb71c7f4f45f2aefcfce635c347"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac056e231d74a329b399008dc3129871b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1edge_check.html#ac056e231d74a329b399008dc3129871b">add</a> (<a class="el" href="classq_o_s_1_1ec_1_1in_node.html">ec::inNode</a> &amp;n, void *portAddress, const index_t pinNumber) noexcept</td></tr>
+<tr class="memitem:ac056e231d74a329b399008dc3129871b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1edge_check.html#ac056e231d74a329b399008dc3129871b">add</a> (<a class="el" href="classq_o_s_1_1ec_1_1in_node.html">ec::inNode</a> &amp;n, void *portAddress, const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> pinNumber) noexcept</td></tr>
 <tr class="memdesc:ac056e231d74a329b399008dc3129871b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an input node to the Edge-Check instance.  <a href="classq_o_s_1_1edge_check.html#ac056e231d74a329b399008dc3129871b">More...</a><br /></td></tr>
 <tr class="separator:ac056e231d74a329b399008dc3129871b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3861a2b74b75a55f70c5c2d5b38b3ff2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1edge_check.html#a3861a2b74b75a55f70c5c2d5b38b3ff2">update</a> (void) noexcept</td></tr>
@@ -165,7 +165,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">edgeCheck::edgeCheck </td>
           <td>(</td>
-          <td class="paramtype">ec::reg&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qedgecheck.html#ga87f4cb15ec91bfbd3cf6d8507bbd0aeb">ec::reg</a>&#160;</td>
           <td class="paramname"><em>rSize</em>, </td>
         </tr>
         <tr>
@@ -191,7 +191,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">rSize</td><td>The specific-core register size: ec::reg::SIZE_8_BIT, ec::reg::SIZE_16_BIT or ec::reg::SIZE_32_BIT(Default) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">debounceTime</td><td>The specified time to bypass the bounce of the input nodes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeDebounce</td><td>The specified time to bypass the bounce of the input nodes </td></tr>
   </table>
   </dd>
 </dl>
@@ -224,7 +224,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const index_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
           <td class="paramname"><em>pinNumber</em>&#160;</td>
         </tr>
         <tr>

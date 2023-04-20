@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['peek_0',['peek',['../classq_o_s_1_1byte_buffer.html#a33dcef8da0f37339a049cab4b2f55874',1,'qOS::byteBuffer::peek()'],['../classq_o_s_1_1queue.html#a8167607c08f7d809189767e37d9ee883',1,'qOS::queue::peek()']]],
-  ['pool_1',['pool',['../classq_o_s_1_1mem_1_1pool.html#ac9e3988282addb3648fae80d3fcf310f',1,'qOS::mem::pool']]],
-  ['put_2',['put',['../classq_o_s_1_1byte_buffer.html#a2476613590497e74630600c2ed9819e3',1,'qOS::byteBuffer']]]
+  ['output_0',['output',['../group__qatcli.html#ga7719470f2343fc72c68ef1f29dc48778',1,'qOS::cli::_Handler::output(const char c) const'],['../group__qatcli.html#ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c',1,'qOS::cli::_Handler::output(const char *s) const']]],
+  ['outputraw_1',['outputRAW',['../group__qioutils.html#ga057bcfe88c1239c40169daaff9055383',1,'qOS::util']]],
+  ['outputstring_2',['outputString',['../group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2',1,'qOS::util']]]
 ];

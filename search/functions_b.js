@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['output_0',['output',['../classq_o_s_1_1cli_1_1___handler.html#a7719470f2343fc72c68ef1f29dc48778',1,'qOS::cli::_Handler::output(const char c) const'],['../classq_o_s_1_1cli_1_1___handler.html#a74ed569fc1e1e4fdc6c5ec8c98ee0f1c',1,'qOS::cli::_Handler::output(const char *s) const']]]
+  ['nextstate_0',['nextState',['../classq_o_s_1_1sm_1_1___handler.html#a35c358ecf162da3f5538a46c9c736b55',1,'qOS::sm::_Handler']]],
+  ['notify_1',['notify',['../classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0',1,'qOS::core::notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept'],['../classq_o_s_1_1core.html#a528adfc42f82a61c9763941c34bf243b',1,'qOS::core::notify(notifyMode mode, void *eventData=nullptr) noexcept']]]
 ];

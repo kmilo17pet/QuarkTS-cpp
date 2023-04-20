@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1co_1_1semaphore.html',''
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classq_o_s_1_1co_1_1semaphore-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">qOS::co::semaphore Class Reference</div></div>
+  <div class="headertitle"><div class="title">qOS::co::semaphore Class Reference<div class="ingroups"><a class="el" href="group__qmodules.html">Kernel extensions</a> &raquo; <a class="el" href="group__qcoroutines.html">Co-Routines</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -141,11 +141,11 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1co_1_1semaphore.html',''
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a713402886e02ed07e8893a020df3e981"><td class="memItemLeft" align="right" valign="top"><a id="a713402886e02ed07e8893a020df3e981" name="a713402886e02ed07e8893a020df3e981"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>semaphore</b> (size_t init)</td></tr>
+<tr class="memitem:a713402886e02ed07e8893a020df3e981"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1co_1_1semaphore.html#a713402886e02ed07e8893a020df3e981">semaphore</a> (size_t init)</td></tr>
+<tr class="memdesc:a713402886e02ed07e8893a020df3e981"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a coroutine semaphore with a value for the counter. Internally, the semaphores use an <code>size_t</code> to represent the counter, therefore the <em>init</em> argument should be within range of this type.  <a href="classq_o_s_1_1co_1_1semaphore.html#a713402886e02ed07e8893a020df3e981">More...</a><br /></td></tr>
 <tr class="separator:a713402886e02ed07e8893a020df3e981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ba693d4ea532a11554939630d44898f"><td class="memItemLeft" align="right" valign="top"><a id="a1ba693d4ea532a11554939630d44898f" name="a1ba693d4ea532a11554939630d44898f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (size_t val) noexcept</td></tr>
+<tr class="memitem:a1ba693d4ea532a11554939630d44898f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1co_1_1semaphore.html#a1ba693d4ea532a11554939630d44898f">set</a> (size_t val) noexcept</td></tr>
+<tr class="memdesc:a1ba693d4ea532a11554939630d44898f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coroutine semaphore with a value for the counter. Internally, the semaphores use an <code>size_t</code> to represent the counter, therefore the <em>val</em> argument should be within range of this type.  <a href="classq_o_s_1_1co_1_1semaphore.html#a1ba693d4ea532a11554939630d44898f">More...</a><br /></td></tr>
 <tr class="separator:a1ba693d4ea532a11554939630d44898f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -156,7 +156,83 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>co::_coContext</b></
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A Co-Routine Semaphore. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a713402886e02ed07e8893a020df3e981" name="a713402886e02ed07e8893a020df3e981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a713402886e02ed07e8893a020df3e981">&#9670;&nbsp;</a></span>semaphore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::co::semaphore::semaphore </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>init</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes a coroutine semaphore with a value for the counter. Internally, the semaphores use an <code>size_t</code> to represent the counter, therefore the <em>init</em> argument should be within range of this type. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302" title="Carries out the &quot;wait&quot; operation on the semaphore. The wait operation causes the Co-routine to block ...">co::semWait()</a> </dd>
+<dd>
+<a class="el" href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae" title="Carries out the &quot;signal&quot; operation on the semaphore. The signal operation increments the counter insi...">co::semSignal()</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>The initial count of the semaphore. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1ba693d4ea532a11554939630d44898f" name="a1ba693d4ea532a11554939630d44898f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ba693d4ea532a11554939630d44898f">&#9670;&nbsp;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void co::semaphore::set </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the coroutine semaphore with a value for the counter. Internally, the semaphores use an <code>size_t</code> to represent the counter, therefore the <em>val</em> argument should be within range of this type. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302" title="Carries out the &quot;wait&quot; operation on the semaphore. The wait operation causes the Co-routine to block ...">co::semWait()</a> </dd>
+<dd>
+<a class="el" href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae" title="Carries out the &quot;signal&quot; operation on the semaphore. The signal operation increments the counter insi...">co::semSignal()</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">val</td><td>The initial count of the semaphore. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

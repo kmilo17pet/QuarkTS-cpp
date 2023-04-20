@@ -1,15 +1,4 @@
 <map id="Finite State Machines" name="Finite State Machines">
-<area shape="rect" id="node1" href="$group__qatcli.html" title="API for the AT Command Line Interface extension." alt="" coords="400,5,583,31"/>
-<area shape="rect" id="node2" href="$group__qbsbuffers.html" title="An interrupt&#45;safe byte&#45;sized ring buffer interface." alt="" coords="428,55,555,80"/>
-<area shape="rect" id="node3" href="$group__qclock.html" title="Clock and time manipulation interface used by the entire OS." alt="" coords="464,104,519,129"/>
-<area shape="rect" id="node4" href="$group__qcoroutines.html" title="API interface for the Co&#45;Routines extension." alt="" coords="445,153,538,179"/>
-<area shape="rect" id="node5" href="$group__qcritical.html" title="APIs to handle entry/exit actions in Critical sections." alt="" coords="460,203,523,228"/>
-<area shape="rect" id="node6" href="$group__qedgecheck.html" title="An interface to manage and simplify the value(with edge&#45;checking) of incoming digital&#45;signal groups." alt="" coords="424,253,559,293"/>
-<area shape="rect" id="node7" title="API interface of the Finite State Machines (FSM) extension." alt="" coords="179,260,325,285"/>
-<area shape="rect" id="node8" href="$group__qioutils.html" title="API for input/output utilities and safe string interfaces." alt="" coords="456,317,527,343"/>
-<area shape="rect" id="node10" href="$group__qqueues.html" title="API interface to create and handle Queues." alt="" coords="458,367,525,392"/>
-<area shape="rect" id="node11" href="$group__qresponse.html" title="API to simplify the handling of requested responses from terminal interfaces." alt="" coords="429,416,554,441"/>
-<area shape="rect" id="node12" href="$group__qstimers.html" title="API interface for the STimers extension." alt="" coords="432,465,551,491"/>
-<area shape="rect" id="node13" href="$group__qtaskmanip.html" title="API interface to manage tasks." alt="" coords="435,515,548,540"/>
-<area shape="rect" id="node9" href="$group__qmodules.html" title=" " alt="" coords="5,260,129,285"/>
+<area shape="rect" id="node1" title="API interface of the Finite State Machines (FSM) extension." alt="" coords="177,5,324,31"/>
+<area shape="rect" id="node2" href="$group__qmodules.html" title=" " alt="" coords="5,5,129,31"/>
 </map>

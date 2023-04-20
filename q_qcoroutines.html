@@ -163,69 +163,75 @@ Overview</h1>
 </ul>
 <h1><a class="anchor" id="q_coroutine_code"></a>
 Coding a Co-Routine</h1>
-<p >The application writer just needs to create the body of the Co-Routine . This means starting a Co-Routine segment with co::reenter() statement . From now on, yields and blocking calls from the Co-Routine scope are allowed.</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( event_t e ) {</div>
-<div class="line">    co::reenter() {</div>
+<p >The application writer just needs to create the body of the Co-Routine . This means starting a Co-Routine segment with <a class="el" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91" title="Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...">co::reenter()</a> statement . From now on, yields and blocking calls from the Co-Routine scope are allowed.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>() {</div>
 <div class="line">        <span class="keywordflow">for</span> (;;) {</div>
 <div class="line">            <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
-<div class="line">                co::yield;</div>
+<div class="line">                <a class="code hl_function" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">co::yield</a>;</div>
 <div class="line">            }</div>
 <div class="line">            DoTheEventProcessing();</div>
-<div class="line">            co::delay( WAIT_TIME_S );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">co::delay</a>( WAIT_TIME_S );</div>
 <div class="line">            PerformActions();</div>
 <div class="line">       }</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p >The co::reenter() statement should be placed at the start of the task function in which the Co-routine runs.</p>
-<p >A co::yield() statement return the CPU control back to the scheduler but saving the execution progress, thereby allowing other processing tasks to take place in the system. With the next task activation, the Co-Routine will resume the execution after the last co::yield() statement.</p>
+<div class="ttc" id="agroup__qcoroutines_html_ga82a629aecb122ba6bfc0c5137e6e2b84"><div class="ttname"><a href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">qOS::co::delay</a></div><div class="ttdeci">void delay(qOS::time_t t) noexcept</div><div class="ttdoc">Delay a coroutine for a given number of time.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:203</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gaa0ac1583601848da679af80f593b1cff"><div class="ttname"><a href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">qOS::co::yield</a></div><div class="ttdeci">void yield(void) noexcept</div><div class="ttdoc">This statement is only allowed inside a Coroutine segment. co::yield return the CPU control back to t...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:197</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gabb86ebfd79f14350a9ed1be1a44f3b91"><div class="ttname"><a href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">qOS::co::reenter</a></div><div class="ttdeci">void reenter(void) noexcept</div><div class="ttdoc">Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:171</div></div>
+<div class="ttc" id="agroup__qtaskmanip_html_ga99648a15693a88caaff87faad3955a76"><div class="ttname"><a href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">qOS::event_t</a></div><div class="ttdeci">_Event &amp; event_t</div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition:</b> task.hpp:190</div></div>
+</div><!-- fragment --><p >The <a class="el" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91" title="Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...">co::reenter()</a> statement should be placed at the start of the task function in which the Co-routine runs.</p>
+<p >A <a class="el" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff" title="This statement is only allowed inside a Coroutine segment. co::yield return the CPU control back to t...">co::yield()</a> statement return the CPU control back to the scheduler but saving the execution progress, thereby allowing other processing tasks to take place in the system. With the next task activation, the Co-Routine will resume the execution after the last <a class="el" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff" title="This statement is only allowed inside a Coroutine segment. co::yield return the CPU control back to t...">co::yield()</a> statement.</p>
 <dl class="section note"><dt>Note</dt><dd>Co-Routine statements can only be invoked from the scope of the Co-Routine. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>You should but an endless-loop inside a Co-routine, this behavior is not hardcoded within the segment definition.</dd></dl>
 <h1><a class="anchor" id="q_coroutine_blocking"></a>
 Blocking calls in a Co-routine</h1>
 <p >Blocking calls inside a Co-Routine should be made with the provided statements, all of them with a common feature: an implicit yield.</p>
-<p >A widely used procedure is to wait for a fixed period of time. For this, the co::delay() should be used. This statement makes an apparent blocking over the application flow, but to be precise, a yield is performed until the requested time expires, this allows other tasks to be executed until the blocking call finish. This "yielding until condition meet" behavior its the common pattern among the other blocking statements.</p>
-<p >Another common blocking call is co::waitUntil(). This statement takes a condition argument, a logical expression that will be performed when the Co-Routine resumes their execution. As mentioned before, this type of statement exposes the expected behavior, yielding until the condition is met.</p>
-<p >An additional overload of this co::waitUntil() is also provided. This one sets a timeout for the logical condition to be met.</p>
+<p >A widely used procedure is to wait for a fixed period of time. For this, the <a class="el" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84" title="Delay a coroutine for a given number of time.">co::delay()</a> should be used. This statement makes an apparent blocking over the application flow, but to be precise, a yield is performed until the requested time expires, this allows other tasks to be executed until the blocking call finish. This "yielding until condition meet" behavior its the common pattern among the other blocking statements.</p>
+<p >Another common blocking call is <a class="el" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20" title="Yields until the logical condition is met.">co::waitUntil()</a>. This statement takes a condition argument, a logical expression that will be performed when the Co-Routine resumes their execution. As mentioned before, this type of statement exposes the expected behavior, yielding until the condition is met.</p>
+<p >An additional overload of this <a class="el" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20" title="Yields until the logical condition is met.">co::waitUntil()</a> is also provided. This one sets a timeout for the logical condition to be met.</p>
 <p >Optionally, the Do-Until structure gives to application writer the ability to perform a multi-line job before the yield, allowing more complex actions to being performed after the Co-Routine resumes:</p>
 <div class="fragment"><div class="line">qCR_Do {</div>
 <div class="line">    <span class="comment">/* Job : a set of instructions*/</span></div>
 <div class="line">} qCR_Until( Condition );</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_coroutine_example1"></a>
 Co-Routine usage example</h1>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> Sender_Task( event_t e ) {</div>
-<div class="line">    co::reenter() {</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> Sender_Task( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>() {</div>
 <div class="line">        Send_Packet();</div>
 <div class="line">        <span class="comment">/* Wait until an acknowledgment has been received, or until</span></div>
 <div class="line"><span class="comment">         * the timer expires. If the timer expires, we should send</span></div>
 <div class="line"><span class="comment">         * the packet again.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        co::waitUntil( PacketACK_Received(), TIMEOUT_TIME );</div>
-<div class="line">        co::restart; </div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( PacketACK_Received(), TIMEOUT_TIME );</div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">co::restart</a>; </div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> Receiver_Task( event_t e ) {</div>
-<div class="line">    co::reenter() {</div>
+<div class="line"><span class="keywordtype">void</span> Receiver_Task( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>() {</div>
 <div class="line">        <span class="comment">/* Wait until a packet has been received*/</span></div>
-<div class="line">        co::waitUntil( Packet_Received() );</div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( Packet_Received() );</div>
 <div class="line">        Send_Acknowledgement();</div>
-<div class="line">        co::restart; </div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">co::restart</a>; </div>
 <div class="line">    };</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qcoroutines_html_ga13055a9326fa8e11d527715fadc7b528"><div class="ttname"><a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a></div><div class="ttdeci">void restart(void) noexcept</div><div class="ttdoc">This statement cause the running Coroutine to restart its execution at the place of the co::reenter()...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:255</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gad0eca0c65e03d038bb7374ee75980f20"><div class="ttname"><a href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">qOS::co::waitUntil</a></div><div class="ttdeci">void waitUntil(bool condition) noexcept</div><div class="ttdoc">Yields until the logical condition is met.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:217</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_coroutine_positions"></a>
 Positional jumps</h1>
 <p >This feature provides positional local jumps, control flow that deviates from the usual Co-Routine call.</p>
-<p >The complementary statements co::getPosition() and co::setPosition() provide this functionality. The first one saves the Co-Routine state at some point of their execution into <code>CRPos</code>, a variable of type co::position , that can be used at some later point of program execution by co::setPosition() to restore the Co-Routine state to the one saved by co::getPosition() into CRPos. This process can be imagined to be a "jump" back to the point of program execution where co::getPosition() saved the Co-Routine environment.</p>
+<p >The complementary statements <a class="el" href="group__qcoroutines.html#gac8354b5da4ab66b7e049c615af830c97" title="Labels the current position and saves it to var so it can be later restored by co::setPosition()">co::getPosition()</a> and <a class="el" href="group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc" title="Restores the Co-Routine position saved in var.">co::setPosition()</a> provide this functionality. The first one saves the Co-Routine state at some point of their execution into <code>CRPos</code>, a variable of type co::position , that can be used at some later point of program execution by <a class="el" href="group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc" title="Restores the Co-Routine position saved in var.">co::setPosition()</a> to restore the Co-Routine state to the one saved by <a class="el" href="group__qcoroutines.html#gac8354b5da4ab66b7e049c615af830c97" title="Labels the current position and saves it to var so it can be later restored by co::setPosition()">co::getPosition()</a> into CRPos. This process can be imagined to be a "jump" back to the point of program execution where <a class="el" href="group__qcoroutines.html#gac8354b5da4ab66b7e049c615af830c97" title="Labels the current position and saves it to var so it can be later restored by co::setPosition()">co::getPosition()</a> saved the Co-Routine environment.</p>
 <h1><a class="anchor" id="q_coroutine_semaphores"></a>
 Semaphores</h1>
 <p >This extension implements counting semaphores on top of Co-Routines. Semaphores are a synchronization primitive that provide two operations: <em>wait</em> and <em>signal</em>. The <em>wait</em> operation checks the semaphore counter and blocks the Co-Routine if the counter is zero. The <em>signal</em> operation increases the semaphore counter but does not block. If another Co-Routine has blocked waiting for the semaphore that is signaled, the blocked Co-Routines will become runnable again.</p>
 <p >Semaphores are referenced by handles, a variable of type co::semaphore and must be initialized at time of creating with its own constructor. Here, a value for the counter is required. Internally, semaphores use an <code>size_t</code> to represent the counter, therefore the value argument should be within range of this data-type.</p>
-<p >To perform the |a wait operation, the co::semWait() statement should be used. The wait operation causes the Co-routine to block while the counter is zero. When the counter reaches a value larger than zero, the Co-Routine will continue.</p>
-<p >Finally, co::semSignal() carries out the <em>signal</em> operation on the semaphore. This signaling increments the counter inside the semaphore, which eventually will cause waiting Coroutines to continue executing.</p>
+<p >To perform the |a wait operation, the <a class="el" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302" title="Carries out the &quot;wait&quot; operation on the semaphore. The wait operation causes the Co-routine to block ...">co::semWait()</a> statement should be used. The wait operation causes the Co-routine to block while the counter is zero. When the counter reaches a value larger than zero, the Co-Routine will continue.</p>
+<p >Finally, <a class="el" href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae" title="Carries out the &quot;signal&quot; operation on the semaphore. The signal operation increments the counter insi...">co::semSignal()</a> carries out the <em>signal</em> operation on the semaphore. This signaling increments the counter inside the semaphore, which eventually will cause waiting Coroutines to continue executing.</p>
 <h1><a class="anchor" id="q_coroutine_example2"></a>
 Co-Routine example with semaphores.</h1>
 <p >The following example shows how to implement the bounded buffer problem using Co-Routines and semaphores. The example uses two tasks: one that produces items and other that consumes items.</p>
-<p >Note that there is no need for a mutex to guard the <code>add_to_buffer()</code> and <code>get_from_buffer()</code> functions because of the implicit locking semantics of Co-Routines, so it will never be preempted and will never block except in an explicit co::semWait() statement.</p>
+<p >Note that there is no need for a mutex to guard the <code>add_to_buffer()</code> and <code>get_from_buffer()</code> functions because of the implicit locking semantics of Co-Routines, so it will never be preempted and will never block except in an explicit <a class="el" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302" title="Carries out the &quot;wait&quot; operation on the semaphore. The wait operation causes the Co-routine to block ...">co::semWait()</a> statement.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;AppLibrary.h&quot;</span></div>
@@ -237,54 +243,60 @@ Co-Routine example with semaphores.</h1>
 <div class="line">task_t ProducerTask, ConsumerTask;</div>
 <div class="line">co::semaphore mutex( 1 ), full( BUFSIZE ), empty( 0 );</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> ProducerTask_Callback( event_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> ProducerTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> produced;</div>
 <div class="line">    </div>
-<div class="line">    co::reenter() {</div>
+<div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>() {</div>
 <div class="line">        <span class="keywordflow">for</span> ( produced = 0 ; produced &lt; NUM_ITEMS ; ++produced ) {</div>
-<div class="line">            co::semWait( full );</div>
-<div class="line">            co::semWait( mutex );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302">co::semWait</a>( full );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302">co::semWait</a>( mutex );</div>
 <div class="line"> </div>
 <div class="line">            add_to_buffer( produce_item() );</div>
 <div class="line"> </div>
-<div class="line">            co::semSignal( mutex );</div>
-<div class="line">            co::semSignal( empty );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae">co::semSignal</a>( mutex );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae">co::semSignal</a>( empty );</div>
 <div class="line">        }</div>
-<div class="line">        co::restart;</div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">co::restart</a>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> ConsumerTask_Callback( event_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> ConsumerTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> consumed;</div>
 <div class="line">    </div>
-<div class="line">    co::reenter() {</div>
+<div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>() {</div>
 <div class="line">        <span class="keywordflow">for</span> ( consumed = 0 ; consumed &lt; NUM_ITEMS ; ++consumed ) {</div>
-<div class="line">            co::semWait( empty );</div>
-<div class="line">            co::semWait( mutex );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302">co::semWait</a>( empty );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302">co::semWait</a>( mutex );</div>
 <div class="line">    </div>
 <div class="line">            consume_item( get_from_buffer() );</div>
-<div class="line">            co::semSignal( mutex );</div>
-<div class="line">            co::semSignal( full );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae">co::semSignal</a>( mutex );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae">co::semSignal</a>( full );</div>
 <div class="line">        }</div>
 <div class="line">    };</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> IdleTask_Callback( event_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> IdleTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
 <div class="line">    <span class="comment">/*nothing to do*/</span></div>
 <div class="line">} </div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
 <div class="line">    HAL_Init();</div>
 <div class="line"> </div>
-<div class="line">    os.init( HAL_GetTick, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( HAL_GetTick, IdleTask_Callback );</div>
 <div class="line">    </div>
-<div class="line">    os.addTask( ProducerTask, ProducerTask_Callback, core::MEDIUM_PRIORITY, </div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a>( ProducerTask, ProducerTask_Callback, core::MEDIUM_PRIORITY, </div>
 <div class="line">                100, task::PERIODIC, taskState::ENABLED );</div>
-<div class="line">    os.addTask( ConsumerTask, ConsumerTask_Callback, core::MEDIUM_PRIORITY, </div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a>( ConsumerTask, ConsumerTask_Callback, core::MEDIUM_PRIORITY, </div>
 <div class="line">                100, task::PERIODIC, taskState::ENABLED );</div>
-<div class="line">    os.run();</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">run</a>();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a9dab08cadc8d5547f6dbab6fdd0d45ff"><div class="ttname"><a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:32</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_ab3ffe569156600e392e688c74ab68134"><div class="ttname"><a href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:44</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_af544e4dc0c995270ff1e87f01f87fc79"><div class="ttname"><a href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:373</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga8f2e9cbda9ba9df1f8a756ab212e8302"><div class="ttname"><a href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302">qOS::co::semWait</a></div><div class="ttdeci">void semWait(co::semaphore &amp;sem) noexcept</div><div class="ttdoc">Carries out the &quot;wait&quot; operation on the semaphore. The wait operation causes the Co-routine to block ...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:264</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gae5fa49283e366f3201de3fe515f5caae"><div class="ttname"><a href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae">qOS::co::semSignal</a></div><div class="ttdeci">void semSignal(co::semaphore &amp;sem) noexcept</div><div class="ttdoc">Carries out the &quot;signal&quot; operation on the semaphore. The signal operation increments the counter insi...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:274</div></div>
+<div class="ttc" id="agroup__qtaskcreation_html_ga501a22419157104b982c3a32d871fe21"><div class="ttname"><a href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:6</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_coroutine_ext"></a>
 External control</h1>
 <p >In certain situations, it may be necessary to control the flow of execution outside of the segment that defines the Co-routine itself. This is typically done to defer or resume the Co-routine in response to specific occurrences that arise in other contexts, such as tasks or interrupts.</p>
@@ -292,7 +304,7 @@ External control</h1>
 <div class="fragment"><div class="line">co::handle xHandleCR;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> AnotherTask_Callback( event_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> AnotherTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
 <div class="line">    <span class="keywordtype">int</span> UserInput = 0;</div>
 <div class="line">    <span class="keywordflow">if</span> ( e-&gt;FirstIteration ) {</div>
 <div class="line">        xHandleCR.try_resume();</div>
@@ -307,17 +319,17 @@ External control</h1>
 <div class="line">    Perform_AnotherTask_Activities();</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( event_t e ) {</div>
-<div class="line">    co::reenter( xHandleCR ) { <span class="comment">/*externally controlled*/</span></div>
+<div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>( xHandleCR ) { <span class="comment">/*externally controlled*/</span></div>
 <div class="line">        <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
-<div class="line">            co::yield;</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">co::yield</a>;</div>
 <div class="line">        }</div>
 <div class="line">        RunFirstJob();</div>
-<div class="line">        co::delay( WAIT_TIME );</div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">co::delay</a>( WAIT_TIME );</div>
 <div class="line">        SecondJobStatus = RunSecondJob();</div>
-<div class="line">        co::waitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );</div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );</div>
 <div class="line">        CleanUpStatus = CleanupJob();</div>
-<div class="line">        co::waitUntil( SomeVar &gt; SomeValue );</div>
+<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( SomeVar &gt; SomeValue );</div>
 <div class="line">    } qCR_End;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >As shown in the code snippet above, the Co-routine handle its globally declared to enable other contexts to access it. The example demonstrates how another task can control the Coroutine using the "try_" methods API. It's important to note that the actions performed by this API can only be effective after the handle instantiation, which is a one-time operation that occurs during the first call of the Co-routine. </p>

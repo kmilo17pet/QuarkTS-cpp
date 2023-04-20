@@ -130,9 +130,14 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1trace_1_1mem.html',''); 
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classq_o_s_1_1trace_1_1mem-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">qOS::trace::mem Class Reference</div></div>
+  <div class="headertitle"><div class="title">qOS::trace::mem Class Reference<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a> &raquo; <a class="el" href="group__qtrace.html">Trace</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that sets the number of bytes to be traced when a pointer for a pointer variable Example:  
+ <a href="classq_o_s_1_1trace_1_1mem.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="trace_8hpp_source.html">trace.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -146,7 +151,12 @@ Public Attributes</h2></td></tr>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 <tr class="separator:aa08bc5952f27dccbd29b5433eb7c0bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Class that sets the number of bytes to be traced when a pointer for a pointer variable Example: </p>
+<div class="fragment"><div class="line">uin32_t myNumber = 0xAABBCCDD;</div>
+<div class="line">trace::log &lt;&lt; trace::mem( <span class="keyword">sizeof</span>(myNumber ) ) &lt;&lt; &amp;myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:5</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -174,9 +174,11 @@ Timing Approach</h1>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Init();</div>
-<div class="line">    os.init( HAL_GetTick , IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( HAL_GetTick , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a9dab08cadc8d5547f6dbab6fdd0d45ff"><div class="ttname"><a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:32</div></div>
+<div class="ttc" id="agroup__qtaskcreation_html_ga501a22419157104b982c3a32d871fe21"><div class="ttname"><a href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:6</div></div>
 </div><!-- fragment --></li>
 <li>Scenario 2 : When the tick is not provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;DeviceHeader.h&quot;</span></div>
@@ -190,7 +192,7 @@ Timing Approach</h1>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    MCU_Init();</div>
 <div class="line">    HAL_Init();</div>
-<div class="line">    os.init( NULL , IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( NULL , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
 </div><!-- fragment --></li>
@@ -218,42 +220,43 @@ Tasks</h1>
   </html>
    <em>Task node illustration</em> </center><p >Each task performs its activities via a <em>callback</em> function and each of them is responsible for supporting cooperative multitasking by being “good neighbors”, i.e., running their callback methods quickly in a non-blocking way and releasing control back to the scheduler as soon as possible (returning).</p>
 <p >Every task node, must be defined using the qTask_t data type and the callback is defined as a function that returns void and takes a qEvent_t data structure as its only parameter (This input argument can be used later to get the event information, see <a class="el" href="q_events.html#eventdata">Retrieving the event data</a>).</p>
-<div class="fragment"><div class="line">qTask_t UserTask;</div>
-<div class="line"><span class="keywordtype">void</span> UserTask_Callback( qEvent_t eventdata ) {</div>
+<div class="fragment"><div class="line">task UserTask;</div>
+<div class="line"><span class="keywordtype">void</span> UserTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
 <div class="line">    <span class="comment">// TODO : Task code</span></div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qtaskmanip_html_ga99648a15693a88caaff87faad3955a76"><div class="ttname"><a href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">qOS::event_t</a></div><div class="ttdeci">_Event &amp; event_t</div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition:</b> task.hpp:190</div></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>All tasks in QuarkTS++ must ensure their completion to return the CPU control back to the scheduler to follow the <a class="el" href="q_foundations.html#rtcmodel">RTC(Run To Completion) model</a>, otherwise, the scheduler will hold the execution state for that task, preventing the activation of other tasks.</dd></dl>
 <h2><a class="anchor" id="q_idletask"></a>
 The idle task</h2>
-<p >It's a special task loaded by the OS scheduler when there is nothing else to do (no task in the whole scheme has reached the ready state). The idle task is already hard-coded into the kernel, ensuring that at least, one task is able to run. Additionally, the OS setup this task with the lowest possible priority to ensure that does not use any CPU time if there are higher priority application tasks able to run. The idle task doesn't perform any active functions, but the user can decide if it should perform some activities defining a callback function for it. This could be done at the beginning of the kernel setup. Of course, the callback must follow the same function prototype for tasks. </p><dl class="section note"><dt>Note</dt><dd>To disable the idle-task activities, a <code>NULL</code> should be passed as argument on qOS_Setup() or qOS_Set_IdleTask().</dd></dl>
+<p >It's a special task loaded by the OS scheduler when there is nothing else to do (no task in the whole scheme has reached the ready state). The idle task is already hard-coded into the kernel, ensuring that at least, one task is able to run. Additionally, the OS setup this task with the lowest possible priority to ensure that does not use any CPU time if there are higher priority application tasks able to run. The idle task doesn't perform any active functions, but the user can decide if it should perform some activities defining a callback function for it. This could be done at the beginning of the kernel setup. Of course, the callback must follow the same function prototype for tasks. </p><dl class="section note"><dt>Note</dt><dd>To disable the idle-task activities, a <code>nullptr</code> should be passed as argument on core::init() or core::setIdleTask().</dd></dl>
 <h2><a class="anchor" id="q_addtasks"></a>
 Adding tasks to the scheme</h2>
-<p >After setting up the kernel with qOS_Setup(), the user can proceed to deploy the multitasking application by adding tasks. If the task node and their respective callback is already defined, the task can be added to the scheme using qOS_Add_Task(). This API can schedule a task to run every <code>t</code> seconds, <code>n</code> executions times and invoking the <code>callbackFcn</code> method on every pass.</p>
+<p >After setting up the kernel with core::init(), the user can proceed to deploy the multitasking application by adding tasks. If the task node and their respective callback is already defined, the task can be added to the scheme using core::addTask(). This API can schedule a task to run every <code>t</code> seconds, <code>n</code> executions times and invoking the <code>callbackFcn</code> method on every pass.</p>
 <p ><b> Caveats: </b></p>
 <ol type="1">
-<li>A task with time argument <code>t</code> defined as <code>qTimeImmediate</code>, will always get the <code>qReady</code> state in every scheduling cycle, as consequence, the idle task will never get dispatched.</li>
+<li>A task with time argument <code>t</code> defined as <code>clock::IMMEDIATE</code>, will always get the <code>qReady</code> state in every scheduling cycle, as consequence, the idle task will never get dispatched.</li>
 <li>Tasks do not remember the number of iterations set initially by the <code>n</code> executions argument. After the iterations are done, the internal iteration counter decreases until reaches zero. If another set of iterations is needed, the user should set the number of iterations again and resume the task explicitly.</li>
-<li>Tasks that performed all their iterations, put their own state to <code>qDisabled</code>. Asynchronous triggers do not affect the iteration counter.</li>
+<li>Tasks that performed all their iterations, put their own state to <code>taskState::DISABLED_STATE</code>. Asynchronous triggers do not affect the iteration counter.</li>
 <li>The <code>arg</code> parameter can be used as a storage pointer, so, for multiple data, create a structure with the required members and pass a pointer to that structure.</li>
 </ol>
-<p >Invoking qOS_Add_Task() is the most generic way to add tasks to the scheme, supporting a mixture of time-triggered and event-triggered tasks, however, additional simplified API functions are also provided to add specific purpose tasks:</p>
+<p >Invoking core::addTask() is the most generic way to add tasks to the scheme, supporting a mixture of time-triggered and event-triggered tasks, however, additional simplified API functions are also provided to add specific purpose tasks:</p>
 <ul>
-<li>Event-triggered only tasks → qOS_Add_EventTask().</li>
-<li>State-machine tasks → qOS_Add_StateMachineTask().</li>
-<li>AT Command Line Interface tasks → qOS_Add_ATCLITask().</li>
+<li>Event-triggered only tasks → core::addEventTask().</li>
+<li>State-machine tasks → core::addStateMachineTask().</li>
+<li>AT Command Line Interface tasks → core::addCommandLineInterfaceTask().</li>
 </ul>
 <h2><a class="anchor" id="q_eventtasks"></a>
 Event-triggered tasks</h2>
 <p >An event-triggered task reacts asynchronously to the occurrence of events in the system, such as external interrupts or changes in the available resources.</p>
-<p >The API qOS_Add_EventTask() is intended to add this kind of tasks, keeping it in a <code>qSuspended</code> state. Only asynchronous events followed by their priority value dictate when a task can change to the <code>qRunning</code> state.</p>
+<p >The API core::addEventTask() is intended to add this kind of tasks, keeping it in a <code>qSuspended</code> state. Only asynchronous events followed by their priority value dictate when a task can change to the <code>Running</code> state.</p>
 <h2><a class="anchor" id="q_removetask"></a>
 Removing a task</h2>
-<p >The qOS_Remove_Task() function removes the task from the scheduling scheme. This means the task node will be disconnected from the kernel chain, preventing additional overhead provided by the scheduler when it does checks over it and course, preventing it from running.</p>
+<p >The core::removeTask() function removes the task from the scheduling scheme. This means the task node will be disconnected from the kernel chain, preventing additional overhead provided by the scheduler when it does checks over it and course, preventing it from running.</p>
 <p ><b> Caveats: </b></p>
-<p >Task nodes are variables like any other. They allow your application code to reference a task, but there is no link back the other way and the kernel doesn't know anything about the variables, where the variable is allocated (stack, global, static, etc.) or how many copies of the variable you have made, or even if the variable still exists. So the qOS_Remove_Task() API cannot automatically free the resources allocated by the variable. If the task node has been dynamically allocated, the application writer it's responsible to free the memory block after a removal call.</p>
+<p >Task nodes are variables like any other. They allow your application code to reference a task, but there is no link back the other way and the kernel doesn't know anything about the variables, where the variable is allocated (stack, global, static, etc.) or how many copies of the variable you have made, or even if the variable still exists. So the core::removeTask() API cannot automatically free the resources allocated by the variable. If the task node has been dynamically allocated, the application writer it's responsible to free the memory block after a removal call.</p>
 <h1><a class="anchor" id="q_runos"></a>
 Running the OS</h1>
-<p >After preparing the multitasking environment for your application, a call to qOS_Run() is required to execute the scheduling scheme. This function is responsible to run the following OS main components:</p>
+<p >After preparing the multitasking environment for your application, a call to core::run() is required to execute the scheduling scheme. This function is responsible to run the following OS main components:</p>
 <ul>
 <li><b>The Scheduler</b> : Select the tasks to be submitted into the system and decide with of them are able to run.</li>
 <li><b>The Dispatcher</b> : When the scheduler completes its job of selecting ready tasks, it is the dispatcher which takes that task to the running state. This procedure gives a task control over the CPU after it has been selected by the scheduler. This involves the following:<ol type="1">
@@ -264,16 +267,16 @@ Running the OS</h1>
 </li>
 </ul>
 <p >The states involved in the interaction between the scheduler and dispatcher are described <a class="el" href="q_foundations.html#q_globalstates">here</a>.</p>
-<dl class="section note"><dt>Note</dt><dd>After calling qOS_Run(), the OS scheduler will now be running, and the following line should never be reached, however, the user can optionally release it explicitly with qOS_Scheduler_Release() API function.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>After calling core::run(), the OS scheduler will now be running, and the following line should never be reached, however, the user can optionally release it explicitly with core::schedulerRelease() API function.</dd></dl>
 <h2><a class="anchor" id="q_releasescheduler"></a>
 Releasing the scheduler</h2>
-<p >This functionality must be enabled from the <code>Q_ALLOW_SCHEDULER_RELEASE</code> macro. This API stops the kernel scheduling. In consequence, the main thread will continue after the qOS_Run() call.</p>
+<p >This functionality must be enabled from the <code>Q_ALLOW_SCHEDULER_RELEASE</code> macro. This API stops the kernel scheduling. In consequence, the main thread will continue after the core::run() call.</p>
 <p >Although producing this action is not a typical desired behavior in any application, it can be used to handle a critical exception.</p>
-<p >When used, the release will take place after the current scheduling cycle finishes. The kernel can optionally include a release callback function that can be configured to get called if the scheduler is released. Defining the release callback, will help to take actions over the exception that caused the release action. To perform a release action, the qOS_Set_SchedulerReleaseCallback() API should be used</p>
-<dl class="section note"><dt>Note</dt><dd>When a scheduler release is performed, resources are not freed. After released, the application can invoke the qOS_Run() again to resume the scheduling activities</dd></dl>
+<p >When used, the release will take place after the current scheduling cycle finishes. The kernel can optionally include a release callback function that can be configured to get called if the scheduler is released. Defining the release callback, will help to take actions over the exception that caused the release action. To perform a release action, the core::setSchedulerReleaseCallback() API should be used</p>
+<dl class="section note"><dt>Note</dt><dd>When a scheduler release is performed, resources are not freed. After released, the application can invoke the core::run() again to resume the scheduling activities</dd></dl>
 <h1><a class="anchor" id="q_globalstates"></a>
 Global states and scheduling rules</h1>
-<p >A task can be in one of the four global states: <code>qRunning</code>, <code>qReady</code>, <code>qSuspended</code> or <code>qWaiting</code>. Each of these states is tracked implicitly by putting the task in one of the associated kernel lists.</p>
+<p >A task can be in one of the four global states: RUNNING, READY, SUSPENDED or WAITING. Each of these statesA task SUSPENDED or <code>WAITING</code>. Each of these states is tracked implicitly by putting the task in one of the associated kernel lists.</p>
 <p >These global states are described below:</p>
 <center>  
   <!DOCTYPE html>
@@ -287,10 +290,10 @@ Global states and scheduling rules</h1>
   </body>
   </html>
    <em>Task global states</em> </center><ul>
-<li><code>qWaiting</code> : The task cannot run because the conditions for running are not in place.</li>
-<li><code>qReady</code> : The task has completed preparations for running, but cannot run because a task with higher precedence is running.</li>
-<li><code>qRunning</code> : The task is currently being executed.</li>
-<li><code>qSuspended</code> : The task doesn't take part in what is going on. Normally this state is taken after the <code>qRunning</code> state or when the task does not reach the <code>qReady</code> state.</li>
+<li><code>WAITING</code> : The task cannot run because the conditions for running are not in place.</li>
+<li><code>READY</code> : The task has completed preparations for running, but cannot run because a task with higher precedence is running.</li>
+<li><code>RUNNING</code> : The task is currently being executed.</li>
+<li><code>SUSPENDED</code> : The task doesn't take part in what is going on. Normally this state is taken after the <code>RUNNING</code> state or when the task does not reach the <code>READY</code> state.</li>
 </ul>
 <p >The presence of a task in a particular list indicates the task's state. There are many ready lists as defined in the <code>Q_PRIORITY_LEVELS</code> macro. To select the target ready list, the OS uses the user-assigned priority between 0 (the lowest priority) and <code>Q_PRIORITY_LEVELS-1</code> (the highest priority). For instance, if <code>Q_PRIORITY_LEVELS</code> is set to 5, then QuarkTS++ will use 5 priority levels or ready lists: 0 (lowest priority), 1, 2, 3, and 4 (highest priority).</p>
 <center>  
@@ -328,7 +331,7 @@ Event precedence</h3>
 Additional operational states</h3>
 <p >Each task has independent operating states from those globally controlled by the scheduler. These states can be handled by the application writer to modify the event flow to the task and consequently, affect the transition to the <code>qReady</code> global state. These states are described as follows:</p>
 <ul>
-<li><code>qAwake</code> : In this state, the task is conceptually in an alert mode, handling most of the available events. This operational state is available when the <code>SHUTDOWN</code> bit is set, allowing the next operational states to be available:<ul>
+<li><code>AWAKE</code> : In this state, the task is conceptually in an alert mode, handling most of the available events. This operational state is available when the <code>SHUTDOWN</code> bit is set, allowing the next operational states to be available:<ul>
 <li><code>qEnabled</code> : The task can catch all the events. This operational state is available when the <code>ENABLE</code> bit is set.</li>
 <li><code>qDisabled</code> : In this state, the time events will be discarded. This operational state is available when the <code>ENABLE</code> bit is cleared.</li>
 </ul>
@@ -354,8 +357,8 @@ Critical sections</h1>
 <p >Since the kernel is non-preemptive, the only critical section that must be handled are the shared resources accessed from the ISR context. Perhaps, the most obvious way of achieving mutual exclusion is to allow the kernel to disable interrupts before it enters their critical section and then, enable interrupts after it leaves its critical section.</p>
 <p >By disabling interrupts, the CPU will be unable to change the current context. This guarantees that the currently running job can use a shared resource without another context accessing it. But, disabling interrupts, is a major undertaking. At best, the system will not be able to service interrupts for the time the current job is doing in its critical section, however, in QuarkTS++, these critical sections are handled as quickly as possible.</p>
 <p >Considering that the kernel is hardware-independent, the application writer should provide the necessary piece of code to enable and disable interrupts.</p>
-<p >For this, the qCritical_SetInterruptsED() API should be used. In this way, communication between ISR and tasks using queued notifications or data queues is performed safely.</p>
-<p >In some systems, disabling the global IRQ flags is not enough, as they don't save/restore state of interrupt, so here, the <code>qUINT32_t</code> argument and return value in both functions (<code>Disabler</code> and <code>Restorer</code>) becomes relevant, because they can be used by the application writer to save and restore the current interrupt configuration. So, when a critical section is performed, the <code>Disabler</code>, in addition to disabling the interrupts, returns the current configuration to be retained by the kernel, later when the critical section finish, this retained value is passed to <code>Restorer</code> to bring back the saved configuration.</p>
+<p >For this, the <a class="el" href="group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3" title="Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to commun...">critical::setInterruptsED()</a> API should be used. In this way, communication between ISR and tasks using queued notifications or data queues is performed safely.</p>
+<p >In some systems, disabling the global IRQ flags is not enough, as they don't save/restore state of interrupt, so here, the <code>uint32_t</code> argument and return value in both functions (<code>Disabler</code> and <code>Restorer</code>) becomes relevant, because they can be used by the application writer to save and restore the current interrupt configuration. So, when a critical section is performed, the <code>Disabler</code>, in addition to disabling the interrupts, returns the current configuration to be retained by the kernel, later when the critical section finish, this retained value is passed to <code>Restorer</code> to bring back the saved configuration.</p>
 <h1><a class="anchor" id="q_configmacros"></a>
 Configuration macros</h1>
 <p >Some OS features can be customized using a set of macros located in the header file <code>qconfig.h</code>. Here is the default configuration, followed by an explanation of each macro:</p>

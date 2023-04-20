@@ -126,15 +126,66 @@ $(document).ready(function(){initNavTree('group__qtypes.html',''); initResizable
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle"><div class="title">Types and macros<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Sets of types having specified widths used to design the entire OS. It also define macros directives to perform specific actions and options for some OS APIs.  
+<a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Types and macros:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="group__qtypes.svg" width="311" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga16b527d381bf20ae99c52d4c8b982a43"><td class="memItemLeft" align="right" valign="top"><a id="ga16b527d381bf20ae99c52d4c8b982a43" name="ga16b527d381bf20ae99c52d4c8b982a43"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>base_t</b> = int</td></tr>
+<tr class="memdesc:ga16b527d381bf20ae99c52d4c8b982a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a integer-base variable. This type is compiler implementation-defined. <br /></td></tr>
+<tr class="separator:ga16b527d381bf20ae99c52d4c8b982a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga11f018d226b5517a1b05e065843af7ae"><td class="memItemLeft" align="right" valign="top"><a id="ga11f018d226b5517a1b05e065843af7ae" name="ga11f018d226b5517a1b05e065843af7ae"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>byte_t</b> = uint8_t</td></tr>
+<tr class="memdesc:ga11f018d226b5517a1b05e065843af7ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a byte variable. <br /></td></tr>
+<tr class="separator:ga11f018d226b5517a1b05e065843af7ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2d1a31d7a2b9ad60ebeebd0b151f7d6"><td class="memItemLeft" align="right" valign="top"><a id="gae2d1a31d7a2b9ad60ebeebd0b151f7d6" name="gae2d1a31d7a2b9ad60ebeebd0b151f7d6"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>unsigned_t</b> = unsigned long</td></tr>
+<tr class="memdesc:gae2d1a31d7a2b9ad60ebeebd0b151f7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate an unsigned variable. <br /></td></tr>
+<tr class="separator:gae2d1a31d7a2b9ad60ebeebd0b151f7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3068631062aaf7da4cc0371da9e7a377"><td class="memItemLeft" align="right" valign="top"><a id="ga3068631062aaf7da4cc0371da9e7a377" name="ga3068631062aaf7da4cc0371da9e7a377"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>float32_t</b> = float</td></tr>
+<tr class="memdesc:ga3068631062aaf7da4cc0371da9e7a377"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a single-precision variable of 32-bits IEEE 754. <br /></td></tr>
+<tr class="separator:ga3068631062aaf7da4cc0371da9e7a377"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e9a37eab818d71cd4a6a9344e776c7b"><td class="memItemLeft" align="right" valign="top"><a id="ga5e9a37eab818d71cd4a6a9344e776c7b" name="ga5e9a37eab818d71cd4a6a9344e776c7b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>float64_t</b> = double</td></tr>
+<tr class="memdesc:ga5e9a37eab818d71cd4a6a9344e776c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a single-precision variable of 64-bits IEEE 754. <br /></td></tr>
+<tr class="separator:ga5e9a37eab818d71cd4a6a9344e776c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f38acd6cf545937a16254ff779ec4ba"><td class="memItemLeft" align="right" valign="top"><a id="ga3f38acd6cf545937a16254ff779ec4ba" name="ga3f38acd6cf545937a16254ff779ec4ba"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>index_t</b> = size_t</td></tr>
+<tr class="memdesc:ga3f38acd6cf545937a16254ff779ec4ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate an OS index variable. Can store the maximum size of a theoretically possible object of any type (including array). Should be used for array indexing and loop counting. <br /></td></tr>
+<tr class="separator:ga3f38acd6cf545937a16254ff779ec4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga93e7465448a1947530425f4c140f9061"><td class="memItemLeft" align="right" valign="top"><a id="ga93e7465448a1947530425f4c140f9061" name="ga93e7465448a1947530425f4c140f9061"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>cycles_t</b> = uint32_t</td></tr>
+<tr class="memdesc:ga93e7465448a1947530425f4c140f9061"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a variable that hold the number of task cycles. <br /></td></tr>
+<tr class="separator:ga93e7465448a1947530425f4c140f9061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0c03ddb7df4048fd3b4764d994ee4da"><td class="memItemLeft" align="right" valign="top"><a id="gaf0c03ddb7df4048fd3b4764d994ee4da" name="gaf0c03ddb7df4048fd3b4764d994ee4da"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iteration_t</b> = int32_t</td></tr>
+<tr class="memdesc:gaf0c03ddb7df4048fd3b4764d994ee4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a variable that hold the number of task iterations. <br /></td></tr>
+<tr class="separator:gaf0c03ddb7df4048fd3b4764d994ee4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b99e3efec0f566d99ce4cb42b25aed5"><td class="memItemLeft" align="right" valign="top"><a id="ga8b99e3efec0f566d99ce4cb42b25aed5" name="ga8b99e3efec0f566d99ce4cb42b25aed5"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>priority_t</b> = uint8_t</td></tr>
+<tr class="memdesc:ga8b99e3efec0f566d99ce4cb42b25aed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a variable to hold the priority value of a task. <br /></td></tr>
+<tr class="separator:ga8b99e3efec0f566d99ce4cb42b25aed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0515cffe8ece55935faa88d455b230e"><td class="memItemLeft" align="right" valign="top"><a id="gab0515cffe8ece55935faa88d455b230e" name="gab0515cffe8ece55935faa88d455b230e"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>timeCount_t</b> = unsigned long</td></tr>
+<tr class="memdesc:gab0515cffe8ece55935faa88d455b230e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A type to instantiate a variable to hold a time count. <br /></td></tr>
+<tr class="separator:gab0515cffe8ece55935faa88d455b230e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p >Sets of types having specified widths used to design the entire OS. It also define macros directives to perform specific actions and options for some OS APIs. </p>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

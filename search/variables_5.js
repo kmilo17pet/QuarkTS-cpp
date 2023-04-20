@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['none_0',['NONE',['../classq_o_s_1_1clock.html#a863d63467373427adc5ce0c6247db5c8',1,'qOS::clock']]]
+  ['gettick_0',['getTick',['../classq_o_s_1_1clock.html#adee0fcaf8665a893fa4b732b8ad203a8',1,'qOS::clock']]],
+  ['grn_1',['grn',['../group__qtrace.html#ga087dcdadf486b903de9267a707753a88',1,'qOS::trace']]]
 ];

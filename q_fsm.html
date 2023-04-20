@@ -181,27 +181,27 @@ Setting up a state machine</h1>
 <p >Like any other OS object, a Finite State Machine (FSM) must be explicitly initialized before it can be used. The qStateMachine_Setup() API initializes the instance, sets the callback for the top state, sets the initial state and the surrounding callback function.</p>
 <h1><a class="anchor" id="q_fsm_subscribe_states"></a>
 Subscribing states and defining callbacks</h1>
-<p >State machines are constructed by composition, therefore, the topology of a state machine is determined upon construction. In this FSM implementation, there is no distinction between composite states(states containing substates) and leaf states. All states are potentially composite. The API qStateMachine_StateSubscribe() should be used to initialize the state and define its position in the topology.</p>
-<p >A state callback-functions takes a qSM_Handler_t object as input argument and returns a qSM_Status_t value. An example is shown in the following code snippet:</p>
-<div class="fragment"><div class="line">qSM_Status_t ExampleState_Callback( qSM_Handler_t h ) {</div>
+<p >State machines are constructed by composition, therefore, the topology of a state machine is determined upon construction. In this FSM implementation, there is no distinction between composite states(states containing substates) and leaf states. All states are potentially composite. The API stateMachine::stateSubscribe() should be used to initialize the state and define its position in the topology.</p>
+<p >A state callback-functions takes a sm::handler_t object as input argument and returns a qSM_Status_t value. An example is shown in the following code snippet:</p>
+<div class="fragment"><div class="line">sm::status ExampleState_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="comment">/* TODO: State code */</span></div>
-<div class="line">    <span class="keywordflow">return</span> qSM_STATUS_EXIT_SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_fsmhandler"></a>
 The state callback handler: performing transitions and retrieving data</h1>
 <p >Because callback functions are methods derived from the state-machine object, they have direct access to some attributes via the qSM_Handler_t argument. The usage of this object it's required to make the FSM moves between states and additionally get extra data. The provided attributes are:</p>
 <ul>
-<li>qSM_Handler_t::NextState : Desired next state. The application writer should change this field to another state to produce a state transition in the next FSM's cycle. Changing this field will only take effect when the state is executed under user custom-defined signals or in the absence of signals #QSM_SIGNAL_NONE.</li>
-<li>qSM_Handler_t::StartState : Desired nested initial state (substate). The application writer should change this field to set the initial transition if the current state is a parent(or composite state). Changing this field attribute only takes effect when the state is executed under the #QSM_SIGNAL_START signal.</li>
+<li>sm::handler_t::NextState() : Desired next state. The application writer should use this method passing another state to produce a state transition in the next FSM's cycle. Changing this field will only take effect when the state is executed under user custom-defined signals or in the absence of signals #QSM_SIGNAL_NONE.</li>
+<li>qSM_Handler_t::StartState : Desired nested initial state (substate). The application writer should change this field to set the initial transition if the current state is a parent(or composite state). Changing this field attribute only takes effect when the state is executed under the signalID::SIGNAL_START signal.</li>
 <li>qSM_Handler_t::Signal (read-only) : Received signal. Can have any of the following values:<ul>
-<li>#QSM_SIGNAL_NONE if no signal is available.</li>
-<li>#QSM_SIGNAL_ENTRY if the current state has just entered from another state.</li>
-<li>#QSM_SIGNAL_START to set nested initial transitions by using the qSM_Handler_t::StartState attribute.</li>
-<li>#QSM_SIGNAL_EXIT if the current state has just exited to another state.</li>
-<li>Any other user-defined signal will reside here, including the #QSM_SIGNAL_TIMEOUT signals.</li>
+<li>signalID::SIGNAL_NONE if no signal is available.</li>
+<li>signalID::SIGNAL_ENTRY if the current state has just entered from another state.</li>
+<li>signalID::SIGNAL_START to set nested initial transitions by using the qSM_Handler_t::StartState attribute.</li>
+<li>signalID::SIGNAL_EXIT if the current state has just exited to another state.</li>
+<li>Any other user-defined signal will reside here, including the <a class="el" href="group__qfsm.html#gad5476e06fde92efddf507ec60e492be3" title="Built-in signal to indicate that a timeout expiration event occurs.">sm::SIGNAL_TIMEOUT()</a> signals.</li>
 </ul>
 </li>
-<li>qSM_Handler_t::SignalData (read-only) : Pointer to the data associated with the signal. For internal signals, including timeout signals, its value will be <code>NULL</code>.</li>
+<li>sm::handler_t::SignalData (read-only) : Pointer to the data associated with the signal. For internal signals, including timeout signals, its value will be <code>nullptr</code>.</li>
 <li>qSM_Handler_t::TransitionHistory : Use this option if the transition is to a composite state. This attribute defines how the story should be handled. If this field is not established, ::qSM_TRANSITION_NO_HISTORY is assumed. The possible values for this attribute are:<ul>
 <li>::qSM_TRANSITION_NO_HISTORY : History is not preserved. Composite states will start according to their default transition.</li>
 <li>::qSM_TRANSITION_SHALLOW_HISTORY : History will be kept to allow the return to only the top-most sub-state of the most recent state configuration, which is entered using the default entry rule.</li>
@@ -217,30 +217,30 @@ The state callback handler: performing transitions and retrieving data</h1>
 <p >The semantic is simple, if a signal is processed, the callback functions returns the status value ::qSM_STATUS_SIGNAL_HANDLED. Otherwise, it throws the signal for further processing by higher-level states. Also, this returning mechanism can be used to handle exceptions by using the surrounding callback.</p>
 <p ><em>Entry/Exit</em> actions and default transitions are also implemented inside the callback function in the response to pre-defined signals. #QSM_SIGNAL_ENTRY, #QSM_SIGNAL_EXIT and #QSM_SIGNAL_START. The state machine generates and dispatches these signals to appropriate handlers upon state transitions.</p>
 <p >The example below shows what a status callback should look like including the use of the handler.</p>
-<div class="fragment"><div class="line">qSM_Status_t ExampleState_Callback ( qSM_Handler_t h ) {</div>
-<div class="line">    <span class="keywordflow">switch</span> ( h-&gt;Signal ) {</div>
-<div class="line">        <span class="keywordflow">case</span> QSM_SIGNAL_START:</div>
+<div class="fragment"><div class="line">sm::status ExampleState_Callback ( sm::handler_t h ) {</div>
+<div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
+<div class="line">        <span class="keywordflow">case</span> signalID::SIGNAL_START:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> QSM_SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> signalID::SIGNAL_ENTRY:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> QSM_SIGNAL_EXIT:</div>
+<div class="line">        <span class="keywordflow">case</span> signalID::SIGNAL_EXIT:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> USER_DEFINED_SIGNAL :</div>
-<div class="line">            h-&gt;NextState = &amp;OtherState; <span class="comment">/*transition*/</span></div>
+<div class="line">            h.nextState( OtherState ); <span class="comment">/*transition*/</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> qSM_STATUS_EXIT_SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >As shown above, the return value represents the exit status of the state, and it can be handled with an additional surrounding callback function \( S_u \) established at the moment of the FSM setup. The values allowed to return are listed below.</p>
 <ul>
-<li>::qSM_STATUS_EXIT_SUCCESS</li>
-<li>::qSM_STATUS_EXIT_FAILURE</li>
-<li>::qSM_STATUS_SIGNAL_HANDLED</li>
+<li>sm::status::SUCCESS</li>
+<li>sm::status::FAILURE</li>
+<li>sm::status::SIGNAL_HANDLED</li>
 <li>Any other integer value between <code>-32762</code> and <code>32767</code> </li>
 </ul>
-<p >To code initial transitions, the application writer should catch the #QSM_SIGNAL_START, perform the required actions and then designate the target sub-state by assigning the <code>StartState</code> attribute of the qSM_Handler_t argument. Regular transitions are coded in a very similar way, except that here, you catch the custom-defined signal and then assign the <code>NextState</code> attribute of the qSM_Handler_t argument. The developer is free to write and control state transitions. Transitions are only allowed under the availability of user custom-defined signals. Regular transitions are not allowed at an entry point (#QSM_SIGNAL_ENTRY), exit point (#QSM_SIGNAL_EXIT), or a start point (#QSM_SIGNAL_START).</p>
+<p >To code initial transitions, the application writer should catch the #QSM_SIGNAL_START, perform the required actions and then designate the target sub-state by assigning the <code>StartState</code> attribute of the qSM_Handler_t argument. Regular transitions are coded in a very similar way, except that here, you catch the custom-defined signal and then assign the <code>NextState</code> attribute of the qSM_Handler_t argument. The developer is free to write and control state transitions. Transitions are only allowed under the availability of user custom-defined signals. Regular transitions are not allowed at an entry point (signalID::SIGNAL_ENTRY), exit point (signalID::SIGNAL_EXIT), or a start point (signalID::SIGNAL_START).</p>
 <dl class="section note"><dt>Note</dt><dd>User should not target the top state in a transition and use it as transition source either. The only customizable aspect of the top state is the initial transition.</dd></dl>
 <h1><a class="anchor" id="q_fsm_surrounding"></a>
 The surrounding callback</h1>
@@ -296,13 +296,13 @@ Adding a state machine as a task</h1>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">switch</span> ( e-&gt;Trigger ) {</div>
-<div class="line">                <span class="keywordflow">case</span> byTimeElapsed:</div>
+<div class="line">                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2">byTimeElapsed</a>:</div>
 <div class="line">                    <span class="comment">/* TODO: Code for this case */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> byNotificationSimple:</div>
+<div class="line">                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c">byNotificationSimple</a>:</div>
 <div class="line">                    <span class="comment">/* TODO: Code for this case */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
-<div class="line">                <span class="keywordflow">case</span> byQueueCount:</div>
+<div class="line">                <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ad8e877c4778fa1802106030fd48486d8">byQueueCount</a>:</div>
 <div class="line">                    <span class="comment">/* TODO: Code for this case */</span></div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">                <span class="keywordflow">default</span>: <span class="keywordflow">break</span>;</div>
@@ -312,6 +312,9 @@ Adding a state machine as a task</h1>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> qSM_STATUS_EXIT_SUCCESS;</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qtaskmanip_html_gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c"><div class="ttname"><a href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c">qOS::trigger::byNotificationSimple</a></div><div class="ttdeci">@ byNotificationSimple</div><div class="ttdoc">When the execution chain does, according to a requirement of asynchronous notification event prompted...</div></div>
+<div class="ttc" id="agroup__qtaskmanip_html_gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2"><div class="ttname"><a href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2">qOS::trigger::byTimeElapsed</a></div><div class="ttdeci">@ byTimeElapsed</div><div class="ttdoc">When the time specified for the task elapsed.</div></div>
+<div class="ttc" id="agroup__qtaskmanip_html_gga7e4cfcb94ebb5b84bd080b487a2db8c7ad8e877c4778fa1802106030fd48486d8"><div class="ttname"><a href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ad8e877c4778fa1802106030fd48486d8">qOS::trigger::byQueueCount</a></div><div class="ttdeci">@ byQueueCount</div><div class="ttdoc">When the element-count of the attached queue reaches the specified value. A pointer to the queue will...</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_fsm_example1"></a>
 A demonstrative example for a FSM</h1>
 <p >In this example, one press of the button turns on the LED, a second push of the button will make the LED blink and if the button is pressed again, the LED will turn off. Also, our system must turn off the LED after a period of inactivity. If the button hasn't been pressed in the last 10 seconds, the LED will turn off.</p>
@@ -496,12 +499,12 @@ Demonstrative example using transition tables</h2>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">qSM_Transition_t LEDOn_transitions[] = {</div>
-<div class="line">    { SIGNAL_TIMEOUT,        NULL, &amp;State_LEDOff   , 0, NULL},</div>
+<div class="line">    { <a class="code hl_function" href="group__qfsm.html#gad5476e06fde92efddf507ec60e492be3">SIGNAL_TIMEOUT</a>,        NULL, &amp;State_LEDOff   , 0, NULL},</div>
 <div class="line">    { SIGNAL_BUTTON_PRESSED, NULL, &amp;State_LEDBlink , 0, NULL}</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">qSM_Transition_t LEDBlink_transitions[] = {</div>
-<div class="line">    { SIGNAL_TIMEOUT,        NULL, &amp;State_LEDOff   , 0, NULL},</div>
+<div class="line">    { <a class="code hl_function" href="group__qfsm.html#gad5476e06fde92efddf507ec60e492be3">SIGNAL_TIMEOUT</a>,        NULL, &amp;State_LEDOff   , 0, NULL},</div>
 <div class="line">    { SIGNAL_BUTTON_PRESSED, NULL, &amp;State_LEDOff   , 0, NULL}</div>
 <div class="line">};</div>
 <div class="line"> </div>
@@ -514,6 +517,7 @@ Demonstrative example using transition tables</h2>
 <div class="line">    { 10.0f,  QSM_TSOPT_INDEX( 0 ) | QSM_TSOPT_SET_ENTRY | QSM_TSOPT_RST_EXIT  },</div>
 <div class="line">    { 0.5f,   QSM_TSOPT_INDEX( 1 ) | QSM_TSOPT_SET_ENTRY | QSM_TSOPT_RST_EXIT | QSM_TSOPT_PERIODIC  }</div>
 <div class="line">};</div>
+<div class="ttc" id="agroup__qfsm_html_gad5476e06fde92efddf507ec60e492be3"><div class="ttname"><a href="group__qfsm.html#gad5476e06fde92efddf507ec60e492be3">qOS::sm::SIGNAL_TIMEOUT</a></div><div class="ttdeci">constexpr signalID SIGNAL_TIMEOUT(index_t iTm)</div><div class="ttdoc">Built-in signal to indicate that a timeout expiration event occurs.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:45</div></div>
 </div><!-- fragment --><p >Then, we define the callback for the states.</p>
 <div class="fragment"><div class="line">qSM_Status_t State_LEDOff_Callback( qSM_Handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h-&gt;Signal ) {</div>

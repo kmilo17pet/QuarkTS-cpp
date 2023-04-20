@@ -135,8 +135,8 @@ $(document).ready(function(){initNavTree('response_8hpp_source.html',''); initRe
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;include/types.hpp&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;include/timer.hpp&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span>qOS {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span>qOS {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">enum class</span> responseStatus {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        MISSING = 0,</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        SUCCESS,</div>
@@ -161,11 +161,11 @@ $(document).ready(function(){initNavTree('response_8hpp_source.html',''); initRe
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1response.html#a8d7559b1e14219ca16c3ddbd6ea024cc">isrHandler</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> rxChar ) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1response.html#a4d797981127cce16ef8f32872b42645a">isInitialized</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    };</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_RESPONSE*/</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassq_o_s_1_1clock_html_a7c97887da1bf02370c733b8c80c20b57"><div class="ttname"><a href="classq_o_s_1_1clock.html#a7c97887da1bf02370c733b8c80c20b57">qOS::clock::IMMEDIATE</a></div><div class="ttdeci">static const qOS::time_t IMMEDIATE</div><div class="ttdoc">To specify a non-wait time value.</div><div class="ttdef"><b>Definition:</b> clock.hpp:94</div></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_RESPONSE*/</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassq_o_s_1_1clock_html_a7c97887da1bf02370c733b8c80c20b57"><div class="ttname"><a href="classq_o_s_1_1clock.html#a7c97887da1bf02370c733b8c80c20b57">qOS::clock::IMMEDIATE</a></div><div class="ttdeci">static const qOS::time_t IMMEDIATE</div><div class="ttdoc">To specify a non-wait time value.</div><div class="ttdef"><b>Definition:</b> clock.hpp:95</div></div>
 <div class="ttc" id="aclassq_o_s_1_1response_html"><div class="ttname"><a href="classq_o_s_1_1response.html">qOS::response</a></div><div class="ttdoc">A Response Handler object.</div><div class="ttdef"><b>Definition:</b> response.hpp:24</div></div>
 <div class="ttc" id="aclassq_o_s_1_1response_html_a2d7df0ed650d081d071893add969305b"><div class="ttname"><a href="classq_o_s_1_1response.html#a2d7df0ed650d081d071893add969305b">qOS::response::received</a></div><div class="ttdeci">responseStatus received(const char *pattern, const size_t n, qOS::time_t t=clock::IMMEDIATE) noexcept</div><div class="ttdoc">Non-Blocking response check.</div><div class="ttdef"><b>Definition:</b> response.cpp:29</div></div>
 <div class="ttc" id="aclassq_o_s_1_1response_html_a4d797981127cce16ef8f32872b42645a"><div class="ttname"><a href="classq_o_s_1_1response.html#a4d797981127cce16ef8f32872b42645a">qOS::response::isInitialized</a></div><div class="ttdeci">bool isInitialized(void) const noexcept</div><div class="ttdoc">Check if the response object is already initialized by using response::setup()</div><div class="ttdef"><b>Definition:</b> response.cpp:77</div></div>
