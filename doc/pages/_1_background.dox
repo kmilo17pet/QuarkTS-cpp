@@ -30,11 +30,11 @@
 *
 * <b>Why should I choose it?</b>
 *
-* QuarkTS is not intended to replace o compete with other great and proven
+* QuarkTS++ is not intended to replace o compete with other great and proven
 * RTOS options already available today, for example, FreeRTOS or MicroC/OS-II,
 * in fact, you should check these options first. However, due to its size and
 * features, is intended to play in the space between RTOSes and bare metal.
-* QuarkTS was written for embedded developers who want more functionality than
+* QuarkTS++ was written for embedded developers who want more functionality than
 * what existing task schedulers offer, but want to avoid the space and
 * complexity of a full RTOS, while keeping the taste of a robust and safe one.
 *
@@ -80,7 +80,7 @@
 * Besides the previous information, the OS sets the following clarifications 
 * regarding coding policies and naming conventions:
 *
-* - All the QuarkTS implementation follows the <b>C++11</b> standard strictly.
+* - All the QuarkTS++ implementation follows the <b>C++11</b> standard strictly.
 * - Dynamic memory allocation is banned to conform the industry standards for
 * safety-critical software: @b MISRA-C++, @b DO178B, @b IEC-61508, @b ISO-26262 
 * and so on.

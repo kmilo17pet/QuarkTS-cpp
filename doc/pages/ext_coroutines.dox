@@ -21,10 +21,10 @@
 * </body>
 * </html>
 * @endhtmlonly
-* <em>Coroutines in QuarkTS</em>
+* <em>Coroutines in QuarkTS++</em>
 * </center>
 * 
-* The QuarkTS implementation uses the Duff's device approach, and is heavily
+* The QuarkTS++ implementation uses the Duff's device approach, and is heavily
 * inspired by the Knuth method, <a style="font-weight:bold" href="https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html">Simon Tatham's Co-Routines in C</a>
 * and <a style="font-weight:bold" href="http://dunkels.com/adam/pt/index.html">Adam Dunkels Protothreads</a>
 * . This means that a local-continuation variable is used to preserve the current
@@ -181,7 +181,7 @@
 * 
 *  @code{.c}
 *  #include "HAL.h"
-*  #include "QuarkTS.h"
+*  #include "quarkts++.h"
 *  #include "AppLibrary.h"
 *  
 *  #define NUM_ITEMS    ( 32 )

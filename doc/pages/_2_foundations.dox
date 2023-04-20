@@ -98,7 +98,7 @@
 * perform certain functions, which could require periodic or one-time execution,
 * update specific variables or wait for specific events. Tasks also could
 * be controlling specific hardware or be triggered by hardware interrupts. In 
-* the QuarkTS OS, a task is seen as a node concept that links together:
+* the QuarkTS++ OS, a task is seen as a node concept that links together:
 *
 * - Program code performing specific task activities (callback function)
 * - Execution interval (time)
@@ -143,7 +143,7 @@
 *  }
 *  @endcode
 *
-* @note All tasks in QuarkTS must ensure their completion to return the CPU
+* @note All tasks in QuarkTS++ must ensure their completion to return the CPU
 * control back to the scheduler to follow the @ref rtcmodel, otherwise, the 
 * scheduler will hold the execution state for that task, preventing the 
 * activation of other tasks.
@@ -297,7 +297,7 @@
 * are many ready lists as defined in the @c Q_PRIORITY_LEVELS macro. To select 
 * the target ready list, the OS uses the user-assigned priority between 0 (the 
 * lowest priority) and @c Q_PRIORITY_LEVELS-1 (the highest priority). For 
-* instance, if @c Q_PRIORITY_LEVELS is set to 5, then QuarkTS will use 5 
+* instance, if @c Q_PRIORITY_LEVELS is set to 5, then QuarkTS++ will use 5 
 * priority levels or ready lists: 0 (lowest priority), 1, 2, 3, and 4 (highest 
 * priority).
 *
@@ -321,7 +321,7 @@
 * real-time embedded system runs, each task moves from one state to another 
 * (moving it from one list to another), according to the logic of a simple finite
 * state machine (FSM). The figure above illustrates the typical flowchart used 
-* by QuarkTS to handle the task's states, with brief descriptions of the state 
+* by QuarkTS++ to handle the task's states, with brief descriptions of the state 
 * transitions, additionally you may also notice the interaction between the 
 * scheduler and the dispatcher.
 *
@@ -419,7 +419,7 @@
 * This guarantees that the currently running job can use a shared resource 
 * without another context accessing it. But, disabling interrupts, is a major 
 * undertaking. At best, the system will not be able to service interrupts for 
-* the time the current job is doing in its critical section, however, in QuarkTS,
+* the time the current job is doing in its critical section, however, in QuarkTS++,
 * these critical sections are handled as quickly as possible.
 *
 * Considering that the kernel is hardware-independent, the application writer 

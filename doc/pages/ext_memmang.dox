@@ -2,7 +2,7 @@
 * @tableofcontents
 * 
 * @section q_memmang_overview Overview
-* The QuarkTS OS is designed to support the development of safe-critical 
+* The QuarkTS++ OS is designed to support the development of safe-critical 
 * embedded applications. Dynamic memory allocation is not permitted for kernel 
 * design, as it may result in out-of-storage run-time failures that are 
 * undesirable. However, some applications can be easily deployed using this
@@ -61,7 +61,7 @@ To address these concerns, the OS offers its own memory management interface
 * @section q_memmang_pools Memory pools
 * A memory pool is a special resource that allows memory blocks to be dynamically
 * allocated from a user-designated memory region. Instead of typical pools with
-* fixed size block allocation, the pools in QuarkTS can be of any size, thereby
+* fixed size block allocation, the pools in QuarkTS++ can be of any size, thereby
 * the user is responsible for selecting the appropriate memory pool to allocate 
 * data with the same size.
 *
@@ -71,7 +71,7 @@ To address these concerns, the OS offers its own memory management interface
 * @c qconfig.h.
 *
 * Besides the default pool, any number of additional memory pools can be defined. 
-* Like any other object in QuarkTS, memory pools are referenced by handles, a 
+* Like any other object in QuarkTS++, memory pools are referenced by handles, a 
 * variable of type @ref qMemMang_Pool_t and should be initialized before use 
 * with the qMemMang_Pool_Setup() API function.
 *
@@ -91,7 +91,7 @@ To address these concerns, the OS offers its own memory management interface
 *  @code{.c}
 *  #include <stdio.h>
 *  #include <stdlib.h>
-*  #include "QuarkTS.h"
+*  #include "quarkts++.h"
 *  #include "HAL.h"
 *  #include "Core.h"
 *  

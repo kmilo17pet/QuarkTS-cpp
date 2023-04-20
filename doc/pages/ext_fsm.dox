@@ -27,7 +27,7 @@
 * statecharts.
 * 
 * @section qfsm_approach The provided approach
-* In QuarkTS, a state machine must be instantiated with an object of type qSM_t.
+* In QuarkTS++, a state machine must be instantiated with an object of type qSM_t.
 * States are represented as instances of the qSM_State_t object.
 *
 * <center>

@@ -1,6 +1,6 @@
 /*! @page q_extensions Extensions
 *
-* The QuarkTS extensions are interfaces that are integrated into the kernel to 
+* The QuarkTS++ extensions are interfaces that are integrated into the kernel to 
 * provide additional and important functionalities.
 *
 * <b> To improve the cooperative model </b>

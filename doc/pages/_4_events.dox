@@ -2,7 +2,7 @@
 * @tableofcontents
 * 
 * @section eventdata Retrieving the event data
-* In the QuarkTS OS, tasks can be triggered from multiple event sources including 
+* In the QuarkTS++ OS, tasks can be triggered from multiple event sources including 
 * time-elapsed, notifications, queues and event-flags. This can lead to several
 * situations that must be handled by the application writer from the task 
 * context, for example:
@@ -49,9 +49,9 @@
 * context, it is important to reduce this time lag or jitter, to an acceptable
 * level for the application.
 *
-* @remark QuarkTS uses the TTA approach to trigger time-elapsed events as 
+* @remark QuarkTS++ uses the TTA approach to trigger time-elapsed events as 
 * explained here @ref q_timmingapproach
-* @note QuarkTS can generally meet a time deadline if you use lightweight code
+* @note QuarkTS++ can generally meet a time deadline if you use lightweight code
 * in the callbacks and there is a reduced pool of pending tasks, so it can be
 * considered a soft real-time scheduler, however, it cannot meet a deadline
 * deterministically like a hard real-time OS.
@@ -266,7 +266,7 @@
 *  #include <stdlib.h>
 *  #include <string.h>
 *  #include "HAL.h" /*hardware dependent code*/
-*  #include "QuarkTS.h"
+*  #include "quarkts++.h"
 *  
 *  qTask_t taskA, taskB;
 *  void taskA_Callback( qEvent_t e );
@@ -430,7 +430,7 @@
 * triggered the event.
 * 
 * @subsubsection q_queueexample A queue example
-* This example shows the usage of QuarkTS queues. The application is the classic
+* This example shows the usage of QuarkTS++ queues. The application is the classic
 * producer/consumer example. The producer task puts data into the queue. When 
 * the queue reaches a specific item count, the consumer task is triggered to 
 * start fetching data from the queue. Here, both tasks are attached to the queue.
@@ -439,7 +439,7 @@
 *  #include <stdio.h>
 *  #include <stdlib.h>
 *  #include <stdint.h>
-*  #include "QuarkTS.h"
+*  #include "quarkts++.h"
 *  #define TIMER_TICK       ( 0.001f )  /* 1ms */
 *  
 *  /*-----------------------------------------------------------------------*/
@@ -565,7 +565,7 @@
 *  #include <stdio.h>
 *  #include <stdlib.h>
 *  #include <stdint.h>
-*  #include "QuarkTS.h"
+*  #include "quarkts++.h"
 *  #define TIMER_TICK       ( 0.001f ) /* 1ms */
 *  
 *  /*event flags application definitions */

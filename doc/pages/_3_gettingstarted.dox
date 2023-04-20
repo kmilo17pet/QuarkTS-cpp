@@ -4,18 +4,18 @@
 * @section q_getos Getting the OS
 * Download the latest release from the official repository :
 *
-* <a style="font-weight:bold" href="https://github.com/kmilo17pet/QuarkTS/releases">QuarkTS Releases</a>
+* <a style="font-weight:bold" href="https://github.com/kmilo17pet/QuarkTS/releases">QuarkTS++ Releases</a>
 * 
 * Unpack the release package and add the sources files to your project.
 *
-* @subsection q_cloneos Cloning QuarkTS
+* @subsection q_cloneos Cloning QuarkTS++
 * You only need to clone the @c kernel branch as follows:
 *
 * @code{.sh}
 * git clone -b kernel https://github.com/kmilo17pet/QuarkTS.git
 * @endcode
 *
-* @subsection q_submodule Including QuarkTS as a git sub-module
+* @subsection q_submodule Including QuarkTS++ as a git sub-module
 * Add the OS kernel as a submodule to your project:
 *
 * @code{.sh}
@@ -36,7 +36,7 @@
 *
 * @subsection q_getqconfig Get a copy of the OS configuration file
 * The file @c qconfig.h provides specific @ref q_configmacros to customize 
-* several aspects of the OS. In order to build your solution with QuarkTS, you 
+* several aspects of the OS. In order to build your solution with QuarkTS++, you 
 * should provided your own copy of this configuration file. You can obtain a copy
 * with the default configuration by issuing the following command:
 *
@@ -48,7 +48,7 @@
 * Include the source files to your project. Also, make sure you add a copy of 
 * the file @c qconfig.h and modify it according to your needs. Setup your 
 * compiler including the path of the OS directory. Include the header file 
-* @c QuarkTS.h and setup the instance of the kernel using the qOS_Setup() 
+* @c quarkts++.h and setup the instance of the kernel using the qOS_Setup() 
 * inside the main thread to initialize te kernel, specify the reference clock and 
 * the idle-task ( see @ref q_timmingapproach). Additional configuration to the 
 * target compiler may be required to add the path to the directory of header files.
@@ -56,15 +56,15 @@
 *
 * File @c main.c
 *  @code{.c}
-*  #include "QuarkTS.h"
-*  #define TIMER_TICK       ( 0.001f ) // 1ms
+*  #include "quarkts++.h"
+*  using namespace qOS;
 * 
 *  void main( void ) {
 *      //device startup with hardware-specific code
 *      HardwareSetup();
 *      Configure_Periodic_Timer_Interrupt_1ms();
 *      //end of device startup with hardware-specific code
-*      qOS_Setup( NULL , TIMER_TICK , IdleTask_Callback );
+*      os.init( nullptr , IdleTask_Callback );
 *      // TODO: add Tasks to the scheduler scheme and run the OS
 *  }
 *  @endcode
@@ -92,39 +92,39 @@
 * seconds.
 *
 *  @code{.c}
-*  #include <stdio.h>
-*  #include <stdlib.h>
-*  #include <stdint.h>
+*  #include <cstdio>
+*  #include <cstdlib>
+*  #include <cstdint>
 *  #include "BSP.h"
 *  
-*  #include "QuarkTS.h"
-*  #define TIMER_TICK       ( 0.001f )   /* 1ms */
+*  #include "quarkts++.h"
+*  using namespace qOS;
 *  
-*  qTask_t task1, task2, task3; /*task nodes*/
+*  task task1, task2, task3; /*task nodes*/
 *  /*==================================================================*/
 *  void interrupt Timer0_ISR( void ) {
-*      qClock_SysTick();
+*      clock::sysTick();
 *  }
 *  /*==================================================================*/
-*  void Task1_Callback( qEvent_t e ) {
-*      BSP_UART1_WriteString( "Task1" );
+*  void Task1_Callback( event_t e ) {
+*      BSP_UART1_WriteString( e.self().getName() );
 *  
-*      if ( e->FirstIteration ) {
-*          qTask_Resume( &Task3 );
+*      if ( e.firstIteration() ) {
+*          task3.setState( taskState::ENABLED );
 *      }
 *      
 *      if ( e->LastIteration ) {
-*          qTask_Suspend( &Task3 );
-*          qTask_Set_Time( &Task2, 0.5 );
+*          e.self().setState( taskState::SUSPENDED );
+*          e.self().setTime( 500 );
 *      }
 *  }
 *  /*==================================================================*/
-*  void Task2_Callback( qEvent_t e ) {
-*      BSP_UART1_WriteString( "Task2" );
+*  void Task2_Callback( event_t e ) {
+*      BSP_UART1_WriteString( e.self().getName() );
 *  }
 *  /*==================================================================*/
 *  void Task3_Callback( qEvent_t e ) {
-*      BSP_UART1_WriteString( "Task3" );
+*      BSP_UART1_WriteString( e.self().getName() );
 *  }
 *  /*==================================================================*/
 *  int main( void ) {
@@ -132,11 +132,11 @@
 *      /*function to fire an interrupt at 1ms - timer tick*/
 *      Configure_Periodic_Timer0_Interrupt_1ms();
 *      
-*      qOS_Setup( NULL, TIMER_TICK, NULL );
-*      qOS_Add_Task( &Task1, Task1_Callback, 50, 2.0f, 10, qEnabled, NULL );
-*      qOS_Add_Task( &Task2, Task2_Callback, 50, 3.0f, qPeriodic, qEnabled, NULL );
-*      qOS_Add_Task( &Task2, Task3_Callback, 50, 5.0f, qPeriodic, qDisabled, NULL );
-*      qOS_Run();
+*      os.init( nullptr, nullptr );
+*      os.addTask( Task1, Task1_Callback, 50, 2000, 10, taskState::ENABLED );
+*      os.addTask( Task2, Task2_Callback, 50, 3000, task::PERIODIC, taskState::ENABLED );
+*      os.addTask( Task2, Task3_Callback, 50, 5000, task::PERIODIC, taskState::DISABLED );
+*      os.run();
 *
 *      return 0;
 *  }
