@@ -63,3 +63,4 @@ check/settings/sa_check.wsdt
 *.xcl
 
 *.dep
+*.wsdt
