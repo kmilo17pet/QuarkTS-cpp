@@ -1,4 +1,6 @@
 <map id="Event Flags" name="Event Flags">
-<area shape="rect" id="node1" title=" " alt="" coords="225,5,316,31"/>
+<area shape="rect" id="node1" title="API interface for the built&#45;in&#45;task Event Flags." alt="" coords="225,55,316,80"/>
 <area shape="rect" id="node2" href="$group__qpriv.html" title="Inter&#45;Task communication primitives : Queues, Notifications and Event&#45;flags." alt="" coords="5,5,177,31"/>
+<area shape="rect" id="node3" href="$group__qtaskcreation.html" title="Kernel API interface to create/remove tasks and perform special OS operations." alt="" coords="24,55,159,80"/>
+<area shape="rect" id="node4" href="$group__qtaskmanip.html" title="API interface to manage tasks." alt="" coords="35,104,148,129"/>
 </map>

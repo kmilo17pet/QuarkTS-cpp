@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>OS: STimers</title>
+<title>OS: Timers</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -126,7 +126,7 @@ $(document).ready(function(){initNavTree('q_stimers.html',''); initResizable(); 
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">STimers </div></div>
+  <div class="headertitle"><div class="title">Timers </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('q_stimers.html',''); initResizable(); 
 </div>
 <div class="textblock"><h1><a class="anchor" id="q_stimers_overview"></a>
 Overview</h1>
-<p >STimers are an essential extension as they allow for accurate and efficient timekeeping without blocking tasks. Using STimers enables the embedded application to perform other critical tasks while the timer is running in the background. STimers also provide flexibility in the event that the timer needs to be paused, restarted, or adjusted on the fly. This can be particularly useful in applications that require dynamic timing or have unpredictable event intervals.</p>
+<p >The QuarkTS++ Timers are an essential extension as they allow for accurate and efficient timekeeping without blocking tasks. Using STimers enables the embedded application to perform other critical tasks while the timer is running in the background. Timers also provide flexibility in the event that the timer needs to be paused, restarted, or adjusted on the fly. This can be particularly useful in applications that require dynamic timing or have unpredictable event intervals.</p>
 <p >The Non-blocking design of the STimer is particularly important in cooperative scheduling because the tasks and operations of the OS are dependent on the cooperation of other tasks. Blocking timers can be problematic in a cooperative model because they halt the execution of the task, preventing other tasks from running. This can cause delays, missed deadlines, and other performance issues.</p>
 <p >The STimers implementation does not access resources from the interrupt context, does not consume any significant processing time unless a timer has actually expired, does not add any processing overhead to the sys-tick interrupt, and does not walk any other data structures. The timer service just takes the value of the existing kernel clock source for reference \( t_{sys}\) , allowing timer functionality to be added to an application with minimal impact.</p>
 <center>  
@@ -155,30 +155,29 @@ Overview</h1>
 <p ><b> Features </b></p>
 <ul>
 <li>Provides a non-blocking equivalent to delay function.</li>
-<li>Each STimer encapsulates its own expiration (timeout) time.</li>
+<li>Each Timer encapsulates its own expiration (timeout) time.</li>
 <li>Provides elapsed and remaining time APIs.</li>
-<li>As mentioned before, STimers uses the same kernel clock source, this means the time-elapsed calculation uses the qClock_GetTick() API, therefore, the time resolution has the same value passed when the scheduler has been initialized with qOS_Setup()</li>
+<li>As mentioned before, QuarkTS++ timers uses the same kernel clock source, this means the time-elapsed calculation uses the qClock_GetTick() API, therefore, the time resolution has the same value passed when the scheduler has been initialized with core::init()</li>
 </ul>
 <h1><a class="anchor" id="q_stimerusage"></a>
 Using a STimer</h1>
-<p >A STimer is referenced by a handle, a variable of type qSTimer_t and preferably, should be initialized by the <code>QSTIMER_INITIALIZER</code> constant before any usage.</p>
-<p >To use them, the code should follow a specific pattern that deals with the states of this object. All related APIs are designed to be non-blocking, this means there are ideal for use in cooperative environments such as the one provided by the OS itself. To minimize the implementation, this object is intentionally created to behave like a binary object, this implies that it only handles two states, <em>Armed</em> and <em>Disarmed</em>. An <em>Armed</em> timer means that it is already running with a specified preset value and a <em>Disarmed</em> timer is the opposite, which means that it does not have a preset value, so consequently, it is not running at all.</p>
-<p >The arming action can be performed with qSTimer_Set() or qSTimer_FreeRun() and disarming with qSTimer_Disarm(). For qSTimer_FreeRun(), it checks the timer and performs the arming. If disarmed, it gets armed immediately with the specified time. If armed, the time argument is ignored and the API only checks for expiration. When the time expires, the STimer gets armed immediately taking the specified time.</p>
-<p >All possible checking actions are also provided for this object, including qSTimer_Elapsed(), qSTimer_Remaining() and qSTimer_Expired() , with the last one being the most commonly used for timing applications. Finally, to get the current status of the STimer (check if is <em>Armed</em> or <em>Disarmed</em>) the qSTimer_Status() API should be used.</p>
+<p >To use timers, the code should follow a specific pattern that deals with the states of this object. All related APIs are designed to be non-blocking, this means there are ideal for use in cooperative environments such as the one provided by the OS itself. To minimize the implementation, this object is intentionally created to behave like a binary object, this implies that it only handles two states, <em>Armed</em> and <em>Disarmed</em>. An <em>Armed</em> timer means that it is already running with a specified preset value and a <em>Disarmed</em> timer is the opposite, which means that it does not have a preset value, so consequently, it is not running at all.</p>
+<p >The arming action can be performed with timer::set() or timer::freeRun() and disarming with timer::disarm(). For timer::freeRun(), it checks the timer and performs the arming. If disarmed, it gets armed immediately with the specified time. If armed, the time argument is ignored and the API only checks for expiration. When the time expires, the Timer gets armed immediately taking the specified time.</p>
+<p >All possible checking actions are also provided for this object, including timer::elapsed(), timer::remaining() and timer::expired() , with the last one being the most commonly used for timing applications. Finally, to get the current status of the STimer (check if is <em>Armed</em> or <em>Disarmed</em>) the <a class="el" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c" title="This enumeration defines the built-in state-execution status values that can be used as return value ...">timer::status()</a> API should be used.</p>
 <h1><a class="anchor" id="q_stimerexample"></a>
 STimer example</h1>
-<p >The example below shows a simple usage of this object. It is noteworthy that arming is performed once using the qEvent_t::FirstCall flag. This prevents the timer from being re-armed every time the task runs. After the timer expires, it should be disarmed explicitly</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> Example_Task( qEvent_t e ) {</div>
-<div class="line">    <span class="keyword">static</span> qSTimer_t timeout = QSTIMER_INITIALIZER;</div>
-<div class="line">    <span class="keywordflow">if</span> ( e-&gt;FirstCall ) {</div>
+<p >The example below shows a simple usage of this object. It is noteworthy that arming is performed once using the event_t::FirstCall() flag. This prevents the timer from being re-armed every time the task runs. After the timer expires, it should be disarmed explicitly</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> Example_Task( event_t e ) {</div>
+<div class="line">    <span class="keyword">static</span> timer_t timeout;</div>
+<div class="line">    <span class="keywordflow">if</span> ( e.firstCall() ) {</div>
 <div class="line">        <span class="comment">/*Arming the stimer for  3.5 seg*/</span></div>
-<div class="line">        qSTimer_Set( &amp;timeout, 3.5f );</div>
+<div class="line">        timeout.set( 3500 );</div>
 <div class="line">    }</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">/*non-blocking delay, true when timeout expires*/</span></div>
-<div class="line">    <span class="keywordflow">if</span> ( qSTimer_Expired( &amp;timeout ) ) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( timeout.expired() ) {</div>
 <div class="line">        <span class="comment">/* TODO: Code when STimer expires */</span></div>
-<div class="line">        qSTimer_Disarm( &amp;timeout );</div>
+<div class="line">        timeout.disarm();</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">return</span>; <span class="comment">/*Yield*/</span></div>
 <div class="line">}</div>

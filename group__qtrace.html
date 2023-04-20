@@ -145,8 +145,11 @@ Collaboration diagram for Trace:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1trace.html">qOS::trace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The global class to output trace streams. Its usage requires one the following static methods: <a class="el" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a" title="Specify a new trace output with detailed information of the caller.">trace::log()</a> or <a class="el" href="classq_o_s_1_1trace.html#a1c926046159d6eae8371a083364d0eff" title="Specify a new trace output without detailed information of the caller.">trace::msg()</a>  <a href="classq_o_s_1_1trace.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1trace_1_1mem.html">qOS::trace::mem</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that sets the number of bytes to be traced when a pointer for a pointer variable Example:  <a href="classq_o_s_1_1trace_1_1mem.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that sets the number of bytes to be traced when a pointer is being used after. Example:  <a href="classq_o_s_1_1trace_1_1mem.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1trace_1_1pre.html">qOS::trace::pre</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that sets the decimal precision to be used to format floating-point values on trace operations. Example:  <a href="classq_o_s_1_1trace_1_1pre.html#details">More...</a><br /></td></tr>
@@ -154,18 +157,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga50f47c679f7086caa5c684176a18330e"><td class="memItemLeft" align="right" valign="top"><a id="ga50f47c679f7086caa5c684176a18330e" name="ga50f47c679f7086caa5c684176a18330e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::trace::setOutputFcn</b> (util::putChar_t fcn)</td></tr>
+<tr class="memitem:ga50f47c679f7086caa5c684176a18330e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> fcn)</td></tr>
+<tr class="memdesc:ga50f47c679f7086caa5c684176a18330e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the output method for the trace stream.  <a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">More...</a><br /></td></tr>
 <tr class="separator:ga50f47c679f7086caa5c684176a18330e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga520bf4640018d146ff5fc5983af50372"><td class="memItemLeft" align="right" valign="top"><a id="ga520bf4640018d146ff5fc5983af50372" name="ga520bf4640018d146ff5fc5983af50372"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::trace::log</b> (void)</td></tr>
-<tr class="separator:ga520bf4640018d146ff5fc5983af50372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga02fdfcec3c4ad85b4d30604814c84575"><td class="memItemLeft" align="right" valign="top"><a id="ga02fdfcec3c4ad85b4d30604814c84575" name="ga02fdfcec3c4ad85b4d30604814c84575"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::trace::msg</b> (void)</td></tr>
-<tr class="separator:ga02fdfcec3c4ad85b4d30604814c84575"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff942f7a44594e69a951f03493a059cd"><td class="memItemLeft" align="right" valign="top"><a id="gaff942f7a44594e69a951f03493a059cd" name="gaff942f7a44594e69a951f03493a059cd"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::trace::var</b> (const char *vname)</td></tr>
-<tr class="separator:gaff942f7a44594e69a951f03493a059cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -214,9 +208,9 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API interfaces to print out trace and debug messages. </p>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ga073df9abb7c215fa97691ee5df07c1ae" name="ga073df9abb7c215fa97691ee5df07c1ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga073df9abb7c215fa97691ee5df07c1ae">&#9670;&nbsp;</a></span>bin</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga50f47c679f7086caa5c684176a18330e" name="ga50f47c679f7086caa5c684176a18330e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga50f47c679f7086caa5c684176a18330e">&#9670;&nbsp;</a></span>setOutputFcn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,21 +219,50 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const tout_base qOS::trace::bin</td>
+          <td class="memname">void qOS::trace::setOutputFcn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a>&#160;</td>
+          <td class="paramname"><em>fcn</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the output method for the trace stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">fcn</td><td>The basic output byte function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ga073df9abb7c215fa97691ee5df07c1ae" name="ga073df9abb7c215fa97691ee5df07c1ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga073df9abb7c215fa97691ee5df07c1ae">&#9670;&nbsp;</a></span>bin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const tout_base qOS::trace::bin</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p>Modifies the default numeric base to binary for integer trace output Example: </p>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
-<div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga073df9abb7c215fa97691ee5df07c1ae">trace::bin</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga073df9abb7c215fa97691ee5df07c1ae"><div class="ttname"><a href="group__qtrace.html#ga073df9abb7c215fa97691ee5df07c1ae">qOS::trace::bin</a></div><div class="ttdeci">const tout_base bin</div><div class="ttdoc">Modifies the default numeric base to binary for integer trace output Example:</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:5</div></div>
+<div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga073df9abb7c215fa97691ee5df07c1ae">trace::bin</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="ttc" id="aclassq_o_s_1_1trace_html_ab6c95f28fe39352c65d1962f09c48d8a"><div class="ttname"><a href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">qOS::trace::log</a></div><div class="ttdeci">static void * log</div><div class="ttdoc">Specify a new trace output with detailed information of the caller.</div><div class="ttdef"><b>Definition:</b> trace.hpp:62</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga073df9abb7c215fa97691ee5df07c1ae"><div class="ttname"><a href="group__qtrace.html#ga073df9abb7c215fa97691ee5df07c1ae">qOS::trace::bin</a></div><div class="ttdeci">const tout_base bin</div><div class="ttdoc">Modifies the default numeric base to binary for integer trace output Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:170</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:178</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -248,25 +271,17 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::blu</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "blue" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaac018d85a6a16c0d8e259681ba429155">trace::blu</a> &lt;&lt;<span class="stringliteral">&quot;blue colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_gaaa2918a99da92f64d53575b9bc93c69a"><div class="ttname"><a href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">qOS::trace::end</a></div><div class="ttdeci">const char *const end</div><div class="ttdoc">Inserts a new-line character to the trace output and restore the default color Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:6</div></div>
-<div class="ttc" id="agroup__qtrace_html_gaac018d85a6a16c0d8e259681ba429155"><div class="ttname"><a href="group__qtrace.html#gaac018d85a6a16c0d8e259681ba429155">qOS::trace::blu</a></div><div class="ttdeci">const char *const blu</div><div class="ttdoc">Set colored output to &quot;blue&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:11</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaac018d85a6a16c0d8e259681ba429155">trace::blu</a> &lt;&lt;<span class="stringliteral">&quot;blue colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_gaaa2918a99da92f64d53575b9bc93c69a"><div class="ttname"><a href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">qOS::trace::end</a></div><div class="ttdeci">const char *const end</div><div class="ttdoc">Inserts a new-line character to the trace output and restore the default color Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:187</div></div>
+<div class="ttc" id="agroup__qtrace_html_gaac018d85a6a16c0d8e259681ba429155"><div class="ttname"><a href="group__qtrace.html#gaac018d85a6a16c0d8e259681ba429155">qOS::trace::blu</a></div><div class="ttdeci">const char *const blu</div><div class="ttdoc">Set colored output to &quot;blue&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:227</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -275,24 +290,16 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::cyn</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "cyan" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga766697d3857dc9f52f7cd8f7d04e38aa">trace::cyn</a> &lt;&lt;<span class="stringliteral">&quot;cyan colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga766697d3857dc9f52f7cd8f7d04e38aa"><div class="ttname"><a href="group__qtrace.html#ga766697d3857dc9f52f7cd8f7d04e38aa">qOS::trace::cyn</a></div><div class="ttdeci">const char *const cyn</div><div class="ttdoc">Set colored output to &quot;cyan&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:13</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga766697d3857dc9f52f7cd8f7d04e38aa">trace::cyn</a> &lt;&lt;<span class="stringliteral">&quot;cyan colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga766697d3857dc9f52f7cd8f7d04e38aa"><div class="ttname"><a href="group__qtrace.html#ga766697d3857dc9f52f7cd8f7d04e38aa">qOS::trace::cyn</a></div><div class="ttdeci">const char *const cyn</div><div class="ttdoc">Set colored output to &quot;cyan&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:243</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -301,25 +308,17 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const tout_base qOS::trace::dec</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Modifies the default numeric base to decimal for integer trace output Example: </p>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
-<div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga93328644391810d863c7752b20d0f51d">trace::dec</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga93328644391810d863c7752b20d0f51d"><div class="ttname"><a href="group__qtrace.html#ga93328644391810d863c7752b20d0f51d">qOS::trace::dec</a></div><div class="ttdeci">const tout_base dec</div><div class="ttdoc">Modifies the default numeric base to decimal for integer trace output Example:</div></div>
+<div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga93328644391810d863c7752b20d0f51d">trace::dec</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga93328644391810d863c7752b20d0f51d"><div class="ttname"><a href="group__qtrace.html#ga93328644391810d863c7752b20d0f51d">qOS::trace::dec</a></div><div class="ttdeci">const tout_base dec</div><div class="ttdoc">Modifies the default numeric base to decimal for integer trace output Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:140</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -328,23 +327,15 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::end</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Inserts a new-line character to the trace output and restore the default color Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <span class="stringliteral">&quot;hello world!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <span class="stringliteral">&quot;hello world!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -353,23 +344,15 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::endl</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Inserts a new-line character to the trace output. Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <span class="stringliteral">&quot;hello world!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <span class="stringliteral">&quot;hello world!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -378,24 +361,16 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::grn</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "green" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga087dcdadf486b903de9267a707753a88">trace::grn</a> &lt;&lt;<span class="stringliteral">&quot;green colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga087dcdadf486b903de9267a707753a88"><div class="ttname"><a href="group__qtrace.html#ga087dcdadf486b903de9267a707753a88">qOS::trace::grn</a></div><div class="ttdeci">const char *const grn</div><div class="ttdoc">Set colored output to &quot;green&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:9</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga087dcdadf486b903de9267a707753a88">trace::grn</a> &lt;&lt;<span class="stringliteral">&quot;green colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga087dcdadf486b903de9267a707753a88"><div class="ttname"><a href="group__qtrace.html#ga087dcdadf486b903de9267a707753a88">qOS::trace::grn</a></div><div class="ttdeci">const char *const grn</div><div class="ttdoc">Set colored output to &quot;green&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:211</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -404,25 +379,17 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const tout_base qOS::trace::hex</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Modifies the default numeric base to hexadecimal for integer trace output Example: </p>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
-<div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga97ae3baa3ccb9c0a0ecded017f719277">trace::hex</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga97ae3baa3ccb9c0a0ecded017f719277"><div class="ttname"><a href="group__qtrace.html#ga97ae3baa3ccb9c0a0ecded017f719277">qOS::trace::hex</a></div><div class="ttdeci">const tout_base hex</div><div class="ttdoc">Modifies the default numeric base to hexadecimal for integer trace output Example:</div></div>
+<div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga97ae3baa3ccb9c0a0ecded017f719277">trace::hex</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga97ae3baa3ccb9c0a0ecded017f719277"><div class="ttname"><a href="group__qtrace.html#ga97ae3baa3ccb9c0a0ecded017f719277">qOS::trace::hex</a></div><div class="ttdeci">const tout_base hex</div><div class="ttdoc">Modifies the default numeric base to hexadecimal for integer trace output Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:150</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -431,24 +398,16 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::mag</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "magenta" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga2f5fac9dc4c1ae1921344ea75b98fa43">trace::mag</a> &lt;&lt;<span class="stringliteral">&quot;magenta colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga2f5fac9dc4c1ae1921344ea75b98fa43"><div class="ttname"><a href="group__qtrace.html#ga2f5fac9dc4c1ae1921344ea75b98fa43">qOS::trace::mag</a></div><div class="ttdeci">const char *const mag</div><div class="ttdoc">Set colored output to &quot;magenta&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:12</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga2f5fac9dc4c1ae1921344ea75b98fa43">trace::mag</a> &lt;&lt;<span class="stringliteral">&quot;magenta colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga2f5fac9dc4c1ae1921344ea75b98fa43"><div class="ttname"><a href="group__qtrace.html#ga2f5fac9dc4c1ae1921344ea75b98fa43">qOS::trace::mag</a></div><div class="ttdeci">const char *const mag</div><div class="ttdoc">Set colored output to &quot;magenta&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:235</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -457,24 +416,16 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::nrm</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "normal" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gab81f42c3ce0a24b2caaf5fa71ec35081">trace::nrm</a> &lt;&lt;<span class="stringliteral">&quot;normal colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_gab81f42c3ce0a24b2caaf5fa71ec35081"><div class="ttname"><a href="group__qtrace.html#gab81f42c3ce0a24b2caaf5fa71ec35081">qOS::trace::nrm</a></div><div class="ttdeci">const char *const nrm</div><div class="ttdoc">Set colored output to &quot;normal&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:7</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gab81f42c3ce0a24b2caaf5fa71ec35081">trace::nrm</a> &lt;&lt;<span class="stringliteral">&quot;normal colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_gab81f42c3ce0a24b2caaf5fa71ec35081"><div class="ttname"><a href="group__qtrace.html#gab81f42c3ce0a24b2caaf5fa71ec35081">qOS::trace::nrm</a></div><div class="ttdeci">const char *const nrm</div><div class="ttdoc">Set colored output to &quot;normal&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:195</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -483,25 +434,17 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const tout_base qOS::trace::oct</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Modifies the default numeric base to octal for integer trace output Example: </p>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
-<div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga1f3b34894586a6741162d44f3ee28a7f">trace::oct</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga1f3b34894586a6741162d44f3ee28a7f"><div class="ttname"><a href="group__qtrace.html#ga1f3b34894586a6741162d44f3ee28a7f">qOS::trace::oct</a></div><div class="ttdeci">const tout_base oct</div><div class="ttdoc">Modifies the default numeric base to octal for integer trace output Example:</div></div>
+<div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga1f3b34894586a6741162d44f3ee28a7f">trace::oct</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga1f3b34894586a6741162d44f3ee28a7f"><div class="ttname"><a href="group__qtrace.html#ga1f3b34894586a6741162d44f3ee28a7f">qOS::trace::oct</a></div><div class="ttdeci">const tout_base oct</div><div class="ttdoc">Modifies the default numeric base to octal for integer trace output Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:160</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -510,24 +453,16 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::red</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "red" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga2f9c3b425df448a53716f80bb78f781d">trace::red</a> &lt;&lt;<span class="stringliteral">&quot;red colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga2f9c3b425df448a53716f80bb78f781d"><div class="ttname"><a href="group__qtrace.html#ga2f9c3b425df448a53716f80bb78f781d">qOS::trace::red</a></div><div class="ttdeci">const char *const red</div><div class="ttdoc">Set colored output to &quot;red&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:8</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga2f9c3b425df448a53716f80bb78f781d">trace::red</a> &lt;&lt;<span class="stringliteral">&quot;red colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_ga2f9c3b425df448a53716f80bb78f781d"><div class="ttname"><a href="group__qtrace.html#ga2f9c3b425df448a53716f80bb78f781d">qOS::trace::red</a></div><div class="ttdeci">const char *const red</div><div class="ttdoc">Set colored output to &quot;red&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:203</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -536,24 +471,16 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::wht</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "white" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaa8001c88d73d7f79bf7746433963ce79">trace::wht</a> &lt;&lt;<span class="stringliteral">&quot;white colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_gaa8001c88d73d7f79bf7746433963ce79"><div class="ttname"><a href="group__qtrace.html#gaa8001c88d73d7f79bf7746433963ce79">qOS::trace::wht</a></div><div class="ttdeci">const char *const wht</div><div class="ttdoc">Set colored output to &quot;white&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:14</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaa8001c88d73d7f79bf7746433963ce79">trace::wht</a> &lt;&lt;<span class="stringliteral">&quot;white colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_gaa8001c88d73d7f79bf7746433963ce79"><div class="ttname"><a href="group__qtrace.html#gaa8001c88d73d7f79bf7746433963ce79">qOS::trace::wht</a></div><div class="ttdeci">const char *const wht</div><div class="ttdoc">Set colored output to &quot;white&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:251</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -562,24 +489,16 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const char *const qOS::trace::yel</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set colored output to "yellow" after the usage of this statement Example: </p>
-<div class="fragment"><div class="line">trace::log &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gad65405ff18324f2a5a5ba5b0646ed17e">trace::yel</a> &lt;&lt;<span class="stringliteral">&quot;yellow colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_gad65405ff18324f2a5a5ba5b0646ed17e"><div class="ttname"><a href="group__qtrace.html#gad65405ff18324f2a5a5ba5b0646ed17e">qOS::trace::yel</a></div><div class="ttdeci">const char *const yel</div><div class="ttdoc">Set colored output to &quot;yellow&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:10</div></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gad65405ff18324f2a5a5ba5b0646ed17e">trace::yel</a> &lt;&lt;<span class="stringliteral">&quot;yellow colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#gaaa2918a99da92f64d53575b9bc93c69a">trace::end</a>;</div>
+<div class="ttc" id="agroup__qtrace_html_gad65405ff18324f2a5a5ba5b0646ed17e"><div class="ttname"><a href="group__qtrace.html#gad65405ff18324f2a5a5ba5b0646ed17e">qOS::trace::yel</a></div><div class="ttdeci">const char *const yel</div><div class="ttdoc">Set colored output to &quot;yellow&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:219</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

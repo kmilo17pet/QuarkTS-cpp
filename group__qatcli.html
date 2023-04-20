@@ -132,6 +132,7 @@ $(document).ready(function(){initNavTree('group__qatcli.html',''); initResizable
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#enumval-members">Enumerator</a> &#124;
 <a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a> &#124;
 <a href="#friend-members">Friends</a>  </div>
   <div class="headertitle"><div class="title">AT Command Line Interface<div class="ingroups"><a class="el" href="group__qmodules.html">Kernel extensions</a></div></div></div>
 </div><!--header-->
@@ -148,8 +149,8 @@ Collaboration diagram for AT Command Line Interface:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1cli_1_1___handler.html">qOS::cli::_Handler</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The command argument with all the regarding information of the incoming AT command.  <a href="classq_o_s_1_1cli_1_1___handler.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1cli_1_1handler__t.html">qOS::cli::handler_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The command argument with all the regarding information of the incoming AT command.  <a href="classq_o_s_1_1cli_1_1handler__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1cli_1_1command.html">qOS::cli::command</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An AT-Command object.  <a href="classq_o_s_1_1cli_1_1command.html#details">More...</a><br /></td></tr>
@@ -157,10 +158,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga8d15a85b58a239889db855982f6b3a30"><td class="memItemLeft" align="right" valign="top"><a id="ga8d15a85b58a239889db855982f6b3a30" name="ga8d15a85b58a239889db855982f6b3a30"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::cli::handler_t</b> = <a class="el" href="classq_o_s_1_1cli_1_1___handler.html">_Handler</a> &amp;</td></tr>
-<tr class="separator:ga8d15a85b58a239889db855982f6b3a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab20d33e9de974f49e535206ad7194289"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">qOS::cli::commandCallback_t</a> = <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">response</a>(*)(<a class="el" href="classq_o_s_1_1cli_1_1___handler.html">handler_t</a>)</td></tr>
+<tr class="memitem:gab20d33e9de974f49e535206ad7194289"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">qOS::cli::commandCallback_t</a> = <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">response</a>(*)(<a class="el" href="classq_o_s_1_1cli_1_1handler__t.html">handler_t</a>)</td></tr>
 <tr class="memdesc:gab20d33e9de974f49e535206ad7194289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to function : An AT-Command callback.  <a href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">More...</a><br /></td></tr>
 <tr class="separator:gab20d33e9de974f49e535206ad7194289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga65eb4c32eb2231ef413a3226d62b895a"><td class="memItemLeft" align="right" valign="top"><a id="ga65eb4c32eb2231ef413a3226d62b895a" name="ga65eb4c32eb2231ef413a3226d62b895a"></a>
@@ -200,44 +198,44 @@ Functions</h2></td></tr>
 <tr class="memitem:gae6f3124234cd3f8a4068c7d7d11b0f29"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">response</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gae6f3124234cd3f8a4068c7d7d11b0f29">qOS::cli::ERROR_CODE</a> (int16_t code)</td></tr>
 <tr class="memdesc:gae6f3124234cd3f8a4068c7d7d11b0f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to indicate an error code as return value inside a command-callback. This code is defined by the application writer and should be a value between <code>1</code> and <code>32766</code>.  <a href="group__qatcli.html#gae6f3124234cd3f8a4068c7d7d11b0f29">More...</a><br /></td></tr>
 <tr class="separator:gae6f3124234cd3f8a4068c7d7d11b0f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8dc89a794c338bb7ed1e1f762dabd654"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2">commandType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga8dc89a794c338bb7ed1e1f762dabd654">qOS::cli::_Handler::getType</a> (void) const</td></tr>
-<tr class="memdesc:ga8dc89a794c338bb7ed1e1f762dabd654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the he incoming command type.*.  <a href="group__qatcli.html#ga8dc89a794c338bb7ed1e1f762dabd654">More...</a><br /></td></tr>
-<tr class="separator:ga8dc89a794c338bb7ed1e1f762dabd654"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga040db3771924ae3db7e7a73ea9edd090"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga040db3771924ae3db7e7a73ea9edd090">qOS::cli::_Handler::getStringData</a> (void)</td></tr>
-<tr class="memdesc:ga040db3771924ae3db7e7a73ea9edd090"><td class="mdescLeft">&#160;</td><td class="mdescRight">The string data received after the detected command.  <a href="group__qatcli.html#ga040db3771924ae3db7e7a73ea9edd090">More...</a><br /></td></tr>
-<tr class="separator:ga040db3771924ae3db7e7a73ea9edd090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5d84a5c2fb4bd11841799368942590d3"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga5d84a5c2fb4bd11841799368942590d3">qOS::cli::_Handler::getData</a> (void)</td></tr>
-<tr class="memdesc:ga5d84a5c2fb4bd11841799368942590d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a pointer to the user-defined data - Storage Pointer.  <a href="group__qatcli.html#ga5d84a5c2fb4bd11841799368942590d3">More...</a><br /></td></tr>
-<tr class="separator:ga5d84a5c2fb4bd11841799368942590d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab206c293fefcbc6d48c1820b5aa5ac2c"><td class="memItemLeft" align="right" valign="top"><a id="gab206c293fefcbc6d48c1820b5aa5ac2c" name="gab206c293fefcbc6d48c1820b5aa5ac2c"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::cli::_Handler::getStringLength</b> (void) const</td></tr>
-<tr class="memdesc:gab206c293fefcbc6d48c1820b5aa5ac2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length of the string<em>StrData</em>. <br /></td></tr>
-<tr class="separator:gab206c293fefcbc6d48c1820b5aa5ac2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae47a2eacf3c53b77e643f2d0d6d3e813"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gae47a2eacf3c53b77e643f2d0d6d3e813">qOS::cli::_Handler::getNumArgs</a> (void) const</td></tr>
-<tr class="memdesc:gae47a2eacf3c53b77e643f2d0d6d3e813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of arguments of the incoming AT command. only available if Type = commandType::PARA.  <a href="group__qatcli.html#gae47a2eacf3c53b77e643f2d0d6d3e813">More...</a><br /></td></tr>
-<tr class="separator:gae47a2eacf3c53b77e643f2d0d6d3e813"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga17085dc24f37114cb5b492bb5892c144"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga17085dc24f37114cb5b492bb5892c144">qOS::cli::_Handler::getArgPtr</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
-<tr class="memdesc:ga17085dc24f37114cb5b492bb5892c144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the pointer where the desired argument starts.  <a href="group__qatcli.html#ga17085dc24f37114cb5b492bb5892c144">More...</a><br /></td></tr>
-<tr class="separator:ga17085dc24f37114cb5b492bb5892c144"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6eaaedfa64bb9c9e97698f808e23899f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga6eaaedfa64bb9c9e97698f808e23899f">qOS::cli::_Handler::getArgInt</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
-<tr class="memdesc:ga6eaaedfa64bb9c9e97698f808e23899f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> argument parsed as integer from the incoming AT command.  <a href="group__qatcli.html#ga6eaaedfa64bb9c9e97698f808e23899f">More...</a><br /></td></tr>
-<tr class="separator:ga6eaaedfa64bb9c9e97698f808e23899f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga881a73a3b8513d309bd98af8503c44a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtypes.html#ga3068631062aaf7da4cc0371da9e7a377">float32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga881a73a3b8513d309bd98af8503c44a4">qOS::cli::_Handler::getArgFloat</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
-<tr class="memdesc:ga881a73a3b8513d309bd98af8503c44a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> argument parsed as float from the incoming AT command.  <a href="group__qatcli.html#ga881a73a3b8513d309bd98af8503c44a4">More...</a><br /></td></tr>
-<tr class="separator:ga881a73a3b8513d309bd98af8503c44a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae77729147039358a767030e1e5fcbd80"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gae77729147039358a767030e1e5fcbd80">qOS::cli::_Handler::getArgHex</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
-<tr class="memdesc:gae77729147039358a767030e1e5fcbd80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> HEX argument parsed <code>uint32_t</code> from the incoming AT command.  <a href="group__qatcli.html#gae77729147039358a767030e1e5fcbd80">More...</a><br /></td></tr>
-<tr class="separator:gae77729147039358a767030e1e5fcbd80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1605c3f4c7656be075e442c11b0d96a7"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga1605c3f4c7656be075e442c11b0d96a7">qOS::cli::_Handler::getArgString</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n, char *pOut)</td></tr>
-<tr class="memdesc:ga1605c3f4c7656be075e442c11b0d96a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> argument parsed as string from the incoming AT command.  <a href="group__qatcli.html#ga1605c3f4c7656be075e442c11b0d96a7">More...</a><br /></td></tr>
-<tr class="separator:ga1605c3f4c7656be075e442c11b0d96a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7719470f2343fc72c68ef1f29dc48778"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga7719470f2343fc72c68ef1f29dc48778">qOS::cli::_Handler::output</a> (const char c) const</td></tr>
-<tr class="memdesc:ga7719470f2343fc72c68ef1f29dc48778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method for printing a character to the CLI output. It displays only one character at a time.  <a href="group__qatcli.html#ga7719470f2343fc72c68ef1f29dc48778">More...</a><br /></td></tr>
-<tr class="separator:ga7719470f2343fc72c68ef1f29dc48778"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c">qOS::cli::_Handler::output</a> (const char *s) const</td></tr>
-<tr class="memdesc:ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a string to CLI output without the <code>EOF</code> string appended at the end.  <a href="group__qatcli.html#ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c">More...</a><br /></td></tr>
-<tr class="separator:ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga69e706db3cf304ea8aa6e95c5708c067"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga69e706db3cf304ea8aa6e95c5708c067">qOS::commandLineInterface::setup</a> (util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut)</td></tr>
+<tr class="memitem:ga7485235a5249fc75c76886b9ae227244"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2">commandType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga7485235a5249fc75c76886b9ae227244">qOS::cli::handler_t::getType</a> (void) const</td></tr>
+<tr class="memdesc:ga7485235a5249fc75c76886b9ae227244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the he incoming command type.*.  <a href="group__qatcli.html#ga7485235a5249fc75c76886b9ae227244">More...</a><br /></td></tr>
+<tr class="separator:ga7485235a5249fc75c76886b9ae227244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89eb0d6805d577de5b8f9377bbf3580a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga89eb0d6805d577de5b8f9377bbf3580a">qOS::cli::handler_t::getStringData</a> (void)</td></tr>
+<tr class="memdesc:ga89eb0d6805d577de5b8f9377bbf3580a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The string data received after the detected command.  <a href="group__qatcli.html#ga89eb0d6805d577de5b8f9377bbf3580a">More...</a><br /></td></tr>
+<tr class="separator:ga89eb0d6805d577de5b8f9377bbf3580a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1cbecc7c74ea17aebed8aabd5b86048"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gac1cbecc7c74ea17aebed8aabd5b86048">qOS::cli::handler_t::getData</a> (void)</td></tr>
+<tr class="memdesc:gac1cbecc7c74ea17aebed8aabd5b86048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a pointer to the user-defined data - Storage Pointer.  <a href="group__qatcli.html#gac1cbecc7c74ea17aebed8aabd5b86048">More...</a><br /></td></tr>
+<tr class="separator:gac1cbecc7c74ea17aebed8aabd5b86048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga58b8404949da19db86c109eb059e1ef5"><td class="memItemLeft" align="right" valign="top"><a id="ga58b8404949da19db86c109eb059e1ef5" name="ga58b8404949da19db86c109eb059e1ef5"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::cli::handler_t::getStringLength</b> (void) const</td></tr>
+<tr class="memdesc:ga58b8404949da19db86c109eb059e1ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length of the string<em>StrData</em>. <br /></td></tr>
+<tr class="separator:ga58b8404949da19db86c109eb059e1ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed5a93634b2007342818efb86771862c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gaed5a93634b2007342818efb86771862c">qOS::cli::handler_t::getNumArgs</a> (void) const</td></tr>
+<tr class="memdesc:gaed5a93634b2007342818efb86771862c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of arguments of the incoming AT command. only available if Type = commandType::PARA.  <a href="group__qatcli.html#gaed5a93634b2007342818efb86771862c">More...</a><br /></td></tr>
+<tr class="separator:gaed5a93634b2007342818efb86771862c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga411caaf1692fcc78cbd832d271cd9162"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga411caaf1692fcc78cbd832d271cd9162">qOS::cli::handler_t::getArgPtr</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
+<tr class="memdesc:ga411caaf1692fcc78cbd832d271cd9162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the pointer where the desired argument starts.  <a href="group__qatcli.html#ga411caaf1692fcc78cbd832d271cd9162">More...</a><br /></td></tr>
+<tr class="separator:ga411caaf1692fcc78cbd832d271cd9162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1fbf9b11e589397e7294e7b11c135981"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga1fbf9b11e589397e7294e7b11c135981">qOS::cli::handler_t::getArgInt</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
+<tr class="memdesc:ga1fbf9b11e589397e7294e7b11c135981"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> argument parsed as integer from the incoming AT command.  <a href="group__qatcli.html#ga1fbf9b11e589397e7294e7b11c135981">More...</a><br /></td></tr>
+<tr class="separator:ga1fbf9b11e589397e7294e7b11c135981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga245939dbebbc72d369c2d12186434967"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtypes.html#ga3068631062aaf7da4cc0371da9e7a377">float32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga245939dbebbc72d369c2d12186434967">qOS::cli::handler_t::getArgFloat</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
+<tr class="memdesc:ga245939dbebbc72d369c2d12186434967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> argument parsed as float from the incoming AT command.  <a href="group__qatcli.html#ga245939dbebbc72d369c2d12186434967">More...</a><br /></td></tr>
+<tr class="separator:ga245939dbebbc72d369c2d12186434967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabeeaec3d6ff9ca4af79aed2080b2186a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gabeeaec3d6ff9ca4af79aed2080b2186a">qOS::cli::handler_t::getArgHex</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n) const</td></tr>
+<tr class="memdesc:gabeeaec3d6ff9ca4af79aed2080b2186a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> HEX argument parsed <code>uint32_t</code> from the incoming AT command.  <a href="group__qatcli.html#gabeeaec3d6ff9ca4af79aed2080b2186a">More...</a><br /></td></tr>
+<tr class="separator:gabeeaec3d6ff9ca4af79aed2080b2186a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d181802de2584e192df80f198f18ebd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga3d181802de2584e192df80f198f18ebd">qOS::cli::handler_t::getArgString</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> n, char *pOut)</td></tr>
+<tr class="memdesc:ga3d181802de2584e192df80f198f18ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method to get the <em>n</em> argument parsed as string from the incoming AT command.  <a href="group__qatcli.html#ga3d181802de2584e192df80f198f18ebd">More...</a><br /></td></tr>
+<tr class="separator:ga3d181802de2584e192df80f198f18ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga78b34b3ccf68ae13a544db51c5d649b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga78b34b3ccf68ae13a544db51c5d649b4">qOS::cli::handler_t::writeOut</a> (const char c) const</td></tr>
+<tr class="memdesc:ga78b34b3ccf68ae13a544db51c5d649b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper method for printing a character to the CLI output. It displays only one character at a time.  <a href="group__qatcli.html#ga78b34b3ccf68ae13a544db51c5d649b4">More...</a><br /></td></tr>
+<tr class="separator:ga78b34b3ccf68ae13a544db51c5d649b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7db6bd8288700f2a6a0277da37a549da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga7db6bd8288700f2a6a0277da37a549da">qOS::cli::handler_t::writeOut</a> (const char *s) const</td></tr>
+<tr class="memdesc:ga7db6bd8288700f2a6a0277da37a549da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a string to CLI output without the <code>EOF</code> string appended at the end.  <a href="group__qatcli.html#ga7db6bd8288700f2a6a0277da37a549da">More...</a><br /></td></tr>
+<tr class="separator:ga7db6bd8288700f2a6a0277da37a549da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69e706db3cf304ea8aa6e95c5708c067"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga69e706db3cf304ea8aa6e95c5708c067">qOS::commandLineInterface::setup</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut)</td></tr>
 <tr class="memdesc:ga69e706db3cf304ea8aa6e95c5708c067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup an instance of the AT Command Line Interface.  <a href="group__qatcli.html#ga69e706db3cf304ea8aa6e95c5708c067">More...</a><br /></td></tr>
 <tr class="separator:ga69e706db3cf304ea8aa6e95c5708c067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga644e9a38169afbd2019d5672a27daa34"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga644e9a38169afbd2019d5672a27daa34">qOS::commandLineInterface::add</a> (<a class="el" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;cmd, char *textCommand, <a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">cli::commandCallback_t</a> cFcn, <a class="el" href="group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a">cli::options_t</a> cmdOpt, void *param=nullptr)</td></tr>
@@ -268,6 +266,13 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInt
 void&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInterface::setData</b> (void *pData)</td></tr>
 <tr class="separator:ga8742a937930c771c28e4fe811e3d1eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gaec3c265e088c0e14ab79c81d7c816ff0"><td class="memItemLeft" align="right" valign="top"><a id="gaec3c265e088c0e14ab79c81d7c816ff0" name="gaec3c265e088c0e14ab79c81d7c816ff0"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::cli::handler_t::output</b></td></tr>
+<tr class="memdesc:gaec3c265e088c0e14ab79c81d7c816ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The CLI output buffer. Can be written by the user. <br /></td></tr>
+<tr class="separator:gaec3c265e088c0e14ab79c81d7c816ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friend-members" name="friend-members"></a>
 Friends</h2></td></tr>
 <tr class="memitem:gaba6d9d0160c6476dd20d0f7dea7f14c6"><td class="memItemLeft" align="right" valign="top"><a id="gaba6d9d0160c6476dd20d0f7dea7f14c6" name="gaba6d9d0160c6476dd20d0f7dea7f14c6"></a>
@@ -293,17 +298,17 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">qOS::cli::commandCallback_t</a> = typedef <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">response</a> (*)( <a class="el" href="classq_o_s_1_1cli_1_1___handler.html">handler_t</a> )</td>
+          <td class="memname">using <a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">qOS::cli::commandCallback_t</a> = typedef <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">response</a> (*)( <a class="el" href="classq_o_s_1_1cli_1_1handler__t.html">handler_t</a> )</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Pointer to function : An AT-Command callback. </p>
-<p >Example : </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> commandCallback_example( <a class="code hl_class" href="classq_o_s_1_1cli_1_1___handler.html">cli::handler_t</a> h ) {</div>
+<p >Example : </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> commandCallback_example( <a class="code hl_class" href="classq_o_s_1_1cli_1_1handler__t.html">cli::handler_t</a> h ) {</div>
 <div class="line">      <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> retValue = cli::response::ERROR;</div>
-<div class="line">      <span class="keywordflow">switch</span> ( h.<a class="code hl_function" href="group__qatcli.html#ga8dc89a794c338bb7ed1e1f762dabd654">getType</a>() ) {</div>
+<div class="line">      <span class="keywordflow">switch</span> ( h.<a class="code hl_function" href="group__qatcli.html#ga7485235a5249fc75c76886b9ae227244">getType</a>() ) {</div>
 <div class="line">          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">commandType::ACT</a> :</div>
-<div class="line">              h.<a class="code hl_function" href="group__qatcli.html#ga7719470f2343fc72c68ef1f29dc48778">output</a>( <span class="stringliteral">&quot;Test message&quot;</span> );</div>
+<div class="line">              h.<a class="code hl_variable" href="group__qatcli.html#gaec3c265e088c0e14ab79c81d7c816ff0">output</a>( <span class="stringliteral">&quot;Test message&quot;</span> );</div>
 <div class="line">              retValue = cli::response::OK;</div>
 <div class="line">              <span class="keywordflow">break</span>;</div>
 <div class="line">          <span class="keywordflow">default</span>:</div>
@@ -311,10 +316,10 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 <div class="line">      }</div>
 <div class="line">      <span class="keywordflow">return</span> retValue;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1cli_1_1___handler_html"><div class="ttname"><a href="classq_o_s_1_1cli_1_1___handler.html">qOS::cli::_Handler</a></div><div class="ttdoc">The command argument with all the regarding information of the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:81</div></div>
-<div class="ttc" id="agroup__qatcli_html_ga7719470f2343fc72c68ef1f29dc48778"><div class="ttname"><a href="group__qatcli.html#ga7719470f2343fc72c68ef1f29dc48778">qOS::cli::_Handler::output</a></div><div class="ttdeci">void output(const char c) const</div><div class="ttdoc">Helper method for printing a character to the CLI output. It displays only one character at a time.</div><div class="ttdef"><b>Definition:</b> cli.cpp:459</div></div>
-<div class="ttc" id="agroup__qatcli_html_ga8dc89a794c338bb7ed1e1f762dabd654"><div class="ttname"><a href="group__qatcli.html#ga8dc89a794c338bb7ed1e1f762dabd654">qOS::cli::_Handler::getType</a></div><div class="ttdeci">commandType getType(void) const</div><div class="ttdoc">Retrieve the he incoming command type.*.</div><div class="ttdef"><b>Definition:</b> cli.hpp:99</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1handler__t_html"><div class="ttname"><a href="classq_o_s_1_1cli_1_1handler__t.html">qOS::cli::handler_t</a></div><div class="ttdoc">The command argument with all the regarding information of the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:83</div></div>
+<div class="ttc" id="agroup__qatcli_html_ga7485235a5249fc75c76886b9ae227244"><div class="ttname"><a href="group__qatcli.html#ga7485235a5249fc75c76886b9ae227244">qOS::cli::handler_t::getType</a></div><div class="ttdeci">commandType getType(void) const</div><div class="ttdoc">Retrieve the he incoming command type.*.</div><div class="ttdef"><b>Definition:</b> cli.hpp:100</div></div>
 <div class="ttc" id="agroup__qatcli_html_gaa827a463743265d6ebe6bb3618f63bf2"><div class="ttname"><a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a></div><div class="ttdeci">response</div><div class="ttdoc">an enumeration to define the possible values that can be returned from the callback of a command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:22</div></div>
+<div class="ttc" id="agroup__qatcli_html_gaec3c265e088c0e14ab79c81d7c816ff0"><div class="ttname"><a href="group__qatcli.html#gaec3c265e088c0e14ab79c81d7c816ff0">qOS::cli::handler_t::output</a></div><div class="ttdeci">char * output</div><div class="ttdoc">The CLI output buffer. Can be written by the user.</div><div class="ttdef"><b>Definition:</b> cli.hpp:197</div></div>
 <div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">qOS::cli::ACT</a></div><div class="ttdeci">@ ACT</div><div class="ttdef"><b>Definition:</b> cli.hpp:54</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -481,14 +486,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga881a73a3b8513d309bd98af8503c44a4" name="ga881a73a3b8513d309bd98af8503c44a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga881a73a3b8513d309bd98af8503c44a4">&#9670;&nbsp;</a></span>getArgFloat()</h2>
+<a id="ga245939dbebbc72d369c2d12186434967" name="ga245939dbebbc72d369c2d12186434967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga245939dbebbc72d369c2d12186434967">&#9670;&nbsp;</a></span>getArgFloat()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qtypes.html#ga3068631062aaf7da4cc0371da9e7a377">float32_t</a> cli::_Handler::getArgFloat </td>
+          <td class="memname"><a class="el" href="group__qtypes.html#ga3068631062aaf7da4cc0371da9e7a377">float32_t</a> qOS::cli::handler_t::getArgFloat </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -509,14 +514,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="gae77729147039358a767030e1e5fcbd80" name="gae77729147039358a767030e1e5fcbd80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae77729147039358a767030e1e5fcbd80">&#9670;&nbsp;</a></span>getArgHex()</h2>
+<a id="gabeeaec3d6ff9ca4af79aed2080b2186a" name="gabeeaec3d6ff9ca4af79aed2080b2186a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabeeaec3d6ff9ca4af79aed2080b2186a">&#9670;&nbsp;</a></span>getArgHex()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t cli::_Handler::getArgHex </td>
+          <td class="memname">uint32_t qOS::cli::handler_t::getArgHex </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -537,14 +542,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga6eaaedfa64bb9c9e97698f808e23899f" name="ga6eaaedfa64bb9c9e97698f808e23899f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6eaaedfa64bb9c9e97698f808e23899f">&#9670;&nbsp;</a></span>getArgInt()</h2>
+<a id="ga1fbf9b11e589397e7294e7b11c135981" name="ga1fbf9b11e589397e7294e7b11c135981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1fbf9b11e589397e7294e7b11c135981">&#9670;&nbsp;</a></span>getArgInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int cli::_Handler::getArgInt </td>
+          <td class="memname">int qOS::cli::handler_t::getArgInt </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -565,14 +570,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga17085dc24f37114cb5b492bb5892c144" name="ga17085dc24f37114cb5b492bb5892c144"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga17085dc24f37114cb5b492bb5892c144">&#9670;&nbsp;</a></span>getArgPtr()</h2>
+<a id="ga411caaf1692fcc78cbd832d271cd9162" name="ga411caaf1692fcc78cbd832d271cd9162"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga411caaf1692fcc78cbd832d271cd9162">&#9670;&nbsp;</a></span>getArgPtr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char * cli::_Handler::getArgPtr </td>
+          <td class="memname">char * qOS::cli::handler_t::getArgPtr </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -592,14 +597,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga1605c3f4c7656be075e442c11b0d96a7" name="ga1605c3f4c7656be075e442c11b0d96a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1605c3f4c7656be075e442c11b0d96a7">&#9670;&nbsp;</a></span>getArgString()</h2>
+<a id="ga3d181802de2584e192df80f198f18ebd" name="ga3d181802de2584e192df80f198f18ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3d181802de2584e192df80f198f18ebd">&#9670;&nbsp;</a></span>getArgString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char * cli::_Handler::getArgString </td>
+          <td class="memname">char * qOS::cli::handler_t::getArgString </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
           <td class="paramname"><em>n</em>, </td>
@@ -630,8 +635,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga5d84a5c2fb4bd11841799368942590d3" name="ga5d84a5c2fb4bd11841799368942590d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5d84a5c2fb4bd11841799368942590d3">&#9670;&nbsp;</a></span>getData()</h2>
+<a id="gac1cbecc7c74ea17aebed8aabd5b86048" name="gac1cbecc7c74ea17aebed8aabd5b86048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac1cbecc7c74ea17aebed8aabd5b86048">&#9670;&nbsp;</a></span>getData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -640,7 +645,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void * qOS::cli::_Handler::getData </td>
+          <td class="memname">void * qOS::cli::handler_t::getData </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -659,8 +664,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="gae47a2eacf3c53b77e643f2d0d6d3e813" name="gae47a2eacf3c53b77e643f2d0d6d3e813"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae47a2eacf3c53b77e643f2d0d6d3e813">&#9670;&nbsp;</a></span>getNumArgs()</h2>
+<a id="gaed5a93634b2007342818efb86771862c" name="gaed5a93634b2007342818efb86771862c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaed5a93634b2007342818efb86771862c">&#9670;&nbsp;</a></span>getNumArgs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -669,7 +674,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t qOS::cli::_Handler::getNumArgs </td>
+          <td class="memname">size_t qOS::cli::handler_t::getNumArgs </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -688,8 +693,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga040db3771924ae3db7e7a73ea9edd090" name="ga040db3771924ae3db7e7a73ea9edd090"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga040db3771924ae3db7e7a73ea9edd090">&#9670;&nbsp;</a></span>getStringData()</h2>
+<a id="ga89eb0d6805d577de5b8f9377bbf3580a" name="ga89eb0d6805d577de5b8f9377bbf3580a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga89eb0d6805d577de5b8f9377bbf3580a">&#9670;&nbsp;</a></span>getStringData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -698,7 +703,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">char * qOS::cli::_Handler::getStringData </td>
+          <td class="memname">char * qOS::cli::handler_t::getStringData </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -717,8 +722,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga8dc89a794c338bb7ed1e1f762dabd654" name="ga8dc89a794c338bb7ed1e1f762dabd654"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8dc89a794c338bb7ed1e1f762dabd654">&#9670;&nbsp;</a></span>getType()</h2>
+<a id="ga7485235a5249fc75c76886b9ae227244" name="ga7485235a5249fc75c76886b9ae227244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7485235a5249fc75c76886b9ae227244">&#9670;&nbsp;</a></span>getType()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -727,7 +732,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2">commandType</a> qOS::cli::_Handler::getType </td>
+          <td class="memname"><a class="el" href="group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2">commandType</a> qOS::cli::handler_t::getType </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -832,60 +837,6 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
 
 </div>
 </div>
-<a id="ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c" name="ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c">&#9670;&nbsp;</a></span>output() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void cli::_Handler::output </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Writes a string to CLI output without the <code>EOF</code> string appended at the end. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>This is the C string to be written. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
-
-</div>
-</div>
-<a id="ga7719470f2343fc72c68ef1f29dc48778" name="ga7719470f2343fc72c68ef1f29dc48778"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7719470f2343fc72c68ef1f29dc48778">&#9670;&nbsp;</a></span>output() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void cli::_Handler::output </td>
-          <td>(</td>
-          <td class="paramtype">const char&#160;</td>
-          <td class="paramname"><em>c</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Helper method for printing a character to the CLI output. It displays only one character at a time. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The ASCII character. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
-
-</div>
-</div>
 <a id="ga1f1c6c07336f3ebc48e318a08b4cab1d" name="ga1f1c6c07336f3ebc48e318a08b4cab1d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1f1c6c07336f3ebc48e318a08b4cab1d">&#9670;&nbsp;</a></span>raise()</h2>
 
@@ -944,7 +895,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
         <tr>
           <td class="memname">bool commandLineInterface::setup </td>
           <td>(</td>
-          <td class="paramtype">util::putChar_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a>&#160;</td>
           <td class="paramname"><em>outFcn</em>, </td>
         </tr>
         <tr>
@@ -993,6 +944,60 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::commandLineInte
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga7db6bd8288700f2a6a0277da37a549da" name="ga7db6bd8288700f2a6a0277da37a549da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7db6bd8288700f2a6a0277da37a549da">&#9670;&nbsp;</a></span>writeOut() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::cli::handler_t::writeOut </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes a string to CLI output without the <code>EOF</code> string appended at the end. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>This is the C string to be written. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
+<a id="ga78b34b3ccf68ae13a544db51c5d649b4" name="ga78b34b3ccf68ae13a544db51c5d649b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga78b34b3ccf68ae13a544db51c5d649b4">&#9670;&nbsp;</a></span>writeOut() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::cli::handler_t::writeOut </td>
+          <td>(</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Helper method for printing a character to the CLI output. It displays only one character at a time. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The ASCII character. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
 
 </div>
 </div>

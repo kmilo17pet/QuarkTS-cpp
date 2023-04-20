@@ -12,7 +12,7 @@
 <!-- Node5 -->
 <g id="node1" class="node">
 <title>Node5</title>
-<g id="a_node1"><a xlink:href="group__qeventflags.html" target="_top" xlink:title=" ">
+<g id="a_node1"><a xlink:href="group__qeventflags.html" target="_top" xlink:title="API interface for the built&#45;in&#45;task Event Flags.">
 <polygon fill="white" stroke="black" points="364.5,-93 296.5,-93 296.5,-74 364.5,-74 364.5,-93"/>
 <text text-anchor="middle" x="330.5" y="-81" font-family="Helvetica,sans-Serif" font-size="10.00">Event Flags</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- Node4 -->
 <g id="node2" class="node">
 <title>Node4</title>
-<g id="a_node2"><a xlink:href="group__qnot.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="group__qnot.html" target="_top" xlink:title="API interface for task Notifications.">
 <polygon fill="white" stroke="black" points="366,-56 295,-56 295,-37 366,-37 366,-56"/>
 <text text-anchor="middle" x="330.5" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">Notifications</text>
 </a>

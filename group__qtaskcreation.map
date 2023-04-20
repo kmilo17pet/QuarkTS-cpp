@@ -1,4 +1,6 @@
 <map id="Scheduler Interface" name="Scheduler Interface">
-<area shape="rect" id="node1" href="$group__qos.html" title=" " alt="" coords="5,5,131,31"/>
-<area shape="rect" id="node2" title="Kernel API interface to create/remove tasks and perform special OS operations." alt="" coords="179,5,313,31"/>
+<area shape="rect" id="node1" href="$group__qeventflags.html" title="API interface for the built&#45;in&#45;task Event Flags." alt="" coords="363,5,454,31"/>
+<area shape="rect" id="node2" href="$group__qnot.html" title="API interface for task Notifications." alt="" coords="361,55,456,80"/>
+<area shape="rect" id="node3" href="$group__qos.html" title=" " alt="" coords="5,31,131,56"/>
+<area shape="rect" id="node4" title="Kernel API interface to create/remove tasks and perform special OS operations." alt="" coords="179,31,313,56"/>
 </map>

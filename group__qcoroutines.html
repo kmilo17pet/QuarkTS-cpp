@@ -129,8 +129,7 @@ $(document).ready(function(){initNavTree('group__qcoroutines.html',''); initResi
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Co-Routines<div class="ingroups"><a class="el" href="group__qmodules.html">Kernel extensions</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -200,18 +199,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gacf586fa36242eee6bcb2aa4052eb56dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc">qOS::co::setPosition</a> (<a class="el" href="classq_o_s_1_1co_1_1position.html">co::position</a> &amp;var) noexcept</td></tr>
 <tr class="memdesc:gacf586fa36242eee6bcb2aa4052eb56dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores the Co-Routine position saved in <em>var</em>.  <a href="group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc">More...</a><br /></td></tr>
 <tr class="separator:gacf586fa36242eee6bcb2aa4052eb56dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ga99efcd70b889c4a85e4526c01e434f58"><td class="memItemLeft" align="right" valign="top"><a id="ga99efcd70b889c4a85e4526c01e434f58" name="ga99efcd70b889c4a85e4526c01e434f58"></a>
-const state&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::co::UNDEFINED</b></td></tr>
-<tr class="separator:ga99efcd70b889c4a85e4526c01e434f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga447593ed6076db539f81276b8ae9d507"><td class="memItemLeft" align="right" valign="top"><a id="ga447593ed6076db539f81276b8ae9d507" name="ga447593ed6076db539f81276b8ae9d507"></a>
-const state&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::co::SUSPENDED</b></td></tr>
-<tr class="separator:ga447593ed6076db539f81276b8ae9d507"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d85464f2a835443bd4f4c51cf9795a9"><td class="memItemLeft" align="right" valign="top"><a id="ga3d85464f2a835443bd4f4c51cf9795a9" name="ga3d85464f2a835443bd4f4c51cf9795a9"></a>
-const state&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::co::BEGINNING</b></td></tr>
-<tr class="separator:ga3d85464f2a835443bd4f4c51cf9795a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API interface for the <a class="el" href="q_qcoroutines.html">Co-Routines</a> extension. </p>
@@ -320,8 +307,8 @@ const state&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::co::BEGIN
 <p>Example: </p><div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>( <a class="code hl_class" href="classq_o_s_1_1co_1_1handle.html">handle</a> ) {</div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1co_1_1handle_html"><div class="ttname"><a href="classq_o_s_1_1co_1_1handle.html">qOS::co::handle</a></div><div class="ttdoc">A Co-Routine handle.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:45</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_gabb86ebfd79f14350a9ed1be1a44f3b91"><div class="ttname"><a href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">qOS::co::reenter</a></div><div class="ttdeci">void reenter(void) noexcept</div><div class="ttdoc">Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:171</div></div>
+<div class="ttc" id="aclassq_o_s_1_1co_1_1handle_html"><div class="ttname"><a href="classq_o_s_1_1co_1_1handle.html">qOS::co::handle</a></div><div class="ttdoc">A Co-Routine handle.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:46</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gabb86ebfd79f14350a9ed1be1a44f3b91"><div class="ttname"><a href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">qOS::co::reenter</a></div><div class="ttdeci">void reenter(void) noexcept</div><div class="ttdoc">Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:172</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -522,9 +509,9 @@ const state&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::co::BEGIN
 <div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">co::restart</a>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qcoroutines_html_ga13055a9326fa8e11d527715fadc7b528"><div class="ttname"><a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a></div><div class="ttdeci">void restart(void) noexcept</div><div class="ttdoc">This statement cause the running Coroutine to restart its execution at the place of the co::reenter()...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:255</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_ga59f41446fbbdda4769837208e03ddba6"><div class="ttname"><a href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">qOS::co::timeoutExpired</a></div><div class="ttdeci">void timeoutExpired(void) noexcept</div><div class="ttdoc">Check if the internal Co-routine timeout expires.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:248</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_gad0eca0c65e03d038bb7374ee75980f20"><div class="ttname"><a href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">qOS::co::waitUntil</a></div><div class="ttdeci">void waitUntil(bool condition) noexcept</div><div class="ttdoc">Yields until the logical condition is met.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:217</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga13055a9326fa8e11d527715fadc7b528"><div class="ttname"><a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a></div><div class="ttdeci">void restart(void) noexcept</div><div class="ttdoc">This statement cause the running Coroutine to restart its execution at the place of the co::reenter()...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:256</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga59f41446fbbdda4769837208e03ddba6"><div class="ttname"><a href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">qOS::co::timeoutExpired</a></div><div class="ttdeci">void timeoutExpired(void) noexcept</div><div class="ttdoc">Check if the internal Co-routine timeout expires.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:249</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gad0eca0c65e03d038bb7374ee75980f20"><div class="ttname"><a href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">qOS::co::waitUntil</a></div><div class="ttdeci">void waitUntil(bool condition) noexcept</div><div class="ttdoc">Yields until the logical condition is met.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:218</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>

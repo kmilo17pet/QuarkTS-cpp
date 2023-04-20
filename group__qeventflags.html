@@ -126,13 +126,230 @@ $(document).ready(function(){initNavTree('group__qeventflags.html',''); initResi
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Event Flags<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a> &raquo; <a class="el" href="group__qpriv.html">Inter-Task communication</a></div></div></div>
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">Event Flags<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a> &raquo; <a class="el" href="group__qpriv.html">Inter-Task communication</a> &#124; <a class="el" href="group__qos.html">Operative System</a> &raquo; <a class="el" href="group__qtaskcreation.html">Scheduler Interface</a> &#124; <a class="el" href="group__qos.html">Operative System</a> &raquo; <a class="el" href="group__qtaskmanip.html">Managing tasks</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>API interface for the built-in-task <a class="el" href="q_events.html#qeventflags">Event Flags</a>.  
+<a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Event Flags:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__qeventflags.svg" width="322" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__qeventflags.svg" width="322" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:gadab2a8e1d8f36731b1bcc666527e39eb"><td class="memItemLeft" align="right" valign="top"><a id="gadab2a8e1d8f36731b1bcc666527e39eb" name="gadab2a8e1d8f36731b1bcc666527e39eb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::taskFlag_t</b> = uint32_t</td></tr>
+<tr class="memdesc:gadab2a8e1d8f36731b1bcc666527e39eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 32-bit unsigned integer type to hold the task flags. <br /></td></tr>
+<tr class="separator:gadab2a8e1d8f36731b1bcc666527e39eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga7f7273ea1c026d4c8a7ba52ec39e6442"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga7f7273ea1c026d4c8a7ba52ec39e6442">qOS::EVENT_FLAG</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i)</td></tr>
+<tr class="memdesc:ga7f7273ea1c026d4c8a7ba52ec39e6442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event flag selector function.  <a href="group__qeventflags.html#ga7f7273ea1c026d4c8a7ba52ec39e6442">More...</a><br /></td></tr>
+<tr class="separator:ga7f7273ea1c026d4c8a7ba52ec39e6442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1659f1343afcf0f3c13e5444927fd96f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga1659f1343afcf0f3c13e5444927fd96f">qOS::core::eventFlagsModify</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, const <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> tFlags, const bool action) noexcept</td></tr>
+<tr class="memdesc:ga1659f1343afcf0f3c13e5444927fd96f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify the EventFlags for the provided task.  <a href="group__qeventflags.html#ga1659f1343afcf0f3c13e5444927fd96f">More...</a><br /></td></tr>
+<tr class="separator:ga1659f1343afcf0f3c13e5444927fd96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2fbbdae76828ba59515986bdac9756fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga2fbbdae76828ba59515986bdac9756fd">qOS::core::eventFlagsRead</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) const noexcept</td></tr>
+<tr class="memdesc:ga2fbbdae76828ba59515986bdac9756fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current value of the task's EventFlags.  <a href="group__qeventflags.html#ga2fbbdae76828ba59515986bdac9756fd">More...</a><br /></td></tr>
+<tr class="separator:ga2fbbdae76828ba59515986bdac9756fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab6532f3f151ba4a400926c44f21fcebf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#gab6532f3f151ba4a400926c44f21fcebf">qOS::core::eventFlagsCheck</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> flagsToCheck, const bool clearOnExit=true, const bool checkForAll=false) noexcept</td></tr>
+<tr class="memdesc:gab6532f3f151ba4a400926c44f21fcebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for flags set to <code>true</code> inside the task Event-Flags.  <a href="group__qeventflags.html#gab6532f3f151ba4a400926c44f21fcebf">More...</a><br /></td></tr>
+<tr class="separator:gab6532f3f151ba4a400926c44f21fcebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p >API interface for the built-in-task <a class="el" href="q_events.html#qeventflags">Event Flags</a>. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga7f7273ea1c026d4c8a7ba52ec39e6442" name="ga7f7273ea1c026d4c8a7ba52ec39e6442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7f7273ea1c026d4c8a7ba52ec39e6442">&#9670;&nbsp;</a></span>EVENT_FLAG()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> qOS::EVENT_FLAG </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a>&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Event flag selector function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The desired event-flag, a value between 1 and 20 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>The</code> event flag mask identifier. </dd></dl>
+
+</div>
+</div>
+<a id="gab6532f3f151ba4a400926c44f21fcebf" name="gab6532f3f151ba4a400926c44f21fcebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab6532f3f151ba4a400926c44f21fcebf">&#9670;&nbsp;</a></span>eventFlagsCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool core::eventFlagsCheck </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
+          <td class="paramname"><em>Task</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a>&#160;</td>
+          <td class="paramname"><em>flagsToCheck</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>clearOnExit</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>checkForAll</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check for flags set to <code>true</code> inside the task Event-Flags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>The task node. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">flagsToCheck</td><td>A bitwise value that indicates the flags to test inside the EventFlags. Can be combined with a bitwise OR. <code>EVENT_FLAG(1)</code> | <code>EVENT_FLAG(2)</code> | ... | <code>EVENT_FLAG(20)</code> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">clearOnExit</td><td>If is set to <code>true</code> then any flags set in the value passed as the <em>FlagsToCheck</em> parameter will be cleared in the event group before this function returns only when the condition is meet. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">checkForAll</td><td>Used to create either a logical AND test (where all flags must be set) or a logical OR test (where one or more flags must be set) as follows:</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>If is set to <code>true</code>, this API will return <code>true</code> when either all the flags set in the value passed as the <em>flagsToCheck</em> parameter are set in the task's EventFlags.</p>
+<p >If is set to <code>false</code>, this API will return <code>true</code> when any of the flags set in the value passed as the <em>flagsToCheck</em> parameter are set in the task's EventFlags. </p><dl class="section return"><dt>Returns</dt><dd><code>true</code> if the condition is meet, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga1659f1343afcf0f3c13e5444927fd96f" name="ga1659f1343afcf0f3c13e5444927fd96f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1659f1343afcf0f3c13e5444927fd96f">&#9670;&nbsp;</a></span>eventFlagsModify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool core::eventFlagsModify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
+          <td class="paramname"><em>Task</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a>&#160;</td>
+          <td class="paramname"><em>tFlags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>action</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Modify the EventFlags for the provided task. </p>
+<dl class="section note"><dt>Note</dt><dd>Any EventFlag set will cause a task activation. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>The task node. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tFlags</td><td>The flags to modify. Can be combined with a bitwise OR. <code>EVENT_FLAG(1)</code> | <code>EVENT_FLAG(2)</code> | ... | <code>EVENT_FLAG(20)</code> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">action</td><td><code>true</code> to set the flags or <code>false</code> to clear them. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga2fbbdae76828ba59515986bdac9756fd" name="ga2fbbdae76828ba59515986bdac9756fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2fbbdae76828ba59515986bdac9756fd">&#9670;&nbsp;</a></span>eventFlagsRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> core::eventFlagsRead </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
+          <td class="paramname"><em>Task</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the current value of the task's EventFlags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Task</td><td>The task node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The EventFlag value of the task. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->

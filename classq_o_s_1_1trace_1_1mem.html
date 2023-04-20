@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1trace_1_1mem.html',''); 
 </div><!--header-->
 <div class="contents">
 
-<p>Class that sets the number of bytes to be traced when a pointer for a pointer variable Example:  
+<p>Class that sets the number of bytes to be traced when a pointer is being used after. Example:  
  <a href="classq_o_s_1_1trace_1_1mem.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="trace_8hpp_source.html">trace.hpp</a>&gt;</code></p>
@@ -152,10 +152,11 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 <tr class="separator:aa08bc5952f27dccbd29b5433eb7c0bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Class that sets the number of bytes to be traced when a pointer for a pointer variable Example: </p>
+<div class="textblock"><p >Class that sets the number of bytes to be traced when a pointer is being used after. Example: </p>
 <div class="fragment"><div class="line">uin32_t myNumber = 0xAABBCCDD;</div>
-<div class="line">trace::log &lt;&lt; trace::mem( <span class="keyword">sizeof</span>(myNumber ) ) &lt;&lt; &amp;myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
-<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:5</div></div>
+<div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; trace::mem( <span class="keyword">sizeof</span>(myNumber ) ) &lt;&lt; &amp;myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="ttc" id="aclassq_o_s_1_1trace_html_ab6c95f28fe39352c65d1962f09c48d8a"><div class="ttname"><a href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">qOS::trace::log</a></div><div class="ttdeci">static void * log</div><div class="ttdoc">Specify a new trace output with detailed information of the caller.</div><div class="ttdef"><b>Definition:</b> trace.hpp:62</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:178</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

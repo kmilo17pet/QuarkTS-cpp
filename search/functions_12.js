@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waituntil_0',['waitUntil',['../group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20',1,'qOS::co::waitUntil(bool condition) noexcept'],['../group__qcoroutines.html#ga6187b4da6f70135cfda650c996f7d22d',1,'qOS::co::waitUntil(bool condition, qOS::time_t timeout) noexcept']]]
+  ['var_0',['var',['../classq_o_s_1_1trace.html#a93204201649ab4b46f6ba133ebd60893',1,'qOS::trace']]]
 ];

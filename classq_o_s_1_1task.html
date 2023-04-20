@@ -217,7 +217,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a65be36221b03ecf2de750a5f1d71ff17"><td class="memItemLeft" align="right" valign="top">void *const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a65be36221b03ecf2de750a5f1d71ff17">getAttachedObject</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a65be36221b03ecf2de750a5f1d71ff17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the Task attached object.  <a href="classq_o_s_1_1task.html#a65be36221b03ecf2de750a5f1d71ff17">More...</a><br /></td></tr>
 <tr class="separator:a65be36221b03ecf2de750a5f1d71ff17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a923b467e2358782247afd2817e5e3fb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a923b467e2358782247afd2817e5e3fb6">eventData</a> (void) const noexcept</td></tr>
+<tr class="memitem:a923b467e2358782247afd2817e5e3fb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1event__t.html">event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a923b467e2358782247afd2817e5e3fb6">eventData</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a923b467e2358782247afd2817e5e3fb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the last task event data.  <a href="classq_o_s_1_1task.html#a923b467e2358782247afd2817e5e3fb6">More...</a><br /></td></tr>
 <tr class="separator:a923b467e2358782247afd2817e5e3fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -259,15 +259,14 @@ Additional Inherited Members</h2></td></tr>
 <li>Event-based data</li>
 </ul>
 <p >The OS uses a Task Control Block(TCB) to represent each task, storing essential information about task management and execution. Part of this information also includes link-pointers that allows it to be part of one of the lists available in the Kernel Control Block (KCB).</p>
-<p >Each task performs its activities via a callback function and each of them is responsible for supporting cooperative multitasking by being “good neighbors”, i.e., running their callback methods quickly in a non-blocking way and releasing control back to the scheduler as soon as possible (returning). Every task node, must be defined using the qTask_t data-type and the callback is defined as a function that returns void and takes a event_t data structure as its only parameter (This input argument can be used later to get event information.</p>
+<p >Each task performs its activities via a callback function and each of them is responsible for supporting cooperative multitasking by being “good neighbors”, i.e., running their callback methods quickly in a non-blocking way and releasing control back to the scheduler as soon as possible (returning). Every task node, must be defined using the qTask_t data-type and the callback is defined as a function that returns void and takes a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">event_t</a> data structure as its only parameter (This input argument can be used later to get event information.</p>
 <p >Example : </p><div class="fragment"><div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
 <div class="line">task UserTask;</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> UserTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> UserTask_Callback( event_t e ) {</div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qtaskmanip_html_ga99648a15693a88caaff87faad3955a76"><div class="ttname"><a href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">qOS::event_t</a></div><div class="ttdeci">_Event &amp; event_t</div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition:</b> task.hpp:190</div></div>
 </div><!-- fragment --><dl class="section attention"><dt>Attention</dt><dd>All tasks in QuarkTS must ensure their completion to return the CPU control back to the scheduler, otherwise, the scheduler will hold the execution-state for that task, preventing the activation of other tasks. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Do not access any member of this structure directly. </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -350,10 +349,10 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4a85bec350eace8b51b57fb60f5eec6da7">queueLinkMode::QUEUE_RECEIVER</a> : The task will be triggered if there are elements in the Queue. Data will be extracted automatically in every trigger and will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
-<p ><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4ae7178fccc5ed4efedaaf6cafebe0046b">queueLinkMode::QUEUE_FULL</a> : The task will be triggered if the Queue is full. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
-<p ><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4aee71854ab3d4e6e1c5563891178ce396">queueLinkMode::QUEUE_COUNT</a> : The task will be triggered if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
-<p ><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4a456f6bb4a61ab7fc246cf11c22a64a34">queueLinkMode::QUEUE_EMPTY</a> : The task will be triggered if the queue is empty. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p><dl class="params"><dt>Parameters</dt><dd>
+<p><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4a85bec350eace8b51b57fb60f5eec6da7">queueLinkMode::QUEUE_RECEIVER</a> : The task will be triggered if there are elements in the Queue. Data will be extracted automatically in every trigger and will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
+<p ><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4ae7178fccc5ed4efedaaf6cafebe0046b">queueLinkMode::QUEUE_FULL</a> : The task will be triggered if the Queue is full. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
+<p ><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4aee71854ab3d4e6e1c5563891178ce396">queueLinkMode::QUEUE_COUNT</a> : The task will be triggered if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field.</p>
+<p ><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4a456f6bb4a61ab7fc246cf11c22a64a34">queueLinkMode::QUEUE_EMPTY</a> : The task will be triggered if the queue is empty. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>This argument defines if the queue will be attached (1u) or detached (0u) from the task. If the <a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4aee71854ab3d4e6e1c5563891178ce396">queueLinkMode::QUEUE_COUNT</a> mode is specified, this value will be used to check the element count of the queue. A zero value will act as a detach action. </td></tr>
   </table>
@@ -463,7 +462,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> task::eventData </td>
+          <td class="memname"><a class="el" href="classq_o_s_1_1event__t.html">event_t</a> task::eventData </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -744,7 +743,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>This function can be used to detach a state-machine from a task </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tCallback</td><td>A pointer to a void callback method with a event_t parameter as input argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tCallback</td><td>A pointer to a void callback method with a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">event_t</a> parameter as input argument. </td></tr>
   </table>
   </dd>
 </dl>

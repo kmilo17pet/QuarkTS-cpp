@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['oct_0',['oct',['../group__qtrace.html#ga1f3b34894586a6741162d44f3ee28a7f',1,'qOS::trace']]],
-  ['operative_20system_1',['Operative System',['../group__qos.html',1,'']]],
-  ['options_5ft_2',['options_t',['../group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a',1,'qOS::cli']]],
-  ['os_3',['os',['../group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21',1,'qOS']]],
-  ['output_4',['output',['../group__qatcli.html#ga7719470f2343fc72c68ef1f29dc48778',1,'qOS::cli::_Handler::output(const char c) const'],['../group__qatcli.html#ga74ed569fc1e1e4fdc6c5ec8c98ee0f1c',1,'qOS::cli::_Handler::output(const char *s) const']]],
-  ['outputraw_5',['outputRAW',['../group__qioutils.html#ga057bcfe88c1239c40169daaff9055383',1,'qOS::util']]],
-  ['outputstring_6',['outputString',['../group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2',1,'qOS::util']]],
-  ['overview_7',['Overview',['../q_background.html',1,'']]]
+  ['para_0',['PARA',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e',1,'qOS::cli']]],
+  ['peek_1',['peek',['../classq_o_s_1_1byte_buffer.html#a33dcef8da0f37339a049cab4b2f55874',1,'qOS::byteBuffer::peek()'],['../classq_o_s_1_1queue.html#a8167607c08f7d809189767e37d9ee883',1,'qOS::queue::peek()']]],
+  ['periodic_2',['PERIODIC',['../classq_o_s_1_1task.html#a7239e8580f4c2f69da6b822f99be7fab',1,'qOS::task']]],
+  ['pool_3',['pool',['../classq_o_s_1_1mem_1_1pool.html#ac9e3988282addb3648fae80d3fcf310f',1,'qOS::mem::pool::pool()'],['../classq_o_s_1_1mem_1_1pool.html',1,'qOS::mem::pool']]],
+  ['position_4',['position',['../classq_o_s_1_1co_1_1position.html',1,'qOS::co']]],
+  ['pre_5',['pre',['../classq_o_s_1_1trace_1_1pre.html',1,'qOS::trace']]],
+  ['printxdata_6',['printXData',['../group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67',1,'qOS::util']]],
+  ['priority_5ft_7',['priority_t',['../group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5',1,'types.hpp']]],
+  ['put_8',['put',['../classq_o_s_1_1byte_buffer.html#a2476613590497e74630600c2ed9819e3',1,'qOS::byteBuffer']]],
+  ['putchar_5ft_9',['putChar_t',['../group__qioutils.html#ga590b120a141394c83550952547d27555',1,'qOS::util']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trace_2fdebugging_0',['Trace/Debugging',['../q_trace.html',1,'q_extensions']]]
+  ['user_20manual_0',['User manual',['../index.html',1,'']]]
 ];

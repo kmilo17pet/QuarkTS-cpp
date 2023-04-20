@@ -183,10 +183,11 @@ Setting up a state machine</h1>
 Subscribing states and defining callbacks</h1>
 <p >State machines are constructed by composition, therefore, the topology of a state machine is determined upon construction. In this FSM implementation, there is no distinction between composite states(states containing substates) and leaf states. All states are potentially composite. The API stateMachine::stateSubscribe() should be used to initialize the state and define its position in the topology.</p>
 <p >A state callback-functions takes a sm::handler_t object as input argument and returns a qSM_Status_t value. An example is shown in the following code snippet:</p>
-<div class="fragment"><div class="line">sm::status ExampleState_Callback( sm::handler_t h ) {</div>
+<div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> ExampleState_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="comment">/* TODO: State code */</span></div>
 <div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition:</b> fsm.hpp:63</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_fsmhandler"></a>
 The state callback handler: performing transitions and retrieving data</h1>
 <p >Because callback functions are methods derived from the state-machine object, they have direct access to some attributes via the qSM_Handler_t argument. The usage of this object it's required to make the FSM moves between states and additionally get extra data. The provided attributes are:</p>
@@ -217,7 +218,7 @@ The state callback handler: performing transitions and retrieving data</h1>
 <p >The semantic is simple, if a signal is processed, the callback functions returns the status value ::qSM_STATUS_SIGNAL_HANDLED. Otherwise, it throws the signal for further processing by higher-level states. Also, this returning mechanism can be used to handle exceptions by using the surrounding callback.</p>
 <p ><em>Entry/Exit</em> actions and default transitions are also implemented inside the callback function in the response to pre-defined signals. #QSM_SIGNAL_ENTRY, #QSM_SIGNAL_EXIT and #QSM_SIGNAL_START. The state machine generates and dispatches these signals to appropriate handlers upon state transitions.</p>
 <p >The example below shows what a status callback should look like including the use of the handler.</p>
-<div class="fragment"><div class="line">sm::status ExampleState_Callback ( sm::handler_t h ) {</div>
+<div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> ExampleState_Callback ( sm::handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
 <div class="line">        <span class="keywordflow">case</span> signalID::SIGNAL_START:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>

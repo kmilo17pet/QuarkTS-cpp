@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['options_5ft_0',['options_t',['../group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a',1,'qOS::cli']]]
+  ['priority_5ft_0',['priority_t',['../group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5',1,'types.hpp']]],
+  ['putchar_5ft_1',['putChar_t',['../group__qioutils.html#ga590b120a141394c83550952547d27555',1,'qOS::util']]]
 ];

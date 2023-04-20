@@ -159,7 +159,7 @@ Retrieving the event data</h1>
 <li>What is the task execution status?</li>
 </ul>
 <p >The OS provides a simple approach for this, a data structure with all the regarding information of the task execution. This structure, that is already defined in the callback function as the event_t argument, is filled by the kernel dispatcher, so the application writer only needs to read the fields inside.</p>
-<p >This data structure is defined as: </p><div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> {</div>
+<p >This data structure is defined as: </p><div class="fragment"><div class="line"><span class="keyword">class </span>event_t {</div>
 <div class="line">    <a class="code hl_enumeration" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7">trigger</a> getTrigger( <span class="keywordtype">void</span> );</div>
 <div class="line">    <span class="keywordtype">void</span> *TaskData;</div>
 <div class="line">    <span class="keywordtype">void</span> *EventData;</div>
@@ -170,7 +170,6 @@ Retrieving the event data</h1>
 <div class="line">    task&amp; <span class="keyword">self</span>( void );</div>
 <div class="line">};</div>
 <div class="ttc" id="agroup__qtaskmanip_html_ga7e4cfcb94ebb5b84bd080b487a2db8c7"><div class="ttname"><a href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7">qOS::trigger</a></div><div class="ttdeci">trigger</div><div class="ttdoc">An enum with all the possible values for the event_t::getTrigger() method.</div><div class="ttdef"><b>Definition:</b> task.hpp:23</div></div>
-<div class="ttc" id="agroup__qtaskmanip_html_ga99648a15693a88caaff87faad3955a76"><div class="ttname"><a href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">qOS::event_t</a></div><div class="ttdeci">_Event &amp; event_t</div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition:</b> task.hpp:190</div></div>
 </div><!-- fragment --><p >Please review the _Event class reference for more details.</p>
 <h1><a class="anchor" id="q_event_timeelapsed"></a>
 The Time-Elapsed event</h1>
@@ -286,8 +285,8 @@ Sending notifications</h3>
 <div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line">task_t taskA, taskB;</div>
-<div class="line"><span class="keywordtype">void</span> taskA_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e );</div>
-<div class="line"><span class="keywordtype">void</span> taskB_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e );</div>
+<div class="line"><span class="keywordtype">void</span> taskA_Callback( event_t e );</div>
+<div class="line"><span class="keywordtype">void</span> taskB_Callback( event_t e );</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> *app_events[] = {</div>
 <div class="line">                            <span class="stringliteral">&quot;Timer1seg&quot;</span>,</div>
@@ -298,21 +297,21 @@ Sending notifications</h3>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> interrupt Timer1Second_ISR( <span class="keywordtype">void</span>) {</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::SIMPLE, taskA );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::SIMPLE, taskA );</div>
 <div class="line">    HAL_ClearInterruptFlags( HAL_TMR_ISR ); <span class="comment">/*hardware dependent code*/</span></div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> interrupt ExternalInput_ISR( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    <span class="keywordflow">if</span> ( RISING_EDGE == HAL_GetInputEdge() ) { <span class="comment">/*hardware dependent code*/</span></div>
-<div class="line">        <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::QUEUED, taskA, app_events[1] );</div>
+<div class="line">        <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::QUEUED, taskA, app_events[1] );</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">else</span> {</div>
-<div class="line">        <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::QUEUED, taskA, app_events[2] );</div>
+<div class="line">        <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::QUEUED, taskA, app_events[2] );</div>
 <div class="line">    }</div>
 <div class="line">    HAL_ClearInterruptFlags( HAL_EXT_ISR ); <span class="comment">/*hardware dependent code*/</span></div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> taskA_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> taskA_Callback( event_t e ) {</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> press_counter = 0;</div>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">switch</span> ( e.getTrigger() ) { <span class="comment">/*check the source of the event*/</span></div>
@@ -327,7 +326,7 @@ Sending notifications</h3>
 <div class="line">                press_counter++; <span class="comment">/*count the button press*/</span></div>
 <div class="line">                <span class="keywordflow">if</span> ( 3 == press_counter ) { <span class="comment">/*after 3 presses*/</span></div>
 <div class="line">                    <span class="comment">/*send the notification of 3 presses to taskB*/</span></div>
-<div class="line">                    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::SIMPLE, taskB, app_events[3] );</div>
+<div class="line">                    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">notify</a>( notifyMode::SIMPLE, taskB, app_events[3] );</div>
 <div class="line">                    press_counter = 0;</div>
 <div class="line">                }</div>
 <div class="line">            }</div>
@@ -337,20 +336,20 @@ Sending notifications</h3>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> taskB_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> taskB_Callback( event_t e ) {</div>
 <div class="line">    <span class="keywordflow">if</span> ( trigger::byNotificationSimple == e.getTrigger() ) {</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * we can do more here, but this is just an example,</span></div>
 <div class="line"><span class="comment">         * so, this task will only print out the received </span></div>
 <div class="line"><span class="comment">         * notification event.</span></div>
 <div class="line"><span class="comment">         */</span></div>
-<div class="line">        trace::log &lt;&lt; static_cast&lt;char&gt;( e-&gt;EventData ) &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
+<div class="line">        trace::log &lt;&lt; static_cast&lt;char&gt;( e-&gt;EventData ) &lt;&lt; trace::endl;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Setup_MCU(); <span class="comment">/*hardware dependent code*/</span></div>
-<div class="line">    trace::setOutputFcn( HAL_OutPutChar );</div>
+<div class="line">    <a class="code hl_function" href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">trace::setOutputFcn</a>( HAL_OutPutChar );</div>
 <div class="line">    <span class="comment">/* setup the scheduler to handle up to 10 queued notifications*/</span></div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( taskA, taskA_Callback, core::LOWEST_PRIORITY );</div>
@@ -358,12 +357,12 @@ Sending notifications</h3>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">run</a>();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a02de2ccfc49432f48637fb1391c522b0"><div class="ttname"><a href="classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0">qOS::core::notify</a></div><div class="ttdeci">bool notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept</div><div class="ttdoc">Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:425</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a9dab08cadc8d5547f6dbab6fdd0d45ff"><div class="ttname"><a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:32</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_ad37fb39c9ab1224e007be651e1dfc69b"><div class="ttname"><a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">qOS::core::addEventTask</a></div><div class="ttdeci">bool addEventTask(task &amp;Task, taskFcn_t callback, const priority_t p, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by defa...</div><div class="ttdef"><b>Definition:</b> kernel.hpp:247</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_ad37fb39c9ab1224e007be651e1dfc69b"><div class="ttname"><a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">qOS::core::addEventTask</a></div><div class="ttdeci">bool addEventTask(task &amp;Task, taskFcn_t callback, const priority_t p, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by defa...</div><div class="ttdef"><b>Definition:</b> kernel.hpp:261</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_af544e4dc0c995270ff1e87f01f87fc79"><div class="ttname"><a href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:373</div></div>
+<div class="ttc" id="agroup__qnot_html_ga02de2ccfc49432f48637fb1391c522b0"><div class="ttname"><a href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">qOS::core::notify</a></div><div class="ttdeci">bool notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept</div><div class="ttdoc">Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:425</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_ga501a22419157104b982c3a32d871fe21"><div class="ttname"><a href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:6</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.cpp:5</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:302</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="qnotspread"></a>
 Spread a notification</h3>
 <p >In some systems, we need the ability to broadcast an event to all tasks. This is often referred to as a barrier. This means that a group of tasks should stop activities at some point and cannot proceed until another task or ISR raise a specific event. For this kind of implementation, we can also use the core::notify() method but in this case, without specifying a target task.</p>
@@ -420,7 +419,7 @@ A queue example</h3>
 <div class="line"><span class="comment">/* The producer task puts data into the buffer if there is enough free </span></div>
 <div class="line"><span class="comment"> * space in it, otherwise the task blocks itself and wait until the queue </span></div>
 <div class="line"><span class="comment"> * is empty to resume. */</span></div>
-<div class="line"><span class="keywordtype">void</span> tProducer_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> tProducer_Callback( event_t e ) {</div>
 <div class="line">    <span class="keyword">static</span> uint16_t unData = 0;</div>
 <div class="line">    unData++;</div>
 <div class="line">    <span class="comment">/*Queue is empty, enable the producer if it was disabled*/</span></div>
@@ -439,7 +438,7 @@ A queue example</h3>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
 <div class="line"><span class="comment">/* The consumer task gets one element from the queue.*/</span></div>
-<div class="line"><span class="keywordtype">void</span> tConsumer_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> tConsumer_Callback( event_t e ) {</div>
 <div class="line">    uint16_t unData;</div>
 <div class="line">    queue_t *ptrQueue; <span class="comment">/*a pointer to the queue that triggers the event*/</span></div>
 <div class="line">    <span class="keywordflow">if</span> ( byQueueCount == e.getTrigger ) {</div>
@@ -449,7 +448,7 @@ A queue example</h3>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
-<div class="line"><span class="keywordtype">void</span> IdleTask_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> IdleTask_Callback( event_t e ) {</div>
 <div class="line">    <span class="comment">/*nothing to do...*/</span></div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>

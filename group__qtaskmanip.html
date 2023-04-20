@@ -127,6 +127,7 @@ $(document).ready(function(){initNavTree('group__qtaskmanip.html',''); initResiz
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
@@ -139,14 +140,20 @@ $(document).ready(function(){initNavTree('group__qtaskmanip.html',''); initResiz
 <div class="dynheader">
 Collaboration diagram for Managing tasks:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="group__qtaskmanip.svg" width="298" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__qtaskmanip.svg" width="436" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="groups" name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__qeventflags"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html">Event Flags</a></td></tr>
+<tr class="memdesc:group__qeventflags"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface for the built-in-task <a class="el" href="q_events.html#qeventflags">Event Flags</a>. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1___event.html">qOS::_Event</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The task argument with all the regarding information of the task execution.  <a href="classq_o_s_1_1___event.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html">qOS::event_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The task argument with all the regarding information of the task execution.  <a href="classq_o_s_1_1event__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html">qOS::task</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A task node object.  <a href="classq_o_s_1_1task.html#details">More...</a><br /></td></tr>
@@ -154,20 +161,13 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga99648a15693a88caaff87faad3955a76"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">qOS::event_t</a> = <a class="el" href="classq_o_s_1_1___event.html">_Event</a> &amp;</td></tr>
-<tr class="memdesc:ga99648a15693a88caaff87faad3955a76"><td class="mdescLeft">&#160;</td><td class="mdescRight">The task argument with all the regarding information of the task execution.  <a href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">More...</a><br /></td></tr>
-<tr class="separator:ga99648a15693a88caaff87faad3955a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad8240d45c1eb44a3684bc447bb9a4a91"><td class="memItemLeft" align="right" valign="top"><a id="gad8240d45c1eb44a3684bc447bb9a4a91" name="gad8240d45c1eb44a3684bc447bb9a4a91"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::taskFcn_t</b> = void(*)(<a class="el" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a>)</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::taskFcn_t</b> = void(*)(<a class="el" href="classq_o_s_1_1event__t.html">event_t</a>)</td></tr>
 <tr class="separator:gad8240d45c1eb44a3684bc447bb9a4a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga466b47ce725c30974bd5e62fe363a37a"><td class="memItemLeft" align="right" valign="top"><a id="ga466b47ce725c30974bd5e62fe363a37a" name="ga466b47ce725c30974bd5e62fe363a37a"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::notifier_t</b> = uint32_t</td></tr>
 <tr class="memdesc:ga466b47ce725c30974bd5e62fe363a37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 32-bit unsigned integer type to hold a notification value. <br /></td></tr>
 <tr class="separator:ga466b47ce725c30974bd5e62fe363a37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadab2a8e1d8f36731b1bcc666527e39eb"><td class="memItemLeft" align="right" valign="top"><a id="gadab2a8e1d8f36731b1bcc666527e39eb" name="gadab2a8e1d8f36731b1bcc666527e39eb"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::taskFlag_t</b> = uint32_t</td></tr>
-<tr class="memdesc:gadab2a8e1d8f36731b1bcc666527e39eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 32-bit unsigned integer type to hold the task flags. <br /></td></tr>
-<tr class="separator:gadab2a8e1d8f36731b1bcc666527e39eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -217,25 +217,6 @@ Enumerations</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API interface to manage tasks. </p>
 <dl class="section pre"><dt>Precondition</dt><dd>In order to be able to manage a task, make sure the task has already been added to the scheduling scheme bt using <a class="el" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134" title="Add a task to the scheduling scheme. The task is scheduled to run every t time units,...">core::addTask()</a>, <a class="el" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b" title="Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by defa...">core::addEventTask()</a>, <a class="el" href="classq_o_s_1_1core.html#ae31fe2a7633545a8ccdb6ea388904236" title="Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run e...">core::addStateMachineTask()</a> or core::addCommandLineInterfaceTask(). </dd></dl>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga99648a15693a88caaff87faad3955a76" name="ga99648a15693a88caaff87faad3955a76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga99648a15693a88caaff87faad3955a76">&#9670;&nbsp;</a></span>event_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">qOS::event_t</a> = typedef <a class="el" href="classq_o_s_1_1___event.html">_Event</a>&amp;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The task argument with all the regarding information of the task execution. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1___event.html">_Event</a> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Should be used only in task-callbacks as the only input argument. </dd></dl>
-
-</div>
-</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ga34268c083fc5881f4027b4100fb1f790" name="ga34268c083fc5881f4027b4100fb1f790"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga34268c083fc5881f4027b4100fb1f790">&#9670;&nbsp;</a></span>globalState</h2>
@@ -263,7 +244,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga34268c083fc5881f4027b4100fb1f790a1869d56535e8b1449a6da54ff5e11f50" name="gga34268c083fc5881f4027b4100fb1f790a1869d56535e8b1449a6da54ff5e11f50"></a>WAITING&#160;</td><td class="fielddoc"><p >The task cannot run because the conditions for running are not in place. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga34268c083fc5881f4027b4100fb1f790a0cb707127aebaa0023eb38363993843a" name="gga34268c083fc5881f4027b4100fb1f790a0cb707127aebaa0023eb38363993843a"></a>SUSPENDED&#160;</td><td class="fielddoc"><p >The task doesn't take part in what is going on. Normally this state is taken after the ::qRunning state or when the task doesn't reach the ::qReady state </p>
+<tr><td class="fieldname"><a id="gga34268c083fc5881f4027b4100fb1f790a0cb707127aebaa0023eb38363993843a" name="gga34268c083fc5881f4027b4100fb1f790a0cb707127aebaa0023eb38363993843a"></a>SUSPENDED&#160;</td><td class="fielddoc"><p >The task doesn't take part in what is going on. Normally this state is taken after the <a class="el" href="group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a43491564ebcfd38568918efbd6e840fd">globalState::RUNNING</a> state or when the task doesn't reach the <a class="el" href="group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a2baa69eafc7204f3bd8648eba580c489">globalState::READY</a> state </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga34268c083fc5881f4027b4100fb1f790a43491564ebcfd38568918efbd6e840fd" name="gga34268c083fc5881f4027b4100fb1f790a43491564ebcfd38568918efbd6e840fd"></a>RUNNING&#160;</td><td class="fielddoc"><p >The task is currently being executed. </p>
 </td></tr>
@@ -360,23 +341,23 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>An enum with all the possible values for the <a class="el" href="classq_o_s_1_1___event.html#ae45bf685d8277435afc200316b0736fe" title="Get the event source that triggers the task execution. Possible values are described in the qOS::trig...">event_t::getTrigger()</a> method. </p>
+<p>An enum with all the possible values for the <a class="el" href="classq_o_s_1_1event__t.html#a7ea7de15a8fcaf57dc1384aa33cd1291" title="Get the event source that triggers the task execution. Possible values are described in the qOS::trig...">event_t::getTrigger()</a> method. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a6adf97f83acf6453d4a6a4b1070f3754" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"><p >To indicate the absence of trigger. Reserved for internal use. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2"></a>byTimeElapsed&#160;</td><td class="fielddoc"><p >When the time specified for the task elapsed. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4"></a>byNotificationQueued&#160;</td><td class="fielddoc"><p >When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher performs a dequeue operation automatically. A pointer to the extracted event data will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
+<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4"></a>byNotificationQueued&#160;</td><td class="fielddoc"><p >When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher performs a dequeue operation automatically. A pointer to the extracted event data will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c"></a>byNotificationSimple&#160;</td><td class="fielddoc"><p >When the execution chain does, according to a requirement of asynchronous notification event prompted by <a class="el" href="classq_o_s_1_1core.html#a02de2ccfc49432f48637fb1391c522b0" title="Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...">core::notify()</a>. A pointer to the notified data will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
+<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c"></a>byNotificationSimple&#160;</td><td class="fielddoc"><p >When the execution chain does, according to a requirement of asynchronous notification event prompted by <a class="el" href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0" title="Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...">core::notify()</a>. A pointer to the notified data will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a1e061f1354d2a8d008937202744e8388" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a1e061f1354d2a8d008937202744e8388"></a>byQueueReceiver&#160;</td><td class="fielddoc"><p >When there are elements available in the attached queue, the scheduler make a data dequeue (auto-receive) from the front. A pointer to the received data will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
+<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a1e061f1354d2a8d008937202744e8388" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a1e061f1354d2a8d008937202744e8388"></a>byQueueReceiver&#160;</td><td class="fielddoc"><p >When there are elements available in the attached queue, the scheduler make a data dequeue (auto-receive) from the front. A pointer to the received data will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a67d7713f7e3b6c3a0b708d055002ec38" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a67d7713f7e3b6c3a0b708d055002ec38"></a>byQueueFull&#160;</td><td class="fielddoc"><p >When the attached queue is full. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
+<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a67d7713f7e3b6c3a0b708d055002ec38" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a67d7713f7e3b6c3a0b708d055002ec38"></a>byQueueFull&#160;</td><td class="fielddoc"><p >When the attached queue is full. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7ad8e877c4778fa1802106030fd48486d8" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7ad8e877c4778fa1802106030fd48486d8"></a>byQueueCount&#160;</td><td class="fielddoc"><p >When the element-count of the attached queue reaches the specified value. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
+<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7ad8e877c4778fa1802106030fd48486d8" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7ad8e877c4778fa1802106030fd48486d8"></a>byQueueCount&#160;</td><td class="fielddoc"><p >When the element-count of the attached queue reaches the specified value. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a7d01154f623fa349f7f8450930380546" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a7d01154f623fa349f7f8450930380546"></a>byQueueEmpty&#160;</td><td class="fielddoc"><p >When the attached queue is empty. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1___event.html#aa984232848ef42ca267954eee845c97b" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
+<tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7a7d01154f623fa349f7f8450930380546" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7a7d01154f623fa349f7f8450930380546"></a>byQueueEmpty&#160;</td><td class="fielddoc"><p >When the attached queue is empty. A pointer to the queue will be available in the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga7e4cfcb94ebb5b84bd080b487a2db8c7af633e4329e7a41341f517b5387490ef5" name="gga7e4cfcb94ebb5b84bd080b487a2db8c7af633e4329e7a41341f517b5387490ef5"></a>byEventFlags&#160;</td><td class="fielddoc"><p >When any event-flag is set. </p>
 </td></tr>

@@ -1,19 +1,18 @@
 var hierarchy =
 [
-    [ "qOS::_Event", "classq_o_s_1_1___event.html", [
+    [ "_Event", null, [
       [ "qOS::core", "classq_o_s_1_1core.html", null ]
     ] ],
-    [ "qOS::cli::_Handler", "classq_o_s_1_1cli_1_1___handler.html", null ],
-    [ "qOS::sm::_Handler", "classq_o_s_1_1sm_1_1___handler.html", [
+    [ "sm::_Handler", null, [
       [ "qOS::stateMachine", "classq_o_s_1_1state_machine.html", null ]
     ] ],
-    [ "qOS::sm::_psIndex_s", "structq_o_s_1_1sm_1_1__ps_index__s.html", null ],
-    [ "qOS::sm::_timeoutStateDefinition_s", "structq_o_s_1_1sm_1_1__timeout_state_definition__s.html", null ],
-    [ "qOS::sm::_transition_s", "structq_o_s_1_1sm_1_1__transition__s.html", null ],
     [ "qOS::byteBuffer", "classq_o_s_1_1byte_buffer.html", null ],
     [ "qOS::clock", "classq_o_s_1_1clock.html", null ],
     [ "qOS::edgeCheck", "classq_o_s_1_1edge_check.html", null ],
+    [ "qOS::event_t", "classq_o_s_1_1event__t.html", null ],
     [ "qOS::co::handle", "classq_o_s_1_1co_1_1handle.html", null ],
+    [ "qOS::cli::handler_t", "classq_o_s_1_1cli_1_1handler__t.html", null ],
+    [ "qOS::sm::handler_t", "classq_o_s_1_1sm_1_1handler__t.html", null ],
     [ "cli::input", null, [
       [ "qOS::commandLineInterface", "classq_o_s_1_1command_line_interface.html", null ]
     ] ],
@@ -34,5 +33,6 @@ var hierarchy =
     [ "qOS::sm::signal_t", "classq_o_s_1_1sm_1_1signal__t.html", null ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", null ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ],
-    [ "qOS::timer", "classq_o_s_1_1timer.html", null ]
+    [ "qOS::timer", "classq_o_s_1_1timer.html", null ],
+    [ "qOS::trace", "classq_o_s_1_1trace.html", null ]
 ];

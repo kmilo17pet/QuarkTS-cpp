@@ -4,20 +4,18 @@ var group__qfsm =
       [ "data", "classq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898", null ],
       [ "id", "classq_o_s_1_1sm_1_1signal__t.html#abc8c864b6424f544cc49c53be951d5d6", null ]
     ] ],
-    [ "qOS::sm::_Handler", "classq_o_s_1_1sm_1_1___handler.html", [
-      [ "lastStatus", "classq_o_s_1_1sm_1_1___handler.html#a658e64aa366d982b5fa304b38851a617", null ],
-      [ "nextState", "classq_o_s_1_1sm_1_1___handler.html#a35c358ecf162da3f5538a46c9c736b55", null ],
-      [ "signal", "classq_o_s_1_1sm_1_1___handler.html#aaf8094a5a0ae5fb334b6a11babf5a603", null ],
-      [ "thisMachine", "classq_o_s_1_1sm_1_1___handler.html#a8809b68004fcf098087f2fd9f06345ce", null ],
-      [ "thisState", "classq_o_s_1_1sm_1_1___handler.html#a9ee67b1619a74fd4de29195b5147cc1b", null ],
-      [ "timeoutSet", "classq_o_s_1_1sm_1_1___handler.html#a1d28e49b762403115f72c4e881604320", null ],
-      [ "timeoutStop", "classq_o_s_1_1sm_1_1___handler.html#a164258a90b3370053ec2a849a93cb8eb", null ],
-      [ "Data", "classq_o_s_1_1sm_1_1___handler.html#a8177d8902523629c557b3dbe57d0164f", null ],
-      [ "SignalData", "classq_o_s_1_1sm_1_1___handler.html#af80dd7ecc1e3cb962919bd506565a9ce", null ],
-      [ "StateData", "classq_o_s_1_1sm_1_1___handler.html#aad5a7dceb25e2bf86604fea5f0df5c03", null ]
+    [ "qOS::sm::handler_t", "classq_o_s_1_1sm_1_1handler__t.html", [
+      [ "lastStatus", "classq_o_s_1_1sm_1_1handler__t.html#a6e5c6e1c15742bf3b6f16428adc33d80", null ],
+      [ "nextState", "classq_o_s_1_1sm_1_1handler__t.html#a0012ca01df6cee7276afa03680fd98cf", null ],
+      [ "signal", "classq_o_s_1_1sm_1_1handler__t.html#a1ba51742cd55143877aa4a5759b8557a", null ],
+      [ "thisMachine", "classq_o_s_1_1sm_1_1handler__t.html#a0030ebe398c7f7db3f4d8281d2ab2c9c", null ],
+      [ "thisState", "classq_o_s_1_1sm_1_1handler__t.html#a3cce5e81bf48c38c80716d1172d21223", null ],
+      [ "timeoutSet", "classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6", null ],
+      [ "timeoutStop", "classq_o_s_1_1sm_1_1handler__t.html#aa39dc4568f361edc3c2ad5032270b224", null ],
+      [ "Data", "classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a", null ],
+      [ "SignalData", "classq_o_s_1_1sm_1_1handler__t.html#a7aa24bb74e3c045474b5ecf4dde5a229", null ],
+      [ "StateData", "classq_o_s_1_1sm_1_1handler__t.html#ab6a46f5f102667474a5ae6c1d4851b98", null ]
     ] ],
-    [ "qOS::sm::_timeoutStateDefinition_s", "structq_o_s_1_1sm_1_1__timeout_state_definition__s.html", null ],
-    [ "qOS::sm::_transition_s", "structq_o_s_1_1sm_1_1__transition__s.html", null ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", [
       [ "add", "classq_o_s_1_1sm_1_1state.html#a3f7206e427f7a84a0e21d18a52719959", null ],
       [ "add", "classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39", null ],
@@ -29,7 +27,6 @@ var group__qfsm =
       [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a87b8a49872e7905584488b89cf687bd1", null ]
     ] ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ],
-    [ "qOS::sm::_psIndex_s", "structq_o_s_1_1sm_1_1__ps_index__s.html", null ],
     [ "qOS::stateMachine", "classq_o_s_1_1state_machine.html", [
       [ "add", "classq_o_s_1_1state_machine.html#a7fdff9a93bd10117b755fcb3f0c01471", null ],
       [ "add", "classq_o_s_1_1state_machine.html#a8948aa0009e6bb0987a466c10f674278", null ],
@@ -58,6 +55,7 @@ var group__qfsm =
     [ "qOS::sm::transition_t", "group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d", null ],
     [ "qOS::sm::historyMode", "group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420", null ],
     [ "qOS::sm::signalID", "group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4", null ],
+    [ "qOS::sm::status", "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c", null ],
     [ "qOS::sm::SIGNAL_TIMEOUT", "group__qfsm.html#gad5476e06fde92efddf507ec60e492be3", null ],
     [ "qOS::sm::TIMEOUT_INDEX", "group__qfsm.html#ga646289fa705250d5f8b950aee747becc", null ],
     [ "qOS::sm::TIMEOUT_KEEP_IF_SET", "group__qfsm.html#ga7a3a21003ed78487b38d5f9eac661059", null ],

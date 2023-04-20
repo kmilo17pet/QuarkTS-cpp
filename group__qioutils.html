@@ -144,11 +144,11 @@ Collaboration diagram for I/O Utils:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga590b120a141394c83550952547d27555"><td class="memItemLeft" align="right" valign="top"><a id="ga590b120a141394c83550952547d27555" name="ga590b120a141394c83550952547d27555"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::util::putChar_t</b> = void(*)(void *, const char)</td></tr>
+<tr class="memitem:ga590b120a141394c83550952547d27555"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">qOS::util::putChar_t</a> = void(*)(void *, const char)</td></tr>
+<tr class="memdesc:ga590b120a141394c83550952547d27555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to function that write-out a single character.  <a href="group__qioutils.html#ga590b120a141394c83550952547d27555">More...</a><br /></td></tr>
 <tr class="separator:ga590b120a141394c83550952547d27555"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaf436491ddc3a5341177e1ac0aa54bbe"><td class="memItemLeft" align="right" valign="top"><a id="gaaf436491ddc3a5341177e1ac0aa54bbe" name="gaaf436491ddc3a5341177e1ac0aa54bbe"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::util::ioFcn_t</b> = char(*)(void *, const char)</td></tr>
+<tr class="memitem:gaaf436491ddc3a5341177e1ac0aa54bbe"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe">qOS::util::ioFcn_t</a> = char(*)(void *, const char)</td></tr>
+<tr class="memdesc:gaaf436491ddc3a5341177e1ac0aa54bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to function that perform a single character I/O operation.  <a href="group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe">More...</a><br /></td></tr>
 <tr class="separator:gaaf436491ddc3a5341177e1ac0aa54bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -171,16 +171,16 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3bb292da10a661f16f625bc914bf9f9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d">qOS::util::checkEndianness</a> (void) noexcept</td></tr>
 <tr class="memdesc:ga3bb292da10a661f16f625bc914bf9f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the system endianess.  <a href="group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d">More...</a><br /></td></tr>
 <tr class="separator:ga3bb292da10a661f16f625bc914bf9f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa52986572af92eced6edf56209ee5ec2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2">qOS::util::outputString</a> (util::putChar_t fcn, const char *s, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
+<tr class="memitem:gaa52986572af92eced6edf56209ee5ec2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2">qOS::util::outputString</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> fcn, const char *s, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
 <tr class="memdesc:gaa52986572af92eced6edf56209ee5ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to write a string through <em>fcn</em>.  <a href="group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2">More...</a><br /></td></tr>
 <tr class="separator:gaa52986572af92eced6edf56209ee5ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga595d57a0b27862c5d4d028e3ece14c67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67">qOS::util::printXData</a> (util::putChar_t fcn, void *pData, size_t n, bool eol=true, void *pStorage=nullptr) noexcept</td></tr>
+<tr class="memitem:ga595d57a0b27862c5d4d028e3ece14c67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67">qOS::util::printXData</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> fcn, void *pData, size_t n, bool eol=true, void *pStorage=nullptr) noexcept</td></tr>
 <tr class="memdesc:ga595d57a0b27862c5d4d028e3ece14c67"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to write data in HEX notation through <em>fcn</em>.  <a href="group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67">More...</a><br /></td></tr>
 <tr class="separator:ga595d57a0b27862c5d4d028e3ece14c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga057bcfe88c1239c40169daaff9055383"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga057bcfe88c1239c40169daaff9055383">qOS::util::outputRAW</a> (const ioFcn_t fcn, void *pData, const size_t n, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
+<tr class="memitem:ga057bcfe88c1239c40169daaff9055383"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga057bcfe88c1239c40169daaff9055383">qOS::util::outputRAW</a> (const <a class="el" href="group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe">ioFcn_t</a> fcn, void *pData, const size_t n, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
 <tr class="memdesc:ga057bcfe88c1239c40169daaff9055383"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to write n RAW data through <em>fcn</em>.  <a href="group__qioutils.html#ga057bcfe88c1239c40169daaff9055383">More...</a><br /></td></tr>
 <tr class="separator:ga057bcfe88c1239c40169daaff9055383"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad16b6f751febd5914646970a812e636e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gad16b6f751febd5914646970a812e636e">qOS::util::inputRAW</a> (const ioFcn_t fcn, void *pData, const size_t n, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
+<tr class="memitem:gad16b6f751febd5914646970a812e636e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gad16b6f751febd5914646970a812e636e">qOS::util::inputRAW</a> (const <a class="el" href="group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe">ioFcn_t</a> fcn, void *pData, const size_t n, void *pStorage=nullptr, bool aip=false) noexcept</td></tr>
 <tr class="memdesc:gad16b6f751febd5914646970a812e636e"><td class="mdescLeft">&#160;</td><td class="mdescRight">API interface to get n RAW data through <em>fcn</em>.  <a href="group__qioutils.html#gad16b6f751febd5914646970a812e636e">More...</a><br /></td></tr>
 <tr class="separator:gad16b6f751febd5914646970a812e636e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga502fd95e84b13046162174db24a665a5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga502fd95e84b13046162174db24a665a5">qOS::util::hexStringToUnsigned</a> (const char *s) noexcept</td></tr>
@@ -207,6 +207,71 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API for input/output utilities and safe string interfaces. </p>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="gaaf436491ddc3a5341177e1ac0aa54bbe" name="gaaf436491ddc3a5341177e1ac0aa54bbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaf436491ddc3a5341177e1ac0aa54bbe">&#9670;&nbsp;</a></span>ioFcn_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe">qOS::util::ioFcn_t</a> = typedef char (*)( void *, const char )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to function that perform a single character I/O operation. </p>
+<dl class="section note"><dt>Note</dt><dd>User should use bare-metal code to implement this function. Example 1: Input operation <div class="fragment"><div class="line"><span class="keywordtype">char</span> BSP_GetChar( <span class="keywordtype">void</span> *sp, <span class="keyword">const</span> <span class="keywordtype">char</span> in ) {</div>
+<div class="line">      (void)sp;</div>
+<div class="line">      (void)in;</div>
+<div class="line">      <span class="keywordflow">return</span> HAL_UARTReceiveByte( );</div>
+<div class="line">}</div>
+</div><!-- fragment --> Example 2: Ouput operation <div class="fragment"><div class="line"><span class="keywordtype">char</span> BSP_GetChar( <span class="keywordtype">void</span> *sp, <span class="keywordtype">char</span> in ) {</div>
+<div class="line">      (void)sp;</div>
+<div class="line">      HAL_UARTPutByte( in );</div>
+<div class="line">      <span class="keywordflow">return</span> 0u;</div>
+<div class="line">}</div>
+</div><!-- fragment --> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sp</td><td>The user storage pointer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">in</td><td>The byte to write out. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If an input operation is performed, this function should return the byte read from the input. </dd></dl>
+
+</div>
+</div>
+<a id="ga590b120a141394c83550952547d27555" name="ga590b120a141394c83550952547d27555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga590b120a141394c83550952547d27555">&#9670;&nbsp;</a></span>putChar_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">qOS::util::putChar_t</a> = typedef void (*)( void* , const char )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to function that write-out a single character. </p>
+<dl class="section note"><dt>Note</dt><dd>User should use bare-metal code to implement this function. Example : <div class="fragment"><div class="line"><span class="keywordtype">void</span> BSP_PutChar( <span class="keywordtype">void</span> *sp, <span class="keyword">const</span> <span class="keywordtype">char</span> c ) {</div>
+<div class="line">      (void)sp;</div>
+<div class="line">      HAL_UARTWriteByte( c );</div>
+<div class="line">}</div>
+</div><!-- fragment --> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sp</td><td>The user storage pointer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The character to write out. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gaef815a06206e5a3aea9f23c4a6068f31" name="gaef815a06206e5a3aea9f23c4a6068f31"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaef815a06206e5a3aea9f23c4a6068f31">&#9670;&nbsp;</a></span>boolToString()</h2>
@@ -383,7 +448,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool qOS::util::inputRAW </td>
           <td>(</td>
-          <td class="paramtype">const ioFcn_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe">ioFcn_t</a>&#160;</td>
           <td class="paramname"><em>fcn</em>, </td>
         </tr>
         <tr>
@@ -503,7 +568,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool qOS::util::outputRAW </td>
           <td>(</td>
-          <td class="paramtype">const ioFcn_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe">ioFcn_t</a>&#160;</td>
           <td class="paramname"><em>fcn</em>, </td>
         </tr>
         <tr>
@@ -570,7 +635,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool qOS::util::outputString </td>
           <td>(</td>
-          <td class="paramtype">util::putChar_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a>&#160;</td>
           <td class="paramname"><em>fcn</em>, </td>
         </tr>
         <tr>
@@ -630,7 +695,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool qOS::util::printXData </td>
           <td>(</td>
-          <td class="paramtype">util::putChar_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a>&#160;</td>
           <td class="paramname"><em>fcn</em>, </td>
         </tr>
         <tr>

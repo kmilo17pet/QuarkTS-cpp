@@ -204,7 +204,7 @@ A simple scheduling</h2>
 <div class="line">    clock::sysTick();</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> Task1_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> Task1_Callback( event_t e ) {</div>
 <div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> ( e.firstIteration() ) {</div>
@@ -217,7 +217,7 @@ A simple scheduling</h2>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> Task2_Callback( <a class="code hl_typedef" href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">event_t</a> e ) {</div>
+<div class="line"><span class="keywordtype">void</span> Task2_Callback( event_t e ) {</div>
 <div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
@@ -240,7 +240,6 @@ A simple scheduling</h2>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_ab3ffe569156600e392e688c74ab68134"><div class="ttname"><a href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:44</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_af544e4dc0c995270ff1e87f01f87fc79"><div class="ttname"><a href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:373</div></div>
-<div class="ttc" id="agroup__qtaskmanip_html_ga99648a15693a88caaff87faad3955a76"><div class="ttname"><a href="group__qtaskmanip.html#ga99648a15693a88caaff87faad3955a76">qOS::event_t</a></div><div class="ttdeci">_Event &amp; event_t</div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition:</b> task.hpp:190</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="q_os_example2"></a>
 Using the task argument</h2>
 <p >When adding tasks, they can accept a parameter of type pointer to void <code>void*</code> also called the storage pointer. This parameter could be used for multiple applications, including storage, task identification, duplication removal and others. The following example shows the usage of this argument to avoid callback duplication among tasks with the same behavior.</p>

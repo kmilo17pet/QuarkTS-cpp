@@ -138,7 +138,7 @@ $(document).ready(function(){initNavTree('q_trace.html',''); initResizable(); })
 </div>
 <div class="textblock"><h1><a class="anchor" id="q_trace_overview"></a>
 Overview</h1>
-<p >QuarkTS++ include some basic macros to print out debugging messages. Messages can be simple text or the value of variables in specific base formats. To use the trace macros, a single-char output function must be defined using the qTrace_Set_OutputFcn() macro.</p>
+<p >QuarkTS++ include some basic macros to print out debugging messages. Messages can be simple text or the value of variables in specific base formats. To use the trace macros, a single-char output function must be defined using the <a class="el" href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e" title="Set the output method for the trace stream.">trace::setOutputFcn()</a> function.</p>
 <p >A single-char output function should follow this prototype:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> SingleChar_OutputFcn ( <span class="keywordtype">void</span> *sp , <span class="keyword">const</span> <span class="keywordtype">char</span> c ) {</div>
 <div class="line">    <span class="comment">/* TODO : print out the c variable using the</span></div>
@@ -148,36 +148,45 @@ Overview</h1>
 </div><!-- fragment --><p >The body of this user-defined function should have a hardware-dependent code to print out the <code>c</code> variable through a specific peripheral.</p>
 <h1><a class="anchor" id="q_trace_viewvars"></a>
 Viewing variables</h1>
-<p >For viewing or tracing a variable (up to 32-bit data) through debug, one of the following macros are available: #qTrace_Var or #qDebug_Var.</p>
-<p >The only difference between qTrace_ and Debug, is that <code>qTrace_</code> macros, print out additional information provided by the <code>__FILE__</code> , <code>__LINE__</code> and <code>__func__</code> built-in preprocessing macros, mostly available in common C compilers.</p>
+<p >For viewing or tracing a variable (up to 32-bit data) through debug, one of the following statements are available: trace::log or trace::msg.</p>
+<p >The only difference between trace::log and trace::msg, is that trace starting with <code>log</code> , print out additional information provided by the <code>__FILE__</code> , <code>__LINE__</code> and <code>__func__</code> built-in preprocessing macros, mostly available in common C++ compilers.</p>
 <h1><a class="anchor" id="q_trace_mblock"></a>
 Viewing a memory block</h1>
-<p >For tracing memory from a specified target address, one of the following macros are available: #qTrace_Mem or #qDebug_Mem.</p>
+<p >For tracing memory from a specified target address, you should use the trace::mem() specifier to define the number of bytes to be visualized of the memory block that shuold be given after as a pointer.</p>
 <h1><a class="anchor" id="q_trace_usage"></a>
 Usage</h1>
 <p >In the example below, an UART output function is coded to act as the printer. Here, the target MCU is an ARM-Cortex M0 with the UART1 as the selected peripheral for this purpose.</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> putUART1 ( <span class="keywordtype">void</span> *sp , <span class="keyword">const</span> <span class="keywordtype">char</span> c ) {</div>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
+<div class="line">    uint16_t block[ 4 ] = { 451, 477, 1025, 354 };</div>
+<div class="line">    <span class="keywordtype">float</span> other = 4.5f;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">trace::setOutputFcn</a>( putUART1 );</div>
+<div class="line">    trace::log &lt;&lt; mem( <span class="keyword">sizeof</span>(block) ) &lt;&lt; block &lt;&lt; trace::endl;</div>
+<div class="line">    trace::log &lt;&lt; mem( <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>) ) &lt;&lt; &amp;other &lt;&lt; trace::endl;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:302</div></div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="keywordtype">void</span> putUART1 ( <span class="keywordtype">void</span> *sp , <span class="keyword">const</span> <span class="keywordtype">char</span> c ) {</div>
 <div class="line">    <span class="comment">/* hardware specific code */</span></div>
 <div class="line">    UART1_D = c;</div>
 <div class="line">    <span class="keywordflow">while</span> ( !( UART1_S1 &amp; UART_S1_TC_MASK ) ) {} <span class="comment">/*wait until TX is done*/</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p >As seen above, the function follows the required prototype. Later, in the main thread, a call to qTrace_Set_OutputFcn() is used to set up the output-function.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
-<div class="line">    qTrace_Set_OutputFcn( putUART1 );</div>
+<div class="line">    <a class="code hl_function" href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">trace::setOutputFcn</a>( putUART1 );</div>
 <div class="line">    ...</div>
 <div class="line">    ...</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >After that, trace macros will be available for use.</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> IO_TASK_Callback ( qEvent_t e ) {</div>
-<div class="line">    <span class="keyword">static</span> qUINT32_t Counter = 0;</div>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> IO_TASK_Callback ( event_t e ) {</div>
+<div class="line">    <span class="keyword">static</span> uint32_t Counter = 0;</div>
 <div class="line">    <span class="keywordtype">float</span> Sample;</div>
 <div class="line">    ...</div>
 <div class="line">    ...</div>
-<div class="line">    qTrace_Message( <span class="stringliteral">&quot;IO TASK running...&quot;</span> );</div>
+<div class="line">    trace::log &lt;&lt; <span class="stringliteral">&quot;IO TASK running...&quot;</span> &lt;&lt; trace::endl;</div>
 <div class="line">    Counter++;</div>
-<div class="line">    qTrace_Variable( Counter , UnsignedDecimal );</div>
+<div class="line">    trace::log &lt;&lt; Counter &lt;&lt; trace::endl;</div>
 <div class="line">    Sample = SensorGetSample ();</div>
-<div class="line">    qTrace_Variable( Sample , Float );</div>
+<div class="line">    trace::log &lt;&lt; Sample &lt;&lt; trace::endl;</div>
 <div class="line">    ...</div>
 <div class="line">    ...</div>
 <div class="line">}</div>

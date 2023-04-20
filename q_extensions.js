@@ -31,7 +31,7 @@ var q_extensions =
       [ "Co-Routine example with semaphores.", "q_qcoroutines.html#q_coroutine_example2", null ],
       [ "External control", "q_qcoroutines.html#q_coroutine_ext", null ]
     ] ],
-    [ "STimers", "q_stimers.html", [
+    [ "Timers", "q_stimers.html", [
       [ "Overview", "q_stimers.html#q_stimers_overview", null ],
       [ "Using a STimer", "q_stimers.html#q_stimerusage", null ],
       [ "STimer example", "q_stimers.html#q_stimerexample", null ]

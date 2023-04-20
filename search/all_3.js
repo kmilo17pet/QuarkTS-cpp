@@ -1,18 +1,13 @@
 var searchData=
 [
-  ['checkendianness_0',['checkEndianness',['../group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d',1,'qOS::util']]],
-  ['clock_1',['Clock',['../group__qclock.html',1,'']]],
-  ['clock_2',['clock',['../classq_o_s_1_1clock.html',1,'qOS']]],
-  ['co_2droutines_3',['Co-Routines',['../q_qcoroutines.html',1,'q_extensions'],['../group__qcoroutines.html',1,'(Global Namespace)']]],
-  ['command_4',['command',['../classq_o_s_1_1cli_1_1command.html',1,'qOS::cli']]],
-  ['commandcallback_5ft_5',['commandCallback_t',['../group__qatcli.html#gab20d33e9de974f49e535206ad7194289',1,'qOS::cli']]],
-  ['commandlineinterface_6',['commandLineInterface',['../classq_o_s_1_1command_line_interface.html',1,'qOS']]],
-  ['commandtype_7',['commandType',['../group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2',1,'qOS::cli']]],
-  ['convert2clock_8',['convert2Clock',['../classq_o_s_1_1clock.html#ade68d14679999f62ab56e0e03327af4f',1,'qOS::clock']]],
-  ['convert2time_9',['convert2Time',['../classq_o_s_1_1clock.html#af7fe799553c8502a0a47d1eb3ed57edf',1,'qOS::clock']]],
-  ['core_10',['core',['../classq_o_s_1_1core.html',1,'qOS']]],
-  ['count_11',['count',['../classq_o_s_1_1byte_buffer.html#a122bc3ba6f789a4d25e9aafc0870f7a5',1,'qOS::byteBuffer::count()'],['../classq_o_s_1_1queue.html#ab7a7a6b3433374a02cad9bc72d7fd9c6',1,'qOS::queue::count()']]],
-  ['critical_12',['Critical',['../group__qcritical.html',1,'']]],
-  ['cycles_5ft_13',['cycles_t',['../group__qtypes.html#ga93e7465448a1947530425f4c140f9061',1,'types.hpp']]],
-  ['cyn_14',['cyn',['../group__qtrace.html#ga766697d3857dc9f52f7cd8f7d04e38aa',1,'qOS::trace']]]
+  ['data_0',['Data',['../classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a',1,'qOS::sm::handler_t']]],
+  ['data_1',['data',['../classq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898',1,'qOS::sm::signal_t']]],
+  ['deadlinecheck_2',['deadLineCheck',['../classq_o_s_1_1timer.html#a98165b89619af1666192664dbf06031d',1,'qOS::timer']]],
+  ['dec_3',['dec',['../group__qtrace.html#ga93328644391810d863c7752b20d0f51d',1,'qOS::trace']]],
+  ['delay_4',['delay',['../group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84',1,'qOS::co']]],
+  ['disable_5',['disable',['../classq_o_s_1_1task.html#a4b6aeaa5fc154554b70f8c8f0b4984d0',1,'qOS::task']]],
+  ['disabled_5fstate_6',['DISABLED_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5',1,'qOS']]],
+  ['disarm_7',['disarm',['../classq_o_s_1_1timer.html#a515d7a3880ae61994017858e8b9008d2',1,'qOS::timer']]],
+  ['disarm_5fvalue_8',['DISARM_VALUE',['../classq_o_s_1_1timer.html#a53d752a2e9faf0f096bb0546fc82a9f8',1,'qOS::timer']]],
+  ['disarmed_9',['DISARMED',['../classq_o_s_1_1timer.html#a2ed4f5e1785161aa893146fd81ad7547',1,'qOS::timer']]]
 ];
