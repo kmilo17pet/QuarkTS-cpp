@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('q_background.html',''); initResizable(
 </div>
 <div class="textblock"><h1><a class="anchor" id="q_about"></a>
 About the OS</h1>
-<p >QuarkTS++ (The C++ port of QuarkTS) is an open-source operating system that is built on top of a <em>RTC cooperative quasistatic scheduler</em>. Its simplified kernel implements a specialized round-robin scheme using a linked-chain approach and an event-queue to provide true FIFO priority scheduling.</p>
+<p >QuarkTS++ (the C++ port of <a href="https://github.com/kmilo17pet/QuarkTS" style="font-weight:bold">QuarkTS</a>) is an open-source operating system that is built on top of a <em>RTC cooperative quasistatic scheduler</em>. Its simplified kernel implements a specialized round-robin scheme using a linked-chain approach and an event-queue to provide true FIFO priority scheduling.</p>
 <p ><b> Why cooperative? </b></p>
 <p >Rather than having preemption, tasks manage their own life-cycle. This bring significant benefits, fewer re-entrance problems are encountered, because tasks cannot be interrupted arbitrarily by other tasks, but only at positions permitted by the programmer, so you mostly do not need to worry about pitfalls of the concurrent approach(resource sharing, races, deadlocks, etc...).</p>
 <p ><b> What is it made for? </b></p>

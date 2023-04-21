@@ -58,7 +58,8 @@ var NAVTREE =
       [ "Getting the OS", "q_gettingstarted.html#q_getos", [
         [ "Cloning QuarkTS++", "q_gettingstarted.html#q_cloneos", null ],
         [ "Including QuarkTS++ as a git sub-module", "q_gettingstarted.html#q_submodule", null ],
-        [ "Get a copy of the OS configuration file", "q_gettingstarted.html#q_getqconfig", null ]
+        [ "Get a copy of the OS configuration file", "q_gettingstarted.html#q_getqconfig", null ],
+        [ "Use QuarkTS++ in Arduino", "q_gettingstarted.html#qarduinousage", null ]
       ] ],
       [ "First steps", "q_gettingstarted.html#q_firststeps", null ],
       [ "Two simple demonstrative examples", "q_gettingstarted.html#q_os_demo", [

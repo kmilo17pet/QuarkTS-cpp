@@ -6,5 +6,5 @@ var group__qutility =
     [ "I/O Utils", "group__qioutils.html", "group__qioutils" ],
     [ "Response handler", "group__qresponse.html", "group__qresponse" ],
     [ "Trace", "group__qtrace.html", "group__qtrace" ],
-    [ "General purpose macros", "group__qflm.html", null ]
+    [ "Helper functions", "group__qflm.html", null ]
 ];
