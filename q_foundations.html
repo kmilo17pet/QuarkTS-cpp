@@ -360,7 +360,7 @@ Critical sections</h1>
 <p >In some systems, disabling the global IRQ flags is not enough, as they don't save/restore state of interrupt, so here, the <code>uint32_t</code> argument and return value in both functions (<code>Disabler</code> and <code>Restorer</code>) becomes relevant, because they can be used by the application writer to save and restore the current interrupt configuration. So, when a critical section is performed, the <code>Disabler</code>, in addition to disabling the interrupts, returns the current configuration to be retained by the kernel, later when the critical section finish, this retained value is passed to <code>Restorer</code> to bring back the saved configuration.</p>
 <h1><a class="anchor" id="q_configmacros"></a>
 Configuration macros</h1>
-<p >Some OS features can be customized using a set of macros located in the header file <code>qconfig.h</code>. Here is the default configuration, followed by an explanation of each macro:</p>
+<p >Some OS features can be customized using a set of macros located in the header file <code><a class="el" href="config_8h_source.html">config.h</a></code>. Here is the default configuration, followed by an explanation of each macro:</p>
 <ul>
 <li><code>Q_PRIORITY_LEVELS</code> : <em>Default:</em> <code>3</code>. The number of priorities available for application tasks.</li>
 <li><code>Q_SETUP_TIME_CANONICAL</code> : <em>Default:</em> <code>0</code>(disabled). If enabled, the kernel assumes the timing base to 1mS(1KHz). So all time specifications for tasks and STimers must be set in milliseconds(mS). Also can be used to remove the floating-point operations when dealing with time. In some systems, can reduce memory usage.</li>

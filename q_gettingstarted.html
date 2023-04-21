@@ -166,9 +166,28 @@ Get a copy of the OS configuration file</h2>
 <h2><a class="anchor" id="qarduinousage"></a>
 Use QuarkTS++ in Arduino</h2>
 <p >QuarkTS++ is widely compatible with most Arduino cores including 8bit architectures. To install the QuarkTS++ OS into your Arduino IDE you can use the Library Manager (available from IDE version 1.6.2). Open the IDE and click to the "Sketch" menu and then Include Library &gt; Manage Libraries.</p>
-<p >Then the Library Manager will open and you will find a list of libraries that are already installed or ready for installation. Type in the search box "QuarkTS++" and when listed, click the install button. Once it has finished, an Installed tag should appear next to the Bridge library. You can close the library manager.</p>
+<p >Then the Library Manager will open and you will find a list of libraries that are already installed or ready for installation. Type in the search box "QuarkTS" and when listed, click the install button. Once it has finished, an Installed tag should appear next to the library. You can close the library manager.</p>
 <p >You can now find the new library available in the Sketch &gt; Include Library menu.</p>
-<h1><a class="anchor" id="q_firststeps"></a>
+<p >When invoking the <code>os.init()</code> for the first time, make sure to pass the <code>millis</code> function as argument</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> idleTask_Callback( event_t e ) {</div>
+<div class="line">     <span class="comment">// TODO: add the idle activities</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup() {</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( millis , IdleTask_Callback );</div>
+<div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop() {</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_aaa25100145b3f56a1f7aa6458ec0e0bd"><div class="ttname"><a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
+<div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="q_firststeps"></a>
 First steps</h1>
 <p >Include the source files to your project. Also, make sure you add a copy of the file <code><a class="el" href="config_8h_source.html">config.h</a></code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code><a class="el" href="_quark_t_s_8h_source.html">QuarkTS.h</a></code> and setup the instance of the kernel using the <a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
 <p >File <code>main.c</code> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
@@ -182,8 +201,6 @@ First steps</h1>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( <span class="keyword">nullptr</span> , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_aaa25100145b3f56a1f7aa6458ec0e0bd"><div class="ttname"><a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
-<div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
 </div><!-- fragment --><p >In the above code, the following considerations should be taken:</p><ul>
 <li>The function <code>os.init()</code> must be called before any interaction with the OS. Here, the <code>os</code> its an instance of the <a class="el" href="classq_o_s_1_1core.html" title="The class to interface the OS.">qOS::core</a> kernel interface.</li>
 <li>The procedure <code>HardwareSetup()</code> should be a function with all the hardware instructions needed to initialize the target system.</li>
@@ -243,7 +260,6 @@ A simple scheduling</h2>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a6108a6807716a23d2af2db9ddadea99a"><div class="ttname"><a href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="q_os_example2"></a>
 Using the task argument</h2>
