@@ -1,0 +1,30 @@
+.gitattributes export-ignore
+.gitignore export-ignore
+make_changelog export-ignore
+.idea export-ignore
+.vscode export-ignore
+README.md export-ignore
+build_options.mk export-ignore
+Makefile export-ignore
+doc export-ignore
+check export-ignore
+.deepsource.toml export-ignore
+.github export-ignore
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+
+# Standard to msysgit
+*.doc	 diff=astextplain
+*.DOC	 diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot  diff=astextplain
+*.DOT  diff=astextplain
+*.pdf  diff=astextplain
+*.PDF	 diff=astextplain
+*.rtf	 diff=astextplain
+*.RTF	 diff=astextplain
