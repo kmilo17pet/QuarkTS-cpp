@@ -175,6 +175,7 @@
 *  #include "AppLibrary.h"
 *  
 *  using namespace qOS;
+*
 *  #define NUM_ITEMS    ( 32 )
 *  #define BUFSIZE      ( 8 )
 *  

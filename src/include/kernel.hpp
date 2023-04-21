@@ -9,10 +9,10 @@
 #include "include/prioqueue.hpp"
 
 #if ( Q_FSM == 1 )
-    #include "fsm.hpp"
+    #include "include/fsm.hpp"
 #endif
 #if ( Q_CLI == 1 )
-    #include "cli.hpp"
+    #include "include/cli.hpp"
 #endif
 
 namespace qOS {
@@ -125,7 +125,8 @@ namespace qOS {
             * @note Function should take void and return a 32bit value.
             * @param[in] t (Optional) This parameter specifies the ISR background
             * timer base-time. This can be the period in seconds(Floating-point
-            * format) or frequency in Herzt(if @c Q_SETUP_TICK_IN_HERTZ is enabled).
+            * format if @Q_SETUP_TIME_CANONICAL is disabled) or frequency in 
+            * Herzt(if @c Q_SETUP_TICK_IN_HERTZ is enabled).
             * @param[in] callbackIdle  Callback function to the Idle Task. To
             * disable the Idle-Task activities, ignore this parameter of pass 
             * @c nullptr as argument.
@@ -136,13 +137,11 @@ namespace qOS {
             * #include "QuarkTS.h"
             * #include "HAL.h"
             *
-            * #define TIMER_TICK   ( 0.001f )
-            *
             * using namespace qOS;
             *
             * void main( void ) {
             *     HAL_Init();
-            *     os.init( HAL_GetTick, TIMER_TICK, IdleTask_Callback );
+            *     os.init( HAL_GetTick, IdleTask_Callback );
             * }
             * @endcode
             *
@@ -150,8 +149,6 @@ namespace qOS {
             * @code{.c}
             * #include "QuarkTS.h"
             * #include "DeviceHeader.h"
-            *
-            * #define TIMER_TICK   ( 0.001f )
             *
             * using namespace qOS;
             *

@@ -445,27 +445,26 @@
 *
 * - @c Q_PRIORITY_LEVELS : @a Default: @c 3. The number of priorities available for
 * application tasks.
-* - @c Q_SETUP_TIME_CANONICAL : @a Default: @c 0(disabled). If enabled, the 
+* - @c Q_SETUP_TIME_CANONICAL : @a Default: @c 1(enabled). If enabled, the 
 * kernel assumes the timing base to 1mS(1KHz). So all time specifications for 
-* tasks and STimers must be set in milliseconds(mS). Also can be used to remove
+* tasks and Timers must be set in milliseconds(mS). Also can be used to remove
 * the floating-point operations when dealing with time. In some systems, 
 * can reduce memory usage.
 * - @c Q_SETUP_TICK_IN_HERTZ : @a Default: @c 0(disabled). If enabled, the 
-* timing base will be taken as frequency(Hz) instead of period(S) by qOS_Setup()
+* timing base will be taken as frequency(Hz) instead of period(S) by qOS::core::init()
 * (In some systems, can reduce memory usage ).
 * - @c Q_PRIO_QUEUE_SIZE : @a Default: @c 10. Size of the priority queue for 
 * notifications. This argument should be an integer number greater than zero. 
 * A zero value can be used to disable this functionality.
+* - @c Q_ALLOW_SCHEDULER_RELEASE : @a Default: @c 0(disabled). Used to enable or
+* disable the scheduler release functionality.
 * - @c Q_PRESERVE_TASK_ENTRY_ORDER : @a Default: @c 0(disabled). If enabled, 
 * the kernel will preserve the tasks entry order every OS scheduling cycle.
-* - @c Q_MEMORY_MANAGER : @a Default: @c 1(enabled).  Used to enable or disable 
-* the @ref q_memmang extension.
 * - @c Q_BYTE_ALIGNMENT : @a Default: @c 8. Used by the @ref q_memmang extension 
-* to perform the byte alignment.
+* to perform the byte alignment. 
 * - @c Q_DEFAULT_HEAP_SIZE : @a Default: @c 2048.  The total amount of heap size
-* for the default memory pool.
-* - @c Q_NOTIFICATION_SPREADER : @a Default: @c 0(disabled). Used to enable or 
-* disable the spread notification functionality.
+* for the default memory pool. This will enable @c new and @c delete operators 
+* if not available
 * - @c Q_FSM : @a Default: @c 1(enabled). Used to enable or disable the Finite
 State Machine (FSM) extension.
 * - @c Q_FSM_MAX_NEST_DEPTH : @a Default: @c 5. The max depth of nesting in
@@ -476,31 +475,11 @@ State Machine (FSM) extension.
 * subscribe for a Finite State Machine (FSM).
 * - @c Q_FSM_PS_SUB_PER_SIGNAL_MAX : @a Default: @c 4. Max number of FSM
 * subscribers per signal.
-* - @c Q_QUEUES : @a Default: @c 1(enabled). Used to enable or disable the 
-* queues APIs for inter-task communication.
-* - @c Q_TRACE_VARIABLES : @a Default: @c 1(enabled). Used to enable or disable 
-* debug and trace macros.
 * - @c Q_DEBUGTRACE_BUFSIZE : @a Default: @c 36. The buffer size for debug and 
 * trace macros
-* - @c Q_DEBUGTRACE_FULL : @a Default: @c 1(enabled). Used to enable or disable 
-* the extended output for trace macros.
-* - @c Q_ATCLI : @a Default: @c 1(enabled). Used to enable or disable the 
+* - @c Q_CLI : @a Default: @c 1(enabled). Used to enable or disable the 
 * @ref q_atcli extension.
-* - @c Q_TASK_COUNT_CYCLES : @a Default: @c 0(disabled). Used to enable or 
-* disable the counting of cycles of a task.
-* - @c Q_TASK_EVENT_FLAGS : @a Default: @c 1(enabled). Used to enable or disable 
-* the task event flags.
-* - @c Q_MAX_FTOA_PRECISION : @a Default: @c 10. The default precision used to 
-* perform float to ASCII conversions. 
 * - @c Q_ATOF_FULL : @a Default: @c 0(disabled). Used to enable or disable the 
 * scientific notation in ASCII to float conversions.
-* - @c Q_ALLOW_SCHEDULER_RELEASE : @a Default: @c 0(disabled). Used to enable or
-* disable the scheduler release functionality.
-* - @c Q_RESPONSE_HANDLER : @a Default: @c 1(enabled). Used to enable or disable
-* the response handler functionality.
-* - @c Q_EDGE_CHECK_IOGROUPS : @a Default: @c 1(enabled). Used to enable or 
-* disable the edge check functionality for I/O groups.
-* - @c Q_BYTE_SIZED_BUFFERS : @a Default: @c 1(enabled). Used to enable or 
-* disable the usage of Byte-sized buffers.
 *
 */

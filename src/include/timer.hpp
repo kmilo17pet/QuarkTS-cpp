@@ -118,7 +118,7 @@ namespace qOS {
             */
             timer& operator=( qOS::time_t tTime );
             /**
-            * @brief Disarms of reload the timer
+            * @brief Disarm or reload the timer
             * @note The OS must be running before using timers.
             * @note The expiration time should be at least, two times greater than
             * the clock-Tick.
@@ -140,7 +140,7 @@ namespace qOS {
             */
             bool operator()( qOS::time_t tTime );
             /**
-            * @brief Disarms of reload the timer
+            * @brief Disarm or reload the timer
             * @note The OS must be running before using timers.
             * @note The expiration time should be at least, two times greater than
             * the clock-Tick.

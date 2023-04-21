@@ -172,7 +172,9 @@ void core::triggerReleaseSchedEvent( void ) noexcept
 bool core::checkIfReady( void ) noexcept
 {
     bool xReady = false;
-    trigger trg;
+    #if ( Q_QUEUES == 1 )
+        trigger trg;
+    #endif
     task* xTask;
 
     #if ( Q_PRIO_QUEUE_SIZE > 0 )
@@ -186,12 +188,11 @@ bool core::checkIfReady( void ) noexcept
 
     for( auto i = waitingList.begin() ; i.until() ; i++ ) {
         xTask = i.get<task*>();
-        #if ( Q_NOTIFICATION_SPREADER == 1 )
-            if ( notifyMode::_NONE_ != nSpreader.mode ) {
-                (void)notify( nSpreader.mode, *xTask, nSpreader.eventData );
-                break;
-            }
-        #endif
+        
+        if ( notifyMode::_NONE_ != nSpreader.mode ) {
+            (void)notify( nSpreader.mode, *xTask, nSpreader.eventData );
+            break;
+        }
 
         if ( xTask->getFlag( task::BIT_SHUTDOWN ) ) {
             #if ( Q_PRIO_QUEUE_SIZE > 0 )
@@ -217,12 +218,10 @@ bool core::checkIfReady( void ) noexcept
                 xTask->Trigger = trigger::byNotificationSimple;
                 xReady = true;
             }
-            #if ( Q_TASK_EVENT_FLAGS == 1 )
             else if ( 0uL != ( task::EVENT_FLAGS_MASK & xTask->flags ) ) {
                 xTask->Trigger = trigger::byEventFlags;
                 xReady = true;
             }
-            #endif
             else {
                 xTask->Trigger = trigger::None;
                 /*task has no available events, put it into a suspended state*/
@@ -243,11 +242,9 @@ bool core::checkIfReady( void ) noexcept
             (void)xList->insert( xTask, listPosition::AT_BACK );
         }
     }
-    #if ( Q_NOTIFICATION_SPREADER == 1 )
-        /*spread operation done, clean-up*/
-        nSpreader.mode = notifyMode::_NONE_;
-        nSpreader.eventData = nullptr;
-    #endif
+    /*spread operation done, clean-up*/
+    nSpreader.mode = notifyMode::_NONE_;
+    nSpreader.eventData = nullptr;
 
     return xReady;
 }
@@ -291,10 +288,8 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
                 priorityQueue.data = nullptr;
                 break;
         #endif
-        #if ( Q_TASK_EVENT_FLAGS == 1 )
             case trigger::byEventFlags:
                 break;
-        #endif
             default: break;
     }
     /*Fill the event info structure: Trigger, FirstCall and TaskData */
@@ -312,9 +307,7 @@ void core::dispatch( list * const xList ) noexcept
         taskFcn_t taskActivities = xTask->callback;
 
         dispatchTaskFillEventInfo( xTask );
-        #if ( Q_ALLOW_YIELD_TO_TASK == 1 )
-            yieldTask = nullptr;
-        #endif
+        yieldTask = nullptr;
 
         if ( nullptr != taskActivities ) {
             /*cstat -CERT-EXP39-C_d*/
@@ -322,20 +315,18 @@ void core::dispatch( list * const xList ) noexcept
             /*cstat +CERT-EXP39-C_d*/
         }
 
-        #if ( Q_ALLOW_YIELD_TO_TASK == 1 )
-            while ( nullptr != yieldTask ) {
-                _Event::currentTask = yieldTask;
-                taskActivities = _Event::currentTask->callback;
-                yieldTask = nullptr;
-                if ( nullptr != taskActivities ) {
-                    /*yielded task inherits eventData*/
-                    /*cstat -CERT-EXP39-C_d*/
-                    taskActivities( *static_cast<_Event*>( this ) );
-                    /*cstat +CERT-EXP39-C_d*/
-                }
+        while ( nullptr != yieldTask ) {
+            _Event::currentTask = yieldTask;
+            taskActivities = _Event::currentTask->callback;
+            yieldTask = nullptr;
+            if ( nullptr != taskActivities ) {
+                /*yielded task inherits eventData*/
+                /*cstat -CERT-EXP39-C_d*/
+                taskActivities( *static_cast<_Event*>( this ) );
+                /*cstat +CERT-EXP39-C_d*/
             }
-        #endif
-
+        }
+        
         currentTask = nullptr;
         (void)xList->remove( nullptr, listPosition::AT_FRONT );
         (void)waitingList.insert( xTask, listPosition::AT_BACK );
@@ -351,9 +342,7 @@ void core::dispatch( list * const xList ) noexcept
         _Event::LastIteration = false;
         _Event::StartDelay = 0uL;
         _Event::EventData = nullptr; /*clear the eventData*/
-        #if ( Q_TASK_COUNT_CYCLES == 1 )
-            ++xTask->cycles; /*increase the task-cycles value*/
-        #endif
+        ++xTask->cycles; /*increase the task-cycles value*/
         xTask->Trigger = trigger::None;
     }
 }
@@ -448,19 +437,14 @@ bool core::notify( notifyMode mode, task &Task, void* eventData ) noexcept
 bool core::notify( notifyMode mode, void* eventData ) noexcept
 {
     bool retValue = false;
-    #if ( Q_NOTIFICATION_SPREADER == 1 )
-        /*do not proceed if any previous operation is in progress*/
-        if ( notifyMode::_NONE_ == nSpreader.mode ) {
-            if ( ( notifyMode::SIMPLE == mode ) || ( notifyMode::QUEUED == mode ) ) {
-                nSpreader.mode = mode;
-                nSpreader.eventData = eventData;
-                retValue = true;
-            }
+    /*do not proceed if any previous operation is in progress*/
+    if ( notifyMode::_NONE_ == nSpreader.mode ) {
+        if ( ( notifyMode::SIMPLE == mode ) || ( notifyMode::QUEUED == mode ) ) {
+            nSpreader.mode = mode;
+            nSpreader.eventData = eventData;
+            retValue = true;
         }
-    #else
-        Q_UNUSED( eventData );
-        Q_UNUSED( mode );
-    #endif
+    }
     return retValue;
 }
 /*============================================================================*/

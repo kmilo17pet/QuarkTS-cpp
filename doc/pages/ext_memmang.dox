@@ -84,8 +84,6 @@
 * @section q_memmang_usage Usage example
 *
 *  @code{.c}
-*  #include <cstdio>
-*  #include <cstdlib>
 *  #include "QuarkTS.h"
 *  #include "HAL.h"
 *  #include "Core.h"

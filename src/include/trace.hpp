@@ -272,7 +272,10 @@ namespace qOS {
                 uint8_t base = { 10u };
                 size_t n{ 0u };
                 uint8_t precision { 6u };
-                char buffer[ 21 ] = { 0 };
+                #if ( Q_TRACE_BUFSIZE < 36 )
+                    #define Q_TRACE_BUFSIZE     ( 36 )
+                #endif
+                char buffer[ Q_TRACE_BUFSIZE ] = { 0 };
                 char preFix[ 5 ] = { 0 };
                 util::putChar_t writeChar{ nullptr };
             public:
