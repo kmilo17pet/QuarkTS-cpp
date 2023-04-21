@@ -2,7 +2,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b3d75b3d6e2c4733ab87fd8bab6f4dea)](https://app.codacy.com/gh/kmilo17pet/QuarkTS-cpp/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![DeepSource](https://deepsource.io/gh/kmilo17pet/QuarkTS-cpp.svg/?label=active+issues&show_trend=true&token=MlFRbA4h9mtWn6ZQC_UD8aYZ)](https://deepsource.io/gh/kmilo17pet/QuarkTS-cpp/?ref=repository-badge)
 [![arduino-library-badge](https://www.ardu-badge.com/badge/QuarkTS.svg?)](https://www.ardu-badge.com/QuarkTS)
-
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkmilo17pet%2FQuarkTS-cpp&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://github.com/kmilo17pet/QuarkTS-cpp)
 
 # QuarkTS++
 
