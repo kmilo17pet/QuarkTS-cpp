@@ -22,15 +22,15 @@
 *
 * @section q_trace_viewvars Viewing variables
 * For viewing or tracing a variable (up to 32-bit data) through debug, one of 
-* the following statements are available: trace::log or trace::msg.
+* the following statements are available: qOS::trace::log() or qOS::trace::msg().
 *
-* The only difference between trace::log and trace::msg, is that trace starting
+* The only difference between qOS::trace::log() and qOS::trace::msg(), is that trace starting
 * with @c log , print out additional information provided by the @c __FILE__ , 
 * @c __LINE__ and @c __func__ built-in preprocessing macros, mostly available 
 * in common C++ compilers.
 *
 * @section q_trace_mblock Viewing a memory block
-* For tracing memory from a specified target address, you should use the trace::mem()
+* For tracing memory from a specified target address, you should use the qOS::trace::mem()
 * specifier to define the number of bytes to be visualized of the memory block 
 * that shuold be given after as a pointer.
 *
@@ -59,7 +59,7 @@
 *  @endcode
 *
 * As seen above, the function follows the required prototype. Later, in the 
-* main thread, a call to qTrace_Set_OutputFcn() is used to set up the
+* main thread, a call to qOS::trace::setOutputFcn() is used to set up the
 * output-function.
 *
 *  @code{.c}

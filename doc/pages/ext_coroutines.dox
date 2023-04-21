@@ -24,7 +24,7 @@
 * <em>Coroutines in QuarkTS++</em>
 * </center>
 * 
-* The QuarkTS++ implementation uses the Duff's device approach, and is heavily
+* The QuarkTS++ implementation is stackless by using the Duff's device approach, and is heavily
 * inspired by the Knuth method, <a style="font-weight:bold" href="https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html">Simon Tatham's Co-Routines in C</a>
 * and <a style="font-weight:bold" href="http://dunkels.com/adam/pt/index.html">Adam Dunkels Protothreads</a>
 * . This means that a local-continuation variable is used to preserve the current
@@ -96,15 +96,6 @@
 * An additional overload of this co::waitUntil() is also provided. This one
 * sets a timeout for the logical condition to be met.
 *
-* Optionally, the Do-Until structure gives to application writer the ability to 
-* perform a multi-line job before the yield, allowing more complex actions to
-* being performed after the Co-Routine resumes:
-*
-*  @code{.c}
-*  qCR_Do {
-*      /* Job : a set of instructions*/
-*  } qCR_Until( Condition );
-*  @endcode
 *
 * @section q_coroutine_example1 Co-Routine usage example
 *

@@ -33,15 +33,15 @@
 * 
 * <b> The overall timing primitive </b>
 *
-* A @subpage q_stimers "STimer" beyond being a simple extension, is a direct 
-* dependency on the kernel. In fact, each task has an instance of STimer within
+* A @subpage q_stimers "Timer" beyond being a simple extension, is a direct 
+* dependency on the kernel. In fact, each task has an instance of Timer within
 * its TCB (Task Control Block) to measure the passage of time and determine 
-* when a "time-elapsed" event needs to be generated. In summary, STimers are 
+* when a "time-elapsed" event needs to be generated. In summary, Timers are 
 * a non-blocking time measurement mechanism ideal for use in cooperative
 * RTOS environments
 * 
-* By using STimers for delays, tasks can continue to execute while waiting for 
-* the delay to expire, allowing other tasks to run. STimers are also a dependency 
+* By using Timers for delays, tasks can continue to execute while waiting for 
+* the delay to expire, allowing other tasks to run. Timers are also a dependency 
 * for coroutines and FSMs in order to manage timed operations efficiently.
 * 
 * Always consider using STimers for operations that require elapsed time
