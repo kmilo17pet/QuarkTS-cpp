@@ -363,32 +363,21 @@ Configuration macros</h1>
 <p >Some OS features can be customized using a set of macros located in the header file <code><a class="el" href="config_8h_source.html">config.h</a></code>. Here is the default configuration, followed by an explanation of each macro:</p>
 <ul>
 <li><code>Q_PRIORITY_LEVELS</code> : <em>Default:</em> <code>3</code>. The number of priorities available for application tasks.</li>
-<li><code>Q_SETUP_TIME_CANONICAL</code> : <em>Default:</em> <code>0</code>(disabled). If enabled, the kernel assumes the timing base to 1mS(1KHz). So all time specifications for tasks and STimers must be set in milliseconds(mS). Also can be used to remove the floating-point operations when dealing with time. In some systems, can reduce memory usage.</li>
-<li><code>Q_SETUP_TICK_IN_HERTZ</code> : <em>Default:</em> <code>0</code>(disabled). If enabled, the timing base will be taken as frequency(Hz) instead of period(S) by qOS_Setup() (In some systems, can reduce memory usage ).</li>
+<li><code>Q_SETUP_TIME_CANONICAL</code> : <em>Default:</em> <code>1</code>(enabled). If enabled, the kernel assumes the timing base to 1mS(1KHz). So all time specifications for tasks and Timers must be set in milliseconds(mS). Also can be used to remove the floating-point operations when dealing with time. In some systems, can reduce memory usage.</li>
+<li><code>Q_SETUP_TICK_IN_HERTZ</code> : <em>Default:</em> <code>0</code>(disabled). If enabled, the timing base will be taken as frequency(Hz) instead of period(S) by <a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> (In some systems, can reduce memory usage ).</li>
 <li><code>Q_PRIO_QUEUE_SIZE</code> : <em>Default:</em> <code>10</code>. Size of the priority queue for notifications. This argument should be an integer number greater than zero. A zero value can be used to disable this functionality.</li>
+<li><code>Q_ALLOW_SCHEDULER_RELEASE</code> : <em>Default:</em> <code>0</code>(disabled). Used to enable or disable the scheduler release functionality.</li>
 <li><code>Q_PRESERVE_TASK_ENTRY_ORDER</code> : <em>Default:</em> <code>0</code>(disabled). If enabled, the kernel will preserve the tasks entry order every OS scheduling cycle.</li>
-<li><code>Q_MEMORY_MANAGER</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the <a class="el" href="q_memmang.html">Memory Management</a> extension.</li>
 <li><code>Q_BYTE_ALIGNMENT</code> : <em>Default:</em> <code>8</code>. Used by the <a class="el" href="q_memmang.html">Memory Management</a> extension to perform the byte alignment.</li>
-<li><code>Q_DEFAULT_HEAP_SIZE</code> : <em>Default:</em> <code>2048</code>. The total amount of heap size for the default memory pool.</li>
-<li><code>Q_NOTIFICATION_SPREADER</code> : <em>Default:</em> <code>0</code>(disabled). Used to enable or disable the spread notification functionality.</li>
+<li><code>Q_DEFAULT_HEAP_SIZE</code> : <em>Default:</em> <code>2048</code>. The total amount of heap size for the default memory pool. This will enable <code>new</code> and <code>delete</code> operators if not available</li>
 <li><code>Q_FSM</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the Finite State Machine (FSM) extension.</li>
 <li><code>Q_FSM_MAX_NEST_DEPTH</code> : <em>Default:</em> <code>5</code>. The max depth of nesting in Finite State Machines (FSM).</li>
 <li><code>Q_FSM_MAX_TIMEOUTS</code> : <em>Default:</em> <code>3</code>. Max number of timeouts inside a timeout specification for the <a class="el" href="q_fsm.html">Finite State Machines (FSM)</a> extension.</li>
 <li><code>Q_FSM_PS_SIGNALS_MAX</code> : <em>Default:</em> <code>8</code>. Max number of signals to subscribe for a Finite State Machine (FSM).</li>
 <li><code>Q_FSM_PS_SUB_PER_SIGNAL_MAX</code> : <em>Default:</em> <code>4</code>. Max number of FSM subscribers per signal.</li>
-<li><code>Q_QUEUES</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the queues APIs for inter-task communication.</li>
-<li><code>Q_TRACE_VARIABLES</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable debug and trace macros.</li>
 <li><code>Q_DEBUGTRACE_BUFSIZE</code> : <em>Default:</em> <code>36</code>. The buffer size for debug and trace macros</li>
-<li><code>Q_DEBUGTRACE_FULL</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the extended output for trace macros.</li>
-<li><code>Q_ATCLI</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the <a class="el" href="q_atcli.html">AT Command Line Interface (CLI)</a> extension.</li>
-<li><code>Q_TASK_COUNT_CYCLES</code> : <em>Default:</em> <code>0</code>(disabled). Used to enable or disable the counting of cycles of a task.</li>
-<li><code>Q_TASK_EVENT_FLAGS</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the task event flags.</li>
-<li><code>Q_MAX_FTOA_PRECISION</code> : <em>Default:</em> <code>10</code>. The default precision used to perform float to ASCII conversions.</li>
-<li><code>Q_ATOF_FULL</code> : <em>Default:</em> <code>0</code>(disabled). Used to enable or disable the scientific notation in ASCII to float conversions.</li>
-<li><code>Q_ALLOW_SCHEDULER_RELEASE</code> : <em>Default:</em> <code>0</code>(disabled). Used to enable or disable the scheduler release functionality.</li>
-<li><code>Q_RESPONSE_HANDLER</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the response handler functionality.</li>
-<li><code>Q_EDGE_CHECK_IOGROUPS</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the edge check functionality for I/O groups.</li>
-<li><code>Q_BYTE_SIZED_BUFFERS</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the usage of Byte-sized buffers. </li>
+<li><code>Q_CLI</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the <a class="el" href="q_atcli.html">AT Command Line Interface (CLI)</a> extension.</li>
+<li><code>Q_ATOF_FULL</code> : <em>Default:</em> <code>0</code>(disabled). Used to enable or disable the scientific notation in ASCII to float conversions. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -168,9 +168,7 @@ Memory pools</h1>
 <p >To keep track of the memory usage, the <a class="el" href="classq_o_s_1_1mem_1_1pool.html#ae794604d6b2206cf47f21d324c7a6d55" title="Returns the total amount of heap space that remains unallocated for the memory pool.">qOS::mem::pool::getFreeSize()</a> API function returns the number of free bytes in the memory pool at the time the function is called.</p>
 <h1><a class="anchor" id="q_memmang_usage"></a>
 Usage example</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;Core.h&quot;</span></div>
 <div class="line"> </div>
@@ -227,7 +225,7 @@ Usage example</h1>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a6108a6807716a23d2af2db9ddadea99a"><div class="ttname"><a href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_aaa25100145b3f56a1f7aa6458ec0e0bd"><div class="ttname"><a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:314</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:317</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
