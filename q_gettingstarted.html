@@ -170,8 +170,8 @@ Use QuarkTS++ in Arduino</h2>
 <p >You can now find the new library available in the Sketch &gt; Include Library menu.</p>
 <h1><a class="anchor" id="q_firststeps"></a>
 First steps</h1>
-<p >Include the source files to your project. Also, make sure you add a copy of the file <code><a class="el" href="config_8h_source.html">config.h</a></code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code>quarkts++</code>.h and setup the instance of the kernel using the <a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
-<p >File <code>main.c</code> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<p >Include the source files to your project. Also, make sure you add a copy of the file <code><a class="el" href="config_8h_source.html">config.h</a></code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code><a class="el" href="_quark_t_s_8h_source.html">QuarkTS.h</a></code> and setup the instance of the kernel using the <a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
+<p >File <code>main.c</code> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
@@ -200,7 +200,7 @@ A simple scheduling</h2>
 <div class="line"><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;BSP.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
 <div class="line">task task1, task2, task3; <span class="comment">/*task nodes*/</span></div>

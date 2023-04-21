@@ -167,7 +167,7 @@ Timing Approach</h1>
 <p >The initialization and configuration of QuarkTS++ through <a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> will allow you to set the reference clock source in addition to specifying <a class="el" href="q_foundations.html#q_idletask">Idle task</a> activities.</p>
 <dl class="section note"><dt>Note</dt><dd>The call to <a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> is mandatory and must be called once in the application main thread before any kind of interaction with the other OS functions.</dd></dl>
 <p>Usage example:</p><ul>
-<li>Scenario 1 : When tick is already provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<li>Scenario 1 : When tick is already provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>
@@ -180,7 +180,7 @@ Timing Approach</h1>
 <div class="ttc" id="aclassq_o_s_1_1core_html_aaa25100145b3f56a1f7aa6458ec0e0bd"><div class="ttname"><a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
 </div><!-- fragment --></li>
-<li>Scenario 2 : When the tick is not provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<li>Scenario 2 : When the tick is not provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;DeviceHeader.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>

@@ -283,7 +283,7 @@ Sending notifications</h3>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstring&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span> <span class="comment">/*hardware dependent code*/</span></div>
-<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line">task_t taskA, taskB;</div>
 <div class="line"><span class="keywordtype">void</span> taskA_Callback( event_t e );</div>
@@ -403,10 +403,10 @@ Attach a queue to a task</h3>
 <h3><a class="anchor" id="q_queueexample"></a>
 A queue example</h3>
 <p >This example shows the usage of QuarkTS++ queues. The application is the classic producer/consumer example. The producer task puts data into the queue. When the queue reaches a specific item count, the consumer task is triggered to start fetching data from the queue. Here, both tasks are attached to the queue.</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;cstdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;cstdlib.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;cstdint.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
 <div class="line"><span class="keywordtype">void</span> interrupt Timer0_ISR( <span class="keywordtype">void</span> ) {</div>
@@ -511,7 +511,7 @@ Using the task Event-flags</h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*event flags application definitions */</span></div>
 <div class="line"><span class="preprocessor">#define SWITCH_CHANGED   EVENT_FLAG(1)</span></div>

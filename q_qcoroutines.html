@@ -228,7 +228,7 @@ Co-Routine example with semaphores.</h1>
 <p >The following example shows how to implement the bounded buffer problem using Co-Routines and semaphores. The example uses two tasks: one that produces items and other that consumes items.</p>
 <p >Note that there is no need for a mutex to guard the <code>add_to_buffer()</code> and <code>get_from_buffer()</code> functions because of the implicit locking semantics of Co-Routines, so it will never be preempted and will never block except in an explicit <a class="el" href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302" title="Carries out the &quot;wait&quot; operation on the semaphore. The wait operation causes the Co-routine to block ...">co::semWait()</a> statement.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;AppLibrary.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>
