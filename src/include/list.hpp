@@ -47,6 +47,9 @@ namespace qOS {
     *  @{
     */
 
+    /**
+    * @brief An enum with the possible options to specify a target position for a list.
+    */
     enum listPosition : int32_t {
         AT_FRONT = -1,
         AT_BACK = -2
@@ -65,6 +68,10 @@ namespace qOS {
             node( node const& ) = delete;
             void operator=( node const& ) = delete;
         public:
+            /**
+            * @brief Get a pointer to the list in which this node is contained.
+            * @return A pointer to the list container.
+            */
             inline list* getContainer( void ) noexcept
             {
                 return container;
@@ -75,8 +82,27 @@ namespace qOS {
         friend class listIterator;
     };
 
+    /**
+    * @brief Pointer to a function used by the list::sort() method to compare
+    * nodes of a list.
+    *
+    * Example :
+    * @code{.c}
+    * bool myNode_CompareFcn( const void *n1, const void *n2 ) {
+    *     mydata_t *node1 = (mydata_t *)n1;
+    *     mydata_t *node2 = (mydata_t *)n2;
+    *     return ( node1->x > node2->x );
+    * }
+    * @endcode
+    * @param[in] h The handler object containing the objects being compared.
+    * @return  @c true value indicates that element pointed by @a node1 goes
+    * after the element pointed to by @a node2
+    */
     using listCompareFcn_t = bool (*)( const void *, const void * );
 
+    /**
+    * @brief An enum with the possible options to transverse a list.
+    */
     enum class listDirection {
         FORWARD,
         BACKWARD
@@ -107,7 +133,7 @@ namespace qOS {
             list() noexcept;
             /**
             * @brief Insert an item into the list.
-            * @param[in] node A pointer to the node to be inserted
+            * @param[in] xNode A pointer to the node to be inserted
             * @param[in] p The position where the node will be inserted. Could be
             * listPosition::AT_FRONT, listPosition::AT_BACK or any other index 
             * number where the node will be inserted after.
@@ -117,13 +143,13 @@ namespace qOS {
             bool insert( void * const xNode, const listPosition p = listPosition::AT_BACK ) noexcept;
             /**
             * @brief If the node is member of a list, the node will be removed from it.
-            * @param[in] node A pointer to the node.
+            * @param[in] xNode A pointer to the node.
             * @return @c true on Success. @c false if removal can't be performed.
             */
             bool remove( void * const xNode ) noexcept;
             /**
             * @brief Remove an item from the list.
-            * @param[in] node A pointer to the node to be deleted (to ignore 
+            * @param[in] xNode A pointer to the node to be deleted (to ignore 
             * pass @c nullptr ). 
             * @param[in] p The position of the node that will be removed. Could be
             * listPosition::AT_FRONT, listPosition::AT_BACK or any other index 
@@ -167,7 +193,7 @@ namespace qOS {
             * @code bool CompareFcn( listCompareHandle_t h ) @endcode
             *
             * The function defines the order of the elements by returning a Boolean data,
-            * where a #qTrue value indicates that element pointed by @a node1 goes
+            * where a @c true value indicates that element pointed by @a node1 goes
             * after the element pointed to by @a node2.
             * @return @c true if at least one reordering is performed over the list.
             */
@@ -195,6 +221,9 @@ namespace qOS {
             * otherwise returns @c false
             */
             bool move( list& src, const listPosition p = listPosition::AT_BACK ) noexcept;
+            /**
+            * @brief Clean up the entire list leaving it empty
+            */
             void clean( void ) noexcept;
             /**
             * @brief Returns an iterator pointing to the first element in the 
@@ -217,6 +246,9 @@ namespace qOS {
         friend class listIterator;
     };
 
+    /**
+    * @brief A list iterator
+    */
     class listIterator {
         private:
             list *l{ nullptr };
@@ -224,11 +256,37 @@ namespace qOS {
             void *current{ nullptr };
         public:
             listIterator() = delete;
+            /**
+            * @brief Instantiate a list iterator for the given list.
+            * @param[in] xList The list 
+            * @param[in] dir The direction in which the iterator will traverse 
+            * the list
+            * @param[in] nodeOffset A pointer to the node offset in the list
+            */
             listIterator( list& xList, listDirection dir = listDirection::FORWARD, void *nodeOffset = nullptr ) noexcept;
+            /**
+            * @brief Check until current iterator reach one of its ends
+            * @return @c true if the iterator has reach on of its ends.
+            */
             bool until( void ) noexcept;
+            /**
+            * @brief Check until current iterator reach the given node
+            * @param[in] node A pointer to the node you want to reach
+            * @return @c true if the iterator has reach the given node.
+            */
             bool until( void* node ) noexcept;
+            /**
+            * @brief Move the iterator forward
+            */
             listIterator& operator++( int ) noexcept;
+            /**
+            * @brief Move the iterator backward
+            */
             listIterator& operator--( int ) noexcept;
+            /**
+            * @brief Gets the node that the iterator is currently pointing to.
+            * @return A pointer to the node currently being pointed.
+            */
             template <typename T>
             inline T get( void ) noexcept
             {

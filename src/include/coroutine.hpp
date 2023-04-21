@@ -13,6 +13,7 @@ namespace qOS {
         *  @{
         */
 
+        /** @brief The intrinsic type of co::position to hold a coroutine progress*/
         using state = base_t;
         /*! @cond  */
 

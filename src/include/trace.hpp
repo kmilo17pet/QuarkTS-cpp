@@ -109,7 +109,13 @@ namespace qOS {
         */
         class mem {
             public:
+                /*! @cond */
                 size_t n;
+                /*! @endcond */
+                /**
+                * @brief Instantiates a memory specifier size to trace n bytes
+                * @param[in] nb Number of bytes to be traced;
+                */
                 mem( size_t nb ) : n( nb ) {}
         };
 
@@ -124,7 +130,13 @@ namespace qOS {
         */
         class pre {
             public:
+                /*! @cond */
                 uint8_t precision;
+                /*! @endcond */
+                /**
+                * @brief Instantiates a precision specifier of @a p decimal points.
+                * @param[in] p Number of decimal points for the precision
+                */
                 pre( uint8_t p ) : precision( p ) {}
         };
 

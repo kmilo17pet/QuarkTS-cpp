@@ -72,12 +72,12 @@ namespace qOS {
             void reset( void ) noexcept;
             /**
             * @brief Returns the empty status of the Queue
-            * @return true if the Queue is empty, false if it is not.
+            * @return @c true if the Queue is empty, @c false if it is not.
             */
             bool isEmpty( void ) const noexcept;
             /**
             * @brief Returns the full status of the Queue
-            * @return true if the Queue is full, false if it is not.
+            * @return @c true if the Queue is full, @c false if it is not.
             */
             bool isFull( void ) const noexcept;
             /**
@@ -104,8 +104,8 @@ namespace qOS {
             * queue was created.
             * @param[out] dst Pointer to the buffer into which the received item
             * will be copied.
-            * @return true if data was retrieved from the Queue, otherwise returns
-            * #false
+            * @return @c true if data was retrieved from the Queue, otherwise returns
+            * @c false
             */
             bool receive( void *dst ) noexcept;
             /**
@@ -118,7 +118,7 @@ namespace qOS {
             * @param[in] pos Can take the value queueSendMode::TO_BACK (default)
             * to place the item at the back of the queue, or queueSendMode::TO_FRONT
             * to place the item at the front of the queue (for high priority messages).
-            * @return true on successful add, false if not added
+            * @return @c true on successful add, @c false if not added
             */
             bool send( void *itemToQueue, const queueSendMode pos = queueSendMode::TO_BACK ) noexcept;
             /**
@@ -128,9 +128,13 @@ namespace qOS {
             void* peek( void ) const noexcept;
             /**
             * @brief Check if the queue is already initialized by using queue::setup()
-            * @return true if the queue is initialized, false if not.
+            * @return @c true if the queue is initialized, @c false if not.
             */
             bool isInitialized( void ) const noexcept;
+            /**
+            * @brief Get the size(in bytes) used for every item in the queue.
+            * @return The item-size in bytes.
+            */
             size_t getItemSize( void ) const noexcept;
     };
 

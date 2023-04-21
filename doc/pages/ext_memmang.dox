@@ -9,17 +9,16 @@
 * allocation scheme, making a safe and portable implementation crucial for user
 * code.
 * 
-* In a typical C environment, memory allocation can be achieved using standard 
-* library functions like @c malloc() and @c free(). However, they may not be 
-* appropriate for most embedded applications, as they may not be available on 
+* In a typical C++ environment, memory allocation can be achieved using standard 
+* @c new and @c delete operators as well as the C library functions like 
+* @c malloc() and @c free(). However, they may not be appropriate for most 
+* embedded applications, as they may not be available on 
 * small microcontrollers or could consume a substantial amount of code space. 
-* Furthermore, dynamic memory allocation has several implementation-defined behaviors and potential issues such as fragmentation.
-
-To address these concerns, the OS offers its own memory management interface 
-* for dynamic allocation as a fully kernel-independent extension. Instead of 
-* calling @c malloc() or @c free(), the application can use qMalloc() to allocate
-* RAM, and  qFree() to free it when necessary. These functions have the same 
-* prototypes as their standard C library counterparts.
+* Furthermore, dynamic memory allocation has several implementation-defined 
+* behaviors and potential issues such as fragmentation.
+*
+* To address these concerns, the OS offers its own memory management interface 
+* for dynamic allocation as a fully kernel-independent extension.
 *
 * @section q_memmang_principle Principle of operation
 * The allocation scheme works by subdividing a static array into smaller blocks
@@ -72,17 +71,13 @@ To address these concerns, the OS offers its own memory management interface
 *
 * Besides the default pool, any number of additional memory pools can be defined. 
 * Like any other object in QuarkTS++, memory pools are referenced by handles, a 
-* variable of type @ref qMemMang_Pool_t and should be initialized before use 
-* with the qMemMang_Pool_Setup() API function.
+* variable of class qOS::mem::pool and should be initialized before using its own
+* constructor or the qOS::mem::pool::setup() method.
 *
-* To perform operations in another memory pool, besides the default pool, an 
-* explicit switch should be performed using qMemMang_Pool_Select(). Here, a 
-* pointer to the target pool should be passed as input argument. From now on, 
-* every call to qMalloc(), or qFree() will run over the newly selected memory 
-* pool. To return to the default pool, a new call to qMemMang_Pool_Select() is 
-* required passing @c NULL as input argument.
+* From now on, user can allocate and free memory in the pool by calling 
+* qOS::mem::pool::alloc(), or qOS::mem::pool::free().
 * 
-* To keep track of the memory usage, the qMemMang_Get_FreeSize() API function 
+* To keep track of the memory usage, the qOS::mem::pool::getFreeSize() API function 
 * returns the number of free bytes in the memory pool at the time the function 
 * is called.
 *
@@ -95,22 +90,23 @@ To address these concerns, the OS offers its own memory management interface
 *  #include "HAL.h"
 *  #include "Core.h"
 *  
-*  qTask_t taskA;
-*  qMemMang_Pool_t another_heap;
-*  void taskA_Callback( qEvent_t e );
+*  using namespace qOS;
+*
+*  task_t taskA;
+*  mem::pool heap1, heap2;
+*  void taskA_Callback( event_t e );
 *  
-*  void taskA_Callback( qEvent_t e ) {
-*      int *xdata = NULL;
-*      int *ydata = NULL;
-*      int *xyoper = NULL;
+*  void taskA_Callback( event_t e ) {
+*      int *xdata = nullptr;
+*      int *ydata = nullptr;
+*      int *xyoper = nullptr;
 *      int n = 20;
 *      int i;
 *      
-*      xyoper = (int*)qMalloc( n*sizeof(int) );
-*      xdata = (int*)qMalloc( n*sizeof(int) );
-*      qMemMang_Pool_Select( &another_heap ); /*change the memory pool*/
+*      xyoper = (int*)heap1.alloc( n*sizeof(int) );
+*      xdata = (int*)heap1.alloc( n*sizeof(int) );
 *      /*ydata will point to a segment allocated in another pool*/
-*      ydata = (int*)qMalloc( n*sizeof(int) ); 
+*      ydata = (int*)heap2.alloc( n*sizeof(int) ); 
 *      
 *      /*use the memory if could be allocated*/
 *      if ( xdata && ydata && xyoper ) {
@@ -119,26 +115,28 @@ To address these concerns, the OS offers its own memory management interface
 *              ydata[ i ] = GetYData();
 *              xyoper[ i ] = xdata[ i ]*ydata[ i ];
 *          }
-*          UseTheMemmory(xyoper);
+*          UseTheMemmory( xyoper );
 *      }
 *      else {
-*          qTrace_Message("ERROR:ALLOCATION_FAIL");
+*          trace::log << "ERROR:ALLOCATION_FAIL" << trace::endl;
 *      }
 *  
-*      qFree( ydata );
-*      qMemMang_Pool_Select( NULL ); /*return to the default pool*/
-*      qFree( xdata );
-*      qFree( xyoper );
+*      heap1.free( ydata );
+*      heap1.free( xdata );
+*      heap2.free( xyoper );
 *  }
 *  
 *  int main(void) {
-*      char area_another_heap[ 512 ] = { 0 };
-*      qTrace_Set_OutputFcn( OutPutChar );
+*      char area_heap1[ 512 ] = { 0 };
+*      char area_heap2[ 512 ] = { 0 };
+*
+*      trace::setOutputFcn( OutPutChar );
 *      /*Create a memory heap*/
-*      qMemMang_Pool_Setup( &another_heap, area_another_heap, 512 );
-*      qOS_Setup( HAL_GetTick, 0.001f, IdleTaskCallback );
-*      qOS_Add_Task( &taskA, taskA_Callback, qLowest_Priority, 0.1f, qPeriodic, qEnabled, NULL );
-*      qOS_Run();
+*      heap1.setup( area_another_heap, sizeof( area_heap1 ) );
+*      heap2.setup( area_another_heap, sizeof( area_heap2 ) );
+*      os.init( HAL_GetTick, IdleTaskCallback );
+*      os.addTask( taskA, taskA_Callback, core::LOWEST_PRIORITY, 100, task::PERIODIC, taskState::ENABLED_STATE );
+*      os.run();
 *      return 0;
 *  }
 *  @endcode

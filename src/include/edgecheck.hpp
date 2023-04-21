@@ -21,6 +21,10 @@ namespace qOS {
         *  @{
         */
 
+        /**
+        * @brief An enum with all the possible states detected by the 
+        * qOS::edgeCheck class  for a specified input node.
+        */
         enum class pinState {
             UNKNOWN = -1,
             OFF = 0,
@@ -118,8 +122,6 @@ namespace qOS {
     };
 
     /** @}*/
-
 }
 
-/** @}*/
 #endif /*QOS_EDGE_CHECK*/

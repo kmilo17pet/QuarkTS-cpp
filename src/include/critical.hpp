@@ -10,7 +10,44 @@ namespace qOS {
     *  @{
     */
 
+    /**
+    * @brief Function called by critical::exit() to restore interrupts.
+    *
+    * @note User should use bare-metal code to implement this function.
+    * @note The kernel passes the previously saved interrupt configuration as
+    * input argument. The user is responsible for taking this argument to
+    * restore the saved interrupt setup.
+    * Example :
+    * @code{.c}
+    * void BSP_InterruptRestorer( uint32_t savedMask ) {
+    *       HAL_InterruptSetMask( savedMask );
+    *       HAL_EnableInterrupts();
+    * }
+    * @endcode
+    * @param[in] savedMask The interrupt configuration saved by the "Disabler"
+    * function
+    */
     using int_restorer_t = void (*)( uint32_t );
+
+    /**
+    * @brief Function called by critical::enter() to disable interrupts.
+    *
+    * @note User should use bare-metal code to implement this function.
+    * @note User should return the current interrupt configuration to be saved
+    * by the kernel.
+    * Example :
+    * @code{.c}
+    * uint32_t BSP_InterruptDisabler( void ) {
+    *       uint32_t currentMask;
+    *       currentMask = HAL_InterruptGetMask( savedMask );
+    *       HAL_DisableInterrupts();
+    *       return currentMask;
+    * }
+    * @endcode
+    * @return The current interrupt configuration (mask). The kernel will retain
+    * this value
+    * until the critical section is exited
+    */
     using int_disabler_t = uint32_t (*)( void );
 
     namespace critical {

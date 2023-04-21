@@ -80,6 +80,9 @@ namespace qOS {
         byNoReadyTasks
     };
 
+    /**
+    * @brief An enum to describe the task global states.
+    */
     enum class globalState : uint8_t {
         UNDEFINED,  /**< A task should never reach this state(Reserved for internal use) */
         READY,      /**< The task has completed preparations for running, but cannot run because a task with a higher precedence is running. */
@@ -273,6 +276,9 @@ namespace qOS {
         QUEUE_EMPTY = 32u,      /**< This mode will trigger the task if the queue is empty. A pointer to the queue will be available in the qEvent_t::EventData field.*/
     };
 
+    /**
+    * @brief Pointer to a task callback.
+    */
     using taskFcn_t = void (*)( event_t );
     /** @brief A 32-bit unsigned integer type to hold a notification value.*/
     using notifier_t = uint32_t;

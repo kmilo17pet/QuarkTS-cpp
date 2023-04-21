@@ -11,20 +11,37 @@ namespace qOS {
     * @{
     */
 
+   /** @brief A unsigned integer to hold ticks count. Epochs counter.*/
     using clock_t = timeCount_t;
 
     #if ( Q_SETUP_TIME_CANONICAL == 1 )
+        /** @brief The typedef that specified an time quantity, usually expressed in milliseconds.*/
         using time_t = timeCount_t;
     #else
+        /** @brief The typedef that specified an time quantity, usually expressed in seconds.*/
         using time_t = float32_t;
     #endif
 
     #if ( Q_SETUP_TICK_IN_HERTZ == 1 )
+        /** @brief A type to specify a clock_t type for time-base APIs.*/
         using timingBase_t = qOS::clock_t;
     #else
+        /** @brief A type to specify a time_t type for time-base APIs.*/
         using timingBase_t = qOS::time_t;
     #endif
 
+    /**
+    * @brief Pointer to a function that gets the current hardware tick value.
+    *
+    * @note User should use bare-metal code to implement this function.
+    * Example :
+    * @code{.c}
+    * unsigned long OSInterface_GetTick( void ) {
+    *       return HAL_GetTick();
+    * }
+    * @endcode
+    * @return The number of ticks provided by the system HAL.
+    */
     using getTickFcn_t = clock_t (*)( void );
 
     /**
@@ -32,10 +49,12 @@ namespace qOS {
     */
     class clock final {
         protected:
+            /*! @cond  */
             static timingBase_t timingBase;
             static volatile qOS::clock_t sysTick_Epochs;
             static qOS::clock_t internalTick( void ) noexcept;
             clock();
+            /*! @endcond  */
         public:
             clock( clock &other ) = delete;
             void operator=( const clock & ) = delete;

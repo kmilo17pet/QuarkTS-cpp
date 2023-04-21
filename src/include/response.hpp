@@ -12,6 +12,9 @@ namespace qOS {
     *  @{
     */
 
+    /**
+    * @brief A enum with the possible return status of a qOS::response object.
+    */
     enum class responseStatus {
         MISSING = 0,
         SUCCESS,
@@ -70,7 +73,7 @@ namespace qOS {
             */
             bool isInitialized( void ) const noexcept;
     };
-    
+
     /** @}*/
 }
 

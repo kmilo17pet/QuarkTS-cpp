@@ -57,7 +57,7 @@
 * The following cores have been powered with QuarkTS++ successfully:
 *
 * - ARM cores(ATMEL, STM32, LPC, Kinetis, Nordic and others)
-* - 8Bit AVR, 8051, STM8
+* - 8Bit AVR, 8051, STM8, RL78/Gxx
 * - HCS12, ColdFire, MSP430
 * - PIC (PIC24, dsPIC, 32MX, 32MZ)
 *
@@ -94,12 +94,9 @@
 * types.
 * - In line with @b MISRA guides, unqualified standard @c char and @c char* types 
 * are only permitted to hold ASCII characters and strings respectively.
-* - The @c _t suffix is used to denote a type definition (i.e @c qBool_t , 
-* @c qTask_t , @c size_t, ...).
-* - Functions, macros, enum values and data types are prefixed q. (i.e. 
-* @c qFunction, @c qEnumValue, @c QCONSTANT, @c qType_t, ...)
-* - Other than the pre-fix, most macros used for constants are written in all 
-* upper case.
+* - The @c _t suffix is used to denote a type definition (i.e @c base_t , 
+* @c signal_t , @c cycles_t, ...).
+* - Enum values and constants are written in all upper case.
 * - Almost all functions returns a boolean value of type @c bool, where a
 * @c true - @c 1u value indicates a successful procedure and @c false - @c 0u, 
 * the failure of the procedure
@@ -120,19 +117,19 @@
 * <caption id="multi_row">OS Memory footprint (Measured in a 32-bit MCU)</caption>
 * <tr><th>Functionality  <th>Size(bytes)
 * <tr><td> Kernel, scheduler and task management <td>2637
-* <tr><td> A task node @c qTask_t <td>68
+* <tr><td> A task node @c qOS::task <td>68
 * <tr><td> Finite State machines(FSM) handling and related APIs <td>314
-* <tr><td> A FSM object @c qSM_t <td> 100
-* <tr><td> A state object @c qSM_State_t <td> 36
+* <tr><td> A FSM object @c qOS::stateMachine <td> 100
+* <tr><td> A state object @c qOS::sm::state <td> 36
 * <tr><td> STimers handling and related APIs <td> 258
-* <tr><td> A STimer object @c qSTimer_t <td> 8
+* <tr><td> A STimer object @c qOS::timer <td> 8
 * <tr><td> Queues handling and related APIs <td> 544
-* <tr><td> A queue object @c qQueue_t <td> 28
+* <tr><td> A queue object @c qOS::queue <td> 28
 * <tr><td> Memory management <td> 407
 * <tr><td> A memory pool <td> 28
 * <tr><td> The AT Command Line Interface <td> 1724
-* <tr><td> An AT-CLI instance @c qATCLI_t <td> 112
-* <tr><td> An AT-CLI command instance @c qATCLI_Command_t <td> 24
+* <tr><td> An AT-CLI instance @c qOS::commandLineInterface <td> 112
+* <tr><td> An AT-CLI command instance @c qOS::cli::command <td> 24
 * <tr><td> Remaining utilities <td> 2980
 * </table>
 * </center>

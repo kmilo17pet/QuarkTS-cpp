@@ -13,7 +13,7 @@
 *
 * The OS provides a simple approach for this, a data structure with all the 
 * regarding information of the task execution. This structure, that is already 
-* defined in the callback function as the @ref event_t argument, is filled by the 
+* defined in the callback function as the @ref qOS::event_t argument, is filled by the 
 * kernel dispatcher, so the application writer only needs to read the fields 
 * inside.
 *
@@ -31,7 +31,7 @@
 *  };
 *  @endcode
 * 
-* Please review the @ref _Event class reference for more details.
+* Please review the @ref qOS::event_t class reference for more details.
 *
 * @section q_event_timeelapsed The Time-Elapsed event
 * Running tasks at pre-determined rates is desirable in many situations, like 

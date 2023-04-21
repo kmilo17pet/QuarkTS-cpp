@@ -1,5 +1,5 @@
 /*!
- * @file qconfig.h
+ * @file config.h
  * @author J. Camilo Gomez C.
  * @version 1.09
  * @note This file is part of the QuarkTS distribution.

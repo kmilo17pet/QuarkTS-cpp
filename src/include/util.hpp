@@ -113,12 +113,12 @@ namespace qOS {
         * @brief Invert the endianess for n bytes of the specified memory location.
         * @param[in,out] pData A pointer to block of data
         * @param[in] n The number of bytes to swap
-        * @return true on success, otherwise returns false.
+        * @return @c true on success, otherwise returns @c false.
         */
         bool swapBytes( void *pData, const size_t n ) noexcept;
         /**
         * @brief Check the system endianess
-        * @return true if Little-Endian, otherwise returns false.
+        * @return @c true if Little-Endian, otherwise returns @c false.
         */
         bool checkEndianness( void ) noexcept;
         /**
@@ -126,8 +126,8 @@ namespace qOS {
         * @param[in] fcn The basic output byte function
         * @param[in] pStorage The storage pointer passed to @a fcn
         * @param[in] s The string to be written
-        * @param[in] AIP Auto-Increment the storage-pointer
-        * @return tue on success, otherwise returns false.
+        * @param[in] aip Auto-Increment the storage-pointer
+        * @return @c true on success, otherwise returns @c false.
         */
         bool outputString( util::putChar_t fcn, const char *s, void* pStorage = nullptr, bool aip = false ) noexcept;
         /**
@@ -136,27 +136,28 @@ namespace qOS {
         * @param[in] pStorage The storage pointer passed to @a fcn
         * @param[in] pData A pointer to the block of data
         * @param[in] n The number of bytes to print out
-        * @return true on success, otherwise returns false.
+        * @param[in] eol @c true to enable the EOL(End-Of-Line) termination.
+        * @return @c true on success, otherwise returns @c false.
         */
         bool printXData( util::putChar_t fcn, void *pData, size_t n, bool eol = true, void* pStorage = nullptr ) noexcept;
         /**
         * @brief API interface to write n RAW data through @a fcn
-        * @param[in] oFcn The basic output byte function
-        * @param[in] pStorage The storage pointer passed to @a fcn
+        * @param[in] fcn The basic output byte function
         * @param[in] pData A pointer to the block of data
         * @param[in] n The number of bytes that will be transferred to the output
+        * @param[in] pStorage The storage pointer passed to @a fcn
         * @param[in] aip Auto-increment the storage-pointer
-        * @return true on success, otherwise returns false.
+        * @return @c true on success, otherwise returns @c false.
         */
         bool outputRAW( const ioFcn_t fcn, void *pData, const size_t n, void* pStorage = nullptr, bool aip = false ) noexcept;
         /**
         * @brief API interface to get n RAW data through @a fcn
-        * @param[in] iFcn The basic input byte function
-        * @param[in] pStorage The storage pointer passed to @a fcn
+        * @param[in] fcn The basic input byte function
         * @param[out] pData A pointer to the block where the read data will be saved
         * @param[in] n The number of bytes to get
+        * @param[in] pStorage The storage pointer passed to @a fcn
         * @param[in] aip Auto-increment the storage-pointer
-        * @return true on success, otherwise returns false.
+        * @return @c true on success, otherwise returns @c false.
         */
         bool inputRAW( const ioFcn_t fcn, void *pData, const size_t n, void* pStorage = nullptr, bool aip = false ) noexcept;
         /**

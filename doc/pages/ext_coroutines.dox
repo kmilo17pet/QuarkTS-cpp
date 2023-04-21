@@ -138,7 +138,7 @@
 * The complementary statements co::getPosition() and co::setPosition() provide
 * this
 * functionality. The first one saves the Co-Routine state at some point of their 
-* execution into @c CRPos, a variable of type @ref co::position , that can be used
+* execution into @c CRPos, a variable of type qOS::co::position , that can be used
 * at some later point of program execution by co::setPosition() to restore 
 * the Co-Routine state to the one saved by co::getPosition() into CRPos. This 
 * process can be imagined to be a "jump" back to the point of program execution 
@@ -247,8 +247,8 @@
 * that arise in other contexts, such as tasks or interrupts.
 *
 * To address these specific scenarios, a handler for the Co-routine must be 
-* defined, which is a variable of type @ref co::handle. Additionally, to 
-* initiate the scope of the target Co-routine, the statement co::reenter 
+* defined, which is a variable of type qOS::co::handle. Additionally, to 
+* initiate the scope of the target Co-routine, the statement co::reenter() 
 * should be used taking this handler as argument.
 * 
 *  @code{.c}

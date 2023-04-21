@@ -8,10 +8,15 @@
 namespace qOS {
 
     class commandLineInterface;
+
+    /** @addtogroup  qatcli AT Command Line Interface
+    * @brief API for the @ref qatcli extension.
+    *  @{
+    */
+
     namespace cli {
 
-        /** @addtogroup  qatcli AT Command Line Interface
-        * @brief API for the @ref qatcli extension.
+        /** @addtogroup  qatcli
         *  @{
         */
 
@@ -288,7 +293,7 @@ namespace qOS {
                 void operator=( command const& ) = delete;
             friend class qOS::commandLineInterface;
         };
-
+        /** @}*/
     }
 
     /**
@@ -350,18 +355,18 @@ namespace qOS {
             * @param[in] cmdOpt This flag combines with a bitwise OR the following
             * information:
             *
-            * commandType::PARA  : @c AT+cmd=x,y is allowed. The execution of the
+            * cli::commandType::PARA  : @c AT+cmd=x,y is allowed. The execution of the
             * callback function also depends on whether the number of argument is valid
             * or not. Information about number of arguments is combined with a bitwise
-            * 'OR' : ::commandType::PARA | 0xXY , where X which defines maximum
+            * 'OR' : cli::commandType::PARA | 0xXY , where X which defines maximum
             * argument number for incoming command and Y which defines minimum argument
             * number for incoming command
             *
-            * commandType::TEST  : @c "AT+cmd=?" is allowed.
+            * cli::commandType::TEST  : @c "AT+cmd=?" is allowed.
             *
-            * commandType::READ  : @c "AT+cmd?" is allowed.
+            * cli::commandType::READ  : @c "AT+cmd?" is allowed.
             *
-            * commandType::ACT   : @c AT+cmd is allowed.
+            * cli::commandType::ACT   : @c AT+cmd is allowed.
             *
             * @param[in] param User storage pointer.
             * @return @c true on success, otherwise return @c false.
@@ -407,10 +412,18 @@ namespace qOS {
             * @return @c true on success, otherwise return @c false
             */
             bool run( void );
+            /**
+            * @brief Retrieves a pointer of the owner of this object.
+            * @return @c A pointer to the owner.
+            */
             inline void* getOwner( void )
             {
                 return owner;
             }
+            /**
+            * @brief Set the cli data or storage-pointer.
+            * @param[in] pData A pointer to data or storage-pointer.
+            */
             inline void setData( void *pData )
             {
                 handler.Data = pData;
