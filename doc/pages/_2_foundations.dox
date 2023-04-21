@@ -440,7 +440,7 @@
 *
 * @section q_configmacros Configuration macros
 * Some OS features can be customized using a set of macros located in the header 
-* file @c qconfig.h. Here is the default configuration, followed by an 
+* file @c config.h. Here is the default configuration, followed by an 
 * explanation of each macro:
 *
 * - @c Q_PRIORITY_LEVELS : @a Default: @c 3. The number of priorities available for

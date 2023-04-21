@@ -67,7 +67,7 @@
 * The default memory management unit resides in a memory pool object. Also 
 * called the @a "default pool". The total amount of available heap space in the 
 * default memory pool is set by @c Q_DEFAULT_HEAP_SIZE, which is defined in 
-* @c qconfig.h.
+* @c config.h.
 *
 * Besides the default pool, any number of additional memory pools can be defined. 
 * Like any other object in QuarkTS++, memory pools are referenced by handles, a 

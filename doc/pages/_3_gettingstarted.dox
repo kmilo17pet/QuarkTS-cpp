@@ -48,11 +48,32 @@
 * menu and then Include Library > Manage Libraries.
 *
 * Then the Library Manager will open and you will find a list of libraries that
-* are already installed or ready for installation. Type in the search box "QuarkTS++"
+* are already installed or ready for installation. Type in the search box "QuarkTS"
 * and when listed, click the install button. Once it has finished, an Installed 
-* tag should appear next to the Bridge library. You can close the library manager.
+* tag should appear next to the library. You can close the library manager.
 *
 * You can now find the new library available in the Sketch > Include Library menu.
+*
+* When invoking the @c os.init() for the first time, make sure to pass the
+* @c millis function as argument
+*
+*  @code{.c}
+*  #include "QuarkTS.h"
+*  using namespace qOS;
+* 
+*  void idleTask_Callback( event_t e ) {
+*       // TODO: add the idle activities
+*  }
+*
+*  void setup() {
+*      os.init( millis , IdleTask_Callback );
+*      // TODO: add Tasks to the scheduler scheme and run the OS
+*  }
+*
+*  void loop() {
+*      os.run();
+*  }
+*  @endcode
 *
 * @section q_firststeps First steps
 * Include the source files to your project. Also, make sure you add a copy of 

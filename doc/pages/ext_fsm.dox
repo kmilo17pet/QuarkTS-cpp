@@ -444,7 +444,7 @@
 * are correctly initialized by using qOS::queue::setup() and qOS::stateMachine::setup() 
 * respectively.
 *
-* @note  Make sure that queues are enabled in the @c qconfig.h header file
+* @note  Make sure that queues are enabled in the @c config.h header file
 * @attention When configuring a signal queue with queue::setup(), remember to size
 * it based on the type @ref qOS::sm::signal_t.
 * @note If the state machines its delegated to a task, make sure to install the 
