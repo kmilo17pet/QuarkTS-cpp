@@ -344,7 +344,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check the system endianess. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if Little-Endian, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if Little-Endian, otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
@@ -491,15 +491,15 @@ Functions</h2></td></tr>
 <p>API interface to get n RAW data through <em>fcn</em>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">iFcn</td><td>The basic input byte function </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fcn</td><td>The basic input byte function </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">pData</td><td>A pointer to the block where the read data will be saved </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of bytes to get </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">aip</td><td>Auto-increment the storage-pointer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
@@ -611,15 +611,15 @@ Functions</h2></td></tr>
 <p>API interface to write n RAW data through <em>fcn</em>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">oFcn</td><td>The basic output byte function </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fcn</td><td>The basic output byte function </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>A pointer to the block of data </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of bytes that will be transferred to the output </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">aip</td><td>Auto-increment the storage-pointer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
@@ -675,11 +675,11 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">fcn</td><td>The basic output byte function </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string to be written </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">AIP</td><td>Auto-Increment the storage-pointer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aip</td><td>Auto-Increment the storage-pointer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>tue on success, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
@@ -742,10 +742,11 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pStorage</td><td>The storage pointer passed to <em>fcn</em> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>A pointer to the block of data </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of bytes to print out </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eol</td><td><code>true</code> to enable the EOL(End-Of-Line) termination. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
@@ -1067,7 +1068,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true on success, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['signalid_0',['signalID',['../group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4',1,'qOS::sm']]],
-  ['status_1',['status',['../group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c',1,'qOS::sm']]]
+  ['queuelinkmode_0',['queueLinkMode',['../group__qtaskmanip.html#ga510a1627bf9fff09eec6bd9b02d82be4',1,'qOS']]],
+  ['queuesendmode_1',['queueSendMode',['../group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22',1,'qOS']]]
 ];

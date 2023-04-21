@@ -174,8 +174,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> (void) noex
 <tr class="memitem:a58ede420ec6370c097ebe75d2fa8f7c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#a58ede420ec6370c097ebe75d2fa8f7c1">isInitialized</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a58ede420ec6370c097ebe75d2fa8f7c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the queue is already initialized by using <a class="el" href="classq_o_s_1_1queue.html#a8f49aef39c6e48b8fa9a307dd0362dc3" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">queue::setup()</a>  <a href="classq_o_s_1_1queue.html#a58ede420ec6370c097ebe75d2fa8f7c1">More...</a><br /></td></tr>
 <tr class="separator:a58ede420ec6370c097ebe75d2fa8f7c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2061bbe4e60c6fb92010e8b3a32f350"><td class="memItemLeft" align="right" valign="top"><a id="aa2061bbe4e60c6fb92010e8b3a32f350" name="aa2061bbe4e60c6fb92010e8b3a32f350"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (void) const noexcept</td></tr>
+<tr class="memitem:aa2061bbe4e60c6fb92010e8b3a32f350"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#aa2061bbe4e60c6fb92010e8b3a32f350">getItemSize</a> (void) const noexcept</td></tr>
+<tr class="memdesc:aa2061bbe4e60c6fb92010e8b3a32f350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size(in bytes) used for every item in the queue.  <a href="classq_o_s_1_1queue.html#aa2061bbe4e60c6fb92010e8b3a32f350">More...</a><br /></td></tr>
 <tr class="separator:aa2061bbe4e60c6fb92010e8b3a32f350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -213,6 +213,35 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (vo
 
 </div>
 </div>
+<a id="aa2061bbe4e60c6fb92010e8b3a32f350" name="aa2061bbe4e60c6fb92010e8b3a32f350"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2061bbe4e60c6fb92010e8b3a32f350">&#9670;&nbsp;</a></span>getItemSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t queue::getItemSize </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the size(in bytes) used for every item in the queue. </p>
+<dl class="section return"><dt>Returns</dt><dd>The item-size in bytes. </dd></dl>
+
+</div>
+</div>
 <a id="a340a65e5a33a4597f689308c60eee1fe" name="a340a65e5a33a4597f689308c60eee1fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a340a65e5a33a4597f689308c60eee1fe">&#9670;&nbsp;</a></span>isEmpty()</h2>
 
@@ -238,7 +267,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (vo
 </div><div class="memdoc">
 
 <p>Returns the empty status of the Queue. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if the Queue is empty, false if it is not. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the Queue is empty, <code>false</code> if it is not. </dd></dl>
 
 </div>
 </div>
@@ -267,7 +296,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (vo
 </div><div class="memdoc">
 
 <p>Returns the full status of the Queue. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if the Queue is full, false if it is not. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the Queue is full, <code>false</code> if it is not. </dd></dl>
 
 </div>
 </div>
@@ -296,7 +325,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (vo
 </div><div class="memdoc">
 
 <p>Check if the queue is already initialized by using <a class="el" href="classq_o_s_1_1queue.html#a8f49aef39c6e48b8fa9a307dd0362dc3" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">queue::setup()</a> </p>
-<dl class="section return"><dt>Returns</dt><dd>true if the queue is initialized, false if not. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the queue is initialized, <code>false</code> if not. </dd></dl>
 
 </div>
 </div>
@@ -389,7 +418,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (vo
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if data was retrieved from the Queue, otherwise returns #false </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if data was retrieved from the Queue, otherwise returns <code>false</code> </dd></dl>
 
 </div>
 </div>
@@ -464,7 +493,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getItemSize</b> (vo
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true on successful add, false if not added </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on successful add, <code>false</code> if not added </dd></dl>
 
 </div>
 </div>

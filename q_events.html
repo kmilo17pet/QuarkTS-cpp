@@ -158,7 +158,7 @@ Retrieving the event data</h1>
 <li>How to get the event-associated data?</li>
 <li>What is the task execution status?</li>
 </ul>
-<p >The OS provides a simple approach for this, a data structure with all the regarding information of the task execution. This structure, that is already defined in the callback function as the event_t argument, is filled by the kernel dispatcher, so the application writer only needs to read the fields inside.</p>
+<p >The OS provides a simple approach for this, a data structure with all the regarding information of the task execution. This structure, that is already defined in the callback function as the <a class="el" href="classq_o_s_1_1event__t.html">qOS::event_t</a> argument, is filled by the kernel dispatcher, so the application writer only needs to read the fields inside.</p>
 <p >This data structure is defined as: </p><div class="fragment"><div class="line"><span class="keyword">class </span>event_t {</div>
 <div class="line">    <a class="code hl_enumeration" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7">trigger</a> getTrigger( <span class="keywordtype">void</span> );</div>
 <div class="line">    <span class="keywordtype">void</span> *TaskData;</div>
@@ -166,11 +166,12 @@ Retrieving the event data</h1>
 <div class="line">    <span class="keywordtype">bool</span> firstCall( <span class="keywordtype">void</span> );</div>
 <div class="line">    <span class="keywordtype">bool</span> firstIteration( <span class="keywordtype">void</span> );</div>
 <div class="line">    <span class="keywordtype">bool</span> LastIteration( <span class="keywordtype">void</span> );</div>
-<div class="line">    clock_t startDelay( <span class="keywordtype">void</span> );</div>
+<div class="line">    <a class="code hl_typedef" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">clock_t</a> startDelay( <span class="keywordtype">void</span> );</div>
 <div class="line">    task&amp; <span class="keyword">self</span>( void );</div>
 <div class="line">};</div>
+<div class="ttc" id="agroup__qclock_html_ga32d97136944ad8457aa05a6f4d3c3749"><div class="ttname"><a href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a></div><div class="ttdeci">timeCount_t clock_t</div><div class="ttdoc">A unsigned integer to hold ticks count. Epochs counter.</div><div class="ttdef"><b>Definition:</b> clock.hpp:15</div></div>
 <div class="ttc" id="agroup__qtaskmanip_html_ga7e4cfcb94ebb5b84bd080b487a2db8c7"><div class="ttname"><a href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7">qOS::trigger</a></div><div class="ttdeci">trigger</div><div class="ttdoc">An enum with all the possible values for the event_t::getTrigger() method.</div><div class="ttdef"><b>Definition:</b> task.hpp:23</div></div>
-</div><!-- fragment --><p >Please review the _Event class reference for more details.</p>
+</div><!-- fragment --><p >Please review the <a class="el" href="classq_o_s_1_1event__t.html">qOS::event_t</a> class reference for more details.</p>
 <h1><a class="anchor" id="q_event_timeelapsed"></a>
 The Time-Elapsed event</h1>
 <p >Running tasks at pre-determined rates is desirable in many situations, like sensory data acquisition, low-level servoing, control loops, action planning and system monitoring. As previously explained in <a class="el" href="q_foundations.html#q_addtasks">Adding tasks to the scheme</a>, you can schedule tasks at any interval your design demands, at least, if the time specification is lower than the scheduler tick. When an application consists of several periodic tasks with individual timing constraints, a few points must be taken:</p>
@@ -362,7 +363,7 @@ Sending notifications</h3>
 <div class="ttc" id="aclassq_o_s_1_1core_html_af544e4dc0c995270ff1e87f01f87fc79"><div class="ttname"><a href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:373</div></div>
 <div class="ttc" id="agroup__qnot_html_ga02de2ccfc49432f48637fb1391c522b0"><div class="ttname"><a href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">qOS::core::notify</a></div><div class="ttdeci">bool notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept</div><div class="ttdoc">Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:425</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_ga501a22419157104b982c3a32d871fe21"><div class="ttname"><a href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:6</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:302</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:314</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="qnotspread"></a>
 Spread a notification</h3>
 <p >In some systems, we need the ability to broadcast an event to all tasks. This is often referred to as a barrier. This means that a group of tasks should stop activities at some point and cannot proceed until another task or ISR raise a specific event. For this kind of implementation, we can also use the core::notify() method but in this case, without specifying a target task.</p>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['queuelinkmode_0',['queueLinkMode',['../group__qtaskmanip.html#ga510a1627bf9fff09eec6bd9b02d82be4',1,'qOS']]],
-  ['queuesendmode_1',['queueSendMode',['../group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22',1,'qOS']]]
+  ['notifymode_0',['notifyMode',['../group__qnot.html#ga5af9c877b9d556d828c72c01702aa193',1,'qOS']]]
 ];

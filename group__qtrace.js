@@ -16,8 +16,12 @@ var group__qtrace =
       [ "wht", "group__qtrace.html#gaa8001c88d73d7f79bf7746433963ce79", null ],
       [ "yel", "group__qtrace.html#gad65405ff18324f2a5a5ba5b0646ed17e", null ]
     ] ],
-    [ "qOS::trace::mem", "classq_o_s_1_1trace_1_1mem.html", null ],
-    [ "qOS::trace::pre", "classq_o_s_1_1trace_1_1pre.html", null ],
+    [ "qOS::trace::mem", "classq_o_s_1_1trace_1_1mem.html", [
+      [ "mem", "classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566", null ]
+    ] ],
+    [ "qOS::trace::pre", "classq_o_s_1_1trace_1_1pre.html", [
+      [ "pre", "classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe", null ]
+    ] ],
     [ "qOS::trace::setOutputFcn", "group__qtrace.html#ga50f47c679f7086caa5c684176a18330e", null ],
     [ "qOS::trace::bin", "group__qtrace.html#ga073df9abb7c215fa97691ee5df07c1ae", null ],
     [ "qOS::trace::blu", "group__qtrace.html#gaac018d85a6a16c0d8e259681ba429155", null ],

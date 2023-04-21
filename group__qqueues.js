@@ -2,6 +2,7 @@ var group__qqueues =
 [
     [ "qOS::queue", "classq_o_s_1_1queue.html", [
       [ "count", "classq_o_s_1_1queue.html#ab7a7a6b3433374a02cad9bc72d7fd9c6", null ],
+      [ "getItemSize", "classq_o_s_1_1queue.html#aa2061bbe4e60c6fb92010e8b3a32f350", null ],
       [ "isEmpty", "classq_o_s_1_1queue.html#a340a65e5a33a4597f689308c60eee1fe", null ],
       [ "isFull", "classq_o_s_1_1queue.html#ad387bf3914ea6812b8a5582a8a1aac0a", null ],
       [ "isInitialized", "classq_o_s_1_1queue.html#a58ede420ec6370c097ebe75d2fa8f7c1", null ],

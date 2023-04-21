@@ -145,7 +145,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0012ca01df6cee7276afa03680fd98cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a0012ca01df6cee7276afa03680fd98cf">nextState</a> (<a class="el" href="classq_o_s_1_1sm_1_1state.html">state</a> &amp;s, <a class="el" href="group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420">historyMode</a> m=historyMode::NO_HISTORY) noexcept</td></tr>
 <tr class="memdesc:a0012ca01df6cee7276afa03680fd98cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a transition to the desired state.  <a href="classq_o_s_1_1sm_1_1handler__t.html#a0012ca01df6cee7276afa03680fd98cf">More...</a><br /></td></tr>
 <tr class="separator:a0012ca01df6cee7276afa03680fd98cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6">timeoutSet</a> (const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i, const qOS::time_t t) noexcept</td></tr>
+<tr class="memitem:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6">timeoutSet</a> (const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i, const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a> t) noexcept</td></tr>
 <tr class="memdesc:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time for the selected built-in timeout inside the target FSM.  <a href="classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6">More...</a><br /></td></tr>
 <tr class="separator:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa39dc4568f361edc3c2ad5032270b224"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#aa39dc4568f361edc3c2ad5032270b224">timeoutStop</a> (const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i) noexcept</td></tr>
@@ -363,7 +363,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::sm::state</b></
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const qOS::time_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a>&#160;</td>
           <td class="paramname"><em>t</em>&#160;</td>
         </tr>
         <tr>
@@ -385,7 +385,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::sm::state</b></
 Requires an installed signal-queue. For this use <a class="el" href="classq_o_s_1_1state_machine.html#a7762bb9b4664c5dc40c2bee0a3f73bd5" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::installSignalQueue()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">xTimeout</td><td>The index of the requested timeout (0, 1, 2 ... (<code>Q_FSM_MAX_TIMEOUTS-1</code>) ) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The index of the requested timeout (0, 1, 2 ... (<code>Q_FSM_MAX_TIMEOUTS-1</code>) ) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The specified time. </td></tr>
   </table>
   </dd>
@@ -424,7 +424,7 @@ Requires an installed signal-queue. For this use <a class="el" href="classq_o_s_
 Requires an installed signal-queue. For this use <a class="el" href="classq_o_s_1_1state_machine.html#a7762bb9b4664c5dc40c2bee0a3f73bd5" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::installSignalQueue()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">xTimeout</td><td>The index of the timeout (0, 1, 2 ... (<code>Q_FSM_MAX_TIMEOUTS-1</code>) ) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>The index of the timeout (0, 1, 2 ... (<code>Q_FSM_MAX_TIMEOUTS-1</code>) ) </td></tr>
   </table>
   </dd>
 </dl>

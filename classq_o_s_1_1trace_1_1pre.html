@@ -128,7 +128,6 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1trace_1_1pre.html',''); 
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classq_o_s_1_1trace_1_1pre-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">qOS::trace::pre Class Reference<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a> &raquo; <a class="el" href="group__qtrace.html">Trace</a></div></div></div>
 </div><!--header-->
@@ -141,23 +140,52 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1trace_1_1pre.html',''); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab6ae96447979e901acd7885ca99ae5fe"><td class="memItemLeft" align="right" valign="top"><a id="ab6ae96447979e901acd7885ca99ae5fe" name="ab6ae96447979e901acd7885ca99ae5fe"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>pre</b> (uint8_t p)</td></tr>
+<tr class="memitem:ab6ae96447979e901acd7885ca99ae5fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe">pre</a> (uint8_t p)</td></tr>
+<tr class="memdesc:ab6ae96447979e901acd7885ca99ae5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a precision specifier of <em>p</em> decimal points.  <a href="classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe">More...</a><br /></td></tr>
 <tr class="separator:ab6ae96447979e901acd7885ca99ae5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a1a1787ab0103976a9da0016d791b9b58"><td class="memItemLeft" align="right" valign="top"><a id="a1a1787ab0103976a9da0016d791b9b58" name="a1a1787ab0103976a9da0016d791b9b58"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>precision</b></td></tr>
-<tr class="separator:a1a1787ab0103976a9da0016d791b9b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Class that sets the decimal precision to be used to format floating-point values on trace operations. Example: </p>
 <div class="fragment"><div class="line"><span class="keywordtype">float</span> myNumber = 3.5787154;</div>
 <div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; trace::pre( 5 ) &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">trace::endl</a>;</div>
 <div class="ttc" id="aclassq_o_s_1_1trace_html_ab6c95f28fe39352c65d1962f09c48d8a"><div class="ttname"><a href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">qOS::trace::log</a></div><div class="ttdeci">static void * log</div><div class="ttdoc">Specify a new trace output with detailed information of the caller.</div><div class="ttdef"><b>Definition:</b> trace.hpp:62</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:178</div></div>
-</div><!-- fragment --> </div></div><!-- contents -->
+<div class="ttc" id="agroup__qtrace_html_ga6bf6ec0326ec76cf1079bbc9bf509791"><div class="ttname"><a href="group__qtrace.html#ga6bf6ec0326ec76cf1079bbc9bf509791">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:190</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ab6ae96447979e901acd7885ca99ae5fe" name="ab6ae96447979e901acd7885ca99ae5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ae96447979e901acd7885ca99ae5fe">&#9670;&nbsp;</a></span>pre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::trace::pre::pre </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Instantiates a precision specifier of <em>p</em> decimal points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Number of decimal points for the precision </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -1,6 +1,7 @@
 var classq_o_s_1_1list =
 [
     [ "begin", "classq_o_s_1_1list.html#afa53780fbc5c26fef679124c4e57f4cb", null ],
+    [ "clean", "classq_o_s_1_1list.html#a43957f45fe6d768313f8a56d95ad6747", null ],
     [ "end", "classq_o_s_1_1list.html#af28ba404be2fdc108e1e1393edd67fab", null ],
     [ "from", "classq_o_s_1_1list.html#aab5ca9e9f3d1a763adfe83a25e5bc949", null ],
     [ "getBack", "classq_o_s_1_1list.html#ac1ac04a47f5ec51ecb2b27db62dd9a64", null ],

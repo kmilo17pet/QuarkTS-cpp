@@ -132,29 +132,187 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1list_iterator.html','');
   <div class="headertitle"><div class="title">qOS::listIterator Class Reference<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a> &raquo; <a class="el" href="group__qlists.html">Generic double-linked lists</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A list iterator.  
+ <a href="classq_o_s_1_1list_iterator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="list_8hpp_source.html">list.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4e4d9f065893d67880bc20cdc3c61606"><td class="memItemLeft" align="right" valign="top"><a id="a4e4d9f065893d67880bc20cdc3c61606" name="a4e4d9f065893d67880bc20cdc3c61606"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>listIterator</b> (<a class="el" href="classq_o_s_1_1list.html">list</a> &amp;xList, listDirection dir=listDirection::FORWARD, void *nodeOffset=nullptr) noexcept</td></tr>
+<tr class="memitem:a4e4d9f065893d67880bc20cdc3c61606"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#a4e4d9f065893d67880bc20cdc3c61606">listIterator</a> (<a class="el" href="classq_o_s_1_1list.html">list</a> &amp;xList, <a class="el" href="group__qlists.html#ga032e23f2e0cb931b9bc0189b479c8381">listDirection</a> dir=listDirection::FORWARD, void *nodeOffset=nullptr) noexcept</td></tr>
+<tr class="memdesc:a4e4d9f065893d67880bc20cdc3c61606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiate a list iterator for the given list.  <a href="classq_o_s_1_1list_iterator.html#a4e4d9f065893d67880bc20cdc3c61606">More...</a><br /></td></tr>
 <tr class="separator:a4e4d9f065893d67880bc20cdc3c61606"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15a84002f75b6e150dc238b65e4f776c"><td class="memItemLeft" align="right" valign="top"><a id="a15a84002f75b6e150dc238b65e4f776c" name="a15a84002f75b6e150dc238b65e4f776c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>until</b> (void) noexcept</td></tr>
+<tr class="memitem:a15a84002f75b6e150dc238b65e4f776c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#a15a84002f75b6e150dc238b65e4f776c">until</a> (void) noexcept</td></tr>
+<tr class="memdesc:a15a84002f75b6e150dc238b65e4f776c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check until current iterator reach one of its ends.  <a href="classq_o_s_1_1list_iterator.html#a15a84002f75b6e150dc238b65e4f776c">More...</a><br /></td></tr>
 <tr class="separator:a15a84002f75b6e150dc238b65e4f776c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac8fc35001b2fedcce5f27c20b875b9e"><td class="memItemLeft" align="right" valign="top"><a id="aac8fc35001b2fedcce5f27c20b875b9e" name="aac8fc35001b2fedcce5f27c20b875b9e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>until</b> (void *<a class="el" href="classq_o_s_1_1node.html">node</a>) noexcept</td></tr>
+<tr class="memitem:aac8fc35001b2fedcce5f27c20b875b9e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#aac8fc35001b2fedcce5f27c20b875b9e">until</a> (void *<a class="el" href="classq_o_s_1_1node.html">node</a>) noexcept</td></tr>
+<tr class="memdesc:aac8fc35001b2fedcce5f27c20b875b9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check until current iterator reach the given node.  <a href="classq_o_s_1_1list_iterator.html#aac8fc35001b2fedcce5f27c20b875b9e">More...</a><br /></td></tr>
 <tr class="separator:aac8fc35001b2fedcce5f27c20b875b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a643076230d6f1b622ea70585b1bbdd2c"><td class="memItemLeft" align="right" valign="top"><a id="a643076230d6f1b622ea70585b1bbdd2c" name="a643076230d6f1b622ea70585b1bbdd2c"></a>
 <a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int) noexcept</td></tr>
+<tr class="memdesc:a643076230d6f1b622ea70585b1bbdd2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the iterator forward. <br /></td></tr>
 <tr class="separator:a643076230d6f1b622ea70585b1bbdd2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0158d20744d04640050f79e82d7a4db"><td class="memItemLeft" align="right" valign="top"><a id="ae0158d20744d04640050f79e82d7a4db" name="ae0158d20744d04640050f79e82d7a4db"></a>
 <a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> (int) noexcept</td></tr>
+<tr class="memdesc:ae0158d20744d04640050f79e82d7a4db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the iterator backward. <br /></td></tr>
 <tr class="separator:ae0158d20744d04640050f79e82d7a4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac26a303e9de9c1cc9913ccec912bd878"><td class="memTemplParams" colspan="2"><a id="ac26a303e9de9c1cc9913ccec912bd878" name="ac26a303e9de9c1cc9913ccec912bd878"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac26a303e9de9c1cc9913ccec912bd878"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>get</b> (void) noexcept</td></tr>
+<tr class="memitem:ac26a303e9de9c1cc9913ccec912bd878"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac26a303e9de9c1cc9913ccec912bd878"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#ac26a303e9de9c1cc9913ccec912bd878">get</a> (void) noexcept</td></tr>
+<tr class="memdesc:ac26a303e9de9c1cc9913ccec912bd878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the node that the iterator is currently pointing to.  <a href="classq_o_s_1_1list_iterator.html#ac26a303e9de9c1cc9913ccec912bd878">More...</a><br /></td></tr>
 <tr class="separator:ac26a303e9de9c1cc9913ccec912bd878"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A list iterator. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4e4d9f065893d67880bc20cdc3c61606" name="a4e4d9f065893d67880bc20cdc3c61606"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e4d9f065893d67880bc20cdc3c61606">&#9670;&nbsp;</a></span>listIterator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">listIterator::listIterator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1list.html">list</a> &amp;&#160;</td>
+          <td class="paramname"><em>xList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__qlists.html#ga032e23f2e0cb931b9bc0189b479c8381">listDirection</a>&#160;</td>
+          <td class="paramname"><em>dir</em> = <code>listDirection::FORWARD</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>nodeOffset</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Instantiate a list iterator for the given list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">xList</td><td>The list </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dir</td><td>The direction in which the iterator will traverse the list </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nodeOffset</td><td>A pointer to the node offset in the list </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac26a303e9de9c1cc9913ccec912bd878" name="ac26a303e9de9c1cc9913ccec912bd878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac26a303e9de9c1cc9913ccec912bd878">&#9670;&nbsp;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T qOS::listIterator::get </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the node that the iterator is currently pointing to. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the node currently being pointed. </dd></dl>
+
+</div>
+</div>
+<a id="aac8fc35001b2fedcce5f27c20b875b9e" name="aac8fc35001b2fedcce5f27c20b875b9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac8fc35001b2fedcce5f27c20b875b9e">&#9670;&nbsp;</a></span>until() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool listIterator::until </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check until current iterator reach the given node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">node</td><td>A pointer to the node you want to reach </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the iterator has reach the given node. </dd></dl>
+
+</div>
+</div>
+<a id="a15a84002f75b6e150dc238b65e4f776c" name="a15a84002f75b6e150dc238b65e4f776c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15a84002f75b6e150dc238b65e4f776c">&#9670;&nbsp;</a></span>until() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool listIterator::until </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check until current iterator reach one of its ends. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the iterator has reach on of its ends. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

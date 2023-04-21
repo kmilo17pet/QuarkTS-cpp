@@ -9,5 +9,6 @@ var group__qedgecheck =
       [ "add", "classq_o_s_1_1edge_check.html#ac056e231d74a329b399008dc3129871b", null ],
       [ "update", "classq_o_s_1_1edge_check.html#a3861a2b74b75a55f70c5c2d5b38b3ff2", null ]
     ] ],
+    [ "qOS::ec::pinState", "group__qedgecheck.html#ga8c8610c95dcd72ca8a1d5c3d926e507b", null ],
     [ "qOS::ec::reg", "group__qedgecheck.html#ga87f4cb15ec91bfbd3cf6d8507bbd0aeb", null ]
 ];

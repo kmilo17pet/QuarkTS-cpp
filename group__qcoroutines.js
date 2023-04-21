@@ -11,6 +11,7 @@ var group__qcoroutines =
       [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html#a713402886e02ed07e8893a020df3e981", null ],
       [ "set", "classq_o_s_1_1co_1_1semaphore.html#a1ba693d4ea532a11554939630d44898f", null ]
     ] ],
+    [ "qOS::co::state", "group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323", null ],
     [ "qOS::co::delay", "group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84", null ],
     [ "qOS::co::getPosition", "group__qcoroutines.html#gac8354b5da4ab66b7e049c615af830c97", null ],
     [ "qOS::co::reenter", "group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587", null ],

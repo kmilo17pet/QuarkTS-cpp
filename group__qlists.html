@@ -152,23 +152,26 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list object (Generic double-linked)  <a href="classq_o_s_1_1list.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html">qOS::listIterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list iterator.  <a href="classq_o_s_1_1list_iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga805544d4c3b37262eabc39851d8060dc"><td class="memItemLeft" align="right" valign="top"><a id="ga805544d4c3b37262eabc39851d8060dc" name="ga805544d4c3b37262eabc39851d8060dc"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::listCompareFcn_t</b> = bool(*)(const void *, const void *)</td></tr>
+<tr class="memitem:ga805544d4c3b37262eabc39851d8060dc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qlists.html#ga805544d4c3b37262eabc39851d8060dc">qOS::listCompareFcn_t</a> = bool(*)(const void *, const void *)</td></tr>
+<tr class="memdesc:ga805544d4c3b37262eabc39851d8060dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a function used by the <a class="el" href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed" title="Sort the double linked list using the f function to determine the order. The sorting algorithm used b...">list::sort()</a> method to compare nodes of a list.  <a href="group__qlists.html#ga805544d4c3b37262eabc39851d8060dc">More...</a><br /></td></tr>
 <tr class="separator:ga805544d4c3b37262eabc39851d8060dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gac09d38844e64e8cebdff8971d2aa1bc4"><td class="memItemLeft" align="right" valign="top"><a id="gac09d38844e64e8cebdff8971d2aa1bc4" name="gac09d38844e64e8cebdff8971d2aa1bc4"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>listPosition</b> : int32_t { <b>AT_FRONT</b>
+<tr class="memitem:gac09d38844e64e8cebdff8971d2aa1bc4"><td class="memItemLeft" align="right" valign="top"><a id="gac09d38844e64e8cebdff8971d2aa1bc4" name="gac09d38844e64e8cebdff8971d2aa1bc4"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">qOS::listPosition</a> : int32_t { <b>AT_FRONT</b>
 , <b>AT_BACK</b>
  }</td></tr>
+<tr class="memdesc:gac09d38844e64e8cebdff8971d2aa1bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with the possible options to specify a target position for a list. <br /></td></tr>
 <tr class="separator:gac09d38844e64e8cebdff8971d2aa1bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga032e23f2e0cb931b9bc0189b479c8381"><td class="memItemLeft" align="right" valign="top"><a id="ga032e23f2e0cb931b9bc0189b479c8381" name="ga032e23f2e0cb931b9bc0189b479c8381"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>listDirection</b> { <b>FORWARD</b>
+<tr class="memitem:ga032e23f2e0cb931b9bc0189b479c8381"><td class="memItemLeft" align="right" valign="top"><a id="ga032e23f2e0cb931b9bc0189b479c8381" name="ga032e23f2e0cb931b9bc0189b479c8381"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qlists.html#ga032e23f2e0cb931b9bc0189b479c8381">qOS::listDirection</a> { <b>FORWARD</b>
 , <b>BACKWARD</b>
  }</td></tr>
+<tr class="memdesc:ga032e23f2e0cb931b9bc0189b479c8381"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with the possible options to transverse a list. <br /></td></tr>
 <tr class="separator:ga032e23f2e0cb931b9bc0189b479c8381"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -191,8 +194,37 @@ Enumerations</h2></td></tr>
 <div class="line">    <span class="keywordtype">int</span> b;</div>
 <div class="line">    <span class="keywordtype">float</span> y;</div>
 <div class="line">};</div>
-<div class="ttc" id="aclassq_o_s_1_1node_html"><div class="ttname"><a href="classq_o_s_1_1node.html">qOS::node</a></div><div class="ttdoc">A list-node object (Used internally)</div><div class="ttdef"><b>Definition:</b> list.hpp:59</div></div>
-</div><!-- fragment --> </div><!-- contents -->
+<div class="ttc" id="aclassq_o_s_1_1node_html"><div class="ttname"><a href="classq_o_s_1_1node.html">qOS::node</a></div><div class="ttdoc">A list-node object (Used internally)</div><div class="ttdef"><b>Definition:</b> list.hpp:62</div></div>
+</div><!-- fragment --> <h2 class="groupheader">Typedef Documentation</h2>
+<a id="ga805544d4c3b37262eabc39851d8060dc" name="ga805544d4c3b37262eabc39851d8060dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga805544d4c3b37262eabc39851d8060dc">&#9670;&nbsp;</a></span>listCompareFcn_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="group__qlists.html#ga805544d4c3b37262eabc39851d8060dc">qOS::listCompareFcn_t</a> = typedef bool (*)( const void *, const void * )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to a function used by the <a class="el" href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed" title="Sort the double linked list using the f function to determine the order. The sorting algorithm used b...">list::sort()</a> method to compare nodes of a list. </p>
+<p >Example : </p><div class="fragment"><div class="line"><span class="keywordtype">bool</span> myNode_CompareFcn( <span class="keyword">const</span> <span class="keywordtype">void</span> *n1, <span class="keyword">const</span> <span class="keywordtype">void</span> *n2 ) {</div>
+<div class="line">    mydata_t *node1 = (mydata_t *)n1;</div>
+<div class="line">    mydata_t *node2 = (mydata_t *)n2;</div>
+<div class="line">    <span class="keywordflow">return</span> ( node1-&gt;x &gt; node2-&gt;x );</div>
+<div class="line">}</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">h</td><td>The handler object containing the objects being compared. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> value indicates that element pointed by <em>node1</em> goes after the element pointed to by <em>node2</em> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

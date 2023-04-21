@@ -23,8 +23,8 @@ var annotated_dup =
         [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ]
       ] ],
       [ "trace", null, [
-        [ "mem", "classq_o_s_1_1trace_1_1mem.html", null ],
-        [ "pre", "classq_o_s_1_1trace_1_1pre.html", null ]
+        [ "mem", "classq_o_s_1_1trace_1_1mem.html", "classq_o_s_1_1trace_1_1mem" ],
+        [ "pre", "classq_o_s_1_1trace_1_1pre.html", "classq_o_s_1_1trace_1_1pre" ]
       ] ],
       [ "byteBuffer", "classq_o_s_1_1byte_buffer.html", "classq_o_s_1_1byte_buffer" ],
       [ "clock", "classq_o_s_1_1clock.html", null ],
@@ -33,8 +33,8 @@ var annotated_dup =
       [ "edgeCheck", "classq_o_s_1_1edge_check.html", "classq_o_s_1_1edge_check" ],
       [ "event_t", "classq_o_s_1_1event__t.html", "classq_o_s_1_1event__t" ],
       [ "list", "classq_o_s_1_1list.html", "classq_o_s_1_1list" ],
-      [ "listIterator", "classq_o_s_1_1list_iterator.html", null ],
-      [ "node", "classq_o_s_1_1node.html", null ],
+      [ "listIterator", "classq_o_s_1_1list_iterator.html", "classq_o_s_1_1list_iterator" ],
+      [ "node", "classq_o_s_1_1node.html", "classq_o_s_1_1node" ],
       [ "queue", "classq_o_s_1_1queue.html", "classq_o_s_1_1queue" ],
       [ "response", "classq_o_s_1_1response.html", "classq_o_s_1_1response" ],
       [ "stateMachine", "classq_o_s_1_1state_machine.html", "classq_o_s_1_1state_machine" ],

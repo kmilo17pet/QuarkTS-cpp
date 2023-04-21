@@ -154,29 +154,29 @@ Collaboration diagram for qOS::core:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9dab08cadc8d5547f6dbab6fdd0d45ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a> (const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</td></tr>
+<tr class="memitem:a9dab08cadc8d5547f6dbab6fdd0d45ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> tFcn, const <a class="el" href="group__qclock.html#gad5251263c7889ac369d97c1899cbc232">timingBase_t</a> t, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callbackIdle=nullptr) noexcept</td></tr>
 <tr class="memdesc:a9dab08cadc8d5547f6dbab6fdd0d45ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS.  <a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">More...</a><br /></td></tr>
 <tr class="separator:a9dab08cadc8d5547f6dbab6fdd0d45ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a> (const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</td></tr>
+<tr class="memitem:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> tFcn, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callbackIdle=nullptr) noexcept</td></tr>
 <tr class="memdesc:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS.  <a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">More...</a><br /></td></tr>
 <tr class="separator:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3ffe569156600e392e688c74ab68134"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, taskFcn_t callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const time_t t, const <a class="el" href="group__qtypes.html#gaf0c03ddb7df4048fd3b4764d994ee4da">iteration_t</a> n, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
+<tr class="memitem:ab3ffe569156600e392e688c74ab68134"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a> t, const <a class="el" href="group__qtypes.html#gaf0c03ddb7df4048fd3b4764d994ee4da">iteration_t</a> n, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
 <tr class="memdesc:ab3ffe569156600e392e688c74ab68134"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. The task is scheduled to run every <em>t</em> time units, <em>n</em> times and executing <em>callback</em> method on every pass.  <a href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">More...</a><br /></td></tr>
 <tr class="separator:ab3ffe569156600e392e688c74ab68134"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad37fb39c9ab1224e007be651e1dfc69b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, taskFcn_t callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, void *arg=nullptr) noexcept</td></tr>
+<tr class="memitem:ad37fb39c9ab1224e007be651e1dfc69b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, void *arg=nullptr) noexcept</td></tr>
 <tr class="memdesc:ad37fb39c9ab1224e007be651e1dfc69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a2c0e85f22ffad1e4867e6d00e186e3fb" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a792722feb8e3d5c688ef43933daa1250" title="Set/Change the number of task iterations.">task::setIterations()</a>.  <a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">More...</a><br /></td></tr>
 <tr class="separator:ad37fb39c9ab1224e007be651e1dfc69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae31fe2a7633545a8ccdb6ea388904236"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ae31fe2a7633545a8ccdb6ea388904236">addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const time_t t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
+<tr class="memitem:ae31fe2a7633545a8ccdb6ea388904236"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ae31fe2a7633545a8ccdb6ea388904236">addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
 <tr class="memdesc:ae31fe2a7633545a8ccdb6ea388904236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a7239e8580f4c2f69da6b822f99be7fab" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <a href="classq_o_s_1_1core.html#ae31fe2a7633545a8ccdb6ea388904236">More...</a><br /></td></tr>
 <tr class="separator:ae31fe2a7633545a8ccdb6ea388904236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e1f14187cc3123f8395d452cda96ff1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a5e1f14187cc3123f8395d452cda96ff1">setIdleTask</a> (taskFcn_t callback) noexcept</td></tr>
+<tr class="memitem:a5e1f14187cc3123f8395d452cda96ff1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a5e1f14187cc3123f8395d452cda96ff1">setIdleTask</a> (<a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback) noexcept</td></tr>
 <tr class="memdesc:a5e1f14187cc3123f8395d452cda96ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the callback for the Idle-task.  <a href="classq_o_s_1_1core.html#a5e1f14187cc3123f8395d452cda96ff1">More...</a><br /></td></tr>
 <tr class="separator:a5e1f14187cc3123f8395d452cda96ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6e8e9bee019907dd8362934ae68201a"><td class="memItemLeft" align="right" valign="top"><a id="ad6e8e9bee019907dd8362934ae68201a" name="ad6e8e9bee019907dd8362934ae68201a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>schedulerRelease</b> (void) noexcept</td></tr>
 <tr class="memdesc:ad6e8e9bee019907dd8362934ae68201a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the kernel scheduling. The main thread will continue after the <a class="el" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79" title="Executes the scheduling scheme. It must be called once after the task pool has been defined.">core::run()</a> call. <br /></td></tr>
 <tr class="separator:ad6e8e9bee019907dd8362934ae68201a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ed3d6117f1640a620c0592d470913aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a7ed3d6117f1640a620c0592d470913aa">setSchedulerReleaseCallback</a> (taskFcn_t callback) noexcept</td></tr>
+<tr class="memitem:a7ed3d6117f1640a620c0592d470913aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a7ed3d6117f1640a620c0592d470913aa">setSchedulerReleaseCallback</a> (<a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback) noexcept</td></tr>
 <tr class="memdesc:a7ed3d6117f1640a620c0592d470913aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the scheduler release callback function.  <a href="classq_o_s_1_1core.html#a7ed3d6117f1640a620c0592d470913aa">More...</a><br /></td></tr>
 <tr class="separator:a7ed3d6117f1640a620c0592d470913aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09cc4c2562ef6580936c68b54076fb88"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a09cc4c2562ef6580936c68b54076fb88">removeTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
@@ -256,7 +256,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">taskFcn_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -328,7 +328,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const time_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
@@ -392,7 +392,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">taskFcn_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -404,7 +404,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const time_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
@@ -574,19 +574,19 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
         <tr>
           <td class="memname">void core::init </td>
           <td>(</td>
-          <td class="paramtype">const getTickFcn_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a>&#160;</td>
           <td class="paramname"><em>tFcn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const timingBase_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#gad5251263c7889ac369d97c1899cbc232">timingBase_t</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">taskFcn_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callbackIdle</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
@@ -664,13 +664,13 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
         <tr>
           <td class="memname">void qOS::core::init </td>
           <td>(</td>
-          <td class="paramtype">const getTickFcn_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a>&#160;</td>
           <td class="paramname"><em>tFcn</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">taskFcn_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callbackIdle</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
@@ -805,7 +805,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
         <tr>
           <td class="memname">bool core::setIdleTask </td>
           <td>(</td>
-          <td class="paramtype">taskFcn_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -840,7 +840,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
         <tr>
           <td class="memname">bool core::setSchedulerReleaseCallback </td>
           <td>(</td>
-          <td class="paramtype">taskFcn_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>

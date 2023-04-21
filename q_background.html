@@ -156,7 +156,7 @@ Hardware compatibility</h1>
 <p >The following cores have been powered with QuarkTS++ successfully:</p>
 <ul>
 <li>ARM cores(ATMEL, STM32, LPC, Kinetis, Nordic and others)</li>
-<li>8Bit AVR, 8051, STM8</li>
+<li>8Bit AVR, 8051, STM8, RL78/Gxx</li>
 <li>HCS12, ColdFire, MSP430</li>
 <li>PIC (PIC24, dsPIC, 32MX, 32MZ)</li>
 </ul>
@@ -171,9 +171,8 @@ Development process and coding standard</h1>
 <li>Because errors in string manipulation have long been recognized as a leading source of buffer overflows in C, several mitigation strategies have been devised. These include mitigation strategies designed to prevent buffer overflows from occurring and strategies designed to detect buffer overflows and securely recover without allowing the failure to be exploited.</li>
 <li>In line with MISRA guides and for portability between platforms, we use the <code>stdint.h</code> with typedefs that indicate size and signedness in place of the basic types.</li>
 <li>In line with <b>MISRA</b> guides, unqualified standard <code>char</code> and <code>char*</code> types are only permitted to hold ASCII characters and strings respectively.</li>
-<li>The <code>_t</code> suffix is used to denote a type definition (i.e <code>qBool_t</code> , <code>qTask_t</code> , <code>size_t</code>, ...).</li>
-<li>Functions, macros, enum values and data types are prefixed q. (i.e. <code>qFunction</code>, <code>qEnumValue</code>, <code>QCONSTANT</code>, <code>qType_t</code>, ...)</li>
-<li>Other than the pre-fix, most macros used for constants are written in all upper case.</li>
+<li>The <code>_t</code> suffix is used to denote a type definition (i.e <code>base_t</code> , <code>signal_t</code> , <code>cycles_t</code>, ...).</li>
+<li>Enum values and constants are written in all upper case.</li>
 <li>Almost all functions returns a boolean value of type <code>bool</code>, where a <code>true</code> - <code>1u</code> value indicates a successful procedure and <code>false</code> - <code>0u</code>, the failure of the procedure</li>
 </ul>
 <h1><a class="anchor" id="q_memusage"></a>
@@ -188,21 +187,21 @@ Memory usage</h1>
 <tr>
 <td>Kernel, scheduler and task management </td><td>2637 </td></tr>
 <tr>
-<td>A task node <code>qTask_t</code> </td><td>68 </td></tr>
+<td>A task node <code><a class="el" href="classq_o_s_1_1task.html" title="A task node object.">qOS::task</a></code> </td><td>68 </td></tr>
 <tr>
 <td>Finite State machines(FSM) handling and related APIs </td><td>314 </td></tr>
 <tr>
-<td>A FSM object <code>qSM_t</code> </td><td>100 </td></tr>
+<td>A FSM object <code><a class="el" href="classq_o_s_1_1state_machine.html" title="A FSM(Finite State Machine) object.">qOS::stateMachine</a></code> </td><td>100 </td></tr>
 <tr>
-<td>A state object <code>qSM_State_t</code> </td><td>36 </td></tr>
+<td>A state object <code><a class="el" href="classq_o_s_1_1sm_1_1state.html" title="A state object.">qOS::sm::state</a></code> </td><td>36 </td></tr>
 <tr>
 <td>STimers handling and related APIs </td><td>258 </td></tr>
 <tr>
-<td>A STimer object <code>qSTimer_t</code> </td><td>8 </td></tr>
+<td>A STimer object <code><a class="el" href="classq_o_s_1_1timer.html" title="A non-blocking Timer object.">qOS::timer</a></code> </td><td>8 </td></tr>
 <tr>
 <td>Queues handling and related APIs </td><td>544 </td></tr>
 <tr>
-<td>A queue object <code>qQueue_t</code> </td><td>28 </td></tr>
+<td>A queue object <code><a class="el" href="classq_o_s_1_1queue.html" title="A Queue object.">qOS::queue</a></code> </td><td>28 </td></tr>
 <tr>
 <td>Memory management </td><td>407 </td></tr>
 <tr>
@@ -210,9 +209,9 @@ Memory usage</h1>
 <tr>
 <td>The AT Command Line Interface </td><td>1724 </td></tr>
 <tr>
-<td>An AT-CLI instance <code>qATCLI_t</code> </td><td>112 </td></tr>
+<td>An AT-CLI instance <code><a class="el" href="classq_o_s_1_1command_line_interface.html" title="An AT Command Line Interface (CLI) object.">qOS::commandLineInterface</a></code> </td><td>112 </td></tr>
 <tr>
-<td>An AT-CLI command instance <code>qATCLI_Command_t</code> </td><td>24 </td></tr>
+<td>An AT-CLI command instance <code><a class="el" href="classq_o_s_1_1cli_1_1command.html" title="An AT-Command object.">qOS::cli::command</a></code> </td><td>24 </td></tr>
 <tr>
 <td>Remaining utilities </td><td>2980 </td></tr>
 </table>

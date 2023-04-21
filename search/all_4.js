@@ -17,7 +17,7 @@ var searchData=
   ['eventflagsmodify_14',['eventFlagsModify',['../group__qeventflags.html#ga1659f1343afcf0f3c13e5444927fd96f',1,'qOS::core']]],
   ['eventflagsread_15',['eventFlagsRead',['../group__qeventflags.html#ga2fbbdae76828ba59515986bdac9756fd',1,'qOS::core']]],
   ['events_16',['Events',['../q_events.html',1,'']]],
-  ['exec_17',['exec',['../group__qatcli.html#gac4aa4363a90a5c9c56ddd301f2642c94',1,'qOS::commandLineInterface']]],
+  ['exec_17',['exec',['../classq_o_s_1_1command_line_interface.html#ac4aa4363a90a5c9c56ddd301f2642c94',1,'qOS::commandLineInterface']]],
   ['exit_18',['exit',['../group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d',1,'qOS::critical']]],
   ['expired_19',['expired',['../classq_o_s_1_1timer.html#aa00cc8eb66779658598f8a47d2dc214d',1,'qOS::timer']]],
   ['extensions_20',['Extensions',['../q_extensions.html',1,'']]]
