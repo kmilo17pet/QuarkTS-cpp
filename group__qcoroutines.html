@@ -504,7 +504,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check if the internal Co-routine timeout expires. </p>
-<dl class="section return"><dt>Returns</dt><dd>true when timer expires, otherwise, returns false. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>( <a class="code hl_class" href="classq_o_s_1_1co_1_1handle.html">handle</a> ) {</div>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> when timer expires, otherwise, returns <code>false</code>. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>( <a class="code hl_class" href="classq_o_s_1_1co_1_1handle.html">handle</a> ) {</div>
 <div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( count &gt; 10 , 5.0f );</div>
 <div class="line">    <span class="keywordflow">if</span> ( <a class="code hl_function" href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">co::timeoutExpired</a>() ) {</div>
 <div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">co::restart</a>;</div>
@@ -592,7 +592,7 @@ Functions</h2></td></tr>
 <p>Yields until the logical condition is met or the specified timeout expires. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">condition</td><td>The logical condition to be evaluated. The condition determines if the blocking job ends (if condition is true) or continue yielding (if false) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">condition</td><td>The logical condition to be evaluated. The condition determines if the blocking job ends (if condition is <code>true</code>) or continue yielding (if false) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>The specific amount of time to wait. <pre class="fragment">* Action sequence : [Save progress]
 *                 IF ( condition == False || NOT_EXPIRED(timeout) )
 *                     [Yield]
