@@ -38,7 +38,7 @@ PROJECT_NAME           = "OS"
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = v7.3.2
+PROJECT_NUMBER         = v1.0.1
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -509,7 +509,7 @@ EXTRACT_PACKAGE        = NO
 # included in the documentation.
 # The default value is: NO.
 
-EXTRACT_STATIC         = NO
+EXTRACT_STATIC         = YES
 
 # If the EXTRACT_LOCAL_CLASSES tag is set to YES, classes (and structs) defined
 # locally in source files will be included in the documentation. If set to NO,
@@ -564,7 +564,7 @@ HIDE_UNDOC_CLASSES     = NO
 # documentation.
 # The default value is: NO.
 
-HIDE_FRIEND_COMPOUNDS  = NO
+HIDE_FRIEND_COMPOUNDS  = YES
 
 # If the HIDE_IN_BODY_DOCS tag is set to YES, doxygen will hide any
 # documentation blocks found inside the body of a function. If set to NO, these
@@ -897,7 +897,6 @@ INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
                          *.cxx \
-                         *.cpp \
                          *.c++ \
                          *.java \
                          *.ii \
@@ -2277,6 +2276,7 @@ PREDEFINED             = Q_FSM=1 \
                          Q_TASK_EVENT_FLAGS=1 \
                          Q_ALLOW_TASK_NAMING=1 \
                          Q_ALLOW_YIELD_TO_TASK=1 \
+                         Q_SETUP_TIME_CANONICAL=1 \
                          DOXYGEN
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
