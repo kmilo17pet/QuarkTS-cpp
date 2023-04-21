@@ -117,6 +117,19 @@ namespace qOS {
                     TransitionHistory = m;
                 }
                 /**
+                * @brief Set the nested initial state ( sub-state ). This
+                * The application writer should change this field to set the 
+                * initial transition if the current state is a 
+                * parent(or composite state). Using this method only takes 
+                * effect when the state is executed under the 
+                * @c signalID::SIGNAL_START signal.
+                * @param[in] s The state object.
+                */
+                void startState( state &s ) noexcept
+                {
+                    StartState = &s;
+                }
+                /**
                 * @brief Set the time for the selected built-in timeout inside the target FSM.
                 * @pre Requires an installed timeout-specification.
                 * For this use stateMachine::installTimeoutSpec()
@@ -555,7 +568,7 @@ namespace qOS {
             sm::signal_t checkForSignals( sm::signal_t sig ) noexcept;
             stateMachine( stateMachine const& ) = delete;
             void operator=( stateMachine const& ) = delete;
-            bool setup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept;
+            bool smSetup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept;
         public:
             stateMachine() = default;
             /**
@@ -572,7 +585,7 @@ namespace qOS {
             */
             inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn = nullptr, void* pData = nullptr)  noexcept
             {
-                return setup( topFcn, &init, sFcn, pData );
+                return smSetup( topFcn, &init, sFcn, pData );
             }
             /**
             * @brief Add the specified state to the stateMachine "Top" state

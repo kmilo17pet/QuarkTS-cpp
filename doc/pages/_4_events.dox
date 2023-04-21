@@ -172,15 +172,15 @@
 *
 * @subsubsection q_simplenot Simple Notifications
 * Each task node has a 32-bit notification value which is initialized to zero 
-* when a task is added to the scheme. The method core::notify() with mode = 
-* notifyMode::SIMPLE with is used to send an event directly updating the 
+* when a task is added to the scheme. The method qOS::core::notify() with mode = 
+* qOS::notifyMode::SIMPLE with is used to send an event directly updating the 
 * receiving task's notification value increasing it by one. As long as the 
 * scheduler sees a non-zero value, the task
 * will be changed to a @c READY state and eventually, the dispatcher will 
 * launch the task according to the execution chain. After being served, the 
 * notification value is later decreased.
 *
-* @note Sending simple notifications using core::notify() is
+* @note Sending simple notifications using qOS::core::notify() is
 * interrupt-safe, however, this only catches one event per task because the
 * API overwrites the associated data.
 *
@@ -188,7 +188,7 @@
 * If the application notifies multiple events to the same task, queued 
 * notifications are the right solution instead of using simple notifications.
 *
-* Here, the notify() with mode = notifyMode::QUEUED take advantage of the 
+* Here, the qOS::core::notify() with mode = qOS::notifyMode::QUEUED take advantage of the 
 * scheduler FIFO priority-queue. This kind of queue, is somewhat similar to a 
 * standard queue, with an important distinction: when a notification is sent,
 * the task is added  to the queue with the corresponding priority level, and 
@@ -221,7 +221,7 @@
 *
 * The next figure, shows a cooperative environment with five tasks. Initially, 
 * the scheduler activates @c Task-E, then, this task enqueues data to @c Task-A and 
-* @c Task-B respectively using the core::notify() using the notifyMode::QUEUED mode. 
+* @c Task-B respectively using the qOS::core::notify() using the notifyMode::QUEUED mode. 
 * In the next  scheduler cycle, the scheduler realizes that the priority-queue is not empty,
 * generating an activation over the task located at the beginning of the queue. 
 * In this case, @c Task-A will be launched and its respective data will be 
@@ -248,13 +248,13 @@
 * 
 *
 * @note Any queue extraction involves an activation of the receiving task. The 
-* extracted data will be available inside the qEvent_t structure.
+* extracted data will be available inside the qOS::event_t structure.
 * @remark Among all the provided events, queued notifications have the highest
 * precedence.
 *
 * @subsubsection q_notificationsend Sending notifications
 * The kernel handles all the notifications by itself (simple or queued), so
-* intermediate objects are not needed. Just calling core::notify() is enough to 
+* intermediate objects are not needed. Just calling qOS::core::notify() is enough to 
 * send notifications. After the task callback is invoked, the notification is 
 * cleared by the dispatcher. Here the application writer must read the respective
 * fields of the event-data class to check the received notification. 
@@ -351,9 +351,9 @@
 * is often referred to as a barrier. This means that a group of tasks should 
 * stop activities at some point and cannot proceed until another task or ISR 
 * raise a specific event. For this kind of implementation, we can also use the
-* core::notify() method but in this case, without specifying a target task.
+* qOS::core::notify() method but in this case, without specifying a target task.
 *
-* @note In this mode, core::notify() spreads a notification event among all the
+* @note In this mode, qOS::core::notify() spreads a notification event among all the
 * tasks in the scheduling scheme, so, for tasks that are not part of the barrier,
 * just discard the notification. This operation will be performed in the next 
 * scheduling cycle.
@@ -378,7 +378,7 @@
 * </body>
 * </html>
 * @endhtmlonly
-* <em>qQueues conceptual representation</em>
+* <em>Queues conceptual representation</em>
 * </center>
 *
 * As shown above, the last position is connected back to the first 
@@ -403,7 +403,7 @@
 *
 * @subsubsection  q_queuesetup Setting up a queue
 * A queue must be explicitly initialized before it can be used. These objects 
-* are referenced by the class  queue. Both, the constructor or the queue::setup() 
+* are referenced by the class  queue. Both, the constructor or the qOS::queue::setup() 
 * methods can be used to configure the queue and initialize the instance.
 *
 * The required RAM for the queue data should be provided by the application 
@@ -415,15 +415,15 @@
 * Additional features are provided by the kernel when the queues are attached 
 * to tasks; this allows the scheduler to pass specific queue events to it, 
 * usually, states of the object itself that needs to be handled, in this case 
-* by a task. For this, use the task::attachQueue() method.
+* by a task. For this, use the qOS::task::attachQueue() method.
 *
 * The following attaching modes are provided:
-* - queueLinkMode::QUEUE_RECEIVER : The task will be triggered if there are elements 
+* - qOS::queueLinkMode::QUEUE_RECEIVER : The task will be triggered if there are elements 
 * in the queue.
-* - queueLinkMode::QUEUE_FULL : The task will be triggered if the queue is full.
-* - queueLinkMode::QUEUE_COUNT : The task will be triggered if the count of elements in 
+* - qOS::queueLinkMode::QUEUE_FULL : The task will be triggered if the queue is full.
+* - qOS::queueLinkMode::QUEUE_COUNT : The task will be triggered if the count of elements in 
 * the queue reaches the specified value.
-* - queueLinkMode::QUEUE_EMPTY : The task will be triggered if the queue is empty.
+* - qOS::queueLinkMode::QUEUE_EMPTY : The task will be triggered if the queue is empty.
 *
 * @note For the queueLinkMode::QUEUE_RECEIVER mode, data from the front of the queue 
 * will be received automatically in every trigger, this involves a data removal 
@@ -566,51 +566,50 @@
 * generate a new data set.
 *
 *  @code{.c}
-*  #include <stdio.h>
-*  #include <stdlib.h>
-*  #include <stdint.h>
+*  #include <cstdio>
+*  #include <cstdlib>
+*  #include <cstdint>
 *  #include "quarkts++.h"
-*  #define TIMER_TICK       ( 0.001f ) /* 1ms */
 *  
 *  /*event flags application definitions */
-*  #define SWITCH_CHANGED   QEVENTFLAG_01
-*  #define TIMER_EXPIRED    QEVENTFLAG_02
-*  #define DATA_READY       QEVENTFLAG_03
-*  #define DATA_TXMIT       QEVENTFLAG_04
+*  #define SWITCH_CHANGED   EVENT_FLAG(1)
+*  #define TIMER_EXPIRED    EVENT_FLAG(2)
+*  #define DATA_READY       EVENT_FLAG(3)
+*  #define DATA_TXMIT       EVENT_FLAG(4)
 *  
-*  qTask_t TaskDataProducer; 
-*  qUINT8_t dataToTransmit[ 10 ] = { 0 };
+*  task TaskDataProducer; 
+*  uint8_t dataToTransmit[ 10 ] = { 0 };
 *  
 *  /*-----------------------------------------------------------------------*/
 *  void interrupt Timer0_ISR( void ) {
-*      qClock_SysTick();
+*      clock::sysTick();
 *  }
 *  /*-----------------------------------------------------------------------*/
 *  void interrupt Timer1_ISR( void ) {
-*      qTask_EventFlags_Modify( &TaskDataProducer, TIMER_EXPIRED, QEVENTFLAG_SET );
+*      os.eventFlagsModify( TaskDataProducer, TIMER_EXPIRED, true );
 *  }
 *  /*-----------------------------------------------------------------------*/
 *  void interrupt EXTI_ISR( void ) {
 *      if ( EXTI_IsRisingEdge() ) {
-*          qTask_EventFlags_Modify( &TaskDataProducer, SWITCH_CHANGED, QEVENTFLAG_SET );
+*          os.eventFlagsModify( TaskDataProducer, SWITCH_CHANGED, true );
 *      }
 *  }
 *  /*-----------------------------------------------------------------------*/
-*  void TaskDataProducer_Callback( qEvent_t e ) {
-*      qBool_t condition;
+*  void TaskDataProducer_Callback( event_t e ) {
+*      bool condition;
 *       
-*      condition = qTask_EventFlags_Check( &TaskDataProducer, DATA_TXMIT, qTrue, qTrue );
-*      if ( qTrue == condition) {
+*      condition = os.eventFlagsCheck( TaskDataProducer, DATA_TXMIT, true, true );
+*      if ( true == condition) {
 *          GenerateData( dataToTransmit );
-*          qTask_EventFlags_Modify( &TaskDataProducer, DATA_READY, QEVENTFLAG_SET ); 
+*          os.eventFlagsModify( TaskDataProducer, DATA_READY, true ); 
 *      }
-*      qTask_EventFlags_Check( &TaskDataProducer, DATA_READY | SWITCH_CHANGED | TIMER_EXPIRED, qTrue, qTrue );
+*      os.eventFlagsCheck( TaskDataProducer, DATA_READY | SWITCH_CHANGED | TIMER_EXPIRED, true, true );
 *  }
 *  /*-----------------------------------------------------------------------*/
-*  void IdleTask_Callback( qEvent_t e ) {
+*  void IdleTask_Callback( event_t e ) {
 *      
 *      TransmitData( dataToTransmit );
-*      qTask_EventFlags_Modify( &TaskDataProducer, DATA_TXMIT, QEVENTFLAG_SET );
+*      os.eventFlagsModify( &TaskDataProducer, DATA_TXMIT, true );
 *  }
 *  /*-----------------------------------------------------------------------*/
 *  int main( void ) {
@@ -623,15 +622,15 @@
 *      /* Idle task will be responsible to transmit the generate the data after 
 *       * all conditions are met
 *      */
-*      qOS_Setup( NULL, TIMER_TICK, IdleTask_Callback );
+*      os.init( nullptr, IdleTask_Callback );
 *      /* The task will wait until data is transmitted to generate another set of
 *       * data */
-*      qOS_Add_EventTask( &TaskDataProducer, TaskDataProducer_Callback, qHigh_Priority, "DATAPRODUCER" );
+*      os.addEventTask( TaskDataProducer, TaskDataProducer_Callback, core::HIGHEST_PRIORITY, "DATAPRODUCER" );
 *      /* Set the flag DATA_TXMIT as the initial condition to allow the data 
 *       * generation at startup
 *      */
-*      qTask_EventFlags_Modify( &TaskDataProducer, DATA_TXMIT, QEVENTFLAG_SET ); 
-*      qOS_Run();
+*      os.eventFlagsModify( TaskDataProducer, DATA_TXMIT, true ); 
+*      os.run();
 *      for ( ;; ) {}
 *      return 0;
 *  }

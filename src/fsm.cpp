@@ -27,7 +27,7 @@ bool sm::_Handler::timeoutStop( const index_t i ) noexcept
     return thisMachine().timeoutStop( i );
 }
 /*============================================================================*/
-bool stateMachine::setup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept
+bool stateMachine::smSetup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept
 {
     current = nullptr;
     next = nullptr;

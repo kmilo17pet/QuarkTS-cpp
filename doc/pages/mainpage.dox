@@ -2,7 +2,7 @@
 *
 * @image html https://user-images.githubusercontent.com/11412210/233370417-d0f1c973-ee42-49ce-b16e-667ce3e483b8.png
 *
-* QuarkTS++ is an open-source operating system that provides a modern and lightweight 
+* QuarkTS++ (The C++ port of QuarkTS) is an open-source operating system that provides a modern and lightweight 
 * environment to build stable and predictable event-driven multitasking embedded
 * software with the following features:
 *

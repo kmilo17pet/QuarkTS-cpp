@@ -271,7 +271,7 @@
 *  /*==================================================================*/
 *  int main( void ) {
 *      HAL_Setup();
-*      qOS_Setup( HAL_GetTick, TIMER_TICK, NULL );
+*      qOS_Setup( HAL_GetTick, nullptr );
 *      CLI_Object.setup( BSP_UART_PUTC, CLI_Input, sizeof(CLI_Input), 
 *                         CLI_Output, sizeof(CLI_Output) );
 *      

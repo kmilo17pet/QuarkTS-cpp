@@ -57,7 +57,7 @@
 *
 * @section q_fsmsetup Setting up a state machine
 * Like any other OS object, a Finite State Machine (FSM) must be explicitly 
-* initialized before it can be used. The qOS::stateMachine::setup() method initializes 
+* initialized before it can be used. The @ref qOS::stateMachine::setup() method initializes 
 * the instance, sets the callback for the top state, sets the initial state and 
 * the surrounding callback function.
 *
@@ -65,11 +65,11 @@
 * State machines are constructed by composition, therefore, the topology of a 
 * state machine is determined upon construction. In this FSM implementation, 
 * there is no distinction between composite states(states containing substates) 
-* and leaf states. All states are potentially composite. The API 
+* and leaf states. All states are potentially composite. The method 
 * @ref qOS::stateMachine::add() should be used to initialize the state and 
 * define its position in the topology. 
 *
-* A state callback-functions takes a sm::handler_t object as input argument and
+* A state callback-functions takes a qOS::sm::handler_t object as input argument and
 * returns a qOS::sm::status value. An example is shown in the following code snippet:
 *
 *  @code{.c}
@@ -81,70 +81,70 @@
 *
 * @section q_fsmhandler The state callback handler: performing transitions and retrieving data
 * Because callback functions are methods derived from the state-machine object, 
-* they have direct access to some attributes via the qOS::sm::handler_t argument. 
+* they have direct access to some attributes via the @ref qOS::sm::handler_t argument. 
 * The usage of this object it's required to make the FSM moves between states 
 * and additionally get extra data. The provided attributes are:
 *
-* - qOS::sm::handler_t::NextState() : Method to set the desired next state. 
+* - @ref qOS::sm::handler_t::nextState() : Method to set the desired next state. 
 * The application writer should use this method passing another state to produce
 *  a state transition in the next FSM's cycle. Changing this field will only 
 * take effect when the state is executed under user custom-defined signals or in
-* the absence of signals signalID::QSM_SIGNAL_NONE.
+* the absence of signals @c signalID::QSM_SIGNAL_NONE.
 * In additon the user can specify as second argument the history mode. Use this
 * argument option if the transition is to a composite state. This argument 
 * defines how the story should be handled. 
-* If this argument is ignored, sm::historyMode::NO_HISTORY is assumed. 
+* If this argument is ignored, @c sm::historyMode::NO_HISTORY is assumed. 
 * The possible values for this attribute are:
-*     - sm::historyMode::NO_HISTORY : History is not preserved. Composite states 
+*     - @c sm::historyMode::NO_HISTORY : History is not preserved. Composite states 
 *       will start according to their default transition.
-*     - sm::historyMode::SHALLOW_HISTORY : History will be kept to allow the 
+*     - @c sm::historyMode::SHALLOW_HISTORY : History will be kept to allow the 
 *       return to only the top-most sub-state of the most recent state 
 *       configuration, which is entered using the default entry rule.
-*     - sm::historyMode::DEEP_HISTORY : History will be kept to allow full state
+*     - @c sm::historyMode::DEEP_HISTORY : History will be kept to allow full state
 *       configuration of the most recent visit to the containing region.
-* - qOS::sm::handler_t::startState() : Desired nested initial state (substate). The 
+* - @ref qOS::sm::handler_t::startState() : Desired nested initial state (substate). The 
 * application writer should change this field to set the initial transition if
 * the current state is a parent(or composite state). Changing this field 
 * attribute only takes effect when the state is executed under the 
-* signalID::SIGNAL_START signal. 
-* - sm::handler_t::signal() : Method to read the received signal. Can return any of the 
+* @c signalID::SIGNAL_START signal. 
+* - @ref qOS::sm::handler_t::signal() : Method to read the received signal. Can return any of the 
 * following values:
-*     - signalID::SIGNAL_NONE if no signal is available.
-*     - signalID::SIGNAL_ENTRY if the current state has just entered from another state.
-*     - signalID::SIGNAL_START to set nested initial transitions by using the 
-*       qSM_Handler_t::StartState attribute.
-*     - signalID::SIGNAL_EXIT if the current state has just exited to another state.
+*     - @c signalID::SIGNAL_NONE if no signal is available.
+*     - @c signalID::SIGNAL_ENTRY if the current state has just entered from another state.
+*     - @c signalID::SIGNAL_START to set nested initial transitions by using the 
+*       qOS::sm::handler_t::startState() method.
+*     - @c signalID::SIGNAL_EXIT if the current state has just exited to another state.
 *     - Any other user-defined signal will reside here, including the 
 *       sm::SIGNAL_TIMEOUT() signals.
-* - sm::handler_t::SignalData (read-only) : Pointer to the data associated with
+* - @ref qOS::sm::handler_t::SignalData (read-only) : Pointer to the data associated with
 * the signal. For internal signals, including timeout signals, its value will 
 * be @c nullptr.
-* - sm::handler_t::lastStatus :  Retrieve the exit(or return) status of the last 
+* - @ref qOS::sm::handler_t::lastStatus() :  Retrieve the exit(or return) status of the last 
 * state. Should be used in the Surrounding callback to perform the corresponding
-* actions for every value. On states callback will take the value sm::status::ABSENT
-* - sm::handler_t::thisMachine() : Method to get a reference to the container 
+* actions for every value. On states callback will take the value @c sm::status::ABSENT
+* - @ref qOS::sm::handler_t::thisMachine() : Method to get a reference to the container 
 * state machine.
-* - sm::handler_t::thisState() : Method to get a reference to the state 
+* - @ref qOS::sm::handler_t::thisState() : Method to get a reference to the state 
 * being evaluated.
-* - sm::handler_t::Data (read-only) : State-machine associated data. If the FSM
+* - @ref qOS::sm::handler_t::Data (read-only) : State-machine associated data. If the FSM
 * is running as a task, the associated event data can be queried through this 
-* field. (here, a cast to qEvent_t is mandatory).
-* - sm::handler_t::StateData (read-only) : State associated data. Storage-pointer.
+* field. (here, a cast to qOS::event_t is mandatory).
+* - @ref qOS::sm::handler_t::StateData (read-only) : State associated data. Storage-pointer.
 *
 * Within the callback function of every state, only one level of dispatching 
 * (based on the signal) is necessary. Typically this is archived using a 
 * single-level switch statement. Callback functions communicate with the state 
 * machine engine through the sm::handler_t and the return value of type 
-* qOS::sm::status.
+* @c sm::status.
 *
 * The semantic is simple, if a signal is processed, the callback functions 
-* returns the status value sm::status::SIGNAL_HANDLED. Otherwise, it throws the
+* returns the status value @c sm::status::SIGNAL_HANDLED. Otherwise, it throws the
 * signal for further processing by higher-level states. Also, this returning
 * mechanism can be used to handle exceptions by using the surrounding callback.
 *
 * @a Entry/Exit actions and default transitions are also implemented inside the
-* callback function in the response to pre-defined signals. sm::signalID::SIGNAL_ENTRY, 
-* sm::signalID::SIGNAL_EXIT and sm::signalID::SIGNAL_START. The state machine generates and 
+* callback function in the response to pre-defined signals. @c sm::signalID::SIGNAL_ENTRY, 
+* @c sm::signalID::SIGNAL_EXIT and @c sm::signalID::SIGNAL_START. The state machine generates and 
 * dispatches these signals to appropriate handlers upon state transitions.
 *
 * The example below shows what a status callback should look like including the 
@@ -174,21 +174,21 @@
 * established at the moment of the FSM setup. The values allowed to return are
 * listed below.
 *
-* - sm::status::SUCCESS
-* - sm::status::FAILURE
-* - sm::status::SIGNAL_HANDLED
+* - @c sm::status::SUCCESS
+* - @c sm::status::FAILURE
+* - @c sm::status::SIGNAL_HANDLED
 * - Any other integer value between @c -32762 and @c 32767
 *
 * To code initial transitions, the application writer should catch the 
-* qOS::sm::signalID::SIGNAL_START, perform the required actions and then designate the target 
-* sub-state by assigning the @c StartState attribute of the qSM_Handler_t 
+* @c sm::signalID::SIGNAL_START, perform the required actions and then designate the target 
+* sub-state by using the @c startState method of the qOS::sm::handler_t 
 * argument. Regular transitions are coded in a very similar way, except that 
-* here, you catch the custom-defined signal and then assign the @c NextState
-* attribute of the qSM_Handler_t argument. The developer is free to write and 
+* here, you catch the custom-defined signal and then use the @c nextState
+* method of the qOS::sm::handler_t argument. The developer is free to write and 
 * control state transitions. Transitions are only allowed under the availability
 * of user custom-defined signals. Regular transitions are not allowed at an 
-* entry point (signalID::SIGNAL_ENTRY), exit point (signalID::SIGNAL_EXIT), or a start 
-* point (signalID::SIGNAL_START).
+* entry point (@c signalID::SIGNAL_ENTRY), exit point (@c signalID::SIGNAL_EXIT), or a start 
+* point (@c signalID::SIGNAL_START).
 *
 * @note User should not target the top state in a transition and use it as 
 * transition source either. The only customizable aspect of the top state is 
@@ -256,7 +256,7 @@
 * a specific callback, instead, it will evaluate the active state of the FSM, 
 * and later, all the other possible states in response to events that mark 
 * their own transition. The task will be scheduled to run every @c t seconds in
-* task::PERIODIC mode.
+* qOS::task::PERIODIC mode.
 *
 * By using this API, the kernel will take care of the FSM by itself, so the
 * usage of qOS::stateMachine::run()  can be omitted.
@@ -271,7 +271,7 @@
 *  sm::status Example_State( sm::handler_t h ) {
 *      event_t *e = h.Data;
 *      /* Get the event info of the task that owns this state machine*/
-*      switch ( h->signal() ) {
+*      switch ( h.signal() ) {
 *          case sm::signalID::SIGNAL_ENTRY:
 *              break;
 *          case sm::signalID::SIGNAL_EXIT:
@@ -350,13 +350,13 @@
 *      static timer timeout;
 *      switch ( h.signal() ) {
 *          case sm::signalID::SIGNAL_ENTRY:
-*              qSTimer_Set( &timeout, 10.0f ); /*STimer gets armed*/
+*              timeout.set( 10000 );
 *              BSP_LED_ON();
 *              break;
 *          case sm::signalID::SIGNAL_EXIT: case sm::signalID::SIGNAL_START: /*Ignore*/
 *              break;
 *          default:
-*              if ( timeout.expired() ) { /*check if the timeout expired*/
+*              if ( timeout.expired() ) {
 *                  h.nextState( State_LEDOff );
 *              }
 *              if ( BUTTON_PRESSED ) {
@@ -505,7 +505,7 @@
 *  @code{.c}
 *  bool Signal_Action( sm::handler_t h ) {
 *      /* TODO : Event -signal action*/
-*      return qTrue; /*allow the state transition*/
+*      return true; /*allow the state transition*/
 *  }
 *  @endcode 
 *
@@ -517,7 +517,7 @@
 * preventing the state transition to be performed in the calling FSM.
 * @note When a transition entry is defined. the signal-action should be located
 * as the third parameter of the entry. Please see the transition layout. A
-* @c NULL value will act as a NOT-defined, always allowing the state-transition.
+* @c nullptr value will act as a NOT-defined, always allowing the state-transition.
 *
 * @subsection q_fsm_timeout FSM Timeout specification
 * A timeout specification is a mechanism to simplify the notion of time passage
@@ -554,26 +554,26 @@
 * state-machine engine. These options can be combined with a bitwise OR and are 
 * detailed as follows:
 *
-* - qOS::sm::TIMEOUT_INDEX(index) : To select the timeout to be used in the 
+* - @c sm::TIMEOUT_INDEX(index) : To select the timeout to be used in the 
 * specification. Should be a value between @c 0 and @c Q_FSM_MAX_TIMEOUTS-1 
-* - qOS::sm::TIMEOUT_SET_ENTRY : To set the timeout when the specified state its 
+* - @c sm::TIMEOUT_SET_ENTRY : To set the timeout when the specified state its 
 * entering.
-* - qOS::sm::TIMEOUT_RST_ENTRY : To reset the timeout when the specified state its 
+* - @c sm::TIMEOUT_RST_ENTRY : To reset the timeout when the specified state its 
 * entering.
-* - qOS::sm::TIMEOUT_SET_EXIT : To set the timeout when the specified state its exiting.
-* - qOS::sm::TIMEOUT__RST_EXIT : To reset the timeout when the specified state its 
+* - @c sm::TIMEOUT_SET_EXIT : To set the timeout when the specified state its exiting.
+* - @c sm::TIMEOUT__RST_EXIT : To reset the timeout when the specified state its 
 * exiting.
-* - qOS::sm::TIMEOUT_KEEP_IF_SET : To apply the Set operation only if the timeout its 
+* - @c sm::TIMEOUT_KEEP_IF_SET : To apply the Set operation only if the timeout its 
 * in a reset state.
-* - qOS::sm::TIMEOUT_PERIODIC : To put the timeout in periodic mode.
+* - @c sm::TIMEOUT_PERIODIC : To put the timeout in periodic mode.
 * 
-* @note Data associated with timeout signals should be set to @c NULL. Any other
-* value will be ignored and will be passed as @c NULL to the FSM handler.
+* @note Data associated with timeout signals should be set to @c nullptr. Any other
+* value will be ignored and will be passed as @c nullptr to the FSM handler.
 * @attention The user is responsible for writing timeout specifications 
 * correctly. Care must be taken that the specifications do not collide between 
 * hierarchical states to avoid overwriting operations.
 * @note You can increase the number of available timeouts instances by changing 
-* the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c qconfig.h.
+* the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c config.h.
 * 
 * @subsection q_fsm_example2 Demonstrative example using transition tables 
 * The following example shows the implementation of the led-button FSM presented
@@ -932,7 +932,7 @@
 * recent exit of the composite state. The last active state can be nested at any
 * depth.
 * 
-* Here, the way to specify this type of transition in QuarkTS is very 
+* Here, the way to specify this type of transition in QuarkTS++ is very 
 * straightforward, you only need to assign the history-mode in the last entry 
 * of the transition as shown below:
 *

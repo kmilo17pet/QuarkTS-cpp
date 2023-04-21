@@ -35,7 +35,7 @@
 * @endcode
 *
 * @subsection q_getqconfig Get a copy of the OS configuration file
-* The file @c qconfig.h provides specific @ref q_configmacros to customize 
+* The file @c config.h provides specific @ref q_configmacros to customize 
 * several aspects of the OS. In order to build your solution with QuarkTS++, you 
 * should provided your own copy of this configuration file. You can obtain a copy
 * with the default configuration by issuing the following command:
@@ -46,7 +46,7 @@
 *
  @section q_firststeps First steps
 * Include the source files to your project. Also, make sure you add a copy of 
-* the file @c qconfig.h and modify it according to your needs. Setup your 
+* the file @c config.h and modify it according to your needs. Setup your 
 * compiler including the path of the OS directory. Include the header file 
 * @c quarkts++.h and setup the instance of the kernel using the qOS_Setup() 
 * inside the main thread to initialize te kernel, specify the reference clock and 
@@ -70,7 +70,8 @@
 *  @endcode
 *
 * In the above code, the following considerations should be taken:
-* - The function qOS_Setup() must be called before any interaction with the OS.
+* - The function @c os.init() must be called before any interaction with the OS.
+* Here, the @c os its an instance of the qOS::core kernel interface.
 * - The procedure @c HardwareSetup() should be a function with all the hardware 
 * instructions needed to initialize the target system.
 * - The procedure @c Configure_Periodic_Timer_Interrupt_1ms() should be a 
@@ -78,7 +79,7 @@
 * timer with an overflow tick of one millisecond.
 *
 * Tasks can be later added to the scheduling scheme by simply calling 
-* qOS_Add_Task() or any of the other available APIs for specific purpose tasks.
+* qOS::core::addTask() or any of the other available APIs for specific purpose tasks.
 *
 * @section q_os_demo Two simple demonstrative examples
 *
@@ -194,11 +195,11 @@
 * the respective control output.
 *
 *  @code{.c}
-*  qOS_Add_Task( &IO_TASK , IO_TASK_Callback , qMedium_Priority , 0.1, qPeriodic, qEnabled , "iotask");
+*  os.AddTask( IO_TASK , IO_TASK_Callback , core::MEDIUM_PRIORITY , 100, task::PERIODIC, taskState::ENABLED_STATE , "iotask" );
 *  @endcode
 *
 *  @code{.c}
-*  void IO_TASK_Callback( qEvent_t e ) {
+*  void IO_TASK_Callback( event_t e ) {
 *      TemperatureControl.yt = SampleTemperatureSensor();
 *      HumidityControl.yt = SampleHumiditySensor();
 *      LightControl.yt = SampleLightSensor();
@@ -213,24 +214,24 @@
 * pointers to the respective variables.
 *
 *  @code{.c}
-*  qOS_Add_Task( &TEMPERATURE_CONTROL_TASK, PIDControl_Callback,
-*                qHigh_Priority, TemperatureControl.dt ,
-*                qPeriodic, qEnabled, &TemperatureControl );
-*  qOS_Add_Task( &HUMIDITY_CONTROL_TASK, PIDControl_Callback,
-*                qHigh_Priority, HumidityControl.dt,
-*                qPeriodic, qEnabled, &HumidityControl );
-*  qOS_Add_Task( &LIGHT_CONTROL_TASK, PIDControl_Callback,
-*                qHigh_Priority, LightControl.dt,
-*                qPeriodic, qEnabled, &LightControl );
+*  os.addTask( TEMPERATURE_CONTROL_TASK, PIDControl_Callback,
+*              core::HIGHEST_PRIORITY, TemperatureControl.dt*1000 ,
+*              task::PERIODIC, taskState::ENABLED_STATE, &TemperatureControl );
+*  os.addTask( HUMIDITY_CONTROL_TASK, PIDControl_Callback,
+*              core::HIGHEST_PRIORITY, HumidityControl.dt*1000,
+*              task::PERIODIC, taskState::ENABLED_STATE, &HumidityControl );
+*  os.addTask( LIGHT_CONTROL_TASK, PIDControl_Callback,
+*              core::HIGHEST_PRIORITY, LightControl.dt*1000,
+*              task::PERIODIC, taskState::ENABLED_STATE, &LightControl );
 *  @endcode
 *
 *  @code{.c}
-*  void PIDControl_Callback( qEvent_t e ) {
+*  void PIDControl_Callback( event_t e ) {
 *      float Error, derivative;
 *      /* Obtain the reference to the specific PID controller
 *       * using the TaskData field from the qEvent structure
 *       */
-*      PID_Params_t *Controller = (PID_Params_t *)e->TaskData;
+*      PID_Params_t *Controller = (PID_Params_t *)e.TaskData;
 *      /*Compute the error*/
 *      Error = Controller->sp - Controller->yt;
 *      /*Compute the accumulated error using backward integral approximation*/

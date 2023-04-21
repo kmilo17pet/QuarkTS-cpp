@@ -48,14 +48,14 @@
 * code to configure the device and feed the reference clock manually. Here, a 
 * hardware timer should raise an interrupt periodically. After the <em>Interrupt 
 * Service Routine(ISR)</em> has been implemented using the platform-dependent code, 
-* the qClock_SysTick() API must be called inside. It is recommended that the 
-* reserved ISR should only be used by QuarkTS.
+* the qOS::clock::sysTick() API must be called inside. It is recommended that the 
+* reserved ISR should only be used by QuarkTS++.
 * 
-* The initialization and configuration of QuarkTS through qOS_Setup() will allow
+* The initialization and configuration of QuarkTS++ through qOS::core::init() will allow
 * you to set the reference clock source in addition to specifying @ref q_idletask "Idle task"
 * activities.
 *
-* @note The call to qOS_Setup() is mandatory and must be called once in the
+* @note The call to qOS::core::init() is mandatory and must be called once in the
 * application main thread before any kind of interaction with the other OS
 * functions.
 *
@@ -88,7 +88,7 @@
 *  void main( void ) {
        MCU_Init();
 *      HAL_Init();
-*      os.init( NULL , IdleTask_Callback );
+*      os.init( nullptr , IdleTask_Callback );
 *      // TODO: add Tasks to the scheduler scheme and run the OS
 *  }
 *  @endcode
@@ -131,8 +131,8 @@
 * i.e., running their callback methods quickly in a non-blocking way and 
 * releasing control back to the scheduler as soon as possible (returning).
 *
-* Every task node, must be defined using the qTask_t data type and the callback
-* is defined as a function that returns void and takes a qEvent_t data structure
+* Every task node, must be defined using the qOS::task class and the callback
+* is defined as a function that returns void and takes a qOS::event_t data structure
 * as its only parameter (This input argument can be used later to get the event 
 * information, see @ref eventdata).
 *
@@ -160,18 +160,18 @@
 * the kernel setup. Of course, the callback must follow the same function 
 * prototype for tasks.
 * @note To disable the idle-task activities, a @c nullptr should be passed as 
-* argument on core::init() or core::setIdleTask().
+* argument on qOS::core::init() or qOS::core::setIdleTask().
 *
 * @subsection q_addtasks Adding tasks to the scheme
-* After setting up the kernel with core::init(), the user can proceed to deploy 
+* After setting up the kernel with qOS::core::init(), the user can proceed to deploy 
 * the multitasking application by adding tasks. If the task node and their 
 * respective callback is already defined, the task can be added to the scheme 
-* using core::addTask(). This API can schedule a task to run every @c t seconds,
+* using qOS::core::addTask(). This API can schedule a task to run every @c t seconds,
 * @c n executions times and invoking the @c callbackFcn method on every pass.
 *
 * <b> Caveats: </b>
 *
-* -# A task with time argument @c t defined as @c clock::IMMEDIATE, will always 
+* -# A task with time argument @c t defined as qOS::clock::IMMEDIATE, will always 
 * get the @c qReady state in every scheduling cycle, as consequence, the idle 
 * task will never get dispatched.
 * -# Tasks do not remember the number of iterations set initially by the 
@@ -179,8 +179,8 @@
 * counter decreases until reaches zero. If another set of iterations is 
 * needed, the user should set the number of iterations again and resume the 
 * task explicitly.
-* -# Tasks that performed all their iterations, put their own state to @c 
-* taskState::DISABLED_STATE. Asynchronous triggers do not affect the iteration counter.
+* -# Tasks that performed all their iterations, put their own state to
+* qOS::taskState::DISABLED_STATE. Asynchronous triggers do not affect the iteration counter.
 * -# The @c arg parameter can be used as a storage pointer, so, for multiple data,
 * create a structure with the required members and pass a pointer to that
 * structure.
@@ -190,20 +190,20 @@
 * additional simplified API functions are also provided to add specific purpose
 * tasks:
 *
-* - Event-triggered only tasks → core::addEventTask().
-* - State-machine tasks → core::addStateMachineTask().
-* - AT Command Line Interface tasks → core::addCommandLineInterfaceTask().
+* - Event-triggered only tasks → qOS::core::addEventTask().
+* - State-machine tasks → qOS::core::addStateMachineTask().
+* - AT Command Line Interface tasks → qOS::core::addCommandLineInterfaceTask().
 *
 * @subsection q_eventtasks Event-triggered tasks
 * An event-triggered task reacts asynchronously to the occurrence of events in 
 * the system, such as external interrupts or changes in the available resources.
 *
-* The API core::addEventTask() is intended to add this kind of tasks, keeping it
-* in a @c qSuspended state. Only asynchronous events followed by their priority
-* value dictate when a task can change to the @c Running state.
+* The API qOS::core::addEventTask() is intended to add this kind of tasks, keeping it
+* in a @c SUSPENDED state. Only asynchronous events followed 
+* by their priority value dictate when a task can change to the @c RUNNING state.
 * 
 * @subsection q_removetask Removing a task
-* The core::removeTask() function removes the task from the scheduling scheme.
+* The qOS::core::removeTask() function removes the task from the scheduling scheme.
 * This means the task node will be disconnected from the kernel chain, 
 * preventing additional overhead provided by the scheduler when it does checks 
 * over it and course, preventing it from running.
@@ -214,14 +214,14 @@
 * reference a task, but there is no link back the other way and the kernel 
 * doesn't know anything about the variables, where the variable is allocated 
 * (stack, global, static, etc.) or how many copies of the variable you have 
-* made, or even if the variable still exists. So the core::removeTask() API 
+* made, or even if the variable still exists. So the qOS::core::removeTask() API 
 * cannot automatically free the resources allocated by the variable. If the task
 * node has been dynamically allocated, the application writer it's responsible
 * to free the memory block after a removal call.
 * 
 * @section q_runos Running the OS
 * After preparing the multitasking environment for your application, a call to 
-* core::run() is required to execute the scheduling scheme. This function is 
+* qOS::core::run() is required to execute the scheduling scheme. This function is 
 * responsible to run the following OS main components:
 *
 * - <b>The Scheduler</b> : Select the tasks to be submitted into the system and decide 
@@ -237,14 +237,14 @@
 * The states involved in the interaction between the scheduler and dispatcher 
 * are described @ref q_globalstates "here".
 * 
-* @note  After calling core::run(), the OS scheduler will now be running, and the
+* @note  After calling qOS::core::run(), the OS scheduler will now be running, and the
 * following line should never be reached, however, the user can optionally 
-* release it explicitly with core::schedulerRelease() API function.
+* release it explicitly with qOS::core::schedulerRelease() API function.
 *
 * @subsection q_releasescheduler Releasing the scheduler
 * This functionality must be enabled from the @c Q_ALLOW_SCHEDULER_RELEASE 
 * macro. This API stops the kernel scheduling. In consequence, the main thread 
-* will continue after the core::run() call.
+* will continue after the qOS::core::run() call.
 *
 * Although producing this action is not a typical desired behavior in any 
 * application, it can be used to handle a critical exception.
@@ -253,7 +253,7 @@
 * finishes. The kernel can optionally include a release callback function that can
 * be configured to get called if the scheduler is released. Defining the release
 * callback, will help to take actions over the exception that caused the release
-* action. To perform a release action, the core::setSchedulerReleaseCallback()
+* action. To perform a release action, the qOS::core::setSchedulerReleaseCallback()
 * API should be used
 *
 * @note When a scheduler release is performed, resources are not freed. After
@@ -261,9 +261,8 @@
 * scheduling activities
 *
 * @section q_globalstates Global states and scheduling rules
-* A task can be in one of the four global states: RUNNING, READY, SUSPENDED or 
-* WAITING. Each of these statesA task SUSPENDED or @c WAITING.
-* Each of these states is tracked implicitly by putting the task in one of the 
+* A task can be in one of the four global states: @c RUNNING , @c READY , @c SUSPENDED or 
+* @c WAITING. Each of these states is tracked implicitly by putting the task in one of the 
 * associated kernel lists.
 *
 * These global states are described below:
@@ -326,7 +325,7 @@
 * scheduler and the dispatcher.
 *
 * The OS assumes that none of the tasks does a block anywhere during the 
-* @c qRunning state. Based on the round-robin fashion, each ready task runs in 
+* @c RUNNING state. Based on the round-robin fashion, each ready task runs in 
 * turn from every ready list. The developer should take care to monitor their 
 * system execution times to make sure during the worst case, when all tasks have
 * to execute, all of the deadlines are still met.
@@ -335,7 +334,7 @@
 *
 * Task precedence is used as the task scheduling rule and precedence among tasks
 * is determined based on the priority of each task. If there are multiple tasks 
-* able to run, the one with the highest precedence goes to @c qRunning state 
+* able to run, the one with the highest precedence goes to @c RUNNING state 
 * first.
 *
 * In determining precedence among tasks of those tasks having different 
@@ -370,20 +369,20 @@
 * Each task has independent operating states from those globally controlled by 
 * the scheduler. These states can be handled by the application writer to modify
 * the event flow to the task and consequently, affect the transition to the 
-* @c qReady global state. These states are described as follows:
+* @c READY global state. These states are described as follows:
 *
 * - @c AWAKE : In this state, the task is conceptually in an alert mode, handling
 * most of the available events. This operational state is available when the 
 * @c SHUTDOWN bit is set, allowing the next operational states to be available:
-*    - @c qEnabled : The task can catch all the events. This operational 
+*    - @c ENABLED : The task can catch all the events. This operational 
 * state is available when the @c ENABLE bit is set.
-*    - @c qDisabled : In this state, the time events will be discarded. This 
+*    - @c DISABLED : In this state, the time events will be discarded. This 
 * operational state is available when the @c ENABLE bit is cleared.
-* - @c qAsleep : Task operability is put into a deep doze mode, so the task 
+* - @c ASLEEP : Task operability is put into a deep doze mode, so the task 
 * can not be triggered by the lower precedence events. This operational state 
 * is available when the @c SHUTDOWN bit is cleared. The task can exit from this
 * operational state when it receives a high precedence event (a queued 
-* notification) or using the qTask_Set_State() API.
+* notification) or using the qOS::task::setState() API.
 * 
 * The figure below shows a better representation of how the event flow can be 
 * affected by these operational states.
@@ -405,8 +404,8 @@
 * </center>
 *
 * @remark Queued notifications are the only event that can wake up sleeping tasks
-* @note The @c qAsleep operational state overrides the @c qEnabled and 
-* @c qDisabled states.
+* @note The @c ASLEEP operational state overrides the @c ENABLED and 
+* @c DISABLED states.
 *
 * @section q_critical Critical sections
 * Since the kernel is non-preemptive, the only critical section that must be 
@@ -503,7 +502,5 @@ State Machine (FSM) extension.
 * disable the edge check functionality for I/O groups.
 * - @c Q_BYTE_SIZED_BUFFERS : @a Default: @c 1(enabled). Used to enable or 
 * disable the usage of Byte-sized buffers.
-* - @c Q_USE_STDINT_H : @a Default: @c 1(enabled).  Use the @c stdint.h header 
-* to define kernel data types.
 *
 */
