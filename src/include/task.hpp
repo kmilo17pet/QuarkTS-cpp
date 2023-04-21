@@ -136,7 +136,7 @@ namespace qOS {
             }
             /**
             * @brief Checks whether the current pass is the first iteration of the
-            * task.  The value returned by this method will be only true when 
+            * task.  The value returned by this method will be only @c true when 
             * time-elapsed events occurs and the Iteration counter has been 
             * parameterized. Asynchronous events never change the task iteration 
             * counter, consequently doesn't have effect in this flag
@@ -147,7 +147,7 @@ namespace qOS {
             }
             /**
             * @brief Checks whether the current pass is the last iteration of the
-            * task. The value returned by this method will be only true when 
+            * task. The value returned by this method will be only @c true when 
             * time-elapsed events occurs and the Iteration counter has been 
             * parameterized. Asynchronous events never change the task iteration
             *  counter, consequently doesn't have effect in the value returned by

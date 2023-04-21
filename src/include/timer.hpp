@@ -95,8 +95,8 @@ namespace qOS {
             qOS::clock_t elapsed( void ) const noexcept;
             /**
             * @brief Non-Blocking timer check
-            * @return Returns true when timer expires, otherwise, returns false.
-            * @note A disarmed timer also returns false.
+            * @return Returns @c true when timer expires, otherwise, returns @c false.
+            * @note A disarmed timer also returns @c false.
             */
             bool expired( void ) const noexcept;
             /**
@@ -127,8 +127,8 @@ namespace qOS {
             timer& operator=( bool en );
             /**
             * @brief Non-Blocking timer check
-            * @return Returns true when timer expires, otherwise, returns false.
-            * @note A disarmed timer also returns false.
+            * @return Returns @c true when timer expires, otherwise, returns @c false.
+            * @note A disarmed timer also returns @c false.
             */
             bool operator()( void );
             /**

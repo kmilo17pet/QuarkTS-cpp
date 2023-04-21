@@ -92,20 +92,20 @@ namespace qOS {
             * and checks if the result is greater than @a td.
             * @param[in] ti Init timestamp in epochs
             * @param[in] td Elapsed time to check in epochs
-            * @return true if the elapsed time (t-ti) is greater or equal to td.
-            * Otherwise returns false
+            * @return @c true if the elapsed time (t-ti) is greater or equal to td.
+            * Otherwise returns @c false
             */
             static bool timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td ) noexcept;
             /**
             * @brief Set the system time-base for time conversions
             * @param[in]  tb Time base
-            * @return true on success, otherwise returns false.
+            * @return @c true on success, otherwise returns @c false.
             */
             static bool setTimeBase( const timingBase_t tb ) noexcept;
             /**
             * @brief Set the clock-tick provider function.
             * @param[in] provider A pointer to the tick provider function
-            * @return true on success, otherwise returns false.
+            * @return @c true on success, otherwise returns @c false.
             */
             static bool setTickProvider( const getTickFcn_t provider ) noexcept;
             /** @brief To specify a null time value.*/

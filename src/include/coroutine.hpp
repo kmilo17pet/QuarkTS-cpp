@@ -222,7 +222,7 @@ namespace qOS {
         * @brief Yields until the logical condition is met or the specified 
         * timeout expires.
         * @param[in] condition The logical condition to be evaluated. The 
-        * condition determines if the blocking job ends (if condition is true) 
+        * condition determines if the blocking job ends (if condition is @c true) 
         * or continue yielding (if false)
         * @param[in] timeout The specific amount of time to wait.
         * @verbatim
@@ -236,7 +236,7 @@ namespace qOS {
 
         /**
         * @brief Check if the internal Co-routine timeout expires.
-        * @return true when timer expires, otherwise, returns false.
+        * @return @c true when timer expires, otherwise, returns @c false.
         * Example:
         * @code{.c}
         * co::reenter( handle ) {

@@ -361,7 +361,7 @@ namespace qOS {
             * @param[in] mode the method used to spread the event: notifyMode::SIMPLE
             * or notifyMode::QUEUED.
             * @param[in] eventData Specific event user-data.
-            * @return @c true if success. false if any other spread operation is in
+            * @return @c true if success. @c false if any other spread operation is in
             * progress.
             */
             bool notify( notifyMode mode, void* eventData = nullptr ) noexcept;

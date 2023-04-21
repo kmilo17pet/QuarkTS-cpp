@@ -63,7 +63,7 @@ namespace qOS {
             * @param[in] pData Data block or array of data.
             * @param[in] size The size, in bytes, of one single item in the queue.
             * @param[in] count The maximum number of items the queue can hold.
-            * @return true on success, otherwise returns false.
+            * @return @c true on success, otherwise returns @c false.
             */
             bool setup( void *pData, const size_t size, const size_t count ) noexcept;
             /**
@@ -93,8 +93,8 @@ namespace qOS {
             size_t itemsAvailable( void ) const noexcept;
             /**
             * @brief Remove the data located at the front of the Queue
-            * @return true if data was removed from the Queue, otherwise returns
-            * false
+            * @return @c true if data was removed from the Queue, otherwise returns
+            * @c false
             */
             bool removeFront( void ) noexcept;
             /**

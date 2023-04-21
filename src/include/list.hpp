@@ -170,7 +170,7 @@ namespace qOS {
             void* getBack( void ) const noexcept;
             /**
             * @brief Check if the list is empty.
-            * @return true if the list is empty, false if it is not.
+            * @return @c true if the list is empty, @c false if it is not.
             */
             bool isEmpty( void ) const noexcept;
             /**

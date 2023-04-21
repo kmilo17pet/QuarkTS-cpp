@@ -296,7 +296,7 @@ namespace qOS {
         * @endcode
         * @param h The object that handles the state machine
         * @return A boolean value that allow or rejects the state transition. If the
-        * value is false the event-signal is rejected, preventing the state
+        * value is @c false the event-signal is rejected, preventing the state
         * transition to be performed.
         */
         using signalAction_t = bool (*)( handler_t );
@@ -460,6 +460,7 @@ namespace qOS {
             friend class qOS::stateMachine;
         };
 
+        /*! @cond  */
         enum psReqStatus{
             PS_SIGNAL_NOT_FOUND,
             PS_SUBSCRIBER_NOT_FOUND,
@@ -468,15 +469,13 @@ namespace qOS {
             PS_SUBSCRIBER_SLOTS_FULL
         };
 
-        /*! @cond  */
         struct _psIndex_s {
             psReqStatus status;
             size_t sig_slot;
             size_t sub_slot;
         };
-        /*! @endcond  */
-
         using psIndex_t = _psIndex_s;
+        /*! @endcond  */
 
         /**
         * @brief This timeout-specification option its used to specify that the
@@ -640,7 +639,7 @@ namespace qOS {
             * @param[in] isUrgent If true, the signal will be sent to the front of the
             * queue. (only if the there is a signal-queue available)
             * @return @c true if the provided signal was successfully delivered to the
-            * state machine , otherwise return false. @c false if there is a queue,
+            * state machine , otherwise return @c false. @c false if there is a queue,
             * and the signal cannot be inserted because it is full.
             */
             bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
@@ -663,7 +662,7 @@ namespace qOS {
             * @param[in] isUrgent If true, the signal will be sent to the front of the
             * queue. (only if the there is a signal-queue available)
             * @return @c true if the provided signal was successfully delivered to the
-            * subscribers (if available), otherwise return false. @c false if there
+            * subscribers (if available), otherwise return @c false. @c false if there
             * is a queue, and the signal cannot be inserted because it is full.
             */
             bool sendSignalToSubscribers( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;

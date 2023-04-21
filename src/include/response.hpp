@@ -41,7 +41,7 @@ namespace qOS {
             * @param[in] xLocBuff A pointer to the memory block where the desired
             * response will remain.
             * @param[in] nMax The size of @a xLocBuff
-            * @return On success returns true, otherwise returns false.
+            * @return On success returns @c true, otherwise returns @c false.
             */
             bool setup( char *xLocBuff, const size_t nMax ) noexcept;
             /**
@@ -69,7 +69,7 @@ namespace qOS {
             /**
             * @brief Check if the response object is already initialized by 
             * using response::setup()
-            * @return true if the response object is initialized, false if not.
+            * @return @c true if the response object is initialized, @c false if not.
             */
             bool isInitialized( void ) const noexcept;
     };

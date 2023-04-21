@@ -77,7 +77,7 @@ namespace qOS {
         * restores interrupts.
         * @param[in] dFcn The function with hardware specific code that disables
         * interrupts.
-        * @return true on success. Otherwise return false.
+        * @return @c true on success. Otherwise return @c false.
         */
         bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept;
 
