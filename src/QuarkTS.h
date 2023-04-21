@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.0.1
+ * @version 1.0.2
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/
@@ -10,7 +10,7 @@
 /*
 QuarkTS++ - An open-source OS for small embedded applications.
 MIT License
-C99 and MISRAC 2012 Compliant
+C++11 and MISRA C++ 2008 / CERT Compliant
 
 Copyright (C) 2012 Eng. Juan Camilo Gomez Cadavid MSc. All Rights Reserved.
 
@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.0.1"
-#define QUARKTS_CPP_VERNUM          ( 101u )
+#define QUARKTS_CPP_VERSION         "1.0.2"
+#define QUARKTS_CPP_VERNUM          ( 102u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
