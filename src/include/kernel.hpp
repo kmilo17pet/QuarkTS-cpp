@@ -133,7 +133,7 @@ namespace qOS {
             *
             * Example : When tick is already provided
             * @code{.c}
-            * #include "quarkts++.h"
+            * #include "QuarkTS.h"
             * #include "HAL.h"
             *
             * #define TIMER_TICK   ( 0.001f )
@@ -148,7 +148,7 @@ namespace qOS {
             *
             * Example : When the tick is not provided
             * @code{.c}
-            * #include "quarkts++.h"
+            * #include "QuarkTS.h"
             * #include "DeviceHeader.h"
             *
             * #define TIMER_TICK   ( 0.001f )
@@ -183,7 +183,7 @@ namespace qOS {
             *
             * Example : When tick is already provided
             * @code{.c}
-            * #include "quarkts++.h"
+            * #include "QuarkTS.h"
             * #include "HAL.h"
             *
             * using namespace qOS;
@@ -196,7 +196,7 @@ namespace qOS {
             *
             * Example : When the tick is not provided
             * @code{.c}
-            * #include "quarkts++.h"
+            * #include "QuarkTS.h"
             * #include "DeviceHeader.h"
             *
             * using namespace qOS;

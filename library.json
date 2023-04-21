@@ -1,7 +1,7 @@
 {
-  "name": "QuarkTS++",
-  "keywords": "os, multitasking, cooperative, event, task, scheduler, scheduling",
-  "description": "Cooperative multitasking for Arduino, ESPx, STM32 and other microcontrollers",
+  "name": "QuarkTS",
+  "keywords": "os, multitasking, cooperative, event, task, scheduler, state-machine, scheduling",
+  "description": "An open-source OS for small embedded applications",
   "repository":
   {
     "type": "git",

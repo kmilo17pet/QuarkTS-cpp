@@ -62,7 +62,7 @@
 * Usage example:
 * - Scenario 1 : When tick is already provided
 *  @code{.c}
-*  #include "quarkts++.h"
+*  #include "QuarkTS.h"
 *  #include "HAL.h"
 *
 *  using namespace qOS;
@@ -76,7 +76,7 @@
 *
 * - Scenario 2 : When the tick is not provided
 *  @code{.c}
-*  #include "quarkts++.h"
+*  #include "QuarkTS.h"
 *  #include "DeviceHeader.h"
 *
 *  using namespace qOS;

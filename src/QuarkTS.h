@@ -1,5 +1,5 @@
 /*!
- * @file quarkts++.h
+ * @file QuarkTS.h
  * @author J. Camilo Gomez C.
  * @version 1.0.1
  * @note This file is part of the QuarkTS++ distribution.

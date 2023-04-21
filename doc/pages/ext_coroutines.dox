@@ -171,7 +171,7 @@
 * 
 *  @code{.c}
 *  #include "HAL.h"
-*  #include "quarkts++.h"
+*  #include "QuarkTS.h"
 *  #include "AppLibrary.h"
 *  
 *  using namespace qOS;

@@ -269,7 +269,7 @@
 *  #include <cstdlib>
 *  #include <cstring>
 *  #include "HAL.h" /*hardware dependent code*/
-*  #include "quarkts++.h"
+*  #include "QuarkTS.h"
 *  
 *  task_t taskA, taskB;
 *  void taskA_Callback( event_t e );
@@ -439,10 +439,10 @@
 * start fetching data from the queue. Here, both tasks are attached to the queue.
 * 
 *  @code{.c}
-*  #include <cstdio.h>
-*  #include <cstdlib.h>
-*  #include <cstdint.h>
-*  #include "quarkts++.h"
+*  #include <cstdio>
+*  #include <cstdlib>
+*  #include <cstdint>
+*  #include "QuarkTS.h"
 *  
 *  /*-----------------------------------------------------------------------*/
 *  void interrupt Timer0_ISR( void ) {
@@ -569,7 +569,7 @@
 *  #include <cstdio>
 *  #include <cstdlib>
 *  #include <cstdint>
-*  #include "quarkts++.h"
+*  #include "QuarkTS.h"
 *  
 *  /*event flags application definitions */
 *  #define SWITCH_CHANGED   EVENT_FLAG(1)

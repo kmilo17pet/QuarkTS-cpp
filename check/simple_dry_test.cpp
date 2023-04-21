@@ -1,6 +1,6 @@
 #include <chrono>
 #include <stdio.h>
-#include <quarkts++.h>
+#include <QuarkTS.h>
 
 using namespace std;
 using namespace qOS;

@@ -58,7 +58,7 @@
 * Include the source files to your project. Also, make sure you add a copy of 
 * the file @c config.h and modify it according to your needs. Setup your 
 * compiler including the path of the OS directory. Include the header file 
-* @c quarkts++.h and setup the instance of the kernel using the qOS::core::init() 
+* @c QuarkTS.h and setup the instance of the kernel using the qOS::core::init() 
 * inside the main thread to initialize te kernel, specify the reference clock and 
 * the idle-task ( see @ref q_timmingapproach). Additional configuration to the 
 * target compiler may be required to add the path to the directory of header files.
@@ -66,7 +66,7 @@
 *
 * File @c main.c
 *  @code{.c}
-*  #include "quarkts++.h"
+*  #include "QuarkTS.h"
 *  using namespace qOS;
 * 
 *  void main( void ) {
@@ -108,7 +108,7 @@
 *  #include <cstdint>
 *  #include "BSP.h"
 *  
-*  #include "quarkts++.h"
+*  #include "QuarkTS.h"
 *  using namespace qOS;
 *  
 *  task task1, task2, task3; /*task nodes*/
