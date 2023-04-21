@@ -154,7 +154,7 @@ Overview</h1>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
- <em>Coroutines in QuarkTS++</em> </center><p >The QuarkTS++ implementation uses the Duff's device approach, and is heavily inspired by the Knuth method, <a href="https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html" style="font-weight:bold">Simon Tatham's Co-Routines in C</a> and <a href="http://dunkels.com/adam/pt/index.html" style="font-weight:bold">Adam Dunkels Protothreads</a> . This means that a local-continuation variable is used to preserve the current state of execution at a particular place of the Co-Routine scope but without any call history or local variables. This brings benefits to lower RAM usage, but at the cost of some restrictions on how a Co-routine can be used.</p>
+ <em>Coroutines in QuarkTS++</em> </center><p >The QuarkTS++ implementation is stackless by using the Duff's device approach, and is heavily inspired by the Knuth method, <a href="https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html" style="font-weight:bold">Simon Tatham's Co-Routines in C</a> and <a href="http://dunkels.com/adam/pt/index.html" style="font-weight:bold">Adam Dunkels Protothreads</a> . This means that a local-continuation variable is used to preserve the current state of execution at a particular place of the Co-Routine scope but without any call history or local variables. This brings benefits to lower RAM usage, but at the cost of some restrictions on how a Co-routine can be used.</p>
 <p ><b> Limitations and restrictions </b></p>
 <ul>
 <li>The stack of a Co-Routine is not maintained when a yield is performed. This means variables allocated on the stack will loose their values. To overcome this, a variable that must maintain its value across a blocking call must be declared as <code>static</code>.</li>
@@ -189,11 +189,7 @@ Blocking calls in a Co-routine</h1>
 <p >A widely used procedure is to wait for a fixed period of time. For this, the <a class="el" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84" title="Delay a coroutine for a given number of time.">co::delay()</a> should be used. This statement makes an apparent blocking over the application flow, but to be precise, a yield is performed until the requested time expires, this allows other tasks to be executed until the blocking call finish. This "yielding until condition meet" behavior its the common pattern among the other blocking statements.</p>
 <p >Another common blocking call is <a class="el" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20" title="Yields until the logical condition is met.">co::waitUntil()</a>. This statement takes a condition argument, a logical expression that will be performed when the Co-Routine resumes their execution. As mentioned before, this type of statement exposes the expected behavior, yielding until the condition is met.</p>
 <p >An additional overload of this <a class="el" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20" title="Yields until the logical condition is met.">co::waitUntil()</a> is also provided. This one sets a timeout for the logical condition to be met.</p>
-<p >Optionally, the Do-Until structure gives to application writer the ability to perform a multi-line job before the yield, allowing more complex actions to being performed after the Co-Routine resumes:</p>
-<div class="fragment"><div class="line">qCR_Do {</div>
-<div class="line">    <span class="comment">/* Job : a set of instructions*/</span></div>
-<div class="line">} qCR_Until( Condition );</div>
-</div><!-- fragment --><h1><a class="anchor" id="q_coroutine_example1"></a>
+<h1><a class="anchor" id="q_coroutine_example1"></a>
 Co-Routine usage example</h1>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> Sender_Task( event_t e ) {</div>
 <div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>() {</div>

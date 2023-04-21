@@ -148,11 +148,11 @@ Overview</h1>
 </div><!-- fragment --><p >The body of this user-defined function should have a hardware-dependent code to print out the <code>c</code> variable through a specific peripheral.</p>
 <h1><a class="anchor" id="q_trace_viewvars"></a>
 Viewing variables</h1>
-<p >For viewing or tracing a variable (up to 32-bit data) through debug, one of the following statements are available: trace::log or trace::msg.</p>
-<p >The only difference between trace::log and trace::msg, is that trace starting with <code>log</code> , print out additional information provided by the <code>__FILE__</code> , <code>__LINE__</code> and <code>__func__</code> built-in preprocessing macros, mostly available in common C++ compilers.</p>
+<p >For viewing or tracing a variable (up to 32-bit data) through debug, one of the following statements are available: <a class="el" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a" title="Specify a new trace output with detailed information of the caller.">qOS::trace::log()</a> or <a class="el" href="classq_o_s_1_1trace.html#a1c926046159d6eae8371a083364d0eff" title="Specify a new trace output without detailed information of the caller.">qOS::trace::msg()</a>.</p>
+<p >The only difference between <a class="el" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a" title="Specify a new trace output with detailed information of the caller.">qOS::trace::log()</a> and <a class="el" href="classq_o_s_1_1trace.html#a1c926046159d6eae8371a083364d0eff" title="Specify a new trace output without detailed information of the caller.">qOS::trace::msg()</a>, is that trace starting with <code>log</code> , print out additional information provided by the <code>__FILE__</code> , <code>__LINE__</code> and <code>__func__</code> built-in preprocessing macros, mostly available in common C++ compilers.</p>
 <h1><a class="anchor" id="q_trace_mblock"></a>
 Viewing a memory block</h1>
-<p >For tracing memory from a specified target address, you should use the trace::mem() specifier to define the number of bytes to be visualized of the memory block that shuold be given after as a pointer.</p>
+<p >For tracing memory from a specified target address, you should use the <a class="el" href="classq_o_s_1_1trace_1_1mem.html" title="Class that sets the number of bytes to be traced when a pointer is being used after....">qOS::trace::mem()</a> specifier to define the number of bytes to be visualized of the memory block that shuold be given after as a pointer.</p>
 <h1><a class="anchor" id="q_trace_usage"></a>
 Usage</h1>
 <p >In the example below, an UART output function is coded to act as the printer. Here, the target MCU is an ARM-Cortex M0 with the UART1 as the selected peripheral for this purpose.</p>
@@ -170,7 +170,7 @@ Usage</h1>
 <div class="line">    UART1_D = c;</div>
 <div class="line">    <span class="keywordflow">while</span> ( !( UART1_S1 &amp; UART_S1_TC_MASK ) ) {} <span class="comment">/*wait until TX is done*/</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><p >As seen above, the function follows the required prototype. Later, in the main thread, a call to qTrace_Set_OutputFcn() is used to set up the output-function.</p>
+</div><!-- fragment --><p >As seen above, the function follows the required prototype. Later, in the main thread, a call to <a class="el" href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e" title="Set the output method for the trace stream.">qOS::trace::setOutputFcn()</a> is used to set up the output-function.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    <a class="code hl_function" href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">trace::setOutputFcn</a>( putUART1 );</div>
 <div class="line">    ...</div>
