@@ -2,10 +2,11 @@
 * @tableofcontents
 *
 * @section q_about About the OS
-* QuarkTS++ (The C++ port of QuarkTS) is an open-source operating system that is
-* built on top of a  <em>RTC cooperative quasistatic scheduler</em>. Its 
-* simplified kernel implements a specialized round-robin scheme using a 
-* linked-chain approach and an event-queue to provide true FIFO priority scheduling.
+* QuarkTS++ (the C++ port of <a style="font-weight:bold" href="https://github.com/kmilo17pet/QuarkTS">QuarkTS</a>)
+* is an open-source operating system that is built on top of a 
+* <em>RTC cooperative quasistatic scheduler</em>. Its simplified kernel
+* implements a specialized round-robin scheme using a  linked-chain approach and 
+* an event-queue to provide true FIFO priority scheduling.
 * 
 * <b> Why cooperative? </b>
 *

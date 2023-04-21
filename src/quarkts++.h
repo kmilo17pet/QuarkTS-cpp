@@ -186,6 +186,6 @@ This file is part of the QuarkTS++ OS distribution.
 */
 
 /**
-*  @defgroup qflm General purpose macros
+*  @defgroup qflm Helper functions
 *  @ingroup qutility
 */
