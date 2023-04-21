@@ -210,7 +210,7 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A FSM(Finite State Machine) object. </p>
 <p >In QuarkTS++, a state-machine must be instantiated with an object of type <a class="el" href="classq_o_s_1_1state_machine.html" title="A FSM(Finite State Machine) object.">stateMachine</a>.</p>
-<p >Like any other OS object, a Finite State Machine (FSM) must be explicitly initialized before it can be used. The stateMachine::setup() initializes the instance, sets the callback for the top state, sets the initial state and the surrounding callback function. </p>
+<p >Like any other OS object, a Finite State Machine (FSM) must be explicitly initialized before it can be used. The <a class="el" href="classq_o_s_1_1state_machine.html#a408a336915c438e3a9aaa49914aa002e" title="Initializes a Finite State Machine (FSM).">stateMachine::setup()</a> initializes the instance, sets the callback for the top state, sets the initial state and the surrounding callback function. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7fdff9a93bd10117b755fcb3f0c01471" name="a7fdff9a93bd10117b755fcb3f0c01471"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7fdff9a93bd10117b755fcb3f0c01471">&#9670;&nbsp;</a></span>add() <span class="overload">[1/2]</span></h2>
@@ -811,7 +811,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Subscribe state machine to a particular signal. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>Subscriber FSM should be previously initalized with stateMachine::setup() </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Subscriber FSM should be previously initalized with <a class="el" href="classq_o_s_1_1state_machine.html#a408a336915c438e3a9aaa49914aa002e" title="Initializes a Finite State Machine (FSM).">stateMachine::setup()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Signal ID to which the subscriber FSM wants to subscribe. </td></tr>
@@ -934,7 +934,7 @@ Requires an installed signal-queue. For this use <a class="el" href="classq_o_s_
 </div><div class="memdoc">
 
 <p>Unsubscribe state machine from a particular signal. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>Subscriber FSM should be previously initalized with stateMachine::setup() </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Subscriber FSM should be previously initalized with <a class="el" href="classq_o_s_1_1state_machine.html#a408a336915c438e3a9aaa49914aa002e" title="Initializes a Finite State Machine (FSM).">stateMachine::setup()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Signal ID to which the subscriber FSM wants to unsubscribe. </td></tr>

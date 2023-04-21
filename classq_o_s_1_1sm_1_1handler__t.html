@@ -144,6 +144,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0012ca01df6cee7276afa03680fd98cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a0012ca01df6cee7276afa03680fd98cf">nextState</a> (<a class="el" href="classq_o_s_1_1sm_1_1state.html">state</a> &amp;s, <a class="el" href="group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420">historyMode</a> m=historyMode::NO_HISTORY) noexcept</td></tr>
 <tr class="memdesc:a0012ca01df6cee7276afa03680fd98cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produce a transition to the desired state.  <a href="classq_o_s_1_1sm_1_1handler__t.html#a0012ca01df6cee7276afa03680fd98cf">More...</a><br /></td></tr>
 <tr class="separator:a0012ca01df6cee7276afa03680fd98cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e5e9fb2cd3fd34f4e5f976e48e4741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#aa0e5e9fb2cd3fd34f4e5f976e48e4741">startState</a> (<a class="el" href="classq_o_s_1_1sm_1_1state.html">state</a> &amp;s) noexcept</td></tr>
+<tr class="memdesc:aa0e5e9fb2cd3fd34f4e5f976e48e4741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the nested initial state ( sub-state ). This The application writer should change this field to set the initial transition if the current state is a parent(or composite state). Using this method only takes effect when the state is executed under the <code>signalID::SIGNAL_START</code> signal.  <a href="classq_o_s_1_1sm_1_1handler__t.html#aa0e5e9fb2cd3fd34f4e5f976e48e4741">More...</a><br /></td></tr>
+<tr class="separator:aa0e5e9fb2cd3fd34f4e5f976e48e4741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6">timeoutSet</a> (const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i, const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> t) noexcept</td></tr>
 <tr class="memdesc:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time for the selected built-in timeout inside the target FSM.  <a href="classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6">More...</a><br /></td></tr>
 <tr class="separator:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -277,6 +280,40 @@ Public Attributes</h2></td></tr>
 
 <p>Get the Signal ID currently being evaluated for this state. </p>
 <dl class="section return"><dt>Returns</dt><dd>The signal ID. </dd></dl>
+
+</div>
+</div>
+<a id="aa0e5e9fb2cd3fd34f4e5f976e48e4741" name="aa0e5e9fb2cd3fd34f4e5f976e48e4741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e5e9fb2cd3fd34f4e5f976e48e4741">&#9670;&nbsp;</a></span>startState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::sm::handler_t::startState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1sm_1_1state.html">state</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the nested initial state ( sub-state ). This The application writer should change this field to set the initial transition if the current state is a parent(or composite state). Using this method only takes effect when the state is executed under the <code>signalID::SIGNAL_START</code> signal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The state object. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -307,7 +307,7 @@ A CLI example</h1>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Setup();</div>
-<div class="line">    qOS_Setup( HAL_GetTick, TIMER_TICK, NULL );</div>
+<div class="line">    qOS_Setup( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
 <div class="line">    CLI_Object.setup( BSP_UART_PUTC, CLI_Input, <span class="keyword">sizeof</span>(CLI_Input), </div>
 <div class="line">                       CLI_Output, <span class="keyword">sizeof</span>(CLI_Output) );</div>
 <div class="line">    </div>
