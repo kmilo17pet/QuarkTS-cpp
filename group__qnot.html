@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v7.3.2</span>
+   &#160;<span id="projectnumber">v1.0.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -152,15 +152,15 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga02de2ccfc49432f48637fb1391c522b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">qOS::core::notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, <a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, void *eventData=nullptr) noexcept</td></tr>
-<tr class="memdesc:ga02de2ccfc49432f48637fb1391c522b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a notification generating an asynchronous event. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09">notifyMode::SIMPLE</a>, the method marks the task as ready for execution and the scheduler planner will launch the task immediately according to the scheduling rules (even if task is disabled) and setting the event_t::trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" title="When the execution chain does, according to a requirement of asynchronous notification event prompted...">trigger::byNotificationSimple</a>. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae">notifyMode::QUEUED</a>, the notification will insert the notification in the FIFO priority queue. The scheduler get this notification as an asynchronous event and the task will be ready for execution according to the queue order (determined by priority), even if task is in a disabled or sleep operational state. When extracted, the scheduler will set event_t::Trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" title="When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher perf...">trigger::byNotificationQueued</a>. Specific user-data can be passed through, and will be available inside the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field, only in corresponding launch. If the task is in a <code>qSleep</code> operation state, the scheduler will change the operational state to qAwaken setting the <code>SHUTDOWN</code> bit. Specific user-data can be passed through, and will be available in the respective callback inside the qEvent_t::EventData field.  <a href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">More...</a><br /></td></tr>
-<tr class="separator:ga02de2ccfc49432f48637fb1391c522b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga528adfc42f82a61c9763941c34bf243b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#ga528adfc42f82a61c9763941c34bf243b">qOS::core::notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, void *eventData=nullptr) noexcept</td></tr>
-<tr class="memdesc:ga528adfc42f82a61c9763941c34bf243b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to spread a notification among all the tasks in the scheduling scheme.  <a href="group__qnot.html#ga528adfc42f82a61c9763941c34bf243b">More...</a><br /></td></tr>
-<tr class="separator:ga528adfc42f82a61c9763941c34bf243b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad7ba55aa2af25df4c433ff5705c18ee1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gad7ba55aa2af25df4c433ff5705c18ee1">qOS::core::hasPendingNotifications</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
-<tr class="memdesc:gad7ba55aa2af25df4c433ff5705c18ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the supplied task has pending notifications.  <a href="group__qnot.html#gad7ba55aa2af25df4c433ff5705c18ee1">More...</a><br /></td></tr>
-<tr class="separator:gad7ba55aa2af25df4c433ff5705c18ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6de5a8fa854b30d78de7540e21f4298"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">qOS::core::notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, <a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, void *eventData=nullptr) noexcept</td></tr>
+<tr class="memdesc:gaa6de5a8fa854b30d78de7540e21f4298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a notification generating an asynchronous event. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09">notifyMode::SIMPLE</a>, the method marks the task as ready for execution and the scheduler planner will launch the task immediately according to the scheduling rules (even if task is disabled) and setting the event_t::trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" title="When the execution chain does, according to a requirement of asynchronous notification event prompted...">trigger::byNotificationSimple</a>. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae">notifyMode::QUEUED</a>, the notification will insert the notification in the FIFO priority queue. The scheduler get this notification as an asynchronous event and the task will be ready for execution according to the queue order (determined by priority), even if task is in a disabled or sleep operational state. When extracted, the scheduler will set event_t::Trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" title="When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher perf...">trigger::byNotificationQueued</a>. Specific user-data can be passed through, and will be available inside the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field, only in corresponding launch. If the task is in a <code>qSleep</code> operation state, the scheduler will change the operational state to qAwaken setting the <code>SHUTDOWN</code> bit. Specific user-data can be passed through, and will be available in the respective callback inside the qEvent_t::EventData field.  <a href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">More...</a><br /></td></tr>
+<tr class="separator:gaa6de5a8fa854b30d78de7540e21f4298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab865aa8541244ae16444e52691823a41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gab865aa8541244ae16444e52691823a41">qOS::core::notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, void *eventData=nullptr) noexcept</td></tr>
+<tr class="memdesc:gab865aa8541244ae16444e52691823a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to spread a notification among all the tasks in the scheduling scheme.  <a href="group__qnot.html#gab865aa8541244ae16444e52691823a41">More...</a><br /></td></tr>
+<tr class="separator:gab865aa8541244ae16444e52691823a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b80ff1e1c37ab40b6194bc4e3d885b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#ga8b80ff1e1c37ab40b6194bc4e3d885b6">qOS::core::hasPendingNotifications</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
+<tr class="memdesc:ga8b80ff1e1c37ab40b6194bc4e3d885b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the supplied task has pending notifications.  <a href="group__qnot.html#ga8b80ff1e1c37ab40b6194bc4e3d885b6">More...</a><br /></td></tr>
+<tr class="separator:ga8b80ff1e1c37ab40b6194bc4e3d885b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API interface for task <a class="el" href="q_events.html#q_notifications">Notifications</a>. </p>
@@ -196,8 +196,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gad7ba55aa2af25df4c433ff5705c18ee1" name="gad7ba55aa2af25df4c433ff5705c18ee1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad7ba55aa2af25df4c433ff5705c18ee1">&#9670;&nbsp;</a></span>hasPendingNotifications()</h2>
+<a id="ga8b80ff1e1c37ab40b6194bc4e3d885b6" name="ga8b80ff1e1c37ab40b6194bc4e3d885b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8b80ff1e1c37ab40b6194bc4e3d885b6">&#9670;&nbsp;</a></span>hasPendingNotifications()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,7 +206,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::hasPendingNotifications </td>
+          <td class="memname">bool qOS::core::hasPendingNotifications </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
           <td class="paramname"><em>Task</em></td><td>)</td>
@@ -232,8 +232,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga02de2ccfc49432f48637fb1391c522b0" name="ga02de2ccfc49432f48637fb1391c522b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga02de2ccfc49432f48637fb1391c522b0">&#9670;&nbsp;</a></span>notify() <span class="overload">[1/2]</span></h2>
+<a id="gaa6de5a8fa854b30d78de7540e21f4298" name="gaa6de5a8fa854b30d78de7540e21f4298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa6de5a8fa854b30d78de7540e21f4298">&#9670;&nbsp;</a></span>notify() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,7 +242,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::notify </td>
+          <td class="memname">bool qOS::core::notify </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a>&#160;</td>
           <td class="paramname"><em>mode</em>, </td>
@@ -285,8 +285,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga528adfc42f82a61c9763941c34bf243b" name="ga528adfc42f82a61c9763941c34bf243b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga528adfc42f82a61c9763941c34bf243b">&#9670;&nbsp;</a></span>notify() <span class="overload">[2/2]</span></h2>
+<a id="gab865aa8541244ae16444e52691823a41" name="gab865aa8541244ae16444e52691823a41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab865aa8541244ae16444e52691823a41">&#9670;&nbsp;</a></span>notify() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -295,7 +295,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::notify </td>
+          <td class="memname">bool qOS::core::notify </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a>&#160;</td>
           <td class="paramname"><em>mode</em>, </td>

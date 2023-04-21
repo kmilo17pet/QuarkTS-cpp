@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v7.3.2</span>
+   &#160;<span id="projectnumber">v1.0.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -154,85 +154,85 @@ Collaboration diagram for qOS::core:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9dab08cadc8d5547f6dbab6fdd0d45ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> tFcn, const <a class="el" href="group__qclock.html#gad5251263c7889ac369d97c1899cbc232">timingBase_t</a> t, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callbackIdle=nullptr) noexcept</td></tr>
-<tr class="memdesc:a9dab08cadc8d5547f6dbab6fdd0d45ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS.  <a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">More...</a><br /></td></tr>
-<tr class="separator:a9dab08cadc8d5547f6dbab6fdd0d45ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa25100145b3f56a1f7aa6458ec0e0bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> tFcn, const <a class="el" href="group__qclock.html#gad5251263c7889ac369d97c1899cbc232">timingBase_t</a> t, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callbackIdle=nullptr) noexcept</td></tr>
+<tr class="memdesc:aaa25100145b3f56a1f7aa6458ec0e0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS.  <a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">More...</a><br /></td></tr>
+<tr class="separator:aaa25100145b3f56a1f7aa6458ec0e0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> tFcn, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callbackIdle=nullptr) noexcept</td></tr>
 <tr class="memdesc:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS.  <a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">More...</a><br /></td></tr>
 <tr class="separator:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3ffe569156600e392e688c74ab68134"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">addTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a> t, const <a class="el" href="group__qtypes.html#gaf0c03ddb7df4048fd3b4764d994ee4da">iteration_t</a> n, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
-<tr class="memdesc:ab3ffe569156600e392e688c74ab68134"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. The task is scheduled to run every <em>t</em> time units, <em>n</em> times and executing <em>callback</em> method on every pass.  <a href="classq_o_s_1_1core.html#ab3ffe569156600e392e688c74ab68134">More...</a><br /></td></tr>
-<tr class="separator:ab3ffe569156600e392e688c74ab68134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6108a6807716a23d2af2db9ddadea99a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a> t, const <a class="el" href="group__qtypes.html#gaf0c03ddb7df4048fd3b4764d994ee4da">iteration_t</a> n, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
+<tr class="memdesc:a6108a6807716a23d2af2db9ddadea99a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. The task is scheduled to run every <em>t</em> time units, <em>n</em> times and executing <em>callback</em> method on every pass.  <a href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">More...</a><br /></td></tr>
+<tr class="separator:a6108a6807716a23d2af2db9ddadea99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad37fb39c9ab1224e007be651e1dfc69b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, void *arg=nullptr) noexcept</td></tr>
-<tr class="memdesc:ad37fb39c9ab1224e007be651e1dfc69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a2c0e85f22ffad1e4867e6d00e186e3fb" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a792722feb8e3d5c688ef43933daa1250" title="Set/Change the number of task iterations.">task::setIterations()</a>.  <a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">More...</a><br /></td></tr>
+<tr class="memdesc:ad37fb39c9ab1224e007be651e1dfc69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a651cad36723f0e24549066954708c8e2" title="Set/Change the number of task iterations.">task::setIterations()</a>.  <a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">More...</a><br /></td></tr>
 <tr class="separator:ad37fb39c9ab1224e007be651e1dfc69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae31fe2a7633545a8ccdb6ea388904236"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ae31fe2a7633545a8ccdb6ea388904236">addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
-<tr class="memdesc:ae31fe2a7633545a8ccdb6ea388904236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a7239e8580f4c2f69da6b822f99be7fab" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <a href="classq_o_s_1_1core.html#ae31fe2a7633545a8ccdb6ea388904236">More...</a><br /></td></tr>
-<tr class="separator:ae31fe2a7633545a8ccdb6ea388904236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e1f14187cc3123f8395d452cda96ff1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a5e1f14187cc3123f8395d452cda96ff1">setIdleTask</a> (<a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback) noexcept</td></tr>
-<tr class="memdesc:a5e1f14187cc3123f8395d452cda96ff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the callback for the Idle-task.  <a href="classq_o_s_1_1core.html#a5e1f14187cc3123f8395d452cda96ff1">More...</a><br /></td></tr>
-<tr class="separator:a5e1f14187cc3123f8395d452cda96ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6e8e9bee019907dd8362934ae68201a"><td class="memItemLeft" align="right" valign="top"><a id="ad6e8e9bee019907dd8362934ae68201a" name="ad6e8e9bee019907dd8362934ae68201a"></a>
+<tr class="memitem:a20c364205597d27c90669f230b5ddf2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a">addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
+<tr class="memdesc:a20c364205597d27c90669f230b5ddf2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <a href="classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a">More...</a><br /></td></tr>
+<tr class="separator:a20c364205597d27c90669f230b5ddf2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4991fda84316e63029be7e200dff6aa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a4991fda84316e63029be7e200dff6aa0">setIdleTask</a> (<a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback) noexcept</td></tr>
+<tr class="memdesc:a4991fda84316e63029be7e200dff6aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the callback for the Idle-task.  <a href="classq_o_s_1_1core.html#a4991fda84316e63029be7e200dff6aa0">More...</a><br /></td></tr>
+<tr class="separator:a4991fda84316e63029be7e200dff6aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add44643c29c6e26b52cb032fe4b31c12"><td class="memItemLeft" align="right" valign="top"><a id="add44643c29c6e26b52cb032fe4b31c12" name="add44643c29c6e26b52cb032fe4b31c12"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>schedulerRelease</b> (void) noexcept</td></tr>
-<tr class="memdesc:ad6e8e9bee019907dd8362934ae68201a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the kernel scheduling. The main thread will continue after the <a class="el" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79" title="Executes the scheduling scheme. It must be called once after the task pool has been defined.">core::run()</a> call. <br /></td></tr>
-<tr class="separator:ad6e8e9bee019907dd8362934ae68201a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ed3d6117f1640a620c0592d470913aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a7ed3d6117f1640a620c0592d470913aa">setSchedulerReleaseCallback</a> (<a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback) noexcept</td></tr>
-<tr class="memdesc:a7ed3d6117f1640a620c0592d470913aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the scheduler release callback function.  <a href="classq_o_s_1_1core.html#a7ed3d6117f1640a620c0592d470913aa">More...</a><br /></td></tr>
-<tr class="separator:a7ed3d6117f1640a620c0592d470913aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09cc4c2562ef6580936c68b54076fb88"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a09cc4c2562ef6580936c68b54076fb88">removeTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
-<tr class="memdesc:a09cc4c2562ef6580936c68b54076fb88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the task from the scheduling scheme.  <a href="classq_o_s_1_1core.html#a09cc4c2562ef6580936c68b54076fb88">More...</a><br /></td></tr>
-<tr class="separator:a09cc4c2562ef6580936c68b54076fb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af544e4dc0c995270ff1e87f01f87fc79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">run</a> (void) noexcept</td></tr>
-<tr class="memdesc:af544e4dc0c995270ff1e87f01f87fc79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the scheduling scheme. It must be called once after the task pool has been defined.  <a href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">More...</a><br /></td></tr>
-<tr class="separator:af544e4dc0c995270ff1e87f01f87fc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga02de2ccfc49432f48637fb1391c522b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, <a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, void *eventData=nullptr) noexcept</td></tr>
-<tr class="memdesc:ga02de2ccfc49432f48637fb1391c522b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a notification generating an asynchronous event. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09">notifyMode::SIMPLE</a>, the method marks the task as ready for execution and the scheduler planner will launch the task immediately according to the scheduling rules (even if task is disabled) and setting the event_t::trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" title="When the execution chain does, according to a requirement of asynchronous notification event prompted...">trigger::byNotificationSimple</a>. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae">notifyMode::QUEUED</a>, the notification will insert the notification in the FIFO priority queue. The scheduler get this notification as an asynchronous event and the task will be ready for execution according to the queue order (determined by priority), even if task is in a disabled or sleep operational state. When extracted, the scheduler will set event_t::Trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" title="When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher perf...">trigger::byNotificationQueued</a>. Specific user-data can be passed through, and will be available inside the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field, only in corresponding launch. If the task is in a <code>qSleep</code> operation state, the scheduler will change the operational state to qAwaken setting the <code>SHUTDOWN</code> bit. Specific user-data can be passed through, and will be available in the respective callback inside the qEvent_t::EventData field.  <a href="group__qnot.html#ga02de2ccfc49432f48637fb1391c522b0">More...</a><br /></td></tr>
-<tr class="separator:ga02de2ccfc49432f48637fb1391c522b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga528adfc42f82a61c9763941c34bf243b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#ga528adfc42f82a61c9763941c34bf243b">notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, void *eventData=nullptr) noexcept</td></tr>
-<tr class="memdesc:ga528adfc42f82a61c9763941c34bf243b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to spread a notification among all the tasks in the scheduling scheme.  <a href="group__qnot.html#ga528adfc42f82a61c9763941c34bf243b">More...</a><br /></td></tr>
-<tr class="separator:ga528adfc42f82a61c9763941c34bf243b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad7ba55aa2af25df4c433ff5705c18ee1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gad7ba55aa2af25df4c433ff5705c18ee1">hasPendingNotifications</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
-<tr class="memdesc:gad7ba55aa2af25df4c433ff5705c18ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the supplied task has pending notifications.  <a href="group__qnot.html#gad7ba55aa2af25df4c433ff5705c18ee1">More...</a><br /></td></tr>
-<tr class="separator:gad7ba55aa2af25df4c433ff5705c18ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1659f1343afcf0f3c13e5444927fd96f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga1659f1343afcf0f3c13e5444927fd96f">eventFlagsModify</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, const <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> tFlags, const bool action) noexcept</td></tr>
-<tr class="memdesc:ga1659f1343afcf0f3c13e5444927fd96f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify the EventFlags for the provided task.  <a href="group__qeventflags.html#ga1659f1343afcf0f3c13e5444927fd96f">More...</a><br /></td></tr>
-<tr class="separator:ga1659f1343afcf0f3c13e5444927fd96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2fbbdae76828ba59515986bdac9756fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga2fbbdae76828ba59515986bdac9756fd">eventFlagsRead</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) const noexcept</td></tr>
-<tr class="memdesc:ga2fbbdae76828ba59515986bdac9756fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current value of the task's EventFlags.  <a href="group__qeventflags.html#ga2fbbdae76828ba59515986bdac9756fd">More...</a><br /></td></tr>
-<tr class="separator:ga2fbbdae76828ba59515986bdac9756fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab6532f3f151ba4a400926c44f21fcebf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#gab6532f3f151ba4a400926c44f21fcebf">eventFlagsCheck</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> flagsToCheck, const bool clearOnExit=true, const bool checkForAll=false) noexcept</td></tr>
-<tr class="memdesc:gab6532f3f151ba4a400926c44f21fcebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for flags set to <code>true</code> inside the task Event-Flags.  <a href="group__qeventflags.html#gab6532f3f151ba4a400926c44f21fcebf">More...</a><br /></td></tr>
-<tr class="separator:gab6532f3f151ba4a400926c44f21fcebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f3c292c21b6c1f312b46d5362048f61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1task.html">task</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a1f3c292c21b6c1f312b46d5362048f61">findTaskByName</a> (const char *name) noexcept</td></tr>
-<tr class="memdesc:a1f3c292c21b6c1f312b46d5362048f61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to find the first task that matches the name provided.  <a href="classq_o_s_1_1core.html#a1f3c292c21b6c1f312b46d5362048f61">More...</a><br /></td></tr>
-<tr class="separator:a1f3c292c21b6c1f312b46d5362048f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac416dd693488788542a971c4484c39da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ac416dd693488788542a971c4484c39da">yieldToTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
-<tr class="memdesc:ac416dd693488788542a971c4484c39da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yield the control of the current running task to another task.  <a href="classq_o_s_1_1core.html#ac416dd693488788542a971c4484c39da">More...</a><br /></td></tr>
-<tr class="separator:ac416dd693488788542a971c4484c39da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83e09d1047d3b45f98c00c2f83196afb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790">globalState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a83e09d1047d3b45f98c00c2f83196afb">getGlobalState</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) const noexcept</td></tr>
-<tr class="memdesc:a83e09d1047d3b45f98c00c2f83196afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the task global-state.  <a href="classq_o_s_1_1core.html#a83e09d1047d3b45f98c00c2f83196afb">More...</a><br /></td></tr>
-<tr class="separator:a83e09d1047d3b45f98c00c2f83196afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:add44643c29c6e26b52cb032fe4b31c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the kernel scheduling. The main thread will continue after the <a class="el" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c" title="Executes the scheduling scheme. It must be called once after the task pool has been defined.">core::run()</a> call. <br /></td></tr>
+<tr class="separator:add44643c29c6e26b52cb032fe4b31c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9ec6f77db0a44985f2793f2a47797b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a4d9ec6f77db0a44985f2793f2a47797b">setSchedulerReleaseCallback</a> (<a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback) noexcept</td></tr>
+<tr class="memdesc:a4d9ec6f77db0a44985f2793f2a47797b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the scheduler release callback function.  <a href="classq_o_s_1_1core.html#a4d9ec6f77db0a44985f2793f2a47797b">More...</a><br /></td></tr>
+<tr class="separator:a4d9ec6f77db0a44985f2793f2a47797b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1448493a77ab1a2e7fd3d46954bbf537"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a1448493a77ab1a2e7fd3d46954bbf537">removeTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
+<tr class="memdesc:a1448493a77ab1a2e7fd3d46954bbf537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the task from the scheduling scheme.  <a href="classq_o_s_1_1core.html#a1448493a77ab1a2e7fd3d46954bbf537">More...</a><br /></td></tr>
+<tr class="separator:a1448493a77ab1a2e7fd3d46954bbf537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30b4c1ac78976e2d289a710647300d5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a> (void) noexcept</td></tr>
+<tr class="memdesc:a30b4c1ac78976e2d289a710647300d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the scheduling scheme. It must be called once after the task pool has been defined.  <a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">More...</a><br /></td></tr>
+<tr class="separator:a30b4c1ac78976e2d289a710647300d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6de5a8fa854b30d78de7540e21f4298"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, <a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, void *eventData=nullptr) noexcept</td></tr>
+<tr class="memdesc:gaa6de5a8fa854b30d78de7540e21f4298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a notification generating an asynchronous event. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09">notifyMode::SIMPLE</a>, the method marks the task as ready for execution and the scheduler planner will launch the task immediately according to the scheduling rules (even if task is disabled) and setting the event_t::trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" title="When the execution chain does, according to a requirement of asynchronous notification event prompted...">trigger::byNotificationSimple</a>. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae">notifyMode::QUEUED</a>, the notification will insert the notification in the FIFO priority queue. The scheduler get this notification as an asynchronous event and the task will be ready for execution according to the queue order (determined by priority), even if task is in a disabled or sleep operational state. When extracted, the scheduler will set event_t::Trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" title="When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher perf...">trigger::byNotificationQueued</a>. Specific user-data can be passed through, and will be available inside the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field, only in corresponding launch. If the task is in a <code>qSleep</code> operation state, the scheduler will change the operational state to qAwaken setting the <code>SHUTDOWN</code> bit. Specific user-data can be passed through, and will be available in the respective callback inside the qEvent_t::EventData field.  <a href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">More...</a><br /></td></tr>
+<tr class="separator:gaa6de5a8fa854b30d78de7540e21f4298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab865aa8541244ae16444e52691823a41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gab865aa8541244ae16444e52691823a41">notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, void *eventData=nullptr) noexcept</td></tr>
+<tr class="memdesc:gab865aa8541244ae16444e52691823a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to spread a notification among all the tasks in the scheduling scheme.  <a href="group__qnot.html#gab865aa8541244ae16444e52691823a41">More...</a><br /></td></tr>
+<tr class="separator:gab865aa8541244ae16444e52691823a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b80ff1e1c37ab40b6194bc4e3d885b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#ga8b80ff1e1c37ab40b6194bc4e3d885b6">hasPendingNotifications</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
+<tr class="memdesc:ga8b80ff1e1c37ab40b6194bc4e3d885b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the supplied task has pending notifications.  <a href="group__qnot.html#ga8b80ff1e1c37ab40b6194bc4e3d885b6">More...</a><br /></td></tr>
+<tr class="separator:ga8b80ff1e1c37ab40b6194bc4e3d885b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70fa8e4787737b3280f8d54b9d3c1937"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937">eventFlagsModify</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, const <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> tFlags, const bool action) noexcept</td></tr>
+<tr class="memdesc:ga70fa8e4787737b3280f8d54b9d3c1937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify the EventFlags for the provided task.  <a href="group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937">More...</a><br /></td></tr>
+<tr class="separator:ga70fa8e4787737b3280f8d54b9d3c1937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa0196d8fb4376fd718ee84f7f4e403ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#gaa0196d8fb4376fd718ee84f7f4e403ba">eventFlagsRead</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) const noexcept</td></tr>
+<tr class="memdesc:gaa0196d8fb4376fd718ee84f7f4e403ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current value of the task's EventFlags.  <a href="group__qeventflags.html#gaa0196d8fb4376fd718ee84f7f4e403ba">More...</a><br /></td></tr>
+<tr class="separator:gaa0196d8fb4376fd718ee84f7f4e403ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga56dc6d48d6f31ffb5cfe3b1d787af858"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858">eventFlagsCheck</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> flagsToCheck, const bool clearOnExit=true, const bool checkForAll=false) noexcept</td></tr>
+<tr class="memdesc:ga56dc6d48d6f31ffb5cfe3b1d787af858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for flags set to <code>true</code> inside the task Event-Flags.  <a href="group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858">More...</a><br /></td></tr>
+<tr class="separator:ga56dc6d48d6f31ffb5cfe3b1d787af858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a37c156bf1da3a0847da37ba155a68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1task.html">task</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a45a37c156bf1da3a0847da37ba155a68">findTaskByName</a> (const char *name) noexcept</td></tr>
+<tr class="memdesc:a45a37c156bf1da3a0847da37ba155a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to find the first task that matches the name provided.  <a href="classq_o_s_1_1core.html#a45a37c156bf1da3a0847da37ba155a68">More...</a><br /></td></tr>
+<tr class="separator:a45a37c156bf1da3a0847da37ba155a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d04f84700e6e54d5eab75ac95f6768d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a2d04f84700e6e54d5eab75ac95f6768d">yieldToTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
+<tr class="memdesc:a2d04f84700e6e54d5eab75ac95f6768d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yield the control of the current running task to another task.  <a href="classq_o_s_1_1core.html#a2d04f84700e6e54d5eab75ac95f6768d">More...</a><br /></td></tr>
+<tr class="separator:a2d04f84700e6e54d5eab75ac95f6768d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9024e617bd777e7a8d26a313e871c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790">globalState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#abf9024e617bd777e7a8d26a313e871c4">getGlobalState</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) const noexcept</td></tr>
+<tr class="memdesc:abf9024e617bd777e7a8d26a313e871c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the task global-state.  <a href="classq_o_s_1_1core.html#abf9024e617bd777e7a8d26a313e871c4">More...</a><br /></td></tr>
+<tr class="separator:abf9024e617bd777e7a8d26a313e871c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6e6ca06cbc217c6a66787a1c0fd5f54e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classq_o_s_1_1core.html">core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a6e6ca06cbc217c6a66787a1c0fd5f54e">getInstance</a> (void) noexcept</td></tr>
-<tr class="memdesc:a6e6ca06cbc217c6a66787a1c0fd5f54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the OS control instance.  <a href="classq_o_s_1_1core.html#a6e6ca06cbc217c6a66787a1c0fd5f54e">More...</a><br /></td></tr>
-<tr class="separator:a6e6ca06cbc217c6a66787a1c0fd5f54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af84a4187cdf1ca549c63cf6de61d4fb8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classq_o_s_1_1core.html">core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#af84a4187cdf1ca549c63cf6de61d4fb8">getInstance</a> (void) noexcept</td></tr>
+<tr class="memdesc:af84a4187cdf1ca549c63cf6de61d4fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the OS control instance.  <a href="classq_o_s_1_1core.html#af84a4187cdf1ca549c63cf6de61d4fb8">More...</a><br /></td></tr>
+<tr class="separator:af84a4187cdf1ca549c63cf6de61d4fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a0a28d9c49a73ac106a3872afc3b20254"><td class="memItemLeft" align="right" valign="top"><a id="a0a28d9c49a73ac106a3872afc3b20254" name="a0a28d9c49a73ac106a3872afc3b20254"></a>
+<tr class="memitem:adbace2acdfcb3e3e702bc5a35b692c80"><td class="memItemLeft" align="right" valign="top"><a id="adbace2acdfcb3e3e702bc5a35b692c80" name="adbace2acdfcb3e3e702bc5a35b692c80"></a>
 static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LOWEST_PRIORITY</b></td></tr>
-<tr class="memdesc:a0a28d9c49a73ac106a3872afc3b20254"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant that holds the value of the lowest priority. <br /></td></tr>
-<tr class="separator:a0a28d9c49a73ac106a3872afc3b20254"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a14879b60c13ded224ed8109e8df877"><td class="memItemLeft" align="right" valign="top"><a id="a9a14879b60c13ded224ed8109e8df877" name="a9a14879b60c13ded224ed8109e8df877"></a>
+<tr class="memdesc:adbace2acdfcb3e3e702bc5a35b692c80"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant that holds the value of the lowest priority. <br /></td></tr>
+<tr class="separator:adbace2acdfcb3e3e702bc5a35b692c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae87ddeec1ee7ccf9e4792882dae07f76"><td class="memItemLeft" align="right" valign="top"><a id="ae87ddeec1ee7ccf9e4792882dae07f76" name="ae87ddeec1ee7ccf9e4792882dae07f76"></a>
 static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>MEDIUM_PRIORITY</b></td></tr>
-<tr class="memdesc:a9a14879b60c13ded224ed8109e8df877"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant that holds the value of the medium priority. <br /></td></tr>
-<tr class="separator:a9a14879b60c13ded224ed8109e8df877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb2275b3c5805aa8bb1e1ee3d6132ab0"><td class="memItemLeft" align="right" valign="top"><a id="aeb2275b3c5805aa8bb1e1ee3d6132ab0" name="aeb2275b3c5805aa8bb1e1ee3d6132ab0"></a>
+<tr class="memdesc:ae87ddeec1ee7ccf9e4792882dae07f76"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant that holds the value of the medium priority. <br /></td></tr>
+<tr class="separator:ae87ddeec1ee7ccf9e4792882dae07f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b090820d0612980def0501f89653020"><td class="memItemLeft" align="right" valign="top"><a id="a9b090820d0612980def0501f89653020" name="a9b090820d0612980def0501f89653020"></a>
 static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>HIGHEST_PRIORITY</b></td></tr>
-<tr class="memdesc:aeb2275b3c5805aa8bb1e1ee3d6132ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant that holds the value of the highest priority. <br /></td></tr>
-<tr class="separator:aeb2275b3c5805aa8bb1e1ee3d6132ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a9b090820d0612980def0501f89653020"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant that holds the value of the highest priority. <br /></td></tr>
+<tr class="separator:a9b090820d0612980def0501f89653020"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The class to interface the OS. </p>
@@ -284,7 +284,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
 </table>
 </div><div class="memdoc">
 
-<p>Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a2c0e85f22ffad1e4867e6d00e186e3fb" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a792722feb8e3d5c688ef43933daa1250" title="Set/Change the number of task iterations.">task::setIterations()</a>. </p>
+<p>Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a651cad36723f0e24549066954708c8e2" title="Set/Change the number of task iterations.">task::setIterations()</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>The task node. </td></tr>
@@ -298,8 +298,8 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
 
 </div>
 </div>
-<a id="ae31fe2a7633545a8ccdb6ea388904236" name="ae31fe2a7633545a8ccdb6ea388904236"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae31fe2a7633545a8ccdb6ea388904236">&#9670;&nbsp;</a></span>addStateMachineTask()</h2>
+<a id="a20c364205597d27c90669f230b5ddf2a" name="a20c364205597d27c90669f230b5ddf2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20c364205597d27c90669f230b5ddf2a">&#9670;&nbsp;</a></span>addStateMachineTask()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -308,7 +308,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::addStateMachineTask </td>
+          <td class="memname">bool qOS::core::addStateMachineTask </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
           <td class="paramname"><em>Task</em>, </td>
@@ -328,7 +328,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
@@ -356,7 +356,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
 </table>
 </div><div class="memdoc">
 
-<p>Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a7239e8580f4c2f69da6b822f99be7fab" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field. </p>
+<p>Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field. </p>
 <dl class="section pre"><dt>Precondition</dt><dd>The State-machine object should be previously configured with qStateMachine_Setup() </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>qStateMachine_Setup() </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -364,7 +364,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
     <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>A pointer to the task node. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>A pointer to the Finite State-Machine (FSM) object. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Task priority Value. [0(min) - <code>Q_PRIORITY_LEVELS</code> (max)] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Execution time interval. For immediate execution (tValue = <a class="el" href="classq_o_s_1_1clock.html#a7c97887da1bf02370c733b8c80c20b57" title="To specify a non-wait time value.">clock::IMMEDIATE</a>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Execution time interval. For immediate execution (tValue = <a class="el" href="classq_o_s_1_1clock.html#af9f1c16ed2c28ee3359bae3ad9b1d2a7" title="To specify a non-wait time value.">clock::IMMEDIATE</a>). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Specifies the initial operational state of the task (<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0" title="The task can catch all the events. This operational state is available when the ENABLE bit is set.">taskState::ENABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE</a> or <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)</a>). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Represents the task arguments. All arguments must be passed by reference and cast to <code>void*</code>. </td></tr>
   </table>
@@ -374,8 +374,8 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
 
 </div>
 </div>
-<a id="ab3ffe569156600e392e688c74ab68134" name="ab3ffe569156600e392e688c74ab68134"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3ffe569156600e392e688c74ab68134">&#9670;&nbsp;</a></span>addTask()</h2>
+<a id="a6108a6807716a23d2af2db9ddadea99a" name="a6108a6807716a23d2af2db9ddadea99a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6108a6807716a23d2af2db9ddadea99a">&#9670;&nbsp;</a></span>addTask()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -384,7 +384,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::addTask </td>
+          <td class="memname">bool qOS::core::addTask </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
           <td class="paramname"><em>Task</em>, </td>
@@ -404,7 +404,7 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">time_t</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
@@ -444,8 +444,8 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
     <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>The task node. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>A pointer to a void callback method with a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">qOS::event_t</a> parameter as input argument. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Task priority Value. [0(min) - <code>Q_PRIORITY_LEVELS(max)</code>] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Execution interval (time). For immediate execution use t = <a class="el" href="classq_o_s_1_1clock.html#a7c97887da1bf02370c733b8c80c20b57" title="To specify a non-wait time value.">clock::IMMEDIATE</a>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of task executions (Integer value). For indefinite execution ( <em>n</em> = <a class="el" href="classq_o_s_1_1task.html#a7239e8580f4c2f69da6b822f99be7fab" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> or <a class="el" href="classq_o_s_1_1task.html#a23b24c7e0032ed40bd7e80ef3b3e8c63" title="Same as PERIODIC. A constant to indicate that the task will run every time its timeout has expired.">task::INDEFINITE</a> ). Tasks do not remember the number of iteration set initially. After the iterations are done, internal iteration counter is 0. To perform another set of iterations, set the number of iterations again. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Execution interval (time). For immediate execution use t = <a class="el" href="classq_o_s_1_1clock.html#af9f1c16ed2c28ee3359bae3ad9b1d2a7" title="To specify a non-wait time value.">clock::IMMEDIATE</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of task executions (Integer value). For indefinite execution ( <em>n</em> = <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> or <a class="el" href="classq_o_s_1_1task.html#a9405db8642daf9f6fa97e16628476fe7" title="Same as PERIODIC. A constant to indicate that the task will run every time its timeout has expired.">task::INDEFINITE</a> ). Tasks do not remember the number of iteration set initially. After the iterations are done, internal iteration counter is 0. To perform another set of iterations, set the number of iterations again. </td></tr>
   </table>
   </dd>
 </dl>
@@ -463,8 +463,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a1f3c292c21b6c1f312b46d5362048f61" name="a1f3c292c21b6c1f312b46d5362048f61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f3c292c21b6c1f312b46d5362048f61">&#9670;&nbsp;</a></span>findTaskByName()</h2>
+<a id="a45a37c156bf1da3a0847da37ba155a68" name="a45a37c156bf1da3a0847da37ba155a68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45a37c156bf1da3a0847da37ba155a68">&#9670;&nbsp;</a></span>findTaskByName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -473,7 +473,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1task.html">task</a> * core::findTaskByName </td>
+          <td class="memname"><a class="el" href="classq_o_s_1_1task.html">task</a> * qOS::core::findTaskByName </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
@@ -498,8 +498,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a83e09d1047d3b45f98c00c2f83196afb" name="a83e09d1047d3b45f98c00c2f83196afb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83e09d1047d3b45f98c00c2f83196afb">&#9670;&nbsp;</a></span>getGlobalState()</h2>
+<a id="abf9024e617bd777e7a8d26a313e871c4" name="abf9024e617bd777e7a8d26a313e871c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9024e617bd777e7a8d26a313e871c4">&#9670;&nbsp;</a></span>getGlobalState()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -508,7 +508,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790">globalState</a> core::getGlobalState </td>
+          <td class="memname"><a class="el" href="group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790">globalState</a> qOS::core::getGlobalState </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
           <td class="paramname"><em>Task</em></td><td>)</td>
@@ -533,8 +533,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a6e6ca06cbc217c6a66787a1c0fd5f54e" name="a6e6ca06cbc217c6a66787a1c0fd5f54e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e6ca06cbc217c6a66787a1c0fd5f54e">&#9670;&nbsp;</a></span>getInstance()</h2>
+<a id="af84a4187cdf1ca549c63cf6de61d4fb8" name="af84a4187cdf1ca549c63cf6de61d4fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af84a4187cdf1ca549c63cf6de61d4fb8">&#9670;&nbsp;</a></span>getInstance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -543,7 +543,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1core.html">core</a> &amp; core::getInstance </td>
+          <td class="memname">static <a class="el" href="classq_o_s_1_1core.html">core</a> &amp; qOS::core::getInstance </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -562,8 +562,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a9dab08cadc8d5547f6dbab6fdd0d45ff" name="a9dab08cadc8d5547f6dbab6fdd0d45ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dab08cadc8d5547f6dbab6fdd0d45ff">&#9670;&nbsp;</a></span>init() <span class="overload">[1/2]</span></h2>
+<a id="aaa25100145b3f56a1f7aa6458ec0e0bd" name="aaa25100145b3f56a1f7aa6458ec0e0bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa25100145b3f56a1f7aa6458ec0e0bd">&#9670;&nbsp;</a></span>init() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -572,7 +572,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void core::init </td>
+          <td class="memname">void qOS::core::init </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a>&#160;</td>
           <td class="paramname"><em>tFcn</em>, </td>
@@ -605,7 +605,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <p>Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tFcn</td><td>The function that provides the tick value. If the user application uses the <a class="el" href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4" title="Feed the system tick.">qOS::clock::sysTick()</a> from the ISR, this parameter can be <code>nullptr</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tFcn</td><td>The function that provides the tick value. If the user application uses the <a class="el" href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae" title="Feed the system tick.">qOS::clock::sysTick()</a> from the ISR, this parameter can be <code>nullptr</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -627,10 +627,10 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Init();</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( HAL_GetTick, TIMER_TICK, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( HAL_GetTick, TIMER_TICK, IdleTask_Callback );</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a9dab08cadc8d5547f6dbab6fdd0d45ff"><div class="ttname"><a href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div><div class="ttdef"><b>Definition:</b> kernel.cpp:32</div></div>
-<div class="ttc" id="agroup__qtaskcreation_html_ga501a22419157104b982c3a32d871fe21"><div class="ttname"><a href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:6</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_aaa25100145b3f56a1f7aa6458ec0e0bd"><div class="ttname"><a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
+<div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
 </div><!-- fragment --><p >Example : When the tick is not provided </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;DeviceHeader.h&quot;</span></div>
 <div class="line"> </div>
@@ -639,16 +639,16 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> Interrupt_Timer0( <span class="keywordtype">void</span> ) {</div>
-<div class="line">    <a class="code hl_function" href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">clock::sysTick</a>();</div>
+<div class="line">    <a class="code hl_function" href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">clock::sysTick</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    MCU_Init();</div>
 <div class="line">    BSP_Setup_Timer0();</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( <span class="keyword">nullptr</span>, TIMER_TICK, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( <span class="keyword">nullptr</span>, TIMER_TICK, IdleTask_Callback );</div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1clock_html_a7daf630ecdb4ee1408b2ed3c97430aa4"><div class="ttname"><a href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">qOS::clock::sysTick</a></div><div class="ttdeci">static void sysTick(void) noexcept</div><div class="ttdoc">Feed the system tick.</div><div class="ttdef"><b>Definition:</b> clock.cpp:61</div></div>
+<div class="ttc" id="aclassq_o_s_1_1clock_html_aee283c6e9866c6570f66b4a2cfebdbae"><div class="ttname"><a href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">qOS::clock::sysTick</a></div><div class="ttdeci">static void sysTick(void) noexcept</div><div class="ttdoc">Feed the system tick.</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -689,7 +689,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <p>Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tFcn</td><td>The function that provides the tick value. If the user application uses the <a class="el" href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4" title="Feed the system tick.">qOS::clock::sysTick()</a> from the ISR, this parameter can be <code>nullptr</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tFcn</td><td>The function that provides the tick value. If the user application uses the <a class="el" href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae" title="Feed the system tick.">qOS::clock::sysTick()</a> from the ISR, this parameter can be <code>nullptr</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -708,7 +708,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Init();</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( HAL_GetTick, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( HAL_GetTick, IdleTask_Callback );</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >Example : When the tick is not provided </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;quarkts++.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;DeviceHeader.h&quot;</span></div>
@@ -716,20 +716,20 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> Interrupt_Timer0( <span class="keywordtype">void</span> ) {</div>
-<div class="line">    <a class="code hl_function" href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">clock::sysTick</a>();</div>
+<div class="line">    <a class="code hl_function" href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">clock::sysTick</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    MCU_Init();</div>
 <div class="line">    BSP_Setup_Timer0();</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a9dab08cadc8d5547f6dbab6fdd0d45ff">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
 <div class="line"> </div>
 <div class="line">}</div>
 </div><!-- fragment --> 
 </div>
 </div>
-<a id="a09cc4c2562ef6580936c68b54076fb88" name="a09cc4c2562ef6580936c68b54076fb88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09cc4c2562ef6580936c68b54076fb88">&#9670;&nbsp;</a></span>removeTask()</h2>
+<a id="a1448493a77ab1a2e7fd3d46954bbf537" name="a1448493a77ab1a2e7fd3d46954bbf537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1448493a77ab1a2e7fd3d46954bbf537">&#9670;&nbsp;</a></span>removeTask()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -738,7 +738,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::removeTask </td>
+          <td class="memname">bool qOS::core::removeTask </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
           <td class="paramname"><em>Task</em></td><td>)</td>
@@ -763,8 +763,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="af544e4dc0c995270ff1e87f01f87fc79" name="af544e4dc0c995270ff1e87f01f87fc79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af544e4dc0c995270ff1e87f01f87fc79">&#9670;&nbsp;</a></span>run()</h2>
+<a id="a30b4c1ac78976e2d289a710647300d5c" name="a30b4c1ac78976e2d289a710647300d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30b4c1ac78976e2d289a710647300d5c">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -773,7 +773,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::run </td>
+          <td class="memname">bool qOS::core::run </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -793,8 +793,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a5e1f14187cc3123f8395d452cda96ff1" name="a5e1f14187cc3123f8395d452cda96ff1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e1f14187cc3123f8395d452cda96ff1">&#9670;&nbsp;</a></span>setIdleTask()</h2>
+<a id="a4991fda84316e63029be7e200dff6aa0" name="a4991fda84316e63029be7e200dff6aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4991fda84316e63029be7e200dff6aa0">&#9670;&nbsp;</a></span>setIdleTask()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -803,7 +803,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::setIdleTask </td>
+          <td class="memname">bool qOS::core::setIdleTask </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
@@ -828,8 +828,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a7ed3d6117f1640a620c0592d470913aa" name="a7ed3d6117f1640a620c0592d470913aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ed3d6117f1640a620c0592d470913aa">&#9670;&nbsp;</a></span>setSchedulerReleaseCallback()</h2>
+<a id="a4d9ec6f77db0a44985f2793f2a47797b" name="a4d9ec6f77db0a44985f2793f2a47797b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d9ec6f77db0a44985f2793f2a47797b">&#9670;&nbsp;</a></span>setSchedulerReleaseCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -838,7 +838,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::setSchedulerReleaseCallback </td>
+          <td class="memname">bool qOS::core::setSchedulerReleaseCallback </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a>&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
@@ -863,8 +863,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="ac416dd693488788542a971c4484c39da" name="ac416dd693488788542a971c4484c39da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac416dd693488788542a971c4484c39da">&#9670;&nbsp;</a></span>yieldToTask()</h2>
+<a id="a2d04f84700e6e54d5eab75ac95f6768d" name="a2d04f84700e6e54d5eab75ac95f6768d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d04f84700e6e54d5eab75ac95f6768d">&#9670;&nbsp;</a></span>yieldToTask()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -873,7 +873,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool core::yieldToTask </td>
+          <td class="memname">bool qOS::core::yieldToTask </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
           <td class="paramname"><em>Task</em></td><td>)</td>

@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v7.3.2</span>
+   &#160;<span id="projectnumber">v1.0.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -128,7 +128,6 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1command_line_interface.h
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="classq_o_s_1_1command_line_interface-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">qOS::commandLineInterface Class Reference<div class="ingroups"><a class="el" href="group__qmodules.html">Kernel extensions</a> &raquo; <a class="el" href="group__qatcli.html">AT Command Line Interface</a></div></div></div>
 </div><!--header-->
@@ -153,59 +152,50 @@ Collaboration diagram for qOS::commandLineInterface:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a69e706db3cf304ea8aa6e95c5708c067"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a69e706db3cf304ea8aa6e95c5708c067">setup</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut)</td></tr>
-<tr class="memdesc:a69e706db3cf304ea8aa6e95c5708c067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup an instance of the AT Command Line Interface.  <a href="classq_o_s_1_1command_line_interface.html#a69e706db3cf304ea8aa6e95c5708c067">More...</a><br /></td></tr>
-<tr class="separator:a69e706db3cf304ea8aa6e95c5708c067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a644e9a38169afbd2019d5672a27daa34"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a644e9a38169afbd2019d5672a27daa34">add</a> (<a class="el" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;cmd, char *textCommand, <a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">cli::commandCallback_t</a> cFcn, <a class="el" href="group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a">cli::options_t</a> cmdOpt, void *param=nullptr)</td></tr>
-<tr class="memdesc:a644e9a38169afbd2019d5672a27daa34"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function subscribes the CLI instance to a specific command with an associated <em>Callback</em> function, so that next time the required command is sent to the CLI input, the callback function will be executed. The CLI parser only analyze commands that follows the extended AT-Commands syntax (the + char can be ignored).  <a href="classq_o_s_1_1command_line_interface.html#a644e9a38169afbd2019d5672a27daa34">More...</a><br /></td></tr>
-<tr class="separator:a644e9a38169afbd2019d5672a27daa34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a941188ce6f70346fabacaeb7e4fdf9b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a941188ce6f70346fabacaeb7e4fdf9b6">isrHandler</a> (const char c)</td></tr>
-<tr class="memdesc:a941188ce6f70346fabacaeb7e4fdf9b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the CLI input with a single character. This call is mandatory from an interrupt context. Put it inside the desired peripheral's ISR.  <a href="classq_o_s_1_1command_line_interface.html#a941188ce6f70346fabacaeb7e4fdf9b6">More...</a><br /></td></tr>
-<tr class="separator:a941188ce6f70346fabacaeb7e4fdf9b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4461a114cdd708872a776c009668c240"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a4461a114cdd708872a776c009668c240">isrHandler</a> (char *pData, const size_t n)</td></tr>
-<tr class="memdesc:a4461a114cdd708872a776c009668c240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the CLI input with a string. This call is mandatory from an interrupt context. Put it inside the desired peripheral's ISR.  <a href="classq_o_s_1_1command_line_interface.html#a4461a114cdd708872a776c009668c240">More...</a><br /></td></tr>
-<tr class="separator:a4461a114cdd708872a776c009668c240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f1c6c07336f3ebc48e318a08b4cab1d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a1f1c6c07336f3ebc48e318a08b4cab1d">raise</a> (const char *cmd)</td></tr>
-<tr class="memdesc:a1f1c6c07336f3ebc48e318a08b4cab1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command to the Command Line Interface instance.  <a href="classq_o_s_1_1command_line_interface.html#a1f1c6c07336f3ebc48e318a08b4cab1d">More...</a><br /></td></tr>
-<tr class="separator:a1f1c6c07336f3ebc48e318a08b4cab1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99736d5775bf8e4447d107b261365c1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a99736d5775bf8e4447d107b261365c1e">inputFlush</a> (void)</td></tr>
-<tr class="memdesc:a99736d5775bf8e4447d107b261365c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the CLI input buffer.  <a href="classq_o_s_1_1command_line_interface.html#a99736d5775bf8e4447d107b261365c1e">More...</a><br /></td></tr>
-<tr class="separator:a99736d5775bf8e4447d107b261365c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4aa4363a90a5c9c56ddd301f2642c94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#ac4aa4363a90a5c9c56ddd301f2642c94">exec</a> (const char *cmd)</td></tr>
-<tr class="memdesc:ac4aa4363a90a5c9c56ddd301f2642c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to execute the requested command.  <a href="classq_o_s_1_1command_line_interface.html#ac4aa4363a90a5c9c56ddd301f2642c94">More...</a><br /></td></tr>
-<tr class="separator:ac4aa4363a90a5c9c56ddd301f2642c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cfdccc972a81890a4def1d0132061bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a2cfdccc972a81890a4def1d0132061bc">run</a> (void)</td></tr>
-<tr class="memdesc:a2cfdccc972a81890a4def1d0132061bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AT Command Line Interface when the input is ready.  <a href="classq_o_s_1_1command_line_interface.html#a2cfdccc972a81890a4def1d0132061bc">More...</a><br /></td></tr>
-<tr class="separator:a2cfdccc972a81890a4def1d0132061bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14307ef47fc8707faf51681812d0679"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679">setup</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut)</td></tr>
+<tr class="memdesc:ac14307ef47fc8707faf51681812d0679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup an instance of the AT Command Line Interface.  <a href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679">More...</a><br /></td></tr>
+<tr class="separator:ac14307ef47fc8707faf51681812d0679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe67850838a669ea2aa5943371deb188"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#abe67850838a669ea2aa5943371deb188">add</a> (<a class="el" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;cmd, char *textCommand, <a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">cli::commandCallback_t</a> cFcn, <a class="el" href="group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a">cli::options_t</a> cmdOpt, void *param=nullptr)</td></tr>
+<tr class="memdesc:abe67850838a669ea2aa5943371deb188"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function subscribes the CLI instance to a specific command with an associated <em>Callback</em> function, so that next time the required command is sent to the CLI input, the callback function will be executed. The CLI parser only analyze commands that follows the extended AT-Commands syntax (the + char can be ignored).  <a href="classq_o_s_1_1command_line_interface.html#abe67850838a669ea2aa5943371deb188">More...</a><br /></td></tr>
+<tr class="separator:abe67850838a669ea2aa5943371deb188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c70e232920a3b771b064a9ded969a5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a8c70e232920a3b771b064a9ded969a5a">isrHandler</a> (const char c)</td></tr>
+<tr class="memdesc:a8c70e232920a3b771b064a9ded969a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the CLI input with a single character. This call is mandatory from an interrupt context. Put it inside the desired peripheral's ISR.  <a href="classq_o_s_1_1command_line_interface.html#a8c70e232920a3b771b064a9ded969a5a">More...</a><br /></td></tr>
+<tr class="separator:a8c70e232920a3b771b064a9ded969a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada75a69d25806c5aa86fe9cd52666ee1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#ada75a69d25806c5aa86fe9cd52666ee1">isrHandler</a> (char *pData, const size_t n)</td></tr>
+<tr class="memdesc:ada75a69d25806c5aa86fe9cd52666ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the CLI input with a string. This call is mandatory from an interrupt context. Put it inside the desired peripheral's ISR.  <a href="classq_o_s_1_1command_line_interface.html#ada75a69d25806c5aa86fe9cd52666ee1">More...</a><br /></td></tr>
+<tr class="separator:ada75a69d25806c5aa86fe9cd52666ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dc01a8f99c2d0b67448fbf926667491"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a0dc01a8f99c2d0b67448fbf926667491">raise</a> (const char *cmd)</td></tr>
+<tr class="memdesc:a0dc01a8f99c2d0b67448fbf926667491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a command to the Command Line Interface instance.  <a href="classq_o_s_1_1command_line_interface.html#a0dc01a8f99c2d0b67448fbf926667491">More...</a><br /></td></tr>
+<tr class="separator:a0dc01a8f99c2d0b67448fbf926667491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a932c286cb9abd852dfb3111de9f0a12b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b">inputFlush</a> (void)</td></tr>
+<tr class="memdesc:a932c286cb9abd852dfb3111de9f0a12b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the CLI input buffer.  <a href="classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b">More...</a><br /></td></tr>
+<tr class="separator:a932c286cb9abd852dfb3111de9f0a12b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c3b2f43317b8b4fca1b4ae38ed0d755"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a1c3b2f43317b8b4fca1b4ae38ed0d755">exec</a> (const char *cmd)</td></tr>
+<tr class="memdesc:a1c3b2f43317b8b4fca1b4ae38ed0d755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to execute the requested command.  <a href="classq_o_s_1_1command_line_interface.html#a1c3b2f43317b8b4fca1b4ae38ed0d755">More...</a><br /></td></tr>
+<tr class="separator:a1c3b2f43317b8b4fca1b4ae38ed0d755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6791acfb53adfa6b1002d6e293ed3efd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd">run</a> (void)</td></tr>
+<tr class="memdesc:a6791acfb53adfa6b1002d6e293ed3efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the AT Command Line Interface when the input is ready.  <a href="classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd">More...</a><br /></td></tr>
+<tr class="separator:a6791acfb53adfa6b1002d6e293ed3efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a841853e232f985105c3d3f9f75804ac7"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a841853e232f985105c3d3f9f75804ac7">getOwner</a> (void)</td></tr>
 <tr class="memdesc:a841853e232f985105c3d3f9f75804ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a pointer of the owner of this object.  <a href="classq_o_s_1_1command_line_interface.html#a841853e232f985105c3d3f9f75804ac7">More...</a><br /></td></tr>
 <tr class="separator:a841853e232f985105c3d3f9f75804ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8742a937930c771c28e4fe811e3d1eb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a8742a937930c771c28e4fe811e3d1eb6">setData</a> (void *pData)</td></tr>
 <tr class="memdesc:a8742a937930c771c28e4fe811e3d1eb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the cli data or storage-pointer.  <a href="classq_o_s_1_1command_line_interface.html#a8742a937930c771c28e4fe811e3d1eb6">More...</a><br /></td></tr>
 <tr class="separator:a8742a937930c771c28e4fe811e3d1eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:ab1e07a14b19a2ca3beb7206a7ed77c9a"><td class="memItemLeft" align="right" valign="top"><a id="ab1e07a14b19a2ca3beb7206a7ed77c9a" name="ab1e07a14b19a2ca3beb7206a7ed77c9a"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>cli::_Handler</b></td></tr>
-<tr class="separator:ab1e07a14b19a2ca3beb7206a7ed77c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af764561c544bacc1b90b526ee8d3c708"><td class="memItemLeft" align="right" valign="top"><a id="af764561c544bacc1b90b526ee8d3c708" name="af764561c544bacc1b90b526ee8d3c708"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
-<tr class="separator:af764561c544bacc1b90b526ee8d3c708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >An AT Command Line Interface (CLI) object. </p>
 <p >Before starting the CLI development, the corresponding instance must be defined.</p>
-<p >The instance should be initialized using the <a class="el" href="classq_o_s_1_1command_line_interface.html#a69e706db3cf304ea8aa6e95c5708c067" title="Setup an instance of the AT Command Line Interface.">commandLineInterface::setup()</a> method. </p>
+<p >The instance should be initialized using the <a class="el" href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679" title="Setup an instance of the AT Command Line Interface.">commandLineInterface::setup()</a> method. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a644e9a38169afbd2019d5672a27daa34" name="a644e9a38169afbd2019d5672a27daa34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a644e9a38169afbd2019d5672a27daa34">&#9670;&nbsp;</a></span>add()</h2>
+<a id="abe67850838a669ea2aa5943371deb188" name="abe67850838a669ea2aa5943371deb188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe67850838a669ea2aa5943371deb188">&#9670;&nbsp;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool commandLineInterface::add </td>
+          <td class="memname">bool qOS::commandLineInterface::add </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;&#160;</td>
           <td class="paramname"><em>cmd</em>, </td>
@@ -268,14 +258,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
 
 </div>
 </div>
-<a id="ac4aa4363a90a5c9c56ddd301f2642c94" name="ac4aa4363a90a5c9c56ddd301f2642c94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4aa4363a90a5c9c56ddd301f2642c94">&#9670;&nbsp;</a></span>exec()</h2>
+<a id="a1c3b2f43317b8b4fca1b4ae38ed0d755" name="a1c3b2f43317b8b4fca1b4ae38ed0d755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c3b2f43317b8b4fca1b4ae38ed0d755">&#9670;&nbsp;</a></span>exec()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> commandLineInterface::exec </td>
+          <td class="memname"><a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> qOS::commandLineInterface::exec </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>cmd</em></td><td>)</td>
@@ -324,14 +314,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
 
 </div>
 </div>
-<a id="a99736d5775bf8e4447d107b261365c1e" name="a99736d5775bf8e4447d107b261365c1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99736d5775bf8e4447d107b261365c1e">&#9670;&nbsp;</a></span>inputFlush()</h2>
+<a id="a932c286cb9abd852dfb3111de9f0a12b" name="a932c286cb9abd852dfb3111de9f0a12b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a932c286cb9abd852dfb3111de9f0a12b">&#9670;&nbsp;</a></span>inputFlush()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool commandLineInterface::inputFlush </td>
+          <td class="memname">bool qOS::commandLineInterface::inputFlush </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -345,14 +335,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
 
 </div>
 </div>
-<a id="a4461a114cdd708872a776c009668c240" name="a4461a114cdd708872a776c009668c240"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4461a114cdd708872a776c009668c240">&#9670;&nbsp;</a></span>isrHandler() <span class="overload">[1/2]</span></h2>
+<a id="ada75a69d25806c5aa86fe9cd52666ee1" name="ada75a69d25806c5aa86fe9cd52666ee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada75a69d25806c5aa86fe9cd52666ee1">&#9670;&nbsp;</a></span>isrHandler() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool commandLineInterface::isrHandler </td>
+          <td class="memname">bool qOS::commandLineInterface::isrHandler </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>pData</em>, </td>
@@ -383,14 +373,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
 
 </div>
 </div>
-<a id="a941188ce6f70346fabacaeb7e4fdf9b6" name="a941188ce6f70346fabacaeb7e4fdf9b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a941188ce6f70346fabacaeb7e4fdf9b6">&#9670;&nbsp;</a></span>isrHandler() <span class="overload">[2/2]</span></h2>
+<a id="a8c70e232920a3b771b064a9ded969a5a" name="a8c70e232920a3b771b064a9ded969a5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c70e232920a3b771b064a9ded969a5a">&#9670;&nbsp;</a></span>isrHandler() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool commandLineInterface::isrHandler </td>
+          <td class="memname">bool qOS::commandLineInterface::isrHandler </td>
           <td>(</td>
           <td class="paramtype">const char&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
@@ -410,14 +400,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
 
 </div>
 </div>
-<a id="a1f1c6c07336f3ebc48e318a08b4cab1d" name="a1f1c6c07336f3ebc48e318a08b4cab1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f1c6c07336f3ebc48e318a08b4cab1d">&#9670;&nbsp;</a></span>raise()</h2>
+<a id="a0dc01a8f99c2d0b67448fbf926667491" name="a0dc01a8f99c2d0b67448fbf926667491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dc01a8f99c2d0b67448fbf926667491">&#9670;&nbsp;</a></span>raise()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool commandLineInterface::raise </td>
+          <td class="memname">bool qOS::commandLineInterface::raise </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>cmd</em></td><td>)</td>
@@ -437,14 +427,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
 
 </div>
 </div>
-<a id="a2cfdccc972a81890a4def1d0132061bc" name="a2cfdccc972a81890a4def1d0132061bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cfdccc972a81890a4def1d0132061bc">&#9670;&nbsp;</a></span>run()</h2>
+<a id="a6791acfb53adfa6b1002d6e293ed3efd" name="a6791acfb53adfa6b1002d6e293ed3efd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6791acfb53adfa6b1002d6e293ed3efd">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool commandLineInterface::run </td>
+          <td class="memname">bool qOS::commandLineInterface::run </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -493,14 +483,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>core</b></td></tr>
 
 </div>
 </div>
-<a id="a69e706db3cf304ea8aa6e95c5708c067" name="a69e706db3cf304ea8aa6e95c5708c067"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69e706db3cf304ea8aa6e95c5708c067">&#9670;&nbsp;</a></span>setup()</h2>
+<a id="ac14307ef47fc8707faf51681812d0679" name="ac14307ef47fc8707faf51681812d0679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac14307ef47fc8707faf51681812d0679">&#9670;&nbsp;</a></span>setup()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool commandLineInterface::setup </td>
+          <td class="memname">bool qOS::commandLineInterface::setup </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a>&#160;</td>
           <td class="paramname"><em>outFcn</em>, </td>

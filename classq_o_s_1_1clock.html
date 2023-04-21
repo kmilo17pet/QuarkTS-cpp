@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v7.3.2</span>
+   &#160;<span id="projectnumber">v1.0.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -151,44 +151,44 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ade68d14679999f62ab56e0e03327af4f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#ade68d14679999f62ab56e0e03327af4f">convert2Clock</a> (const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a> t) noexcept</td></tr>
-<tr class="memdesc:ade68d14679999f62ab56e0e03327af4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the specified input time to clock epochs.  <a href="classq_o_s_1_1clock.html#ade68d14679999f62ab56e0e03327af4f">More...</a><br /></td></tr>
-<tr class="separator:ade68d14679999f62ab56e0e03327af4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7fe799553c8502a0a47d1eb3ed57edf"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#af7fe799553c8502a0a47d1eb3ed57edf">convert2Time</a> (const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> t) noexcept</td></tr>
-<tr class="memdesc:af7fe799553c8502a0a47d1eb3ed57edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the specified input clock epochs to time.  <a href="classq_o_s_1_1clock.html#af7fe799553c8502a0a47d1eb3ed57edf">More...</a><br /></td></tr>
-<tr class="separator:af7fe799553c8502a0a47d1eb3ed57edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7daf630ecdb4ee1408b2ed3c97430aa4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">sysTick</a> (void) noexcept</td></tr>
-<tr class="memdesc:a7daf630ecdb4ee1408b2ed3c97430aa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the system tick.  <a href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">More...</a><br /></td></tr>
-<tr class="separator:a7daf630ecdb4ee1408b2ed3c97430aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f9dbf1ce98ded4a6d19a87a4663906c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a7f9dbf1ce98ded4a6d19a87a4663906c">timeDeadLineCheck</a> (const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> ti, const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> td) noexcept</td></tr>
-<tr class="memdesc:a7f9dbf1ce98ded4a6d19a87a4663906c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a timestamp check. This function computes the amount of time elapsed between the current instant and the init timestamp <em>ti</em> and checks if the result is greater than <em>td</em>.  <a href="classq_o_s_1_1clock.html#a7f9dbf1ce98ded4a6d19a87a4663906c">More...</a><br /></td></tr>
-<tr class="separator:a7f9dbf1ce98ded4a6d19a87a4663906c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b88d0ceb814d12582d652e8a017ea70"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a4b88d0ceb814d12582d652e8a017ea70">setTimeBase</a> (const <a class="el" href="group__qclock.html#gad5251263c7889ac369d97c1899cbc232">timingBase_t</a> tb) noexcept</td></tr>
-<tr class="memdesc:a4b88d0ceb814d12582d652e8a017ea70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the system time-base for time conversions.  <a href="classq_o_s_1_1clock.html#a4b88d0ceb814d12582d652e8a017ea70">More...</a><br /></td></tr>
-<tr class="separator:a4b88d0ceb814d12582d652e8a017ea70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e2681c0f420100f50ed89fa80f801ab"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a9e2681c0f420100f50ed89fa80f801ab">setTickProvider</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> provider) noexcept</td></tr>
-<tr class="memdesc:a9e2681c0f420100f50ed89fa80f801ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the clock-tick provider function.  <a href="classq_o_s_1_1clock.html#a9e2681c0f420100f50ed89fa80f801ab">More...</a><br /></td></tr>
-<tr class="separator:a9e2681c0f420100f50ed89fa80f801ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a791d882d7fb1fa896ad739543d01db4e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a791d882d7fb1fa896ad739543d01db4e">convert2Clock</a> (const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> t) noexcept</td></tr>
+<tr class="memdesc:a791d882d7fb1fa896ad739543d01db4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the specified input time to clock epochs.  <a href="classq_o_s_1_1clock.html#a791d882d7fb1fa896ad739543d01db4e">More...</a><br /></td></tr>
+<tr class="separator:a791d882d7fb1fa896ad739543d01db4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5c4c5e3dd293e1ede0f701537d6bdc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a3e5c4c5e3dd293e1ede0f701537d6bdc">convert2Time</a> (const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> t) noexcept</td></tr>
+<tr class="memdesc:a3e5c4c5e3dd293e1ede0f701537d6bdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the specified input clock epochs to time.  <a href="classq_o_s_1_1clock.html#a3e5c4c5e3dd293e1ede0f701537d6bdc">More...</a><br /></td></tr>
+<tr class="separator:a3e5c4c5e3dd293e1ede0f701537d6bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee283c6e9866c6570f66b4a2cfebdbae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">sysTick</a> (void) noexcept</td></tr>
+<tr class="memdesc:aee283c6e9866c6570f66b4a2cfebdbae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the system tick.  <a href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">More...</a><br /></td></tr>
+<tr class="separator:aee283c6e9866c6570f66b4a2cfebdbae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a97c03a4bfa83efbd1abdc0a1cdd2cc"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a9a97c03a4bfa83efbd1abdc0a1cdd2cc">timeDeadLineCheck</a> (const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> ti, const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> td) noexcept</td></tr>
+<tr class="memdesc:a9a97c03a4bfa83efbd1abdc0a1cdd2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a timestamp check. This function computes the amount of time elapsed between the current instant and the init timestamp <em>ti</em> and checks if the result is greater than <em>td</em>.  <a href="classq_o_s_1_1clock.html#a9a97c03a4bfa83efbd1abdc0a1cdd2cc">More...</a><br /></td></tr>
+<tr class="separator:a9a97c03a4bfa83efbd1abdc0a1cdd2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b217f51d0438d09623b3d1211d679c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a43b217f51d0438d09623b3d1211d679c">setTimeBase</a> (const <a class="el" href="group__qclock.html#gad5251263c7889ac369d97c1899cbc232">timingBase_t</a> tb) noexcept</td></tr>
+<tr class="memdesc:a43b217f51d0438d09623b3d1211d679c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the system time-base for time conversions.  <a href="classq_o_s_1_1clock.html#a43b217f51d0438d09623b3d1211d679c">More...</a><br /></td></tr>
+<tr class="separator:a43b217f51d0438d09623b3d1211d679c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a632e16f7418af600d5685d05b7a6e569"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a632e16f7418af600d5685d05b7a6e569">setTickProvider</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> provider) noexcept</td></tr>
+<tr class="memdesc:a632e16f7418af600d5685d05b7a6e569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the clock-tick provider function.  <a href="classq_o_s_1_1clock.html#a632e16f7418af600d5685d05b7a6e569">More...</a><br /></td></tr>
+<tr class="separator:a632e16f7418af600d5685d05b7a6e569"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:adee0fcaf8665a893fa4b732b8ad203a8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#adee0fcaf8665a893fa4b732b8ad203a8">getTick</a></td></tr>
-<tr class="memdesc:adee0fcaf8665a893fa4b732b8ad203a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current tick used by the OS.  <a href="classq_o_s_1_1clock.html#adee0fcaf8665a893fa4b732b8ad203a8">More...</a><br /></td></tr>
-<tr class="separator:adee0fcaf8665a893fa4b732b8ad203a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a863d63467373427adc5ce0c6247db5c8"><td class="memItemLeft" align="right" valign="top"><a id="a863d63467373427adc5ce0c6247db5c8" name="a863d63467373427adc5ce0c6247db5c8"></a>
-static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>NONE</b></td></tr>
-<tr class="memdesc:a863d63467373427adc5ce0c6247db5c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">To specify a null time value. <br /></td></tr>
-<tr class="separator:a863d63467373427adc5ce0c6247db5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c97887da1bf02370c733b8c80c20b57"><td class="memItemLeft" align="right" valign="top"><a id="a7c97887da1bf02370c733b8c80c20b57" name="a7c97887da1bf02370c733b8c80c20b57"></a>
-static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>IMMEDIATE</b></td></tr>
-<tr class="memdesc:a7c97887da1bf02370c733b8c80c20b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">To specify a non-wait time value. <br /></td></tr>
-<tr class="separator:a7c97887da1bf02370c733b8c80c20b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6363cb8fda1990fbe538297c13f4595a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1clock.html#a6363cb8fda1990fbe538297c13f4595a">getTick</a></td></tr>
+<tr class="memdesc:a6363cb8fda1990fbe538297c13f4595a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current tick used by the OS.  <a href="classq_o_s_1_1clock.html#a6363cb8fda1990fbe538297c13f4595a">More...</a><br /></td></tr>
+<tr class="separator:a6363cb8fda1990fbe538297c13f4595a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1099c88d1702ff7cc658fc3002dec938"><td class="memItemLeft" align="right" valign="top"><a id="a1099c88d1702ff7cc658fc3002dec938" name="a1099c88d1702ff7cc658fc3002dec938"></a>
+static const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>NONE</b></td></tr>
+<tr class="memdesc:a1099c88d1702ff7cc658fc3002dec938"><td class="mdescLeft">&#160;</td><td class="mdescRight">To specify a null time value. <br /></td></tr>
+<tr class="separator:a1099c88d1702ff7cc658fc3002dec938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9f1c16ed2c28ee3359bae3ad9b1d2a7"><td class="memItemLeft" align="right" valign="top"><a id="af9f1c16ed2c28ee3359bae3ad9b1d2a7" name="af9f1c16ed2c28ee3359bae3ad9b1d2a7"></a>
+static const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>IMMEDIATE</b></td></tr>
+<tr class="memdesc:af9f1c16ed2c28ee3359bae3ad9b1d2a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">To specify a non-wait time value. <br /></td></tr>
+<tr class="separator:af9f1c16ed2c28ee3359bae3ad9b1d2a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A class to encapsulate the OS clock. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ade68d14679999f62ab56e0e03327af4f" name="ade68d14679999f62ab56e0e03327af4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade68d14679999f62ab56e0e03327af4f">&#9670;&nbsp;</a></span>convert2Clock()</h2>
+<a id="a791d882d7fb1fa896ad739543d01db4e" name="a791d882d7fb1fa896ad739543d01db4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a791d882d7fb1fa896ad739543d01db4e">&#9670;&nbsp;</a></span>convert2Clock()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,9 +197,9 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> clock::convert2Clock </td>
+          <td class="memname">static <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> qOS::clock::convert2Clock </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -222,8 +222,8 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
 
 </div>
 </div>
-<a id="af7fe799553c8502a0a47d1eb3ed57edf" name="af7fe799553c8502a0a47d1eb3ed57edf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7fe799553c8502a0a47d1eb3ed57edf">&#9670;&nbsp;</a></span>convert2Time()</h2>
+<a id="a3e5c4c5e3dd293e1ede0f701537d6bdc" name="a3e5c4c5e3dd293e1ede0f701537d6bdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e5c4c5e3dd293e1ede0f701537d6bdc">&#9670;&nbsp;</a></span>convert2Time()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,7 +232,7 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a> clock::convert2Time </td>
+          <td class="memname">static <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> qOS::clock::convert2Time </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
@@ -257,8 +257,8 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
 
 </div>
 </div>
-<a id="a9e2681c0f420100f50ed89fa80f801ab" name="a9e2681c0f420100f50ed89fa80f801ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e2681c0f420100f50ed89fa80f801ab">&#9670;&nbsp;</a></span>setTickProvider()</h2>
+<a id="a632e16f7418af600d5685d05b7a6e569" name="a632e16f7418af600d5685d05b7a6e569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a632e16f7418af600d5685d05b7a6e569">&#9670;&nbsp;</a></span>setTickProvider()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +267,7 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool clock::setTickProvider </td>
+          <td class="memname">static bool qOS::clock::setTickProvider </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a>&#160;</td>
           <td class="paramname"><em>provider</em></td><td>)</td>
@@ -292,8 +292,8 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
 
 </div>
 </div>
-<a id="a4b88d0ceb814d12582d652e8a017ea70" name="a4b88d0ceb814d12582d652e8a017ea70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b88d0ceb814d12582d652e8a017ea70">&#9670;&nbsp;</a></span>setTimeBase()</h2>
+<a id="a43b217f51d0438d09623b3d1211d679c" name="a43b217f51d0438d09623b3d1211d679c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b217f51d0438d09623b3d1211d679c">&#9670;&nbsp;</a></span>setTimeBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,7 +302,7 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool clock::setTimeBase </td>
+          <td class="memname">static bool qOS::clock::setTimeBase </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__qclock.html#gad5251263c7889ac369d97c1899cbc232">timingBase_t</a>&#160;</td>
           <td class="paramname"><em>tb</em></td><td>)</td>
@@ -327,8 +327,8 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
 
 </div>
 </div>
-<a id="a7daf630ecdb4ee1408b2ed3c97430aa4" name="a7daf630ecdb4ee1408b2ed3c97430aa4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7daf630ecdb4ee1408b2ed3c97430aa4">&#9670;&nbsp;</a></span>sysTick()</h2>
+<a id="aee283c6e9866c6570f66b4a2cfebdbae" name="aee283c6e9866c6570f66b4a2cfebdbae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee283c6e9866c6570f66b4a2cfebdbae">&#9670;&nbsp;</a></span>sysTick()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -337,7 +337,7 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void clock::sysTick </td>
+          <td class="memname">static void qOS::clock::sysTick </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -353,15 +353,15 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
 
 <p>Feed the system tick. </p>
 <dl class="section note"><dt>Note</dt><dd>This call is mandatory and must be called once inside the dedicated timer interrupt service routine (ISR). Example <div class="fragment"><div class="line"><span class="keywordtype">void</span> interrupt xPeriodicTimer_ISR( <span class="keywordtype">void</span> ) {</div>
-<div class="line">      <a class="code hl_function" href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">qOS::clock::sysTick</a>();</div>
+<div class="line">      <a class="code hl_function" href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">qOS::clock::sysTick</a>();</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1clock_html_a7daf630ecdb4ee1408b2ed3c97430aa4"><div class="ttname"><a href="classq_o_s_1_1clock.html#a7daf630ecdb4ee1408b2ed3c97430aa4">qOS::clock::sysTick</a></div><div class="ttdeci">static void sysTick(void) noexcept</div><div class="ttdoc">Feed the system tick.</div><div class="ttdef"><b>Definition:</b> clock.cpp:61</div></div>
+<div class="ttc" id="aclassq_o_s_1_1clock_html_aee283c6e9866c6570f66b4a2cfebdbae"><div class="ttname"><a href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">qOS::clock::sysTick</a></div><div class="ttdeci">static void sysTick(void) noexcept</div><div class="ttdoc">Feed the system tick.</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
 </div>
-<a id="a7f9dbf1ce98ded4a6d19a87a4663906c" name="a7f9dbf1ce98ded4a6d19a87a4663906c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f9dbf1ce98ded4a6d19a87a4663906c">&#9670;&nbsp;</a></span>timeDeadLineCheck()</h2>
+<a id="a9a97c03a4bfa83efbd1abdc0a1cdd2cc" name="a9a97c03a4bfa83efbd1abdc0a1cdd2cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a97c03a4bfa83efbd1abdc0a1cdd2cc">&#9670;&nbsp;</a></span>timeDeadLineCheck()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -370,7 +370,7 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool clock::timeDeadLineCheck </td>
+          <td class="memname">static bool qOS::clock::timeDeadLineCheck </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a>&#160;</td>
           <td class="paramname"><em>ti</em>, </td>
@@ -407,8 +407,8 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="adee0fcaf8665a893fa4b732b8ad203a8" name="adee0fcaf8665a893fa4b732b8ad203a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adee0fcaf8665a893fa4b732b8ad203a8">&#9670;&nbsp;</a></span>getTick</h2>
+<a id="a6363cb8fda1990fbe538297c13f4595a" name="a6363cb8fda1990fbe538297c13f4595a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6363cb8fda1990fbe538297c13f4595a">&#9670;&nbsp;</a></span>getTick</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -417,7 +417,7 @@ static const <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece35
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">qOS::getTickFcn_t</a> clock::getTick</td>
+          <td class="memname"><a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> qOS::clock::getTick</td>
         </tr>
       </table>
   </td>

@@ -27,7 +27,7 @@ var annotated_dup =
         [ "pre", "classq_o_s_1_1trace_1_1pre.html", "classq_o_s_1_1trace_1_1pre" ]
       ] ],
       [ "byteBuffer", "classq_o_s_1_1byte_buffer.html", "classq_o_s_1_1byte_buffer" ],
-      [ "clock", "classq_o_s_1_1clock.html", null ],
+      [ "clock", "classq_o_s_1_1clock.html", "classq_o_s_1_1clock" ],
       [ "commandLineInterface", "classq_o_s_1_1command_line_interface.html", "classq_o_s_1_1command_line_interface" ],
       [ "core", "classq_o_s_1_1core.html", "classq_o_s_1_1core" ],
       [ "edgeCheck", "classq_o_s_1_1edge_check.html", "classq_o_s_1_1edge_check" ],

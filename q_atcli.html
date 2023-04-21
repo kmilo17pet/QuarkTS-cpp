@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v7.3.2</span>
+   &#160;<span id="projectnumber">v1.0.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -204,10 +204,10 @@ Supported syntax</h1>
 <p >In case of an error, the string <code>ERROR</code> or <code>"ERROR:&lt;error_no&gt;"</code> are displayed.</p>
 <h1><a class="anchor" id="q_atcli_setup"></a>
 Setting up an AT-CLI instance</h1>
-<p >Before starting the CLI development, the corresponding instance must be defined; a variable of class <a class="el" href="classq_o_s_1_1command_line_interface.html" title="An AT Command Line Interface (CLI) object.">qOS::commandLineInterface</a>. The instance should be initialized using the <a class="el" href="classq_o_s_1_1command_line_interface.html#a69e706db3cf304ea8aa6e95c5708c067" title="Setup an instance of the AT Command Line Interface.">qOS::commandLineInterface::setup()</a> method.</p>
+<p >Before starting the CLI development, the corresponding instance must be defined; a variable of class <a class="el" href="classq_o_s_1_1command_line_interface.html" title="An AT Command Line Interface (CLI) object.">qOS::commandLineInterface</a>. The instance should be initialized using the <a class="el" href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679" title="Setup an instance of the AT Command Line Interface.">qOS::commandLineInterface::setup()</a> method.</p>
 <h1><a class="anchor" id="q_atcli_sub_commands"></a>
 Subscribing commands to the parser</h1>
-<p >The AT CLI is able to subscribe to any number of custom AT commands. For this, the <a class="el" href="classq_o_s_1_1command_line_interface.html#a644e9a38169afbd2019d5672a27daa34" title="This function subscribes the CLI instance to a specific command with an associated Callback function,...">qOS::commandLineInterface::add()</a> method should be used.</p>
+<p >The AT CLI is able to subscribe to any number of custom AT commands. For this, the <a class="el" href="classq_o_s_1_1command_line_interface.html#abe67850838a669ea2aa5943371deb188" title="This function subscribes the CLI instance to a specific command with an associated Callback function,...">qOS::commandLineInterface::add()</a> method should be used.</p>
 <p >This function subscribes the CLI instance to a specific command with an associated callback function, so that the next time the required command is sent to the CLI input, the callback function will be executed. The CLI parser only analyzes commands that follow the simplified AT-Commands syntax already described.</p>
 <h1><a class="anchor" id="q_atcli_cmd_callback"></a>
 Writing a command callback</h1>
@@ -264,7 +264,7 @@ Writing a command callback</h1>
 <div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4">qOS::cli::READ</a></div><div class="ttdeci">@ READ</div><div class="ttdef"><b>Definition:</b> cli.hpp:58</div></div>
 <div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e">qOS::cli::PARA</a></div><div class="ttdeci">@ PARA</div><div class="ttdef"><b>Definition:</b> cli.hpp:56</div></div>
 <div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">qOS::cli::ACT</a></div><div class="ttdeci">@ ACT</div><div class="ttdef"><b>Definition:</b> cli.hpp:59</div></div>
-<div class="ttc" id="agroup__qioutils_html_gaf00b0cd32560782fbd2b70f67150d0a4"><div class="ttname"><a href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">qOS::util::strcpy</a></div><div class="ttdeci">size_t strcpy(char *dst, const char *src, size_t maxlen) noexcept</div><div class="ttdoc">Copies up to (maxlen - 1) characters from the null-terminated string src to dst, null-terminating the...</div><div class="ttdef"><b>Definition:</b> util.cpp:87</div></div>
+<div class="ttc" id="agroup__qioutils_html_gaf00b0cd32560782fbd2b70f67150d0a4"><div class="ttname"><a href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">qOS::util::strcpy</a></div><div class="ttdeci">size_t strcpy(char *dst, const char *src, size_t maxlen) noexcept</div><div class="ttdoc">Copies up to (maxlen - 1) characters from the null-terminated string src to dst, null-terminating the...</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_atcli_inputh"></a>
 Handling the input</h1>
 <p >Input handling is simplified using the provided APIs. The commandLineInterface::isrHandler() function are intended to be used from the interrupt context. This avoids any kind of polling implementation and allows the CLI application to be designed using an event-driven pattern.</p>
@@ -316,13 +316,13 @@ A CLI example</h1>
 <div class="line">                         QATCLI_CMDTYPE_TEST | QATCLI_CMDTYPE_PARA | 0x22 );</div>
 <div class="line">    CLI_Object.add( AT_INFO, <span class="stringliteral">&quot;at+info&quot;</span>, AT_INFO_Callback, </div>
 <div class="line">                         QATCLI_CMDTYPE_ACT );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.addCommandLineInterfaceTask( CLI_Task, CLI_Object, core::LOWEST_PRIORITY );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">run</a>();</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.addCommandLineInterfaceTask( CLI_Task, CLI_Object, core::LOWEST_PRIORITY );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_af544e4dc0c995270ff1e87f01f87fc79"><div class="ttname"><a href="classq_o_s_1_1core.html#af544e4dc0c995270ff1e87f01f87fc79">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:373</div></div>
-<div class="ttc" id="agroup__qtaskcreation_html_ga501a22419157104b982c3a32d871fe21"><div class="ttname"><a href="group__qtaskcreation.html#ga501a22419157104b982c3a32d871fe21">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div><div class="ttdef"><b>Definition:</b> kernel.cpp:6</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
+<div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
 </div><!-- fragment --><p >The CLI input is feeded from the interrupt context by using the UART receive ISR:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> interrupt HAL_UART_RxInterrupt( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    <span class="keywordtype">char</span> received;</div>

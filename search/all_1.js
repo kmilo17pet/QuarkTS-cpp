@@ -1,9 +1,9 @@
 var searchData=
 [
   ['base_5ft_0',['base_t',['../group__qtypes.html#ga16b527d381bf20ae99c52d4c8b982a43',1,'types.hpp']]],
-  ['begin_1',['begin',['../classq_o_s_1_1list.html#afa53780fbc5c26fef679124c4e57f4cb',1,'qOS::list']]],
+  ['begin_1',['begin',['../classq_o_s_1_1list.html#a0ebd5669f9c3f441e932bb8a72ea9624',1,'qOS::list']]],
   ['bin_2',['bin',['../group__qtrace.html#ga073df9abb7c215fa97691ee5df07c1ae',1,'qOS::trace']]],
-  ['blu_3',['blu',['../group__qtrace.html#gaac018d85a6a16c0d8e259681ba429155',1,'qOS::trace']]],
+  ['blu_3',['blu',['../group__qtrace.html#ga5933ce3e04800ebfef0383e6133ebf70',1,'qOS::trace']]],
   ['booltostring_4',['boolToString',['../group__qioutils.html#gaef815a06206e5a3aea9f23c4a6068f31',1,'qOS::util']]],
   ['byeventflags_5',['byEventFlags',['../group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7af633e4329e7a41341f517b5387490ef5',1,'qOS']]],
   ['bynoreadytasks_6',['byNoReadyTasks',['../group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a3dfc005c06119f17a86e823f86ad8cc1',1,'qOS']]],

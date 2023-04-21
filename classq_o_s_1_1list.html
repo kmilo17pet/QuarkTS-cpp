@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v7.3.2</span>
+   &#160;<span id="projectnumber">v1.0.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -128,7 +128,6 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1list.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="classq_o_s_1_1list-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">qOS::list Class Reference<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a> &raquo; <a class="el" href="group__qlists.html">Generic double-linked lists</a></div></div></div>
 </div><!--header-->
@@ -153,55 +152,49 @@ Collaboration diagram for qOS::list:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a97ec95a12b86f5086c81757fc7b28888"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a97ec95a12b86f5086c81757fc7b28888">insert</a> (void *const xNode, const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p=listPosition::AT_BACK) noexcept</td></tr>
-<tr class="memdesc:a97ec95a12b86f5086c81757fc7b28888"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an item into the list.  <a href="classq_o_s_1_1list.html#a97ec95a12b86f5086c81757fc7b28888">More...</a><br /></td></tr>
-<tr class="separator:a97ec95a12b86f5086c81757fc7b28888"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a293ed72f30fdf6ca3f77942129cd4a0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a293ed72f30fdf6ca3f77942129cd4a0d">remove</a> (void *const xNode) noexcept</td></tr>
-<tr class="memdesc:a293ed72f30fdf6ca3f77942129cd4a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the node is member of a list, the node will be removed from it.  <a href="classq_o_s_1_1list.html#a293ed72f30fdf6ca3f77942129cd4a0d">More...</a><br /></td></tr>
-<tr class="separator:a293ed72f30fdf6ca3f77942129cd4a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cd3d23a4f99e1892fb0c5a1ec6d6768"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a2cd3d23a4f99e1892fb0c5a1ec6d6768">remove</a> (void *const xNode, const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p) noexcept</td></tr>
-<tr class="memdesc:a2cd3d23a4f99e1892fb0c5a1ec6d6768"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an item from the list.  <a href="classq_o_s_1_1list.html#a2cd3d23a4f99e1892fb0c5a1ec6d6768">More...</a><br /></td></tr>
-<tr class="separator:a2cd3d23a4f99e1892fb0c5a1ec6d6768"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a451cd6b721407f725c125e3ceca1d9c3"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a451cd6b721407f725c125e3ceca1d9c3">getFront</a> (void) const noexcept</td></tr>
-<tr class="memdesc:a451cd6b721407f725c125e3ceca1d9c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the front item of the list.  <a href="classq_o_s_1_1list.html#a451cd6b721407f725c125e3ceca1d9c3">More...</a><br /></td></tr>
-<tr class="separator:a451cd6b721407f725c125e3ceca1d9c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1ac04a47f5ec51ecb2b27db62dd9a64"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#ac1ac04a47f5ec51ecb2b27db62dd9a64">getBack</a> (void) const noexcept</td></tr>
-<tr class="memdesc:ac1ac04a47f5ec51ecb2b27db62dd9a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the back item of the list.  <a href="classq_o_s_1_1list.html#ac1ac04a47f5ec51ecb2b27db62dd9a64">More...</a><br /></td></tr>
-<tr class="separator:ac1ac04a47f5ec51ecb2b27db62dd9a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a969fa23996d1dc9d4fdac1aa701e3bb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a969fa23996d1dc9d4fdac1aa701e3bb9">isEmpty</a> (void) const noexcept</td></tr>
-<tr class="memdesc:a969fa23996d1dc9d4fdac1aa701e3bb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the list is empty.  <a href="classq_o_s_1_1list.html#a969fa23996d1dc9d4fdac1aa701e3bb9">More...</a><br /></td></tr>
-<tr class="separator:a969fa23996d1dc9d4fdac1aa701e3bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f93cdd93a5ea1d5c46f76218d884517"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a7f93cdd93a5ea1d5c46f76218d884517">length</a> (void) const noexcept</td></tr>
-<tr class="memdesc:a7f93cdd93a5ea1d5c46f76218d884517"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of items inside the list.  <a href="classq_o_s_1_1list.html#a7f93cdd93a5ea1d5c46f76218d884517">More...</a><br /></td></tr>
-<tr class="separator:a7f93cdd93a5ea1d5c46f76218d884517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a430dd107b2203333efc5ca39c7fbb2ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed">sort</a> (<a class="el" href="group__qlists.html#ga805544d4c3b37262eabc39851d8060dc">listCompareFcn_t</a> f) noexcept</td></tr>
-<tr class="memdesc:a430dd107b2203333efc5ca39c7fbb2ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the double linked list using the <em>f</em> function to determine the order. The sorting algorithm used by this function compares pairs of adjacent nodes by calling the specified <em>f</em> function with pointers to them as arguments. The sort is performed only modifying node's links without data swapping, improving performance if nodes have a large storage.  <a href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed">More...</a><br /></td></tr>
-<tr class="separator:a430dd107b2203333efc5ca39c7fbb2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21271a03c391469c809c6ed27fba92ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a21271a03c391469c809c6ed27fba92ff">swap</a> (void *node1, void *node2) noexcept</td></tr>
-<tr class="memdesc:a21271a03c391469c809c6ed27fba92ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap two nodes that belongs to the list by changing its own links.  <a href="classq_o_s_1_1list.html#a21271a03c391469c809c6ed27fba92ff">More...</a><br /></td></tr>
-<tr class="separator:a21271a03c391469c809c6ed27fba92ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ae9c2c33f31e4598a90489320129083"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a9ae9c2c33f31e4598a90489320129083">move</a> (<a class="el" href="classq_o_s_1_1list.html">list</a> &amp;src, const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p=listPosition::AT_BACK) noexcept</td></tr>
-<tr class="memdesc:a9ae9c2c33f31e4598a90489320129083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves(or merge) the entire list <em>src</em> to the given list. After the move operation, this function leaves empty the list given by <em>src</em>.  <a href="classq_o_s_1_1list.html#a9ae9c2c33f31e4598a90489320129083">More...</a><br /></td></tr>
-<tr class="separator:a9ae9c2c33f31e4598a90489320129083"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43957f45fe6d768313f8a56d95ad6747"><td class="memItemLeft" align="right" valign="top"><a id="a43957f45fe6d768313f8a56d95ad6747" name="a43957f45fe6d768313f8a56d95ad6747"></a>
+<tr class="memitem:a084fde89ef2d870fd89807ba6d31aba0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a084fde89ef2d870fd89807ba6d31aba0">insert</a> (void *const xNode, const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p=listPosition::AT_BACK) noexcept</td></tr>
+<tr class="memdesc:a084fde89ef2d870fd89807ba6d31aba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an item into the list.  <a href="classq_o_s_1_1list.html#a084fde89ef2d870fd89807ba6d31aba0">More...</a><br /></td></tr>
+<tr class="separator:a084fde89ef2d870fd89807ba6d31aba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e334f51fcfbf277b71e1085bc8993e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7">remove</a> (void *const xNode) noexcept</td></tr>
+<tr class="memdesc:a7e334f51fcfbf277b71e1085bc8993e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the node is member of a list, the node will be removed from it.  <a href="classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7">More...</a><br /></td></tr>
+<tr class="separator:a7e334f51fcfbf277b71e1085bc8993e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c975b6333a32e90b94b464dad500ee6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a1c975b6333a32e90b94b464dad500ee6">remove</a> (void *const xNode, const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p) noexcept</td></tr>
+<tr class="memdesc:a1c975b6333a32e90b94b464dad500ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an item from the list.  <a href="classq_o_s_1_1list.html#a1c975b6333a32e90b94b464dad500ee6">More...</a><br /></td></tr>
+<tr class="separator:a1c975b6333a32e90b94b464dad500ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaae7a22153fc3baa19cef4982cc25746"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#aaae7a22153fc3baa19cef4982cc25746">getFront</a> (void) const noexcept</td></tr>
+<tr class="memdesc:aaae7a22153fc3baa19cef4982cc25746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the front item of the list.  <a href="classq_o_s_1_1list.html#aaae7a22153fc3baa19cef4982cc25746">More...</a><br /></td></tr>
+<tr class="separator:aaae7a22153fc3baa19cef4982cc25746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13760728ef20c6d7211164612361f37"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#ad13760728ef20c6d7211164612361f37">getBack</a> (void) const noexcept</td></tr>
+<tr class="memdesc:ad13760728ef20c6d7211164612361f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the back item of the list.  <a href="classq_o_s_1_1list.html#ad13760728ef20c6d7211164612361f37">More...</a><br /></td></tr>
+<tr class="separator:ad13760728ef20c6d7211164612361f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a261730dd47a69f3edfb8bbd4f5559d0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a261730dd47a69f3edfb8bbd4f5559d0d">isEmpty</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a261730dd47a69f3edfb8bbd4f5559d0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the list is empty.  <a href="classq_o_s_1_1list.html#a261730dd47a69f3edfb8bbd4f5559d0d">More...</a><br /></td></tr>
+<tr class="separator:a261730dd47a69f3edfb8bbd4f5559d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d23a51c562b7dff95727a8625a4a1a5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a4d23a51c562b7dff95727a8625a4a1a5">length</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a4d23a51c562b7dff95727a8625a4a1a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of items inside the list.  <a href="classq_o_s_1_1list.html#a4d23a51c562b7dff95727a8625a4a1a5">More...</a><br /></td></tr>
+<tr class="separator:a4d23a51c562b7dff95727a8625a4a1a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabf6cf1d0db7b5c8e3c818ecc6eb916e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#aabf6cf1d0db7b5c8e3c818ecc6eb916e">sort</a> (<a class="el" href="group__qlists.html#ga805544d4c3b37262eabc39851d8060dc">listCompareFcn_t</a> f) noexcept</td></tr>
+<tr class="memdesc:aabf6cf1d0db7b5c8e3c818ecc6eb916e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the double linked list using the <em>f</em> function to determine the order. The sorting algorithm used by this function compares pairs of adjacent nodes by calling the specified <em>f</em> function with pointers to them as arguments. The sort is performed only modifying node's links without data swapping, improving performance if nodes have a large storage.  <a href="classq_o_s_1_1list.html#aabf6cf1d0db7b5c8e3c818ecc6eb916e">More...</a><br /></td></tr>
+<tr class="separator:aabf6cf1d0db7b5c8e3c818ecc6eb916e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73e9beddcd46bcd21f9f6381d816ba5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a73e9beddcd46bcd21f9f6381d816ba5b">swap</a> (void *node1, void *node2) noexcept</td></tr>
+<tr class="memdesc:a73e9beddcd46bcd21f9f6381d816ba5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap two nodes that belongs to the list by changing its own links.  <a href="classq_o_s_1_1list.html#a73e9beddcd46bcd21f9f6381d816ba5b">More...</a><br /></td></tr>
+<tr class="separator:a73e9beddcd46bcd21f9f6381d816ba5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae07617ca533526784159b1d164018a6c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#ae07617ca533526784159b1d164018a6c">move</a> (<a class="el" href="classq_o_s_1_1list.html">list</a> &amp;src, const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p=listPosition::AT_BACK) noexcept</td></tr>
+<tr class="memdesc:ae07617ca533526784159b1d164018a6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves(or merge) the entire list <em>src</em> to the given list. After the move operation, this function leaves empty the list given by <em>src</em>.  <a href="classq_o_s_1_1list.html#ae07617ca533526784159b1d164018a6c">More...</a><br /></td></tr>
+<tr class="separator:ae07617ca533526784159b1d164018a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7069316196cd86a1fca8a517a6cdd75"><td class="memItemLeft" align="right" valign="top"><a id="ad7069316196cd86a1fca8a517a6cdd75" name="ad7069316196cd86a1fca8a517a6cdd75"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clean</b> (void) noexcept</td></tr>
-<tr class="memdesc:a43957f45fe6d768313f8a56d95ad6747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up the entire list leaving it empty. <br /></td></tr>
-<tr class="separator:a43957f45fe6d768313f8a56d95ad6747"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa53780fbc5c26fef679124c4e57f4cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#afa53780fbc5c26fef679124c4e57f4cb">begin</a> (void) noexcept</td></tr>
-<tr class="memdesc:afa53780fbc5c26fef679124c4e57f4cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the first element in the list container.  <a href="classq_o_s_1_1list.html#afa53780fbc5c26fef679124c4e57f4cb">More...</a><br /></td></tr>
-<tr class="separator:afa53780fbc5c26fef679124c4e57f4cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af28ba404be2fdc108e1e1393edd67fab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#af28ba404be2fdc108e1e1393edd67fab">end</a> (void) noexcept</td></tr>
-<tr class="memdesc:af28ba404be2fdc108e1e1393edd67fab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the last element in the list container.  <a href="classq_o_s_1_1list.html#af28ba404be2fdc108e1e1393edd67fab">More...</a><br /></td></tr>
-<tr class="separator:af28ba404be2fdc108e1e1393edd67fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab5ca9e9f3d1a763adfe83a25e5bc949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#aab5ca9e9f3d1a763adfe83a25e5bc949">from</a> (void *offset) noexcept</td></tr>
-<tr class="memdesc:aab5ca9e9f3d1a763adfe83a25e5bc949"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the element given by <em>offset</em> in the list container.  <a href="classq_o_s_1_1list.html#aab5ca9e9f3d1a763adfe83a25e5bc949">More...</a><br /></td></tr>
-<tr class="separator:aab5ca9e9f3d1a763adfe83a25e5bc949"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:afbe88b0c492cef8bcfe3180effd933b3"><td class="memItemLeft" align="right" valign="top"><a id="afbe88b0c492cef8bcfe3180effd933b3" name="afbe88b0c492cef8bcfe3180effd933b3"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>listIterator</b></td></tr>
-<tr class="separator:afbe88b0c492cef8bcfe3180effd933b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ad7069316196cd86a1fca8a517a6cdd75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up the entire list leaving it empty. <br /></td></tr>
+<tr class="separator:ad7069316196cd86a1fca8a517a6cdd75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ebd5669f9c3f441e932bb8a72ea9624"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a0ebd5669f9c3f441e932bb8a72ea9624">begin</a> (void) noexcept</td></tr>
+<tr class="memdesc:a0ebd5669f9c3f441e932bb8a72ea9624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the first element in the list container.  <a href="classq_o_s_1_1list.html#a0ebd5669f9c3f441e932bb8a72ea9624">More...</a><br /></td></tr>
+<tr class="separator:a0ebd5669f9c3f441e932bb8a72ea9624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37a46b7040e98073baae1e61bd5a110"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#ab37a46b7040e98073baae1e61bd5a110">end</a> (void) noexcept</td></tr>
+<tr class="memdesc:ab37a46b7040e98073baae1e61bd5a110"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the last element in the list container.  <a href="classq_o_s_1_1list.html#ab37a46b7040e98073baae1e61bd5a110">More...</a><br /></td></tr>
+<tr class="separator:ab37a46b7040e98073baae1e61bd5a110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7366927f488f5bec69bd903a9285060a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a7366927f488f5bec69bd903a9285060a">from</a> (void *offset) noexcept</td></tr>
+<tr class="memdesc:a7366927f488f5bec69bd903a9285060a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator pointing to the element given by <em>offset</em> in the list container.  <a href="classq_o_s_1_1list.html#a7366927f488f5bec69bd903a9285060a">More...</a><br /></td></tr>
+<tr class="separator:a7366927f488f5bec69bd903a9285060a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -213,8 +206,8 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A list object (Generic double-linked) </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="afa53780fbc5c26fef679124c4e57f4cb" name="afa53780fbc5c26fef679124c4e57f4cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa53780fbc5c26fef679124c4e57f4cb">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="a0ebd5669f9c3f441e932bb8a72ea9624" name="a0ebd5669f9c3f441e932bb8a72ea9624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ebd5669f9c3f441e932bb8a72ea9624">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +216,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> list::begin </td>
+          <td class="memname"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> qOS::list::begin </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -242,8 +235,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="af28ba404be2fdc108e1e1393edd67fab" name="af28ba404be2fdc108e1e1393edd67fab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af28ba404be2fdc108e1e1393edd67fab">&#9670;&nbsp;</a></span>end()</h2>
+<a id="ab37a46b7040e98073baae1e61bd5a110" name="ab37a46b7040e98073baae1e61bd5a110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37a46b7040e98073baae1e61bd5a110">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,7 +245,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> list::end </td>
+          <td class="memname"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> qOS::list::end </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -271,8 +264,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aab5ca9e9f3d1a763adfe83a25e5bc949" name="aab5ca9e9f3d1a763adfe83a25e5bc949"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab5ca9e9f3d1a763adfe83a25e5bc949">&#9670;&nbsp;</a></span>from()</h2>
+<a id="a7366927f488f5bec69bd903a9285060a" name="a7366927f488f5bec69bd903a9285060a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7366927f488f5bec69bd903a9285060a">&#9670;&nbsp;</a></span>from()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -281,7 +274,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> list::from </td>
+          <td class="memname"><a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> qOS::list::from </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>offset</em></td><td>)</td>
@@ -300,8 +293,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ac1ac04a47f5ec51ecb2b27db62dd9a64" name="ac1ac04a47f5ec51ecb2b27db62dd9a64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1ac04a47f5ec51ecb2b27db62dd9a64">&#9670;&nbsp;</a></span>getBack()</h2>
+<a id="ad13760728ef20c6d7211164612361f37" name="ad13760728ef20c6d7211164612361f37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13760728ef20c6d7211164612361f37">&#9670;&nbsp;</a></span>getBack()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -310,7 +303,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void * list::getBack </td>
+          <td class="memname">void * qOS::list::getBack </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -329,8 +322,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a451cd6b721407f725c125e3ceca1d9c3" name="a451cd6b721407f725c125e3ceca1d9c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a451cd6b721407f725c125e3ceca1d9c3">&#9670;&nbsp;</a></span>getFront()</h2>
+<a id="aaae7a22153fc3baa19cef4982cc25746" name="aaae7a22153fc3baa19cef4982cc25746"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaae7a22153fc3baa19cef4982cc25746">&#9670;&nbsp;</a></span>getFront()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -339,7 +332,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void * list::getFront </td>
+          <td class="memname">void * qOS::list::getFront </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -358,8 +351,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a97ec95a12b86f5086c81757fc7b28888" name="a97ec95a12b86f5086c81757fc7b28888"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97ec95a12b86f5086c81757fc7b28888">&#9670;&nbsp;</a></span>insert()</h2>
+<a id="a084fde89ef2d870fd89807ba6d31aba0" name="a084fde89ef2d870fd89807ba6d31aba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a084fde89ef2d870fd89807ba6d31aba0">&#9670;&nbsp;</a></span>insert()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -368,7 +361,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool list::insert </td>
+          <td class="memname">bool qOS::list::insert </td>
           <td>(</td>
           <td class="paramtype">void *const&#160;</td>
           <td class="paramname"><em>xNode</em>, </td>
@@ -404,8 +397,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a969fa23996d1dc9d4fdac1aa701e3bb9" name="a969fa23996d1dc9d4fdac1aa701e3bb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a969fa23996d1dc9d4fdac1aa701e3bb9">&#9670;&nbsp;</a></span>isEmpty()</h2>
+<a id="a261730dd47a69f3edfb8bbd4f5559d0d" name="a261730dd47a69f3edfb8bbd4f5559d0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a261730dd47a69f3edfb8bbd4f5559d0d">&#9670;&nbsp;</a></span>isEmpty()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -414,7 +407,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool list::isEmpty </td>
+          <td class="memname">bool qOS::list::isEmpty </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -433,8 +426,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a7f93cdd93a5ea1d5c46f76218d884517" name="a7f93cdd93a5ea1d5c46f76218d884517"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f93cdd93a5ea1d5c46f76218d884517">&#9670;&nbsp;</a></span>length()</h2>
+<a id="a4d23a51c562b7dff95727a8625a4a1a5" name="a4d23a51c562b7dff95727a8625a4a1a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d23a51c562b7dff95727a8625a4a1a5">&#9670;&nbsp;</a></span>length()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -443,7 +436,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t list::length </td>
+          <td class="memname">size_t qOS::list::length </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -462,8 +455,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a9ae9c2c33f31e4598a90489320129083" name="a9ae9c2c33f31e4598a90489320129083"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ae9c2c33f31e4598a90489320129083">&#9670;&nbsp;</a></span>move()</h2>
+<a id="ae07617ca533526784159b1d164018a6c" name="ae07617ca533526784159b1d164018a6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae07617ca533526784159b1d164018a6c">&#9670;&nbsp;</a></span>move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -472,7 +465,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool list::move </td>
+          <td class="memname">bool qOS::list::move </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1list.html">list</a> &amp;&#160;</td>
           <td class="paramname"><em>src</em>, </td>
@@ -508,8 +501,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a293ed72f30fdf6ca3f77942129cd4a0d" name="a293ed72f30fdf6ca3f77942129cd4a0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a293ed72f30fdf6ca3f77942129cd4a0d">&#9670;&nbsp;</a></span>remove() <span class="overload">[1/2]</span></h2>
+<a id="a7e334f51fcfbf277b71e1085bc8993e7" name="a7e334f51fcfbf277b71e1085bc8993e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e334f51fcfbf277b71e1085bc8993e7">&#9670;&nbsp;</a></span>remove() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -518,7 +511,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool list::remove </td>
+          <td class="memname">bool qOS::list::remove </td>
           <td>(</td>
           <td class="paramtype">void *const&#160;</td>
           <td class="paramname"><em>xNode</em></td><td>)</td>
@@ -543,8 +536,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a2cd3d23a4f99e1892fb0c5a1ec6d6768" name="a2cd3d23a4f99e1892fb0c5a1ec6d6768"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cd3d23a4f99e1892fb0c5a1ec6d6768">&#9670;&nbsp;</a></span>remove() <span class="overload">[2/2]</span></h2>
+<a id="a1c975b6333a32e90b94b464dad500ee6" name="a1c975b6333a32e90b94b464dad500ee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c975b6333a32e90b94b464dad500ee6">&#9670;&nbsp;</a></span>remove() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -553,7 +546,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void * list::remove </td>
+          <td class="memname">void * qOS::list::remove </td>
           <td>(</td>
           <td class="paramtype">void *const&#160;</td>
           <td class="paramname"><em>xNode</em>, </td>
@@ -589,8 +582,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a430dd107b2203333efc5ca39c7fbb2ed" name="a430dd107b2203333efc5ca39c7fbb2ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a430dd107b2203333efc5ca39c7fbb2ed">&#9670;&nbsp;</a></span>sort()</h2>
+<a id="aabf6cf1d0db7b5c8e3c818ecc6eb916e" name="aabf6cf1d0db7b5c8e3c818ecc6eb916e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabf6cf1d0db7b5c8e3c818ecc6eb916e">&#9670;&nbsp;</a></span>sort()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -599,7 +592,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool list::sort </td>
+          <td class="memname">bool qOS::list::sort </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qlists.html#ga805544d4c3b37262eabc39851d8060dc">listCompareFcn_t</a>&#160;</td>
           <td class="paramname"><em>f</em></td><td>)</td>
@@ -617,7 +610,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The function modifies the content of the list by reordering its elements as defined by <em>f</em>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>Pointer to a function that compares two nodes. This function is called repeatedly by <a class="el" href="classq_o_s_1_1list.html#a430dd107b2203333efc5ca39c7fbb2ed" title="Sort the double linked list using the f function to determine the order. The sorting algorithm used b...">list::sort()</a> to compare two nodes. It shall follow the following prototype: <div class="fragment"><div class="line"><span class="keywordtype">bool</span> CompareFcn( listCompareHandle_t h ) </div>
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>Pointer to a function that compares two nodes. This function is called repeatedly by <a class="el" href="classq_o_s_1_1list.html#aabf6cf1d0db7b5c8e3c818ecc6eb916e" title="Sort the double linked list using the f function to determine the order. The sorting algorithm used b...">list::sort()</a> to compare two nodes. It shall follow the following prototype: <div class="fragment"><div class="line"><span class="keywordtype">bool</span> CompareFcn( listCompareHandle_t h ) </div>
 </div><!-- fragment --></td></tr>
   </table>
   </dd>
@@ -626,8 +619,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a21271a03c391469c809c6ed27fba92ff" name="a21271a03c391469c809c6ed27fba92ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21271a03c391469c809c6ed27fba92ff">&#9670;&nbsp;</a></span>swap()</h2>
+<a id="a73e9beddcd46bcd21f9f6381d816ba5b" name="a73e9beddcd46bcd21f9f6381d816ba5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73e9beddcd46bcd21f9f6381d816ba5b">&#9670;&nbsp;</a></span>swap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -636,7 +629,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool list::swap </td>
+          <td class="memname">bool qOS::list::swap </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>node1</em>, </td>

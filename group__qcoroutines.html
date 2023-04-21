@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v7.3.2</span>
+   &#160;<span id="projectnumber">v1.0.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -173,13 +173,13 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa0ac1583601848da679af80f593b1cff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">qOS::co::yield</a> (void) noexcept</td></tr>
 <tr class="memdesc:gaa0ac1583601848da679af80f593b1cff"><td class="mdescLeft">&#160;</td><td class="mdescRight">This statement is only allowed inside a Coroutine segment. co::yield return the CPU control back to the scheduler but saving the execution progress. With the next task activation, the Coroutine will resume the execution after the last co::yield statement.  <a href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">More...</a><br /></td></tr>
 <tr class="separator:gaa0ac1583601848da679af80f593b1cff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga82a629aecb122ba6bfc0c5137e6e2b84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">qOS::co::delay</a> (<a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a> t) noexcept</td></tr>
+<tr class="memitem:ga82a629aecb122ba6bfc0c5137e6e2b84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">qOS::co::delay</a> (<a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> t) noexcept</td></tr>
 <tr class="memdesc:ga82a629aecb122ba6bfc0c5137e6e2b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delay a coroutine for a given number of time.  <a href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">More...</a><br /></td></tr>
 <tr class="separator:ga82a629aecb122ba6bfc0c5137e6e2b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad0eca0c65e03d038bb7374ee75980f20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">qOS::co::waitUntil</a> (bool condition) noexcept</td></tr>
 <tr class="memdesc:gad0eca0c65e03d038bb7374ee75980f20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields until the logical condition is met.  <a href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">More...</a><br /></td></tr>
 <tr class="separator:gad0eca0c65e03d038bb7374ee75980f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6187b4da6f70135cfda650c996f7d22d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga6187b4da6f70135cfda650c996f7d22d">qOS::co::waitUntil</a> (bool condition, <a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a> timeout) noexcept</td></tr>
+<tr class="memitem:ga6187b4da6f70135cfda650c996f7d22d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga6187b4da6f70135cfda650c996f7d22d">qOS::co::waitUntil</a> (bool condition, <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> timeout) noexcept</td></tr>
 <tr class="memdesc:ga6187b4da6f70135cfda650c996f7d22d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields until the logical condition is met or the specified timeout expires.  <a href="group__qcoroutines.html#ga6187b4da6f70135cfda650c996f7d22d">More...</a><br /></td></tr>
 <tr class="separator:ga6187b4da6f70135cfda650c996f7d22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga59f41446fbbdda4769837208e03ddba6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">qOS::co::timeoutExpired</a> (void) noexcept</td></tr>
@@ -216,7 +216,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void qOS::co::delay </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a>&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -573,7 +573,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga00b3b57cfc8b222a34956ece3591ac75">qOS::time_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a>&#160;</td>
           <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>

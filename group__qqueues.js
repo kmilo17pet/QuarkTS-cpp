@@ -1,18 +1,18 @@
 var group__qqueues =
 [
     [ "qOS::queue", "classq_o_s_1_1queue.html", [
-      [ "count", "classq_o_s_1_1queue.html#ab7a7a6b3433374a02cad9bc72d7fd9c6", null ],
-      [ "getItemSize", "classq_o_s_1_1queue.html#aa2061bbe4e60c6fb92010e8b3a32f350", null ],
-      [ "isEmpty", "classq_o_s_1_1queue.html#a340a65e5a33a4597f689308c60eee1fe", null ],
-      [ "isFull", "classq_o_s_1_1queue.html#ad387bf3914ea6812b8a5582a8a1aac0a", null ],
-      [ "isInitialized", "classq_o_s_1_1queue.html#a58ede420ec6370c097ebe75d2fa8f7c1", null ],
-      [ "itemsAvailable", "classq_o_s_1_1queue.html#a92cee64bbc1eb19f83bf0deb14a50524", null ],
-      [ "peek", "classq_o_s_1_1queue.html#a8167607c08f7d809189767e37d9ee883", null ],
-      [ "receive", "classq_o_s_1_1queue.html#a8eb18ab5ea810ff4216bdcaef89d2340", null ],
-      [ "removeFront", "classq_o_s_1_1queue.html#af484413ee07ae825c869c8079e4cbaea", null ],
-      [ "reset", "classq_o_s_1_1queue.html#ad577bebb74137348d79cabb17b2737dd", null ],
-      [ "send", "classq_o_s_1_1queue.html#a1dfd011bb923f82b2f7aab36ee904982", null ],
-      [ "setup", "classq_o_s_1_1queue.html#a8f49aef39c6e48b8fa9a307dd0362dc3", null ]
+      [ "count", "classq_o_s_1_1queue.html#a7c72087cd2f661c48861847cc828aa2f", null ],
+      [ "getItemSize", "classq_o_s_1_1queue.html#a5dae87025604f7485a4eaa65f21fc0de", null ],
+      [ "isEmpty", "classq_o_s_1_1queue.html#a53e7566bd9b17fa3f53446716c9e5563", null ],
+      [ "isFull", "classq_o_s_1_1queue.html#ae64dca50e370e1e6a35a5ac175364737", null ],
+      [ "isInitialized", "classq_o_s_1_1queue.html#ab89e03ac145a43b19121bac6a1a6c07d", null ],
+      [ "itemsAvailable", "classq_o_s_1_1queue.html#a3121e761675f080661ead71b9cc59b95", null ],
+      [ "peek", "classq_o_s_1_1queue.html#a1fb79997438c19c5dcddb037c9e250a2", null ],
+      [ "receive", "classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae", null ],
+      [ "removeFront", "classq_o_s_1_1queue.html#afd677c7eae70d9fee25305dac94ba916", null ],
+      [ "reset", "classq_o_s_1_1queue.html#a6b0ccfda22e78eaf7e91878b99bbf675", null ],
+      [ "send", "classq_o_s_1_1queue.html#af169a6dfd12c38274568b7add4543f0b", null ],
+      [ "setup", "classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6", null ]
     ] ],
     [ "qOS::queueSendMode", "group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22", null ]
 ];
