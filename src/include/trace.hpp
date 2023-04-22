@@ -306,7 +306,7 @@ namespace qOS {
                 friend _trace& operator<<( _trace& tout, const string & s );
             #endif
         };
-        extern _trace& _trace_out;
+        extern _trace& _trace_out; // skipcq: CXX-W2011
         /*! @endcond */
 
         /**

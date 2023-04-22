@@ -14,7 +14,7 @@ namespace qOS {
     const char * const trace::wht = "\x1B[37m";
     /*cstat +MISRAC++2008-0-1-4_b*/
     namespace trace {
-         _trace& _trace_out = _trace::getInstance();
+         _trace& _trace_out = _trace::getInstance(); // skipcq: CXX-W2011
         const tout_base dec( 10u );
         const tout_base hex( 16u );
         const tout_base oct( 8u );

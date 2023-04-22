@@ -79,7 +79,7 @@ namespace qOS {
     class clock final {
         protected:
             /*! @cond  */
-            static volatile qOS::clock_t sysTick_Epochs;
+            static volatile qOS::clock_t sysTick_Epochs; // skipcq: CXX-W2009
             static qOS::clock_t internalTick( void ) noexcept;
             clock();
             /*! @endcond  */
@@ -90,7 +90,7 @@ namespace qOS {
             * @brief Return the current tick used by the OS
             * @return time (t) in epochs.
             */
-            static getTickFcn_t getTick; /* skipcq: CXX-W2009 */
+            static getTickFcn_t getTick; // skipcq: CXX-W2009
             /**
             * @brief Feed the system tick.
             * @note This call is mandatory and must be called once inside the

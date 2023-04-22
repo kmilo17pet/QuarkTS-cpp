@@ -3,7 +3,7 @@
 #include "include/helper.hpp"
 
 namespace qOS {
-    core& os = core::getInstance();
+    core& os = core::getInstance(); // skipcq: CXX-W2011
 }
 
 using namespace qOS;

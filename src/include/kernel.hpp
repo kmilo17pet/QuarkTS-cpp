@@ -90,11 +90,11 @@ namespace qOS {
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
             list& waitingList;
             list& suspendedList;
-            const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
-            const uint32_t BIT_INIT = 0x00000001uL;
-            const uint32_t BIT_FCALL_IDLE = 0x00000002uL;
-            const uint32_t BIT_RELEASE_SCHED = 0x00000004uL;
-            const uint32_t BIT_FCALL_RELEASED = 0x00000008uL;
+            static const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
+            static const uint32_t BIT_INIT = 0x00000001uL;
+            static const uint32_t BIT_FCALL_IDLE = 0x00000002uL;
+            static const uint32_t BIT_RELEASE_SCHED = 0x00000004uL;
+            static const uint32_t BIT_FCALL_RELEASED = 0x00000008uL;
             void triggerReleaseSchedEvent( void ) noexcept;
             bool checkIfReady( void ) noexcept;
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
@@ -395,7 +395,7 @@ namespace qOS {
             globalState getGlobalState( task &Task ) const noexcept;
     };
     /** @brief The predefined instance of the OS kernel interface */
-    extern core& os; /* skipcq: CXX-W2011 */
+    extern core& os; // skipcq: CXX-W2011
 
     /** @}*/
 }
