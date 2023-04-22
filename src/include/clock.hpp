@@ -14,21 +14,50 @@ namespace qOS {
    /** @brief A unsigned integer to hold ticks count. Epochs counter.*/
     using clock_t = timeCount_t;
 
-    #if ( Q_SETUP_TIME_CANONICAL == 1 )
-        /** @brief The typedef that specified an time quantity, usually expressed in milliseconds.*/
-        using time_t = timeCount_t;
-    #else
-        /** @brief The typedef that specified an time quantity, usually expressed in seconds.*/
-        using time_t = float32_t;
-    #endif
+    /** @brief The typedef that specified an time quantity, usually expressed in milliseconds.*/
+    using time_t = timeCount_t;
 
-    #if ( Q_SETUP_TICK_IN_HERTZ == 1 )
-        /** @brief A type to specify a clock_t type for time-base APIs.*/
-        using timingBase_t = qOS::clock_t;
-    #else
-        /** @brief A type to specify a time_t type for time-base APIs.*/
-        using timingBase_t = qOS::time_t;
-    #endif
+    /*! @cond  */
+    /*cstat -CERT-FLP34-C -MISRAC++2008-5-0-5 -MISRAC++2008-5-0-7*/
+    constexpr qOS::time_t operator "" _ms( unsigned long long int x )
+    {
+        return static_cast<qOS::time_t>( x );
+    }
+    constexpr qOS::time_t operator "" _sec( unsigned long long int x )
+    {
+        return static_cast<qOS::time_t>( 1000u*x );
+    }
+    constexpr qOS::time_t operator "" _sec( long double x )
+    {
+        return static_cast<qOS::time_t>( 1000u*x );
+    }
+    constexpr qOS::time_t operator "" _minutes( unsigned long long int x )
+    {
+        return static_cast<qOS::time_t>( 60000u*x );
+    }
+    constexpr qOS::time_t operator "" _minutes( long double x )
+    {
+        return static_cast<qOS::time_t>( 60000u*x );
+    }
+    constexpr qOS::time_t operator "" _hours( unsigned long long int x )
+    {
+        return static_cast<qOS::time_t>( 3600000u*x );
+    }
+    constexpr qOS::time_t operator "" _hours( long double x )
+    {
+        return static_cast<qOS::time_t>( 3600000u*x );
+    }
+    constexpr qOS::time_t operator "" _days( unsigned long long int x )
+    {
+        return static_cast<qOS::time_t>( 86400000u*x );
+    }
+    constexpr qOS::time_t operator "" _days( long double x )
+    {
+        return static_cast<qOS::time_t>( 86400000*x );
+    }
+    /*cstat +CERT-FLP34-C +MISRAC++2008-5-0-5 +MISRAC++2008-5-0-7*/
+    /*! @endcond  */
+
 
     /**
     * @brief Pointer to a function that gets the current hardware tick value.
@@ -50,7 +79,6 @@ namespace qOS {
     class clock final {
         protected:
             /*! @cond  */
-            static timingBase_t timingBase;
             static volatile qOS::clock_t sysTick_Epochs;
             static qOS::clock_t internalTick( void ) noexcept;
             clock();
@@ -63,18 +91,6 @@ namespace qOS {
             * @return time (t) in epochs.
             */
             static getTickFcn_t getTick; /* skipcq: CXX-W2009 */
-            /**
-            * @brief Convert the specified input time to clock epochs
-            * @param[in] t Time input
-            * @return time (t) in epochs
-            */
-            static qOS::clock_t convert2Clock( const qOS::time_t t ) noexcept;
-            /**
-            * @brief Convert the specified input clock epochs to time
-            * @param[in] t Time in epochs
-            * @return time (t)
-            */
-            static qOS::time_t convert2Time( const qOS::clock_t t ) noexcept;
             /**
             * @brief Feed the system tick.
             * @note This call is mandatory and must be called once inside the
@@ -96,12 +112,6 @@ namespace qOS {
             * Otherwise returns @c false
             */
             static bool timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td ) noexcept;
-            /**
-            * @brief Set the system time-base for time conversions
-            * @param[in]  tb Time base
-            * @return @c true on success, otherwise returns @c false.
-            */
-            static bool setTimeBase( const timingBase_t tb ) noexcept;
             /**
             * @brief Set the clock-tick provider function.
             * @param[in] provider A pointer to the tick provider function

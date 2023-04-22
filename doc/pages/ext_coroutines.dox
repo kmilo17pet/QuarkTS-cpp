@@ -57,7 +57,7 @@
 *                  co::yield;
 *              }
 *              DoTheEventProcessing();
-*              co::delay( WAIT_TIME_S );
+*              co::delay( WAIT_TIME_MS );
 *              PerformActions();
 *         }
 *      }
@@ -224,9 +224,9 @@
 *      os.init( HAL_GetTick, IdleTask_Callback );
 *      
 *      os.addTask( ProducerTask, ProducerTask_Callback, core::MEDIUM_PRIORITY, 
-                   100, task::PERIODIC, taskState::ENABLED );
+                   100_ms, task::PERIODIC, taskState::ENABLED );
 *      os.addTask( ConsumerTask, ConsumerTask_Callback, core::MEDIUM_PRIORITY, 
-                   100, task::PERIODIC, taskState::ENABLED );
+                   100_ms, task::PERIODIC, taskState::ENABLED );
 *      os.run();
 *      return 0;
 *  }
@@ -253,9 +253,9 @@
 *          xHandleCR.try_resume();
 *      }
 *      if ( e->LastIteration ) {
-*          xHandleCR.try_suspend();;
+*          xHandleCR.try_suspend();
 *      }
-*      UserInput = GetTerminalInput( );
+*      UserInput = GetTerminalInput();
 *      if ( UserInput == USR_RESTART ) {
 *          xHandleCR.try_restart();
 *      }

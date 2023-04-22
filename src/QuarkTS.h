@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.0.2
+ * @version 1.0.3
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/

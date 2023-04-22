@@ -2948,7 +2948,7 @@
         <name>$PROJ_DIR$\..\src\prioqueue.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\quarkts++.h</name>
+        <name>$PROJ_DIR$\..\src\QuarkTS.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\queue.cpp</name>

@@ -164,9 +164,9 @@
 *      Configure_Periodic_Timer0_Interrupt_1ms();
 *      
 *      os.init( nullptr, nullptr );
-*      os.addTask( Task1, Task1_Callback, 50, 2000, 10, taskState::ENABLED );
-*      os.addTask( Task2, Task2_Callback, 50, 3000, task::PERIODIC, taskState::ENABLED );
-*      os.addTask( Task2, Task3_Callback, 50, 5000, task::PERIODIC, taskState::DISABLED );
+*      os.addTask( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );
+*      os.addTask( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );
+*      os.addTask( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );
 *      os.run();
 *
 *      return 0;
@@ -192,30 +192,30 @@
 *
 *  @code{.c}
 *  typedef struct {
+*       qOS::time_t dt; /*Controller Time Step*/
 *       float yt; /*Measured variable (Controller Input)*/
 *       float ut; /*Controlled variable (Controller Output)*/
 *       float ie; /*Accumulated error*/
 *       float pe; /*Previous error*/
-*       float dt; /*Controller Time Step*/
 *       float sp; /*Set-Point*/
 *       float Kc, Ki, Kd; /*PID Gains*/
 *   } PID_Params_t;
 *   
 *   PID_Params_t TemperatureControl = {
+*      1.5_sec, /*time step*/
 *      0.0f, 0.0f, 0.0f, 0.0f, /*Initial IO state of yt and ut*/
-*      1.5f, /*time step*/
 *      28.5f, /*Set-Point*/
 *      0.89f, 0.122f, 0.001f /*Kc, Ki, Kd*/
 *   };
 *   PID_Params_t HumidityControl= {
+*      1_sec, /*time step*/
 *      0.0f, 0.0f, 0.0f, 0.0f, /*Initial IO state of yt and ut*/
-*      1.0f, /*time step*/
 *      60.0f, /*Set-Point*/
 *      2.5f, 0.2354f, 0.0015f /*Kc, Ki, Kd*/
 *   };
 *   PID_Params_t LightControl= {
+*      0.5_sec, /*time step*/
 *      0.0f, 0.0f, 0.0f, 0.0f, /*Initial IO state of yt and ut*/
-*      0.5f, /*time step*/
 *      45.0f, /*Set-Point*/
 *      5.36f, 0.0891f, 0.0f /*Kc, Ki, Kd*/
 *   };
@@ -245,13 +245,13 @@
 *
 *  @code{.c}
 *  os.addTask( TEMPERATURE_CONTROL_TASK, PIDControl_Callback,
-*              core::HIGHEST_PRIORITY, TemperatureControl.dt*1000 ,
+*              core::HIGHEST_PRIORITY, TemperatureControl.dt ,
 *              task::PERIODIC, taskState::ENABLED_STATE, &TemperatureControl );
 *  os.addTask( HUMIDITY_CONTROL_TASK, PIDControl_Callback,
-*              core::HIGHEST_PRIORITY, HumidityControl.dt*1000,
+*              core::HIGHEST_PRIORITY, HumidityControl.dt,
 *              task::PERIODIC, taskState::ENABLED_STATE, &HumidityControl );
 *  os.addTask( LIGHT_CONTROL_TASK, PIDControl_Callback,
-*              core::HIGHEST_PRIORITY, LightControl.dt*1000,
+*              core::HIGHEST_PRIORITY, LightControl.dt,
 *              task::PERIODIC, taskState::ENABLED_STATE, &LightControl );
 *  @endcode
 *
@@ -265,7 +265,7 @@
 *      /*Compute the error*/
 *      Error = Controller->sp - Controller->yt;
 *      /*Compute the accumulated error using backward integral approximation*/
-*      Controller->ie += Error*Controller->dt;
+*      Controller->ie += static_cast<float>( Error*Controller->dt )/1000.0f;
 *      /*update and compute the derivative term*/
 *      derivative = ( Error - Controller->pe )/Controller->dt;
 *      /*update the previous error*/

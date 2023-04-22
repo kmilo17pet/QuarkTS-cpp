@@ -503,7 +503,7 @@
 *                   
 *      /*  Append the producer task with 100mS rate. */
 *      os.addTask( tProducer, tProducer_Callback, core::MEDIUM_PRIORITY,
-                   100, task::PERIODIC, taskState::ENABLED_STATE, "producer" );
+                   100_ms, task::PERIODIC, taskState::ENABLED_STATE, "producer" );
 *      /* Append the consumer as an event task. The consumer will
 *       * wait until an event trigger their execution
 *       */

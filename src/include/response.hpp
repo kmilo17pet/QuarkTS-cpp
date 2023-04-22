@@ -53,7 +53,7 @@ namespace qOS {
             * @param[in] pattern The data checked in the receiver ISR
             * @param[in] n The length of the data pointer by @a pattern
             * (if @a pattern is string, set @a n to 0 to auto-compute the length)
-            * @param[in] t The timeout value.
+            * @param[in] t The timeout value given in milliseconds.
             * @return responseStatus::SUCCESS if there is a response acknowledge,
             * responseStatus::TIMEOUT if timeout expires otherwise returns 
             * responseStatus::MISSING

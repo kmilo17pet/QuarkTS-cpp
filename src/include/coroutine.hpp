@@ -224,7 +224,7 @@ namespace qOS {
         * @param[in] condition The logical condition to be evaluated. The 
         * condition determines if the blocking job ends (if condition is @c true) 
         * or continue yielding (if false)
-        * @param[in] timeout The specific amount of time to wait.
+        * @param[in] timeout The specific amount of time to wait given in milliseconds..
         * @verbatim
         * Action sequence : [Save progress]
         *                 IF ( condition == False || NOT_EXPIRED(timeout) )

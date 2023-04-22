@@ -252,6 +252,15 @@ log	KEYWORD2
 msg	KEYWORD2
 var	KEYWORD2
 mem KEYWORD2
+hex KEYWORD2
+dec KEYWORD2
+bin KEYWORD2
+oct KEYWORD2
+mem KEYWORD2
+endl KEYWORD2
+end KEYWORD2
+
+
 setOutputFcn KEYWORD2
 
 #######################################

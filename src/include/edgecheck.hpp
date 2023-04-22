@@ -99,8 +99,8 @@ namespace qOS {
             * @brief Initialize a I/O Edge-Check instance
             * @param[in] rSize The specific-core register size: ec::reg::SIZE_8_BIT, 
             * ec::reg::SIZE_16_BIT or ec::reg::SIZE_32_BIT(Default)
-            * @param[in] timeDebounce The specified time to bypass the bounce of the
-            * input nodes
+            * @param[in] timeDebounce The specified time given in milliseconds 
+            * to bypass the bounce of the input nodes
             * @return @c true on success. Otherwise @c false.
             */
             edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept;

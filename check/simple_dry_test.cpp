@@ -35,11 +35,11 @@ void idleTask_callback( event_t e )
             co::getPosition( pos1 );
             trace::log << e.self() << trace::end;
             trace::log << "sec 1"<< trace::end;
-            co::delay( 500 );
+            co::delay( 0.5_sec );
             trace::log <<"sec 2"<< trace::end;
-            co::delay( 500 );
+            co::delay( 0.5_sec );
             trace::log <<"sec 3"<< trace::end;
-            co::delay( 500 );
+            co::delay( 0.5_sec );
             co::waitUntil( true == true );
             co::waitUntil( true == true , 500 );
             co::yield;
@@ -72,7 +72,7 @@ sm::status s1_callback( sm::handler_t h )
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
             trace::log<< trace::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< trace::end;
-            h.timeoutSet( 0, 5000 );
+            h.timeoutSet( 0, 5_sec );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
             h.nextState( s2 );
@@ -92,7 +92,7 @@ sm::status s2_callback( sm::handler_t h )
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
             trace::log<< trace::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< trace::end;
-            tmr( 5000uL );
+            tmr( 5_sec );
             break;
         default:
             if ( tmr() ) {
@@ -156,16 +156,16 @@ int main()
     t3.setName( "t3");
     os.init( sysClock, idleTask_callback );
     
-    os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 500u, task::PERIODIC );
-    os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 500u, 10u );
-    os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2000u, task::PERIODIC );
+    os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
+    os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10u );
+    os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
 
     sm::timeoutSpec tm_specTimeout;
     m.setup( nullptr, s1 );
     m.installTimeoutSpec( tm_specTimeout );
     m.add( s1, s1_callback );
     m.add( s2, s2_callback );
-    os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 100u );
+    os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 100_ms );
 
     os.run();
     for(;;) { }

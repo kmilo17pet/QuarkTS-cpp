@@ -137,7 +137,7 @@ namespace qOS {
                 * For this use stateMachine::installSignalQueue()
                 * @param[in] i The index of the requested timeout
                 * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
-                * @param[in] t The specified time.
+                * @param[in] t The specified time given in milliseconds.
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
                 bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
@@ -688,7 +688,7 @@ namespace qOS {
             * For this use stateMachine::installSignalQueue()
             * @param[in] xTimeout The index of the requested timeout
             * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
-            * @param[in] t The specified time.
+            * @param[in] t The specified time given in milliseconds.
             * @return Returns @c true on success, otherwise returns @c false.
             */
             bool timeoutSet( const index_t xTimeout, const qOS::time_t t ) noexcept;

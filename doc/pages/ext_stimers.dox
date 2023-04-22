@@ -96,7 +96,7 @@
 *      static timer_t timeout;
 *      if ( e.firstCall() ) {
 *          /*Arming the stimer for  3.5 seg*/
-*          timeout.set( 3500 );
+*          timeout.set( 3.5_sec );
 *      }
 *      
 *      /*non-blocking delay, true when timeout expires*/

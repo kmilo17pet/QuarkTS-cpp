@@ -24,7 +24,7 @@ bool timer::set( qOS::time_t tTime ) noexcept
     /*cstat -CERT-FLP36-C*/
     if ( tTime > static_cast<qOS::time_t>( 0 ) ) {
         reload();
-        tv = clock::convert2Clock( tTime );
+        tv = static_cast<clock_t>( tTime );
         retValue = true;
     }
     /*cstat +CERT-FLP36-C*/

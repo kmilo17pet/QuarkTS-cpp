@@ -351,7 +351,7 @@
 *      static timer timeout;
 *      switch ( h.signal() ) {
 *          case sm::signalID::SIGNAL_ENTRY:
-*              timeout.set( 10000 );
+*              timeout.set( 10_sec );
 *              BSP_LED_ON();
 *              break;
 *          case sm::signalID::SIGNAL_EXIT: case sm::signalID::SIGNAL_START: /*Ignore*/
@@ -374,7 +374,7 @@
 *      
 *      switch ( h.signal() ) {
 *          case sm::signalID::SIGNAL_ENTRY:
-*              timeout.set( 10000 );
+*              timeout.set( 10_sec );
 *              break;
 *          case sm::signalID::SIGNAL_EXIT: case sm::signalID::SIGNAL_START: /*Ignore*/
 *              break;
@@ -382,7 +382,7 @@
 *              if ( timeout.expired() || BUTTON_PRESSED ) {
 *                  h.nextState( State_LEDOff );
 *              }
-*              if ( blinktime.freeRun( 500 ) ) {
+*              if ( blinktime.freeRun( 500_ms ) ) {
 *                 BSP_LED_TOGGLE();
 *              }
 *              break;
@@ -400,7 +400,7 @@
 *  LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
 *  LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
 *  LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
-*  os.addStateMachineTask( LED_Task , LED_FSM , core::MEDIUM_PRIORITY, 100 );
+*  os.addStateMachineTask( LED_Task , LED_FSM , core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode 
 *
 * @section q_fsmsendsignals Sending signals
@@ -613,12 +613,12 @@
 *  
 *  /*define the timeout specifications */
 *  sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
-*      { 10.0f,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+*      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 *  };
 *  
 *  qSM_TimeoutStateDefinition_t LEDBlink_timeouts[] = {
-*      { 10.0f,  TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
-*      { 0.5f,   TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
+*      { 10_sec,  TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
+*      { 0.5_sec, TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 *  };
 *  @endcode 
 *
@@ -682,7 +682,7 @@
 *  State_LEDOn.setTransitions( LEDOn_transitions, 2 );
 *  State_LEDBlink.setTransitions( LEDBlink_transitions, 2 );
 *  
-*  os.addStateMachineTask( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100 );
+*  os.addStateMachineTask( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode 
 *
 * @section qfsm_happroach Using the hierarchical approach
@@ -898,7 +898,7 @@
 *  state_resuming.setTransitions( resuming_transitions, qFLM_ArraySize(resuming_transitions) );
 *  state_cruising.setTransitions( cruising_transitions, qFLM_ArraySize(cruising_transitions) );
 *  
-*  os.addStateMachineTask( CruiseControlTask, Top_SM, core::MEDIUM_PRIORITY, 100 );
+*  os.addStateMachineTask( CruiseControlTask, Top_SM, core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode
 * 
 * @subsection q_fsm_example4 Example with history pseudo-states
@@ -988,7 +988,7 @@
 *  state2.setTransitions( state2_transitions , 1 );
 *  state3.setTransitions( state3_transitions , 1 );
 *  state5.setTransitions( state5_transitions , 1 );
-*  os.addStateMachineTask( SMTask , super , core::MEDIUM_PRIORITY, 100 );
+*  os.addStateMachineTask( SMTask , super , core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode 
 * 
 */

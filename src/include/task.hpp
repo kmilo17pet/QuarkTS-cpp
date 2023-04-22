@@ -167,7 +167,7 @@ namespace qOS {
             }
             /**
             * @brief return the number of epochs between current system time and
-            * point in time when the task was marked as Ready.
+            * point in time when the task was marked as @c READY.
             * Can be used to keep track when current task's execution took place
             * relative to when it was scheduled
             * A value of 0 (zero) indicates that task started right on time per
@@ -497,8 +497,8 @@ namespace qOS {
             void setIterations( iteration_t iValue ) noexcept;
             /**
             * @brief Set/Change the Task execution interval
-            * @param[in] tValue Execution interval. For immediate execution 
-            * (@a tValue = clock::IMMEDIATE).
+            * @param[in] tValue Execution interval given in milliseconds. For 
+            * immediate execution (@a tValue = clock::IMMEDIATE).
             * @return @c true on success, otherwise returns @c false.
             */
             bool setTime( const qOS::time_t tValue ) noexcept;
