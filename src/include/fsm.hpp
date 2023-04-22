@@ -570,9 +570,9 @@ namespace qOS {
             bool smSetup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept;
 
             /*cstat -MISRAC++2008-8-5-2*/
-            static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ];
+            static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ]; // skipcq: CXX-W2009
             /*cstat +MISRAC++2008-8-5-2*/
-            static stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ];
+            static stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009
             static const sm::timeoutSpecOption_t OPT_INDEX_MASK;
         public:
             stateMachine() = default;

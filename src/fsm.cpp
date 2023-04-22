@@ -4,9 +4,9 @@
 using namespace qOS;
 
 /*cstat -MISRAC++2008-8-5-2*/
-sm::signalID stateMachine::psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START };
+sm::signalID stateMachine::psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START }; // skipcq: CXX-W2009
 /*cstat +MISRAC++2008-8-5-2*/
-stateMachine* stateMachine::psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ];
+stateMachine* stateMachine::psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009
 const sm::timeoutSpecOption_t stateMachine::OPT_INDEX_MASK = 0x00FFFFFFuL;
 
 const sm::timeoutSpecOption_t sm::TIMEOUT_SET_ENTRY = 0x01000000uL;

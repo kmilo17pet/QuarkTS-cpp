@@ -53,7 +53,7 @@ namespace qOS {
         {
             (void)util::unsignedToString( static_cast<unsigned_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
             if ( '\0' != tout.preFix[ 0 ] ) {
-                (void)util::outputString( tout.writeChar, tout.preFix );
+                (void)util::outputString( tout.writeChar, tout.preFix ); // skipcq: CXX-C1000
             } 
             (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
             tout.writeChar( nullptr, ' ' );
@@ -64,7 +64,7 @@ namespace qOS {
         {
             (void)util::unsignedToString( v, tout.buffer, tout.base ); // skipcq: CXX-C1000
             if ( '\0' != tout.preFix[ 0 ] ) {
-                (void)util::outputString( tout.writeChar, tout.preFix );
+                (void)util::outputString( tout.writeChar, tout.preFix ); // skipcq: CXX-C1000
             } 
             (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
             tout.writeChar( nullptr, ' ' );
@@ -184,7 +184,7 @@ namespace qOS {
         _trace& operator<<( _trace& tout, const qOS::sm::state& s )
         {
             (void)util::outputString( tout.writeChar , "s{ 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &s ), tout.buffer, 16 );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &s ), tout.buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
             (void)util::outputString( tout.writeChar , " } " );
             return tout;
