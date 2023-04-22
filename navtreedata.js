@@ -105,8 +105,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"functions_l.html",
-"q_foundations.html#rtcmodel"
+"functions_p.html",
+"q_fsm.html#q_fsm_example3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

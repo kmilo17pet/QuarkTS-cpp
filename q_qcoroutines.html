@@ -171,7 +171,7 @@ Coding a Co-Routine</h1>
 <div class="line">                <a class="code hl_function" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">co::yield</a>;</div>
 <div class="line">            }</div>
 <div class="line">            DoTheEventProcessing();</div>
-<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">co::delay</a>( WAIT_TIME_S );</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">co::delay</a>( WAIT_TIME_MS );</div>
 <div class="line">            PerformActions();</div>
 <div class="line">       }</div>
 <div class="line">    }</div>
@@ -278,18 +278,18 @@ Co-Routine example with semaphores.</h1>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">void</span>) {</div>
 <div class="line">    HAL_Init();</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( HAL_GetTick, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a>( HAL_GetTick, IdleTask_Callback );</div>
 <div class="line">    </div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( ProducerTask, ProducerTask_Callback, core::MEDIUM_PRIORITY, </div>
-<div class="line">                100, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">                100_ms, task::PERIODIC, taskState::ENABLED );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( ConsumerTask, ConsumerTask_Callback, core::MEDIUM_PRIORITY, </div>
-<div class="line">                100, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">                100_ms, task::PERIODIC, taskState::ENABLED );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a6108a6807716a23d2af2db9ddadea99a"><div class="ttname"><a href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_aaa25100145b3f56a1f7aa6458ec0e0bd"><div class="ttname"><a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qcoroutines_html_ga8f2e9cbda9ba9df1f8a756ab212e8302"><div class="ttname"><a href="group__qcoroutines.html#ga8f2e9cbda9ba9df1f8a756ab212e8302">qOS::co::semWait</a></div><div class="ttdeci">void semWait(co::semaphore &amp;sem) noexcept</div><div class="ttdoc">Carries out the &quot;wait&quot; operation on the semaphore. The wait operation causes the Co-routine to block ...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:266</div></div>
 <div class="ttc" id="agroup__qcoroutines_html_gae5fa49283e366f3201de3fe515f5caae"><div class="ttname"><a href="group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae">qOS::co::semSignal</a></div><div class="ttdeci">void semSignal(co::semaphore &amp;sem) noexcept</div><div class="ttdoc">Carries out the &quot;signal&quot; operation on the semaphore. The signal operation increments the counter insi...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:276</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
@@ -306,9 +306,9 @@ External control</h1>
 <div class="line">        xHandleCR.try_resume();</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> ( e-&gt;LastIteration ) {</div>
-<div class="line">        xHandleCR.try_suspend();;</div>
+<div class="line">        xHandleCR.try_suspend();</div>
 <div class="line">    }</div>
-<div class="line">    UserInput = GetTerminalInput( );</div>
+<div class="line">    UserInput = GetTerminalInput();</div>
 <div class="line">    <span class="keywordflow">if</span> ( UserInput == USR_RESTART ) {</div>
 <div class="line">        xHandleCR.try_restart();</div>
 <div class="line">    }</div>

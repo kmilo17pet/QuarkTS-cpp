@@ -593,7 +593,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">condition</td><td>The logical condition to be evaluated. The condition determines if the blocking job ends (if condition is <code>true</code>) or continue yielding (if false) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>The specific amount of time to wait. <pre class="fragment">* Action sequence : [Save progress]
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>The specific amount of time to wait given in milliseconds.. <pre class="fragment">* Action sequence : [Save progress]
 *                 IF ( condition == False || NOT_EXPIRED(timeout) )
 *                     [Yield]
 *                 }

@@ -6,7 +6,7 @@ var searchData=
   ['immediate_3',['IMMEDIATE',['../classq_o_s_1_1clock.html#af9f1c16ed2c28ee3359bae3ad9b1d2a7',1,'qOS::clock']]],
   ['indefinite_4',['INDEFINITE',['../classq_o_s_1_1task.html#a9405db8642daf9f6fa97e16628476fe7',1,'qOS::task']]],
   ['index_5ft_5',['index_t',['../group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba',1,'types.hpp']]],
-  ['init_6',['init',['../classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd',1,'qOS::core::init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept'],['../classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449',1,'qOS::core::init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept']]],
+  ['init_6',['init',['../classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449',1,'qOS::core']]],
   ['innode_7',['inNode',['../classq_o_s_1_1ec_1_1in_node.html',1,'qOS::ec']]],
   ['inputflush_8',['inputFlush',['../classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b',1,'qOS::commandLineInterface']]],
   ['inputraw_9',['inputRAW',['../group__qioutils.html#gad16b6f751febd5914646970a812e636e',1,'qOS::util']]],

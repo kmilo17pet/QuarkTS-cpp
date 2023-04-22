@@ -178,7 +178,7 @@ Use QuarkTS++ in Arduino</h2>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( millis , IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a>( millis , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -186,11 +186,11 @@ Use QuarkTS++ in Arduino</h2>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_aaa25100145b3f56a1f7aa6458ec0e0bd"><div class="ttname"><a href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_firststeps"></a>
 First steps</h1>
-<p >Include the source files to your project. Also, make sure you add a copy of the file <code><a class="el" href="config_8h_source.html">config.h</a></code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code><a class="el" href="_quark_t_s_8h_source.html">QuarkTS.h</a></code> and setup the instance of the kernel using the <a class="el" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
+<p >Include the source files to your project. Also, make sure you add a copy of the file <code><a class="el" href="config_8h_source.html">config.h</a></code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code><a class="el" href="_quark_t_s_8h_source.html">QuarkTS.h</a></code> and setup the instance of the kernel using the <a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
 <p >File <code>main.c</code> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">using namespace </span>qOS;</div>
@@ -200,7 +200,7 @@ First steps</h1>
 <div class="line">    HardwareSetup();</div>
 <div class="line">    Configure_Periodic_Timer_Interrupt_1ms();</div>
 <div class="line">    <span class="comment">//end of device startup with hardware-specific code</span></div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( <span class="keyword">nullptr</span> , IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a>( <span class="keyword">nullptr</span> , IdleTask_Callback );</div>
 <div class="line">    <span class="comment">// TODO: add Tasks to the scheduler scheme and run the OS</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p >In the above code, the following considerations should be taken:</p><ul>
@@ -251,10 +251,10 @@ A simple scheduling</h2>
 <div class="line">    <span class="comment">/*function to fire an interrupt at 1ms - timer tick*/</span></div>
 <div class="line">    Configure_Periodic_Timer0_Interrupt_1ms();</div>
 <div class="line">    </div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd">init</a>( <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span> );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task1, Task1_Callback, 50, 2000, 10, taskState::ENABLED );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task2, Task2_Callback, 50, 3000, task::PERIODIC, taskState::ENABLED );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task2, Task3_Callback, 50, 5000, task::PERIODIC, taskState::DISABLED );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a>( <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span> );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
@@ -266,33 +266,34 @@ Using the task argument</h2>
 <p >Consider a scenario where you have to build a digital controller for several physical variables, for example, a PID controller for temperature, humidity and light. The PID algorithm will be the same for all variables. The only difference will be the variable input, the controlled output action and the PID gains. In this case, each of the PID tasks will utilize the same callback methods. The only difference will be the I/O parameters (specific for each PID controller).</p>
 <p >Let’s define a PID data structure with the I/O variables and gains.</p>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line">     <a class="code hl_typedef" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> dt; <span class="comment">/*Controller Time Step*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> yt; <span class="comment">/*Measured variable (Controller Input)*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> ut; <span class="comment">/*Controlled variable (Controller Output)*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> ie; <span class="comment">/*Accumulated error*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> pe; <span class="comment">/*Previous error*/</span></div>
-<div class="line">     <span class="keywordtype">float</span> dt; <span class="comment">/*Controller Time Step*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> sp; <span class="comment">/*Set-Point*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> Kc, Ki, Kd; <span class="comment">/*PID Gains*/</span></div>
 <div class="line"> } PID_Params_t;</div>
 <div class="line"> </div>
 <div class="line"> PID_Params_t TemperatureControl = {</div>
+<div class="line">    1.5_sec, <span class="comment">/*time step*/</span></div>
 <div class="line">    0.0f, 0.0f, 0.0f, 0.0f, <span class="comment">/*Initial IO state of yt and ut*/</span></div>
-<div class="line">    1.5f, <span class="comment">/*time step*/</span></div>
 <div class="line">    28.5f, <span class="comment">/*Set-Point*/</span></div>
 <div class="line">    0.89f, 0.122f, 0.001f <span class="comment">/*Kc, Ki, Kd*/</span></div>
 <div class="line"> };</div>
 <div class="line"> PID_Params_t HumidityControl= {</div>
+<div class="line">    1_sec, <span class="comment">/*time step*/</span></div>
 <div class="line">    0.0f, 0.0f, 0.0f, 0.0f, <span class="comment">/*Initial IO state of yt and ut*/</span></div>
-<div class="line">    1.0f, <span class="comment">/*time step*/</span></div>
 <div class="line">    60.0f, <span class="comment">/*Set-Point*/</span></div>
 <div class="line">    2.5f, 0.2354f, 0.0015f <span class="comment">/*Kc, Ki, Kd*/</span></div>
 <div class="line"> };</div>
 <div class="line"> PID_Params_t LightControl= {</div>
+<div class="line">    0.5_sec, <span class="comment">/*time step*/</span></div>
 <div class="line">    0.0f, 0.0f, 0.0f, 0.0f, <span class="comment">/*Initial IO state of yt and ut*/</span></div>
-<div class="line">    0.5f, <span class="comment">/*time step*/</span></div>
 <div class="line">    45.0f, <span class="comment">/*Set-Point*/</span></div>
 <div class="line">    5.36f, 0.0891f, 0.0f <span class="comment">/*Kc, Ki, Kd*/</span></div>
 <div class="line"> };</div>
+<div class="ttc" id="agroup__qclock_html_gab011fc4588fbbf7bb6b0308a91dde711"><div class="ttname"><a href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a></div><div class="ttdeci">timeCount_t time_t</div><div class="ttdoc">The typedef that specified an time quantity, usually expressed in milliseconds.</div><div class="ttdef"><b>Definition:</b> clock.hpp:18</div></div>
 </div><!-- fragment --><p >A task will be added to the scheme to collect the sensor data and apply the respective control output.</p>
 <div class="fragment"><div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.AddTask( IO_TASK , IO_TASK_Callback , core::MEDIUM_PRIORITY , 100, task::PERIODIC, taskState::ENABLED_STATE , <span class="stringliteral">&quot;iotask&quot;</span> );</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="keywordtype">void</span> IO_TASK_Callback( event_t e ) {</div>
@@ -305,13 +306,13 @@ Using the task argument</h2>
 <div class="line">}</div>
 </div><!-- fragment --><p >Then, three different tasks are created to apply the respective PID controller. Note that these tasks refer to the same callback method and we assign pointers to the respective variables.</p>
 <div class="fragment"><div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( TEMPERATURE_CONTROL_TASK, PIDControl_Callback,</div>
-<div class="line">            core::HIGHEST_PRIORITY, TemperatureControl.dt*1000 ,</div>
+<div class="line">            core::HIGHEST_PRIORITY, TemperatureControl.dt ,</div>
 <div class="line">            task::PERIODIC, taskState::ENABLED_STATE, &amp;TemperatureControl );</div>
 <div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( HUMIDITY_CONTROL_TASK, PIDControl_Callback,</div>
-<div class="line">            core::HIGHEST_PRIORITY, HumidityControl.dt*1000,</div>
+<div class="line">            core::HIGHEST_PRIORITY, HumidityControl.dt,</div>
 <div class="line">            task::PERIODIC, taskState::ENABLED_STATE, &amp;HumidityControl );</div>
 <div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( LIGHT_CONTROL_TASK, PIDControl_Callback,</div>
-<div class="line">            core::HIGHEST_PRIORITY, LightControl.dt*1000,</div>
+<div class="line">            core::HIGHEST_PRIORITY, LightControl.dt,</div>
 <div class="line">            task::PERIODIC, taskState::ENABLED_STATE, &amp;LightControl );</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="keywordtype">void</span> PIDControl_Callback( event_t e ) {</div>
 <div class="line">    <span class="keywordtype">float</span> Error, derivative;</div>
@@ -322,7 +323,7 @@ Using the task argument</h2>
 <div class="line">    <span class="comment">/*Compute the error*/</span></div>
 <div class="line">    Error = Controller-&gt;sp - Controller-&gt;yt;</div>
 <div class="line">    <span class="comment">/*Compute the accumulated error using backward integral approximation*/</span></div>
-<div class="line">    Controller-&gt;ie += Error*Controller-&gt;dt;</div>
+<div class="line">    Controller-&gt;ie += <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>( Error*Controller-&gt;dt )/1000.0f;</div>
 <div class="line">    <span class="comment">/*update and compute the derivative term*/</span></div>
 <div class="line">    derivative = ( Error - Controller-&gt;pe )/Controller-&gt;dt;</div>
 <div class="line">    <span class="comment">/*update the previous error*/</span></div>

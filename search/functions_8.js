@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['init_0',['init',['../classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449',1,'qOS::core::init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept'],['../classq_o_s_1_1core.html#aaa25100145b3f56a1f7aa6458ec0e0bd',1,'qOS::core::init(const getTickFcn_t tFcn, const timingBase_t t, taskFcn_t callbackIdle=nullptr) noexcept']]],
+  ['init_0',['init',['../classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449',1,'qOS::core']]],
   ['inputflush_1',['inputFlush',['../classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b',1,'qOS::commandLineInterface']]],
   ['inputraw_2',['inputRAW',['../group__qioutils.html#gad16b6f751febd5914646970a812e636e',1,'qOS::util']]],
   ['insert_3',['insert',['../classq_o_s_1_1list.html#a084fde89ef2d870fd89807ba6d31aba0',1,'qOS::list']]],
