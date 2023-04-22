@@ -281,7 +281,7 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
             case trigger::byQueueReceiver:
                 _Event::EventData = Task->aQueue->peek(); /*the EventData will point to the queue front-data*/
                 break;
-            case trigger::byQueueFull: case trigger::byQueueCount: case trigger::byQueueEmpty:
+            case trigger::byQueueFull: case trigger::byQueueCount: case trigger::byQueueEmpty: // skipcq: CXX-C1001
                 /*the EventData will point to the the linked queue*/
                 _Event::EventData = static_cast<void*>( Task->aQueue );
                 break;

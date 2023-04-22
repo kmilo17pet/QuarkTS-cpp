@@ -100,7 +100,7 @@ bool task::setState( taskState s ) noexcept
     bool retValue = false;
 
     switch ( s ) {
-        case taskState::DISABLED_STATE: case taskState::ENABLED_STATE:
+        case taskState::DISABLED_STATE: case taskState::ENABLED_STATE: // skipcq: CXX-C1001
             if ( s != static_cast<taskState>( getFlag( BIT_ENABLED ) ) ) {
                 setFlags( BIT_ENABLED, static_cast<bool>( s ) );
                 time.reload();

@@ -4,10 +4,10 @@
 using namespace qOS;
 
 /*cstat -MISRAC++2008-8-5-2*/
-static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START };
+sm::signalID stateMachine::psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START };
 /*cstat +MISRAC++2008-8-5-2*/
-static stateMachine *psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ];
-static const sm::timeoutSpecOption_t OPT_INDEX_MASK = 0x00FFFFFFuL;
+stateMachine* stateMachine::psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ];
+const sm::timeoutSpecOption_t stateMachine::OPT_INDEX_MASK = 0x00FFFFFFuL;
 
 const sm::timeoutSpecOption_t sm::TIMEOUT_SET_ENTRY = 0x01000000uL;
 const sm::timeoutSpecOption_t sm::TIMEOUT_RST_ENTRY = 0x02000000uL;
@@ -741,7 +741,7 @@ bool stateMachine::run( sm::signal_t sig ) noexcept
         current = &top;
         next = nullptr;
         stateOnEntry( current );
-        traceOnStart( entryPath );
+        traceOnStart( entryPath ); // skipcq: CXX-C1000
     }
     /*evaluate the hierarchy until the signal is handled*/
     /*cstat -MISRAC++2008-6-5-2*/
@@ -753,8 +753,8 @@ bool stateMachine::run( sm::signal_t sig ) noexcept
                  execute entry/start actions in the rest of the hierarchy
                  after transition
                  */
-                tracePathAndRetraceEntry( entryPath );
-                traceOnStart( entryPath );
+                tracePathAndRetraceEntry( entryPath ); // skipcq: CXX-C1000
+                traceOnStart( entryPath ); // skipcq: CXX-C1000
             }
             retValue = true;
             break;/* signal processed */
