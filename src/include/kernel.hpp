@@ -90,11 +90,11 @@ namespace qOS {
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
             list& waitingList;
             list& suspendedList;
-            static const priority_t MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
-            static const uint32_t BIT_INIT = 0x00000001uL;
-            static const uint32_t BIT_FCALL_IDLE = 0x00000002uL;
-            static const uint32_t BIT_RELEASE_SCHED = 0x00000004uL;
-            static const uint32_t BIT_FCALL_RELEASED = 0x00000008uL;
+            static const priority_t MAX_PRIORITY_VALUE;
+            static const uint32_t BIT_INIT;
+            static const uint32_t BIT_FCALL_IDLE;
+            static const uint32_t BIT_RELEASE_SCHED;
+            static const uint32_t BIT_FCALL_RELEASED;
             void triggerReleaseSchedEvent( void ) noexcept;
             bool checkIfReady( void ) noexcept;
             void dispatchTaskFillEventInfo( task *Task ) noexcept;

@@ -10,6 +10,12 @@ using namespace qOS;
 
 static bool taskEntryOrderPreserver( const void *n1, const void *n2 );
 
+const priority_t core::MAX_PRIORITY_VALUE = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;
+const uint32_t core::BIT_INIT = 0x00000001uL;
+const uint32_t core::BIT_FCALL_IDLE = 0x00000002uL;
+const uint32_t core::BIT_RELEASE_SCHED = 0x00000004uL;
+const uint32_t core::BIT_FCALL_RELEASED = 0x00000008uL;
+
 const priority_t core::LOWEST_PRIORITY = 0u;
 const priority_t core::MEDIUM_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) >> 1u;
 const priority_t core::HIGHEST_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1u;

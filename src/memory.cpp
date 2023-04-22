@@ -20,6 +20,7 @@ bool mem::pool::setup( void *pArea, const size_t pSize ) noexcept
         poolMemSize = pSize;
         freeBytesRemaining = pSize;
         end = nullptr;
+        init();
         retValue = true;
     }
 
@@ -88,8 +89,6 @@ void mem::pool::init( void ) noexcept
     mem::address_t address, xAddrTmp;
     size_t totalPoolSize = poolMemSize;
 
-    start.blockSize = static_cast<size_t>( 0u );
-    start.next = nullptr;
     /*cstat -CERT-INT36-C -CERT-EXP39-C_d -CERT-EXP36-C_a*/
     address = reinterpret_cast<mem::address_t>( poolMemory );
 
@@ -120,11 +119,6 @@ void mem::pool::init( void ) noexcept
 void* mem::pool::alloc( size_t pSize ) noexcept
 {
     void *pAllocated = nullptr;
-
-
-    if ( nullptr == end ) {
-        init();
-    }
 
     if ( pSize > static_cast<size_t>( 0u ) ) {
         const size_t additional = HEAP_STRUCT_SIZE + Q_BYTE_ALIGNMENT - ( pSize & BYTE_ALIGN_MASK );
