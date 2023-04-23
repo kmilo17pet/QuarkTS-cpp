@@ -33,8 +33,8 @@ var q_extensions =
     ] ],
     [ "Timers", "q_stimers.html", [
       [ "Overview", "q_stimers.html#q_stimers_overview", null ],
-      [ "Using a STimer", "q_stimers.html#q_stimerusage", null ],
-      [ "STimer example", "q_stimers.html#q_stimerexample", null ]
+      [ "Using a Timer", "q_stimers.html#q_stimerusage", null ],
+      [ "Timer example", "q_stimers.html#q_stimerexample", null ]
     ] ],
     [ "AT Command Line Interface (CLI)", "q_atcli.html", [
       [ "Overview", "q_atcli.html#q_atcli_overview", null ],

@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"q_events.html#qeventflags":[4,2,2],
 "q_events.html#qnotspread":[4,2,0,3],
 "q_extensions.html":[5],
 "q_foundations.html":[2],

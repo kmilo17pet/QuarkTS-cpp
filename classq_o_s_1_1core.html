@@ -161,11 +161,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6108a6807716a23d2af2db9ddadea99a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. The task is scheduled to run every <em>t</em> time units, <em>n</em> times and executing <em>callback</em> method on every pass.  <a href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">More...</a><br /></td></tr>
 <tr class="separator:a6108a6807716a23d2af2db9ddadea99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad37fb39c9ab1224e007be651e1dfc69b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, void *arg=nullptr) noexcept</td></tr>
-<tr class="memdesc:ad37fb39c9ab1224e007be651e1dfc69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a651cad36723f0e24549066954708c8e2" title="Set/Change the number of task iterations.">task::setIterations()</a>.  <a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">More...</a><br /></td></tr>
+<tr class="memdesc:ad37fb39c9ab1224e007be651e1dfc69b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. This API creates a task with a <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a> state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a651cad36723f0e24549066954708c8e2" title="Set/Change the number of task iterations.">task::setIterations()</a>.  <a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">More...</a><br /></td></tr>
 <tr class="separator:ad37fb39c9ab1224e007be651e1dfc69b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20c364205597d27c90669f230b5ddf2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a">addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
-<tr class="memdesc:a20c364205597d27c90669f230b5ddf2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <a href="classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a">More...</a><br /></td></tr>
-<tr class="separator:a20c364205597d27c90669f230b5ddf2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20c364205597d27c90669f230b5ddf2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a">addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
+<tr class="memdesc:ga20c364205597d27c90669f230b5ddf2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <a href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a">More...</a><br /></td></tr>
+<tr class="separator:ga20c364205597d27c90669f230b5ddf2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c115ba5a042ccb9d8467d49a655fa3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f">addCommandLineInterfaceTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a> &amp;cli, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, void *arg=nullptr) noexcept</td></tr>
+<tr class="memdesc:ga5c115ba5a042ccb9d8467d49a655fa3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running an AT Command Line Interface. Task will be scheduled as event-triggered task. The parser address will be stored in the <a class="el" href="classq_o_s_1_1event__t.html#a44c21a4201ab6c42ce8a36ec91742787" title="Task arguments defined at the time of its creation. (Storage-Pointer)">event_t::TaskData</a> storage-Pointer.  <a href="group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f">More...</a><br /></td></tr>
+<tr class="separator:ga5c115ba5a042ccb9d8467d49a655fa3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4991fda84316e63029be7e200dff6aa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a4991fda84316e63029be7e200dff6aa0">setIdleTask</a> (<a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback) noexcept</td></tr>
 <tr class="memdesc:a4991fda84316e63029be7e200dff6aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the callback for the Idle-task.  <a href="classq_o_s_1_1core.html#a4991fda84316e63029be7e200dff6aa0">More...</a><br /></td></tr>
 <tr class="separator:a4991fda84316e63029be7e200dff6aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,7 +186,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>schedulerRelease</b> 
 <tr class="memdesc:a30b4c1ac78976e2d289a710647300d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the scheduling scheme. It must be called once after the task pool has been defined.  <a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">More...</a><br /></td></tr>
 <tr class="separator:a30b4c1ac78976e2d289a710647300d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6de5a8fa854b30d78de7540e21f4298"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, <a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, void *eventData=nullptr) noexcept</td></tr>
-<tr class="memdesc:gaa6de5a8fa854b30d78de7540e21f4298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a notification generating an asynchronous event. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09">notifyMode::SIMPLE</a>, the method marks the task as ready for execution and the scheduler planner will launch the task immediately according to the scheduling rules (even if task is disabled) and setting the event_t::trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" title="When the execution chain does, according to a requirement of asynchronous notification event prompted...">trigger::byNotificationSimple</a>. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae">notifyMode::QUEUED</a>, the notification will insert the notification in the FIFO priority queue. The scheduler get this notification as an asynchronous event and the task will be ready for execution according to the queue order (determined by priority), even if task is in a disabled or sleep operational state. When extracted, the scheduler will set event_t::Trigger flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" title="When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher perf...">trigger::byNotificationQueued</a>. Specific user-data can be passed through, and will be available inside the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field, only in corresponding launch. If the task is in a <code>qSleep</code> operation state, the scheduler will change the operational state to qAwaken setting the <code>SHUTDOWN</code> bit. Specific user-data can be passed through, and will be available in the respective callback inside the qEvent_t::EventData field.  <a href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">More...</a><br /></td></tr>
+<tr class="memdesc:gaa6de5a8fa854b30d78de7540e21f4298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a notification generating an asynchronous event. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09">notifyMode::SIMPLE</a>, the method marks the task as ready for execution and the scheduler planner will launch the task immediately according to the scheduling rules (even if task is disabled) and setting the <code>trigger</code> flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a9c1dfa94b27929d52c85e2573928e26c" title="When the execution chain does, according to a requirement of asynchronous notification event prompted...">trigger::byNotificationSimple</a>. If mode = <a class="el" href="group__qnot.html#gga5af9c877b9d556d828c72c01702aa193a9df29ce7ca629ff1d47bca1149d9faae">notifyMode::QUEUED</a>, the notification will insert the notification in the FIFO priority queue. The scheduler get this notification as an asynchronous event and the task will be ready for execution according to the queue order (determined by priority), even if task is in a disabled or sleep operational state. When extracted, the scheduler will set <code>trigger</code> flag to <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7ac834fdcf2a4a72599b45db1d402fffd4" title="When there is a queued notification in the FIFO priority queue. For this trigger, the dispatcher perf...">trigger::byNotificationQueued</a>. Specific user-data can be passed through, and will be available inside the <a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e" title="Associated data of the event. Specific data will reside here according to the event source....">event_t::EventData</a> field, only in corresponding launch. If the task is in a <code>qSleep</code> operation state, the scheduler will change the operational state to <code>AWAKEN</code> setting the <code>SHUTDOWN</code> bit. Specific user-data can be passed through, and will be available in the respective callback inside the qEvent_t::EventData field.  <a href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">More...</a><br /></td></tr>
 <tr class="separator:gaa6de5a8fa854b30d78de7540e21f4298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab865aa8541244ae16444e52691823a41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qnot.html#gab865aa8541244ae16444e52691823a41">notify</a> (<a class="el" href="group__qnot.html#ga5af9c877b9d556d828c72c01702aa193">notifyMode</a> mode, void *eventData=nullptr) noexcept</td></tr>
 <tr class="memdesc:gab865aa8541244ae16444e52691823a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to spread a notification among all the tasks in the scheduling scheme.  <a href="group__qnot.html#gab865aa8541244ae16444e52691823a41">More...</a><br /></td></tr>
@@ -281,88 +284,12 @@ static const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b
 </table>
 </div><div class="memdoc">
 
-<p>Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a651cad36723f0e24549066954708c8e2" title="Set/Change the number of task iterations.">task::setIterations()</a>. </p>
+<p>Add a task to the scheduling scheme. This API creates a task with a <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a> state by default, so this task will be executed only, when asynchronous events occurs. However, this behavior can be changed in execution time using <a class="el" href="classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4" title="Set/Change the Task execution interval.">task::setTime()</a> or <a class="el" href="classq_o_s_1_1task.html#a651cad36723f0e24549066954708c8e2" title="Set/Change the number of task iterations.">task::setIterations()</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>The task node. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>A pointer to a the task callback method with a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">event_t</a> parameter as input argument. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Task priority Value. [0(min) - <code>Q_PRIORITY_LEVELS</code> (max)] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Represents the task arguments. All arguments must be passed by reference and cast to <code>void*</code>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
-
-</div>
-</div>
-<a id="a20c364205597d27c90669f230b5ddf2a" name="a20c364205597d27c90669f230b5ddf2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20c364205597d27c90669f230b5ddf2a">&#9670;&nbsp;</a></span>addStateMachineTask()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::core::addStateMachineTask </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
-          <td class="paramname"><em>Task</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a>&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a>&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a>&#160;</td>
-          <td class="paramname"><em>s</em> = <code><a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a></code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>arg</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>The State-machine object should be previously configured with qStateMachine_Setup() </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>qStateMachine_Setup() </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>A pointer to the task node. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>A pointer to the Finite State-Machine (FSM) object. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Task priority Value. [0(min) - <code>Q_PRIORITY_LEVELS</code> (max)] </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Execution time interval given in milliseconds. For immediate execution ( t = <a class="el" href="classq_o_s_1_1clock.html#af9f1c16ed2c28ee3359bae3ad9b1d2a7" title="To specify a non-wait time value.">clock::IMMEDIATE</a> ). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Specifies the initial operational state of the task (<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0" title="The task can catch all the events. This operational state is available when the ENABLE bit is set.">taskState::ENABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE</a> or <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)</a>). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Represents the task arguments. All arguments must be passed by reference and cast to <code>void*</code>. </td></tr>
   </table>
   </dd>

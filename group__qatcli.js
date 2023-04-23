@@ -38,5 +38,6 @@ var group__qatcli =
       [ "qOS::cli::ACT", "group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6", null ]
     ] ],
     [ "qOS::cli::response", "group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2", null ],
+    [ "qOS::core::addCommandLineInterfaceTask", "group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f", null ],
     [ "qOS::cli::ERROR_CODE", "group__qatcli.html#gae6f3124234cd3f8a4068c7d7d11b0f29", null ]
 ];

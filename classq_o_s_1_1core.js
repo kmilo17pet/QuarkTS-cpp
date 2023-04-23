@@ -1,7 +1,8 @@
 var classq_o_s_1_1core =
 [
+    [ "addCommandLineInterfaceTask", "group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f", null ],
     [ "addEventTask", "classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b", null ],
-    [ "addStateMachineTask", "classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a", null ],
+    [ "addStateMachineTask", "group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a", null ],
     [ "addTask", "classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a", null ],
     [ "eventFlagsCheck", "group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858", null ],
     [ "eventFlagsModify", "group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937", null ],

@@ -489,7 +489,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> (void) noex
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">itemToQueue</td><td>A pointer to the item that is to be placed on the queue. The size of the items the queue will hold was defined when the queue was created, so this many bytes will be copied from <em>itemToQueue</em> into the queue storage area. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pos</td><td>Can take the value queueSendMode::TO_BACK (default) to place the item at the back of the queue, or queueSendMode::TO_FRONT to place the item at the front of the queue (for high priority messages). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pos</td><td>Can take the value <code>queueSendMode::TO_BACK</code> (default) to place the item at the back of the queue, or <code>queueSendMode::TO_FRONT</code> to place the item at the front of the queue (for high priority messages). </td></tr>
   </table>
   </dd>
 </dl>

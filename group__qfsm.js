@@ -57,6 +57,7 @@ var group__qfsm =
     [ "qOS::sm::historyMode", "group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420", null ],
     [ "qOS::sm::signalID", "group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4", null ],
     [ "qOS::sm::status", "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c", null ],
+    [ "qOS::core::addStateMachineTask", "group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a", null ],
     [ "qOS::sm::SIGNAL_TIMEOUT", "group__qfsm.html#gad5476e06fde92efddf507ec60e492be3", null ],
     [ "qOS::sm::TIMEOUT_INDEX", "group__qfsm.html#ga646289fa705250d5f8b950aee747becc", null ],
     [ "qOS::sm::TIMEOUT_KEEP_IF_SET", "group__qfsm.html#ga5f5c7078fc1b8137559aaa2297d6890d", null ],

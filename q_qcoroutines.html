@@ -317,18 +317,20 @@ External control</h1>
 <div class="line"><span class="comment">/*===================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> CoroutineTask_Callback( event_t e ) {</div>
 <div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>( xHandleCR ) { <span class="comment">/*externally controlled*/</span></div>
-<div class="line">        <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
-<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">co::yield</a>;</div>
+<div class="line">        <span class="keywordflow">for</span>(;;) {</div>
+<div class="line">            <span class="keywordflow">if</span> ( EventNotComing() ) {</div>
+<div class="line">                <a class="code hl_function" href="group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff">co::yield</a>;</div>
+<div class="line">            }</div>
+<div class="line">            RunFirstJob();</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">co::delay</a>( WAIT_TIME );</div>
+<div class="line">            SecondJobStatus = RunSecondJob();</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );</div>
+<div class="line">            CleanUpStatus = CleanupJob();</div>
+<div class="line">            <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( SomeVar &gt; SomeValue );</div>
 <div class="line">        }</div>
-<div class="line">        RunFirstJob();</div>
-<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84">co::delay</a>( WAIT_TIME );</div>
-<div class="line">        SecondJobStatus = RunSecondJob();</div>
-<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );</div>
-<div class="line">        CleanUpStatus = CleanupJob();</div>
-<div class="line">        <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( SomeVar &gt; SomeValue );</div>
-<div class="line">    } qCR_End;</div>
+<div class="line">    };</div>
 <div class="line">}</div>
-</div><!-- fragment --><p >As shown in the code snippet above, the Co-routine handle its globally declared to enable other contexts to access it. The example demonstrates how another task can control the Coroutine using the "try_" methods API. It's important to note that the actions performed by this API can only be effective after the handle instantiation, which is a one-time operation that occurs during the first call of the Co-routine. </p>
+</div><!-- fragment --><p >As shown in the code snippet above, the Co-routine handle its globally declared to enable other contexts to access it. The example demonstrates how another task can control the Coroutine using the "try_" methods. It's important to note that the actions performed by this API can only be effective after the handle instantiation, which is a one-time operation that occurs during the first call of the Co-routine. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

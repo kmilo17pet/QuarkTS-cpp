@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('q_extensions.html',''); initResizable(
 <p ><b> The overall timing primitive </b></p>
 <p >A <a class="el" href="q_stimers.html">Timer</a> beyond being a simple extension, is a direct dependency on the kernel. In fact, each task has an instance of Timer within its TCB (Task Control Block) to measure the passage of time and determine when a "time-elapsed" event needs to be generated. In summary, Timers are a non-blocking time measurement mechanism ideal for use in cooperative RTOS environments</p>
 <p >By using Timers for delays, tasks can continue to execute while waiting for the delay to expire, allowing other tasks to run. Timers are also a dependency for coroutines and FSMs in order to manage timed operations efficiently.</p>
-<p >Always consider using STimers for operations that require elapsed time measurement or intra-task delays to efficiently preserve the cooperative multitasking scheme.</p>
+<p >Always consider using Timers for operations that require elapsed time measurement or intra-task delays to efficiently preserve the cooperative multitasking scheme.</p>
 <p ><b> Last but not least </b></p>
 <p ><a class="el" href="q_atcli.html">AT Command Line Interface (CLI)</a></p>
 <p ><a class="el" href="q_memmang.html">Memory Management</a></p>

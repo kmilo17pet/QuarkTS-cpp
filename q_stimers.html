@@ -131,15 +131,15 @@ $(document).ready(function(){initNavTree('q_stimers.html',''); initResizable(); 
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
 <ul><li class="level1"><a href="#q_stimers_overview">Overview</a></li>
-<li class="level1"><a href="#q_stimerusage">Using a STimer</a></li>
-<li class="level1"><a href="#q_stimerexample">STimer example</a></li>
+<li class="level1"><a href="#q_stimerusage">Using a Timer</a></li>
+<li class="level1"><a href="#q_stimerexample">Timer example</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="q_stimers_overview"></a>
 Overview</h1>
-<p >The QuarkTS++ Timers are an essential extension as they allow for accurate and efficient timekeeping without blocking tasks. Using STimers enables the embedded application to perform other critical tasks while the timer is running in the background. Timers also provide flexibility in the event that the timer needs to be paused, restarted, or adjusted on the fly. This can be particularly useful in applications that require dynamic timing or have unpredictable event intervals.</p>
-<p >The Non-blocking design of the STimer is particularly important in cooperative scheduling because the tasks and operations of the OS are dependent on the cooperation of other tasks. Blocking timers can be problematic in a cooperative model because they halt the execution of the task, preventing other tasks from running. This can cause delays, missed deadlines, and other performance issues.</p>
-<p >The STimers implementation does not access resources from the interrupt context, does not consume any significant processing time unless a timer has actually expired, does not add any processing overhead to the sys-tick interrupt, and does not walk any other data structures. The timer service just takes the value of the existing kernel clock source for reference \( t_{sys}\) , allowing timer functionality to be added to an application with minimal impact.</p>
+<p >The QuarkTS++ Timers are an essential extension as they allow for accurate and efficient timekeeping without blocking tasks. Using Timers enables the embedded application to perform other critical tasks while the timer is running in the background. Timers also provide flexibility in the event that the timer needs to be paused, restarted, or adjusted on the fly. This can be particularly useful in applications that require dynamic timing or have unpredictable event intervals.</p>
+<p >The Non-blocking design of the Timer is particularly important in cooperative scheduling because the tasks and operations of the OS are dependent on the cooperation of other tasks. Blocking timers can be problematic in a cooperative model because they halt the execution of the task, preventing other tasks from running. This can cause delays, missed deadlines, and other performance issues.</p>
+<p >The timer implementation does not access resources from the interrupt context, does not consume any significant processing time unless a timer has actually expired, does not add any processing overhead to the sys-tick interrupt, and does not walk any other data structures. The timer service just takes the value of the existing kernel clock source for reference \( t_{sys}\) , allowing timer functionality to be added to an application with minimal impact.</p>
 <center>  
 <!DOCTYPE html>
 <html>
@@ -151,22 +151,22 @@ Overview</h1>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
- <em>STimers operation</em> </center><p >As illustrated in the figure, the time expiration check is roll-over safe by restricting it, to the only calculation that makes sense for timestamps, \( t_{sys} − X_{T_x} \), that yields a duration namely the amount of time elapsed between the current instant \( t_{sys}\) and the later instant, specifically, the tick taken at the arming instant with qSTimer_Set(), \( X_{t_i}\) Thanks to modular arithmetic, both of these are guaranteed to work fine across the clock-source rollover (a 32bit unsigned-counter), at least, as long the delays involved are shorter than <code>49.7</code> days.</p>
+ <em>Timers operation</em> </center><p >As illustrated in the figure, the time expiration check is roll-over safe by restricting it, to the only calculation that makes sense for timestamps, \( t_{sys} − X_{T_x} \), that yields a duration namely the amount of time elapsed between the current instant \( t_{sys}\) and the later instant, specifically, the tick taken at the arming instant with <a class="el" href="classq_o_s_1_1timer.html#aefc79f55f74d5f2e551e2a4ad088d105" title="Set the expiration time for a timer. On success, the timer gets armed immediately.">qOS::timer::set()</a>, \( X_{t_i}\) Thanks to modular arithmetic, both of these are guaranteed to work fine across the clock-source rollover (a 32bit unsigned-counter), at least, as long the delays involved are shorter than <code>49.7</code> days.</p>
 <p ><b> Features </b></p>
 <ul>
 <li>Provides a non-blocking equivalent to delay function.</li>
 <li>Each Timer encapsulates its own expiration (timeout) time.</li>
-<li>Provides elapsed and remaining time APIs.</li>
-<li>As mentioned before, QuarkTS++ timers uses the same kernel clock source, this means the time-elapsed calculation uses the qClock_GetTick() API, therefore, the time resolution has the same value passed when the scheduler has been initialized with core::init()</li>
+<li>Provides elapsed and remaining time methods.</li>
+<li>As mentioned before, QuarkTS++ timers uses the same kernel clock source, this means the time-elapsed calculation uses the <a class="el" href="classq_o_s_1_1clock.html#a6363cb8fda1990fbe538297c13f4595a" title="Return the current tick used by the OS.">qOS::clock::getTick()</a> method, therefore, the time resolution has the same value passed when the scheduler has been initialized with <a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a></li>
 </ul>
 <h1><a class="anchor" id="q_stimerusage"></a>
-Using a STimer</h1>
-<p >To use timers, the code should follow a specific pattern that deals with the states of this object. All related APIs are designed to be non-blocking, this means there are ideal for use in cooperative environments such as the one provided by the OS itself. To minimize the implementation, this object is intentionally created to behave like a binary object, this implies that it only handles two states, <em>Armed</em> and <em>Disarmed</em>. An <em>Armed</em> timer means that it is already running with a specified preset value and a <em>Disarmed</em> timer is the opposite, which means that it does not have a preset value, so consequently, it is not running at all.</p>
-<p >The arming action can be performed with timer::set() or timer::freeRun() and disarming with timer::disarm(). For timer::freeRun(), it checks the timer and performs the arming. If disarmed, it gets armed immediately with the specified time. If armed, the time argument is ignored and the API only checks for expiration. When the time expires, the Timer gets armed immediately taking the specified time.</p>
-<p >All possible checking actions are also provided for this object, including timer::elapsed(), timer::remaining() and timer::expired() , with the last one being the most commonly used for timing applications. Finally, to get the current status of the STimer (check if is <em>Armed</em> or <em>Disarmed</em>) the <a class="el" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c" title="This enumeration defines the built-in state-execution status values that can be used as return value ...">timer::status()</a> API should be used.</p>
+Using a Timer</h1>
+<p >To use timers, the code should follow a specific pattern that deals with the states of this object. All related methods are designed to be non-blocking, this means there are ideal for use in cooperative environments such as the one provided by the OS itself. To minimize the implementation, this object is intentionally created to behave like a binary object, this implies that it only handles two states, <em>Armed</em> and <em>Disarmed</em>. An <em>Armed</em> timer means that it is already running with a specified preset value and a <em>Disarmed</em> timer is the opposite, which means that it does not have a preset value, so consequently, it is not running at all.</p>
+<p >The arming action can be performed with <a class="el" href="classq_o_s_1_1timer.html#aefc79f55f74d5f2e551e2a4ad088d105" title="Set the expiration time for a timer. On success, the timer gets armed immediately.">qOS::timer::set()</a> or <a class="el" href="classq_o_s_1_1timer.html#ac3c609294bbfb906097f7e9b7d00b69f" title="Non-Blocking timer check with automatic arming.">qOS::timer::freeRun()</a> and disarming with <a class="el" href="classq_o_s_1_1timer.html#ab3a5a79fbf62111e048435d0804aee66" title="Disarms the timer object.">qOS::timer::disarm()</a>. For <a class="el" href="classq_o_s_1_1timer.html#ac3c609294bbfb906097f7e9b7d00b69f" title="Non-Blocking timer check with automatic arming.">qOS::timer::freeRun()</a>, it checks the timer and performs the arming. If disarmed, it gets armed immediately with the specified time. If armed, the time argument is ignored and the method only checks for expiration. When the time expires, the Timer gets armed immediately taking the specified time.</p>
+<p >All possible checking actions are also provided for this object, including <a class="el" href="classq_o_s_1_1timer.html#a39902c09df65b24ae8e25c6c8ffb9385" title="Retrieve the elapsed time in epochs.">qOS::timer::elapsed()</a>, <a class="el" href="classq_o_s_1_1timer.html#aff79958773cab990688fcccc7d155e5a" title="Retrieve the remaining time in epochs.">qOS::timer::remaining()</a> and <a class="el" href="classq_o_s_1_1timer.html#aaef5ff5b14bb68c184b70420110424de" title="Non-Blocking timer check.">qOS::timer::expired()</a> , with the last one being the most commonly used for timing applications. Finally, to get the current status of the Timer (check if is <em>Armed</em> or <em>Disarmed</em>) the <a class="el" href="classq_o_s_1_1timer.html#a758dbbec1aeca8c8398403e349555f3b" title="Get the current status of the Timer (Armed or Disarmed)">qOS::timer::status()</a> method should be used.</p>
 <h1><a class="anchor" id="q_stimerexample"></a>
-STimer example</h1>
-<p >The example below shows a simple usage of this object. It is noteworthy that arming is performed once using the event_t::FirstCall() flag. This prevents the timer from being re-armed every time the task runs. After the timer expires, it should be disarmed explicitly</p>
+Timer example</h1>
+<p >The example below shows a simple usage of this object. It is noteworthy that arming is performed once using the <a class="el" href="classq_o_s_1_1event__t.html#acf2072494ae5aa4a3bb387be72756bb6" title="Checks whether the task is running for the first time. Can be used for data initialization purposes.">qOS::event_t::firstCall()</a> flag. This prevents the timer from being re-armed every time the task runs. After the timer expires, it should be disarmed explicitly</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> Example_Task( event_t e ) {</div>
 <div class="line">    <span class="keyword">static</span> timer_t timeout;</div>
 <div class="line">    <span class="keywordflow">if</span> ( e.firstCall() ) {</div>
@@ -176,7 +176,7 @@ STimer example</h1>
 <div class="line">    </div>
 <div class="line">    <span class="comment">/*non-blocking delay, true when timeout expires*/</span></div>
 <div class="line">    <span class="keywordflow">if</span> ( timeout.expired() ) {</div>
-<div class="line">        <span class="comment">/* TODO: Code when STimer expires */</span></div>
+<div class="line">        <span class="comment">/* TODO: Code when Timer expires */</span></div>
 <div class="line">        timeout.disarm();</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">return</span>; <span class="comment">/*Yield*/</span></div>

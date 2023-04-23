@@ -208,7 +208,7 @@ First steps</h1>
 <li>The procedure <code>HardwareSetup()</code> should be a function with all the hardware instructions needed to initialize the target system.</li>
 <li>The procedure <code>Configure_Periodic_Timer_Interrupt_1ms()</code> should be a function with all the hardware instructions needed to initialize and enable a timer with an overflow tick of one millisecond.</li>
 </ul>
-<p >Tasks can be later added to the scheduling scheme by simply calling <a class="el" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a" title="Add a task to the scheduling scheme. The task is scheduled to run every t time units,...">qOS::core::addTask()</a> or any of the other available APIs for specific purpose tasks.</p>
+<p >Tasks can be later added to the scheduling scheme by simply calling <a class="el" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a" title="Add a task to the scheduling scheme. The task is scheduled to run every t time units,...">qOS::core::addTask()</a> or any of the other available methods for specific purpose tasks.</p>
 <h1><a class="anchor" id="q_os_demo"></a>
 Two simple demonstrative examples</h1>
 <h2><a class="anchor" id="q_os_example1"></a>
@@ -242,7 +242,7 @@ A simple scheduling</h2>
 <div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
-<div class="line"><span class="keywordtype">void</span> Task3_Callback( qEvent_t e ) {</div>
+<div class="line"><span class="keywordtype">void</span> Task3_Callback( event_t e ) {</div>
 <div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
@@ -317,7 +317,7 @@ Using the task argument</h2>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="keywordtype">void</span> PIDControl_Callback( event_t e ) {</div>
 <div class="line">    <span class="keywordtype">float</span> Error, derivative;</div>
 <div class="line">    <span class="comment">/* Obtain the reference to the specific PID controller</span></div>
-<div class="line"><span class="comment">     * using the TaskData field from the qEvent structure</span></div>
+<div class="line"><span class="comment">     * using the TaskData field from the event_t structure</span></div>
 <div class="line"><span class="comment">     */</span></div>
 <div class="line">    PID_Params_t *Controller = (PID_Params_t *)e.TaskData;</div>
 <div class="line">    <span class="comment">/*Compute the error*/</span></div>

@@ -229,6 +229,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga646289fa705250d5f8b950aee747becc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a> (<a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i)</td></tr>
 <tr class="memdesc:ga646289fa705250d5f8b950aee747becc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used to specify the timeout index.  <a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">More...</a><br /></td></tr>
 <tr class="separator:ga646289fa705250d5f8b950aee747becc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20c364205597d27c90669f230b5ddf2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a">qOS::core::addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
+<tr class="memdesc:ga20c364205597d27c90669f230b5ddf2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <a href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a">More...</a><br /></td></tr>
+<tr class="separator:ga20c364205597d27c90669f230b5ddf2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -361,6 +364,82 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga20c364205597d27c90669f230b5ddf2a" name="ga20c364205597d27c90669f230b5ddf2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga20c364205597d27c90669f230b5ddf2a">&#9670;&nbsp;</a></span>addStateMachineTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::core::addStateMachineTask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td>
+          <td class="paramname"><em>Task</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">time_t</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a>&#160;</td>
+          <td class="paramname"><em>s</em> = <code><a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>The State-machine object should be previously configured with qStateMachine_Setup() </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>qStateMachine_Setup() </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>A pointer to the task node. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>A pointer to the Finite State-Machine (FSM) object. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Task priority Value. [0(min) - <code>Q_PRIORITY_LEVELS</code> (max)] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Execution time interval given in milliseconds. For immediate execution ( t = <a class="el" href="classq_o_s_1_1clock.html#af9f1c16ed2c28ee3359bae3ad9b1d2a7" title="To specify a non-wait time value.">clock::IMMEDIATE</a> ). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Specifies the initial operational state of the task (<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0" title="The task can catch all the events. This operational state is available when the ENABLE bit is set.">taskState::ENABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE</a> or <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)</a>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Represents the task arguments. All arguments must be passed by reference and cast to <code>void*</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
 <a id="gad5476e06fde92efddf507ec60e492be3" name="gad5476e06fde92efddf507ec60e492be3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad5476e06fde92efddf507ec60e492be3">&#9670;&nbsp;</a></span>SIGNAL_TIMEOUT()</h2>
 

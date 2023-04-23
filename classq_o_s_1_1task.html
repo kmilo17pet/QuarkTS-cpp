@@ -252,7 +252,7 @@ Additional Inherited Members</h2></td></tr>
 <li>Event-based data</li>
 </ul>
 <p >The OS uses a Task Control Block(TCB) to represent each task, storing essential information about task management and execution. Part of this information also includes link-pointers that allows it to be part of one of the lists available in the Kernel Control Block (KCB).</p>
-<p >Each task performs its activities via a callback function and each of them is responsible for supporting cooperative multitasking by being “good neighbors”, i.e., running their callback methods quickly in a non-blocking way and releasing control back to the scheduler as soon as possible (returning). Every task node, must be defined using the qTask_t data-type and the callback is defined as a function that returns void and takes a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">event_t</a> data structure as its only parameter (This input argument can be used later to get event information.</p>
+<p >Each task performs its activities via a callback function and each of them is responsible for supporting cooperative multitasking by being “good neighbors”, i.e., running their callback methods quickly in a non-blocking way and releasing control back to the scheduler as soon as possible (returning). Every task node, must be defined using the <a class="el" href="classq_o_s_1_1task.html" title="A task node object.">qOS::task</a> class and the callback is defined as a function that returns void and takes a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">event_t</a> data structure as its only parameter (This input argument can be used later to get event information.</p>
 <p >Example : </p><div class="fragment"><div class="line"><span class="keyword">using namespace </span>qOS;</div>
 <div class="line"> </div>
 <div class="line">task UserTask;</div>
@@ -644,7 +644,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieve the task operational state. </p>
-<dl class="section return"><dt>Returns</dt><dd>taskState::ENABLED or taskState::DISABLED if the task is taskState::AWAKEN. taskState::ASLEEP if the task is in a Sleep operational state. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0" title="The task can catch all the events. This operational state is available when the ENABLE bit is set.">taskState::ENABLED_STATE</a> or <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a> if the task is <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE</a>. <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8aea79bba500e73e6a959181a878bbf064" title="Task operability is put into a deep doze mode, so the task can not be triggered by the lower preceden...">taskState::ASLEEP_STATE</a> if the task is in a Sleep operational state. </dd></dl>
 
 </div>
 </div>
@@ -806,7 +806,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Set/Change the number of task iterations. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">iValue</td><td>Number of task executions (Integer value). For indefinite execution (<em>iValue</em> = os.PERIODIC or os.INDEFINITE). Tasks do not remember the number of iteration set initially. After the iterations are done, internal iteration counter is 0. If you need to perform another set of iterations, you need to set the number of iterations again and resume. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iValue</td><td>Number of task executions (Integer value). For indefinite execution (<em>iValue</em> = <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> or <a class="el" href="classq_o_s_1_1task.html#a9405db8642daf9f6fa97e16628476fe7" title="Same as PERIODIC. A constant to indicate that the task will run every time its timeout has expired.">task::INDEFINITE</a>). Tasks do not remember the number of iteration set initially. After the iterations are done, internal iteration counter is 0. If you need to perform another set of iterations, you need to set the number of iterations again and resume. </td></tr>
   </table>
   </dd>
 </dl>
@@ -915,10 +915,10 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>taskState::ENABLED : Task will be able to catch all the events. ( <code>ENABLE_Bit=1</code> )</p>
-<p >taskState::DISABLED : Time events will be discarded. The task catch asynchronous events. ( <code>ENABLE_Bit=0</code>)</p>
-<p >taskState::ASLEEP : Put the task into a sleep operability state. The task can't be triggered by the lower precedence events. ( <code>SHUTDOWN_Bit=0</code>)</p>
-<p >taskState::AWAKE : Put the task into the previous state before it was put in the sleep state.( <code>SHUTDOWN_Bit=1</code> ) </p><dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+<p><a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0" title="The task can catch all the events. This operational state is available when the ENABLE bit is set.">taskState::ENABLED_STATE</a> : Task will be able to catch all the events. ( <code>ENABLE_Bit=1</code> )</p>
+<p ><a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a> : Time events will be discarded. The task catch asynchronous events. ( <code>ENABLE_Bit=0</code>)</p>
+<p ><a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8aea79bba500e73e6a959181a878bbf064" title="Task operability is put into a deep doze mode, so the task can not be triggered by the lower preceden...">taskState::ASLEEP_STATE</a> : Put the task into a sleep operability state. The task can't be triggered by the lower precedence events. ( <code>SHUTDOWN_Bit=0</code>)</p>
+<p ><a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE</a> : Put the task into the previous state before it was put in the sleep state.( <code>SHUTDOWN_Bit=1</code> ) </p><dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
 
 </div>
 </div>

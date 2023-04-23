@@ -528,7 +528,7 @@ Public Member Functions</h2></td></tr>
 <p>Install the Timeout-specification object to target FSM to allow timed signals within states. </p>
 <dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>This feature depends on the <a class="el" href="group__qstimers.html">Timers</a> extension. Make sure the time base is functional. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>You can increase the number of available timeouts instances by changing the <code>Q_FSM_MAX_TIMEOUTS</code> configuration macro inside <code>qconfig.h</code> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>You can increase the number of available timeouts instances by changing the <code>Q_FSM_MAX_TIMEOUTS</code> configuration macro inside <code><a class="el" href="config_8h_source.html">config.h</a></code> </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::installSignalQueue()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -565,7 +565,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Execute the Finite State Machine (FSM). </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a" title="Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run e...">core::addStateMachineTask()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a" title="Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run e...">core::addStateMachineTask()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">sig</td><td>User-defined signal (this value will be ignored if the installed queue has items available) </td></tr>
@@ -675,7 +675,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Sends a signal to all its subscribers (if available). </p>
 <dl class="section note"><dt>Note</dt><dd>If the signal queue is not available, an exclusion variable will be used.This means that the signal cannot be sent until the variable is empty. (the signal was handled by the state-machine engine). </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>To enable the functionality of sending signals to subscribers, you must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX in the configuration file <code>qconfig.h</code> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>To enable the functionality of sending signals to subscribers, you must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX in the configuration file <code><a class="el" href="config_8h_source.html">config.h</a></code> </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Data associated to the signal is not deep-copied to a queue or any buffer. It's only data pointer (address in memory) that is shallow-copied to a signal queue so it has to point to a globally accessible memory. If it pointed to a sender's local variable (from the stack) it would be invalid after sender returns from the function that sends the signal. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The signal-queue event has the highest precedence. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -771,7 +771,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initializes a Finite State Machine (FSM). </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a" title="Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run e...">core::addStateMachineTask()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a" title="Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run e...">core::addStateMachineTask()</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This API also initializes the top state. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
