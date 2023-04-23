@@ -9,5 +9,8 @@ var searchData=
   ['disabled_5fstate_6',['DISABLED_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5',1,'qOS']]],
   ['disarm_7',['disarm',['../classq_o_s_1_1timer.html#ab3a5a79fbf62111e048435d0804aee66',1,'qOS::timer']]],
   ['disarm_5fvalue_8',['DISARM_VALUE',['../classq_o_s_1_1timer.html#a9eb0005079c037b84e74d48dc3222037',1,'qOS::timer']]],
-  ['disarmed_9',['DISARMED',['../classq_o_s_1_1timer.html#a390a3964e12a8b8d37d5994467aa5dd0',1,'qOS::timer']]]
+  ['disarmed_9',['DISARMED',['../classq_o_s_1_1timer.html#a390a3964e12a8b8d37d5994467aa5dd0',1,'qOS::timer']]],
+  ['dwordmergewords_10',['dwordMergeWords',['../group__qflm.html#gaf3383fec42786ce57d66b957201b59d4',1,'qOS']]],
+  ['dwordwordhigh_11',['dWordWordHigh',['../group__qflm.html#ga8c9dcdd3b7f565ff2794ae9ca5436c3b',1,'qOS']]],
+  ['dwordwordlow_12',['dWordWordLow',['../group__qflm.html#ga5293cfc97dd00dfe85c9281e3b35db4c',1,'qOS']]]
 ];

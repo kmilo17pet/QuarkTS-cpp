@@ -7,11 +7,12 @@ var searchData=
   ['addtask_4',['addTask',['../classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a',1,'qOS::core']]],
   ['alloc_5',['alloc',['../classq_o_s_1_1mem_1_1pool.html#ad29a0b257c94bb4a0bed38654fa421bd',1,'qOS::mem::pool']]],
   ['armed_6',['ARMED',['../classq_o_s_1_1timer.html#ac6e0bb4c2242534ac79d6025a6f906dd',1,'qOS::timer']]],
-  ['asleep_7',['asleep',['../classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d',1,'qOS::task']]],
-  ['asleep_5fstate_8',['ASLEEP_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8aea79bba500e73e6a959181a878bbf064',1,'qOS']]],
-  ['at_20command_20line_20interface_9',['AT Command Line Interface',['../group__qatcli.html',1,'']]],
-  ['at_20command_20line_20interface_20_28cli_29_10',['AT Command Line Interface (CLI)',['../q_atcli.html',1,'q_extensions']]],
-  ['attachqueue_11',['attachQueue',['../classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9',1,'qOS::task']]],
-  ['awake_12',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]],
-  ['awake_5fstate_13',['AWAKE_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1',1,'qOS']]]
+  ['arraysize_7',['arraySize',['../group__qflm.html#gab5754d9611462696a65a030ff771f4bb',1,'qOS']]],
+  ['asleep_8',['asleep',['../classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d',1,'qOS::task']]],
+  ['asleep_5fstate_9',['ASLEEP_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8aea79bba500e73e6a959181a878bbf064',1,'qOS']]],
+  ['at_20command_20line_20interface_10',['AT Command Line Interface',['../group__qatcli.html',1,'']]],
+  ['at_20command_20line_20interface_20_28cli_29_11',['AT Command Line Interface (CLI)',['../q_atcli.html',1,'q_extensions']]],
+  ['attachqueue_12',['attachQueue',['../classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9',1,'qOS::task']]],
+  ['awake_13',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]],
+  ['awake_5fstate_14',['AWAKE_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1',1,'qOS']]]
 ];

@@ -5,7 +5,8 @@ var searchData=
   ['addstatemachinetask_2',['addStateMachineTask',['../classq_o_s_1_1core.html#a20c364205597d27c90669f230b5ddf2a',1,'qOS::core']]],
   ['addtask_3',['addTask',['../classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a',1,'qOS::core']]],
   ['alloc_4',['alloc',['../classq_o_s_1_1mem_1_1pool.html#ad29a0b257c94bb4a0bed38654fa421bd',1,'qOS::mem::pool']]],
-  ['asleep_5',['asleep',['../classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d',1,'qOS::task']]],
-  ['attachqueue_6',['attachQueue',['../classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9',1,'qOS::task']]],
-  ['awake_7',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]]
+  ['arraysize_5',['arraySize',['../group__qflm.html#gab5754d9611462696a65a030ff771f4bb',1,'qOS']]],
+  ['asleep_6',['asleep',['../classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d',1,'qOS::task']]],
+  ['attachqueue_7',['attachQueue',['../classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9',1,'qOS::task']]],
+  ['awake_8',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]]
 ];
