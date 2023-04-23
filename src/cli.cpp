@@ -162,7 +162,7 @@ bool commandLineInterface::isrHandler( char *pData, const size_t n )
     return retValue;
 }
 /*============================================================================*/
-size_t commandLineInterface::numOfArgs( const char *str )
+size_t commandLineInterface::numOfArgs( const char *str ) const
 {
     size_t count = 0u;
 

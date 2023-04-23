@@ -451,12 +451,12 @@ listIterator::listIterator( list& xList, listDirection dir, void *nodeOffset ) n
     current = static_cast<void*>( ret );
 }
 /*============================================================================*/
-bool listIterator::until( void ) noexcept
+bool listIterator::until( void ) const noexcept
 {
     return ( nullptr != current );
 }
 /*============================================================================*/
-bool listIterator::until( void* node ) noexcept
+bool listIterator::until( void* node ) const noexcept
 {
     return ( l->isMember( node ) ) && ( node != current );
 }

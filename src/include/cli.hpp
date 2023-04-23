@@ -319,7 +319,7 @@ namespace qOS {
             void *owner{ nullptr };
             bool notify( void );
             bool preProcessing( cli::command *cmd, char *inputBuffer );
-            size_t numOfArgs( const char *str );
+            size_t numOfArgs( const char *str ) const;
             void handleResponse( cli::response retval );
             void (*xNotifyFcn)( commandLineInterface *arg) = { nullptr };
             commandLineInterface( commandLineInterface const& ) = delete;

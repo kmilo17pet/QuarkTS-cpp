@@ -34,7 +34,7 @@ namespace qOS {
             bool isTaskInside( task &Task ) const noexcept;
             bool insert( task &Task, void *pData ) noexcept;
             void cleanUp( const task &Task ) noexcept;
-            inline bool hasElements( void ) noexcept
+            inline bool hasElements( void ) const noexcept
             {
                 return ( index >= 0 );
             }

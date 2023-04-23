@@ -548,13 +548,13 @@ namespace qOS {
             sm::signal_t signalNot;
             void *owner{ nullptr };
             void *mData{ nullptr };
-            void unsubscribeAll( void ) noexcept;
+            static void unsubscribeAll( void ) noexcept;
             bool internalSignalSend( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
             void timeoutCheckSignals( void ) noexcept;
             void timeoutPerformSpecifiedActions( sm::state * const s, sm::signalID sig ) noexcept;
-            sm::psIndex_t getSubscriptionStatus( sm::signalID s ) noexcept;
+            sm::psIndex_t getSubscriptionStatus( sm::signalID s ) const noexcept;
             void transition( sm::state *target, sm::historyMode mHistory ) noexcept;
-            uint8_t levelsToLCA( sm::state *target ) noexcept;
+            uint8_t levelsToLCA( sm::state *target ) const noexcept;
             void exitUpToLCA( uint8_t lca ) noexcept;
             void prepareHandler( sm::signal_t sig, sm::state *s ) noexcept;
             sm::status invokeStateCallback( sm::state * const s ) noexcept;

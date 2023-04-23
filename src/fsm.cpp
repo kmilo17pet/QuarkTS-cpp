@@ -375,7 +375,7 @@ void stateMachine::setSurrounding( const sm::surroundingCallback_t sFcn ) noexce
     surrounding = sFcn;
 }
 /*============================================================================*/
-sm::psIndex_t stateMachine::getSubscriptionStatus( sm::signalID s ) noexcept
+sm::psIndex_t stateMachine::getSubscriptionStatus( sm::signalID s ) const noexcept
 {
     sm::psIndex_t idx = { sm::PS_SIGNAL_NOT_FOUND, 0u ,0u };
     size_t i, j = 0u;
@@ -499,7 +499,7 @@ void stateMachine::transition( sm::state *target, sm::historyMode mHistory ) noe
     next = target; /*notify SM that there was indeed a transition*/
 }
 /*============================================================================*/
-uint8_t stateMachine::levelsToLCA( sm::state *target ) noexcept
+uint8_t stateMachine::levelsToLCA( sm::state *target ) const noexcept
 {
     uint8_t xLca = 0u;
 

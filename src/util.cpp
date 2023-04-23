@@ -436,7 +436,7 @@ int util::stringToInt( const char *s ) noexcept
         s = discardWhitespaces( s, Q_IO_UTIL_MAX_STRLEN );
         s = checkStrSign( s, &sgn );
         while ( '\0' != *s ) { /*iterate until null char is found*/
-            if ( ( *s >= '0' ) || ( *s <= '9' ) ) {
+            if ( ( *s >= '0' ) && ( *s <= '9' ) ) {
                 /*if the char is digit, compute the resulting integer*/
                 res = ( res * 10 ) + ( static_cast<int>( *s ) ) - ( static_cast<int>( '0' ) );
                 ++s;

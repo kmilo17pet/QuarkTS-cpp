@@ -89,7 +89,7 @@ namespace qOS {
                 * @see co::semSignal()
                 * @param[in] init The initial count of the semaphore.
                 */
-                semaphore( size_t init ) : count( init ) {}
+                explicit semaphore( size_t init ) : count( init ) {}
                 /**
                 * @brief Set the coroutine semaphore with a value for the counter. Internally,
                 * the semaphores use an @c size_t to represent the counter, therefore
@@ -116,12 +116,12 @@ namespace qOS {
                 {
                     h.ctx = this;
                 }
-                inline void saveHandle( void ) noexcept {}
-                inline void semSignal( semaphore& s ) noexcept
+                inline static void saveHandle( void ) noexcept {}
+                inline static void semSignal( semaphore& s ) noexcept
                 {
                     s.signal();
                 }
-                inline bool semTrylock( semaphore& s ) noexcept
+                inline static bool semTrylock( semaphore& s ) noexcept
                 {
                     return s.tryLock();
                 }
@@ -130,7 +130,7 @@ namespace qOS {
                     label = l;
                     return *this;
                 }
-                inline co::state operator()( void )
+                inline co::state operator()( void ) const
                 {
                     return label;
                 }

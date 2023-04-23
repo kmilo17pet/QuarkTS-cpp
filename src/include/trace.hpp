@@ -94,7 +94,7 @@ namespace qOS {
         class tout_base {
             public:
                 uint8_t base;
-                tout_base(uint8_t b) : base(b) {}
+                explicit tout_base(uint8_t b) : base(b) {}
         };
         /*! @endcond */
 
@@ -116,7 +116,7 @@ namespace qOS {
                 * @brief Instantiates a memory specifier size to trace n bytes
                 * @param[in] nb Number of bytes to be traced;
                 */
-                mem( size_t nb ) : n( nb ) {}
+                explicit mem( size_t nb ) : n( nb ) {}
         };
 
         /**
@@ -137,7 +137,7 @@ namespace qOS {
                 * @brief Instantiates a precision specifier of @a p decimal points.
                 * @param[in] p Number of decimal points for the precision
                 */
-                pre( uint8_t p ) : precision( p ) {}
+                explicit pre( uint8_t p ) : precision( p ) {}
         };
 
         /**

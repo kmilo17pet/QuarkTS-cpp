@@ -125,8 +125,8 @@ namespace qOS {
             node* removeBack( void ) noexcept;
             node* getNodeAtIndex( const listPosition p ) const noexcept;
             void givenNodeSwapBoundaries( node *n1, node *n2 ) noexcept;
-            void givenNodeSwapAdjacent( node *n1, node *n2 ) noexcept;
-            void givenNodesUpdateOuterLinks( node *n1, node *n2 ) noexcept;
+            static void givenNodeSwapAdjacent( node *n1, node *n2 ) noexcept;
+            static void givenNodesUpdateOuterLinks( node *n1, node *n2 ) noexcept;
             list( list const& ) = delete;
             void operator=( list const& ) = delete;
         public:
@@ -263,18 +263,18 @@ namespace qOS {
             * the list
             * @param[in] nodeOffset A pointer to the node offset in the list
             */
-            listIterator( list& xList, listDirection dir = listDirection::FORWARD, void *nodeOffset = nullptr ) noexcept;
+            explicit listIterator( list& xList, listDirection dir = listDirection::FORWARD, void *nodeOffset = nullptr ) noexcept;
             /**
             * @brief Check until current iterator reach one of its ends
             * @return @c true if the iterator has reach on of its ends.
             */
-            bool until( void ) noexcept;
+            bool until( void ) const noexcept;
             /**
             * @brief Check until current iterator reach the given node
             * @param[in] node A pointer to the node you want to reach
             * @return @c true if the iterator has reach the given node.
             */
-            bool until( void* node ) noexcept;
+            bool until( void* node ) const noexcept;
             /**
             * @brief Move the iterator forward
             */

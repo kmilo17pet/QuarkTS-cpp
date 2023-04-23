@@ -20,26 +20,26 @@ namespace qOS {
             volatile index_t tail{ 0u };
             volatile index_t head{ 0u };
             size_t length{ 0u };
-            size_t checkValidPowerOfTwo( size_t k ) noexcept;
+            static size_t checkValidPowerOfTwo( size_t k ) noexcept;
             byteBuffer( byteBuffer const& ) = delete;
             void operator=( byteBuffer const& ) = delete;
         public:
             /**
             * @brief Initialize the Byte-sized buffer instance
             * @param[in] pBuffer Block of memory or array of data
-            * @param[in] blength The size of the buffer(Must be a power of two)
+            * @param[in] bLength The size of the buffer(Must be a power of two)
             */
-            byteBuffer( volatile uint8_t *pBuffer, const size_t blength )
+            byteBuffer( volatile uint8_t *pBuffer, const size_t bLength )
             {
-                (void)setup( pBuffer, blength );
+                (void)setup( pBuffer, bLength );
             }
             /**
             * @brief Initialize the Byte-sized buffer
             * @param[in] pBuffer Block of memory or array of data
-            * @param[in] blength The size of the buffer(Must be a power of two)
+            * @param[in] bLength The size of the buffer(Must be a power of two)
             * @return @c true on success, otherwise returns @c false.
             */
-            bool setup( volatile uint8_t *pBuffer, const size_t blength ) noexcept;
+            bool setup( volatile uint8_t *pBuffer, const size_t bLength ) noexcept;
             /**
             * @brief Adds an element of data to the Byte-sized buffer
             * @param[in] bData The data to be added

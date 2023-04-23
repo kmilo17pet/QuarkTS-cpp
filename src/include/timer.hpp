@@ -37,7 +37,7 @@ namespace qOS {
             * than the clock-Tick.
             * @param[in] tTime The expiration time given in milliseconds.
             */
-            timer( qOS::time_t tTime )
+            explicit timer( qOS::time_t tTime )
             {
                 (void)set( tTime );
             }
@@ -130,7 +130,7 @@ namespace qOS {
             * @return Returns @c true when timer expires, otherwise, returns @c false.
             * @note A disarmed timer also returns @c false.
             */
-            bool operator()( void );
+            bool operator()( void ) const;
             /**
             * @brief Set the expiration time for a timer and gets armed immediately
             * @note The OS must be running before using timers.

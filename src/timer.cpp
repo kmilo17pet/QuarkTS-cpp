@@ -50,7 +50,7 @@ timer& timer::operator=( bool en )
     return *this;
 }
 /*============================================================================*/
-bool timer::operator()( void )
+bool timer::operator()( void ) const
 {
     return expired();
 }
