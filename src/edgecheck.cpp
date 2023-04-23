@@ -96,9 +96,8 @@ ec::nodeReaderFcn_t edgeCheck::getReader( ec::reg rSize ) noexcept
     return f;
 }
 /*============================================================================*/
-edgeCheck::edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept
+edgeCheck::edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept : debounceTime( timeDebounce )
 {
-    debounceTime = timeDebounce;
     state = &edgeCheck::stateCheck;
     reader = getReader( rSize );
     start = clock::getTick();

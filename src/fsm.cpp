@@ -158,7 +158,7 @@ bool stateMachine::internalSignalSend( sm::signalID sig, void *sData, bool isUrg
     #else
         Q_UNUSED( isUrgent );
     #endif
-
+    /*cppcheck-suppress knownConditionTrueFalse */
     if ( ( false == retValue ) && ( sm::signalID::SIGNAL_NONE == signalNot.id ) ) {
         signalNot.id = sig;
         signalNot.data = sData;
@@ -199,7 +199,7 @@ bool stateMachine::sendSignalToSubscribers( sm::signalID sig, void *sData, bool 
             }
         #endif
     }
-
+    /*cppcheck-suppress knownConditionTrueFalse */
     return ( 0u != r )? true : false;
 }
 /*============================================================================*/

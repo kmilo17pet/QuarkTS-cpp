@@ -453,7 +453,7 @@ bool core::notify( notifyMode mode, void* eventData ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool core::hasPendingNotifications( task &Task ) const noexcept
+bool core::hasPendingNotifications( const task &Task ) const noexcept
 {
     /*cstat -MISRAC++2008-0-1-6*/
     bool retValue = false;

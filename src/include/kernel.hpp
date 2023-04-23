@@ -338,7 +338,7 @@ namespace qOS {
             * @param[in] Task The task node
             * @return @c true if the task has pending notifications, @c false if not.
             */
-            bool hasPendingNotifications( task &Task ) const noexcept;
+            bool hasPendingNotifications( const task &Task ) const noexcept;
 
             /** @}*/
 

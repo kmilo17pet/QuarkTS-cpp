@@ -112,6 +112,7 @@ namespace qOS {
                 /*! @cond */
                 size_t n;
                 /*! @endcond */
+                
                 /**
                 * @brief Instantiates a memory specifier size to trace n bytes
                 * @param[in] nb Number of bytes to be traced;

@@ -16,7 +16,7 @@ prioQueue::prioQueue( pq::queueStack_t *area, const size_t pq_size ) noexcept
     critical::exit();
 }
 /*============================================================================*/
-size_t prioQueue::count( void ) noexcept
+size_t prioQueue::count( void ) const noexcept
 {
     size_t retValue = 0u;
 
@@ -58,7 +58,7 @@ task* prioQueue::get( void ) noexcept
     return xTask;
 }
 /*============================================================================*/
-bool prioQueue::isTaskInside( task &Task ) const noexcept
+bool prioQueue::isTaskInside( const task &Task ) const noexcept
 {
     bool retValue = false;
     const base_t currentQueueIndex = index + 1;

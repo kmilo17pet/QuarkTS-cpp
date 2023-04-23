@@ -29,9 +29,9 @@ namespace qOS {
             prioQueue() = delete;
             ~prioQueue() {}
             prioQueue( pq::queueStack_t *area, const size_t pq_size ) noexcept;
-            size_t count( void ) noexcept;
+            size_t count( void ) const noexcept;
             task* get( void ) noexcept;
-            bool isTaskInside( task &Task ) const noexcept;
+            bool isTaskInside( const task &Task ) const noexcept;
             bool insert( task &Task, void *pData ) noexcept;
             void cleanUp( const task &Task ) noexcept;
             inline bool hasElements( void ) const noexcept
