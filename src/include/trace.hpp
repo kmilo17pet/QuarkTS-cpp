@@ -323,8 +323,11 @@ namespace qOS {
         }
 
         /*! @cond */
+        /* cppcheck-suppress functionStatic */
         inline void log(void) {}
+        /* cppcheck-suppress functionStatic */
         inline void msg(void) {}
+        /* cppcheck-suppress functionStatic */
         inline const char * var( const char * vname ){ return vname; }
         /*! @endcond */
 

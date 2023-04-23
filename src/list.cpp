@@ -374,6 +374,7 @@ bool list::move( list& src, const listPosition p ) noexcept
 
     if ( ( nullptr != src.head) && ( p >= listPosition::AT_BACK ) ) {
         node *iNode;
+        /* cppcheck-suppress postfixOperator */
         for ( listIterator i = src.begin() ; i.until() ; i++ ) {
             iNode = i.get<node*>();
             iNode->container = this;
