@@ -106,7 +106,7 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "functions_r.html",
-"q_events.html#qeventflags"
+"q_background.html#q_license"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

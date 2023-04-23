@@ -5,5 +5,6 @@ var group__qos =
     [ "Inter-Task communication", "group__qpriv.html", "group__qpriv" ],
     [ "Clock", "group__qclock.html", "group__qclock" ],
     [ "Critical", "group__qcritical.html", "group__qcritical" ],
+    [ "Configuration", "group__qconfiguration.html", "group__qconfiguration" ],
     [ "Types and macros", "group__qtypes.html", "group__qtypes" ]
 ];

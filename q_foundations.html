@@ -238,7 +238,7 @@ Adding tasks to the scheme</h2>
 <li>Tasks that performed all their iterations, put their own state to <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">qOS::taskState::DISABLED_STATE</a>. Asynchronous triggers do not affect the iteration counter.</li>
 <li>The <code>arg</code> parameter can be used as a storage pointer, so, for multiple data, create a structure with the required members and pass a pointer to that structure.</li>
 </ol>
-<p >Invoking core::addTask() is the most generic way to add tasks to the scheme, supporting a mixture of time-triggered and event-triggered tasks, however, additional simplified method functions are also provided to add specific purpose tasks:</p>
+<p >Invoking <a class="el" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a" title="Add a task to the scheduling scheme. The task is scheduled to run every t time units,...">qOS::core::addTask()</a> is the most generic way to add tasks to the scheme, supporting a mixture of time-triggered and event-triggered tasks, however, additional simplified method functions are also provided to add specific purpose tasks:</p>
 <ul>
 <li>Event-triggered only tasks → <a class="el" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b" title="Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED_STATE state b...">qOS::core::addEventTask()</a>.</li>
 <li>State-machine tasks → <a class="el" href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a" title="Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run e...">qOS::core::addStateMachineTask()</a>.</li>
@@ -269,7 +269,7 @@ Running the OS</h1>
 <dl class="section note"><dt>Note</dt><dd>After calling <a class="el" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c" title="Executes the scheduling scheme. It must be called once after the task pool has been defined.">qOS::core::run()</a>, the OS scheduler will now be running, and the following line should never be reached, however, the user can optionally release it explicitly with <a class="el" href="classq_o_s_1_1core.html#add44643c29c6e26b52cb032fe4b31c12" title="Disables the kernel scheduling. The main thread will continue after the core::run() call.">qOS::core::schedulerRelease()</a> method function.</dd></dl>
 <h2><a class="anchor" id="q_releasescheduler"></a>
 Releasing the scheduler</h2>
-<p >This functionality must be enabled from the <code>Q_ALLOW_SCHEDULER_RELEASE</code> macro. This method stops the kernel scheduling. In consequence, the main thread will continue after the <a class="el" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c" title="Executes the scheduling scheme. It must be called once after the task pool has been defined.">qOS::core::run()</a> call.</p>
+<p >This functionality must be enabled from the <a class="el" href="group__qconfiguration.html#gac9c367441fa4f1c1b6778e14dab96f42" title="Allow scheduler release action.">Q_ALLOW_SCHEDULER_RELEASE</a> macro. This method stops the kernel scheduling. In consequence, the main thread will continue after the <a class="el" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c" title="Executes the scheduling scheme. It must be called once after the task pool has been defined.">qOS::core::run()</a> call.</p>
 <p >Although producing this action is not a typical desired behavior in any application, it can be used to handle a critical exception.</p>
 <p >When used, the release will take place after the current scheduling cycle finishes. The kernel can optionally include a release callback function that can be configured to get called if the scheduler is released. Defining the release callback, will help to take actions over the exception that caused the release action. To perform a release action, the <a class="el" href="classq_o_s_1_1core.html#a4d9ec6f77db0a44985f2793f2a47797b" title="Set/Change the scheduler release callback function.">qOS::core::setSchedulerReleaseCallback()</a> method should be used</p>
 <dl class="section note"><dt>Note</dt><dd>When a scheduler release is performed, resources are not freed. After released, the application can invoke the core::run() again to resume the scheduling activities</dd></dl>
@@ -294,7 +294,7 @@ Global states and scheduling rules</h1>
 <li><code>RUNNING</code> : The task is currently being executed.</li>
 <li><code>SUSPENDED</code> : The task doesn't take part in what is going on. Normally this state is taken after the <code>RUNNING</code> state or when the task does not reach the <code>READY</code> state.</li>
 </ul>
-<p >The presence of a task in a particular list indicates the task's state. There are many ready lists as defined in the <code>Q_PRIORITY_LEVELS</code> macro. To select the target ready list, the OS uses the user-assigned priority between 0 (the lowest priority) and <code>Q_PRIORITY_LEVELS-1</code> (the highest priority). For instance, if <code>Q_PRIORITY_LEVELS</code> is set to 5, then QuarkTS++ will use 5 priority levels or ready lists: 0 (lowest priority), 1, 2, 3, and 4 (highest priority).</p>
+<p >The presence of a task in a particular list indicates the task's state. There are many ready lists as defined in the <a class="el" href="group__qconfiguration.html#ga337dc315981cbda79cc115774883f237" title="Number of priority levels.">Q_PRIORITY_LEVELS</a> macro. To select the target ready list, the OS uses the user-assigned priority between 0 (the lowest priority) and <code>Q_PRIORITY_LEVELS-1</code> (the highest priority). For instance, if <a class="el" href="group__qconfiguration.html#ga337dc315981cbda79cc115774883f237" title="Number of priority levels.">Q_PRIORITY_LEVELS</a> is set to 5, then QuarkTS++ will use 5 priority levels or ready lists: 0 (lowest priority), 1, 2, 3, and 4 (highest priority).</p>
 <center>  
   <!DOCTYPE html>
   <html>
@@ -374,8 +374,7 @@ Configuration macros</h1>
 <li><code>Q_FSM_PS_SIGNALS_MAX</code> : <em>Default:</em> <code>8</code>. Max number of signals to subscribe for a Finite State Machine (FSM).</li>
 <li><code>Q_FSM_PS_SUB_PER_SIGNAL_MAX</code> : <em>Default:</em> <code>4</code>. Max number of FSM subscribers per signal.</li>
 <li><code>Q_DEBUGTRACE_BUFSIZE</code> : <em>Default:</em> <code>36</code>. The buffer size for debug and trace macros</li>
-<li><code>Q_CLI</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the <a class="el" href="q_atcli.html">AT Command Line Interface (CLI)</a> extension.</li>
-<li><code>Q_ATOF_FULL</code> : <em>Default:</em> <code>0</code>(disabled). Used to enable or disable the scientific notation in ASCII to float conversions. </li>
+<li><code>Q_CLI</code> : <em>Default:</em> <code>1</code>(enabled). Used to enable or disable the <a class="el" href="q_atcli.html">AT Command Line Interface (CLI)</a> extension. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
