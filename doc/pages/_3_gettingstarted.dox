@@ -112,7 +112,7 @@
 * timer with an overflow tick of one millisecond.
 *
 * Tasks can be later added to the scheduling scheme by simply calling 
-* qOS::core::addTask() or any of the other available APIs for specific purpose tasks.
+* qOS::core::addTask() or any of the other available methods for specific purpose tasks.
 *
 * @section q_os_demo Two simple demonstrative examples
 *
@@ -154,7 +154,7 @@
 *      BSP_UART1_WriteString( e.self().getName() );
 *  }
 *  /*==================================================================*/
-*  void Task3_Callback( qEvent_t e ) {
+*  void Task3_Callback( event_t e ) {
 *      BSP_UART1_WriteString( e.self().getName() );
 *  }
 *  /*==================================================================*/
@@ -259,7 +259,7 @@
 *  void PIDControl_Callback( event_t e ) {
 *      float Error, derivative;
 *      /* Obtain the reference to the specific PID controller
-*       * using the TaskData field from the qEvent structure
+*       * using the TaskData field from the event_t structure
 *       */
 *      PID_Params_t *Controller = (PID_Params_t *)e.TaskData;
 *      /*Compute the error*/

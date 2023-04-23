@@ -270,10 +270,10 @@ namespace qOS {
     * to a task
     */
     enum class queueLinkMode : uint32_t {
-        QUEUE_RECEIVER = 4u,    /**< This mode will trigger the task if there are elements in the queue. Data will be extracted automatically in every trigger and will be available in the qEvent_t::EventData field.*/
-        QUEUE_FULL = 8u,        /**< This mode will trigger the task if the queue is full. A pointer to the queue will be available in the qEvent_t::EventData field.*/
-        QUEUE_COUNT = 16u,      /**< This mode will trigger the task if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the qEvent_t::EventData field.*/
-        QUEUE_EMPTY = 32u,      /**< This mode will trigger the task if the queue is empty. A pointer to the queue will be available in the qEvent_t::EventData field.*/
+        QUEUE_RECEIVER = 4u,    /**< This mode will trigger the task if there are elements in the queue. Data will be extracted automatically in every trigger and will be available in the event_t::EventData field.*/
+        QUEUE_FULL = 8u,        /**< This mode will trigger the task if the queue is full. A pointer to the queue will be available in the event_t::EventData field.*/
+        QUEUE_COUNT = 16u,      /**< This mode will trigger the task if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the event_t::EventData field.*/
+        QUEUE_EMPTY = 32u,      /**< This mode will trigger the task if the queue is empty. A pointer to the queue will be available in the event_t::EventData field.*/
     };
 
     /**
@@ -317,7 +317,7 @@ namespace qOS {
     * “good neighbors”, i.e., running their callback methods quickly in a
     * non-blocking way and releasing control back to the scheduler as soon as
     * possible (returning).
-    * Every task node, must be defined using the qTask_t data-type and the
+    * Every task node, must be defined using the qOS::task class and the
     * callback is defined as a function that returns void and takes a event_t
     * data structure as its only parameter (This input argument can be used
     * later to get event information.
@@ -394,8 +394,8 @@ namespace qOS {
             cycles_t getCycles( void ) const noexcept;
             /**
             * @brief Retrieve the task operational state.
-            * @return taskState::ENABLED or taskState::DISABLED if the task is 
-            * taskState::AWAKEN. taskState::ASLEEP if the task is in a Sleep 
+            * @return taskState::ENABLED_STATE or taskState::DISABLED_STATE if the task is 
+            * taskState::AWAKE_STATE. taskState::ASLEEP_STATE if the task is in a Sleep 
             * operational state.
             */
             taskState getState( void ) const noexcept;
@@ -403,17 +403,17 @@ namespace qOS {
             * @brief Set the task operational state
             * @param[in] s Use one of the following values:
             *
-            * taskState::ENABLED : Task will be able to catch all the events. 
+            * taskState::ENABLED_STATE : Task will be able to catch all the events. 
             * ( @c ENABLE_Bit=1 )
             *
-            * taskState::DISABLED : Time events will be discarded. The task 
+            * taskState::DISABLED_STATE : Time events will be discarded. The task 
             * catch asynchronous events. ( @c ENABLE_Bit=0)
             *
-            * taskState::ASLEEP : Put the task into a sleep operability state. 
+            * taskState::ASLEEP_STATE : Put the task into a sleep operability state. 
             * The task can't be triggered by the lower precedence events. 
             * ( @c SHUTDOWN_Bit=0)
             *
-            * taskState::AWAKE : Put the task into the previous state before it 
+            * taskState::AWAKE_STATE : Put the task into the previous state before it 
             * was put in the sleep state.( @c SHUTDOWN_Bit=1 )
             * @return @c true on success. Otherwise return @c false.
             */
@@ -488,7 +488,7 @@ namespace qOS {
             /**
             * @brief Set/Change the number of task iterations
             * @param[in] iValue Number of task executions (Integer value). For
-            * indefinite execution (@a iValue = os.PERIODIC or os.INDEFINITE).
+            * indefinite execution (@a iValue = task::PERIODIC or task::INDEFINITE).
             * Tasks do not remember the number of iteration set initially. After
             * the iterations are done, internal iteration counter is 0. If you 
             * need to perform another set of iterations, you need to set the 

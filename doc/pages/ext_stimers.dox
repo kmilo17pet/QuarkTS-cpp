@@ -3,21 +3,21 @@
 *
 * @section q_stimers_overview Overview
 * The QuarkTS++ Timers are an essential extension as they allow for accurate and efficient 
-* timekeeping without blocking tasks. Using STimers enables the embedded 
+* timekeeping without blocking tasks. Using Timers enables the embedded 
 * application to perform other critical tasks while the timer is running in the
 * background. Timers also provide flexibility in the event that the timer 
 * needs to be paused, restarted, or adjusted on the fly. This can be 
 * particularly useful in applications that require dynamic timing or have 
 * unpredictable event intervals.
 *
-* The Non-blocking design of the STimer is particularly important in 
+* The Non-blocking design of the Timer is particularly important in 
 * cooperative scheduling because the tasks and operations of the OS are 
 * dependent on the cooperation of other tasks. Blocking timers can be 
 * problematic in a cooperative model because they halt the execution of the
 * task, preventing other tasks from running. This can cause delays, missed 
 * deadlines, and other performance issues.
 * 
-* The STimers implementation does not access resources from the interrupt 
+* The timer implementation does not access resources from the interrupt 
 * context, does not consume any significant processing time unless a timer has 
 * actually expired, does not add any processing overhead to the sys-tick 
 * interrupt, and does not walk any other data structures. The timer service 
@@ -38,14 +38,14 @@
 * </body>
 * </html>
 * @endhtmlonly
-* <em>STimers operation</em>
+* <em>Timers operation</em>
 * </center>
 *
 * As illustrated in the figure, the time expiration check is roll-over safe 
 * by restricting it, to the only calculation that makes sense for timestamps, 
 * \f$ t_{sys} − X_{T_x} \f$, that yields a duration namely the amount of time 
 * elapsed between the current instant \f$ t_{sys}\f$ and the later instant, 
-* specifically, the tick taken at the arming instant with qSTimer_Set(), 
+* specifically, the tick taken at the arming instant with qOS::timer::set(), 
 * \f$ X_{t_i}\f$
 * Thanks to modular arithmetic, both of these are guaranteed to work fine across 
 * the clock-source rollover (a 32bit unsigned-counter), at least, as long the 
@@ -55,15 +55,15 @@
 *
 * - Provides a non-blocking equivalent to delay function.
 * - Each Timer encapsulates its own expiration (timeout) time.
-* - Provides elapsed and remaining time APIs.
+* - Provides elapsed and remaining time methods.
 * - As mentioned before, QuarkTS++ timers uses the same kernel clock source, this means 
-* the time-elapsed calculation uses the qClock_GetTick() API, therefore, the time
+* the time-elapsed calculation uses the qOS::clock::getTick() method, therefore, the time
 * resolution has the same value passed when the scheduler has been initialized
-* with core::init()
+* with qOS::core::init()
 *
-* @section q_stimerusage Using a STimer
+* @section q_stimerusage Using a Timer
 * To use timers, the code should follow a specific pattern that deals with the 
-* states of this object. All related APIs are designed to be non-blocking, this
+* states of this object. All related methods are designed to be non-blocking, this
 * means there are ideal for use in cooperative environments such as the one provided 
 * by the OS itself. To minimize the implementation, this object is intentionally
 * created to behave like a binary object, this implies that it only handles two 
@@ -72,22 +72,22 @@
 * value and a @a Disarmed timer is the opposite, which means that it does not 
 * have a preset value, so consequently, it is not running at all.
 *
-* The arming action can be performed with timer::set() or timer::freeRun() and
-* disarming with timer::disarm().
-* For timer::freeRun(), it checks the timer and performs the arming. If
+* The arming action can be performed with qOS::timer::set() or qOS::timer::freeRun() and
+* disarming with qOS::timer::disarm().
+* For qOS::timer::freeRun(), it checks the timer and performs the arming. If
 * disarmed, it gets armed immediately with the specified time. If armed, the 
-* time argument is ignored and the API only checks for expiration. When the time
+* time argument is ignored and the method only checks for expiration. When the time
 * expires, the Timer gets armed immediately taking the specified time.
 *
 * All possible checking actions are also provided for this object, including 
-* timer::elapsed(), timer::remaining() and timer::expired() , with the last 
+* qOS::timer::elapsed(), qOS::timer::remaining() and qOS::timer::expired() , with the last 
 * one being the most commonly used for timing applications. Finally, to get the 
-* current status of the STimer (check if is @a Armed or @a Disarmed) the 
-* timer::status() API should be used.
+* current status of the Timer (check if is @a Armed or @a Disarmed) the 
+* qOS::timer::status() method should be used.
 *
-* @section q_stimerexample STimer example
+* @section q_stimerexample Timer example
 * The example below shows a simple usage of this object. It is noteworthy that
-* arming is performed once using the event_t::FirstCall() flag. This prevents the timer
+* arming is performed once using the qOS::event_t::firstCall() flag. This prevents the timer
 * from being re-armed every time the task runs. After the timer expires, it
 * should be disarmed explicitly
 *
@@ -101,7 +101,7 @@
 *      
 *      /*non-blocking delay, true when timeout expires*/
 *      if ( timeout.expired() ) {
-*          /* TODO: Code when STimer expires */
+*          /* TODO: Code when Timer expires */
 *          timeout.disarm();
 *      }
 *      else return; /*Yield*/

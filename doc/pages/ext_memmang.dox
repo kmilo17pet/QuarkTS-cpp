@@ -50,7 +50,7 @@
 * appear to consume a lot of RAM, even before any memory has been allocated
 * from it.
 * 
-* @warning All the memory management APIs are NOT interrupt-safe. Use these APIs
+* @warning All the memory pool methods are NOT interrupt-safe. Use these class
 * only from the base context.
 *
 * @attention The application is not exempt from memory leaks if the user does
@@ -77,7 +77,7 @@
 * From now on, user can allocate and free memory in the pool by calling 
 * qOS::mem::pool::alloc(), or qOS::mem::pool::free().
 * 
-* To keep track of the memory usage, the qOS::mem::pool::getFreeSize() API function 
+* To keep track of the memory usage, the qOS::mem::pool::getFreeSize() method function 
 * returns the number of free bytes in the memory pool at the time the function 
 * is called.
 *

@@ -122,8 +122,8 @@
 * <tr><td> Finite State machines(FSM) handling and related APIs <td>314
 * <tr><td> A FSM object @c qOS::stateMachine <td> 100
 * <tr><td> A state object @c qOS::sm::state <td> 36
-* <tr><td> STimers handling and related APIs <td> 258
-* <tr><td> A STimer object @c qOS::timer <td> 8
+* <tr><td> Timers handling and related APIs <td> 258
+* <tr><td> A Timer object @c qOS::timer <td> 8
 * <tr><td> Queues handling and related APIs <td> 544
 * <tr><td> A queue object @c qOS::queue <td> 28
 * <tr><td> Memory management <td> 407

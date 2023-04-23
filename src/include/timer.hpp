@@ -72,7 +72,7 @@ namespace qOS {
             * If disarmed, it gets armed immediately with the specified time.
             *
             * If armed, the time argument is ignored and the API only checks for
-            * expiration. When the time expires, the STimer gets armed immediately
+            * expiration. When the time expires, the timer gets armed immediately
             * taking the specified time.
             * @note After the timer expiration, this method re-arms the timer
             * @note The OS must be running before using a timer.

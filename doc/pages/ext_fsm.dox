@@ -252,13 +252,13 @@
 *
 * @section q_fsm_astask Adding a state machine as a task
 * The best strategy to run a FSM is delegating it to a task. For this, the 
-* os.addStateMachineTask() API should be used. Here, the task does not have 
+* os.addStateMachineTask() method should be used. Here, the task does not have 
 * a specific callback, instead, it will evaluate the active state of the FSM, 
 * and later, all the other possible states in response to events that mark 
 * their own transition. The task will be scheduled to run every @c t seconds in
 * qOS::task::PERIODIC mode.
 *
-* By using this API, the kernel will take care of the FSM by itself, so the
+* By using this method, the kernel will take care of the FSM by itself, so the
 * usage of qOS::stateMachine::run()  can be omitted.
 * 
 * Now that a task is running a dedicated state machine, the specific task 
@@ -415,7 +415,7 @@
 * communication of the state machine from other contexts becomes easier.
 *
 * To send a signal to a state machine, use the qOS::stateMachine::sendSignal() method.
-* This API can manage their delivery to one of these possible destinations: 
+* This method can manage their delivery to one of these possible destinations: 
 * an <em>exclusion variable</em> or a <em>signal queue</em>:
 * - An <em>exclusion variable</em> its a variable with an important distinction,
 * it can only be written if it is empty. The empty situation only happens, if 
@@ -439,7 +439,7 @@
 * constantly monitors the queue for available signals. The engine then 
 * propagates the signal through the hierarchy until it is processed. To enable 
 * this functionality in your state machine, the queue must be installed by using
-* the qOS::stateMachine::installSignalQueue() API.
+* the qOS::stateMachine::installSignalQueue() method.
 *
 * The install operation should be performed after both, the queue and the FSM
 * are correctly initialized by using qOS::queue::setup() and qOS::stateMachine::setup() 
@@ -536,7 +536,7 @@
 * Given the above explanation, it is evident that for its operation, the state 
 * machine requires an installed signal queue.
 * A timeout specification is referenced by an object of type sm::timeoutSpec 
-* and must be installed inside the state machine using the API 
+* and must be installed inside the state machine using the method 
 * qOS::stateMachine::installTimeoutSpec(). Then, timeout operations can be defined 
 * in a table for each state by using the qOS::sm::state::setTimeouts().
 *

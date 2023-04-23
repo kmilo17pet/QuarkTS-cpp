@@ -40,7 +40,7 @@ namespace qOS {
         * This code is defined by the application writer and should be a value
         * between @c 1 and @c 32766.
         *
-        * For example, a return value of cli::ERROR_CODE(15), will print out the
+        * For example, a return value of @c cli::ERROR_CODE(15), will print out the
         * string @c ERROR:15.
         */
         constexpr response ERROR_CODE( int16_t code )

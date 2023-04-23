@@ -2267,16 +2267,21 @@ INCLUDE_FILE_PATTERNS  =
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
 PREDEFINED             = Q_FSM=1 \
-                         Q_ATCLI=1 \
+                         Q_CLI=1 \
                          Q_TASK_EVENT_FLAGS=1 \
                          Q_QUEUES=1 \
                          Q_TASK_COUNT_CYCLES=1 \
                          Q_PRESERVE_TASK_ENTRY_ORDER=1 \
                          Q_USE_STDINT_H=1 \
                          Q_TASK_EVENT_FLAGS=1 \
-                         Q_ALLOW_TASK_NAMING=1 \
                          Q_ALLOW_YIELD_TO_TASK=1 \
                          Q_SETUP_TIME_CANONICAL=1 \
+                         Q_ALLOW_SCHEDULER_RELEASE=1\
+                         Q_FSM_MAX_NEST_DEPTH=5\
+                         Q_FSM_MAX_TIMEOUTS=3\
+                         Q_FSM_PS_SIGNALS_MAX=8\
+                         Q_FSM_PS_SUB_PER_SIGNAL_MAX=4\
+                         Q_TRACE_BUFSIZE=36\
                          DOXYGEN
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this

@@ -191,7 +191,7 @@ namespace qOS {
             bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. This API creates a task with
-            * a taskState::DISABLED state by default, so this task will be executed only, when
+            * a taskState::DISABLED_STATE state by default, so this task will be executed only, when
             * asynchronous events occurs. However, this behavior can be changed in
             * execution time using task::setTime() or task::setIterations().
             * @param[in] Task The task node.
@@ -207,6 +207,10 @@ namespace qOS {
                 return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED_STATE, arg );
             }
             #if ( Q_FSM == 1 )
+            /** @addtogroup  qfsm 
+            *  @{
+            */
+
             /**
             * @brief Add a task to the scheduling scheme running a dedicated
             * state-machine. The task is scheduled to run every @a t time units in
@@ -228,9 +232,28 @@ namespace qOS {
             * @return Returns @c true on success, otherwise returns @c false.
             */
             bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            /** @}*/
             #endif
             #if ( Q_CLI == 1 )
+            /** @addtogroup  qatcli
+            *  @{
+            */
+
+            /**
+            * @brief Add a task to the scheduling scheme running an AT Command Line
+            * Interface. Task will be scheduled as event-triggered task. The parser
+            * address will be stored in the event_t::TaskData storage-Pointer.
+            * @pre The AT-CLI object should be previously configured with 
+            * qOS::commandLineInterface::setup().
+            * @see ommandLineInterface::setup()
+            * @param[in] Task The task node.
+            * @param[in] cli The Command Line Inteface instance.
+            * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
+            * @param[in] arg The task arguments. 
+            * @return Returns @c true on success, otherwise returns @c false.
+            */
             bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;
+            /** @}*/
             #endif
             /**
             * @brief Set/Change the callback for the Idle-task
@@ -276,18 +299,18 @@ namespace qOS {
             * If mode = notifyMode::SIMPLE, the method marks the task as 
             * ready for execution and the scheduler planner will launch the task
             * immediately according to the scheduling rules (even
-            * if task is disabled) and setting the event_t::trigger flag to
+            * if task is disabled) and setting the @c trigger flag to
             * trigger::byNotificationSimple. 
             * If mode = notifyMode::QUEUED, the notification will insert the 
             * notification in the FIFO priority queue. The scheduler get this 
             * notification as an asynchronous event and the task will be ready 
             * for execution according to the queue order (determined by priority),
             * even if task is in a disabled or sleep operational state. When extracted,
-            * the scheduler will set event_t::Trigger flag to  trigger::byNotificationQueued.
+            * the scheduler will set @c trigger flag to trigger::byNotificationQueued.
             * Specific user-data can be passed through, and will be available inside the
             * event_t::EventData field, only in corresponding launch. If the task is in
             * a @c qSleep operation state, the scheduler will change the operational state
-            * to qAwaken setting the @c SHUTDOWN bit.
+            * to @c AWAKEN setting the @c SHUTDOWN bit.
             * Specific user-data can be passed through, and will
             * be available in the respective callback inside the qEvent_t::EventData
             * field.

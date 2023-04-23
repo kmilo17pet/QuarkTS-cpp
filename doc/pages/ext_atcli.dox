@@ -67,17 +67,17 @@
 * represent a carriage return character in this document).
 * - AT commands are case-insensitive
 * - Only four types of AT commands are allowed:
-*     - Acting (qOS::cli::commandType::ACT) : This is the simplest type of commands 
+*     - Acting (@c cli::commandType::ACT) : This is the simplest type of commands 
 *     that can be subscribed. It's normally used to execute the action that the 
 *     command should do. This type does not take arguments or modifiers, for 
 *     example : @c AT+CMD
-*     - Read (qOS::cli::commandType::READ) : This type of command allows you to read 
+*     - Read (@c cli::commandType::READ) : This type of command allows you to read 
 *     or test a value already configured for the specified parameter. Only one 
 *     argument is allowed. for example @c "AT+CMD?" or @c "AT+CMD?PARAM1"
-*     - Test (qOS::cli::commandType::TEST) : These types of commands allow you to get
+*     - Test (@c cli::commandType::TEST) : These types of commands allow you to get
 *     the values that can be set for its parameters. No parameters are allowed 
 *     here. Example @c "AT+CMD=?"
-*     - Parameter Set (qOS::cli::commandType::PARA) : These types of commands allow 
+*     - Parameter Set (@c cli::commandType::PARA) : These types of commands allow 
 *     n arguments to be passed for setting parameters, for example: @c AT+CMD=x,y
 *  If none of the types is given at the input, the command response will be 
 *  @c ERROR
@@ -134,13 +134,13 @@
 * The return value (an enum of type qOS::cli::response ) determines the 
 * response shown by the Output printer component. The possible allowed values are:
 *
-* - qOS::cli::response::OK : as expected, print out the OK string.
-* - qOS::cli::response::ERROR : as expected, print out the ERROR string.
-* - qOS::cli::ERROR_CODE(no) : Used to indicate an error code. This code is 
+* - @c cli::response::OK : as expected, print out the OK string.
+* - @c cli::response::ERROR : as expected, print out the ERROR string.
+* - @c cli::ERROR_CODE(no) : Used to indicate an error code. This code is 
 * defined by the application writer and should be a value between @c 1 and 
 * @c 32766. For example, a return value of @c cli::ERROR_CODE(15), will print 
 * out the string @c ERROR:15.
-* - cli::response::NO_RESPONSE : No response will be printed out.
+* - @c cli::response::NO_RESPONSE : No response will be printed out.
 * 
 * A simple example of how the command callback should be coded is shown below:
 *
@@ -183,8 +183,8 @@
 *  @endcode
 *
 * @section q_atcli_inputh Handling the input
-* Input handling is simplified using the provided APIs. The 
-* commandLineInterface::isrHandler() function are intended to be used from the 
+* Input handling is simplified using the provided methods of this class. The 
+* qOS::commandLineInterface::isrHandler() function are intended to be used from the 
 * interrupt context. This avoids any kind of polling implementation and allows 
 * the CLI application to be designed using an event-driven pattern.
 *
@@ -193,15 +193,15 @@
 * call one of these functions from the desired hardware interface, for example, 
 * from a UART receive ISR.
 *
-* If there is no intention to feed the input from the ISR context, the APIs 
-* commandLineInterface::raise() or commandLineInterface::exec() can be called at
+* If there is no intention to feed the input from the ISR context, the methods 
+* qOS::commandLineInterface::raise() or qOS::commandLineInterface::exec() can be called at
 * demand from the base context.
 * As expected, both functions send the string to the specified CLI. The 
-* difference between both APIs is that commandLineInterface::raise() sends the 
+* difference between both methods is that qOS::commandLineInterface::raise() sends the 
 * command through the input, marking it as ready for parsing and acting as the 
 * Input handler component. 
 *
-* The commandLineInterface::exec(), on the other hand, executes the components 
+* The qOS::commandLineInterface::exec(), on the other hand, executes the components 
 * of Pre-parsing and Postparsing bypassing the other components, including the 
 * Output printer, so that it must be handled by the application writer.
 * 
@@ -209,9 +209,10 @@
 * non-graphic characters and cast any uppercase to lowercase.
 *
 * @section q_atcli_run Running the CLI parser
-* The parser can be invoked directly using the qATCLI_Run() API. Almost all the 
-* components that make up the CLI are performed by this API, except for the 
-* Input Handler, which should be managed by the application writer itself.
+* The parser can be invoked directly using the qOS::commandLineInterface::run() 
+* method. Almost all the components that make up the CLI are performed by this 
+* method, except for the Input Handler, which should be managed by the 
+* application writer itself.
 *
 * In this way, the writer of the application must implement the logic that leads
 * this function to be called when the input-ready condition is given.
@@ -224,7 +225,7 @@
 *
 * The recommended implementation is to leave this job handled by a task 
 * instead of coding the logic to know when the CLI should run. For this, the 
-* core::addCommandLineInterfaceTask() is provided. This API adds a task to the 
+* qOS::core::addCommandLineInterfaceTask() is provided. This method adds a task to the 
 * scheduling scheme running an AT Command Line Interface and is treated as an 
 * event-triggered task. 
 * The address of the parser instance will be stored in the @c TaskData 
@@ -247,7 +248,7 @@
 *  #define CLI_MAX_INPUT_BUFF_SIZE         ( 128 )
 *  #define CLI_MAX_OUTPUT_BUFF_SIZE        ( 128 )
 *  
-*  task_t CLI_Task;
+*  task CLI_Task;
 *  commandLineInterface CLI_Object;
 *  cli::command AT_GPIO, AT_INFO;
 *  

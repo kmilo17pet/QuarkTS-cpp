@@ -115,8 +115,8 @@ namespace qOS {
             * queue. The size of the items the queue will hold was defined when the
             * queue was created, so this many bytes will be copied from @a itemToQueue
             * into the queue storage area.
-            * @param[in] pos Can take the value queueSendMode::TO_BACK (default)
-            * to place the item at the back of the queue, or queueSendMode::TO_FRONT
+            * @param[in] pos Can take the value @c queueSendMode::TO_BACK (default)
+            * to place the item at the back of the queue, or @c queueSendMode::TO_FRONT
             * to place the item at the front of the queue (for high priority messages).
             * @return @c true on successful add, @c false if not added
             */

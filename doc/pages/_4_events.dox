@@ -11,13 +11,13 @@
 * - How to get the event-associated data?
 * - What is the task execution status?
 *
-* The OS provides a simple approach for this, a data structure with all the 
-* regarding information of the task execution. This structure, that is already 
+* The OS provides a simple approach for this, a class with all the 
+* regarding information of the task execution. This class, that is already 
 * defined in the callback function as the @ref qOS::event_t argument, is filled by the 
 * kernel dispatcher, so the application writer only needs to read the fields 
 * inside.
 *
-* This data structure is defined as:
+* This class has the following attributes and methods:
 *  @code{.c}
 *  class event_t {
 *      trigger getTrigger( void );
@@ -182,7 +182,7 @@
 *
 * @note Sending simple notifications using qOS::core::notify() is
 * interrupt-safe, however, this only catches one event per task because the
-* API overwrites the associated data.
+* method overwrites the associated data.
 *
 * @subsubsection q_queuednot Queued Notifications
 * If the application notifies multiple events to the same task, queued 
@@ -248,7 +248,7 @@
 * 
 *
 * @note Any queue extraction involves an activation of the receiving task. The 
-* extracted data will be available inside the qOS::event_t structure.
+* extracted data will be available inside the qOS::event_t class.
 * @remark Among all the provided events, queued notifications have the highest
 * precedence.
 *
@@ -424,11 +424,11 @@
 * the queue reaches the specified value.
 * - qOS::queueLinkMode::QUEUE_EMPTY : The task will be triggered if the queue is empty.
 *
-* @note For the queueLinkMode::QUEUE_RECEIVER mode, data from the front of the queue 
+* @note For the qOS::queueLinkMode::QUEUE_RECEIVER mode, data from the front of the queue 
 * will be received automatically in every trigger, this involves a data removal 
-* after the task is served. During the respective task execution, the EventData 
-* field of the qEvent_t structure will be pointing to the extracted data. For 
-* the other modes, the event_t::EventData field will point to the queue that 
+* after the task is served. During the respective task execution, the qOS::event_t::EventData 
+* field of the qOS::event_t class will be pointing to the extracted data. For 
+* the other modes, the qOS::event_t::EventData field will point to the queue that 
 * triggered the event.
 * 
 * @subsubsection q_queueexample A queue example

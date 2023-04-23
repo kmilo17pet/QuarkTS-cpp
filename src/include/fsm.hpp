@@ -109,7 +109,7 @@ namespace qOS {
                 * @brief Produce a transition to the desired state.
                 * @param[in] s The state object.
                 * @param[in] m The transition to history mode. This argument
-                * can be ignored ( default = historyMode::NO_HISTORY ).
+                * can be ignored ( default = @c sm::historyMode::NO_HISTORY ).
                 */
                 void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
                 {
@@ -402,7 +402,7 @@ namespace qOS {
                 /**
                 * @brief Installs a table with the outgoing transitions for this
                 * state
-                * @param[in] table An array of entries of type qSM_Transition_t with the
+                * @param[in] table An array of entries of type @c sm::transition_t with the
                 * outgoing transitions. Each entry relates signals, actions and the target
                 * state using the following layout:
                 * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
@@ -656,7 +656,7 @@ namespace qOS {
             * (the signal was handled by the state-machine engine).
             * @remark To enable the functionality of sending signals to subscribers, you
             * must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX
-            * in the configuration file @c qconfig.h
+            * in the configuration file @c config.h
             * @warning Data associated to the signal is not deep-copied to a queue or any 
             * buffer. It's only data pointer (address in memory) that is shallow-copied
             * to a signal queue so it has to point to a globally accessible memory. 
@@ -680,7 +680,7 @@ namespace qOS {
             * @pre This feature depends on the @ref qstimers extension. Make sure the
             * time base is functional.
             * @note You can increase the number of available timeouts instances by
-            * changing the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c qconfig.h
+            * changing the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c config.h
             * @see stateMachine::installSignalQueue()
             * @param[in] ts The timeout specification object.
             * @return Returns @c true on success, otherwise returns @c false.

@@ -264,22 +264,24 @@
 *  /*===================================================================*/
 *  void CoroutineTask_Callback( event_t e ) {
 *      co::reenter( xHandleCR ) { /*externally controlled*/
-*          if ( EventNotComing() ) {
-*              co::yield;
+*          for(;;) {
+*              if ( EventNotComing() ) {
+*                  co::yield;
+*              }
+*              RunFirstJob();
+*              co::delay( WAIT_TIME );
+*              SecondJobStatus = RunSecondJob();
+*              co::waitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );
+*              CleanUpStatus = CleanupJob();
+*              co::waitUntil( SomeVar > SomeValue );
 *          }
-*          RunFirstJob();
-*          co::delay( WAIT_TIME );
-*          SecondJobStatus = RunSecondJob();
-*          co::waitUntil( JobFlag == JOB_SUCCESS, JOB_TIMEOUT );
-*          CleanUpStatus = CleanupJob();
-*          co::waitUntil( SomeVar > SomeValue );
-*      } qCR_End;
+*      };
 *  }
 *  @endcode
 *
 * As shown in the code snippet above, the Co-routine handle its globally declared
 * to enable other contexts to access it. The example demonstrates  how  another 
-* task can control the Coroutine using the "try_" methods API. It's 
+* task can control the Coroutine using the "try_" methods. It's 
 * important to note that the actions performed by this API can only be effective
 * after the handle instantiation, which is a one-time operation that occurs 
 * during the first call of the Co-routine.

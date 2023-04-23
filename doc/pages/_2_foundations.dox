@@ -48,7 +48,7 @@
 * code to configure the device and feed the reference clock manually. Here, a 
 * hardware timer should raise an interrupt periodically. After the <em>Interrupt 
 * Service Routine(ISR)</em> has been implemented using the platform-dependent code, 
-* the qOS::clock::sysTick() API must be called inside. It is recommended that the 
+* the qOS::clock::sysTick() method must be called inside. It is recommended that the 
 * reserved ISR should only be used by QuarkTS++.
 * 
 * The initialization and configuration of QuarkTS++ through qOS::core::init() will allow
@@ -166,7 +166,7 @@
 * After setting up the kernel with qOS::core::init(), the user can proceed to deploy 
 * the multitasking application by adding tasks. If the task node and their 
 * respective callback is already defined, the task can be added to the scheme 
-* using qOS::core::addTask(). This API can schedule a task to run every @c t seconds,
+* using qOS::core::addTask(). This method can schedule a task to run every @c t seconds,
 * @c n executions times and invoking the @c callbackFcn method on every pass.
 *
 * <b> Caveats: </b>
@@ -187,7 +187,7 @@
 *
 * Invoking core::addTask() is the most generic way to add tasks to the scheme, 
 * supporting a mixture of time-triggered and event-triggered tasks, however, 
-* additional simplified API functions are also provided to add specific purpose
+* additional simplified method functions are also provided to add specific purpose
 * tasks:
 *
 * - Event-triggered only tasks → qOS::core::addEventTask().
@@ -198,7 +198,7 @@
 * An event-triggered task reacts asynchronously to the occurrence of events in 
 * the system, such as external interrupts or changes in the available resources.
 *
-* The API qOS::core::addEventTask() is intended to add this kind of tasks, keeping it
+* The method qOS::core::addEventTask() is intended to add this kind of tasks, keeping it
 * in a @c SUSPENDED state. Only asynchronous events followed 
 * by their priority value dictate when a task can change to the @c RUNNING state.
 * 
@@ -214,7 +214,7 @@
 * reference a task, but there is no link back the other way and the kernel 
 * doesn't know anything about the variables, where the variable is allocated 
 * (stack, global, static, etc.) or how many copies of the variable you have 
-* made, or even if the variable still exists. So the qOS::core::removeTask() API 
+* made, or even if the variable still exists. So the qOS::core::removeTask() method 
 * cannot automatically free the resources allocated by the variable. If the task
 * node has been dynamically allocated, the application writer it's responsible
 * to free the memory block after a removal call.
@@ -239,11 +239,11 @@
 * 
 * @note  After calling qOS::core::run(), the OS scheduler will now be running, and the
 * following line should never be reached, however, the user can optionally 
-* release it explicitly with qOS::core::schedulerRelease() API function.
+* release it explicitly with qOS::core::schedulerRelease() method function.
 *
 * @subsection q_releasescheduler Releasing the scheduler
 * This functionality must be enabled from the @c Q_ALLOW_SCHEDULER_RELEASE 
-* macro. This API stops the kernel scheduling. In consequence, the main thread 
+* macro. This method stops the kernel scheduling. In consequence, the main thread 
 * will continue after the qOS::core::run() call.
 *
 * Although producing this action is not a typical desired behavior in any 
@@ -254,7 +254,7 @@
 * be configured to get called if the scheduler is released. Defining the release
 * callback, will help to take actions over the exception that caused the release
 * action. To perform a release action, the qOS::core::setSchedulerReleaseCallback()
-* API should be used
+* method should be used
 *
 * @note When a scheduler release is performed, resources are not freed. After
 * released, the application can invoke the core::run() again to resume the
@@ -382,7 +382,7 @@
 * can not be triggered by the lower precedence events. This operational state 
 * is available when the @c SHUTDOWN bit is cleared. The task can exit from this
 * operational state when it receives a high precedence event (a queued 
-* notification) or using the qOS::task::setState() API.
+* notification) or using the qOS::task::setState() method.
 * 
 * The figure below shows a better representation of how the event flow can be 
 * affected by these operational states.
@@ -424,7 +424,7 @@
 * Considering that the kernel is hardware-independent, the application writer 
 * should provide the necessary piece of code to enable and disable interrupts.
 *
-* For this, the critical::setInterruptsED() API should be used. In this way, 
+* For this, the critical::setInterruptsED() method should be used. In this way, 
 * communication between ISR and tasks using queued notifications or data queues 
 * is performed safely.
 *
