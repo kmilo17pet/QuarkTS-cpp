@@ -115,6 +115,11 @@ This file is part of the QuarkTS++ OS distribution.
 */
 
 /**
+*  @defgroup qconfiguration Configuration
+*  @ingroup qos
+*/
+
+/**
 *  @defgroup qtypes Types and macros
 *  @ingroup qos
 */

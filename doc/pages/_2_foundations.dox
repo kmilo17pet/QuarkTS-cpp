@@ -185,7 +185,7 @@
 * create a structure with the required members and pass a pointer to that
 * structure.
 *
-* Invoking core::addTask() is the most generic way to add tasks to the scheme, 
+* Invoking qOS::core::addTask() is the most generic way to add tasks to the scheme, 
 * supporting a mixture of time-triggered and event-triggered tasks, however, 
 * additional simplified method functions are also provided to add specific purpose
 * tasks:
@@ -242,7 +242,7 @@
 * release it explicitly with qOS::core::schedulerRelease() method function.
 *
 * @subsection q_releasescheduler Releasing the scheduler
-* This functionality must be enabled from the @c Q_ALLOW_SCHEDULER_RELEASE 
+* This functionality must be enabled from the #Q_ALLOW_SCHEDULER_RELEASE 
 * macro. This method stops the kernel scheduling. In consequence, the main thread 
 * will continue after the qOS::core::run() call.
 *
@@ -293,10 +293,10 @@
 * reach the @c READY state.
 *
 * The presence of a task in a particular list indicates the task's state. There
-* are many ready lists as defined in the @c Q_PRIORITY_LEVELS macro. To select 
+* are many ready lists as defined in the #Q_PRIORITY_LEVELS macro. To select 
 * the target ready list, the OS uses the user-assigned priority between 0 (the 
 * lowest priority) and @c Q_PRIORITY_LEVELS-1 (the highest priority). For 
-* instance, if @c Q_PRIORITY_LEVELS is set to 5, then QuarkTS++ will use 5 
+* instance, if #Q_PRIORITY_LEVELS is set to 5, then QuarkTS++ will use 5 
 * priority levels or ready lists: 0 (lowest priority), 1, 2, 3, and 4 (highest 
 * priority).
 *
@@ -471,7 +471,5 @@ State Machine (FSM) extension.
 * trace macros
 * - @c Q_CLI : @a Default: @c 1(enabled). Used to enable or disable the 
 * @ref q_atcli extension.
-* - @c Q_ATOF_FULL : @a Default: @c 0(disabled). Used to enable or disable the 
-* scientific notation in ASCII to float conversions.
 *
 */
