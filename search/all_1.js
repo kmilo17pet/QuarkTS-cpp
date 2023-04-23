@@ -16,7 +16,7 @@ var searchData=
   ['byschedulingrelease_13',['bySchedulingRelease',['../group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a19e69dabdbfeaa567e1c54e681034792',1,'qOS']]],
   ['byte_2dsized_20buffers_14',['Byte-Sized buffers',['../group__qbsbuffers.html',1,'']]],
   ['byte_5ft_15',['byte_t',['../group__qtypes.html#ga11f018d226b5517a1b05e065843af7ae',1,'types.hpp']]],
-  ['bytebuffer_16',['byteBuffer',['../classq_o_s_1_1byte_buffer.html#ab5447bda5dfcb3fcb7156c0ba56773ed',1,'qOS::byteBuffer::byteBuffer()'],['../classq_o_s_1_1byte_buffer.html',1,'qOS::byteBuffer']]],
+  ['bytebuffer_16',['byteBuffer',['../classq_o_s_1_1byte_buffer.html#a3c382b68fedbf6cbea3efeff7085fe2c',1,'qOS::byteBuffer::byteBuffer()'],['../classq_o_s_1_1byte_buffer.html',1,'qOS::byteBuffer']]],
   ['bytemergenibbles_17',['byteMergeNibbles',['../group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4',1,'qOS']]],
   ['bytenibblehigh_18',['byteNibbleHigh',['../group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75',1,'qOS']]],
   ['bytenibblelow_19',['byteNibbleLow',['../group__qflm.html#gae29147e4da5fc8c5c73f8b1e180bdad7',1,'qOS']]],

@@ -10,7 +10,7 @@ var classq_o_s_1_1core =
     [ "findTaskByName", "classq_o_s_1_1core.html#a45a37c156bf1da3a0847da37ba155a68", null ],
     [ "getGlobalState", "classq_o_s_1_1core.html#abf9024e617bd777e7a8d26a313e871c4", null ],
     [ "getInstance", "classq_o_s_1_1core.html#af84a4187cdf1ca549c63cf6de61d4fb8", null ],
-    [ "hasPendingNotifications", "group__qnot.html#ga8b80ff1e1c37ab40b6194bc4e3d885b6", null ],
+    [ "hasPendingNotifications", "group__qnot.html#gafe7a90b71490f45033ee461b8596c322", null ],
     [ "init", "classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449", null ],
     [ "notify", "group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298", null ],
     [ "notify", "group__qnot.html#gab865aa8541244ae16444e52691823a41", null ],

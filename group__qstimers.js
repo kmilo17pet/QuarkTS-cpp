@@ -10,7 +10,7 @@ var group__qstimers =
       [ "getInterval", "classq_o_s_1_1timer.html#a851424288eb8b90246e3f434abb614eb", null ],
       [ "operator()", "classq_o_s_1_1timer.html#ac257471fd175c69bad6ec80c98b612f2", null ],
       [ "operator()", "classq_o_s_1_1timer.html#a5ef49db13e767dffb713b23a06f8e875", null ],
-      [ "operator()", "classq_o_s_1_1timer.html#aeaa86559e49c4023a9b3dfc7caf06dac", null ],
+      [ "operator()", "classq_o_s_1_1timer.html#aafad4ddc74a56df3783ee26909906659", null ],
       [ "operator=", "classq_o_s_1_1timer.html#a18059f24cc63b88fc7f6b7b1b3c25a1f", null ],
       [ "operator=", "classq_o_s_1_1timer.html#a45533f1d4afd81a2d4c632eadd2f18cd", null ],
       [ "reload", "classq_o_s_1_1timer.html#a28117b138cfc3cbb1b93feb12b860355", null ],

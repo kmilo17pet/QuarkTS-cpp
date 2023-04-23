@@ -143,12 +143,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae19eb42ed3d51f7be76e5d8696f2b5cd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#ae19eb42ed3d51f7be76e5d8696f2b5cd">listIterator</a> (<a class="el" href="classq_o_s_1_1list.html">list</a> &amp;xList, <a class="el" href="group__qlists.html#ga032e23f2e0cb931b9bc0189b479c8381">listDirection</a> dir=listDirection::FORWARD, void *nodeOffset=nullptr) noexcept</td></tr>
 <tr class="memdesc:ae19eb42ed3d51f7be76e5d8696f2b5cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiate a list iterator for the given list.  <a href="classq_o_s_1_1list_iterator.html#ae19eb42ed3d51f7be76e5d8696f2b5cd">More...</a><br /></td></tr>
 <tr class="separator:ae19eb42ed3d51f7be76e5d8696f2b5cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e0dd8e798a5793b2f9980e650005777"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#a8e0dd8e798a5793b2f9980e650005777">until</a> (void) noexcept</td></tr>
-<tr class="memdesc:a8e0dd8e798a5793b2f9980e650005777"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check until current iterator reach one of its ends.  <a href="classq_o_s_1_1list_iterator.html#a8e0dd8e798a5793b2f9980e650005777">More...</a><br /></td></tr>
-<tr class="separator:a8e0dd8e798a5793b2f9980e650005777"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21b54a34e5d7f823c6322238879f6ffc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#a21b54a34e5d7f823c6322238879f6ffc">until</a> (void *<a class="el" href="classq_o_s_1_1node.html">node</a>) noexcept</td></tr>
-<tr class="memdesc:a21b54a34e5d7f823c6322238879f6ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check until current iterator reach the given node.  <a href="classq_o_s_1_1list_iterator.html#a21b54a34e5d7f823c6322238879f6ffc">More...</a><br /></td></tr>
-<tr class="separator:a21b54a34e5d7f823c6322238879f6ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45919f4212bd04942b47622c45f9ff85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#a45919f4212bd04942b47622c45f9ff85">until</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a45919f4212bd04942b47622c45f9ff85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check until current iterator reach one of its ends.  <a href="classq_o_s_1_1list_iterator.html#a45919f4212bd04942b47622c45f9ff85">More...</a><br /></td></tr>
+<tr class="separator:a45919f4212bd04942b47622c45f9ff85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80d606eff09b9fe93244455817955475"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list_iterator.html#a80d606eff09b9fe93244455817955475">until</a> (void *<a class="el" href="classq_o_s_1_1node.html">node</a>) const noexcept</td></tr>
+<tr class="memdesc:a80d606eff09b9fe93244455817955475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check until current iterator reach the given node.  <a href="classq_o_s_1_1list_iterator.html#a80d606eff09b9fe93244455817955475">More...</a><br /></td></tr>
+<tr class="separator:a80d606eff09b9fe93244455817955475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6232ab50137d7610ea9ef46564396a8c"><td class="memItemLeft" align="right" valign="top"><a id="a6232ab50137d7610ea9ef46564396a8c" name="a6232ab50137d7610ea9ef46564396a8c"></a>
 <a class="el" href="classq_o_s_1_1list_iterator.html">listIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int) noexcept</td></tr>
 <tr class="memdesc:a6232ab50137d7610ea9ef46564396a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move the iterator forward. <br /></td></tr>
@@ -200,7 +200,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -249,8 +249,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a21b54a34e5d7f823c6322238879f6ffc" name="a21b54a34e5d7f823c6322238879f6ffc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21b54a34e5d7f823c6322238879f6ffc">&#9670;&nbsp;</a></span>until() <span class="overload">[1/2]</span></h2>
+<a id="a80d606eff09b9fe93244455817955475" name="a80d606eff09b9fe93244455817955475"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80d606eff09b9fe93244455817955475">&#9670;&nbsp;</a></span>until() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -263,7 +263,7 @@ template&lt;typename T &gt; </div>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>node</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -284,8 +284,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a8e0dd8e798a5793b2f9980e650005777" name="a8e0dd8e798a5793b2f9980e650005777"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e0dd8e798a5793b2f9980e650005777">&#9670;&nbsp;</a></span>until() <span class="overload">[2/2]</span></h2>
+<a id="a45919f4212bd04942b47622c45f9ff85" name="a45919f4212bd04942b47622c45f9ff85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45919f4212bd04942b47622c45f9ff85">&#9670;&nbsp;</a></span>until() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,7 +298,7 @@ template&lt;typename T &gt; </div>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>

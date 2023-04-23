@@ -183,18 +183,18 @@ $(document).ready(function(){initNavTree('trace_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keyword">class </span>tout_base {</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                uint8_t base;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                tout_base(uint8_t b) : base(b) {}</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                <span class="keyword">explicit</span> tout_base(uint8_t b) : base(b) {}</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        };</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classq_o_s_1_1trace_1_1mem.html">  110</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1trace_1_1mem.html">mem</a> {</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                <span class="keywordtype">size_t</span> n;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566">  119</a></span>                <a class="code hl_function" href="classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566">mem</a>( <span class="keywordtype">size_t</span> nb ) : n( nb ) {}</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566">  119</a></span>                <span class="keyword">explicit</span> <a class="code hl_function" href="classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566">mem</a>( <span class="keywordtype">size_t</span> nb ) : n( nb ) {}</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        };</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classq_o_s_1_1trace_1_1pre.html">  131</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1trace_1_1pre.html">pre</a> {</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                uint8_t precision;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe">  140</a></span>                <a class="code hl_function" href="classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe">pre</a>( uint8_t p ) : precision( p ) {}</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe">  140</a></span>                <span class="keyword">explicit</span> <a class="code hl_function" href="classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe">pre</a>( uint8_t p ) : precision( p ) {}</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        };</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="group__qtrace.html#ga93328644391810d863c7752b20d0f51d">  152</a></span>        <span class="keyword">extern</span> <span class="keyword">const</span> tout_base <a class="code hl_variable" href="group__qtrace.html#ga93328644391810d863c7752b20d0f51d">dec</a>;</div>
