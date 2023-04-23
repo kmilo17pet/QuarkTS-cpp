@@ -263,23 +263,26 @@ $(document).ready(function(){initNavTree('trace_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>            }</div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        }</div>
 <div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">log</a>(<span class="keywordtype">void</span>) {}</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_variable" href="classq_o_s_1_1trace.html#a1c926046159d6eae8371a083364d0eff">msg</a>(<span class="keywordtype">void</span>) {}</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code hl_function" href="classq_o_s_1_1trace.html#a93204201649ab4b46f6ba133ebd60893">var</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> * vname ){ <span class="keywordflow">return</span> vname; }</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    }</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>}</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span><span class="preprocessor">#define _logHeader()                                                           \</span></div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="preprocessor">qOS::trace::_trace_out &lt;&lt; &quot;[ &quot;</span> &lt;&lt; qOS::trace::dec &lt;&lt;                           \</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>static_cast&lt;unsigned long&gt;( qOS::clock::getTick() )                            \</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>&lt;&lt; &quot;] &quot; &lt;&lt; _TRACE_CURRENT_FUNCTION &lt;&lt; &quot;:&quot; _TRACE_TOSTRING(__LINE__) &quot; - &quot;      \</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="preprocessor">#define var(v)  var( _TRACE_STRINGIFY(v) ) &lt;&lt; &#39;=&#39; &lt;&lt; v</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span><span class="preprocessor">#define log     log();_logHeader()</span></div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="preprocessor">#define msg     msg();qOS::trace::_trace_out</span></div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_CPP_TRACE*/</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        <span class="comment">/* cppcheck-suppress functionStatic */</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">log</a>(<span class="keywordtype">void</span>) {}</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="comment">/* cppcheck-suppress functionStatic */</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_variable" href="classq_o_s_1_1trace.html#a1c926046159d6eae8371a083364d0eff">msg</a>(<span class="keywordtype">void</span>) {}</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        <span class="comment">/* cppcheck-suppress functionStatic */</span></div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code hl_function" href="classq_o_s_1_1trace.html#a93204201649ab4b46f6ba133ebd60893">var</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> * vname ){ <span class="keywordflow">return</span> vname; }</div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    }</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>}</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="preprocessor">#define _logHeader()                                                           \</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="preprocessor">qOS::trace::_trace_out &lt;&lt; &quot;[ &quot;</span> &lt;&lt; qOS::trace::dec &lt;&lt;                           \</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>static_cast&lt;unsigned long&gt;( qOS::clock::getTick() )                            \</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>&lt;&lt; &quot;] &quot; &lt;&lt; _TRACE_CURRENT_FUNCTION &lt;&lt; &quot;:&quot; _TRACE_TOSTRING(__LINE__) &quot; - &quot;      \</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">#define var(v)  var( _TRACE_STRINGIFY(v) ) &lt;&lt; &#39;=&#39; &lt;&lt; v</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#define log     log();_logHeader()</span></div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span><span class="preprocessor">#define msg     msg();qOS::trace::_trace_out</span></div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_CPP_TRACE*/</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aclassq_o_s_1_1sm_1_1state_html"><div class="ttname"><a href="classq_o_s_1_1sm_1_1state.html">qOS::sm::state</a></div><div class="ttdoc">A state object.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:357</div></div>
 <div class="ttc" id="aclassq_o_s_1_1state_machine_html"><div class="ttname"><a href="classq_o_s_1_1state_machine.html">qOS::stateMachine</a></div><div class="ttdoc">A FSM(Finite State Machine) object.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:539</div></div>
 <div class="ttc" id="aclassq_o_s_1_1task_html"><div class="ttname"><a href="classq_o_s_1_1task.html">qOS::task</a></div><div class="ttdoc">A task node object.</div><div class="ttdef"><b>Definition:</b> task.hpp:341</div></div>
