@@ -59,6 +59,7 @@
         "endverbatim",
         "QUARKTS",
         "skipcq",
-        "stackless"
+        "stackless",
+        "tparam"
     ]
 }

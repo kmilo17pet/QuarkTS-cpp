@@ -10,6 +10,7 @@ os	KEYWORD1
 trace KEYWORD1
 task	KEYWORD1
 sm	KEYWORD1
+bits	KEYWORD1
 queue	KEYWORD1
 cli	KEYWORD1
 timer	KEYWORD1
@@ -259,9 +260,30 @@ oct KEYWORD2
 mem KEYWORD2
 endl KEYWORD2
 end KEYWORD2
-
-
 setOutputFcn KEYWORD2
+
+multipleSet
+multipleClear
+singleSet
+singleClear
+singleRead
+singleToggle
+singleWrite
+multipleGet
+arraySize
+clip
+clipUpper
+clipLower
+isBetween
+byteNibbleLow
+byteNibbleHigh
+byteMergeNibbles
+wordByteHigh
+wordByteLow
+wordMergeBytes
+dWordWordHigh
+dWordWordLow
+dwordMergeWords
 
 #######################################
 # Constants(LITERAL1)

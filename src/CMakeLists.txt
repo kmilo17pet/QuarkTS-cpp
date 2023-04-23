@@ -1,7 +1,7 @@
 cmake_minimum_required( VERSION 3.2 )
-project( quarkts-cpp 
-         VERSION 0.0.1 
-         DESCRIPTION "An open-source OS for small embedded applications" 
+project( quarkts-cpp
+         VERSION 1.0.5
+         DESCRIPTION "An open-source OS for small embedded applications"
          LANGUAGES CXX )
 
 add_library( ${PROJECT_NAME} INTERFACE )
