@@ -12,6 +12,10 @@
 #endif
 
 namespace qOS {
+
+    /**
+    * @brief Memory management interfaces.
+    */
     namespace mem {
 
         /** @addtogroup qmemmang

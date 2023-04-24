@@ -732,14 +732,14 @@
 * entries of the transition table should be defined:
 * 
 *  @code{.c}
-*  #define  SIGNAL_ENGINE_ON           ( static_cast<signalID>(1) )
-*  #define  SIGNAL_ACCEL               ( static_cast<signalID>(2) )
-*  #define  SIGNAL_RESUME              ( static_cast<signalID>(3) )
-*  #define  SIGNAL_OFF                 ( static_cast<signalID>(4) )
-*  #define  SIGNAL_BRAKE_PRESSED       ( static_cast<signalID>(5) )
-*  #define  SIGNAL_CRUISE              ( static_cast<signalID>(6) )
-*  #define  SIGNAL_REACHED_CRUISING    ( static_cast<signalID>(7) )
-*  #define  SIGNAL_ENGINE_OFF          ( static_cast<signalID>(8) )
+*  #define  SIGNAL_ENGINE_ON           ( sm::SIGNAL_USER( 1 ) )
+*  #define  SIGNAL_ACCEL               ( sm::SIGNAL_USER( 2 ) )
+*  #define  SIGNAL_RESUME              ( sm::SIGNAL_USER( 3 ) )
+*  #define  SIGNAL_OFF                 ( sm::SIGNAL_USER( 4 ) )
+*  #define  SIGNAL_BRAKE_PRESSED       ( sm::SIGNAL_USER( 5 ) )
+*  #define  SIGNAL_CRUISE              ( sm::SIGNAL_USER( 6 ) )
+*  #define  SIGNAL_REACHED_CRUISING    ( sm::SIGNAL_USER( 7 ) )
+*  #define  SIGNAL_ENGINE_OFF          ( sm::SIGNAL_USER( 8 ) )
 *  
 *  task CruiseControlTask;
 *  stateMachine Top_SM;
@@ -850,7 +850,7 @@
 *  /*          STATE CALLBACKS FOR THE AUTOMATED CONTROL FSM                */
 *  /*=======================================================================*/
 *  sm::status state_accelerating_callback( sm::handler_t h ) {
-*      switch ( h->Signal ) {
+*      switch ( h.signal() ) {
 *          case sm::signalID::SIGNAL_EXIT:
 *              Speed_SelectDesired();
 *              break;
@@ -938,12 +938,12 @@
 * of the transition as shown below:
 *
 *  @code{.c}
-*  #define SIGNAL_A ( static_cast<sm::signalID>(1) )
-*  #define SIGNAL_B ( static_cast<sm::signalID>(2) )
-*  #define SIGNAL_C ( static_cast<sm::signalID>(3) )
-*  #define SIGNAL_D ( static_cast<sm::signalID>(4) )
-*  #define SIGNAL_E ( static_cast<sm::signalID>(5) )
-*  #define SIGNAL_F ( static_cast<sm::signalID>(6) )
+*  #define SIGNAL_A ( sm::SIGNAL_USER( 1 ) )
+*  #define SIGNAL_B ( sm::SIGNAL_USER( 2 ) )
+*  #define SIGNAL_C ( sm::SIGNAL_USER( 3 ) )
+*  #define SIGNAL_D ( sm::SIGNAL_USER( 4 ) )
+*  #define SIGNAL_E ( sm::SIGNAL_USER( 5 ) )
+*  #define SIGNAL_F ( sm::SIGNAL_USER( 6 ) )
 *
 *  queue_t sigqueue;
 *  sm::signal_t topsm_sig_stack[ 10 ];

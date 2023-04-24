@@ -15,6 +15,9 @@ namespace qOS {
 
     class stateMachine;
     
+    /**
+    * @brief Finite State Machine interfaces.
+    */
     namespace sm {
 
         /** @addtogroup  qfsm 
@@ -27,14 +30,35 @@ namespace qOS {
         * @brief The type for signal ID.
         */
         enum signalID : uint32_t {
+            /**
+            * @brief Built-in signal that can be used to set a nested initial-transition
+            *  (aka default transition) by using the sm::handler_t::startState() method.
+            * @note Transitions by setting the sm::handler_t::nextState() member are not
+            * allowed here
+            */
             SIGNAL_START = 0xFFFFFFFFuL,
+            /**
+            * @brief Built-in signal to indicate if the current state has just exit to
+            * another state.
+            * @note Transitions are not allowed here
+            */
             SIGNAL_EXIT = 0xFFFFFFFEuL,
+            /**
+            * @brief Built-in signal to indicate if the current state has just entered
+            * from another state.
+            * @note Transitions are not allowed here
+            */
             SIGNAL_ENTRY = 0xFFFFFFFDuL,
+            /**
+            * @brief Built-in signal to indicate that there is not signal available.
+            */
             SIGNAL_NONE = 0xFFFFFFFCuL,
-            MAX_SIGNAL = 0xFFFFFFFBuL,
-            MIN_SIGNAL = 0x0uL,
+            /*! @cond */
             TM_MAX = 0xFFFFFFFBuL,
             TM_MIN = TM_MAX - ( Q_FSM_MAX_TIMEOUTS - 1 ),
+            MIN_SIGNAL = 0x0uL,
+            MAX_SIGNAL = TM_MIN - 1
+            /*! @endcond */
         };
 
         /**
@@ -45,6 +69,16 @@ namespace qOS {
         constexpr signalID SIGNAL_TIMEOUT( index_t iTm ) 
         {
             return static_cast<signalID>( signalID::TM_MAX - static_cast<sm::signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<sm::signalID>( iTm ) );
+        }
+
+        /**
+        * @brief Function to define a user-defined signal.
+        * @param s The value for the user-defined signal.
+        * @return The user defined signal as a signalID type
+        */
+        constexpr signalID SIGNAL_USER( uint32_t s )
+        {
+            return ( s < signalID::MAX_SIGNAL ) ? static_cast<signalID>( s ) : MAX_SIGNAL;
         }
 
         /**

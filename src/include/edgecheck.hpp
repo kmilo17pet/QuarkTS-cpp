@@ -15,6 +15,10 @@ namespace qOS {
     */
 
     class edgeCheck;
+
+    /**
+    * @brief Edge-Check interfaces for I/O groups.
+    */
     namespace ec {
 
         /** @addtogroup qedgecheck

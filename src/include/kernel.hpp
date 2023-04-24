@@ -15,6 +15,9 @@
     #include "include/cli.hpp"
 #endif
 
+/**
+* @brief OS/Kernel nterfaces.
+*/
 namespace qOS {
 
     /** @addtogroup qtaskcreation

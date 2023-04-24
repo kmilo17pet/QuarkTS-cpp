@@ -109,7 +109,7 @@
 *          task3.setState( taskState::ENABLED );
 *      }
 *      
-*      if ( e->LastIteration ) {
+*      if ( e.lastIteration() ) {
 *          e.self().setState( taskState::SUSPENDED );
 *          e.self().setTime( 500 );
 *      }

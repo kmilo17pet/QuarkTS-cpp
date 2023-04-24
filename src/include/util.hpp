@@ -5,6 +5,10 @@
 
 
 namespace qOS {
+
+    /**
+    * @brief Utilities.
+    */
     namespace util {
 
         /** @addtogroup qioutils I/O Utils

@@ -83,6 +83,9 @@ namespace qOS {
         };
     #endif
 
+    /**
+    * @brief Trace interfaces.
+    */
     namespace trace {
 
         /** @addtogroup qtrace

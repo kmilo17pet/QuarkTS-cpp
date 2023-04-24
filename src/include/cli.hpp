@@ -14,6 +14,9 @@ namespace qOS {
     *  @{
     */
 
+    /**
+    * @brief AT command line interfaces.
+    */
     namespace cli {
 
         /** @addtogroup  qatcli

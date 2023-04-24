@@ -485,7 +485,7 @@ NUM_PROC_THREADS       = 1
 # normally produced when WARNINGS is set to YES.
 # The default value is: NO.
 
-EXTRACT_ALL            = NO
+EXTRACT_ALL            = YES
 
 # If the EXTRACT_PRIVATE tag is set to YES, all private members of a class will
 # be included in the documentation.
@@ -534,7 +534,7 @@ EXTRACT_LOCAL_METHODS  = NO
 # are hidden.
 # The default value is: NO.
 
-EXTRACT_ANON_NSPACES   = NO
+EXTRACT_ANON_NSPACES   = YES
 
 # If this flag is set to YES, the name of an unnamed parameter in a declaration
 # will be determined by the corresponding definition. By default unnamed
@@ -2276,12 +2276,12 @@ PREDEFINED             = Q_FSM=1 \
                          Q_TASK_EVENT_FLAGS=1 \
                          Q_ALLOW_YIELD_TO_TASK=1 \
                          Q_SETUP_TIME_CANONICAL=1 \
-                         Q_ALLOW_SCHEDULER_RELEASE=1\
-                         Q_FSM_MAX_NEST_DEPTH=5\
-                         Q_FSM_MAX_TIMEOUTS=3\
-                         Q_FSM_PS_SIGNALS_MAX=8\
-                         Q_FSM_PS_SUB_PER_SIGNAL_MAX=4\
-                         Q_TRACE_BUFSIZE=36\
+                         Q_ALLOW_SCHEDULER_RELEASE=1 \
+                         Q_FSM_MAX_NEST_DEPTH=5 \
+                         Q_FSM_MAX_TIMEOUTS=3 \
+                         Q_FSM_PS_SIGNALS_MAX=8 \
+                         Q_FSM_PS_SUB_PER_SIGNAL_MAX=4 \
+                         Q_TRACE_BUFSIZE=36 \
                          DOXYGEN
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this

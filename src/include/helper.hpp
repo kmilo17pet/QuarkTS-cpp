@@ -8,6 +8,10 @@ namespace qOS {
     /** @addtogroup qflm
     * @{
     */
+
+    /**
+    * @brief Helper Bit-manipulation interfaces.
+    */
     namespace bits {
         /** @addtogroup qflm
         * @{

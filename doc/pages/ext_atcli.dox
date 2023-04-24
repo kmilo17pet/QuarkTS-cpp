@@ -308,7 +308,7 @@
 *      cli::response RetValue = cli::response::ERROR;
 *      int pin, value;
 *     
-*      switch ( h->Type ) {
+*      switch ( h.getType() ) {
 *          case cli::commandType::ACT: /*< AT+gpio */
 *              RetValue = cli::response::OK;
 *              break;
@@ -336,7 +336,7 @@
 *  cli::response AT_INFO_Callback( cli::handler_t h ) {
 *      cli::response RetValue = cli::response::ERROR;
 *     
-*      switch ( param->Type ) {
+*      switch ( param.getType() ) {
 *          case cli::commandType::ACT: /*< AT+info */
 *              util::strcpy( h.output, "Compilation: " __DATE__ " " __TIME__ );
 *              RetValue = cli::response::NO_RESPONSE;

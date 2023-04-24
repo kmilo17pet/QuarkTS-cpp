@@ -249,10 +249,10 @@
 *  /*===================================================================*/
 *  void AnotherTask_Callback( event_t e ) {
 *      int UserInput = 0;
-*      if ( e->FirstIteration ) {
+*      if ( e.firstIteration() ) {
 *          xHandleCR.try_resume();
 *      }
-*      if ( e->LastIteration ) {
+*      if ( e.lastIteration() ) {
 *          xHandleCR.try_suspend();
 *      }
 *      UserInput = GetTerminalInput();

@@ -6,6 +6,10 @@
 #include "include/macro_overload.hpp"
 
 namespace qOS {
+
+    /**
+    * @brief CoRoutines interfaces.
+    */
     namespace co {
 
         /** \addtogroup  qcoroutines
