@@ -1,28 +1,28 @@
 var annotated_dup =
 [
-    [ "qOS", null, [
-      [ "cli", null, [
-        [ "command", "classq_o_s_1_1cli_1_1command.html", null ],
+    [ "qOS", "namespaceq_o_s.html", [
+      [ "cli", "namespaceq_o_s_1_1cli.html", [
+        [ "command", "classq_o_s_1_1cli_1_1command.html", "classq_o_s_1_1cli_1_1command" ],
         [ "handler_t", "classq_o_s_1_1cli_1_1handler__t.html", "classq_o_s_1_1cli_1_1handler__t" ]
       ] ],
-      [ "co", null, [
+      [ "co", "namespaceq_o_s_1_1co.html", [
         [ "handle", "classq_o_s_1_1co_1_1handle.html", "classq_o_s_1_1co_1_1handle" ],
         [ "position", "classq_o_s_1_1co_1_1position.html", null ],
         [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html", "classq_o_s_1_1co_1_1semaphore" ]
       ] ],
-      [ "ec", null, [
+      [ "ec", "namespaceq_o_s_1_1ec.html", [
         [ "inNode", "classq_o_s_1_1ec_1_1in_node.html", "classq_o_s_1_1ec_1_1in_node" ]
       ] ],
-      [ "mem", null, [
+      [ "mem", "namespaceq_o_s_1_1mem.html", [
         [ "pool", "classq_o_s_1_1mem_1_1pool.html", "classq_o_s_1_1mem_1_1pool" ]
       ] ],
-      [ "sm", null, [
+      [ "sm", "namespaceq_o_s_1_1sm.html", [
         [ "handler_t", "classq_o_s_1_1sm_1_1handler__t.html", "classq_o_s_1_1sm_1_1handler__t" ],
         [ "signal_t", "classq_o_s_1_1sm_1_1signal__t.html", "classq_o_s_1_1sm_1_1signal__t" ],
         [ "state", "classq_o_s_1_1sm_1_1state.html", "classq_o_s_1_1sm_1_1state" ],
-        [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ]
+        [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", "classq_o_s_1_1sm_1_1timeout_spec" ]
       ] ],
-      [ "trace", null, [
+      [ "trace", "namespaceq_o_s_1_1trace.html", [
         [ "mem", "classq_o_s_1_1trace_1_1mem.html", "classq_o_s_1_1trace_1_1mem" ],
         [ "pre", "classq_o_s_1_1trace_1_1pre.html", "classq_o_s_1_1trace_1_1pre" ]
       ] ],

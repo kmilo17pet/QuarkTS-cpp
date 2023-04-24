@@ -168,7 +168,7 @@ First steps</h1>
 <p >Include the source files to your project. Also, make sure you add a copy of the file <code><a class="el" href="config_8h_source.html">config.h</a></code> and modify it according to your needs. Setup your compiler including the path of the OS directory. Include the header file <code><a class="el" href="_quark_t_s_8h_source.html">QuarkTS.h</a></code> and setup the instance of the kernel using the <a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449" title="Task Scheduler initialization. This core method is required and must be called once in the applicatio...">qOS::core::init()</a> inside the main thread to initialize te kernel, specify the reference clock and the idle-task ( see <a class="el" href="q_foundations.html#q_timmingapproach">Timing Approach</a>). Additional configuration to the target compiler may be required to add the path to the directory of header files. The code below shows a common initialization procedure in the main source file.</p>
 <p >File <code>main.c</code> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    <span class="comment">//device startup with hardware-specific code</span></div>
@@ -180,6 +180,7 @@ First steps</h1>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
+<div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel nterfaces.</div><div class="ttdef"><b>Definition:</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --><p >In the above code, the following considerations should be taken:</p><ul>
 <li>The function <code>os.init()</code> must be called before any interaction with the OS. Here, the <code>os</code> its an instance of the <a class="el" href="classq_o_s_1_1core.html" title="The class to interface the OS.">qOS::core</a> kernel interface.</li>
 <li>The procedure <code>HardwareSetup()</code> should be a function with all the hardware instructions needed to initialize the target system.</li>
@@ -194,7 +195,7 @@ A simple scheduling</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;BSP.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line">task task1, task2, task3; <span class="comment">/*task nodes*/</span></div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
@@ -209,7 +210,7 @@ A simple scheduling</h2>
 <div class="line">        task3.setState( taskState::ENABLED );</div>
 <div class="line">    }</div>
 <div class="line">    </div>
-<div class="line">    <span class="keywordflow">if</span> ( e-&gt;LastIteration ) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( e.lastIteration() ) {</div>
 <div class="line">        e.self().setState( taskState::SUSPENDED );</div>
 <div class="line">        e.self().setTime( 500 );</div>
 <div class="line">    }</div>
@@ -317,7 +318,7 @@ Using QuarkTS++ in Arduino</h1>
 <p >When invoking the <code>os.init()</code> for the first time, make sure to pass the <code>millis</code> function as argument</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> idleTask_Callback( event_t e ) {</div>
 <div class="line">     <span class="comment">// TODO: add the idle activities</span></div>

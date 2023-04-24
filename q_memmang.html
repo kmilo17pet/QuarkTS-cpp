@@ -172,7 +172,7 @@ Usage example</h1>
 <div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;Core.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line">task_t taskA;</div>
 <div class="line">mem::pool heap1, heap2;</div>
@@ -225,7 +225,8 @@ Usage example</h1>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a6108a6807716a23d2af2db9ddadea99a"><div class="ttname"><a href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:317</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:320</div></div>
+<div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel nterfaces.</div><div class="ttdef"><b>Definition:</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

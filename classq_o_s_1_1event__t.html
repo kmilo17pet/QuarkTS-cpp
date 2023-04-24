@@ -141,51 +141,245 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1event__t.html',''); init
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acf2072494ae5aa4a3bb387be72756bb6"><td class="memItemLeft" align="right" valign="top"><a id="acf2072494ae5aa4a3bb387be72756bb6" name="acf2072494ae5aa4a3bb387be72756bb6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>firstCall</b> (void) const noexcept</td></tr>
-<tr class="memdesc:acf2072494ae5aa4a3bb387be72756bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the task is running for the first time. Can be used for data initialization purposes. <br /></td></tr>
+<tr class="memitem:acf2072494ae5aa4a3bb387be72756bb6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#acf2072494ae5aa4a3bb387be72756bb6">firstCall</a> (void) const noexcept</td></tr>
+<tr class="memdesc:acf2072494ae5aa4a3bb387be72756bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the task is running for the first time. Can be used for data initialization purposes.  <a href="classq_o_s_1_1event__t.html#acf2072494ae5aa4a3bb387be72756bb6">More...</a><br /></td></tr>
 <tr class="separator:acf2072494ae5aa4a3bb387be72756bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a46c4fa4a46ae5162590b300af64c33"><td class="memItemLeft" align="right" valign="top"><a id="a2a46c4fa4a46ae5162590b300af64c33" name="a2a46c4fa4a46ae5162590b300af64c33"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>firstIteration</b> (void) const noexcept</td></tr>
-<tr class="memdesc:a2a46c4fa4a46ae5162590b300af64c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the current pass is the first iteration of the task. The value returned by this method will be only <code>true</code> when time-elapsed events occurs and the Iteration counter has been parameterized. Asynchronous events never change the task iteration counter, consequently doesn't have effect in this flag. <br /></td></tr>
+<tr class="memitem:a2a46c4fa4a46ae5162590b300af64c33"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#a2a46c4fa4a46ae5162590b300af64c33">firstIteration</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a2a46c4fa4a46ae5162590b300af64c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the current pass is the first iteration of the task. The value returned by this method will be only <code>true</code> when time-elapsed events occurs and the Iteration counter has been parameterized. Asynchronous events never change the task iteration counter, consequently doesn't have effect in this flag.  <a href="classq_o_s_1_1event__t.html#a2a46c4fa4a46ae5162590b300af64c33">More...</a><br /></td></tr>
 <tr class="separator:a2a46c4fa4a46ae5162590b300af64c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb72cf2acd6148d96a8c03635fc049c7"><td class="memItemLeft" align="right" valign="top"><a id="adb72cf2acd6148d96a8c03635fc049c7" name="adb72cf2acd6148d96a8c03635fc049c7"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>lastIteration</b> (void) const noexcept</td></tr>
-<tr class="memdesc:adb72cf2acd6148d96a8c03635fc049c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the current pass is the last iteration of the task. The value returned by this method will be only <code>true</code> when time-elapsed events occurs and the Iteration counter has been parameterized. Asynchronous events never change the task iteration counter, consequently doesn't have effect in the value returned by this method. <br /></td></tr>
+<tr class="memitem:adb72cf2acd6148d96a8c03635fc049c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#adb72cf2acd6148d96a8c03635fc049c7">lastIteration</a> (void) const noexcept</td></tr>
+<tr class="memdesc:adb72cf2acd6148d96a8c03635fc049c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the current pass is the last iteration of the task. The value returned by this method will be only <code>true</code> when time-elapsed events occurs and the Iteration counter has been parameterized. Asynchronous events never change the task iteration counter, consequently doesn't have effect in the value returned by this method.  <a href="classq_o_s_1_1event__t.html#adb72cf2acd6148d96a8c03635fc049c7">More...</a><br /></td></tr>
 <tr class="separator:adb72cf2acd6148d96a8c03635fc049c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ea7de15a8fcaf57dc1384aa33cd1291"><td class="memItemLeft" align="right" valign="top"><a id="a7ea7de15a8fcaf57dc1384aa33cd1291" name="a7ea7de15a8fcaf57dc1384aa33cd1291"></a>
-<a class="el" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7">trigger</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getTrigger</b> (void) const noexcept</td></tr>
-<tr class="memdesc:a7ea7de15a8fcaf57dc1384aa33cd1291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the event source that triggers the task execution. Possible values are described in the qOS::trigger enum. <br /></td></tr>
+<tr class="memitem:a7ea7de15a8fcaf57dc1384aa33cd1291"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7">trigger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#a7ea7de15a8fcaf57dc1384aa33cd1291">getTrigger</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a7ea7de15a8fcaf57dc1384aa33cd1291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the event source that triggers the task execution. Possible values are described in the <a class="el" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7" title="An enum with all the possible values for the event_t::getTrigger() method.">qOS::trigger</a> enum.  <a href="classq_o_s_1_1event__t.html#a7ea7de15a8fcaf57dc1384aa33cd1291">More...</a><br /></td></tr>
 <tr class="separator:a7ea7de15a8fcaf57dc1384aa33cd1291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a339915a6d4cba5e1453c9681547bbd52"><td class="memItemLeft" align="right" valign="top"><a id="a339915a6d4cba5e1453c9681547bbd52" name="a339915a6d4cba5e1453c9681547bbd52"></a>
-<a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>startDelay</b> (void) const noexcept</td></tr>
-<tr class="memdesc:a339915a6d4cba5e1453c9681547bbd52"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the number of epochs between current system time and point in time when the task was marked as <code>READY</code>. Can be used to keep track when current task's execution took place relative to when it was scheduled A value of 0 (zero) indicates that task started right on time per schedule.This parameter will be only available on timed tasks. when <code>qOS::trigger</code> == <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2" title="When the time specified for the task elapsed.">trigger::byTimeElapsed</a> <br /></td></tr>
+<tr class="memitem:a339915a6d4cba5e1453c9681547bbd52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#a339915a6d4cba5e1453c9681547bbd52">startDelay</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a339915a6d4cba5e1453c9681547bbd52"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the number of epochs between current system time and point in time when the task was marked as <code>READY</code>. Can be used to keep track when current task's execution took place relative to when it was scheduled A value of 0 (zero) indicates that task started right on time per schedule.This parameter will be only available on timed tasks. when <code><a class="el" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7" title="An enum with all the possible values for the event_t::getTrigger() method.">qOS::trigger</a></code> == <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2" title="When the time specified for the task elapsed.">trigger::byTimeElapsed</a>  <a href="classq_o_s_1_1event__t.html#a339915a6d4cba5e1453c9681547bbd52">More...</a><br /></td></tr>
 <tr class="separator:a339915a6d4cba5e1453c9681547bbd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a248cfce6219e8ee6b8f235950ce63d5b"><td class="memItemLeft" align="right" valign="top"><a id="a248cfce6219e8ee6b8f235950ce63d5b" name="a248cfce6219e8ee6b8f235950ce63d5b"></a>
-<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>self</b> (void) noexcept</td></tr>
-<tr class="memdesc:a248cfce6219e8ee6b8f235950ce63d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the current task node being evaluated <br /></td></tr>
+<tr class="memitem:a248cfce6219e8ee6b8f235950ce63d5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#a248cfce6219e8ee6b8f235950ce63d5b">self</a> (void) noexcept</td></tr>
+<tr class="memdesc:a248cfce6219e8ee6b8f235950ce63d5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the current task node being evaluated  <a href="classq_o_s_1_1event__t.html#a248cfce6219e8ee6b8f235950ce63d5b">More...</a><br /></td></tr>
 <tr class="separator:a248cfce6219e8ee6b8f235950ce63d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a44c21a4201ab6c42ce8a36ec91742787"><td class="memItemLeft" align="right" valign="top"><a id="a44c21a4201ab6c42ce8a36ec91742787" name="a44c21a4201ab6c42ce8a36ec91742787"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>TaskData</b></td></tr>
-<tr class="memdesc:a44c21a4201ab6c42ce8a36ec91742787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task arguments defined at the time of its creation. (Storage-Pointer) <br /></td></tr>
+<tr class="memitem:a44c21a4201ab6c42ce8a36ec91742787"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#a44c21a4201ab6c42ce8a36ec91742787">TaskData</a></td></tr>
+<tr class="memdesc:a44c21a4201ab6c42ce8a36ec91742787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task arguments defined at the time of its creation. (Storage-Pointer)  <a href="classq_o_s_1_1event__t.html#a44c21a4201ab6c42ce8a36ec91742787">More...</a><br /></td></tr>
 <tr class="separator:a44c21a4201ab6c42ce8a36ec91742787"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab52427241a29dfd601229464182956e"><td class="memItemLeft" align="right" valign="top"><a id="aab52427241a29dfd601229464182956e" name="aab52427241a29dfd601229464182956e"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>EventData</b></td></tr>
-<tr class="memdesc:aab52427241a29dfd601229464182956e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associated data of the event. Specific data will reside here according to the event source. This field will have a <code>nullptr</code> value when the trigger gets one of this values: <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2" title="When the time specified for the task elapsed.">trigger::byTimeElapsed</a>, <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7af633e4329e7a41341f517b5387490ef5" title="When any event-flag is set.">trigger::byEventFlags</a> and <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a3dfc005c06119f17a86e823f86ad8cc1" title="Only available when the Idle Task is triggered.">trigger::byNoReadyTasks</a>. <br /></td></tr>
+<tr class="memitem:aab52427241a29dfd601229464182956e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e">EventData</a></td></tr>
+<tr class="memdesc:aab52427241a29dfd601229464182956e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Associated data of the event. Specific data will reside here according to the event source. This field will have a <code>nullptr</code> value when the trigger gets one of this values: <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2" title="When the time specified for the task elapsed.">trigger::byTimeElapsed</a>, <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7af633e4329e7a41341f517b5387490ef5" title="When any event-flag is set.">trigger::byEventFlags</a> and <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a3dfc005c06119f17a86e823f86ad8cc1" title="Only available when the Idle Task is triggered.">trigger::byNoReadyTasks</a>.  <a href="classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e">More...</a><br /></td></tr>
 <tr class="separator:aab52427241a29dfd601229464182956e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The task argument with all the regarding information of the task execution. </p>
 <dl class="section note"><dt>Note</dt><dd>Should be used only inside task-callbacks as the only input argument. </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="acf2072494ae5aa4a3bb387be72756bb6" name="acf2072494ae5aa4a3bb387be72756bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf2072494ae5aa4a3bb387be72756bb6">&#9670;&nbsp;</a></span>firstCall()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::event_t::firstCall </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether the task is running for the first time. Can be used for data initialization purposes. </p>
+
+</div>
+</div>
+<a id="a2a46c4fa4a46ae5162590b300af64c33" name="a2a46c4fa4a46ae5162590b300af64c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a46c4fa4a46ae5162590b300af64c33">&#9670;&nbsp;</a></span>firstIteration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::event_t::firstIteration </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether the current pass is the first iteration of the task. The value returned by this method will be only <code>true</code> when time-elapsed events occurs and the Iteration counter has been parameterized. Asynchronous events never change the task iteration counter, consequently doesn't have effect in this flag. </p>
+
+</div>
+</div>
+<a id="a7ea7de15a8fcaf57dc1384aa33cd1291" name="a7ea7de15a8fcaf57dc1384aa33cd1291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea7de15a8fcaf57dc1384aa33cd1291">&#9670;&nbsp;</a></span>getTrigger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7">trigger</a> qOS::event_t::getTrigger </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the event source that triggers the task execution. Possible values are described in the <a class="el" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7" title="An enum with all the possible values for the event_t::getTrigger() method.">qOS::trigger</a> enum. </p>
+
+</div>
+</div>
+<a id="adb72cf2acd6148d96a8c03635fc049c7" name="adb72cf2acd6148d96a8c03635fc049c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb72cf2acd6148d96a8c03635fc049c7">&#9670;&nbsp;</a></span>lastIteration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::event_t::lastIteration </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks whether the current pass is the last iteration of the task. The value returned by this method will be only <code>true</code> when time-elapsed events occurs and the Iteration counter has been parameterized. Asynchronous events never change the task iteration counter, consequently doesn't have effect in the value returned by this method. </p>
+
+</div>
+</div>
+<a id="a248cfce6219e8ee6b8f235950ce63d5b" name="a248cfce6219e8ee6b8f235950ce63d5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a248cfce6219e8ee6b8f235950ce63d5b">&#9670;&nbsp;</a></span>self()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp; qOS::event_t::self </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return the current task node being evaluated </p>
+
+</div>
+</div>
+<a id="a339915a6d4cba5e1453c9681547bbd52" name="a339915a6d4cba5e1453c9681547bbd52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a339915a6d4cba5e1453c9681547bbd52">&#9670;&nbsp;</a></span>startDelay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">clock_t</a> qOS::event_t::startDelay </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return the number of epochs between current system time and point in time when the task was marked as <code>READY</code>. Can be used to keep track when current task's execution took place relative to when it was scheduled A value of 0 (zero) indicates that task started right on time per schedule.This parameter will be only available on timed tasks. when <code><a class="el" href="group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7" title="An enum with all the possible values for the event_t::getTrigger() method.">qOS::trigger</a></code> == <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2" title="When the time specified for the task elapsed.">trigger::byTimeElapsed</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aab52427241a29dfd601229464182956e" name="aab52427241a29dfd601229464182956e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab52427241a29dfd601229464182956e">&#9670;&nbsp;</a></span>EventData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* qOS::event_t::EventData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Associated data of the event. Specific data will reside here according to the event source. This field will have a <code>nullptr</code> value when the trigger gets one of this values: <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7aaaf1836f1ce68e3eac50255466379eb2" title="When the time specified for the task elapsed.">trigger::byTimeElapsed</a>, <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7af633e4329e7a41341f517b5387490ef5" title="When any event-flag is set.">trigger::byEventFlags</a> and <a class="el" href="group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a3dfc005c06119f17a86e823f86ad8cc1" title="Only available when the Idle Task is triggered.">trigger::byNoReadyTasks</a>. </p>
+
+</div>
+</div>
+<a id="a44c21a4201ab6c42ce8a36ec91742787" name="a44c21a4201ab6c42ce8a36ec91742787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44c21a4201ab6c42ce8a36ec91742787">&#9670;&nbsp;</a></span>TaskData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* qOS::event_t::TaskData</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Task arguments defined at the time of its creation. (Storage-Pointer) </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>qOS</b></li><li class="navelem"><a class="el" href="classq_o_s_1_1event__t.html">event_t</a></li>
+    <li class="navelem"><a class="el" href="namespaceq_o_s.html">qOS</a></li><li class="navelem"><a class="el" href="classq_o_s_1_1event__t.html">event_t</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

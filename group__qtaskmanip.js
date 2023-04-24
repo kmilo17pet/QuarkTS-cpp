@@ -12,6 +12,7 @@ var group__qtaskmanip =
       [ "TaskData", "classq_o_s_1_1event__t.html#a44c21a4201ab6c42ce8a36ec91742787", null ]
     ] ],
     [ "qOS::task", "classq_o_s_1_1task.html", [
+      [ "task", "classq_o_s_1_1task.html#a22f349f2dc4f57fb4815e44a357a29c5", null ],
       [ "asleep", "classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d", null ],
       [ "attachQueue", "classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9", null ],
       [ "awake", "classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292", null ],
@@ -34,6 +35,7 @@ var group__qtaskmanip =
       [ "setState", "classq_o_s_1_1task.html#ad2fdf129e7a52590f083503e8e505911", null ],
       [ "setTime", "classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4", null ],
       [ "suspend", "classq_o_s_1_1task.html#a9bf5d2fa8de8929aa2d45dade2c32740", null ],
+      [ "core", "classq_o_s_1_1task.html#af764561c544bacc1b90b526ee8d3c708", null ],
       [ "INDEFINITE", "classq_o_s_1_1task.html#a9405db8642daf9f6fa97e16628476fe7", null ],
       [ "PERIODIC", "classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45", null ],
       [ "SINGLE_SHOT", "classq_o_s_1_1task.html#a695b8b4c0828fc3823b1daaf7328f3af", null ]

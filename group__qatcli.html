@@ -127,6 +127,7 @@ $(document).ready(function(){initNavTree('group__qatcli.html',''); initResizable
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
@@ -144,6 +145,12 @@ Collaboration diagram for AT Command Line Interface:</div>
 </div>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceq_o_s_1_1cli"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceq_o_s_1_1cli.html">qOS::cli</a></td></tr>
+<tr class="memdesc:namespaceq_o_s_1_1cli"><td class="mdescLeft">&#160;</td><td class="mdescRight">AT command line interfaces. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1cli_1_1handler__t.html">qOS::cli::handler_t</a></td></tr>
@@ -161,25 +168,24 @@ Typedefs</h2></td></tr>
 <tr class="memitem:gab20d33e9de974f49e535206ad7194289"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">qOS::cli::commandCallback_t</a> = <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">response</a>(*)(<a class="el" href="classq_o_s_1_1cli_1_1handler__t.html">handler_t</a>)</td></tr>
 <tr class="memdesc:gab20d33e9de974f49e535206ad7194289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to function : An AT-Command callback.  <a href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">More...</a><br /></td></tr>
 <tr class="separator:gab20d33e9de974f49e535206ad7194289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga65eb4c32eb2231ef413a3226d62b895a"><td class="memItemLeft" align="right" valign="top"><a id="ga65eb4c32eb2231ef413a3226d62b895a" name="ga65eb4c32eb2231ef413a3226d62b895a"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>qOS::cli::options_t</b> = uint16_t</td></tr>
-<tr class="memdesc:ga65eb4c32eb2231ef413a3226d62b895a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef that holds the options for an AT-Command object. <br /></td></tr>
+<tr class="memitem:ga65eb4c32eb2231ef413a3226d62b895a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a">qOS::cli::options_t</a> = uint16_t</td></tr>
+<tr class="memdesc:ga65eb4c32eb2231ef413a3226d62b895a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A typedef that holds the options for an AT-Command object.  <a href="group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a">More...</a><br /></td></tr>
 <tr class="separator:ga65eb4c32eb2231ef413a3226d62b895a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gaa827a463743265d6ebe6bb3618f63bf2"><td class="memItemLeft" align="right" valign="top"><a id="gaa827a463743265d6ebe6bb3618f63bf2" name="gaa827a463743265d6ebe6bb3618f63bf2"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a> : int16_t { <br />
-&#160;&#160;<b>ERROR</b>
-, <b>NOT_ALLOWED</b>
-, <b>NO_RESPONSE</b>
-, <b>OK</b>
+<tr class="memitem:gaa827a463743265d6ebe6bb3618f63bf2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a> : int16_t { <br />
+&#160;&#160;<a class="el" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">qOS::cli::ERROR</a>
+, <a class="el" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a034bd386f984225ddcd8e6768e218bfb">qOS::cli::NOT_ALLOWED</a>
+, <a class="el" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9">qOS::cli::NO_RESPONSE</a>
+, <a class="el" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">qOS::cli::OK</a>
 , <br />
-&#160;&#160;<b>DEVID</b>
-, <b>NOT_FOUND</b>
-, <b>OUTPUT_RESPONSE</b>
+&#160;&#160;<a class="el" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1161a40f8f1e75a594df968163f97443">qOS::cli::DEVID</a>
+, <a class="el" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2ab0260bbbb0af17e1b7f6eb69f43cbbe5">qOS::cli::NOT_FOUND</a>
+, <a class="el" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a2ee3d3e354422ee365d9c0d4d4cd10b7">qOS::cli::OUTPUT_RESPONSE</a>
 <br />
  }</td></tr>
-<tr class="memdesc:gaa827a463743265d6ebe6bb3618f63bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">an enumeration to define the possible values that can be returned from the callback of a command. <br /></td></tr>
+<tr class="memdesc:gaa827a463743265d6ebe6bb3618f63bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">an enumeration to define the possible values that can be returned from the callback of a command.  <a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">More...</a><br /></td></tr>
 <tr class="separator:gaa827a463743265d6ebe6bb3618f63bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacd8a64c92cd0126e8e392a3d7a002db2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2">qOS::cli::commandType</a> : uint16_t { <br />
 &#160;&#160;<a class="el" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2ab4b55c3ad6e26fcdb624757c4f7ffc11">qOS::cli::UNDEF</a>
@@ -219,22 +225,24 @@ Functions</h2></td></tr>
 
 <p>Pointer to function : An AT-Command callback. </p>
 <p >Example : </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> commandCallback_example( <a class="code hl_class" href="classq_o_s_1_1cli_1_1handler__t.html">cli::handler_t</a> h ) {</div>
-<div class="line">      <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> retValue = cli::response::ERROR;</div>
+<div class="line">      <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> retValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">cli::response::ERROR</a>;</div>
 <div class="line">      <span class="keywordflow">switch</span> ( h.<a class="code hl_function" href="classq_o_s_1_1cli_1_1handler__t.html#a7485235a5249fc75c76886b9ae227244">getType</a>() ) {</div>
 <div class="line">          <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">commandType::ACT</a> :</div>
 <div class="line">              h.<a class="code hl_variable" href="classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0">output</a>( <span class="stringliteral">&quot;Test message&quot;</span> );</div>
-<div class="line">              retValue = cli::response::OK;</div>
+<div class="line">              retValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">cli::response::OK</a>;</div>
 <div class="line">              <span class="keywordflow">break</span>;</div>
 <div class="line">          <span class="keywordflow">default</span>:</div>
 <div class="line">              <span class="keywordflow">break</span>;</div>
 <div class="line">      }</div>
 <div class="line">      <span class="keywordflow">return</span> retValue;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1cli_1_1handler__t_html"><div class="ttname"><a href="classq_o_s_1_1cli_1_1handler__t.html">qOS::cli::handler_t</a></div><div class="ttdoc">The command argument with all the regarding information of the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:88</div></div>
-<div class="ttc" id="aclassq_o_s_1_1cli_1_1handler__t_html_a7485235a5249fc75c76886b9ae227244"><div class="ttname"><a href="classq_o_s_1_1cli_1_1handler__t.html#a7485235a5249fc75c76886b9ae227244">qOS::cli::handler_t::getType</a></div><div class="ttdeci">commandType getType(void) const</div><div class="ttdoc">Retrieve the he incoming command type.*.</div><div class="ttdef"><b>Definition:</b> cli.hpp:105</div></div>
-<div class="ttc" id="aclassq_o_s_1_1cli_1_1handler__t_html_aec3c265e088c0e14ab79c81d7c816ff0"><div class="ttname"><a href="classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0">qOS::cli::handler_t::output</a></div><div class="ttdeci">char * output</div><div class="ttdoc">The CLI output buffer. Can be written by the user.</div><div class="ttdef"><b>Definition:</b> cli.hpp:202</div></div>
-<div class="ttc" id="agroup__qatcli_html_gaa827a463743265d6ebe6bb3618f63bf2"><div class="ttname"><a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a></div><div class="ttdeci">response</div><div class="ttdoc">an enumeration to define the possible values that can be returned from the callback of a command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:27</div></div>
-<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">qOS::cli::ACT</a></div><div class="ttdeci">@ ACT</div><div class="ttdef"><b>Definition:</b> cli.hpp:59</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1handler__t_html"><div class="ttname"><a href="classq_o_s_1_1cli_1_1handler__t.html">qOS::cli::handler_t</a></div><div class="ttdoc">The command argument with all the regarding information of the incoming AT command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:91</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1handler__t_html_a7485235a5249fc75c76886b9ae227244"><div class="ttname"><a href="classq_o_s_1_1cli_1_1handler__t.html#a7485235a5249fc75c76886b9ae227244">qOS::cli::handler_t::getType</a></div><div class="ttdeci">commandType getType(void) const</div><div class="ttdoc">Retrieve the he incoming command type.*.</div><div class="ttdef"><b>Definition:</b> cli.hpp:108</div></div>
+<div class="ttc" id="aclassq_o_s_1_1cli_1_1handler__t_html_aec3c265e088c0e14ab79c81d7c816ff0"><div class="ttname"><a href="classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0">qOS::cli::handler_t::output</a></div><div class="ttdeci">char * output</div><div class="ttdoc">The CLI output buffer. Can be written by the user.</div><div class="ttdef"><b>Definition:</b> cli.hpp:205</div></div>
+<div class="ttc" id="agroup__qatcli_html_gaa827a463743265d6ebe6bb3618f63bf2"><div class="ttname"><a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a></div><div class="ttdeci">response</div><div class="ttdoc">an enumeration to define the possible values that can be returned from the callback of a command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:30</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213"><div class="ttname"><a href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">qOS::cli::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> cli.hpp:31</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239"><div class="ttname"><a href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">qOS::cli::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition:</b> cli.hpp:34</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">qOS::cli::ACT</a></div><div class="ttdeci">@ ACT</div><div class="ttdef"><b>Definition:</b> cli.hpp:62</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">h</td><td>A reference to the CLI command handler instance </td></tr>
@@ -242,6 +250,22 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The command response. </dd></dl>
+
+</div>
+</div>
+<a id="ga65eb4c32eb2231ef413a3226d62b895a" name="ga65eb4c32eb2231ef413a3226d62b895a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga65eb4c32eb2231ef413a3226d62b895a">&#9670;&nbsp;</a></span>options_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a">qOS::cli::options_t</a> = typedef uint16_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A typedef that holds the options for an AT-Command object. </p>
 
 </div>
 </div>
@@ -270,6 +294,31 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6" name="ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6"></a>ACT&#160;</td><td class="fielddoc"><p >Command to perform an action (no arguments allowed) : <code>AT+cmd</code> </p>
 </td></tr>
+</table>
+
+</div>
+</div>
+<a id="gaa827a463743265d6ebe6bb3618f63bf2" name="gaa827a463743265d6ebe6bb3618f63bf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa827a463743265d6ebe6bb3618f63bf2">&#9670;&nbsp;</a></span>response</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a> : int16_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>an enumeration to define the possible values that can be returned from the callback of a command. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213" name="ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213"></a>ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa827a463743265d6ebe6bb3618f63bf2a034bd386f984225ddcd8e6768e218bfb" name="ggaa827a463743265d6ebe6bb3618f63bf2a034bd386f984225ddcd8e6768e218bfb"></a>NOT_ALLOWED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9" name="ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9"></a>NO_RESPONSE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239" name="ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239"></a>OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa827a463743265d6ebe6bb3618f63bf2a1161a40f8f1e75a594df968163f97443" name="ggaa827a463743265d6ebe6bb3618f63bf2a1161a40f8f1e75a594df968163f97443"></a>DEVID&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa827a463743265d6ebe6bb3618f63bf2ab0260bbbb0af17e1b7f6eb69f43cbbe5" name="ggaa827a463743265d6ebe6bb3618f63bf2ab0260bbbb0af17e1b7f6eb69f43cbbe5"></a>NOT_FOUND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ggaa827a463743265d6ebe6bb3618f63bf2a2ee3d3e354422ee365d9c0d4d4cd10b7" name="ggaa827a463743265d6ebe6bb3618f63bf2a2ee3d3e354422ee365d9c0d4d4cd10b7"></a>OUTPUT_RESPONSE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

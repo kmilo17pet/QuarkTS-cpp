@@ -1,5 +1,6 @@
 var group__qtrace =
 [
+    [ "qOS::trace", "namespaceq_o_s_1_1trace.html", null ],
     [ "qOS::trace", "classq_o_s_1_1trace.html", [
       [ "var", "classq_o_s_1_1trace.html#a93204201649ab4b46f6ba133ebd60893", null ],
       [ "bin", "group__qtrace.html#ga073df9abb7c215fa97691ee5df07c1ae", null ],

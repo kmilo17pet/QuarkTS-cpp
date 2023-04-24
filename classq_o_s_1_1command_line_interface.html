@@ -152,6 +152,8 @@ Collaboration diagram for qOS::commandLineInterface:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a09065347eb890fe5b24b8c275ab7b33c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#a09065347eb890fe5b24b8c275ab7b33c">commandLineInterface</a> ()=default</td></tr>
+<tr class="separator:a09065347eb890fe5b24b8c275ab7b33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac14307ef47fc8707faf51681812d0679"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679">setup</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut)</td></tr>
 <tr class="memdesc:ac14307ef47fc8707faf51681812d0679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup an instance of the AT Command Line Interface.  <a href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679">More...</a><br /></td></tr>
 <tr class="separator:ac14307ef47fc8707faf51681812d0679"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,7 +189,33 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p >An AT Command Line Interface (CLI) object. </p>
 <p >Before starting the CLI development, the corresponding instance must be defined.</p>
 <p >The instance should be initialized using the <a class="el" href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679" title="Setup an instance of the AT Command Line Interface.">commandLineInterface::setup()</a> method. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a09065347eb890fe5b24b8c275ab7b33c" name="a09065347eb890fe5b24b8c275ab7b33c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09065347eb890fe5b24b8c275ab7b33c">&#9670;&nbsp;</a></span>commandLineInterface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::commandLineInterface::commandLineInterface </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="abe67850838a669ea2aa5943371deb188" name="abe67850838a669ea2aa5943371deb188"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe67850838a669ea2aa5943371deb188">&#9670;&nbsp;</a></span>add()</h2>
 
@@ -238,7 +266,7 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">cmd</td><td>The AT command object. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">textCommand</td><td>The string (name) of the command we want to subscribe to. Since this service only handles AT commands, this string has to begin by the "at" characters and should be in lower case. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">cFcn</td><td>The handler of the callback function associated to the command. Prototype: <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> xCallback( cli::handler_t h ) </div>
-<div class="ttc" id="agroup__qatcli_html_gaa827a463743265d6ebe6bb3618f63bf2"><div class="ttname"><a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a></div><div class="ttdeci">response</div><div class="ttdoc">an enumeration to define the possible values that can be returned from the callback of a command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:27</div></div>
+<div class="ttc" id="agroup__qatcli_html_gaa827a463743265d6ebe6bb3618f63bf2"><div class="ttname"><a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a></div><div class="ttdeci">response</div><div class="ttdoc">an enumeration to define the possible values that can be returned from the callback of a command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:30</div></div>
 </div><!-- fragment --> </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">cmdOpt</td><td>This flag combines with a bitwise OR the following information:</td></tr>
   </table>
@@ -549,7 +577,7 @@ Public Member Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>qOS</b></li><li class="navelem"><a class="el" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a></li>
+    <li class="navelem"><a class="el" href="namespaceq_o_s.html">qOS</a></li><li class="navelem"><a class="el" href="classq_o_s_1_1command_line_interface.html">commandLineInterface</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

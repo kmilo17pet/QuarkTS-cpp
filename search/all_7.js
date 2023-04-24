@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['handle_0',['handle',['../classq_o_s_1_1co_1_1handle.html',1,'qOS::co']]],
+  ['handle_0',['handle',['../classq_o_s_1_1co_1_1handle.html#a5ef4759568ff5838891f7e9e53cbc991',1,'qOS::co::handle::handle()'],['../classq_o_s_1_1co_1_1handle.html',1,'qOS::co::handle']]],
   ['handler_5ft_1',['handler_t',['../classq_o_s_1_1cli_1_1handler__t.html',1,'qOS::cli::handler_t'],['../classq_o_s_1_1sm_1_1handler__t.html',1,'qOS::sm::handler_t']]],
   ['haspendingnotifications_2',['hasPendingNotifications',['../group__qnot.html#ga8df76411fcbc5de558088699be227891',1,'qOS::core']]],
   ['helper_20functions_3',['Helper functions',['../group__qflm.html',1,'']]],

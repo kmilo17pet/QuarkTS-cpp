@@ -170,7 +170,7 @@ Timing Approach</h1>
 <li>Scenario 1 : When tick is already provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Init();</div>
@@ -179,11 +179,12 @@ Timing Approach</h1>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
+<div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel nterfaces.</div><div class="ttdef"><b>Definition:</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --></li>
 <li>Scenario 2 : When the tick is not provided <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;DeviceHeader.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> Interrupt_Timer0( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    clock::sysTick();</div>

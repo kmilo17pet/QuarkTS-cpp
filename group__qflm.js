@@ -1,5 +1,6 @@
 var group__qflm =
 [
+    [ "qOS::bits", "namespaceq_o_s_1_1bits.html", null ],
     [ "qOS::arraySize", "group__qflm.html#gab5754d9611462696a65a030ff771f4bb", null ],
     [ "qOS::byteMergeNibbles", "group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4", null ],
     [ "qOS::byteNibbleHigh", "group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75", null ],

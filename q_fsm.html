@@ -185,9 +185,10 @@ Subscribing states and defining callbacks</h1>
 <p >A state callback-functions takes a <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html" title="The state callback argument to handle the state-machine dynamics and provide execution information....">qOS::sm::handler_t</a> object as input argument and returns a <code>sm::status</code> value. An example is shown in the following code snippet:</p>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> ExampleState_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="comment">/* TODO: State code */</span></div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition:</b> fsm.hpp:63</div></div>
+<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition:</b> fsm.hpp:97</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">qOS::sm::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdef"><b>Definition:</b> fsm.hpp:101</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_fsmhandler"></a>
 The state callback handler: performing transitions and retrieving data</h1>
 <p >Because callback functions are methods derived from the state-machine object, they have direct access to some attributes via the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">qOS::sm::handler_t</a> argument. The usage of this object it's required to make the FSM moves between states and additionally get extra data. The provided attributes are:</p>
@@ -220,11 +221,11 @@ The state callback handler: performing transitions and retrieving data</h1>
 <p >The example below shows what a status callback should look like including the use of the handler.</p>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> ExampleState_Callback ( sm::handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_START:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e">sm::signalID::SIGNAL_START</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_EXIT:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> USER_DEFINED_SIGNAL :</div>
 <div class="line">            h.nextState( OtherState ); <span class="comment">/*transition*/</span></div>
@@ -232,8 +233,11 @@ The state callback handler: performing transitions and retrieving data</h1>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qfsm_html_ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6"><div class="ttname"><a href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">qOS::sm::SIGNAL_ENTRY</a></div><div class="ttdeci">@ SIGNAL_ENTRY</div><div class="ttdoc">Built-in signal to indicate if the current state has just entered from another state.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:51</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e"><div class="ttname"><a href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e">qOS::sm::SIGNAL_START</a></div><div class="ttdeci">@ SIGNAL_START</div><div class="ttdoc">Built-in signal that can be used to set a nested initial-transition (aka default transition) by using...</div><div class="ttdef"><b>Definition:</b> fsm.hpp:39</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453"><div class="ttname"><a href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">qOS::sm::SIGNAL_EXIT</a></div><div class="ttdeci">@ SIGNAL_EXIT</div><div class="ttdoc">Built-in signal to indicate if the current state has just exit to another state.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:45</div></div>
 </div><!-- fragment --><p >As shown above, the return value represents the exit status of the state, and it can be handled with an additional surrounding callback function \( S_u \) established at the moment of the FSM setup. The values allowed to return are listed below.</p>
 <ul>
 <li><code>sm::status::SUCCESS</code> </li>
@@ -260,16 +264,16 @@ The surrounding callback</h1>
  <em>Surrounding callback invocation after and before the current state</em> </center><p >The surrounding callback \( S_u \) invocation occurs after and before the current state \( P \). When the surrounding callback is executed, indicates its own checkpoint through the <code>Status</code> attribute of the sm::handler_t argument. Unlike a state callback, the surrounding callback should not return anything, thus, the callback should be written as:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> SurroundingCallback_Example( sm::handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.lastStatus() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::status::BEFORE_ANY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4">sm::status::BEFORE_ANY</a>:</div>
 <div class="line">            <span class="comment">/* TODO: before any code */</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::status::FAILURE:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5">sm::status::FAILURE</a>:</div>
 <div class="line">            <span class="comment">/* TODO: failure code */</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::status::SUCCESS:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>:</div>
 <div class="line">            <span class="comment">/* TODO: success code */</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::status::SIGNAL_HANDLED:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee">sm::status::SIGNAL_HANDLED</a>:</div>
 <div class="line">            <span class="comment">/* TODO: signal handled code */</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> 5: <span class="comment">/*user-defined return value*/</span></div>
@@ -280,6 +284,9 @@ The surrounding callback</h1>
 <div class="line">            <span class="keywordflow">break</span></div>
 <div class="line">    }</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5">qOS::sm::FAILURE</a></div><div class="ttdeci">@ FAILURE</div><div class="ttdef"><b>Definition:</b> fsm.hpp:100</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4">qOS::sm::BEFORE_ANY</a></div><div class="ttdeci">@ BEFORE_ANY</div><div class="ttdef"><b>Definition:</b> fsm.hpp:98</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee">qOS::sm::SIGNAL_HANDLED</a></div><div class="ttdeci">@ SIGNAL_HANDLED</div><div class="ttdef"><b>Definition:</b> fsm.hpp:102</div></div>
 </div><!-- fragment --><p >As you can see in the example below, the surrounding execution case its verified through the FSM handle by reading the <code>Status</code> field.</p>
 <h1><a class="anchor" id="q_fsm_astask"></a>
 Adding a state machine as a task</h1>
@@ -291,9 +298,9 @@ Adding a state machine as a task</h1>
 <div class="line">    event_t *e = h.Data;</div>
 <div class="line">    <span class="comment">/* Get the event info of the task that owns this state machine*/</span></div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_EXIT:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">switch</span> ( e-&gt;getTrigger() ) {</div>
@@ -311,7 +318,7 @@ Adding a state machine as a task</h1>
 <div class="line">            <span class="comment">/* TODO: State code */</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="q_fsm_example1"></a>
 A demonstrative example for a FSM</h1>
@@ -331,14 +338,14 @@ A demonstrative example for a FSM</h1>
 <div class="fragment"><div class="line">task LED_Task; <span class="comment">/*The task node*/</span></div>
 <div class="line">stateMachine LED_FSM; <span class="comment">/*The state -machine handle*/</span></div>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> State_LEDOff, State_LEDOn, State_LEDBlink;</div>
-<div class="ttc" id="agroup__qcoroutines_html_gaeb641677e59c4b4fcf76e63c1a598323"><div class="ttname"><a href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">qOS::co::state</a></div><div class="ttdeci">base_t state</div><div class="ttdoc">The intrinsic type of co::position to hold a coroutine progress.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:17</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gaeb641677e59c4b4fcf76e63c1a598323"><div class="ttname"><a href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">qOS::co::state</a></div><div class="ttdeci">base_t state</div><div class="ttdoc">The intrinsic type of co::position to hold a coroutine progress.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:21</div></div>
 </div><!-- fragment --><p >Then, we define our states as the flow diagram shown in the figure above.</p>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDOff_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            BSP_LED_OFF();</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_EXIT: <span class="keywordflow">case</span> sm::signalID::SIGNAL_START: <span class="comment">/*Ignore*/</span></div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>: <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e">sm::signalID::SIGNAL_START</a>: <span class="comment">/*Ignore*/</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">if</span> ( BUTTON_PRESSED ) {</div>
@@ -346,17 +353,17 @@ A demonstrative example for a FSM</h1>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDOn_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="keyword">static</span> timer timeout;</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            timeout.set( 10_sec );</div>
 <div class="line">            BSP_LED_ON();</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_EXIT: <span class="keywordflow">case</span> sm::signalID::SIGNAL_START: <span class="comment">/*Ignore*/</span></div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>: <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e">sm::signalID::SIGNAL_START</a>: <span class="comment">/*Ignore*/</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">if</span> ( timeout.expired() ) {</div>
@@ -367,7 +374,7 @@ A demonstrative example for a FSM</h1>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDBlink_Callback( sm::handler_t h ) {</div>
@@ -375,10 +382,10 @@ A demonstrative example for a FSM</h1>
 <div class="line">    <span class="keyword">static</span> timer blinktime;</div>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            timeout.set( 10_sec );</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_EXIT: <span class="keywordflow">case</span> sm::signalID::SIGNAL_START: <span class="comment">/*Ignore*/</span></div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>: <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e">sm::signalID::SIGNAL_START</a>: <span class="comment">/*Ignore*/</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">if</span> ( timeout.expired() || BUTTON_PRESSED ) {</div>
@@ -389,7 +396,7 @@ A demonstrative example for a FSM</h1>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >Finally, we add the task to the scheduling scheme running the dedicated state machine. Remember that you must set up the scheduler before adding a task to the scheduling scheme.</p>
 <div class="fragment"><div class="line">LED_FSM.setup( <span class="keyword">nullptr</span>, State_LEDOff );</div>
@@ -516,33 +523,33 @@ Demonstrative example using transition tables</h2>
 <div class="line">    { 10_sec,  <a class="code hl_function" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">sm::TIMEOUT_INDEX</a>( 0 ) | <a class="code hl_variable" href="group__qfsm.html#ga9a8c0296382e335616419ce163437b89">sm::TIMEOUT_SET_ENTRY</a>  | <a class="code hl_variable" href="group__qfsm.html#gad741bdfacdee5f40d16fe32d38227c31">sm::TIMEOUT_RST_EXIT</a>  },</div>
 <div class="line">    { 0.5_sec, <a class="code hl_function" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">sm::TIMEOUT_INDEX</a>( 1 ) | <a class="code hl_variable" href="group__qfsm.html#ga9a8c0296382e335616419ce163437b89">sm::TIMEOUT_SET_ENTRY</a>  | <a class="code hl_variable" href="group__qfsm.html#gad741bdfacdee5f40d16fe32d38227c31">sm::TIMEOUT_RST_EXIT</a> | <a class="code hl_variable" href="group__qfsm.html#ga3c6b00ebb0cc213342339189c9d71a40">sm::TIMEOUT_PERIODIC</a> }</div>
 <div class="line">};</div>
-<div class="ttc" id="agroup__qfsm_html_ga29084ed7ba7ac3fdb0883aac3bd4745d"><div class="ttname"><a href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">qOS::sm::transition_t</a></div><div class="ttdeci">_transition_s transition_t</div><div class="ttdoc">This structure should be used to define an item for a state transition table.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:335</div></div>
+<div class="ttc" id="agroup__qfsm_html_ga29084ed7ba7ac3fdb0883aac3bd4745d"><div class="ttname"><a href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">qOS::sm::transition_t</a></div><div class="ttdeci">_transition_s transition_t</div><div class="ttdoc">This structure should be used to define an item for a state transition table.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:369</div></div>
 <div class="ttc" id="agroup__qfsm_html_ga3c6b00ebb0cc213342339189c9d71a40"><div class="ttname"><a href="group__qfsm.html#ga3c6b00ebb0cc213342339189c9d71a40">qOS::sm::TIMEOUT_PERIODIC</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_PERIODIC</div><div class="ttdoc">This timeout-specification option its used setup the timeout in periodic mode.</div></div>
-<div class="ttc" id="agroup__qfsm_html_ga646289fa705250d5f8b950aee747becc"><div class="ttname"><a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a></div><div class="ttdeci">constexpr timeoutSpecOption_t TIMEOUT_INDEX(index_t i)</div><div class="ttdoc">Timeout-specification option. Should be used to specify the timeout index.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:521</div></div>
+<div class="ttc" id="agroup__qfsm_html_ga646289fa705250d5f8b950aee747becc"><div class="ttname"><a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a></div><div class="ttdeci">constexpr timeoutSpecOption_t TIMEOUT_INDEX(index_t i)</div><div class="ttdoc">Timeout-specification option. Should be used to specify the timeout index.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:555</div></div>
 <div class="ttc" id="agroup__qfsm_html_ga9a8c0296382e335616419ce163437b89"><div class="ttname"><a href="group__qfsm.html#ga9a8c0296382e335616419ce163437b89">qOS::sm::TIMEOUT_SET_ENTRY</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_SET_ENTRY</div><div class="ttdoc">This timeout-specification option its used to specify that the engine should set the timeout when the...</div></div>
 <div class="ttc" id="agroup__qfsm_html_gad741bdfacdee5f40d16fe32d38227c31"><div class="ttname"><a href="group__qfsm.html#gad741bdfacdee5f40d16fe32d38227c31">qOS::sm::TIMEOUT_RST_EXIT</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_RST_EXIT</div><div class="ttdoc">This timeout-specification option its used to specify that the engine should reset the timeout when t...</div></div>
-<div class="ttc" id="agroup__qfsm_html_gaf43c279ea5475762a31afc11e5a868ea"><div class="ttname"><a href="group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea">qOS::sm::timeoutStateDefinition_t</a></div><div class="ttdeci">_timeoutStateDefinition_s timeoutStateDefinition_t</div><div class="ttdoc">This type should be used to define an item for a timeout-specification table.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:320</div></div>
+<div class="ttc" id="agroup__qfsm_html_gaf43c279ea5475762a31afc11e5a868ea"><div class="ttname"><a href="group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea">qOS::sm::timeoutStateDefinition_t</a></div><div class="ttdeci">_timeoutStateDefinition_s timeoutStateDefinition_t</div><div class="ttdoc">This type should be used to define an item for a timeout-specification table.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:354</div></div>
 </div><!-- fragment --><p >Then, we define the callback for the states.</p>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDOff_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            BSP_LED_OFF();</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDOn_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            BSP_LED_ON();</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDBlink_Callback( sm::handler_t h ) {</div>
@@ -553,7 +560,7 @@ Demonstrative example using transition tables</h2>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >In the previous code snippet, we assumed that <code>SIGNAL_BUTTON_PRESSED</code> can be delivered from either the interrupt context or another task.</p>
 <p >To finish the setup, a task is added to handle the FSM and then, the transition table can be installed with the other required objects.</p>
@@ -574,7 +581,7 @@ Demonstrative example using transition tables</h2>
 <div class="line">State_LEDBlink.setTransitions( LEDBlink_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LEDBlink_transitions) );</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qfsm.html#ga20c364205597d27c90669f230b5ddf2a">addStateMachineTask</a>( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );</div>
-<div class="ttc" id="agroup__qflm_html_gab5754d9611462696a65a030ff771f4bb"><div class="ttname"><a href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">qOS::arraySize</a></div><div class="ttdeci">constexpr size_t arraySize(const T(&amp;arr)[n]) noexcept</div><div class="ttdoc">Calculates the size of an array. This function takes a reference to an array and calculates its size....</div><div class="ttdef"><b>Definition:</b> helper.hpp:129</div></div>
+<div class="ttc" id="agroup__qflm_html_gab5754d9611462696a65a030ff771f4bb"><div class="ttname"><a href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">qOS::arraySize</a></div><div class="ttdeci">constexpr size_t arraySize(const T(&amp;arr)[n]) noexcept</div><div class="ttdoc">Calculates the size of an array. This function takes a reference to an array and calculates its size....</div><div class="ttdef"><b>Definition:</b> helper.hpp:133</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qfsm_happroach"></a>
 Using the hierarchical approach</h1>
 <p >In conventional state machine designs, all states are considered at the same level. The design does not capture the commonality that exists among states. In real life, many states handle most transitions in similar fashion and differ only in a few key components. Even when the actual handling differs, there is still some commonality. It is in these situations where the hierarchical designs make the most sense.</p>
@@ -595,14 +602,14 @@ Example using a hierarchical FSM</h2>
 </html>
  <em>Cruise control FSM example</em> </center><p >The behavior of this system is state-dependent in that the executed actions correspond not only to the driver input, but also to the current state of the system and with the status of the engine and the brake. The figure above illustrates the modeling of this system with the "Automated Control" state acting as composite.</p>
 <p >Before getting started, the required user-defined signals, variables, and entries of the transition table should be defined:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define  SIGNAL_ENGINE_ON           ( static_cast&lt;signalID&gt;(1) )</span></div>
-<div class="line"><span class="preprocessor">#define  SIGNAL_ACCEL               ( static_cast&lt;signalID&gt;(2) )</span></div>
-<div class="line"><span class="preprocessor">#define  SIGNAL_RESUME              ( static_cast&lt;signalID&gt;(3) )</span></div>
-<div class="line"><span class="preprocessor">#define  SIGNAL_OFF                 ( static_cast&lt;signalID&gt;(4) )</span></div>
-<div class="line"><span class="preprocessor">#define  SIGNAL_BRAKE_PRESSED       ( static_cast&lt;signalID&gt;(5) )</span></div>
-<div class="line"><span class="preprocessor">#define  SIGNAL_CRUISE              ( static_cast&lt;signalID&gt;(6) )</span></div>
-<div class="line"><span class="preprocessor">#define  SIGNAL_REACHED_CRUISING    ( static_cast&lt;signalID&gt;(7) )</span></div>
-<div class="line"><span class="preprocessor">#define  SIGNAL_ENGINE_OFF          ( static_cast&lt;signalID&gt;(8) )</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define  SIGNAL_ENGINE_ON           ( sm::SIGNAL_USER( 1 ) )</span></div>
+<div class="line"><span class="preprocessor">#define  SIGNAL_ACCEL               ( sm::SIGNAL_USER( 2 ) )</span></div>
+<div class="line"><span class="preprocessor">#define  SIGNAL_RESUME              ( sm::SIGNAL_USER( 3 ) )</span></div>
+<div class="line"><span class="preprocessor">#define  SIGNAL_OFF                 ( sm::SIGNAL_USER( 4 ) )</span></div>
+<div class="line"><span class="preprocessor">#define  SIGNAL_BRAKE_PRESSED       ( sm::SIGNAL_USER( 5 ) )</span></div>
+<div class="line"><span class="preprocessor">#define  SIGNAL_CRUISE              ( sm::SIGNAL_USER( 6 ) )</span></div>
+<div class="line"><span class="preprocessor">#define  SIGNAL_REACHED_CRUISING    ( sm::SIGNAL_USER( 7 ) )</span></div>
+<div class="line"><span class="preprocessor">#define  SIGNAL_ENGINE_OFF          ( sm::SIGNAL_USER( 8 ) )</span></div>
 <div class="line"> </div>
 <div class="line">task CruiseControlTask;</div>
 <div class="line">stateMachine Top_SM;</div>
@@ -668,17 +675,17 @@ Example using a hierarchical FSM</h2>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><span class="keywordtype">bool</span> SigAct_BrakeOff( sm::handler_t h ) {</div>
 <div class="line">    (void)h; <span class="comment">/*unused*/</span></div>
-<div class="line">    <span class="keywordflow">return</span> ( BSP_BREAK_READ() == OFF ) ? <span class="keyword">true</span> : <span class="keyword">false</span>;  <span class="comment">/*check guard*/</span></div>
+<div class="line">    <span class="keywordflow">return</span> ( BSP_BREAK_READ() == <a class="code hl_enumvalue" href="group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba88559a0cfd8250c9d65970cc145c92d4">OFF</a> ) ? <span class="keyword">true</span> : <span class="keyword">false</span>;  <span class="comment">/*check guard*/</span></div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><span class="comment">/*                  STATE CALLBACK FOR THE TOP FSM                      */</span></div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_top_callback( sm::handler_t h ) {</div>
-<div class="line">    <a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> RetVal = sm::status::SUCCESS;</div>
+<div class="line">    <a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> RetVal = <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_ENTRY:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_EXIT:</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    } </div>
 <div class="line">    <span class="keywordflow">return</span> RetVal;</div>
@@ -688,47 +695,48 @@ Example using a hierarchical FSM</h2>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_idle_callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="comment">/*TODO : state activities*/</span></div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_initial_callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="comment">/*TODO : state activities*/</span></div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_cruisingoff_callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="comment">/*TODO : state activities*/</span></div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_automatedcontrol_callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="comment">/*TODO : state activities*/</span></div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><span class="comment">/*          STATE CALLBACKS FOR THE AUTOMATED CONTROL FSM                */</span></div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_accelerating_callback( sm::handler_t h ) {</div>
-<div class="line">    <span class="keywordflow">switch</span> ( h-&gt;Signal ) {</div>
-<div class="line">        <span class="keywordflow">case</span> sm::signalID::SIGNAL_EXIT:</div>
+<div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
+<div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>:</div>
 <div class="line">            Speed_SelectDesired();</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
 <div class="line">            Speed_Increase();</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_resuming_callback( sm::handler_t h ) {</div>
 <div class="line">    Cruising_Resume();</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> state_cruising_callback( sm::handler_t h ) {</div>
 <div class="line">    Speed_Maintain();</div>
-<div class="line">    <span class="keywordflow">return</span> sm::status::SUCCESS;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
+<div class="ttc" id="agroup__qedgecheck_html_gga8c8610c95dcd72ca8a1d5c3d926e507ba88559a0cfd8250c9d65970cc145c92d4"><div class="ttname"><a href="group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba88559a0cfd8250c9d65970cc145c92d4">qOS::ec::pinState::OFF</a></div><div class="ttdeci">@ OFF</div></div>
 </div><!-- fragment --><p >Finally, the dedicated task for the FSM and related objects are configured.</p>
 <div class="fragment"><div class="line">Top_SM.setup( state_top_callback, state_idle );</div>
 <div class="line"><span class="comment">/*subscribe to the highest level states*/</span></div>
@@ -772,12 +780,12 @@ Example with history pseudo-states</h2>
 <li><em>Deep</em> <em>history</em> : A transition to the deep history state within a composite state invokes the state that was active, immediately before the most recent exit of the composite state. The last active state can be nested at any depth.</li>
 </ul>
 <p >Here, the way to specify this type of transition in QuarkTS++ is very straightforward, you only need to assign the history-mode in the last entry of the transition as shown below:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#define SIGNAL_A ( static_cast&lt;sm::signalID&gt;(1) )</span></div>
-<div class="line"><span class="preprocessor">#define SIGNAL_B ( static_cast&lt;sm::signalID&gt;(2) )</span></div>
-<div class="line"><span class="preprocessor">#define SIGNAL_C ( static_cast&lt;sm::signalID&gt;(3) )</span></div>
-<div class="line"><span class="preprocessor">#define SIGNAL_D ( static_cast&lt;sm::signalID&gt;(4) )</span></div>
-<div class="line"><span class="preprocessor">#define SIGNAL_E ( static_cast&lt;sm::signalID&gt;(5) )</span></div>
-<div class="line"><span class="preprocessor">#define SIGNAL_F ( static_cast&lt;sm::signalID&gt;(6) )</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#define SIGNAL_A ( sm::SIGNAL_USER( 1 ) )</span></div>
+<div class="line"><span class="preprocessor">#define SIGNAL_B ( sm::SIGNAL_USER( 2 ) )</span></div>
+<div class="line"><span class="preprocessor">#define SIGNAL_C ( sm::SIGNAL_USER( 3 ) )</span></div>
+<div class="line"><span class="preprocessor">#define SIGNAL_D ( sm::SIGNAL_USER( 4 ) )</span></div>
+<div class="line"><span class="preprocessor">#define SIGNAL_E ( sm::SIGNAL_USER( 5 ) )</span></div>
+<div class="line"><span class="preprocessor">#define SIGNAL_F ( sm::SIGNAL_USER( 6 ) )</span></div>
 <div class="line"> </div>
 <div class="line">queue_t sigqueue;</div>
 <div class="line">sm::signal_t topsm_sig_stack[ 10 ];</div>

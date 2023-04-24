@@ -1,13 +1,13 @@
 var searchData=
 [
   ['raise_0',['raise',['../classq_o_s_1_1command_line_interface.html#a0dc01a8f99c2d0b67448fbf926667491',1,'qOS::commandLineInterface']]],
-  ['read_1',['READ',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4',1,'qOS::cli']]],
-  ['read_2',['read',['../classq_o_s_1_1byte_buffer.html#a5606af1fab73ee13728d33d306cc1d41',1,'qOS::byteBuffer']]],
+  ['read_1',['read',['../classq_o_s_1_1byte_buffer.html#a5606af1fab73ee13728d33d306cc1d41',1,'qOS::byteBuffer']]],
+  ['read_2',['READ',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4',1,'qOS::cli']]],
   ['ready_3',['READY',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a2baa69eafc7204f3bd8648eba580c489',1,'qOS']]],
   ['receive_4',['receive',['../classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae',1,'qOS::queue']]],
   ['received_5',['received',['../classq_o_s_1_1response.html#a85e339bbd33c1617f35438bf5cca63b2',1,'qOS::response']]],
   ['red_6',['red',['../group__qtrace.html#ga9774794a82c583d6b0f54ead44b91a04',1,'qOS::trace']]],
-  ['reenter_7',['reenter',['../group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587',1,'qOS::co::reenter(qOS::co::handle h) noexcept'],['../group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91',1,'qOS::co::reenter(void) noexcept']]],
+  ['reenter_7',['reenter',['../group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91',1,'qOS::co::reenter(void) noexcept'],['../group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587',1,'qOS::co::reenter(qOS::co::handle h) noexcept']]],
   ['reg_8',['reg',['../group__qedgecheck.html#ga87f4cb15ec91bfbd3cf6d8507bbd0aeb',1,'qOS::ec']]],
   ['reload_9',['reload',['../classq_o_s_1_1timer.html#a28117b138cfc3cbb1b93feb12b860355',1,'qOS::timer']]],
   ['remaining_10',['remaining',['../classq_o_s_1_1timer.html#aff79958773cab990688fcccc7d155e5a',1,'qOS::timer']]],
@@ -15,12 +15,13 @@ var searchData=
   ['remove_12',['remove',['../classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7',1,'qOS::list::remove(void *const xNode) noexcept'],['../classq_o_s_1_1list.html#a1c975b6333a32e90b94b464dad500ee6',1,'qOS::list::remove(void *const xNode, const listPosition p) noexcept']]],
   ['removefront_13',['removeFront',['../classq_o_s_1_1queue.html#afd677c7eae70d9fee25305dac94ba916',1,'qOS::queue']]],
   ['removetask_14',['removeTask',['../classq_o_s_1_1core.html#a1448493a77ab1a2e7fd3d46954bbf537',1,'qOS::core']]],
-  ['reset_15',['reset',['../classq_o_s_1_1response.html#a375e3c0dcaa1d08b3375489c90f0b424',1,'qOS::response::reset()'],['../classq_o_s_1_1queue.html#a6b0ccfda22e78eaf7e91878b99bbf675',1,'qOS::queue::reset()']]],
-  ['response_16',['response',['../classq_o_s_1_1response.html',1,'qOS::response'],['../group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2',1,'qOS::cli::response()']]],
+  ['reset_15',['reset',['../classq_o_s_1_1queue.html#a6b0ccfda22e78eaf7e91878b99bbf675',1,'qOS::queue::reset()'],['../classq_o_s_1_1response.html#a375e3c0dcaa1d08b3375489c90f0b424',1,'qOS::response::reset()']]],
+  ['response_16',['response',['../classq_o_s_1_1response.html',1,'qOS::response'],['../group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2',1,'qOS::cli::response()'],['../classq_o_s_1_1response.html#a2c28516e28bf0bfa50e504989a84dea6',1,'qOS::response::response()']]],
   ['response_20handler_17',['Response handler',['../group__qresponse.html',1,'']]],
   ['responsestatus_18',['responseStatus',['../group__qresponse.html#gaf0b51c328a9dd6215f23a32c98fb5586',1,'qOS']]],
   ['restart_19',['restart',['../group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528',1,'qOS::co']]],
   ['resume_20',['resume',['../classq_o_s_1_1task.html#aeeb29d20256efc116b5a7027ce2ed9c0',1,'qOS::task']]],
-  ['run_21',['run',['../classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c',1,'qOS::core::run()'],['../classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f',1,'qOS::stateMachine::run()'],['../classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd',1,'qOS::commandLineInterface::run()']]],
-  ['running_22',['RUNNING',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a43491564ebcfd38568918efbd6e840fd',1,'qOS']]]
+  ['rising_5fedge_21',['RISING_EDGE',['../group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507bad85243a747ac5537ef0b7adde99c3e98',1,'qOS::ec']]],
+  ['run_22',['run',['../classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c',1,'qOS::core::run()'],['../classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f',1,'qOS::stateMachine::run()'],['../classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd',1,'qOS::commandLineInterface::run()']]],
+  ['running_23',['RUNNING',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a43491564ebcfd38568918efbd6e840fd',1,'qOS']]]
 ];

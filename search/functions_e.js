@@ -1,17 +1,4 @@
 var searchData=
 [
-  ['raise_0',['raise',['../classq_o_s_1_1command_line_interface.html#a0dc01a8f99c2d0b67448fbf926667491',1,'qOS::commandLineInterface']]],
-  ['read_1',['read',['../classq_o_s_1_1byte_buffer.html#a5606af1fab73ee13728d33d306cc1d41',1,'qOS::byteBuffer']]],
-  ['receive_2',['receive',['../classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae',1,'qOS::queue']]],
-  ['received_3',['received',['../classq_o_s_1_1response.html#a85e339bbd33c1617f35438bf5cca63b2',1,'qOS::response']]],
-  ['reenter_4',['reenter',['../group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587',1,'qOS::co::reenter(qOS::co::handle h) noexcept'],['../group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91',1,'qOS::co::reenter(void) noexcept']]],
-  ['reload_5',['reload',['../classq_o_s_1_1timer.html#a28117b138cfc3cbb1b93feb12b860355',1,'qOS::timer']]],
-  ['remaining_6',['remaining',['../classq_o_s_1_1timer.html#aff79958773cab990688fcccc7d155e5a',1,'qOS::timer']]],
-  ['remove_7',['remove',['../classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7',1,'qOS::list::remove(void *const xNode) noexcept'],['../classq_o_s_1_1list.html#a1c975b6333a32e90b94b464dad500ee6',1,'qOS::list::remove(void *const xNode, const listPosition p) noexcept']]],
-  ['removefront_8',['removeFront',['../classq_o_s_1_1queue.html#afd677c7eae70d9fee25305dac94ba916',1,'qOS::queue']]],
-  ['removetask_9',['removeTask',['../classq_o_s_1_1core.html#a1448493a77ab1a2e7fd3d46954bbf537',1,'qOS::core']]],
-  ['reset_10',['reset',['../classq_o_s_1_1response.html#a375e3c0dcaa1d08b3375489c90f0b424',1,'qOS::response::reset()'],['../classq_o_s_1_1queue.html#a6b0ccfda22e78eaf7e91878b99bbf675',1,'qOS::queue::reset()']]],
-  ['restart_11',['restart',['../group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528',1,'qOS::co']]],
-  ['resume_12',['resume',['../classq_o_s_1_1task.html#aeeb29d20256efc116b5a7027ce2ed9c0',1,'qOS::task']]],
-  ['run_13',['run',['../classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd',1,'qOS::commandLineInterface::run()'],['../classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f',1,'qOS::stateMachine::run()'],['../classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c',1,'qOS::core::run()']]]
+  ['queue_0',['queue',['../classq_o_s_1_1queue.html#a3ba647cb33c2aa19917e9c7bf06e9b5e',1,'qOS::queue']]]
 ];

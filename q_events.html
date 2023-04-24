@@ -282,7 +282,7 @@ Sending notifications</h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;HAL.h&quot;</span> <span class="comment">/*hardware dependent code*/</span></div>
 <div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line">task_t taskA, taskB;</div>
 <div class="line"><span class="keywordtype">void</span> taskA_Callback( event_t e );</div>
@@ -322,7 +322,7 @@ Sending notifications</h3>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> trigger::byNotificationQueued:</div>
 <div class="line">            <span class="comment">/*here, we only care about the Falling Edge events*/</span></div>
-<div class="line">            <span class="keywordflow">if</span> ( 0 == strcmp( e-&gt;EventData, <span class="stringliteral">&quot;ButtonFallingEdge&quot;</span> ) ) {</div>
+<div class="line">            <span class="keywordflow">if</span> ( 0 == strcmp( e.EventData, <span class="stringliteral">&quot;ButtonFallingEdge&quot;</span> ) ) {</div>
 <div class="line">                press_counter++; <span class="comment">/*count the button press*/</span></div>
 <div class="line">                <span class="keywordflow">if</span> ( 3 == press_counter ) { <span class="comment">/*after 3 presses*/</span></div>
 <div class="line">                    <span class="comment">/*send the notification of 3 presses to taskB*/</span></div>
@@ -359,10 +359,11 @@ Sending notifications</h3>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_ad37fb39c9ab1224e007be651e1dfc69b"><div class="ttname"><a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">qOS::core::addEventTask</a></div><div class="ttdeci">bool addEventTask(task &amp;Task, taskFcn_t callback, const priority_t p, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED_STATE state b...</div><div class="ttdef"><b>Definition:</b> kernel.hpp:205</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_ad37fb39c9ab1224e007be651e1dfc69b"><div class="ttname"><a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">qOS::core::addEventTask</a></div><div class="ttdeci">bool addEventTask(task &amp;Task, taskFcn_t callback, const priority_t p, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED_STATE state b...</div><div class="ttdef"><b>Definition:</b> kernel.hpp:208</div></div>
 <div class="ttc" id="agroup__qnot_html_gaa6de5a8fa854b30d78de7540e21f4298"><div class="ttname"><a href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">qOS::core::notify</a></div><div class="ttdeci">bool notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept</div><div class="ttdoc">Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:317</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga50f47c679f7086caa5c684176a18330e"><div class="ttname"><a href="group__qtrace.html#ga50f47c679f7086caa5c684176a18330e">qOS::trace::setOutputFcn</a></div><div class="ttdeci">void setOutputFcn(util::putChar_t fcn)</div><div class="ttdoc">Set the output method for the trace stream.</div><div class="ttdef"><b>Definition:</b> trace.hpp:320</div></div>
+<div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel nterfaces.</div><div class="ttdef"><b>Definition:</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="qnotspread"></a>
 Spread a notification</h3>
 <p >In some systems, we need the ability to broadcast an event to all tasks. This is often referred to as a barrier. This means that a group of tasks should stop activities at some point and cannot proceed until another task or ISR raise a specific event. For this kind of implementation, we can also use the <a class="el" href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298" title="Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...">qOS::core::notify()</a> method but in this case, without specifying a target task.</p>
@@ -404,7 +405,7 @@ A queue example</h3>
 <p >This example shows the usage of QuarkTS++ queues. The application is the classic producer/consumer example. The producer task puts data into the queue. When the queue reaches a specific item count, the consumer task is triggered to start fetching data from the queue. Here, both tasks are attached to the queue.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
 <div class="line"><span class="keywordtype">void</span> interrupt Timer0_ISR( <span class="keywordtype">void</span> ) {</div>
@@ -508,7 +509,7 @@ Using the task Event-flags</h3>
 <p >This example demonstrates the usage of Event-flags. The idle task will transmit data generated from another task, only when the required conditions are met, including two events from an ISR (A timer expiration and the change of a digital input) and when a new set of data is generated. The task that generates the data should wait until the idle task transmission is done to generate a new data set.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>qOS;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*event flags application definitions */</span></div>
 <div class="line"><span class="preprocessor">#define SWITCH_CHANGED   EVENT_FLAG(1)</span></div>

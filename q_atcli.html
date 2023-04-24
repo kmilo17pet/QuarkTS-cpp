@@ -215,9 +215,9 @@ Writing a command callback</h1>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> CMD_Callback( cli::handler_t h ) {</div>
 <div class="line">    <span class="comment">/* TODO : The command callback */</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qatcli_html_gaa827a463743265d6ebe6bb3618f63bf2"><div class="ttname"><a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a></div><div class="ttdeci">response</div><div class="ttdoc">an enumeration to define the possible values that can be returned from the callback of a command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:27</div></div>
+<div class="ttc" id="agroup__qatcli_html_gaa827a463743265d6ebe6bb3618f63bf2"><div class="ttname"><a href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">qOS::cli::response</a></div><div class="ttdeci">response</div><div class="ttdoc">an enumeration to define the possible values that can be returned from the callback of a command.</div><div class="ttdef"><b>Definition:</b> cli.hpp:30</div></div>
 </div><!-- fragment --><p >The callback takes one argument of type <a class="el" href="classq_o_s_1_1cli_1_1handler__t.html" title="The command argument with all the regarding information of the incoming AT command.">qOS::cli::handler_t</a> and returns a single value. The input argument it's just a pointer to public data of the CLI instance where the command it subscribed to. From the callback context, can be used to print out extra information as a command response, parse the command parameters, and query properties with crucial information about the detected command, like the type, the number of arguments, and the subsequent string after the command text. To see more details please check the <a class="el" href="classq_o_s_1_1cli_1_1handler__t.html" title="The command argument with all the regarding information of the incoming AT command.">qOS::cli::handler_t</a> class reference.</p>
-<p >The return value (an enum of type qOS::cli::response ) determines the response shown by the Output printer component. The possible allowed values are:</p>
+<p >The return value (an enum of type <a class="el" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2" title="an enumeration to define the possible values that can be returned from the callback of a command.">qOS::cli::response</a> ) determines the response shown by the Output printer component. The possible allowed values are:</p>
 <ul>
 <li><code>cli::response::OK</code> : as expected, print out the OK string.</li>
 <li><code>cli::response::ERROR</code> : as expected, print out the ERROR string.</li>
@@ -226,7 +226,7 @@ Writing a command callback</h1>
 </ul>
 <p >A simple example of how the command callback should be coded is shown below:</p>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> CMD_Callback( cli::handler_t h ) {</div>
-<div class="line">    <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> Response = cli::response::NO_RESPONSE;</div>
+<div class="line">    <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> Response = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9">cli::response::NO_RESPONSE</a>;</div>
 <div class="line">    <span class="keywordtype">int</span> arg1 = 0;</div>
 <div class="line">    <span class="keywordtype">float</span> arg2 = 0;</div>
 <div class="line">    <span class="comment">/*check the command-type*/</span></div>
@@ -237,33 +237,36 @@ Writing a command callback</h1>
 <div class="line">                 <span class="keywordflow">if</span> ( h.getNumArgs() &gt; 1 ) {</div>
 <div class="line">                     arg2 = h.getArgFlt( 2 ); <span class="comment">/*get the second argument as float*/</span></div>
 <div class="line">                     sprintf( h.output, <span class="stringliteral">&quot;arg1 = %d arg2 = %f&quot;</span>, arg1, arg2 );</div>
-<div class="line">                     Response = cli::response::NO_RESPONSE;</div>
+<div class="line">                     Response = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9">cli::response::NO_RESPONSE</a>;</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">else</span> {</div>
-<div class="line">                 Response = cli::response::ERROR;</div>
+<div class="line">                 Response = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">cli::response::ERROR</a>;</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8124b96b79e735f0aa06399db5cbca06">cli::commandType::TEST</a>:</div>
 <div class="line">            h.writeOut( <span class="stringliteral">&quot;inmediate message&quot;</span> );</div>
-<div class="line">            Response = cli::response::OK;</div>
+<div class="line">            Response = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">cli::response::OK</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4">cli::commandType::READ</a>:</div>
 <div class="line">            <a class="code hl_function" href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">strcpy</a>( h.output , <span class="stringliteral">&quot;Test message after the callback&quot;</span> );</div>
-<div class="line">            Response = cli::response::OK;</div>
+<div class="line">            Response = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">cli::response::OK</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">cli::commandType::ACT</a>:</div>
-<div class="line">            Response = cli::response::OK;</div>
+<div class="line">            Response = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">cli::response::OK</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">default</span>:</div>
-<div class="line">            Response = cli::response::ERROR;</div>
+<div class="line">            Response = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">cli::response::ERROR</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> Response;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2a8124b96b79e735f0aa06399db5cbca06"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8124b96b79e735f0aa06399db5cbca06">qOS::cli::TEST</a></div><div class="ttdeci">@ TEST</div><div class="ttdef"><b>Definition:</b> cli.hpp:57</div></div>
-<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4">qOS::cli::READ</a></div><div class="ttdeci">@ READ</div><div class="ttdef"><b>Definition:</b> cli.hpp:58</div></div>
-<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e">qOS::cli::PARA</a></div><div class="ttdeci">@ PARA</div><div class="ttdef"><b>Definition:</b> cli.hpp:56</div></div>
-<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">qOS::cli::ACT</a></div><div class="ttdeci">@ ACT</div><div class="ttdef"><b>Definition:</b> cli.hpp:59</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213"><div class="ttname"><a href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">qOS::cli::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> cli.hpp:31</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9"><div class="ttname"><a href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9">qOS::cli::NO_RESPONSE</a></div><div class="ttdeci">@ NO_RESPONSE</div><div class="ttdef"><b>Definition:</b> cli.hpp:33</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239"><div class="ttname"><a href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">qOS::cli::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition:</b> cli.hpp:34</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2a8124b96b79e735f0aa06399db5cbca06"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8124b96b79e735f0aa06399db5cbca06">qOS::cli::TEST</a></div><div class="ttdeci">@ TEST</div><div class="ttdef"><b>Definition:</b> cli.hpp:60</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4">qOS::cli::READ</a></div><div class="ttdeci">@ READ</div><div class="ttdef"><b>Definition:</b> cli.hpp:61</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e">qOS::cli::PARA</a></div><div class="ttdeci">@ PARA</div><div class="ttdef"><b>Definition:</b> cli.hpp:59</div></div>
+<div class="ttc" id="agroup__qatcli_html_ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6"><div class="ttname"><a href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">qOS::cli::ACT</a></div><div class="ttdeci">@ ACT</div><div class="ttdef"><b>Definition:</b> cli.hpp:62</div></div>
 <div class="ttc" id="agroup__qioutils_html_gaf00b0cd32560782fbd2b70f67150d0a4"><div class="ttname"><a href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">qOS::util::strcpy</a></div><div class="ttdeci">size_t strcpy(char *dst, const char *src, size_t maxlen) noexcept</div><div class="ttdoc">Copies up to (maxlen - 1) characters from the null-terminated string src to dst, null-terminating the...</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_atcli_inputh"></a>
 Handling the input</h1>
@@ -334,27 +337,27 @@ A CLI example</h1>
 <div class="line">}</div>
 </div><!-- fragment --><p >Finally, the command callbacks are later defined to perform the requested operations.</p>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> AT_GPIO_Callback( cli::handler_t h ) {</div>
-<div class="line">    <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> RetValue = cli::response::ERROR;</div>
+<div class="line">    <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> RetValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">cli::response::ERROR</a>;</div>
 <div class="line">    <span class="keywordtype">int</span> pin, value;</div>
 <div class="line">   </div>
-<div class="line">    <span class="keywordflow">switch</span> ( h-&gt;Type ) {</div>
+<div class="line">    <span class="keywordflow">switch</span> ( h.getType() ) {</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">cli::commandType::ACT</a>: <span class="comment">/*&lt; AT+gpio */</span></div>
-<div class="line">            RetValue = cli::response::OK;</div>
+<div class="line">            RetValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">cli::response::OK</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8124b96b79e735f0aa06399db5cbca06">cli::commandType::TEST</a>: <span class="comment">/*&lt; AT+gpio=? */</span></div>
 <div class="line">            h.writeOut( <span class="stringliteral">&quot;+gpio=&lt;pin&gt;,&lt;value&gt;\r\n&quot;</span> );</div>
 <div class="line">            h.writeOut( <span class="stringliteral">&quot;+gpio?\r\n&quot;</span> );</div>
-<div class="line">            RetValue = cli::response::NO_RESPONSE;</div>
+<div class="line">            RetValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9">cli::response::NO_RESPONSE</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4">cli::commandType::READ</a>: <span class="comment">/*&lt; AT+gpio? */</span></div>
 <div class="line">            sprintf( h.Output, <span class="stringliteral">&quot;0x%08X&quot;</span>, HAL_GPIO_Read( GPIOA ) );</div>
-<div class="line">            RetValue = cli::response::NO_RESPONSE;</div>
+<div class="line">            RetValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9">cli::response::NO_RESPONSE</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e">cli::commandType::PARA</a>: <span class="comment">/*&lt; AT+gpio=&lt;pin&gt;,&lt;value&gt; */</span></div>
 <div class="line">            pin = h.getArgInt( 1 );</div>
 <div class="line">            value = h.getArgInt( 2 );</div>
 <div class="line">            HAL_GPIO_WRITE( GPIOA, pin, value );</div>
-<div class="line">            RetValue = cli::response::OK;</div>
+<div class="line">            RetValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239">cli::response::OK</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        default : <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
@@ -363,12 +366,12 @@ A CLI example</h1>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> AT_INFO_Callback( cli::handler_t h ) {</div>
-<div class="line">    <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> RetValue = cli::response::ERROR;</div>
+<div class="line">    <a class="code hl_enumeration" href="group__qatcli.html#gaa827a463743265d6ebe6bb3618f63bf2">cli::response</a> RetValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1c29d01ced07f40a5f9417032bc51213">cli::response::ERROR</a>;</div>
 <div class="line">   </div>
-<div class="line">    <span class="keywordflow">switch</span> ( param-&gt;Type ) {</div>
+<div class="line">    <span class="keywordflow">switch</span> ( param.getType() ) {</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2afd7d96be2c5f49b86634da7b1fb47ab6">cli::commandType::ACT</a>: <span class="comment">/*&lt; AT+info */</span></div>
 <div class="line">            <a class="code hl_function" href="group__qioutils.html#gaf00b0cd32560782fbd2b70f67150d0a4">util::strcpy</a>( h.output, <span class="stringliteral">&quot;Compilation: &quot;</span> __DATE__ <span class="stringliteral">&quot; &quot;</span> __TIME__ );</div>
-<div class="line">            RetValue = cli::response::NO_RESPONSE;</div>
+<div class="line">            RetValue = <a class="code hl_enumvalue" href="group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9">cli::response::NO_RESPONSE</a>;</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        default :</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>

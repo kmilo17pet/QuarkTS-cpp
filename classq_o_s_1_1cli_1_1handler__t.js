@@ -12,5 +12,6 @@ var classq_o_s_1_1cli_1_1handler__t =
     [ "getType", "classq_o_s_1_1cli_1_1handler__t.html#a7485235a5249fc75c76886b9ae227244", null ],
     [ "writeOut", "classq_o_s_1_1cli_1_1handler__t.html#a7db6bd8288700f2a6a0277da37a549da", null ],
     [ "writeOut", "classq_o_s_1_1cli_1_1handler__t.html#a78b34b3ccf68ae13a544db51c5d649b4", null ],
+    [ "qOS::commandLineInterface", "classq_o_s_1_1cli_1_1handler__t.html#aba6d9d0160c6476dd20d0f7dea7f14c6", null ],
     [ "output", "classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0", null ]
 ];
