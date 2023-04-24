@@ -141,7 +141,7 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1trace_1_1mem.html',''); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a95ac4b0a1bdc6349f481acc176538566"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566">mem</a> (size_t nb)</td></tr>
-<tr class="memdesc:a95ac4b0a1bdc6349f481acc176538566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a memory specifier size to trace n bytes.  <a href="classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566">More...</a><br /></td></tr>
+<tr class="memdesc:a95ac4b0a1bdc6349f481acc176538566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a memory specifier to trace <em>nb</em> bytes.  <a href="classq_o_s_1_1trace_1_1mem.html#a95ac4b0a1bdc6349f481acc176538566">More...</a><br /></td></tr>
 <tr class="separator:a95ac4b0a1bdc6349f481acc176538566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -149,7 +149,7 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line">uin32_t myNumber = 0xAABBCCDD;</div>
 <div class="line"><a class="code hl_variable" href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">trace::log</a> &lt;&lt; trace::mem( <span class="keyword">sizeof</span>(myNumber ) ) &lt;&lt; &amp;myNumber &lt;&lt; <a class="code hl_variable" href="group__qtrace.html#ga69eb4a1984394bf68ad674928d358331">trace::endl</a>;</div>
 <div class="ttc" id="aclassq_o_s_1_1trace_html_ab6c95f28fe39352c65d1962f09c48d8a"><div class="ttname"><a href="classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a">qOS::trace::log</a></div><div class="ttdeci">static void * log</div><div class="ttdoc">Specify a new trace output with detailed information of the caller.</div><div class="ttdef"><b>Definition:</b> trace.hpp:62</div></div>
-<div class="ttc" id="agroup__qtrace_html_ga69eb4a1984394bf68ad674928d358331"><div class="ttname"><a href="group__qtrace.html#ga69eb4a1984394bf68ad674928d358331">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:191</div></div>
+<div class="ttc" id="agroup__qtrace_html_ga69eb4a1984394bf68ad674928d358331"><div class="ttname"><a href="group__qtrace.html#ga69eb4a1984394bf68ad674928d358331">qOS::trace::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the trace output. Example:</div><div class="ttdef"><b>Definition:</b> trace.hpp:190</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a95ac4b0a1bdc6349f481acc176538566" name="a95ac4b0a1bdc6349f481acc176538566"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95ac4b0a1bdc6349f481acc176538566">&#9670;&nbsp;</a></span>mem()</h2>
@@ -175,10 +175,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Instantiates a memory specifier size to trace n bytes. </p>
+<p>Instantiates a memory specifier to trace <em>nb</em> bytes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">nb</td><td>Number of bytes to be traced; </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nb</td><td>Number of bytes to be traced. </td></tr>
   </table>
   </dd>
 </dl>

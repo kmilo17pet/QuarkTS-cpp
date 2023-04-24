@@ -61,7 +61,7 @@ var NAVTREEINDEX2 =
 "q_gettingstarted.html#q_os_example1":[3,2,0],
 "q_gettingstarted.html#q_os_example2":[3,2,1],
 "q_gettingstarted.html#q_submodule":[3,0,1],
-"q_gettingstarted.html#qarduinousage":[3,0,3],
+"q_gettingstarted.html#qarduinousage":[3,3],
 "q_memmang.html":[5,4],
 "q_memmang.html#q_memmang_overview":[5,4,0],
 "q_memmang.html#q_memmang_pools":[5,4,2],
