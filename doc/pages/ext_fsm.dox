@@ -70,7 +70,7 @@
 * define its position in the topology. 
 *
 * A state callback-functions takes a qOS::sm::handler_t object as input argument and
-* returns a qOS::sm::status value. An example is shown in the following code snippet:
+* returns a @c sm::status value. An example is shown in the following code snippet:
 *
 *  @code{.c}
 *  sm::status ExampleState_Callback( sm::handler_t h ) {
@@ -134,7 +134,7 @@
 * Within the callback function of every state, only one level of dispatching 
 * (based on the signal) is necessary. Typically this is archived using a 
 * single-level switch statement. Callback functions communicate with the state 
-* machine engine through the sm::handler_t and the return value of type 
+* machine engine through the qOS::sm::handler_t and the return value of type 
 * @c sm::status.
 *
 * The semantic is simple, if a signal is processed, the callback functions 
@@ -153,11 +153,11 @@
 *  @code{.c}
 *  sm::status ExampleState_Callback ( sm::handler_t h ) {
 *      switch ( h.signal() ) {
-*          case signalID::SIGNAL_START:
+*          case sm::signalID::SIGNAL_START:
 *              break;
-*          case signalID::SIGNAL_ENTRY:
+*          case sm::signalID::SIGNAL_ENTRY:
 *              break;
-*          case signalID::SIGNAL_EXIT:
+*          case sm::signalID::SIGNAL_EXIT:
 *              break;
 *          case USER_DEFINED_SIGNAL :
 *              h.nextState( OtherState ); /*transition*/
@@ -181,13 +181,13 @@
 *
 * To code initial transitions, the application writer should catch the 
 * @c sm::signalID::SIGNAL_START, perform the required actions and then designate the target 
-* sub-state by using the @c startState method of the qOS::sm::handler_t 
-* argument. Regular transitions are coded in a very similar way, except that 
-* here, you catch the custom-defined signal and then use the @c nextState
-* method of the qOS::sm::handler_t argument. The developer is free to write and 
-* control state transitions. Transitions are only allowed under the availability
-* of user custom-defined signals. Regular transitions are not allowed at an 
-* entry point (@c signalID::SIGNAL_ENTRY), exit point (@c signalID::SIGNAL_EXIT), or a start 
+* sub-state by using the qOS::sm::handler_t::startState() method. Regular 
+* transitions are coded in a very similar way, except that 
+* here, you catch the custom-defined signal and then use the qOS::sm::handler_t::nextState()
+* method. The developer is free to write and control state transitions. 
+* Transitions are only allowed under the availability of user custom-defined 
+* signals. Regular transitions are not allowed at an entry point 
+* (@c signalID::SIGNAL_ENTRY), exit point (@c signalID::SIGNAL_EXIT), or a start 
 * point (@c signalID::SIGNAL_START).
 *
 * @note User should not target the top state in a transition and use it as 
@@ -252,7 +252,7 @@
 *
 * @section q_fsm_astask Adding a state machine as a task
 * The best strategy to run a FSM is delegating it to a task. For this, the 
-* os.addStateMachineTask() method should be used. Here, the task does not have 
+* qOS::core::addStateMachineTask() method should be used. Here, the task does not have 
 * a specific callback, instead, it will evaluate the active state of the FSM, 
 * and later, all the other possible states in response to events that mark 
 * their own transition. The task will be scheduled to run every @c t seconds in
@@ -263,7 +263,7 @@
 * 
 * Now that a task is running a dedicated state machine, the specific task 
 * event-information can be obtained in every state callback through the @c Data
-* field of the sm::handler_t argument.
+* field of the qOS::sm::handler_t argument.
 *
 * Check the example below:
 *
@@ -446,7 +446,7 @@
 * respectively.
 *
 * @note  Make sure that queues are enabled in the @c config.h header file
-* @attention When configuring a signal queue with queue::setup(), remember to size
+* @attention When configuring a signal queue with qOS::queue::setup(), remember to size
 * it based on the type @ref qOS::sm::signal_t.
 * @note If the state machines its delegated to a task, make sure to install the 
 * queue prior to setting up the task. In this way, a kernel connection can be 
@@ -463,10 +463,10 @@
 * Here, the application writer gets a quick picture of the FSM and the embedded 
 * software maintenance is also much more under control. A transition table 
 * should be  explicitly installed in the target state with the corresponding 
-* entries, an n-sized array of qSM_Transition_t elements following the layout
+* entries, an n-sized array of @c sm::transition_t elements following the layout
 * described below:
 *
-* The method sm::state::setTransitions(), should be used to perform the 
+* The method qOS::sm::state::setTransitions(), should be used to perform the 
 * transition table installation to a specific state.
 *
 * <center>
@@ -484,8 +484,8 @@
 *
 * - State transitions are not limited to the specification of the transition 
 * table. A state callback owns the higher precedence to change a state. The 
-* application writer can use both, a transition table and direct @c NextState 
-* field manipulation in state callbacks to perform a transition to the FSM.
+* application writer can use both, a transition table and the qOS::sm::handler_t::nextState() 
+* method in state callbacks to perform a transition to the FSM.
 * - Special care is required when the table grows very large, that is, when 
 * there are many invalid state/event combinations, leading to a waste of memory. 
 * There is also a memory penalty as the number of states and events grows. The 
@@ -535,13 +535,13 @@
 *
 * Given the above explanation, it is evident that for its operation, the state 
 * machine requires an installed signal queue.
-* A timeout specification is referenced by an object of type sm::timeoutSpec 
+* A timeout specification is referenced by an object of type qOS::sm::timeoutSpec 
 * and must be installed inside the state machine using the method 
 * qOS::stateMachine::installTimeoutSpec(). Then, timeout operations can be defined 
 * in a table for each state by using the qOS::sm::state::setTimeouts().
 *
 * A timeout specification element is defined as a structure of type 
-* qOS::sm::timeoutStateDefinition_t and should follow this layout:
+* @c sm::timeoutStateDefinition_t and should follow this layout:
 *
 * <center>
 * <table>
@@ -586,14 +586,14 @@
 *  @code{.c}
 *  /*define the FSM application event-signals*/
 *  #define SIGNAL_BUTTON_PRESSED   ( static_cast<sm::signalID>( 1 ) )
-*  #define SIGNAL_TIMEOUT          ( sm::SIGNAL_TIMEOUT( 0 ) )
+*  #define SIGNAL_DELAY            ( sm::SIGNAL_TIMEOUT( 0 ) )
 *  #define SIGNAL_BLINK            ( sm::SIGNAL_TIMEOUT( 1 ) )
 *  
 *  task LED_Task; /*The task node*/
 *  stateMachine LED_FSM; /*The state-machine handler*/
 *  sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
 *  queue LEDsigqueue; /*the signal-queue*/ 
-*  sm::Signal_t led_sig_stack[ 5 ];  /*the signal-queue storage area*/
+*  sm::signal_t led_sig_stack[ 5 ];  /*the signal-queue storage area*/
 *  sm::timeoutSpec tm_spectimeout;
 *  
 *  /*create the transition tables for every state*/
@@ -601,13 +601,13 @@
 *      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOn , 0, nullptr }
 *  };
 *  
-*  qSM_Transition_t LEDOn_transitions[] = {
-*      { SIGNAL_TIMEOUT,        nullptr, &State_LEDOff   , 0, nullptr},
+*  sm::transition_t LEDOn_transitions[] = {
+*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , 0, nullptr},
 *      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDBlink , 0, nullptr}
 *  };
 *  
-*  qSM_Transition_t LEDBlink_transitions[] = {
-*      { SIGNAL_TIMEOUT,        nullptr, &State_LEDOff   , 0, nullptr},
+*  sm::transition_t LEDBlink_transitions[] = {
+*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , 0, nullptr},
 *      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOff   , 0, nullptr}
 *  };
 *  
@@ -616,7 +616,7 @@
 *      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 *  };
 *  
-*  qSM_TimeoutStateDefinition_t LEDBlink_timeouts[] = {
+*  sm::timeoutStateDefinition_t LEDBlink_timeouts[] = {
 *      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
 *      { 0.5_sec, sm::TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 *  };
@@ -747,7 +747,7 @@
 *  /*highest level states*/
 *  sm::state state_idle, state_initial, state_cruisingoff, state_automatedcontrol;
 *  /*states inside the state_automatedcontrol*/
-*  sm::state_t state_accelerating, state_cruising, state_resuming;
+*  sm::state state_accelerating, state_cruising, state_resuming;
 *  
 *  queue top_sigqueue;
 *  sm::signal_t topsm_sig_stack[ 10 ];

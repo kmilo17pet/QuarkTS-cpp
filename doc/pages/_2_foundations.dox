@@ -172,7 +172,7 @@
 * <b> Caveats: </b>
 *
 * -# A task with time argument @c t defined as qOS::clock::IMMEDIATE, will always 
-* get the @c qReady state in every scheduling cycle, as consequence, the idle 
+* get the @c READY state in every scheduling cycle, as consequence, the idle 
 * task will never get dispatched.
 * -# Tasks do not remember the number of iterations set initially by the 
 * @c n executions argument. After the iterations are done, the internal iteration
@@ -257,7 +257,7 @@
 * method should be used
 *
 * @note When a scheduler release is performed, resources are not freed. After
-* released, the application can invoke the core::run() again to resume the
+* released, the application can invoke the qOS::core::run() again to resume the
 * scheduling activities
 *
 * @section q_globalstates Global states and scheduling rules
@@ -340,7 +340,7 @@
 * In determining precedence among tasks of those tasks having different 
 * priority levels, that with the highest priority has the highest precedence. 
 * Among tasks having the same priority, the one that entered the scheduling 
-* scheme first has the highest precedence if the @c Q_PRESERVE_TASK_ENTRY_ORDER
+* scheme first has the highest precedence if the #Q_PRESERVE_TASK_ENTRY_ORDER
 * configuration is enabled, otherwise, the OS will reserves for himself the order
 * according to the dynamics of the kernel lists.
 *

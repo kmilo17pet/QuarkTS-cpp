@@ -43,7 +43,7 @@
 * individual timing constraints, a few points must  be taken:
 *
 * - When the time interval of a certain task has elapsed, the scheduler triggers
-* the @c byTimeElapsed event that put the task in a @c qReady state (see 
+* the @c byTimeElapsed event that put the task in a @c READY state (see 
 * figure below).
 * - If a task has a finite number of iterations, the scheduler will disable the 
 * task when the number of iterations reaches the programmed value.
@@ -221,7 +221,7 @@
 *
 * The next figure, shows a cooperative environment with five tasks. Initially, 
 * the scheduler activates @c Task-E, then, this task enqueues data to @c Task-A and 
-* @c Task-B respectively using the qOS::core::notify() using the notifyMode::QUEUED mode. 
+* @c Task-B respectively using the qOS::core::notify() using the qOS::notifyMode::QUEUED mode. 
 * In the next  scheduler cycle, the scheduler realizes that the priority-queue is not empty,
 * generating an activation over the task located at the beginning of the queue. 
 * In this case, @c Task-A will be launched and its respective data will be 
@@ -402,8 +402,8 @@
 *
 * @subsubsection  q_queuesetup Setting up a queue
 * A queue must be explicitly initialized before it can be used. These objects 
-* are referenced by the class  queue. Both, the constructor or the qOS::queue::setup() 
-* methods can be used to configure the queue and initialize the instance.
+* are referenced by the class qOS::queue. Both, the constructor or the qOS::queue::setup() 
+* method can be used to configure the queue and initialize the instance.
 *
 * The required RAM for the queue data should be provided by the application 
 * writer and could be statically allocated at compile time or in run-time using 
@@ -551,7 +551,7 @@
 * Up to twenty(20) bit-flags are available per task and whenever the scheduler 
 * sees that one event-flag is set, the kernel will trigger the task execution.
 *
-* @note The scheduler will put the task into a @c qReady state when any of 
+* @note The scheduler will put the task into a @c READY state when any of 
 * the available event-flags is set. The flags should be cleared by the
 * application writer explicitly
 * 

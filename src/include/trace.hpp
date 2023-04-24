@@ -109,13 +109,12 @@ namespace qOS {
         */
         class mem {
             public:
-                /*! @cond */
+                 /*! @cond */
                 size_t n;
                 /*! @endcond */
-                
                 /**
-                * @brief Instantiates a memory specifier size to trace n bytes
-                * @param[in] nb Number of bytes to be traced;
+                * @brief Instantiates a memory specifier to trace @a nb bytes.
+                * @param[in] nb Number of bytes to be traced.
                 */
                 explicit mem( size_t nb ) : n( nb ) {}
         };
