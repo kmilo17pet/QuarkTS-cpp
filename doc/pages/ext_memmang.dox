@@ -58,11 +58,11 @@
 * occur in the absence of free memory.
 * 
 * @section q_memmang_pools Memory pools
-* A memory pool is a special resource that allows memory blocks to be dynamically
-* allocated from a user-designated memory region. Instead of typical pools with
-* fixed size block allocation, the pools in QuarkTS++ can be of any size, thereby
-* the user is responsible for selecting the appropriate memory pool to allocate 
-* data with the same size.
+* A memory pool ( qOS::mem::pool ) is a special resource that allows memory blocks
+* to be dynamically allocated from a user-designated memory region. Instead of
+* typical pools with fixed size block allocation, the pools in QuarkTS++ can be 
+* of any size, thereby the user is responsible for selecting the appropriate 
+* memory pool to allocate data with the same size.
 *
 * The default memory management unit resides in a memory pool object. Also 
 * called the @a "default pool". The total amount of available heap space in the 

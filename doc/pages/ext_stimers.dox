@@ -63,7 +63,7 @@
 *
 * @section q_stimerusage Using a Timer
 * To use timers, the code should follow a specific pattern that deals with the 
-* states of this object. All related methods are designed to be non-blocking, this
+* states of this object ( qOS::timer ). All related methods are designed to be non-blocking, this
 * means there are ideal for use in cooperative environments such as the one provided 
 * by the OS itself. To minimize the implementation, this object is intentionally
 * created to behave like a binary object, this implies that it only handles two 
@@ -93,7 +93,7 @@
 *
 *  @code{.c}
 *  void Example_Task( event_t e ) {
-*      static timer_t timeout;
+*      static timer timeout;
 *      if ( e.firstCall() ) {
 *          /*Arming the stimer for  3.5 seg*/
 *          timeout.set( 3.5_sec );
