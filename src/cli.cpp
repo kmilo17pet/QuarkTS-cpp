@@ -101,8 +101,7 @@ bool commandLineInterface::notify( void )
     cli::input::ready = true;
     cli::input::index = 0u;
     if ( nullptr != xNotifyFcn ) {
-        /*external task notification if available*/
-        xNotifyFcn( this );
+        xNotifyFcn( this ); /*external task notification if available*/
     }
 
     return true;
@@ -131,8 +130,7 @@ bool commandLineInterface::isrHandler( const char c )
     }
     /*cstat +MISRAC++2008-5-14-1*/
     if ( '\r' == c ) {
-        /*end of line received, send the notification to the cli*/
-        retValue = notify();
+        retValue = notify(); /*end of line received, send the notification*/
     }
 
     return retValue;
@@ -371,8 +369,7 @@ bool commandLineInterface::run( void )
                 handleResponse( cli::response::OUTPUT_RESPONSE );
             }
         }
-        /*print out the command output*/
-        handleResponse( outRetval );
+        handleResponse( outRetval ); /*print out the command output*/
         handler.output[ 0 ] = '\0';
         retValue = inputFlush(); /*flush buffers*/
     }

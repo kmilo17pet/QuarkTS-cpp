@@ -459,7 +459,7 @@
 *      unData++;
 *      /*Queue is empty, enable the producer if it was disabled*/
 *      if ( byQueueEmpty == e.getTrigger() ) {
-*          e.self().resume();
+*          e.thisTask().resume();
 *      }
 *  
 *      /*send data to the queue*/
@@ -468,7 +468,7 @@
 *          * if the data insertion fails, the queue is full 
 *          * and the task disables itself
 *          */
-*          e.self().suspend();
+*          e.thisTask().suspend();
 *      }
 *  }
 *  /*-----------------------------------------------------------------------*/

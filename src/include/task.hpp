@@ -130,7 +130,7 @@ namespace qOS {
             * @brief Checks whether the task is running for the first time.
             * Can be used for data initialization purposes.
             */
-            bool firstCall( void ) const noexcept
+            inline bool firstCall( void ) const noexcept
             {
                 return FirstCall;
             }
@@ -141,7 +141,7 @@ namespace qOS {
             * parameterized. Asynchronous events never change the task iteration 
             * counter, consequently doesn't have effect in this flag
             */
-            bool firstIteration( void ) const noexcept
+            inline bool firstIteration( void ) const noexcept
             {
                 return FirstIteration;
             }
@@ -153,7 +153,7 @@ namespace qOS {
             *  counter, consequently doesn't have effect in the value returned by
             * this method.
             */
-            bool lastIteration( void ) const noexcept
+            inline bool lastIteration( void ) const noexcept
             {
                 return LastIteration;
             }
@@ -161,7 +161,7 @@ namespace qOS {
             * @brief Get the event source that triggers the task execution.
             * Possible values are described in the qOS::trigger enum.
             */
-            trigger getTrigger( void ) const noexcept
+            inline trigger getTrigger( void ) const noexcept
             {
                 return Trigger;
             }
@@ -174,14 +174,14 @@ namespace qOS {
             * schedule.This parameter will be only available on timed tasks. when
             * @c qOS::trigger == trigger::byTimeElapsed
             */
-            clock_t startDelay( void ) const noexcept
+            inline clock_t startDelay( void ) const noexcept
             {
                 return StartDelay;
             }
             /**
             * @brief return the current task node being evaluated
             */
-            task& self( void ) noexcept
+            inline task& thisTask( void ) noexcept
             {
                 return *currentTask;
             }
@@ -201,27 +201,31 @@ namespace qOS {
         public:
             void *TaskData{ nullptr };
             void *EventData{ nullptr };
-            bool firstCall( void ) const noexcept
+            inline bool firstCall( void ) const noexcept
             {
                 return FirstCall;
             }
-            bool firstIteration( void ) const noexcept
+            inline bool firstIteration( void ) const noexcept
             {
                 return FirstIteration;
             }
-            bool lastIteration( void ) const noexcept
+            inline bool lastIteration( void ) const noexcept
             {
                 return LastIteration;
             }
-            trigger getTrigger( void ) const noexcept
+            inline trigger getTrigger( void ) const noexcept
             {
                 return Trigger;
             }
-            clock_t startDelay( void ) const noexcept
+            inline clock_t startDelay( void ) const noexcept
             {
                 return StartDelay;
             }
-            task& self( void ) noexcept
+            inline task& self( void ) noexcept
+            {
+                return *currentTask;
+            }
+            inline task& thisTask( void ) noexcept
             {
                 return *currentTask;
             }
@@ -347,10 +351,10 @@ namespace qOS {
             void *aObj{ nullptr };
             queue *aQueue{ nullptr };
             size_t aQueueCount{ 0uL };
-            const char *name{ nullptr };
+            char name[ 11 ] = "";
             timer time;
             cycles_t cycles{ 0uL };
-            size_t entry{ static_cast<size_t>( 0xFFFFFFFFu ) };
+            size_t entry{ static_cast<size_t>( SIZE_MAX ) };
             iteration_t iterations{ 0 };
             volatile notifier_t notifications{ 0uL };
             volatile taskFlag_t flags{ 0uL };
@@ -360,7 +364,7 @@ namespace qOS {
             bool getFlag( const uint32_t flag ) const noexcept;
             bool deadLineReached( void ) const noexcept;
             trigger queueCheckEvents( void ) noexcept;
-            _Event *pEventInfo{ nullptr };
+            static _Event * pEventInfo;
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_ENABLED;
             static const uint32_t BIT_QUEUE_RECEIVER;
@@ -373,8 +377,11 @@ namespace qOS {
             static const uint32_t QUEUE_FLAGS_MASK;
             task( task const& ) = delete;
             void operator=( task const& ) = delete;
+        protected:
+            virtual void activities( void );
         public:
             task() = default;
+            virtual ~task(){}
             /**
             * @brief Retrieve the current task priority.
             * @return The task priority value.
@@ -518,14 +525,18 @@ namespace qOS {
             bool setData( void *arg ) noexcept;
             /**
             * @brief Set the task name
+            * @pre The task must already be added to the scheduling scheme 
             * @note Name should be unique.
+            * @note The name @c idle is reserved for the Idle task
+            * @remark The size of the string must be less than 32 
             * @param[in] tName A raw-string with the task name
             * @return @c true on success. Otherwise return @c false.
             */
             bool setName( const char *tName ) noexcept;
             /**
             * @brief Retrieves the task name
-            * @return A pointer to the string containing the task name.
+            * @return A pointer to the string containing the task name. If the
+            * task is unnamed an empty string will be returned.
             */
             const char* getName( void ) const noexcept;
             /**

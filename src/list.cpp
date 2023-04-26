@@ -237,7 +237,7 @@ bool list::sort( listCompareFcn_t f ) noexcept
                 current = head;
                 for ( size_t j = 0u; j <= n; ++j ) {
                     xRetCmp = f( current, current->next );
-                    if ( true == xRetCmp ) { /*compare adjacent nodes*/
+                    if ( true == xRetCmp ) {
                         before = current->prev;
                         after = current->next;
 
@@ -245,10 +245,6 @@ bool list::sort( listCompareFcn_t f ) noexcept
                             before->next = after;
                         }
                         else {
-                            /*
-                            In case <before> pointer is null, <after> pointer
-                            should be the new head
-                            */
                             head = after;
                         }
                         current->next = after->next;
@@ -263,16 +259,10 @@ bool list::sort( listCompareFcn_t f ) noexcept
                         retValue = true;
                     }
                     else {
-                        /*
-                        Go to next node only if :
-                        current->data > current->next->data
-                        condition is false.
-                        */
                         current = current->next;
                     }
                 }
             }
-            /*loop remaining nodes until find the new tail*/
             while ( nullptr != current->next ) {
                 current = current->next;
             }
@@ -302,11 +292,11 @@ bool list::swap( void* node1, void* node2 ) noexcept
                 n2 = static_cast<node*>( node1 );
                 /*cstat +CERT-EXP36-C_b*/
             }
-            tmp1 = n1->prev; /*save links prior swap*/
+            tmp1 = n1->prev;
             tmp2 = n2->next;
             givenNodeSwapBoundaries( n1, n2 );
             givenNodeSwapAdjacent( n1, n2 );
-            n2->prev = tmp1; /*restore previously saved links*/
+            n2->prev = tmp1;
             n1->next = tmp2;
             givenNodesUpdateOuterLinks( n1, n2 );
             retValue = true;
@@ -318,7 +308,6 @@ bool list::swap( void* node1, void* node2 ) noexcept
 /*============================================================================*/
 void list::givenNodeSwapBoundaries( node *n1, node *n2 ) noexcept
 {
-    /*update the list links*/
     if ( head == n1 ) {
         head = n2;
     }
@@ -341,7 +330,6 @@ void list::givenNodeSwapBoundaries( node *n1, node *n2 ) noexcept
 /*============================================================================*/
 void list::givenNodeSwapAdjacent( node *n1, node *n2 ) noexcept
 {
-    /*check for adjacent nodes*/
     if ( ( ( n1->next == n2 ) && ( n2->prev == n1 ) ) || ( ( n1->prev == n2 ) && ( n2->next == n1 ) ) ) {
         n1->prev = n1->next;
         n2->next = n2->prev;
@@ -395,14 +383,14 @@ bool list::move( list& src, const listPosition p ) noexcept
             tail = src.tail;
         }
         /*cstat +MISRAC++2008-0-1-2_a*/
-        else { /*insert the new list after the position*/
+        else {
             iNode = getNodeAtIndex( p );
             src.tail->next = iNode->next;
             src.head->prev = iNode;
             iNode->next = src.head;
         }
         size += src.size;
-        src.clean(); /*clean up source*/
+        src.clean();
         retValue = true;
     }
 

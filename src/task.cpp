@@ -1,5 +1,7 @@
 #include "include/task.hpp"
+#include "include/kernel.hpp"
 #include "include/helper.hpp"
+#include "include/util.hpp"
 
 using namespace qOS;
 
@@ -15,13 +17,21 @@ const uint32_t task::BIT_QUEUE_COUNT = 0x00000010uL;
 const uint32_t task::BIT_QUEUE_EMPTY = 0x00000020uL;
 const uint32_t task::BIT_SHUTDOWN = 0x00000040uL;
 const uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
-
 const uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
 const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
+_Event * task::pEventInfo = nullptr;
 
+/*============================================================================*/
 constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
 {
     return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x; 
+}
+/*============================================================================*/
+void task::activities( void )
+{
+    if ( nullptr != callback ) {
+        callback( *pEventInfo );
+    }
 }
 /*============================================================================*/
 void task::setFlags( const uint32_t xFlags, const bool value ) noexcept
@@ -170,17 +180,21 @@ bool task::setData( void *arg ) noexcept
 bool task::setName( const char *tName ) noexcept
 {
     bool retValue = false;
-
-    if ( nullptr != tName ) {
-        name = tName;
-        retValue = true;
+    const size_t nl = util::strlen( tName , sizeof(name) );
+    /*cstat -MISRAC++2008-5-14-1*/
+    if ( ( nullptr != getContainer() ) && ( nl > 0u ) && ( nl < sizeof(name) ) ) {
+        if ( nullptr == os.getTaskByName( tName ) ) {
+            (void)util::strcpy( name, tName , sizeof( name ) );
+            retValue = true;
+        }
     }
+    /*cstat +MISRAC++2008-5-14-1*/
     return retValue;
 }
 /*============================================================================*/
 const char* task::getName( void ) const noexcept
 {
-    return ( nullptr != name ) ? name : "nullptr";
+    return name;
 }
 /*============================================================================*/
 trigger task::queueCheckEvents( void ) noexcept

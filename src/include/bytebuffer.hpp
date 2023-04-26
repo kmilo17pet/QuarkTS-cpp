@@ -24,6 +24,7 @@ namespace qOS {
             byteBuffer( byteBuffer const& ) = delete;
             void operator=( byteBuffer const& ) = delete;
         public:
+            virtual ~byteBuffer() {}
             /**
             * @brief Initialize the Byte-sized buffer instance
             * @param[in] pBuffer Block of memory or array of data

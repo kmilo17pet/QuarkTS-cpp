@@ -68,7 +68,7 @@ namespace qOS {
         */
         constexpr signalID SIGNAL_TIMEOUT( index_t iTm ) 
         {
-            return static_cast<signalID>( signalID::TM_MAX - static_cast<sm::signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<sm::signalID>( iTm ) );
+            return static_cast<signalID>( signalID::TM_MAX - static_cast<signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<signalID>( iTm ) );
         }
 
         /**
@@ -78,16 +78,17 @@ namespace qOS {
         */
         constexpr signalID SIGNAL_USER( uint32_t s )
         {
-            return ( s < signalID::MAX_SIGNAL ) ? static_cast<signalID>( s ) : MAX_SIGNAL;
+            /*cstat -MISRAC++2008-5-0-3*/
+            return ( s < signalID::MAX_SIGNAL ) ? static_cast<signalID>( s ) : signalID::MAX_SIGNAL;
+            /*cstat +MISRAC++2008-5-0-3*/
         }
 
         /**
          * @brief The type to be used as a container variable for a signal.
          */
-        class signal_t {
-            public:
-                signalID id{ signalID::SIGNAL_NONE };  /**< The signal ID*/
-                void *data{ nullptr };                 /**< The signal data*/
+        struct signal_t {
+            signalID id{ signalID::SIGNAL_NONE };  /**< The signal ID*/
+            void *data{ nullptr };                 /**< The signal data*/
         };
 
         /**
@@ -119,7 +120,7 @@ namespace qOS {
         * state-transitions.
         * @note Should be used only in state-callbacks as the only input argument.
         */
-        class handler_t {
+        class handler_t final {
             protected:
                 /*! @cond */
                 state *StartState{ nullptr };
@@ -145,7 +146,7 @@ namespace qOS {
                 * @param[in] m The transition to history mode. This argument
                 * can be ignored ( default = @c sm::historyMode::NO_HISTORY ).
                 */
-                void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
+                inline void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
                 {
                     NextState = &s;
                     TransitionHistory = m;
@@ -159,7 +160,7 @@ namespace qOS {
                 * @c signalID::SIGNAL_START signal.
                 * @param[in] s The state object.
                 */
-                void startState( state &s ) noexcept
+                inline void startState( state &s ) noexcept
                 {
                     StartState = &s;
                 }
@@ -190,7 +191,7 @@ namespace qOS {
                 * @brief Get a reference to state being evaluated.
                 * @return A reference to the state being evaluated..
                 */
-                state& thisState( void ) noexcept
+                inline state& thisState( void ) noexcept
                 {
                     return *State;
                 }
@@ -199,7 +200,7 @@ namespace qOS {
                 * state is contained.
                 * @return a reference to the state machine.
                 */
-                stateMachine& thisMachine( void ) noexcept
+                inline stateMachine& thisMachine( void ) noexcept
                 { 
                     return *Machine;
                 }
@@ -207,7 +208,7 @@ namespace qOS {
                 * @brief Get the Signal ID currently being evaluated for this state
                 * @return The signal ID.
                 */
-                signalID signal( void ) const noexcept
+                inline signalID signal( void ) const noexcept
                 {
                     return Signal;
                 }
@@ -216,7 +217,7 @@ namespace qOS {
                 * @note Only available in the surrounding callback.
                 * @return The las state return status.
                 */
-                status lastStatus( void ) const noexcept
+                inline status lastStatus( void ) const noexcept
                 {
                     return Status;
                 }
@@ -241,30 +242,30 @@ namespace qOS {
                 void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
                 void *Data{ nullptr };          /**< The user storage pointer. If the FSM its running as a task, this will point to the event_t structure*/
                 void *StateData{ nullptr };     /**< The state user storage pointer*/
-                void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
+                inline void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
                 {
                     NextState = &s;
                     TransitionHistory = m;
                 }
-                void startState( state &s ) noexcept
+                inline void startState( state &s ) noexcept
                 {
                     StartState = &s;
                 }
                 bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
                 bool timeoutStop( const index_t i ) noexcept;
-                state& thisState( void ) noexcept
+                inline state& thisState( void ) noexcept
                 {
                     return *State;
                 }
-                stateMachine& thisMachine( void ) noexcept
+                inline stateMachine& thisMachine( void ) noexcept
                 { 
                     return *Machine;
                 }
-                signalID signal( void ) const noexcept
+                inline signalID signal( void ) const noexcept
                 {
                     return Signal;
                 }
-                status lastStatus( void ) const noexcept
+                inline status lastStatus( void ) const noexcept
                 {
                     return Status;
                 }
@@ -353,20 +354,20 @@ namespace qOS {
         */
         using timeoutStateDefinition_t = struct _timeoutStateDefinition_s;
 
-        /*! @cond  */
-        struct _transition_s {
+        /**
+        * @brief This structure should be used to define an item for a state
+        * transition table.
+        */
+        struct transition_t {
+            /*! @cond  */
             signalID xSignal{ signalID::SIGNAL_NONE };
             signalAction_t guard{ nullptr };
             state *nextState{ nullptr };
             historyMode history{ historyMode::NO_HISTORY };
             void *signalData{ nullptr };
+            /*! @endcond  */
         };
-        /*! @endcond  */
-        /**
-        * @brief This structure should be used to define an item for a state
-        * transition table.
-        */
-        using transition_t = struct _transition_s;
+
 
         /**
         * @brief A state object
@@ -406,6 +407,7 @@ namespace qOS {
                 void topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept;
             public:
                 state() = default;
+                virtual ~state() {}
                 /**
                 * @brief Add the specified state as a child state
                 * @param[in] s The state object.
@@ -417,7 +419,7 @@ namespace qOS {
                 * You can ignore this argument.
                 * @return @c true on success, otherwise return @c false.
                 */
-                bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
+                inline bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
                 {
                     return subscribe( &s, sFcn, &init );
                 }
@@ -429,7 +431,7 @@ namespace qOS {
                 * Prototype: @code sm::status xCallback( sm::handler_t h ) @endcode
                 * @return @c true on success, otherwise return @c false.
                 */
-                bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
+                inline bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
                 {
                     return subscribe( &s, sFcn, nullptr );
                 }
@@ -503,12 +505,11 @@ namespace qOS {
             PS_SUBSCRIBER_SLOTS_FULL
         };
 
-        struct _psIndex_s {
+        struct psIndex_t {
             psReqStatus status;
             size_t sig_slot;
             size_t sub_slot;
         };
-        using psIndex_t = _psIndex_s;
         /*! @endcond  */
 
         /**
@@ -610,6 +611,7 @@ namespace qOS {
             static const sm::timeoutSpecOption_t OPT_INDEX_MASK;
         public:
             stateMachine() = default;
+            virtual ~stateMachine() {}
             /**
             * @brief Initializes a Finite State Machine (FSM).
             * @see core::addStateMachineTask()

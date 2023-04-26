@@ -57,6 +57,7 @@ namespace qOS {
             void operator=( queue const& ) = delete;
         public:
             queue() = default;
+            virtual ~queue() {}
             /**
             * @brief Configures a Queue. Here, the RAM used to hold the queue data
             * @a pData is statically allocated at compile time by the application writer.

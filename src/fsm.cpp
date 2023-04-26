@@ -127,14 +127,11 @@ void sm::state::sweepTransitionTable( sm::_Handler &h ) noexcept
             bool transitionAllowed = true; /*allow the transition by default*/
 
             if ( nullptr != iTransition->guard ) {
-                /*if signal-guard available, run the guard function*/
-                transitionAllowed = iTransition->guard( h ); /*cast allowed, struct layout compatible*/
+                transitionAllowed = iTransition->guard( h );
             }
             if ( transitionAllowed ) {
                 if ( nullptr != iTransition->nextState ) {
-                    /*if target state available, set the transition from table*/
                     h.NextState = iTransition->nextState;
-                    /*set the history mode form the table*/
                     h.TransitionHistory = iTransition->history;
                     break;
                 }
@@ -199,8 +196,7 @@ bool stateMachine::sendSignalToSubscribers( sm::signalID sig, void *sData, bool 
             }
         #endif
     }
-    /*cppcheck-suppress knownConditionTrueFalse */
-    return ( 0u != r )? true : false;
+    return static_cast<bool>( r );
 }
 /*============================================================================*/
 void stateMachine::timeoutCheckSignals( void ) noexcept
@@ -736,8 +732,7 @@ bool stateMachine::run( sm::signal_t sig ) noexcept
     sm::state *entryPath[ Q_FSM_MAX_NEST_DEPTH ];
 
     sig = checkForSignals( sig );
-    /*Enter here only once to start the top state*/
-    if ( nullptr == current ) {
+    if ( nullptr == current ) { /*Enter here only once to start the top state*/
         current = &top;
         next = nullptr;
         stateOnEntry( current );
@@ -749,10 +744,7 @@ bool stateMachine::run( sm::signal_t sig ) noexcept
         source = s; /* level of outermost event handler */
         if ( sm::status::SIGNAL_HANDLED == stateOnSignal( s, sig ) ) {
             if ( nullptr != next ) {  /* state transition taken? */
-                /*
-                 execute entry/start actions in the rest of the hierarchy
-                 after transition
-                 */
+                /*run entry/start actions in the rest of the hierarchy after transition*/
                 tracePathAndRetraceEntry( entryPath ); // skipcq: CXX-C1000
                 traceOnStart( entryPath ); // skipcq: CXX-C1000
             }

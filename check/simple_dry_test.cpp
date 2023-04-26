@@ -3,8 +3,6 @@
 #include <QuarkTS.h>
 
 using namespace std;
-using namespace qOS;
-
 
 task t1, t2, t3, t4;
 stateMachine m;
@@ -25,6 +23,11 @@ void putCharFcn( void* stp, char c );
 
 unsigned long sysClock( void );
 
+
+struct customTask : public task {
+
+};
+
 void idleTask_callback( event_t e )
 {
     if ( e.firstCall() ) {
@@ -33,7 +36,7 @@ void idleTask_callback( event_t e )
     co::reenter() {
         for(;;) {
             co::getPosition( pos1 );
-            trace::log << e.self() << trace::end;
+            trace::log << e.thisTask() << trace::end;
             trace::log << "sec 1"<< trace::end;
             co::delay( 0.5_sec );
             trace::log <<"sec 2"<< trace::end;
@@ -58,7 +61,7 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        trace::log << e.self() << trace::end;
+        trace::log << e.thisTask() << trace::end;
     }
     co::reenter( otherTaskCrHandle ) {
         co::restart;
@@ -108,15 +111,15 @@ void task_callback( event_t e )
     trace::log << e.self() << trace::end;
 
     if ( e.firstCall() ) {
-        trace::log << trace::grn << "first call "<< e.self() << trace::end;
+        trace::log << trace::grn << "first call "<< e.thisTask() << trace::end;
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        trace::log << "notified(SIMPLE)! " << e.self() << trace::end;
+        trace::log << "notified(SIMPLE)! " << e.thisTask() << trace::end;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
-        trace::log << "notified(QUEUED)! " << e.self() << trace::end;
+        trace::log << "notified(QUEUED)! " << e.thisTask() << trace::end;
     }
    
     if ( e.lastIteration() ) {
@@ -124,7 +127,7 @@ void task_callback( event_t e )
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t2, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
-        trace::log << "last iteration "<< e.self() << trace::end;
+        trace::log << "last iteration "<< e.thisTask() << trace::end;
     }
 
     int someValue = 457;
@@ -151,14 +154,15 @@ int main()
     trace::setOutputFcn( &putCharFcn );
     trace::log << trace::pre(8) <<trace::var(y) << trace::end; 
     trace::log<< trace::var(x) << trace::mem( sizeof(x) ) << &x << trace::end;
-    t1.setName( "t1");
-    t2.setName( "t2");
-    t3.setName( "t3");
     os.init( sysClock, idleTask_callback );
     
     os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
     os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10u );
     os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
+
+    trace::log << t1.setName( "t1" ) << trace::endl;
+    trace::log << t2.setName( "t2" ) << trace::endl;
+    trace::log << t3.setName( "t3" ) << trace::endl;
 
     sm::timeoutSpec tm_specTimeout;
     m.setup( nullptr, s1 );

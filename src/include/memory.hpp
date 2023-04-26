@@ -25,11 +25,10 @@ namespace qOS {
 
         /*! @cond */
         using address_t = size_t;
-        struct _blockConnect_s {
-            struct _blockConnect_s *next{ nullptr };
+        struct blockConnect_t {
+            blockConnect_t *next{ nullptr };
             size_t blockSize{ 0u };
         };
-        using blockConnect_t = struct _blockConnect_s;
         /*! @endcond */
 
         /**
@@ -52,6 +51,7 @@ namespace qOS {
                 pool( pool const& ) = delete;
                 void operator=( pool const& ) = delete;
             public:
+                virtual ~pool() {}
                 /**
                 * @brief Initializes a memory pool instance. 
                 * @param[in] pArea A pointer to a memory block @c uint8_t statically

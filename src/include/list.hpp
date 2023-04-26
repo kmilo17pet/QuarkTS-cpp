@@ -77,6 +77,7 @@ namespace qOS {
                 return container;
             }
             node() : next(nullptr), prev(nullptr), container(nullptr) {}
+            virtual ~node() {}
             
         friend class list;
         friend class listIterator;

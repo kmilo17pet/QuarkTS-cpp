@@ -103,24 +103,24 @@
 *  }
 *  /*==================================================================*/
 *  void Task1_Callback( event_t e ) {
-*      BSP_UART1_WriteString( e.self().getName() );
+*      BSP_UART1_WriteString( e.thisTask().getName() );
 *  
 *      if ( e.firstIteration() ) {
 *          task3.setState( taskState::ENABLED );
 *      }
 *      
 *      if ( e.lastIteration() ) {
-*          e.self().setState( taskState::SUSPENDED );
-*          e.self().setTime( 500 );
+*          e.thisTask().setState( taskState::SUSPENDED );
+*          e.thisTask().setTime( 500 );
 *      }
 *  }
 *  /*==================================================================*/
 *  void Task2_Callback( event_t e ) {
-*      BSP_UART1_WriteString( e.self().getName() );
+*      BSP_UART1_WriteString( e.thisTask().getName() );
 *  }
 *  /*==================================================================*/
 *  void Task3_Callback( event_t e ) {
-*      BSP_UART1_WriteString( e.self().getName() );
+*      BSP_UART1_WriteString( e.thisTask().getName() );
 *  }
 *  /*==================================================================*/
 *  int main( void ) {

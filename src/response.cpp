@@ -33,8 +33,8 @@ responseStatus response::received( const char *pattern, const size_t n, qOS::tim
     if ( ( false == responseReceived ) && ( 0u == patternLength ) ) {
         (void)util::strcpy( pattern2Match, pattern, maxStrLength );
         patternLength = ( 0u == n ) ? util::strlen( pattern, maxStrLength ) : n;
-        matchedCount = 0u; /*reinitialize the chars match count*/
-        responseReceived = false; /*clear the ready flag*/
+        matchedCount = 0u;
+        responseReceived = false;
         if ( t > clock::IMMEDIATE ) {
             (void)timeout.set( t );
         }
@@ -59,13 +59,10 @@ bool response::isrHandler( const char rxChar ) noexcept
     bool retValue = false;
 
     if ( ( false == responseReceived ) && ( patternLength > 0u ) ) {
-        /*check if the received char match with the expected*/
         if ( pattern2Match[ matchedCount ] == rxChar ) {
-            /*move to the next char in the expected buffer*/
             ++matchedCount;
             if ( matchedCount == patternLength ) {
                 responseReceived = true;
-                /*if all the requested chars match, set the ready flag */
                 retValue = responseReceived;
             }
         }

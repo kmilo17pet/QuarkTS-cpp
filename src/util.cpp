@@ -27,7 +27,7 @@ static const char * discardWhitespaces( const char *s, size_t maxlen ) noexcept
     /*cstat -MISRAC++2008-5-14-1*/
     /*isspace is known to not have side effects*/
     while ( ( maxlen > 0u ) && ( 0 != isspace( static_cast<int>( *s ) ) ) ) {
-        s++; /*discard whitespaces*/
+        s++;
         --maxlen;
     }
     /*cstat +MISRAC++2008-5-14-1*/
@@ -36,12 +36,11 @@ static const char * discardWhitespaces( const char *s, size_t maxlen ) noexcept
 /*============================================================================*/
 static const char * checkStrSign( const char *s, int *sgn ) noexcept
 {
-    if ( '-' == *s ) { /*if negative found*/
-        *sgn = -1; /*set the sign*/
-        ++s; /*move to next*/
+    if ( '-' == *s ) {
+        *sgn = -1;
+        ++s;
     }
     else if ( '+' == *s ) {
-        /*plus sign ignored, move to next*/
         ++s;
     }
     else {
@@ -130,12 +129,11 @@ static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept
 {
     size_t i = 0u;
 
-    /* Handle 0 explicitly, otherwise empty string is printed for 0 */
     if ( ( 0uL == num ) || ( 0u == base ) ) {
         str[ i++ ] = '0';
     }
     else {
-        while ( 0uL != num ) { /*Process individual digits*/
+        while ( 0uL != num ) {
             const unsigned long r = num % static_cast<unsigned long>( base );
             /*cstat -CERT-INT30-C_a*/
             str[ i++ ] = ( r > 9uL ) ? /*i++ never wraps*/
@@ -144,7 +142,7 @@ static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept
             /*cstat +CERT-INT30-C_a*/
             num = num/base;
         }
-        (void)util::swapBytes( str, i );/*Reverse the string*/
+        (void)util::swapBytes( str, i );
     }
 
     return i;
@@ -256,10 +254,8 @@ static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const s
         char *ptmp = &tmp;
         char **dstDat, **dstStg;
 
-        /* Operation -> Output=qFalse : Input=qTrue */
         dstDat = ( false == operation ) ? &ptmp : &cdata;
         dstStg = ( ( true == aip ) && ( nullptr != pStorage ) ) ? &iStg : &nStg;
-
         for ( size_t i = 0u ; i < n ; ++i ) {
             dstDat[ 0 ][ 0 ] = fcn( dstStg[ 0 ] , dstDat[ 0 ][ 0 ] );
             cdata++;
@@ -292,10 +288,7 @@ uint32_t util::hexStringToUnsigned( const char *s ) noexcept
 
     if ( nullptr != s ) {
         uint8_t nParsed = 0u;
-        /*
-        loop until the end of the string or the number of parsed chars exceeds
-        the 32bit notation
-        */
+
         while ( ( '\0' != *s ) && ( nParsed < 8u ) ) {
             const char c = *s++;
             if ( 0 != isxdigit( static_cast<int>( c ) ) ) {
@@ -430,14 +423,13 @@ int util::stringToInt( const char *s ) noexcept
     int retValue = 0;
 
     if ( nullptr != s ) {
-        int res = 0; /*holds the resulting integer*/
-        int sgn = 1; /*only to hold the sign*/
+        int res = 0;
+        int sgn = 1;
 
         s = discardWhitespaces( s, Q_IO_UTIL_MAX_STRLEN );
         s = checkStrSign( s, &sgn );
-        while ( '\0' != *s ) { /*iterate until null char is found*/
+        while ( '\0' != *s ) {
             if ( ( *s >= '0' ) && ( *s <= '9' ) ) {
-                /*if the char is digit, compute the resulting integer*/
                 res = ( res * 10 ) + ( static_cast<int>( *s ) ) - ( static_cast<int>( '0' ) );
                 ++s;
             }
@@ -445,7 +437,7 @@ int util::stringToInt( const char *s ) noexcept
                 break;
             }
         }
-        retValue = sgn * res; /*return the computed integer with sign*/
+        retValue = sgn * res;
     }
 
     return retValue;
@@ -456,7 +448,6 @@ char* util::unsignedToString( unsigned_t num, char* str, uint8_t base ) noexcept
     if ( nullptr != str ) {
         size_t i;
 
-        /*make the unsigned conversion without the null terminator*/
         i = xBaseU32toA( num, str, base );
         str[ i ] = '\0';
     }
@@ -470,17 +461,14 @@ char* util::integerToString( int32_t num, char* str, uint8_t base ) noexcept
         size_t i = 0u;
 
         if ( num < 0 ) {
-            if ( 10u == base ) { /*handle negative numbers only with 10-base*/
-                /*put the sign at the beginning*/
+            if ( 10u == base ) {
                 str[ i++ ] = '-';
             }
             num = -num;
         }
-        /*make the unsigned conversion without the null terminator*/
         /*cstat -MISRAC++2008-5-0-9*/
         i += xBaseU32toA( static_cast<uint32_t>( num ), &str[ i ], base );
         /*cstat +MISRAC++2008-5-0-9*/
-        /*Append string terminator*/
         str[ i ] = '\0';
     }
 

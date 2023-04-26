@@ -50,6 +50,7 @@ namespace qOS {
                 void operator=( inNode const& ) = delete;
             public:
                 inNode() = default;
+                virtual ~inNode() {}
                 /**
                 * @brief Query the status of the specified input-node.
                 * @return The status of the input node.

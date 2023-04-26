@@ -9,11 +9,10 @@
 namespace qOS {
 
     namespace pq {
-        struct _queueStack_s {
+        struct queueStack_t {
             task *pTask{nullptr};
             void *qData{nullptr};
         };
-        using queueStack_t = struct _queueStack_s;
     }
 
     class prioQueue {

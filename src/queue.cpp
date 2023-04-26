@@ -9,7 +9,7 @@ bool queue::setup( void *pData, const size_t size, const size_t count ) noexcept
     bool retValue = false;
 
     if ( ( nullptr != pData ) && ( size > 0u ) && ( count > 0u ) ) {
-        itemsCount = count; /* Initialise the queue members*/
+        itemsCount = count;
         itemSize = size;
         /*cstat -CERT-EXP36-C_b*/
         head = static_cast<uint8_t*>( pData );
@@ -67,10 +67,10 @@ bool queue::removeFront( void ) noexcept
     size_t waiting;
 
     critical::enter();
-    waiting = itemsWaiting; /*to avoid side effects*/
+    waiting = itemsWaiting;
     if ( waiting > 0u ) {
         moveReader();
-        --itemsWaiting; /* remove the data. */
+        --itemsWaiting;
         retValue = true;
     }
     critical::exit();
@@ -90,9 +90,8 @@ bool queue::receive( void *dst ) noexcept
     size_t waiting;
 
     critical::enter();
-    waiting = itemsWaiting; /*to avoid side effects*/
+    waiting = itemsWaiting;
     if ( waiting > 0u ) {
-        /* items available, remove one of them. */
         copyDataFromQueue( dst );
         --itemsWaiting;
         retValue = true;
@@ -144,7 +143,7 @@ void* queue::peek( void ) const noexcept
     size_t waiting;
 
     critical::enter();
-    waiting = itemsWaiting; /*to avoid side effects*/
+    waiting = itemsWaiting;
     if ( waiting > 0u ) {
         retValue = static_cast<uint8_t *>( reader + itemSize );
         if ( retValue >= tail ) {

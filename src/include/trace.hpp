@@ -48,7 +48,7 @@ namespace qOS {
         * @brief The global class to output trace streams. Its usage requires
         * one the following static methods: trace::log() or trace::msg()
         */
-        class trace {
+        class trace final {
             public:
                 /**
                 * @brief Specify a new trace output with detailed information of the
@@ -94,7 +94,7 @@ namespace qOS {
 
 
         /*! @cond */
-        class tout_base {
+        class tout_base final {
             public:
                 uint8_t base;
                 explicit tout_base(uint8_t b) : base(b) {}
@@ -110,7 +110,7 @@ namespace qOS {
         * trace::log << trace::mem( sizeof(myNumber ) ) << &myNumber << trace::endl;
         * @endcode
         */
-        class mem {
+        class mem final {
             public:
                  /*! @cond */
                 size_t n;
@@ -131,7 +131,7 @@ namespace qOS {
         * trace::log << trace::pre( 5 ) << myNumber << trace::endl;
         * @endcode
         */
-        class pre {
+        class pre final {
             public:
                 /*! @cond */
                 uint8_t precision;

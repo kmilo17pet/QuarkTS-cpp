@@ -73,10 +73,10 @@ void edgeCheck::stateUpdate( void )
             n->status = ( ec::pinState::ON == v ) ? ec::pinState::RISING_EDGE :
                                                     ec::pinState::FALLING_EDGE;
         }
-        n->prevPinValue = v; /*keep the previous level*/
+        n->prevPinValue = v;
     }
-    state = &edgeCheck::stateCheck; /*reload the init state*/
-    start = clock::getTick(); /*reload the time*/
+    state = &edgeCheck::stateCheck;
+    start = clock::getTick();
 }
 /*============================================================================*/
 ec::nodeReaderFcn_t edgeCheck::getReader( ec::reg rSize ) noexcept

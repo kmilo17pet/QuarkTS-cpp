@@ -37,6 +37,9 @@ core& core::getInstance( void ) noexcept
 /*cstat -MISRAC++2008-7-1-2*/
 void core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
 {
+    /*cstat -CERT-EXP39-C_d*/
+    task::pEventInfo = static_cast<_Event*>( this );
+    /*cstat -CERT-EXP39-C_d*/
     (void)clock::setTickProvider( tFcn );
     (void)idle.setName( "idle" );
     (void)idle.setPriority( core::LOWEST_PRIORITY );
@@ -67,7 +70,7 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
 static void fsmTaskCallback( event_t e )
 {
     /*cstat -CERT-EXP36-C_b*/
-    stateMachine * const sm = static_cast<stateMachine*>( e.self().getAttachedObject() );
+    stateMachine * const sm = static_cast<stateMachine*>( e.thisTask().getAttachedObject() );
     /*cstat +CERT-EXP36-C_b*/
     const sm::signal_t sig;
     (void)sm->run( sig );
@@ -96,7 +99,7 @@ bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p,
 static void cliTaskCallback( event_t e )
 {
     /*cstat -CERT-EXP36-C_b*/
-    commandLineInterface * const c = static_cast<commandLineInterface*>( e.self().getAttachedObject() ); 
+    commandLineInterface * const c = static_cast<commandLineInterface*>( e.thisTask().getAttachedObject() ); 
     /*cstat +CERT-EXP36-C_b*/
     c->setData( &e );
     (void)c->run();
@@ -309,27 +312,15 @@ void core::dispatch( list * const xList ) noexcept
 {
     for ( auto i = xList->begin() ; i.until() ; i++ ) {
         task * const xTask = i.get<task*>();
-        taskFcn_t taskActivities = xTask->callback;
 
         dispatchTaskFillEventInfo( xTask );
         yieldTask = nullptr;
 
-        if ( nullptr != taskActivities ) {
-            /*cstat -CERT-EXP39-C_d*/
-            taskActivities( *static_cast<_Event*>( this ) );
-            /*cstat +CERT-EXP39-C_d*/
-        }
-
+        xTask->activities();
         while ( nullptr != yieldTask ) {
             _Event::currentTask = yieldTask;
-            taskActivities = _Event::currentTask->callback;
             yieldTask = nullptr;
-            if ( nullptr != taskActivities ) {
-                /*yielded task inherits eventData*/
-                /*cstat -CERT-EXP39-C_d*/
-                taskActivities( *static_cast<_Event*>( this ) );
-                /*cstat +CERT-EXP39-C_d*/
-            }
+            _Event::currentTask->activities();
         }
         
         currentTask = nullptr;
@@ -337,11 +328,9 @@ void core::dispatch( list * const xList ) noexcept
         (void)waitingList.insert( xTask, listPosition::AT_BACK );
         #if ( Q_QUEUES == 1 )
             if ( trigger::byQueueReceiver == xTask->Trigger ) {
-                /*remove the data from the attached Queue*/
-                (void)xTask->aQueue->removeFront();
+                (void)xTask->aQueue->removeFront(); /*remove the data from the attached Queue*/
             }
         #endif
-        /*set the init flag*/
         xTask->setFlags( task::BIT_INIT, true );
         _Event::FirstIteration = false;
         _Event::LastIteration = false;
@@ -358,9 +347,7 @@ void core::dispatchIdle( void ) noexcept
     _Event::TaskData = nullptr;
     _Event::Trigger = trigger::byNoReadyTasks;
     _Event::currentTask = &idle;
-    /*cstat -CERT-EXP39-C_d*/
-    idle.callback( *static_cast<_Event*>( this ) ); /*run the idle callback*/
-    /*cstat +CERT-EXP39-C_d*/
+    idle.activities();
     bits::multipleSet( flag, BIT_FCALL_IDLE );
 }
 /*============================================================================*/
@@ -420,22 +407,23 @@ bool core::notify( notifyMode mode, task &Task, void* eventData ) noexcept
 {
     bool retValue = false;
 
-    if ( notifyMode::SIMPLE == mode ) {
-        if ( Task.notifications < MAX_NOTIFICATION_VALUE ) {
-            ++Task.notifications;
-            Task.asyncData = eventData;
-            retValue = true;
+    if ( &Task != &idle ) { /*idle task cannot be notified*/
+        if ( notifyMode::SIMPLE == mode ) {
+            if ( Task.notifications < MAX_NOTIFICATION_VALUE ) {
+                ++Task.notifications;
+                Task.asyncData = eventData;
+                retValue = true;
+            }
+        }
+        else if ( notifyMode::QUEUED == mode ) {
+            #if ( Q_PRIO_QUEUE_SIZE > 0 )
+                retValue = priorityQueue.insert( Task, eventData );
+            #endif
+        }
+        else {
+            /*nothing to do here*/
         }
     }
-    else if ( notifyMode::QUEUED == mode ) {
-        #if ( Q_PRIO_QUEUE_SIZE > 0 )
-            retValue = priorityQueue.insert( Task, eventData );
-        #endif
-    }
-    else {
-        /*nothing to do here*/
-    }
-
     return retValue;
 }
 /*============================================================================*/
@@ -501,6 +489,7 @@ bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clea
             retValue = true;
         }
     }
+
     if ( ( true == retValue ) && ( true == clearOnExit ) ) {
         Task.flags &= ~flagsToCheck;
     }
@@ -508,7 +497,7 @@ bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clea
     return retValue;
 }
 /*============================================================================*/
-task* core::findTaskByName( const char *name ) noexcept
+task* core::getTaskByName( const char *name ) noexcept
 {
     task *found = nullptr;
 
@@ -520,12 +509,35 @@ task* core::findTaskByName( const char *name ) noexcept
             for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
                 task * const xTask = it.get<task*>();
 
-                if ( nullptr != xTask->name ) {
-                    if ( 0 == strncmp( name, xTask->name, 32u ) ) {
-                        found  = xTask;
-                        r = true;
-                        break;
-                    }
+                if ( 0 == strncmp( name, xTask->name, sizeof(xTask->name) - 1u ) ) {
+                    found  = xTask;
+                    r = true;
+                    break;
+                }
+                
+            }
+        }
+    }
+
+    return found;
+}
+/*============================================================================*/
+task* core::getTaskByID( size_t id ) noexcept
+{
+    task *found = nullptr;
+
+    if ( ( id > 0u ) && ( id < SIZE_MAX ) ) {
+        const size_t maxLists = sizeof( coreLists )/sizeof( coreLists[ 0 ] );
+        bool r = false;
+
+        for ( size_t i = 0u ; ( false == r ) && ( i < maxLists ) ; ++i ) {
+            for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
+                task * const xTask = it.get<task*>();
+
+                if ( id == xTask->entry ) {
+                    found  = xTask;
+                    r = true;
+                    break;
                 }
             }
         }

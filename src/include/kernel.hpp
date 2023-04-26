@@ -50,11 +50,10 @@ namespace qOS {
     };
 
     /*! @cond  */
-    struct _notificationSpreader_s {
+    struct notificationSpreader_t {
         notifyMode mode;
         void *eventData;
     };
-    using notificationSpreader_t = struct _notificationSpreader_s;
     /*! @endcond  */
 
     /** @}*/
@@ -391,15 +390,22 @@ namespace qOS {
             * @return @c true if the condition is meet, otherwise return @c false.
             */
             bool eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clearOnExit = true, const bool checkForAll = false ) noexcept;
+            /** @}*/
+
             /**
-            * @brief Tries to find the first task that matches the name provided.
+            * @brief Tries to find the task that matches the name provided.
+            * @note Task @a idle with name = @c idle cannot be obtained
             * @param[in] name The string with the name to find.
             * @return A pointer to the task node if found, otherwise returns @c nullptr.
             */
-
-            /** @}*/
-
-            task* findTaskByName( const char *name ) noexcept;
+            task* getTaskByName( const char *name ) noexcept;
+            /**
+            * @brief Tries to find the task that matches the ID provided.
+            * @note Task @a idle with ID = @c 0 cannot be obtained
+            * @param[in] id The value of the task-ID to find.
+            * @return A pointer to the task node if found, otherwise returns @c nullptr.
+            */
+            task* getTaskByID( size_t id ) noexcept;
             /**
             * @brief Yield the control of the current running task to another task.
             * @note This API can only be invoked from the context of a task.

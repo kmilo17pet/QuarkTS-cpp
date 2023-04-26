@@ -64,6 +64,8 @@ namespace qOS {
 
         /*! @cond */
         class input {
+            public:
+                virtual ~input() {}
             protected:
                 char *storage{ nullptr };
                 volatile index_t index{ 0u };
@@ -88,7 +90,7 @@ namespace qOS {
         * subsequent string after the command text.
         * @note Should be used only in command-callbacks as the only input argument.
         */
-        class handler_t {
+        class handler_t final {
             private:
                 commandLineInterface *instance{ nullptr };
                 void *Command{ nullptr };
@@ -208,7 +210,7 @@ namespace qOS {
         #endif
 
         /*! @cond  */
-        class _Handler {
+        class _Handler final {
             private:
                 commandLineInterface *instance{ nullptr };
                 void *Command{ nullptr };
@@ -294,6 +296,8 @@ namespace qOS {
                 char *Text{ nullptr };
                 command( command const& ) = delete;
                 void operator=( command const& ) = delete;
+            public:
+                virtual ~command() {}
             friend class qOS::commandLineInterface;
         };
         /** @}*/
@@ -329,6 +333,7 @@ namespace qOS {
             void operator=( commandLineInterface const& ) = delete;
         public:
             commandLineInterface() = default;
+            virtual ~commandLineInterface() {}
             /**
             * @brief Setup an instance of the AT Command Line Interface.
             * @see core::addCommandLineInterfaceTask()

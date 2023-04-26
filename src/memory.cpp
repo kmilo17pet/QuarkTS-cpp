@@ -72,9 +72,7 @@ void mem::pool::free( void *ptr ) noexcept
         /*cstat +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         if ( 0u != ( xConnect->blockSize & BLOCK_ALLOCATED_BIT ) ) {
             if ( NULL == xConnect->next ) {
-                /* Free block */
                 bits::multipleClear( xConnect->blockSize, BLOCK_ALLOCATED_BIT );
-                /* Add this block to the list of free blocks. */
                 freeBytesRemaining += xConnect->blockSize;
                 insertBlockIntoFreeList( xConnect );
             }

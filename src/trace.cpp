@@ -137,23 +137,7 @@ namespace qOS {
             (void)util::outputString( tout.writeChar , "\", " );
             (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
             (void)util::outputString( tout.writeChar , ", " );
-            switch ( t.getState() ) {
-                case taskState::DISABLED_STATE:
-                    (void)util::outputString( tout.writeChar , "disabled" );
-                    break;
-                case taskState::ENABLED_STATE:
-                    (void)util::outputString( tout.writeChar , "enabled" );
-                    break;
-                case taskState::AWAKE_STATE:
-                    (void)util::outputString( tout.writeChar , "awake" );
-                    break;
-                case taskState::ASLEEP_STATE:
-                    (void)util::outputString( tout.writeChar , "asleep" );
-                    break;
-                default:
-                    break;
-            }
-            
+            (void)util::outputString( tout.writeChar , ( taskState::ENABLED_STATE == t.getState() )? "enabled" : "disabled" );           
             (void)util::outputString( tout.writeChar , " } " );
             return tout;
         }

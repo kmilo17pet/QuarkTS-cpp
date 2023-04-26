@@ -31,7 +31,7 @@ namespace qOS {
         /*! @endcond  */
 
         /** @brief A placeholder for the Co-Routine current position or progress*/
-        class position {
+        class position final {
             state pos{ BEGINNING };
             /*! @cond  */
             public:
@@ -77,7 +77,7 @@ namespace qOS {
         };
 
         /** @brief A Co-Routine Semaphore*/
-        class semaphore {
+        class semaphore final {
             private:
                 size_t count{ 1u };
                 void signal( void ) noexcept;
@@ -108,7 +108,7 @@ namespace qOS {
 
         /*! @cond */
         /*cstat -MISRAC++2008-7-1-2*/
-        class _coContext {
+        class _coContext final {
             private:
                 _coContext( _coContext const& ) = delete;
                 void operator=( _coContext const& ) = delete;
