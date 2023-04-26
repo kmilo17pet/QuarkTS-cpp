@@ -1,15 +1,15 @@
 var namespaceq_o_s_1_1sm =
 [
     [ "handler_t", "classq_o_s_1_1sm_1_1handler__t.html", "classq_o_s_1_1sm_1_1handler__t" ],
-    [ "signal_t", "classq_o_s_1_1sm_1_1signal__t.html", "classq_o_s_1_1sm_1_1signal__t" ],
+    [ "signal_t", "structq_o_s_1_1sm_1_1signal__t.html", "structq_o_s_1_1sm_1_1signal__t" ],
     [ "state", "classq_o_s_1_1sm_1_1state.html", "classq_o_s_1_1sm_1_1state" ],
     [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", "classq_o_s_1_1sm_1_1timeout_spec" ],
+    [ "transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ],
     [ "signalAction_t", "group__qfsm.html#ga435dd60e77f0b3c14c5e5522e015ff87", null ],
     [ "stateCallback_t", "group__qfsm.html#ga0a2b3e62daba65e93e9e2e0586c744d4", null ],
     [ "surroundingCallback_t", "group__qfsm.html#gadbdca3ba7e7e329ecacc9c1510a14ad9", null ],
     [ "timeoutSpecOption_t", "group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9", null ],
     [ "timeoutStateDefinition_t", "group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea", null ],
-    [ "transition_t", "group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d", null ],
     [ "historyMode", "group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420", [
       [ "NO_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a80ac9be1f4cca7a2df3d56534087e31c", null ],
       [ "SHALLOW_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420aff183b3b4e6b9cf5e3ba5358b79390d8", null ],

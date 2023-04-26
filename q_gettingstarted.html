@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.5</span>
+   &#160;<span id="projectnumber">v1.0.7</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -204,24 +204,24 @@ A simple scheduling</h2>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> Task1_Callback( event_t e ) {</div>
-<div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
+<div class="line">    BSP_UART1_WriteString( e.thisTask().getName() );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> ( e.firstIteration() ) {</div>
 <div class="line">        task3.setState( taskState::ENABLED );</div>
 <div class="line">    }</div>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">if</span> ( e.lastIteration() ) {</div>
-<div class="line">        e.self().setState( taskState::SUSPENDED );</div>
-<div class="line">        e.self().setTime( 500 );</div>
+<div class="line">        e.thisTask().setState( taskState::SUSPENDED );</div>
+<div class="line">        e.thisTask().setTime( 500 );</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> Task2_Callback( event_t e ) {</div>
-<div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
+<div class="line">    BSP_UART1_WriteString( e.thisTask().getName() );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> Task3_Callback( event_t e ) {</div>
-<div class="line">    BSP_UART1_WriteString( e.self().getName() );</div>
+<div class="line">    BSP_UART1_WriteString( e.thisTask().getName() );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>

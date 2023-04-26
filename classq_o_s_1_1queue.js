@@ -1,6 +1,7 @@
 var classq_o_s_1_1queue =
 [
     [ "queue", "classq_o_s_1_1queue.html#a3ba647cb33c2aa19917e9c7bf06e9b5e", null ],
+    [ "~queue", "classq_o_s_1_1queue.html#ac2658fe8ee8564ac183a063797b560f6", null ],
     [ "count", "classq_o_s_1_1queue.html#a7c72087cd2f661c48861847cc828aa2f", null ],
     [ "getItemSize", "classq_o_s_1_1queue.html#a5dae87025604f7485a4eaa65f21fc0de", null ],
     [ "isEmpty", "classq_o_s_1_1queue.html#a53e7566bd9b17fa3f53446716c9e5563", null ],

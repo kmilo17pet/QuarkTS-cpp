@@ -6,13 +6,15 @@ var group__qtaskmanip =
       [ "firstIteration", "classq_o_s_1_1event__t.html#a2a46c4fa4a46ae5162590b300af64c33", null ],
       [ "getTrigger", "classq_o_s_1_1event__t.html#a7ea7de15a8fcaf57dc1384aa33cd1291", null ],
       [ "lastIteration", "classq_o_s_1_1event__t.html#adb72cf2acd6148d96a8c03635fc049c7", null ],
-      [ "self", "classq_o_s_1_1event__t.html#a248cfce6219e8ee6b8f235950ce63d5b", null ],
       [ "startDelay", "classq_o_s_1_1event__t.html#a339915a6d4cba5e1453c9681547bbd52", null ],
+      [ "thisTask", "classq_o_s_1_1event__t.html#ae7822b28c203859688aec792766f6c95", null ],
       [ "EventData", "classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e", null ],
       [ "TaskData", "classq_o_s_1_1event__t.html#a44c21a4201ab6c42ce8a36ec91742787", null ]
     ] ],
     [ "qOS::task", "classq_o_s_1_1task.html", [
       [ "task", "classq_o_s_1_1task.html#a22f349f2dc4f57fb4815e44a357a29c5", null ],
+      [ "~task", "classq_o_s_1_1task.html#a9e9fc3d1c343b8dd216bacedf814bd4a", null ],
+      [ "activities", "classq_o_s_1_1task.html#a10ad416a8397a77f6a1726016fcd4812", null ],
       [ "asleep", "classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d", null ],
       [ "attachQueue", "classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9", null ],
       [ "awake", "classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292", null ],

@@ -29,9 +29,11 @@ var searchData=
   ['getstatus_26',['getStatus',['../classq_o_s_1_1ec_1_1in_node.html#ae61455ce4d1f0e52b3882e6ac662cd8b',1,'qOS::ec::inNode']]],
   ['getstringdata_27',['getStringData',['../classq_o_s_1_1cli_1_1handler__t.html#a89eb0d6805d577de5b8f9377bbf3580a',1,'qOS::cli::handler_t']]],
   ['getstringlength_28',['getStringLength',['../classq_o_s_1_1cli_1_1handler__t.html#a58b8404949da19db86c109eb059e1ef5',1,'qOS::cli::handler_t']]],
-  ['gettimespec_29',['getTimeSpec',['../classq_o_s_1_1state_machine.html#a036acf3824bb2ec63019f370ce7a52ec',1,'qOS::stateMachine']]],
-  ['gettop_30',['getTop',['../classq_o_s_1_1state_machine.html#a2410b87db316be4721849ca0920bbb8a',1,'qOS::stateMachine']]],
-  ['gettransitiontable_31',['getTransitionTable',['../classq_o_s_1_1sm_1_1state.html#ab8693e791ca3a6124083cba93ec3cd6a',1,'qOS::sm::state']]],
-  ['gettrigger_32',['getTrigger',['../classq_o_s_1_1event__t.html#a7ea7de15a8fcaf57dc1384aa33cd1291',1,'qOS::event_t']]],
-  ['gettype_33',['getType',['../classq_o_s_1_1cli_1_1handler__t.html#a7485235a5249fc75c76886b9ae227244',1,'qOS::cli::handler_t']]]
+  ['gettaskbyid_29',['getTaskByID',['../classq_o_s_1_1core.html#a3b6ddd61cdf225cf2109feca14b26d0c',1,'qOS::core']]],
+  ['gettaskbyname_30',['getTaskByName',['../classq_o_s_1_1core.html#a608ac27a612a6df5123c1d5a2d9b6651',1,'qOS::core']]],
+  ['gettimespec_31',['getTimeSpec',['../classq_o_s_1_1state_machine.html#a036acf3824bb2ec63019f370ce7a52ec',1,'qOS::stateMachine']]],
+  ['gettop_32',['getTop',['../classq_o_s_1_1state_machine.html#a2410b87db316be4721849ca0920bbb8a',1,'qOS::stateMachine']]],
+  ['gettransitiontable_33',['getTransitionTable',['../classq_o_s_1_1sm_1_1state.html#ab8693e791ca3a6124083cba93ec3cd6a',1,'qOS::sm::state']]],
+  ['gettrigger_34',['getTrigger',['../classq_o_s_1_1event__t.html#a7ea7de15a8fcaf57dc1384aa33cd1291',1,'qOS::event_t']]],
+  ['gettype_35',['getType',['../classq_o_s_1_1cli_1_1handler__t.html#a7485235a5249fc75c76886b9ae227244',1,'qOS::cli::handler_t']]]
 ];

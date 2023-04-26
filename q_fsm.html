@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.5</span>
+   &#160;<span id="projectnumber">v1.0.7</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -187,8 +187,8 @@ Subscribing states and defining callbacks</h1>
 <div class="line">    <span class="comment">/* TODO: State code */</span></div>
 <div class="line">    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">sm::status::SUCCESS</a>;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition:</b> fsm.hpp:97</div></div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">qOS::sm::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdef"><b>Definition:</b> fsm.hpp:101</div></div>
+<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition:</b> fsm.hpp:98</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">qOS::sm::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdef"><b>Definition:</b> fsm.hpp:102</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="q_fsmhandler"></a>
 The state callback handler: performing transitions and retrieving data</h1>
 <p >Because callback functions are methods derived from the state-machine object, they have direct access to some attributes via the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">qOS::sm::handler_t</a> argument. The usage of this object it's required to make the FSM moves between states and additionally get extra data. The provided attributes are:</p>
@@ -284,9 +284,9 @@ The surrounding callback</h1>
 <div class="line">            <span class="keywordflow">break</span></div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5">qOS::sm::FAILURE</a></div><div class="ttdeci">@ FAILURE</div><div class="ttdef"><b>Definition:</b> fsm.hpp:100</div></div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4">qOS::sm::BEFORE_ANY</a></div><div class="ttdeci">@ BEFORE_ANY</div><div class="ttdef"><b>Definition:</b> fsm.hpp:98</div></div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee">qOS::sm::SIGNAL_HANDLED</a></div><div class="ttdeci">@ SIGNAL_HANDLED</div><div class="ttdef"><b>Definition:</b> fsm.hpp:102</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5">qOS::sm::FAILURE</a></div><div class="ttdeci">@ FAILURE</div><div class="ttdef"><b>Definition:</b> fsm.hpp:101</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4">qOS::sm::BEFORE_ANY</a></div><div class="ttdeci">@ BEFORE_ANY</div><div class="ttdef"><b>Definition:</b> fsm.hpp:99</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee"><div class="ttname"><a href="group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee">qOS::sm::SIGNAL_HANDLED</a></div><div class="ttdeci">@ SIGNAL_HANDLED</div><div class="ttdef"><b>Definition:</b> fsm.hpp:103</div></div>
 </div><!-- fragment --><p >As you can see in the example below, the surrounding execution case its verified through the FSM handle by reading the <code>Status</code> field.</p>
 <h1><a class="anchor" id="q_fsm_astask"></a>
 Adding a state machine as a task</h1>
@@ -421,7 +421,7 @@ Installing a signal queue</h1>
 <p >A state machine can have a FIFO queue to allow the delivery of signals from another contexts. If the signal queue is installed, the state-machine engine constantly monitors the queue for available signals. The engine then propagates the signal through the hierarchy until it is processed. To enable this functionality in your state machine, the queue must be installed by using the <a class="el" href="classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9" title="Install a signal queue to the provided Finite State Machine (FSM).">qOS::stateMachine::installSignalQueue()</a> method.</p>
 <p >The install operation should be performed after both, the queue and the FSM are correctly initialized by using <a class="el" href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">qOS::queue::setup()</a> and <a class="el" href="classq_o_s_1_1state_machine.html#a408a336915c438e3a9aaa49914aa002e" title="Initializes a Finite State Machine (FSM).">qOS::stateMachine::setup()</a> respectively.</p>
 <dl class="section note"><dt>Note</dt><dd>Make sure that queues are enabled in the <code><a class="el" href="config_8h_source.html">config.h</a></code> header file </dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>When configuring a signal queue with <a class="el" href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">qOS::queue::setup()</a>, remember to size it based on the type <a class="el" href="classq_o_s_1_1sm_1_1signal__t.html">qOS::sm::signal_t</a>. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>When configuring a signal queue with <a class="el" href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">qOS::queue::setup()</a>, remember to size it based on the type <a class="el" href="structq_o_s_1_1sm_1_1signal__t.html">qOS::sm::signal_t</a>. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If the state machines its delegated to a task, make sure to install the queue prior to setting up the task. In this way, a kernel connection can be performed between the FSM signal queue and the FSM-task, allowing the OS to catch signals to produce a task event, this prevents the wait of the task for the specified period, resulting in faster handling of incoming signals.</dd></dl>
 <h1><a class="anchor" id="q_fsm_ttable"></a>
 Using a transition table</h1>
@@ -500,16 +500,16 @@ Demonstrative example using transition tables</h2>
 <div class="line">sm::timeoutSpec tm_spectimeout;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*create the transition tables for every state*/</span></div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> LEDOff_transitions[] = {</div>
+<div class="line">sm::transition_t LEDOff_transitions[] = {</div>
 <div class="line">    { SIGNAL_BUTTON_PRESSED, <span class="keyword">nullptr</span>, &amp;State_LEDOn , 0, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> LEDOn_transitions[] = {</div>
+<div class="line">sm::transition_t LEDOn_transitions[] = {</div>
 <div class="line">    { SIGNAL_DELAY,          <span class="keyword">nullptr</span>, &amp;State_LEDOff   , 0, <span class="keyword">nullptr</span>},</div>
 <div class="line">    { SIGNAL_BUTTON_PRESSED, <span class="keyword">nullptr</span>, &amp;State_LEDBlink , 0, <span class="keyword">nullptr</span>}</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> LEDBlink_transitions[] = {</div>
+<div class="line">sm::transition_t LEDBlink_transitions[] = {</div>
 <div class="line">    { SIGNAL_DELAY,          <span class="keyword">nullptr</span>, &amp;State_LEDOff   , 0, <span class="keyword">nullptr</span>},</div>
 <div class="line">    { SIGNAL_BUTTON_PRESSED, <span class="keyword">nullptr</span>, &amp;State_LEDOff   , 0, <span class="keyword">nullptr</span>}</div>
 <div class="line">};</div>
@@ -523,12 +523,11 @@ Demonstrative example using transition tables</h2>
 <div class="line">    { 10_sec,  <a class="code hl_function" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">sm::TIMEOUT_INDEX</a>( 0 ) | <a class="code hl_variable" href="group__qfsm.html#ga9a8c0296382e335616419ce163437b89">sm::TIMEOUT_SET_ENTRY</a>  | <a class="code hl_variable" href="group__qfsm.html#gad741bdfacdee5f40d16fe32d38227c31">sm::TIMEOUT_RST_EXIT</a>  },</div>
 <div class="line">    { 0.5_sec, <a class="code hl_function" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">sm::TIMEOUT_INDEX</a>( 1 ) | <a class="code hl_variable" href="group__qfsm.html#ga9a8c0296382e335616419ce163437b89">sm::TIMEOUT_SET_ENTRY</a>  | <a class="code hl_variable" href="group__qfsm.html#gad741bdfacdee5f40d16fe32d38227c31">sm::TIMEOUT_RST_EXIT</a> | <a class="code hl_variable" href="group__qfsm.html#ga3c6b00ebb0cc213342339189c9d71a40">sm::TIMEOUT_PERIODIC</a> }</div>
 <div class="line">};</div>
-<div class="ttc" id="agroup__qfsm_html_ga29084ed7ba7ac3fdb0883aac3bd4745d"><div class="ttname"><a href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">qOS::sm::transition_t</a></div><div class="ttdeci">_transition_s transition_t</div><div class="ttdoc">This structure should be used to define an item for a state transition table.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:369</div></div>
 <div class="ttc" id="agroup__qfsm_html_ga3c6b00ebb0cc213342339189c9d71a40"><div class="ttname"><a href="group__qfsm.html#ga3c6b00ebb0cc213342339189c9d71a40">qOS::sm::TIMEOUT_PERIODIC</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_PERIODIC</div><div class="ttdoc">This timeout-specification option its used setup the timeout in periodic mode.</div></div>
-<div class="ttc" id="agroup__qfsm_html_ga646289fa705250d5f8b950aee747becc"><div class="ttname"><a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a></div><div class="ttdeci">constexpr timeoutSpecOption_t TIMEOUT_INDEX(index_t i)</div><div class="ttdoc">Timeout-specification option. Should be used to specify the timeout index.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:555</div></div>
+<div class="ttc" id="agroup__qfsm_html_ga646289fa705250d5f8b950aee747becc"><div class="ttname"><a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a></div><div class="ttdeci">constexpr timeoutSpecOption_t TIMEOUT_INDEX(index_t i)</div><div class="ttdoc">Timeout-specification option. Should be used to specify the timeout index.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:556</div></div>
 <div class="ttc" id="agroup__qfsm_html_ga9a8c0296382e335616419ce163437b89"><div class="ttname"><a href="group__qfsm.html#ga9a8c0296382e335616419ce163437b89">qOS::sm::TIMEOUT_SET_ENTRY</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_SET_ENTRY</div><div class="ttdoc">This timeout-specification option its used to specify that the engine should set the timeout when the...</div></div>
 <div class="ttc" id="agroup__qfsm_html_gad741bdfacdee5f40d16fe32d38227c31"><div class="ttname"><a href="group__qfsm.html#gad741bdfacdee5f40d16fe32d38227c31">qOS::sm::TIMEOUT_RST_EXIT</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_RST_EXIT</div><div class="ttdoc">This timeout-specification option its used to specify that the engine should reset the timeout when t...</div></div>
-<div class="ttc" id="agroup__qfsm_html_gaf43c279ea5475762a31afc11e5a868ea"><div class="ttname"><a href="group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea">qOS::sm::timeoutStateDefinition_t</a></div><div class="ttdeci">_timeoutStateDefinition_s timeoutStateDefinition_t</div><div class="ttdoc">This type should be used to define an item for a timeout-specification table.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:354</div></div>
+<div class="ttc" id="agroup__qfsm_html_gaf43c279ea5475762a31afc11e5a868ea"><div class="ttname"><a href="group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea">qOS::sm::timeoutStateDefinition_t</a></div><div class="ttdeci">_timeoutStateDefinition_s timeoutStateDefinition_t</div><div class="ttdoc">This type should be used to define an item for a timeout-specification table.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:355</div></div>
 </div><!-- fragment --><p >Then, we define the callback for the states.</p>
 <div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDOff_Callback( sm::handler_t h ) {</div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
@@ -625,40 +624,40 @@ Example using a hierarchical FSM</h2>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><span class="comment">/*                             TRANSITION TABLES                         */</span></div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> idle_transitions[] =</div>
+<div class="line">sm::transition_t idle_transitions[] =</div>
 <div class="line">{</div>
 <div class="line">{ SIGNAL_ENGINE_ON, SigAct_ClearDesiredSpeed, &amp;state_initial , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> initial_transitions[] =</div>
+<div class="line">sm::transition_t initial_transitions[] =</div>
 <div class="line">{</div>
 <div class="line">{ SIGNAL_ACCEL, SigAct_BrakeOff, &amp;state_accelerating , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> accel_transitions[] =</div>
+<div class="line">sm::transition_t accel_transitions[] =</div>
 <div class="line">{</div>
 <div class="line">{ SIGNAL_CRUISE,  <span class="keyword">nullptr</span>, &amp;state_cruising , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> cruising_transitions[] =</div>
+<div class="line">sm::transition_t cruising_transitions[] =</div>
 <div class="line">{</div>
 <div class="line">{ SIGNAL_OFF,   <span class="keyword">nullptr</span>, &amp;state_cruisingoff  , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> },</div>
 <div class="line">{ SIGNAL_ACCEL, <span class="keyword">nullptr</span>, &amp;state_accelerating , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> resuming_transitions[] =</div>
+<div class="line">sm::transition_t resuming_transitions[] =</div>
 <div class="line">{</div>
 <div class="line">{ SIGNAL_ACCEL, <span class="keyword">nullptr</span>,  &amp;state_accelerating , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> cruisingoff_transitions[] =</div>
+<div class="line">sm::transition_t cruisingoff_transitions[] =</div>
 <div class="line">{</div>
 <div class="line">{ SIGNAL_ACCEL,      SigAct_BrakeOff, &amp;state_accelerating , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> },</div>
 <div class="line">{ SIGNAL_RESUME,     SigAct_BrakeOff, &amp;state_resuming     , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> },</div>
 <div class="line">{ SIGNAL_ENGINE_OFF, <span class="keyword">nullptr</span>,         &amp;state_idle         , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> automated_transitions[] =</div>
+<div class="line">sm::transition_t automated_transitions[] =</div>
 <div class="line">{</div>
 <div class="line">{ SIGNAL_BRAKE_PRESSED,   <span class="keyword">nullptr</span>,  &amp;state_cruisingoff  , 0, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
@@ -792,21 +791,21 @@ Example with history pseudo-states</h2>
 <div class="line">stateMachine super;</div>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> state1 , state2 , state3 , state4 , state5 , state6;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> state1_transitions [] = {</div>
+<div class="line">sm::transition_t state1_transitions [] = {</div>
 <div class="line">    { SIGNAL_A , nullptr , &amp;state2 , sm::historyMode::SHALLOW_HISTORY, <span class="keyword">nullptr</span> },</div>
 <div class="line">    { SIGNAL_B , nullptr , &amp;state2 , sm::historyMode::DEEP_HISTORY, <span class="keyword">nullptr</span> },</div>
 <div class="line">    { SIGNAL_C , nullptr , &amp;state2 , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> state2_transitions [] = {</div>
+<div class="line">sm::transition_t state2_transitions [] = {</div>
 <div class="line">    { SIGNAL_D , nullptr , &amp;state1 , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> state3_transitions [] = {</div>
+<div class="line">sm::transition_t state3_transitions [] = {</div>
 <div class="line">    { SIGNAL_E , nullptr , &amp;state4 , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_typedef" href="group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d">sm::transition_t</a> state5_transitions [] = {</div>
+<div class="line">sm::transition_t state5_transitions [] = {</div>
 <div class="line">    { SIGNAL_F , nullptr , &amp;state6 , sm::historyMode::NO_HISTORY, <span class="keyword">nullptr</span> }</div>
 <div class="line">};</div>
 </div><!-- fragment --><p >Next, the configuration and topology of the state-machine is presented, including the default transitions (the small circles filled with black). Please do not forget to define the callbacks for each state.</p>

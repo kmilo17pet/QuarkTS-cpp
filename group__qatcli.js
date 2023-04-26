@@ -18,10 +18,12 @@ var group__qatcli =
       [ "output", "classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0", null ]
     ] ],
     [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", [
+      [ "~command", "classq_o_s_1_1cli_1_1command.html#a78614094a756a9b45845c94c6c3858a6", null ],
       [ "qOS::commandLineInterface", "classq_o_s_1_1cli_1_1command.html#aba6d9d0160c6476dd20d0f7dea7f14c6", null ]
     ] ],
     [ "qOS::commandLineInterface", "classq_o_s_1_1command_line_interface.html", [
       [ "commandLineInterface", "classq_o_s_1_1command_line_interface.html#a09065347eb890fe5b24b8c275ab7b33c", null ],
+      [ "~commandLineInterface", "classq_o_s_1_1command_line_interface.html#a1e575dd211dd12cf7a25ad011fbdb5e3", null ],
       [ "add", "classq_o_s_1_1command_line_interface.html#abe67850838a669ea2aa5943371deb188", null ],
       [ "exec", "classq_o_s_1_1command_line_interface.html#a1c3b2f43317b8b4fca1b4ae38ed0d755", null ],
       [ "getOwner", "classq_o_s_1_1command_line_interface.html#a841853e232f985105c3d3f9f75804ac7", null ],

@@ -1,6 +1,7 @@
 var classq_o_s_1_1state_machine =
 [
     [ "stateMachine", "classq_o_s_1_1state_machine.html#a872d3bc5f8c1c58d15169ff9321d5bd5", null ],
+    [ "~stateMachine", "classq_o_s_1_1state_machine.html#a2293aeb56ddfd34a2fd0f7ef4f86b875", null ],
     [ "add", "classq_o_s_1_1state_machine.html#a7fdff9a93bd10117b755fcb3f0c01471", null ],
     [ "add", "classq_o_s_1_1state_machine.html#a8948aa0009e6bb0987a466c10f674278", null ],
     [ "getCurrent", "classq_o_s_1_1state_machine.html#a04778ea269ed32926df1e9d7f2d71cae", null ],

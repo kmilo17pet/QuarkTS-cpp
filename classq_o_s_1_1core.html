@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.5</span>
+   &#160;<span id="projectnumber">v1.0.7</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -202,9 +202,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ga56dc6d48d6f31ffb5cfe3b1d787af858"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858">eventFlagsCheck</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb">taskFlag_t</a> flagsToCheck, const bool clearOnExit=true, const bool checkForAll=false) noexcept</td></tr>
 <tr class="memdesc:ga56dc6d48d6f31ffb5cfe3b1d787af858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for flags set to <code>true</code> inside the task Event-Flags.  <a href="group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858">More...</a><br /></td></tr>
 <tr class="separator:ga56dc6d48d6f31ffb5cfe3b1d787af858"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45a37c156bf1da3a0847da37ba155a68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1task.html">task</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a45a37c156bf1da3a0847da37ba155a68">findTaskByName</a> (const char *name) noexcept</td></tr>
-<tr class="memdesc:a45a37c156bf1da3a0847da37ba155a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to find the first task that matches the name provided.  <a href="classq_o_s_1_1core.html#a45a37c156bf1da3a0847da37ba155a68">More...</a><br /></td></tr>
-<tr class="separator:a45a37c156bf1da3a0847da37ba155a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a608ac27a612a6df5123c1d5a2d9b6651"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1task.html">task</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a608ac27a612a6df5123c1d5a2d9b6651">getTaskByName</a> (const char *name) noexcept</td></tr>
+<tr class="memdesc:a608ac27a612a6df5123c1d5a2d9b6651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to find the task that matches the name provided.  <a href="classq_o_s_1_1core.html#a608ac27a612a6df5123c1d5a2d9b6651">More...</a><br /></td></tr>
+<tr class="separator:a608ac27a612a6df5123c1d5a2d9b6651"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6ddd61cdf225cf2109feca14b26d0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1task.html">task</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a3b6ddd61cdf225cf2109feca14b26d0c">getTaskByID</a> (size_t id) noexcept</td></tr>
+<tr class="memdesc:a3b6ddd61cdf225cf2109feca14b26d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to find the task that matches the ID provided.  <a href="classq_o_s_1_1core.html#a3b6ddd61cdf225cf2109feca14b26d0c">More...</a><br /></td></tr>
+<tr class="separator:a3b6ddd61cdf225cf2109feca14b26d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d04f84700e6e54d5eab75ac95f6768d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a2d04f84700e6e54d5eab75ac95f6768d">yieldToTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) noexcept</td></tr>
 <tr class="memdesc:a2d04f84700e6e54d5eab75ac95f6768d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yield the control of the current running task to another task.  <a href="classq_o_s_1_1core.html#a2d04f84700e6e54d5eab75ac95f6768d">More...</a><br /></td></tr>
 <tr class="separator:a2d04f84700e6e54d5eab75ac95f6768d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -383,41 +386,6 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a45a37c156bf1da3a0847da37ba155a68" name="a45a37c156bf1da3a0847da37ba155a68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45a37c156bf1da3a0847da37ba155a68">&#9670;&nbsp;</a></span>findTaskByName()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1task.html">task</a> * qOS::core::findTaskByName </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Tries to find the first task that matches the name provided. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The string with the name to find. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the task node if found, otherwise returns <code>nullptr</code>. </dd></dl>
-
-</div>
-</div>
 <a id="abf9024e617bd777e7a8d26a313e871c4" name="abf9024e617bd777e7a8d26a313e871c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf9024e617bd777e7a8d26a313e871c4">&#9670;&nbsp;</a></span>getGlobalState()</h2>
 
@@ -479,6 +447,78 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 <p>Returns a reference to the OS control instance. </p>
 <dl class="section return"><dt>Returns</dt><dd>The OS control instance. </dd></dl>
+
+</div>
+</div>
+<a id="a3b6ddd61cdf225cf2109feca14b26d0c" name="a3b6ddd61cdf225cf2109feca14b26d0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b6ddd61cdf225cf2109feca14b26d0c">&#9670;&nbsp;</a></span>getTaskByID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classq_o_s_1_1task.html">task</a> * qOS::core::getTaskByID </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tries to find the task that matches the ID provided. </p>
+<dl class="section note"><dt>Note</dt><dd>Task <em>idle</em> with ID = <code>0</code> cannot be obtained </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>The value of the task-ID to find. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the task node if found, otherwise returns <code>nullptr</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a608ac27a612a6df5123c1d5a2d9b6651" name="a608ac27a612a6df5123c1d5a2d9b6651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a608ac27a612a6df5123c1d5a2d9b6651">&#9670;&nbsp;</a></span>getTaskByName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classq_o_s_1_1task.html">task</a> * qOS::core::getTaskByName </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tries to find the task that matches the name provided. </p>
+<dl class="section note"><dt>Note</dt><dd>Task <em>idle</em> with name = <code>idle</code> cannot be obtained </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>The string with the name to find. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the task node if found, otherwise returns <code>nullptr</code>. </dd></dl>
 
 </div>
 </div>

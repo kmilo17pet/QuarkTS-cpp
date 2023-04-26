@@ -1,6 +1,8 @@
 var classq_o_s_1_1task =
 [
     [ "task", "classq_o_s_1_1task.html#a22f349f2dc4f57fb4815e44a357a29c5", null ],
+    [ "~task", "classq_o_s_1_1task.html#a9e9fc3d1c343b8dd216bacedf814bd4a", null ],
+    [ "activities", "classq_o_s_1_1task.html#a10ad416a8397a77f6a1726016fcd4812", null ],
     [ "asleep", "classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d", null ],
     [ "attachQueue", "classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9", null ],
     [ "awake", "classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292", null ],

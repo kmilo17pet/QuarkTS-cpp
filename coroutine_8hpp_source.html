@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.5</span>
+   &#160;<span id="projectnumber">v1.0.7</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -148,7 +148,7 @@ $(document).ready(function(){initNavTree('coroutine_8hpp_source.html',''); initR
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment">/*cstat +MISRAC++2008-0-1-4_b*/</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">class </span>_coContext;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classq_o_s_1_1co_1_1position.html">   34</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1co_1_1position.html">position</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classq_o_s_1_1co_1_1position.html">   34</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1co_1_1position.html">position</a> final {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">state</a> pos{ BEGINNING };</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">state</a> operator()(<span class="keywordtype">void</span>)<span class="keyword"> const</span></div>
@@ -177,7 +177,7 @@ $(document).ready(function(){initNavTree('coroutine_8hpp_source.html',''); initR
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classq_o_s_1_1co_1_1handle.html#a3e89a13f2fae2923a0711c4552ef7af7">   76</a></span>            <span class="keyword">friend</span> <span class="keyword">class </span>co::_coContext;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        };</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classq_o_s_1_1co_1_1semaphore.html">   80</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1co_1_1semaphore.html">semaphore</a> {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classq_o_s_1_1co_1_1semaphore.html">   80</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1co_1_1semaphore.html">semaphore</a> final {</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                <span class="keywordtype">size_t</span> count{ 1u };</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keywordtype">void</span> signal( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
@@ -191,7 +191,7 @@ $(document).ready(function(){initNavTree('coroutine_8hpp_source.html',''); initR
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        };</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="comment">/*cstat -MISRAC++2008-7-1-2*/</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">class </span>_coContext {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">class </span>_coContext final {</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                _coContext( _coContext <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                <span class="keywordtype">void</span> operator=( _coContext <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>

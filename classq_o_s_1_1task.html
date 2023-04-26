@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.5</span>
+   &#160;<span id="projectnumber">v1.0.7</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -129,6 +129,7 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1task.html',''); initResi
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classq_o_s_1_1task-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">qOS::task Class Reference<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a> &raquo; <a class="el" href="group__qtaskmanip.html">Managing tasks</a></div></div></div>
 </div><!--header-->
@@ -155,6 +156,8 @@ Collaboration diagram for qOS::task:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a22f349f2dc4f57fb4815e44a357a29c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a22f349f2dc4f57fb4815e44a357a29c5">task</a> ()=default</td></tr>
 <tr class="separator:a22f349f2dc4f57fb4815e44a357a29c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e9fc3d1c343b8dd216bacedf814bd4a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a9e9fc3d1c343b8dd216bacedf814bd4a">~task</a> ()</td></tr>
+<tr class="separator:a9e9fc3d1c343b8dd216bacedf814bd4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1de14744e37cb6a8c1276ff039d84767"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a1de14744e37cb6a8c1276ff039d84767">getPriority</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a1de14744e37cb6a8c1276ff039d84767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the current task priority.  <a href="classq_o_s_1_1task.html#a1de14744e37cb6a8c1276ff039d84767">More...</a><br /></td></tr>
 <tr class="separator:a1de14744e37cb6a8c1276ff039d84767"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,14 +237,18 @@ Static Public Attributes</h2></td></tr>
 <tr class="memdesc:a695b8b4c0828fc3823b1daaf7328f3af"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant to indicate that the task will be executed only once after its time has expired.  <a href="classq_o_s_1_1task.html#a695b8b4c0828fc3823b1daaf7328f3af">More...</a><br /></td></tr>
 <tr class="separator:a695b8b4c0828fc3823b1daaf7328f3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a10ad416a8397a77f6a1726016fcd4812"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1task.html#a10ad416a8397a77f6a1726016fcd4812">activities</a> (void)</td></tr>
+<tr class="separator:a10ad416a8397a77f6a1726016fcd4812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classq_o_s_1_1node"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classq_o_s_1_1node')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classq_o_s_1_1node.html">qOS::node</a></td></tr>
 <tr class="memitem:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list.html">list</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1node.html#a14ad556d2634b1faf3ce9767efbb9136">getContainer</a> (void) noexcept</td></tr>
 <tr class="memdesc:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the list in which this node is contained.  <a href="classq_o_s_1_1node.html#a14ad556d2634b1faf3ce9767efbb9136">More...</a><br /></td></tr>
 <tr class="separator:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6eeb0dd0a2a256c315fe1966d44158f inherit pro_methods_classq_o_s_1_1node"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1node.html#aa6eeb0dd0a2a256c315fe1966d44158f">node</a> ()</td></tr>
 <tr class="separator:aa6eeb0dd0a2a256c315fe1966d44158f inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b9b6d91c2aec2c10106fb39437c0150 inherit pro_methods_classq_o_s_1_1node"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1node.html#a3b9b6d91c2aec2c10106fb39437c0150">~node</a> ()</td></tr>
+<tr class="separator:a3b9b6d91c2aec2c10106fb39437c0150 inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A task node object. </p>
@@ -291,7 +298,58 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a9e9fc3d1c343b8dd216bacedf814bd4a" name="a9e9fc3d1c343b8dd216bacedf814bd4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e9fc3d1c343b8dd216bacedf814bd4a">&#9670;&nbsp;</a></span>~task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual qOS::task::~task </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a10ad416a8397a77f6a1726016fcd4812" name="a10ad416a8397a77f6a1726016fcd4812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ad416a8397a77f6a1726016fcd4812">&#9670;&nbsp;</a></span>activities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void qOS::task::activities </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aaf4d5af2b94b2eabcc82d31b0202561d" name="aaf4d5af2b94b2eabcc82d31b0202561d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf4d5af2b94b2eabcc82d31b0202561d">&#9670;&nbsp;</a></span>asleep()</h2>
 
@@ -615,7 +673,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieves the task name. </p>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the string containing the task name. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the string containing the task name. If the task is unnamed an empty string will be returned. </dd></dl>
 
 </div>
 </div>
@@ -867,7 +925,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the task name. </p>
-<dl class="section note"><dt>Note</dt><dd>Name should be unique. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The task must already be added to the scheduling scheme </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Name should be unique. </dd>
+<dd>
+The name <code>idle</code> is reserved for the Idle task </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The size of the string must be less than 32 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">tName</td><td>A raw-string with the task name </td></tr>

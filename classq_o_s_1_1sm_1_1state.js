@@ -1,6 +1,7 @@
 var classq_o_s_1_1sm_1_1state =
 [
     [ "state", "classq_o_s_1_1sm_1_1state.html#ae368a34da51507d9497ca01816bf34ef", null ],
+    [ "~state", "classq_o_s_1_1sm_1_1state.html#aa68f13a440895ffef56d29161b70fbab", null ],
     [ "add", "classq_o_s_1_1sm_1_1state.html#a3f7206e427f7a84a0e21d18a52719959", null ],
     [ "add", "classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39", null ],
     [ "getData", "classq_o_s_1_1sm_1_1state.html#a8d777ae3e9a4a2248c8463016d61bc5b", null ],

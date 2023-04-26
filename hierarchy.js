@@ -30,9 +30,10 @@ var hierarchy =
     [ "qOS::queue", "classq_o_s_1_1queue.html", null ],
     [ "qOS::response", "classq_o_s_1_1response.html", null ],
     [ "qOS::co::semaphore", "classq_o_s_1_1co_1_1semaphore.html", null ],
-    [ "qOS::sm::signal_t", "classq_o_s_1_1sm_1_1signal__t.html", null ],
+    [ "qOS::sm::signal_t", "structq_o_s_1_1sm_1_1signal__t.html", null ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", null ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ],
     [ "qOS::timer", "classq_o_s_1_1timer.html", null ],
-    [ "qOS::trace", "classq_o_s_1_1trace.html", null ]
+    [ "qOS::trace", "classq_o_s_1_1trace.html", null ],
+    [ "qOS::sm::transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ]
 ];

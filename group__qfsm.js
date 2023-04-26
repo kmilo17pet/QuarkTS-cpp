@@ -1,9 +1,9 @@
 var group__qfsm =
 [
     [ "qOS::sm", "namespaceq_o_s_1_1sm.html", null ],
-    [ "qOS::sm::signal_t", "classq_o_s_1_1sm_1_1signal__t.html", [
-      [ "data", "classq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898", null ],
-      [ "id", "classq_o_s_1_1sm_1_1signal__t.html#abc8c864b6424f544cc49c53be951d5d6", null ]
+    [ "qOS::sm::signal_t", "structq_o_s_1_1sm_1_1signal__t.html", [
+      [ "data", "structq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898", null ],
+      [ "id", "structq_o_s_1_1sm_1_1signal__t.html#abc8c864b6424f544cc49c53be951d5d6", null ]
     ] ],
     [ "qOS::sm::handler_t", "classq_o_s_1_1sm_1_1handler__t.html", [
       [ "lastStatus", "classq_o_s_1_1sm_1_1handler__t.html#a6e5c6e1c15742bf3b6f16428adc33d80", null ],
@@ -19,8 +19,10 @@ var group__qfsm =
       [ "SignalData", "classq_o_s_1_1sm_1_1handler__t.html#a7aa24bb74e3c045474b5ecf4dde5a229", null ],
       [ "StateData", "classq_o_s_1_1sm_1_1handler__t.html#ab6a46f5f102667474a5ae6c1d4851b98", null ]
     ] ],
+    [ "qOS::sm::transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", [
       [ "state", "classq_o_s_1_1sm_1_1state.html#ae368a34da51507d9497ca01816bf34ef", null ],
+      [ "~state", "classq_o_s_1_1sm_1_1state.html#aa68f13a440895ffef56d29161b70fbab", null ],
       [ "add", "classq_o_s_1_1sm_1_1state.html#a3f7206e427f7a84a0e21d18a52719959", null ],
       [ "add", "classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39", null ],
       [ "getData", "classq_o_s_1_1sm_1_1state.html#a8d777ae3e9a4a2248c8463016d61bc5b", null ],
@@ -36,6 +38,7 @@ var group__qfsm =
     ] ],
     [ "qOS::stateMachine", "classq_o_s_1_1state_machine.html", [
       [ "stateMachine", "classq_o_s_1_1state_machine.html#a872d3bc5f8c1c58d15169ff9321d5bd5", null ],
+      [ "~stateMachine", "classq_o_s_1_1state_machine.html#a2293aeb56ddfd34a2fd0f7ef4f86b875", null ],
       [ "add", "classq_o_s_1_1state_machine.html#a7fdff9a93bd10117b755fcb3f0c01471", null ],
       [ "add", "classq_o_s_1_1state_machine.html#a8948aa0009e6bb0987a466c10f674278", null ],
       [ "getCurrent", "classq_o_s_1_1state_machine.html#a04778ea269ed32926df1e9d7f2d71cae", null ],
@@ -61,7 +64,6 @@ var group__qfsm =
     [ "qOS::sm::surroundingCallback_t", "group__qfsm.html#gadbdca3ba7e7e329ecacc9c1510a14ad9", null ],
     [ "qOS::sm::timeoutSpecOption_t", "group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9", null ],
     [ "qOS::sm::timeoutStateDefinition_t", "group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea", null ],
-    [ "qOS::sm::transition_t", "group__qfsm.html#ga29084ed7ba7ac3fdb0883aac3bd4745d", null ],
     [ "qOS::sm::historyMode", "group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420", [
       [ "qOS::sm::historyMode::NO_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a80ac9be1f4cca7a2df3d56534087e31c", null ],
       [ "qOS::sm::historyMode::SHALLOW_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420aff183b3b4e6b9cf5e3ba5358b79390d8", null ],
