@@ -364,7 +364,7 @@ namespace qOS {
             bool getFlag( const uint32_t flag ) const noexcept;
             bool deadLineReached( void ) const noexcept;
             trigger queueCheckEvents( void ) noexcept;
-            static _Event * pEventInfo;
+            static _Event * pEventInfo; // skipcq: CXX-W2011, CXX-W2009
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_ENABLED;
             static const uint32_t BIT_QUEUE_RECEIVER;

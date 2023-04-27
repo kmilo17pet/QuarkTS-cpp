@@ -542,29 +542,32 @@ void stateMachine::exitUpToLCA( uint8_t lca ) noexcept
     current = s;
 }
 /*============================================================================*/
-sm::status stateMachine::invokeStateCallback( sm::state * const s ) noexcept
+sm::status sm::state::activities( void )
+{
+    /*cstat -MISRAC++2008-5-0-3*/
+    return ( nullptr != sCallback ) ? sCallback( *pHandler ) : sm::status::FAILURE;
+    /*cstat +MISRAC++2008-5-0-3*/
+}
+/*============================================================================*/
+sm::status stateMachine::invokeStateActivities( sm::state * const s ) noexcept
 {
     /*cstat -CERT-EXP39-C_d*/
     sm::_Handler * const pHandler = static_cast<sm::_Handler*>( this );
+    s->pHandler = pHandler;
     /*cstat CERT-EXP39-C_d*/
     if ( nullptr != surrounding ) {
         sm::_Handler::Status = sm::status::BEFORE_ANY;
         surrounding( *pHandler );
     }
-    if ( nullptr != s->sCallback ) {
-        sm::_Handler::Status = sm::status::ABSENT;
-        /*execute the state callback (Transitions here are not allowed)*/
-        sm::_Handler::Status = s->sCallback( *pHandler ); /*cast allowed, struct layout its compatible*/
-    }
-    else {
-        sm::_Handler::Status = sm::status::FAILURE;
-    }
-    /*this property can change from the callback, so check it again*/
+
+    sm::_Handler::Status = sm::status::ABSENT;
+    sm::_Handler::Status = s->activities();
+
     if ( nullptr != surrounding ) {
         if ( sm::_Handler::Status < sm::status::FAILURE ) {
             sm::_Handler::Status = sm::status::FAILURE;
         }
-        surrounding( *pHandler ); /*cast allowed, struct layout compatible*/
+        surrounding( *pHandler );
     }
 
     return sm::_Handler::Status;
@@ -589,7 +592,7 @@ sm::state* stateMachine::stateOnExit( sm::state *s ) noexcept
     SIG_MSG_EXIT.id = sm::signalID::SIGNAL_EXIT;
 
     prepareHandler( SIG_MSG_EXIT, s );
-    (void)invokeStateCallback( s );
+    (void)invokeStateActivities( s );
     if ( ( nullptr != timeSpec ) && ( nullptr != s->tdef ) ) {
         timeoutPerformSpecifiedActions( s, sm::signalID::SIGNAL_EXIT );
     }
@@ -604,7 +607,7 @@ void stateMachine::stateOnEntry( sm::state *s ) noexcept
     SIG_MSG_ENTRY.id = sm::signalID::SIGNAL_ENTRY;
 
     prepareHandler( SIG_MSG_ENTRY, s );
-    (void)invokeStateCallback( s );
+    (void)invokeStateActivities( s );
 
     if ( ( nullptr != timeSpec ) && ( nullptr != s->tdef ) ) {
         timeoutPerformSpecifiedActions( s, sm::signalID::SIGNAL_ENTRY );
@@ -617,7 +620,7 @@ sm::state* stateMachine::stateOnStart( sm::state *s ) noexcept
     SIG_MSG_START.id = sm::signalID::SIGNAL_START;
 
     prepareHandler( SIG_MSG_START, s );
-    (void)invokeStateCallback( s );
+    (void)invokeStateActivities( s );
 
     if ( nullptr != sm::_Handler::StartState ) {
         /*changes from callback takes more precedence*/
@@ -644,7 +647,7 @@ sm::status stateMachine::stateOnSignal( sm::state *s, sm::signal_t sig ) noexcep
         s->sweepTransitionTable( *static_cast<sm::_Handler*>( this ) );
         /*cstat +CERT-EXP39-C_d*/
     }
-    status = invokeStateCallback( s );
+    status = invokeStateActivities( s );
 
     if ( nullptr != sm::_Handler::NextState ) { /*perform the transition if available*/
         transition( sm::_Handler::NextState, sm::_Handler::TransitionHistory );

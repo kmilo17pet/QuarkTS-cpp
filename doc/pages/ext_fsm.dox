@@ -79,6 +79,20 @@
 *  }
 *  @endcode
 *
+* States can also be defined using the object-oriented programming approach. In
+* this particular case, a class must be defined that inherits from qOS::sm::state and
+* the @c activities method, where the behavior of the state resides, must be 
+* overridden.
+*
+*  @code{.c}
+*  class myCustomState : public sm::state {
+*      sm::status activities( void ) override {
+*          // TODO : State code
+*          return sm::status::SUCCESS;
+*      }
+*  };
+*  @endcode
+*
 * @section q_fsmhandler The state callback handler: performing transitions and retrieving data
 * Because callback functions are methods derived from the state-machine object, 
 * they have direct access to some attributes via the @ref qOS::sm::handler_t argument. 
@@ -131,11 +145,15 @@
 * field. (here, a cast to qOS::event_t is mandatory).
 * - @ref qOS::sm::handler_t::StateData (read-only) : State associated data. Storage-pointer.
 *
-* Within the callback function of every state, only one level of dispatching 
-* (based on the signal) is necessary. Typically this is archived using a 
-* single-level switch statement. Callback functions communicate with the state 
-* machine engine through the qOS::sm::handler_t and the return value of type 
-* @c sm::status.
+* @note  When states are defined using the object-oriented programming approach, 
+* this structure can be obtained within the @c activities method using the 
+* qOS::sm::state::getHandler().
+*
+* Within the callback function of every state or the @c activities method, only one
+* level of dispatching (based on the signal) is necessary. Typically this is 
+* archived using a single-level switch statement. Callback functions communicate 
+* with the state machine engine through the qOS::sm::handler_t and the return 
+* value of type @c sm::status.
 *
 * The semantic is simple, if a signal is processed, the callback functions 
 * returns the status value @c sm::status::SIGNAL_HANDLED. Otherwise, it throws the

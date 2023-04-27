@@ -400,11 +400,14 @@ namespace qOS {
                 void *sData{ nullptr };
                 size_t tEntries{ 0u };
                 size_t nTm{ 0u };
+                _Handler *pHandler{ nullptr };
                 void sweepTransitionTable( _Handler &h ) noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
                 bool subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept;
                 void topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept;
+            protected:
+                virtual sm::status activities( void );
             public:
                 state() = default;
                 virtual ~state() {}
@@ -483,6 +486,16 @@ namespace qOS {
                 * @param[in] sFcn The state callback function.
                 */
                 void setCallback( const stateCallback_t sFcn ) noexcept;
+                /**
+                * @brief Return a reference to the state handler
+                * @warning Use only within the @c activities method or the state callback function
+                * If used outside can cause an undefined behavior or a runtime error.
+                * @return The state handler.
+                */
+                inline handler_t getHandler( void ) noexcept
+                {
+                    return *pHandler;
+                }
             friend class qOS::stateMachine;
         };
 
@@ -592,7 +605,7 @@ namespace qOS {
             uint8_t levelsToLCA( sm::state *target ) const noexcept;
             void exitUpToLCA( uint8_t lca ) noexcept;
             void prepareHandler( sm::signal_t sig, sm::state *s ) noexcept;
-            sm::status invokeStateCallback( sm::state * const s ) noexcept;
+            sm::status invokeStateActivities( sm::state * const s ) noexcept;
             sm::state* stateOnExit( sm::state *s ) noexcept;
             void stateOnEntry( sm::state *s ) noexcept;
             sm::state* stateOnStart( sm::state *s ) noexcept;

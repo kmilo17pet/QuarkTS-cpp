@@ -143,6 +143,19 @@
 *  }
 *  @endcode
 *
+* Tasks can also be defined using the object-oriented programming approach. In
+* this particular case, a class must be defined that inherits from qOS::task and
+* the @c activities method, where the behavior of the task resides, must be 
+* overridden.
+*
+*  @code{.c}
+*  class myCustomTask : public task {
+*      void activities( void ) override {
+*          // TODO : Task code
+*      }
+*  };
+*  @endcode
+*
 * @note All tasks in QuarkTS++ must ensure their completion to return the CPU
 * control back to the scheduler to follow the @ref rtcmodel, otherwise, the 
 * scheduler will hold the execution state for that task, preventing the 

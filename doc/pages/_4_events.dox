@@ -33,6 +33,10 @@
 * 
 * Please review the @ref qOS::event_t class reference for more details.
 *
+* @note  When tasks are defined using the object-oriented programming approach, 
+* this structure can be obtained within the @c activities method using the 
+* qOS::task::eventData().
+*
 * @section q_event_timeelapsed The Time-Elapsed event
 * Running tasks at pre-determined rates is desirable in many situations, like 
 * sensory data acquisition, low-level servoing, control loops, action planning
@@ -360,7 +364,7 @@
 * @subsection q_queues Queues
 * A queue is a linear data structure with simple operations based on the FIFO 
 * (First In First Out) principle. It is capable to hold a finite number of 
-* fixed-size data items. The maximum number of items that a queue can hold is
+* fixed-size data items. The maximum number of items that a queue can hold is 
 * called its length. Both the length and the size of each data item are set 
 * when the queue is created.
 *

@@ -19,7 +19,7 @@ const uint32_t task::BIT_SHUTDOWN = 0x00000040uL;
 const uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
 const uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
 const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
-_Event * task::pEventInfo = nullptr;
+_Event * task::pEventInfo = nullptr; // skipcq: CXX-W2011, , CXX-W2009
 
 /*============================================================================*/
 constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
@@ -184,7 +184,7 @@ bool task::setName( const char *tName ) noexcept
     /*cstat -MISRAC++2008-5-14-1*/
     if ( ( nullptr != getContainer() ) && ( nl > 0u ) && ( nl < sizeof(name) ) ) {
         if ( nullptr == os.getTaskByName( tName ) ) {
-            (void)util::strcpy( name, tName , sizeof( name ) );
+            (void)util::strcpy( name, tName , sizeof( name ) ); // skipcq: C1000
             retValue = true;
         }
     }
@@ -194,7 +194,7 @@ bool task::setName( const char *tName ) noexcept
 /*============================================================================*/
 const char* task::getName( void ) const noexcept
 {
-    return name;
+    return name; // skipcq: C1000
 }
 /*============================================================================*/
 trigger task::queueCheckEvents( void ) noexcept

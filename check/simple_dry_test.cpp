@@ -4,7 +4,18 @@
 
 using namespace std;
 
+class customTask : public task {
+    void activities( void ) override 
+    {
+        if ( eventData().firstCall() ) {
+            trace::log << eventData().thisTask().getName() << trace::endl; 
+        }
+        trace::log << trace::mag << "im a custom task" << trace::end;
+    }
+};
+
 task t1, t2, t3, t4;
+customTask t5;
 stateMachine m;
 sm::state s1, s2;
 co::position pos1;
@@ -23,10 +34,6 @@ void putCharFcn( void* stp, char c );
 
 unsigned long sysClock( void );
 
-
-struct customTask : public task {
-
-};
 
 void idleTask_callback( event_t e )
 {
@@ -159,10 +166,13 @@ int main()
     os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
     os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10u );
     os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
+    os.addTask( t5, nullptr, core::MEDIUM_PRIORITY, 1_sec, task::PERIODIC );
 
-    trace::log << t1.setName( "t1" ) << trace::endl;
-    trace::log << t2.setName( "t2" ) << trace::endl;
-    trace::log << t3.setName( "t3" ) << trace::endl;
+    t1.setName( "t1" );
+    t2.setName( "t2" );
+    t3.setName( "t3" );
+    t4.setName( "t4" );
+    t5.setName( "t5" );
 
     sm::timeoutSpec tm_specTimeout;
     m.setup( nullptr, s1 );
