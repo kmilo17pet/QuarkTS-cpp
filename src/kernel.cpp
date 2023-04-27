@@ -509,7 +509,7 @@ task* core::getTaskByName( const char *name ) noexcept
             for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
                 task * const xTask = it.get<task*>();
 
-                if ( 0 == strncmp( name, xTask->name, sizeof(xTask->name) - 1u ) ) {  // skipcq: C1000
+                if ( 0 == strncmp( name, xTask->name, sizeof(xTask->name) - 1u ) ) {  // skipcq: CXX-C1000 
                     found  = xTask;
                     r = true;
                     break;
