@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.7</span>
+   &#160;<span id="projectnumber">v1.0.8</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -128,6 +128,7 @@ $(document).ready(function(){initNavTree('classq_o_s_1_1sm_1_1state.html',''); i
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classq_o_s_1_1sm_1_1state-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">qOS::sm::state Class Reference<div class="ingroups"><a class="el" href="group__qmodules.html">Kernel extensions</a> &raquo; <a class="el" href="group__qfsm.html">Finite State Machines</a></div></div></div>
 </div><!--header-->
@@ -168,6 +169,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab04273bc570b210568b9b5491a58dced"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced">setCallback</a> (const <a class="el" href="group__qfsm.html#ga0a2b3e62daba65e93e9e2e0586c744d4">stateCallback_t</a> sFcn) noexcept</td></tr>
 <tr class="memdesc:ab04273bc570b210568b9b5491a58dced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the state callback.  <a href="classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced">More...</a><br /></td></tr>
 <tr class="separator:ab04273bc570b210568b9b5491a58dced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2cdfa6ea300cbf0c49460292ff34880"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#af2cdfa6ea300cbf0c49460292ff34880">getHandler</a> (void) noexcept</td></tr>
+<tr class="memdesc:af2cdfa6ea300cbf0c49460292ff34880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the state handler.  <a href="classq_o_s_1_1sm_1_1state.html#af2cdfa6ea300cbf0c49460292ff34880">More...</a><br /></td></tr>
+<tr class="separator:af2cdfa6ea300cbf0c49460292ff34880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a072c30cb24e0e006e9829f6cb2bf0f4f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a072c30cb24e0e006e9829f6cb2bf0f4f">activities</a> (void)</td></tr>
+<tr class="separator:a072c30cb24e0e006e9829f6cb2bf0f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A state object. </p>
@@ -227,6 +236,32 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a072c30cb24e0e006e9829f6cb2bf0f4f" name="a072c30cb24e0e006e9829f6cb2bf0f4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a072c30cb24e0e006e9829f6cb2bf0f4f">&#9670;&nbsp;</a></span>activities()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> qOS::sm::state::activities </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3f7206e427f7a84a0e21d18a52719959" name="a3f7206e427f7a84a0e21d18a52719959"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f7206e427f7a84a0e21d18a52719959">&#9670;&nbsp;</a></span>add() <span class="overload">[1/2]</span></h2>
 
@@ -360,6 +395,36 @@ Public Member Functions</h2></td></tr>
 
 <p>Retrieve the state data or storage-pointer. </p>
 <dl class="section return"><dt>Returns</dt><dd>The state data or storage-pointer. </dd></dl>
+
+</div>
+</div>
+<a id="af2cdfa6ea300cbf0c49460292ff34880" name="af2cdfa6ea300cbf0c49460292ff34880"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2cdfa6ea300cbf0c49460292ff34880">&#9670;&nbsp;</a></span>getHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">handler_t</a> qOS::sm::state::getHandler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return a reference to the state handler. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Use only within the <code>activities</code> method or the state callback function If used outside can cause an undefined behavior or a runtime error. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The state handler. </dd></dl>
 
 </div>
 </div>

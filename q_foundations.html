@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.7</span>
+   &#160;<span id="projectnumber">v1.0.8</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -225,6 +225,12 @@ Tasks</h1>
 <div class="line"><span class="keywordtype">void</span> UserTask_Callback( event_t e ) {</div>
 <div class="line">    <span class="comment">// TODO : Task code</span></div>
 <div class="line">}</div>
+</div><!-- fragment --><p >Tasks can also be defined using the object-oriented programming approach. In this particular case, a class must be defined that inherits from <a class="el" href="classq_o_s_1_1task.html" title="A task node object.">qOS::task</a> and the <code>activities</code> method, where the behavior of the task resides, must be overridden.</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>myCustomTask : <span class="keyword">public</span> task {</div>
+<div class="line">    <span class="keywordtype">void</span> activities( <span class="keywordtype">void</span> )<span class="keyword"> override </span>{</div>
+<div class="line">        <span class="comment">// TODO : Task code</span></div>
+<div class="line">    }</div>
+<div class="line">};</div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>All tasks in QuarkTS++ must ensure their completion to return the CPU control back to the scheduler to follow the <a class="el" href="q_foundations.html#rtcmodel">RTC(Run To Completion) model</a>, otherwise, the scheduler will hold the execution state for that task, preventing the activation of other tasks.</dd></dl>
 <h2><a class="anchor" id="q_idletask"></a>
 The idle task</h2>
