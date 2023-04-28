@@ -16,8 +16,16 @@ jobs:
         submodules: recursive
     - name: create dirs
       run: mkdir docout
-    - name: set repo url on corner
-      run: sed -i 's,https://github.com/jothepro/doxygen-awesome-css,https://github.com/kmilo17pet/QuarkTScpp,g' doc/stylesheet/doxygen-custom/header.html
+    - name: set repo url and metadata
+      run: |
+        sed -i 's,https://github.com/jothepro/doxygen-awesome-css,https://github.com/kmilo17pet/QuarkTScpp,g' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:title" content="\)[^"]*\(" \/>$\)#\1QuarkTS++ OS\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:image" content="\)[^"]*\(" \/>$\)#\1https://github.com/kmilo17pet/QuarkTS-cpp/raw/main/doc/quarktslogo.png\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:description" content="\)[^"]*\(" \/>$\)#\1An open-source OS for small embedded applications\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:url" content="\)[^"]*\(" \/>$\)#\1https://github.com/kmilo17pet/QuarkTScpp\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="twitter:image:src" content="\)[^"]*\(" \/>$\)#\1https://github.com/kmilo17pet/QuarkTS-cpp/raw/main/doc/quarktslogo.png\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="twitter:title" content="\)[^"]*\(" \/>$\)#\1QuarkTS++ OS\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="twitter:description" content="\)[^"]*\(" \/>$\)#\1An open-source OS for small embedded applications\2#' doc/stylesheet/doxygen-custom/header.html
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.9.2
       with:
