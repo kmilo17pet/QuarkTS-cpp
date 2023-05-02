@@ -4,8 +4,8 @@ using namespace qOS;
 
 volatile qOS::clock_t clock::sysTick_Epochs = 0u; 
 qOS::getTickFcn_t clock::getTick = &internalTick; /* skipcq: CXX-W2009 */
-const qOS::time_t clock::NONE = 0uL;
-const qOS::time_t clock::IMMEDIATE = 0uL;
+const qOS::duration_t clock::NONE = 0_ms;
+const qOS::duration_t clock::IMMEDIATE = 0_ms;
 
 /*============================================================================*/
 void clock::sysTick( void ) noexcept

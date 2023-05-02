@@ -175,7 +175,7 @@ namespace qOS {
                 * @param[in] t The specified time given in milliseconds.
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
-                bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
+                bool timeoutSet( const index_t i, const qOS::duration_t t ) noexcept;
                 /**
                 * @brief Stop the time count for the selected built-in timeout.
                 * @pre Requires an installed timeout-specification.
@@ -251,7 +251,7 @@ namespace qOS {
                 {
                     StartState = &s;
                 }
-                bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
+                bool timeoutSet( const index_t i, const qOS::duration_t t ) noexcept;
                 bool timeoutStop( const index_t i ) noexcept;
                 inline state& thisState( void ) noexcept
                 {
@@ -343,7 +343,7 @@ namespace qOS {
 
         /*! @cond  */
         struct _timeoutStateDefinition_s{
-            qOS::time_t xTimeout;
+            qOS::duration_t xTimeout;
             timeoutSpecOption_t options;
         };
         /*! @endcond  */
@@ -401,7 +401,7 @@ namespace qOS {
                 size_t tEntries{ 0u };
                 size_t nTm{ 0u };
                 _Handler *pHandler{ nullptr };
-                void sweepTransitionTable( _Handler &h ) noexcept;
+                void sweepTransitionTable( _Handler &h ) const noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
                 bool subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept;
@@ -596,11 +596,9 @@ namespace qOS {
             sm::signal_t signalNot;
             void *owner{ nullptr };
             void *mData{ nullptr };
-            static void unsubscribeAll( void ) noexcept;
             bool internalSignalSend( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
             void timeoutCheckSignals( void ) noexcept;
             void timeoutPerformSpecifiedActions( sm::state * const s, sm::signalID sig ) noexcept;
-            sm::psIndex_t getSubscriptionStatus( sm::signalID s ) const noexcept;
             void transition( sm::state *target, sm::historyMode mHistory ) noexcept;
             uint8_t levelsToLCA( sm::state *target ) const noexcept;
             void exitUpToLCA( uint8_t lca ) noexcept;
@@ -699,29 +697,6 @@ namespace qOS {
             */
             bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
             /**
-            * @brief Sends a signal to all its subscribers (if available).
-            * @note If the signal queue is not available, an exclusion variable will be
-            * used.This means that the signal cannot be sent until the variable is empty.
-            * (the signal was handled by the state-machine engine).
-            * @remark To enable the functionality of sending signals to subscribers, you
-            * must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX
-            * in the configuration file @c config.h
-            * @warning Data associated to the signal is not deep-copied to a queue or any 
-            * buffer. It's only data pointer (address in memory) that is shallow-copied
-            * to a signal queue so it has to point to a globally accessible memory. 
-            * If it pointed to a sender's local variable (from the stack) it would be 
-            * invalid after sender returns from the function that sends the signal.
-            * @note The signal-queue event has the highest precedence.
-            * @param[in] sig The user-defined signal.
-            * @param[in] sData The data associated to the signal.
-            * @param[in] isUrgent If true, the signal will be sent to the front of the
-            * queue. (only if the there is a signal-queue available)
-            * @return @c true if the provided signal was successfully delivered to the
-            * subscribers (if available), otherwise return @c false. @c false if there
-            * is a queue, and the signal cannot be inserted because it is full.
-            */
-            bool sendSignalToSubscribers( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
-            /**
             * @brief Install the Timeout-specification object to target FSM to allow
             * timed signals within states.
             * @attention This feature its only available if the FSM has a signal-queue
@@ -746,7 +721,7 @@ namespace qOS {
             * @param[in] t The specified time given in milliseconds.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool timeoutSet( const index_t xTimeout, const qOS::time_t t ) noexcept;
+            bool timeoutSet( const index_t xTimeout, const qOS::duration_t t ) noexcept;
             /**
             * @brief Stop the time count for the selected built-in timeout.
             * @pre Requires an installed timeout-specification.
@@ -791,22 +766,6 @@ namespace qOS {
             */
             void setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept;
             /**
-            * @brief Subscribe state machine to a particular signal
-            * @pre Subscriber FSM should be previously initalized with
-            * stateMachine::setup()
-            * @param[in] s Signal ID to which the subscriber FSM wants to subscribe.
-            * @return Returns @c true on success, otherwise returns @c false.
-            */
-            bool subscribeToSignal( sm::signalID s ) noexcept;
-            /**
-            * @brief Unsubscribe state machine from a particular signal
-            * @pre Subscriber FSM should be previously initalized with
-            * stateMachine::setup()
-            * @param[in] s Signal ID to which the subscriber FSM wants to unsubscribe.
-            * @return Returns @c true on success, otherwise returns @c false.
-            */
-            bool unsubscribeFromSignal( sm::signalID s ) noexcept;
-            /**
             * @brief Execute the Finite State Machine (FSM).
             * @see core::addStateMachineTask()
             * @param[in] sig User-defined signal (this value will be ignored if the
@@ -820,6 +779,65 @@ namespace qOS {
         friend class core;
     };
     /** @}*/
+    namespace sm {
+         /** @addtogroup  qfsm 
+         *  @{
+         */
+
+    /**
+        * @brief An object to subscribe FSM(Finite State Machine) objects to 
+        * specific user-defined signals
+        */
+        class signalPublisher {
+            private:
+                sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START }; // skipcq: CXX-W2009
+                stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009
+                sm::psIndex_t getSubscriptionStatus( stateMachine &m, sm::signalID s ) const noexcept;
+                void unsubscribeAll( void ) noexcept;
+            public:
+                signalPublisher();
+                ~signalPublisher() {}
+                /**
+                * @brief Subscribe state machine to a particular signal
+                * @param[in] m State-machine to be subscribed
+                * @param[in] s Signal ID to which the subscriber FSM wants to subscribe.
+                * @return Returns @c true on success, otherwise returns @c false.
+                */
+                bool subscribeToSignal( stateMachine &m, sm::signalID s ) noexcept;
+                /**
+                * @brief Unsubscribe state machine from a particular signal
+                * @param[in] m State-machine to be subscribed
+                * @param[in] s Signal ID to which the subscriber FSM wants to unsubscribe.
+                * @return Returns @c true on success, otherwise returns @c false.
+                */
+                bool unsubscribeFromSignal( stateMachine &m, sm::signalID s ) noexcept;
+                /**
+                * @brief Sends a signal to all its subscribers.
+                * @note If the signal queue is not available, an exclusion variable will be
+                * used.This means that the signal cannot be sent until the variable is empty.
+                * (the signal was handled by the state-machine engine).
+                * @remark To enable the functionality of sending signals to subscribers, you
+                * must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX
+                * in the configuration file @c config.h
+                * @warning Data associated to the signal is not deep-copied to a queue or any 
+                * buffer. It's only data pointer (address in memory) that is shallow-copied
+                * to a signal queue so it has to point to a globally accessible memory. 
+                * If it pointed to a sender's local variable (from the stack) it would be 
+                * invalid after sender returns from the function that sends the signal.
+                * @note The signal-queue event has the highest precedence.
+                * @param[in] sig The user-defined signal.
+                * @param[in] sData The data associated to the signal.
+                * @param[in] isUrgent If true, the signal will be sent to the front of the
+                * queue. (only if the there is a signal-queue available)
+                * @return @c true if the provided signal was successfully delivered to the
+                * subscribers (if available), otherwise return @c false. @c false if there
+                * is a queue, and the signal cannot be inserted because it is full.
+                */
+                bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
+        };
+        /** @}*/
+    }
+
 }
 
 

@@ -59,7 +59,7 @@ namespace qOS {
             * responseStatus::TIMEOUT if timeout expires otherwise returns 
             * responseStatus::MISSING
             */
-            responseStatus received( const char *pattern, const size_t n, qOS::time_t t = clock::IMMEDIATE ) noexcept;
+            responseStatus received( const char *pattern, const size_t n, qOS::duration_t t = clock::IMMEDIATE ) noexcept;
             /**
             * @brief ISR receiver for the response handler
             * @param[in] rxChar The byte-data from the receiver

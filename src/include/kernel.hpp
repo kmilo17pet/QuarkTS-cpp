@@ -16,7 +16,7 @@
 #endif
 
 /**
-* @brief OS/Kernel nterfaces.
+* @brief OS/Kernel interfaces.
 */
 namespace qOS {
 
@@ -190,7 +190,7 @@ namespace qOS {
             * and pass a pointer to that structure.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. This API creates a task with
             * a taskState::DISABLED_STATE state by default, so this task will be executed only, when
@@ -233,7 +233,7 @@ namespace qOS {
             * passed by reference and cast to @c void*.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const duration_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /** @}*/
             #endif
             #if ( Q_CLI == 1 )

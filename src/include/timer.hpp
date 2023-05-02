@@ -38,7 +38,7 @@ namespace qOS {
             * than the clock-Tick.
             * @param[in] tTime The expiration time given in milliseconds.
             */
-            explicit timer( qOS::time_t tTime )
+            explicit timer( qOS::duration_t tTime )
             {
                 (void)set( tTime );
             }
@@ -51,7 +51,7 @@ namespace qOS {
             * @param[in] tTime The expiration time given in milliseconds.
             * @return Returns @c true on success, otherwise, returns @c false.
             */
-            bool set( qOS::time_t tTime ) noexcept;
+            bool set( qOS::duration_t tTime ) noexcept;
             /**
             * @brief Disarms the timer object
             */
@@ -83,7 +83,7 @@ namespace qOS {
             * @return Returns @c true on success, otherwise, returns @c false.
             * @note A disarmed timer also returns @c false.
             */
-            bool freeRun( qOS::time_t tTime ) noexcept;
+            bool freeRun( qOS::duration_t tTime ) noexcept;
             /**
             * @brief Retrieve the remaining time in epochs
             * @return The remaining time specified in epochs.
@@ -117,7 +117,7 @@ namespace qOS {
             * the clock-Tick.
             * @param[in] tTime The expiration time given in milliseconds.
             */
-            timer& operator=( qOS::time_t tTime );
+            timer& operator=( qOS::duration_t tTime );
             /**
             * @brief Disarm or reload the timer
             * @note The OS must be running before using timers.
@@ -139,7 +139,7 @@ namespace qOS {
             * the clock-Tick.
             * @param[in] tTime The expiration time given in milliseconds.
             */
-            bool operator()( qOS::time_t tTime );
+            bool operator()( qOS::duration_t tTime );
             /**
             * @brief Disarm or reload the timer
             * @note The OS must be running before using timers.

@@ -145,7 +145,7 @@ void task::setIterations( iteration_t iValue ) noexcept
     }
 }
 /*============================================================================*/
-bool task::setTime( const qOS::time_t tValue ) noexcept
+bool task::setTime( const qOS::duration_t tValue ) noexcept
 {
     return time.set( tValue );
 }

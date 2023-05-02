@@ -18,11 +18,11 @@ void timer::reload( void ) noexcept
     tStart = clock::getTick();
 }
 /*============================================================================*/
-bool timer::set( qOS::time_t tTime ) noexcept
+bool timer::set( qOS::duration_t tTime ) noexcept
 {
     bool retValue = false;
     /*cstat -CERT-FLP36-C*/
-    if ( tTime > static_cast<qOS::time_t>( 0 ) ) {
+    if ( tTime > static_cast<qOS::duration_t>( 0 ) ) {
         reload();
         tv = static_cast<clock_t>( tTime );
         retValue = true;
@@ -31,10 +31,10 @@ bool timer::set( qOS::time_t tTime ) noexcept
     return retValue;
 }
 /*============================================================================*/
-timer& timer::operator=( qOS::time_t tTime )
+timer& timer::operator=( qOS::duration_t tTime )
 {
     /*cstat -CERT-FLP36-C*/
-    if( tTime > static_cast<qOS::time_t>( 0 ) ) {
+    if( tTime > static_cast<qOS::duration_t>( 0 ) ) {
         (void)set( tTime );
     }
     /*cstat +CERT-FLP36-C*/
@@ -61,7 +61,7 @@ void timer::disarm( void ) noexcept
     tStart = timer::DISARM_VALUE;
 }
 /*============================================================================*/
-bool timer::freeRun( qOS::time_t tTime ) noexcept
+bool timer::freeRun( qOS::duration_t tTime ) noexcept
 {
     bool retValue = false;
 
@@ -78,7 +78,7 @@ bool timer::freeRun( qOS::time_t tTime ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool timer::operator()( qOS::time_t tTime )
+bool timer::operator()( qOS::duration_t tTime )
 {
     return set( tTime );
 }

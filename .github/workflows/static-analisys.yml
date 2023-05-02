@@ -24,7 +24,7 @@ jobs:
         sudo apt-get install -y cppcheck python3
         mkdir sa_results
     - name: General checks 
-      run: cppcheck --enable=all --inline-suppr  --inconclusive --std=c++11 ./src -I ./src/config -I ./src/include --output-file=./sa_results/general.txt --suppress=missingIncludeSystem --suppress=unmatchedSuppression:{}
+      run: cppcheck --enable=all --inline-suppr  --inconclusive --std=c++11 ./src -I ./src/config -I ./src/include --output-file=./sa_results/general.txt --suppress=missingIncludeSystem --suppress=unmatchedSuppression:{} --suppress=unusedFunction:{}
     - uses: actions/upload-artifact@v3
       with:
         name: Static_Analisys_Results

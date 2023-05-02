@@ -138,7 +138,7 @@ namespace qOS {
                 {
                     return label;
                 }
-                inline void operator()( qOS::time_t t ) 
+                inline void operator()( qOS::duration_t t ) 
                 {
                     (void)tm.set( t );
                 }
@@ -206,7 +206,7 @@ namespace qOS {
         * @brief Delay a coroutine for a given number of time.
         * @param[in] t The amount of time that the calling coroutine should yield.
         */
-        inline void delay( qOS::time_t t ) noexcept { Q_UNUSED(t); }
+        inline void delay( qOS::duration_t t ) noexcept { Q_UNUSED(t); }
 
         /**
         * @brief Yields until the logical condition is met.
@@ -236,7 +236,7 @@ namespace qOS {
         *                 }
         * @endverbatim
         */
-        inline void waitUntil( bool condition, qOS::time_t timeout ) noexcept { Q_UNUSED(condition); Q_UNUSED(timeout); }
+        inline void waitUntil( bool condition, qOS::duration_t timeout ) noexcept { Q_UNUSED(condition); Q_UNUSED(timeout); }
 
         /**
         * @brief Check if the internal Co-routine timeout expires.

@@ -508,7 +508,7 @@ namespace qOS {
             * immediate execution (@a tValue = clock::IMMEDIATE).
             * @return @c true on success, otherwise returns @c false.
             */
-            bool setTime( const qOS::time_t tValue ) noexcept;
+            bool setTime( const qOS::duration_t tValue ) noexcept;
             /**
             * @brief Set/Change the task callback function.
             * @note This function can be used to detach a state-machine from a task

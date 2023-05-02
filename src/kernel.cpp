@@ -49,7 +49,7 @@ void core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::time_t t, const iteration_t n, const qOS::taskState s, void *arg ) noexcept
+bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::duration_t t, const iteration_t n, const qOS::taskState s, void *arg ) noexcept
 {
     (void)Task.setCallback( callback );
     (void)Task.time.set( t );
@@ -78,7 +78,7 @@ static void fsmTaskCallback( event_t e )
 } 
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::time_t t, const taskState s, void *arg ) noexcept
+bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::duration_t t, const taskState s, void *arg ) noexcept
 {
     bool retValue = core::addTask( Task, fsmTaskCallback, p, t, task::PERIODIC, s, arg );
 
@@ -235,7 +235,7 @@ bool core::checkIfReady( void ) noexcept
                 /*task has no available events, put it into a suspended state*/
             }
         }
-        (void)waitingList.remove( nullptr, listPosition::AT_FRONT );
+        (void)waitingList.remove( listPosition::AT_FRONT );
         if ( xTask->getFlag( task::BIT_REMOVE_REQUEST ) ) {
             #if ( Q_PRIO_QUEUE_SIZE > 0 )
                 critical::enter();
@@ -315,8 +315,8 @@ void core::dispatch( list * const xList ) noexcept
 
         dispatchTaskFillEventInfo( xTask );
         yieldTask = nullptr;
-
         xTask->activities();
+        /*cppcheck-suppress knownConditionTrueFalse */
         while ( nullptr != yieldTask ) {
             _Event::currentTask = yieldTask;
             yieldTask = nullptr;
@@ -324,7 +324,7 @@ void core::dispatch( list * const xList ) noexcept
         }
         
         currentTask = nullptr;
-        (void)xList->remove( nullptr, listPosition::AT_FRONT );
+        (void)xList->remove( listPosition::AT_FRONT );
         (void)waitingList.insert( xTask, listPosition::AT_BACK );
         #if ( Q_QUEUES == 1 )
             if ( trigger::byQueueReceiver == xTask->Trigger ) {

@@ -3,12 +3,7 @@
 
 using namespace qOS;
 
-/*cstat -MISRAC++2008-8-5-2*/
-sm::signalID stateMachine::psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START }; // skipcq: CXX-W2009
-/*cstat +MISRAC++2008-8-5-2*/
-stateMachine* stateMachine::psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009
 const sm::timeoutSpecOption_t stateMachine::OPT_INDEX_MASK = 0x00FFFFFFuL;
-
 const sm::timeoutSpecOption_t sm::TIMEOUT_SET_ENTRY = 0x01000000uL;
 const sm::timeoutSpecOption_t sm::TIMEOUT_RST_ENTRY = 0x02000000uL;
 const sm::timeoutSpecOption_t sm::TIMEOUT_SET_EXIT = 0x04000000uL;
@@ -17,7 +12,141 @@ const sm::timeoutSpecOption_t sm::TIMEOUT_KEEP_IF_SET = 0x10000000uL;
 const sm::timeoutSpecOption_t sm::TIMEOUT_PERIODIC = 0x20000000uL;
 
 /*============================================================================*/
-bool sm::_Handler::timeoutSet( const index_t i, const qOS::time_t t ) noexcept
+sm::signalPublisher::signalPublisher()
+{
+    unsubscribeAll();
+}
+/*============================================================================*/
+void sm::signalPublisher::unsubscribeAll( void ) noexcept
+{
+    for ( size_t i = 0u ; i < static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX ) ; ++i ) {
+        psSignals[ i ] = sm::signalID::SIGNAL_NONE;
+        for ( size_t j = 0u; j < static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) ; ++j ) {
+            psSubs[ i ][ j ] = nullptr;
+        }
+    }
+}
+/*============================================================================*/
+bool sm::signalPublisher::subscribeToSignal( stateMachine &m, sm::signalID s ) noexcept
+{
+    bool retValue = false;
+
+    #if ( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
+        if ( s < sm::signalID::MAX_SIGNAL ) {
+            sm::psIndex_t r = getSubscriptionStatus( m, s );
+
+            retValue = true;
+            switch ( r.status ) {
+                case sm::PS_SIGNAL_NOT_FOUND:
+                    psSignals[ r.sig_slot ] = s;
+                    psSubs[ r.sig_slot ][ r.sub_slot ] = &m;
+                    break;
+                case sm::PS_SUBSCRIBER_NOT_FOUND:
+                    psSubs[ r.sig_slot ][ r.sub_slot ] = &m;
+                    break;
+                case sm::PS_SUBSCRIBER_FOUND:
+                    break;
+                default:
+                    retValue = false;
+                    break;
+            }
+        }
+    #else
+        Q_UNUSED( s );
+    #endif /*( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )*/
+    return retValue;
+}
+/*============================================================================*/
+sm::psIndex_t sm::signalPublisher::getSubscriptionStatus( stateMachine &m, sm::signalID s ) const noexcept
+{
+    sm::psIndex_t idx = { sm::PS_SIGNAL_NOT_FOUND, 0u ,0u };
+    size_t i, j = 0u;
+    const size_t maxSig = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX );
+    const size_t maxSub = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
+
+    for ( i = 0u ; ( i < maxSig ) && ( sm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
+        if ( s == psSignals[ i ] ) {
+            idx.status = sm::PS_SUBSCRIBER_NOT_FOUND;
+            for ( j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
+                if ( &m == psSubs[ i ][ j ] ) {
+                    idx.status = sm::PS_SUBSCRIBER_FOUND;
+                    break;
+                }
+            }
+        }
+        if ( sm::PS_SIGNAL_NOT_FOUND != idx.status ) {
+            break;
+        }
+    }
+    if ( i >= maxSig ) {
+        idx.status = sm::PS_SIGNAL_SLOTS_FULL;
+    }
+    if ( j >= maxSub ) {
+        idx.status = sm::PS_SUBSCRIBER_SLOTS_FULL;
+    }
+
+    idx.sig_slot = i;
+    idx.sub_slot = j;
+    return idx;
+}
+/*============================================================================*/
+bool sm::signalPublisher::unsubscribeFromSignal( stateMachine &m, sm::signalID s ) noexcept
+{
+    bool retValue = false;
+    #if ( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
+        if ( s < sm::signalID::MAX_SIGNAL ) {
+            sm::psIndex_t r = getSubscriptionStatus( m, s );
+
+            if ( sm::PS_SUBSCRIBER_FOUND == r.status ) {
+                size_t i;
+                size_t li = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) - 1u;
+
+                for ( i = r.sub_slot ; i < li ; ++i ) {
+                    psSubs[ r.sig_slot ][ i ] = psSubs[ r.sig_slot ][ i + 1u ];
+                }
+                psSubs[ r.sig_slot ][ li ] = nullptr;
+
+                if ( nullptr == psSubs[ r.sig_slot ][ 0 ] ) { /*no subscribers left?*/
+                    /*remove the signal from the psSignals list*/
+                    li = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX ) - 1u;
+                    for ( i = r.sig_slot ; i < li ; ++i ) {
+                        psSignals[ i ] = psSignals[ i + 1u ];
+                    }
+                    psSignals[ li ] = sm::signalID::SIGNAL_NONE;
+                }
+                retValue = true;
+            }
+        }
+    #else
+        Q_UNUSED( s );
+    #endif /*( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )*/
+    return retValue;
+}
+/*============================================================================*/
+bool sm::signalPublisher::sendSignal( sm::signalID sig, void *sData, bool isUrgent ) noexcept
+{
+    uint8_t r = 0u;
+
+    if ( sig < sm::signalID::SIGNAL_NONE ) {
+        #if ( Q_FSM_PS_SIGNALS_MAX > 0 )  && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
+            const size_t maxSig = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX );
+            const size_t maxSub = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
+            for ( size_t i = 0u ; ( i < maxSig ) && ( sm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
+                if ( sig == psSignals[ i ] ) {
+                    r = 1u;
+                    for ( size_t j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
+                        r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ? 
+                        static_cast<uint8_t>( 1u ) : static_cast<uint8_t>( 0u );
+                    }
+                    break;
+                }
+            }
+        #endif
+    }
+    return static_cast<bool>( r );
+}
+/*============================================================================*/
+bool sm::_Handler::timeoutSet( const index_t i, const qOS::duration_t t ) noexcept
 {
     return thisMachine().timeoutSet( i, t );
 }
@@ -37,12 +166,6 @@ bool stateMachine::smSetup( sm::stateCallback_t topFcn, sm::state *init, const s
     sm::_Handler::Machine = this;
     sm::_Handler::Data = pData;
     top.topSelf( topFcn, init );
-
-    #if ( Q_FSM_PS_SIGNALS_MAX > 0 )  && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
-    if ( psSignals[ 0 ] > sm::signalID::SIGNAL_NONE ) {
-        unsubscribeAll();
-    }
-    #endif
     return true;
 }
 /*============================================================================*/
@@ -70,16 +193,6 @@ bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::sta
     s->nTm = 0u;
 
     return true;
-}
-/*============================================================================*/
-void stateMachine::unsubscribeAll( void ) noexcept
-{
-    for ( size_t i = 0u ; i < static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX ) ; ++i ) {
-        psSignals[ i ] = sm::signalID::SIGNAL_NONE;
-        for ( size_t j = 0u; j < static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) ; ++j ) {
-            psSubs[ i ][ j ] = nullptr;
-        }
-    }
 }
 /*============================================================================*/
 bool sm::state::setTransitions( sm::transition_t *table, size_t n ) noexcept
@@ -113,7 +226,7 @@ bool stateMachine::installSignalQueue( queue& q ) noexcept
     return retValue;
 }
 /*============================================================================*/
-void sm::state::sweepTransitionTable( sm::_Handler &h ) noexcept
+void sm::state::sweepTransitionTable( sm::_Handler &h ) const noexcept
 {
     const size_t n = tEntries;
     const sm::transition_t *iTransition;
@@ -176,29 +289,6 @@ bool stateMachine::sendSignal( sm::signalID sig, void *sData, bool isUrgent ) no
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::sendSignalToSubscribers( sm::signalID sig, void *sData, bool isUrgent ) noexcept
-{
-    uint8_t r = 0u;
-
-    if ( sig < sm::signalID::SIGNAL_NONE ) {
-        #if ( Q_FSM_PS_SIGNALS_MAX > 0 )  && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
-            const size_t maxSig = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX );
-            const size_t maxSub = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
-            for ( size_t i = 0u ; ( i < maxSig ) && ( sm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
-                if ( sig == psSignals[ i ] ) {
-                    r = 1u;
-                    for ( size_t j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
-                        r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ? 
-                        static_cast<uint8_t>( 1u ) : static_cast<uint8_t>( 0u );
-                    }
-                    break;
-                }
-            }
-        #endif
-    }
-    return static_cast<bool>( r );
-}
-/*============================================================================*/
 void stateMachine::timeoutCheckSignals( void ) noexcept
 {
     for ( size_t i = 0u ; i < static_cast<size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
@@ -237,7 +327,7 @@ void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::sign
             /*state match and index is valid?*/
             if ( index < static_cast<index_t>( Q_FSM_MAX_TIMEOUTS ) ) {
                 timer * const tmr = &timeSpec->timeout[ index ];
-                const qOS::time_t tValue = tbl[ i ].xTimeout;
+                const qOS::duration_t tValue = tbl[ i ].xTimeout;
 
                 if ( 0uL != ( opt & setCheck ) ) {
                     if ( 0uL == ( opt & sm::TIMEOUT_KEEP_IF_SET ) ) {
@@ -282,7 +372,7 @@ bool sm::state::setTimeouts( sm::timeoutStateDefinition_t *def, size_t n ) noexc
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::timeoutSet( const index_t xTimeout, const qOS::time_t t ) noexcept
+bool stateMachine::timeoutSet( const index_t xTimeout, const qOS::duration_t t ) noexcept
 {
     bool retValue = false;
 
@@ -369,102 +459,6 @@ void sm::state::setCallback( const sm::stateCallback_t sFcn ) noexcept
 void stateMachine::setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept
 {
     surrounding = sFcn;
-}
-/*============================================================================*/
-sm::psIndex_t stateMachine::getSubscriptionStatus( sm::signalID s ) const noexcept
-{
-    sm::psIndex_t idx = { sm::PS_SIGNAL_NOT_FOUND, 0u ,0u };
-    size_t i, j = 0u;
-    const size_t maxSig = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX );
-    const size_t maxSub = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX );
-
-    for ( i = 0u ; ( i < maxSig ) && ( sm::signalID::SIGNAL_NONE != psSignals[ i ] ) ; ++i ) {
-        if ( s == psSignals[ i ] ) {
-            idx.status = sm::PS_SUBSCRIBER_NOT_FOUND;
-            for ( j = 0u ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
-                if ( this == psSubs[ i ][ j ] ) {
-                    idx.status = sm::PS_SUBSCRIBER_FOUND;
-                    break;
-                }
-            }
-        }
-        if ( sm::PS_SIGNAL_NOT_FOUND != idx.status ) {
-            break;
-        }
-    }
-    if ( i >= maxSig ) {
-        idx.status = sm::PS_SIGNAL_SLOTS_FULL;
-    }
-    if ( j >= maxSub ) {
-        idx.status = sm::PS_SUBSCRIBER_SLOTS_FULL;
-    }
-
-    idx.sig_slot = i;
-    idx.sub_slot = j;
-    return idx;
-}
-/*============================================================================*/
-bool stateMachine::subscribeToSignal( sm::signalID s ) noexcept
-{
-    bool retValue = false;
-
-    #if ( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
-        if ( s < sm::signalID::MAX_SIGNAL ) {
-            sm::psIndex_t r = getSubscriptionStatus( s );
-
-            retValue = true;
-            switch ( r.status ) {
-                case sm::PS_SIGNAL_NOT_FOUND:
-                    psSignals[ r.sig_slot ] = s;
-                    psSubs[ r.sig_slot ][ r.sub_slot ] = this;
-                    break;
-                case sm::PS_SUBSCRIBER_NOT_FOUND:
-                    psSubs[ r.sig_slot ][ r.sub_slot ] = this;
-                    break;
-                case sm::PS_SUBSCRIBER_FOUND:
-                    break;
-                default:
-                    retValue = false;
-                    break;
-            }
-        }
-    #else
-        Q_UNUSED( s );
-    #endif /*( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )*/
-    return retValue;
-}
-/*============================================================================*/
-bool stateMachine::unsubscribeFromSignal( sm::signalID s ) noexcept
-{
-    bool retValue = false;
-    #if ( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
-        if ( s < sm::signalID::MAX_SIGNAL ) {
-            sm::psIndex_t r = getSubscriptionStatus( s );
-
-            if ( sm::PS_SUBSCRIBER_FOUND == r.status ) {
-                size_t i;
-                size_t li = static_cast<size_t>( Q_FSM_PS_SUB_PER_SIGNAL_MAX ) - 1u;
-
-                for ( i = r.sub_slot ; i < li ; ++i ) {
-                    psSubs[ r.sig_slot ][ i ] = psSubs[ r.sig_slot ][ i + 1u ];
-                }
-                psSubs[ r.sig_slot ][ li ] = nullptr;
-
-                if ( nullptr == psSubs[ r.sig_slot ][ 0 ] ) { /*no subscribers left?*/
-                    /*remove the signal from the psSignals list*/
-                    li = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX ) - 1u;
-                    for ( i = r.sig_slot ; i < li ; ++i ) {
-                        psSignals[ i ] = psSignals[ i + 1u ];
-                    }
-                    psSignals[ li ] = sm::signalID::SIGNAL_NONE;
-                }
-                retValue = true;
-            }
-        }
-    #else
-        Q_UNUSED( s );
-    #endif /*( Q_FSM_PS_SIGNALS_MAX > 0 ) && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )*/
-    return retValue;
 }
 /*============================================================================*/
 void stateMachine::transition( sm::state *target, sm::historyMode mHistory ) noexcept

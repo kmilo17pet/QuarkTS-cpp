@@ -159,7 +159,7 @@ bool list::remove( void * const xNode ) noexcept
     return retValue;
 }
 /*============================================================================*/
-void* list::remove( void * const xNode, const listPosition p ) noexcept
+void* list::remove( const listPosition p, void * const xNode ) noexcept
 {
     node *removed = nullptr;
 

@@ -26,7 +26,7 @@ void response::reset( void ) noexcept
     timeout.disarm();
 }
 /*============================================================================*/
-responseStatus response::received( const char *pattern, const size_t n, qOS::time_t t ) noexcept
+responseStatus response::received( const char *pattern, const size_t n, qOS::duration_t t ) noexcept
 {
     responseStatus retValue = responseStatus::MISSING;
 

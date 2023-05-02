@@ -150,15 +150,15 @@ namespace qOS {
             bool remove( void * const xNode ) noexcept;
             /**
             * @brief Remove an item from the list.
-            * @param[in] xNode A pointer to the node to be deleted (to ignore 
-            * pass @c nullptr ). 
             * @param[in] p The position of the node that will be removed. Could be
             * listPosition::AT_FRONT, listPosition::AT_BACK or any other index 
             * number.
+            * @param[in] xNode A pointer to the node to be deleted (to ignore 
+            * pass @c nullptr ).
             * @return A pointer to the removed node. @c nullptr if removal 
             * can not be performed.
             */
-            void* remove( void * const xNode, const listPosition p ) noexcept;
+            void* remove( const listPosition p, void * const xNode = nullptr ) noexcept;
             /**
             * @brief Get a pointer to the front item of the list
             * @return A pointer to the front node. @c nullptr if the list is empty
