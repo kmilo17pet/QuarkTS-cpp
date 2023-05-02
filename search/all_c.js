@@ -4,7 +4,7 @@ var searchData=
   ['no_5fhistory_1',['NO_HISTORY',['../group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a80ac9be1f4cca7a2df3d56534087e31c',1,'qOS::sm']]],
   ['no_5fresponse_2',['NO_RESPONSE',['../group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a6ef25f15ee94fd1cb51df07d841b1da9',1,'qOS::cli']]],
   ['node_3',['node',['../classq_o_s_1_1node.html#aa6eeb0dd0a2a256c315fe1966d44158f',1,'qOS::node::node()'],['../classq_o_s_1_1node.html',1,'qOS::node']]],
-  ['none_4',['NONE',['../classq_o_s_1_1clock.html#a1099c88d1702ff7cc658fc3002dec938',1,'qOS::clock']]],
+  ['none_4',['NONE',['../classq_o_s_1_1clock.html#a23a6cb5f0d851dfbf0c4cef0dcddf616',1,'qOS::clock']]],
   ['none_5',['None',['../group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a6adf97f83acf6453d4a6a4b1070f3754',1,'qOS']]],
   ['not_5fallowed_6',['NOT_ALLOWED',['../group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a034bd386f984225ddcd8e6768e218bfb',1,'qOS::cli']]],
   ['not_5ffound_7',['NOT_FOUND',['../group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2ab0260bbbb0af17e1b7f6eb69f43cbbe5',1,'qOS::cli']]],

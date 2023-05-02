@@ -6,6 +6,6 @@ var classq_o_s_1_1clock =
     [ "sysTick", "classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae", null ],
     [ "timeDeadLineCheck", "classq_o_s_1_1clock.html#a9a97c03a4bfa83efbd1abdc0a1cdd2cc", null ],
     [ "getTick", "classq_o_s_1_1clock.html#a6363cb8fda1990fbe538297c13f4595a", null ],
-    [ "IMMEDIATE", "classq_o_s_1_1clock.html#af9f1c16ed2c28ee3359bae3ad9b1d2a7", null ],
-    [ "NONE", "classq_o_s_1_1clock.html#a1099c88d1702ff7cc658fc3002dec938", null ]
+    [ "IMMEDIATE", "classq_o_s_1_1clock.html#ab7cab803d7a7792ee382a9cfcceb96b5", null ],
+    [ "NONE", "classq_o_s_1_1clock.html#a23a6cb5f0d851dfbf0c4cef0dcddf616", null ]
 ];

@@ -19,6 +19,7 @@ var annotated_dup =
       [ "sm", "namespaceq_o_s_1_1sm.html", [
         [ "handler_t", "classq_o_s_1_1sm_1_1handler__t.html", "classq_o_s_1_1sm_1_1handler__t" ],
         [ "signal_t", "structq_o_s_1_1sm_1_1signal__t.html", "structq_o_s_1_1sm_1_1signal__t" ],
+        [ "signalPublisher", "classq_o_s_1_1sm_1_1signal_publisher.html", "classq_o_s_1_1sm_1_1signal_publisher" ],
         [ "state", "classq_o_s_1_1sm_1_1state.html", "classq_o_s_1_1sm_1_1state" ],
         [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", "classq_o_s_1_1sm_1_1timeout_spec" ],
         [ "transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ]

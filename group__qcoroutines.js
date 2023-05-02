@@ -15,7 +15,7 @@ var group__qcoroutines =
       [ "co::_coContext", "classq_o_s_1_1co_1_1semaphore.html#a3e89a13f2fae2923a0711c4552ef7af7", null ]
     ] ],
     [ "qOS::co::state", "group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323", null ],
-    [ "qOS::co::delay", "group__qcoroutines.html#ga82a629aecb122ba6bfc0c5137e6e2b84", null ],
+    [ "qOS::co::delay", "group__qcoroutines.html#ga3ba35f233837d549d971632444e00c06", null ],
     [ "qOS::co::getPosition", "group__qcoroutines.html#gac8354b5da4ab66b7e049c615af830c97", null ],
     [ "qOS::co::reenter", "group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587", null ],
     [ "qOS::co::reenter", "group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91", null ],
@@ -25,6 +25,6 @@ var group__qcoroutines =
     [ "qOS::co::setPosition", "group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc", null ],
     [ "qOS::co::timeoutExpired", "group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6", null ],
     [ "qOS::co::waitUntil", "group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20", null ],
-    [ "qOS::co::waitUntil", "group__qcoroutines.html#ga6187b4da6f70135cfda650c996f7d22d", null ],
+    [ "qOS::co::waitUntil", "group__qcoroutines.html#ga62aa65d69c4600ba347dfe6f789ba240", null ],
     [ "qOS::co::yield", "group__qcoroutines.html#gaa0ac1583601848da679af80f593b1cff", null ]
 ];

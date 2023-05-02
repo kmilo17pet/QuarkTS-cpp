@@ -58,6 +58,7 @@ var namespaceq_o_s =
     [ "timer", "classq_o_s_1_1timer.html", "classq_o_s_1_1timer" ],
     [ "trace", "classq_o_s_1_1trace.html", "classq_o_s_1_1trace" ],
     [ "clock_t", "group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749", null ],
+    [ "duration_t", "group__qclock.html#ga77374d390d5c4b936e63742a8197edc6", null ],
     [ "getTickFcn_t", "group__qclock.html#gac63f3f01426513760291359b792ed55c", null ],
     [ "int_disabler_t", "group__qcritical.html#ga5799cabfdffb3f30a7897479239b0139", null ],
     [ "int_restorer_t", "group__qcritical.html#gac93b1a4231800d82b28a9f25f01f1867", null ],
@@ -65,7 +66,6 @@ var namespaceq_o_s =
     [ "notifier_t", "group__qtaskmanip.html#ga466b47ce725c30974bd5e62fe363a37a", null ],
     [ "taskFcn_t", "group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91", null ],
     [ "taskFlag_t", "group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb", null ],
-    [ "time_t", "group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711", null ],
     [ "globalState", "group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790", [
       [ "UNDEFINED", "group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a0db45d2a4141101bdfe48e3314cfbca3", null ],
       [ "READY", "group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a2baa69eafc7204f3bd8648eba580c489", null ],

@@ -147,9 +147,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa0e5e9fb2cd3fd34f4e5f976e48e4741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#aa0e5e9fb2cd3fd34f4e5f976e48e4741">startState</a> (<a class="el" href="classq_o_s_1_1sm_1_1state.html">state</a> &amp;s) noexcept</td></tr>
 <tr class="memdesc:aa0e5e9fb2cd3fd34f4e5f976e48e4741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the nested initial state ( sub-state ). This The application writer should change this field to set the initial transition if the current state is a parent(or composite state). Using this method only takes effect when the state is executed under the <code>signalID::SIGNAL_START</code> signal.  <a href="classq_o_s_1_1sm_1_1handler__t.html#aa0e5e9fb2cd3fd34f4e5f976e48e4741">More...</a><br /></td></tr>
 <tr class="separator:aa0e5e9fb2cd3fd34f4e5f976e48e4741"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6">timeoutSet</a> (const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i, const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> t) noexcept</td></tr>
-<tr class="memdesc:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time for the selected built-in timeout inside the target FSM.  <a href="classq_o_s_1_1sm_1_1handler__t.html#a712c3cd585e1bf4a08d5571ef945c0d6">More...</a><br /></td></tr>
-<tr class="separator:a712c3cd585e1bf4a08d5571ef945c0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a741e083f5364dc978041d91603f2d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a6a741e083f5364dc978041d91603f2d8">timeoutSet</a> (const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i, const <a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">qOS::duration_t</a> t) noexcept</td></tr>
+<tr class="memdesc:a6a741e083f5364dc978041d91603f2d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time for the selected built-in timeout inside the target FSM.  <a href="classq_o_s_1_1sm_1_1handler__t.html#a6a741e083f5364dc978041d91603f2d8">More...</a><br /></td></tr>
+<tr class="separator:a6a741e083f5364dc978041d91603f2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa39dc4568f361edc3c2ad5032270b224"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#aa39dc4568f361edc3c2ad5032270b224">timeoutStop</a> (const <a class="el" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> i) noexcept</td></tr>
 <tr class="memdesc:aa39dc4568f361edc3c2ad5032270b224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the time count for the selected built-in timeout.  <a href="classq_o_s_1_1sm_1_1handler__t.html#aa39dc4568f361edc3c2ad5032270b224">More...</a><br /></td></tr>
 <tr class="separator:aa39dc4568f361edc3c2ad5032270b224"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -375,8 +375,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a712c3cd585e1bf4a08d5571ef945c0d6" name="a712c3cd585e1bf4a08d5571ef945c0d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a712c3cd585e1bf4a08d5571ef945c0d6">&#9670;&nbsp;</a></span>timeoutSet()</h2>
+<a id="a6a741e083f5364dc978041d91603f2d8" name="a6a741e083f5364dc978041d91603f2d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a741e083f5364dc978041d91603f2d8">&#9670;&nbsp;</a></span>timeoutSet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -393,7 +393,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">qOS::duration_t</a>&#160;</td>
           <td class="paramname"><em>t</em>&#160;</td>
         </tr>
         <tr>

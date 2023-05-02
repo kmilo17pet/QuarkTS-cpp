@@ -160,9 +160,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7e334f51fcfbf277b71e1085bc8993e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7">remove</a> (void *const xNode) noexcept</td></tr>
 <tr class="memdesc:a7e334f51fcfbf277b71e1085bc8993e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the node is member of a list, the node will be removed from it.  <a href="classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7">More...</a><br /></td></tr>
 <tr class="separator:a7e334f51fcfbf277b71e1085bc8993e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c975b6333a32e90b94b464dad500ee6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a1c975b6333a32e90b94b464dad500ee6">remove</a> (void *const xNode, const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p) noexcept</td></tr>
-<tr class="memdesc:a1c975b6333a32e90b94b464dad500ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an item from the list.  <a href="classq_o_s_1_1list.html#a1c975b6333a32e90b94b464dad500ee6">More...</a><br /></td></tr>
-<tr class="separator:a1c975b6333a32e90b94b464dad500ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bf2c322bb22a04c26a05ccecbd11e9a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#a4bf2c322bb22a04c26a05ccecbd11e9a">remove</a> (const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a> p, void *const xNode=nullptr) noexcept</td></tr>
+<tr class="memdesc:a4bf2c322bb22a04c26a05ccecbd11e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an item from the list.  <a href="classq_o_s_1_1list.html#a4bf2c322bb22a04c26a05ccecbd11e9a">More...</a><br /></td></tr>
+<tr class="separator:a4bf2c322bb22a04c26a05ccecbd11e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaae7a22153fc3baa19cef4982cc25746"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1list.html#aaae7a22153fc3baa19cef4982cc25746">getFront</a> (void) const noexcept</td></tr>
 <tr class="memdesc:aaae7a22153fc3baa19cef4982cc25746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the front item of the list.  <a href="classq_o_s_1_1list.html#aaae7a22153fc3baa19cef4982cc25746">More...</a><br /></td></tr>
 <tr class="separator:aaae7a22153fc3baa19cef4982cc25746"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -560,8 +560,54 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a4bf2c322bb22a04c26a05ccecbd11e9a" name="a4bf2c322bb22a04c26a05ccecbd11e9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bf2c322bb22a04c26a05ccecbd11e9a">&#9670;&nbsp;</a></span>remove() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * qOS::list::remove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>xNode</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove an item from the list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>The position of the node that will be removed. Could be listPosition::AT_FRONT, listPosition::AT_BACK or any other index number. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xNode</td><td>A pointer to the node to be deleted (to ignore pass <code>nullptr</code> ). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the removed node. <code>nullptr</code> if removal can not be performed. </dd></dl>
+
+</div>
+</div>
 <a id="a7e334f51fcfbf277b71e1085bc8993e7" name="a7e334f51fcfbf277b71e1085bc8993e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e334f51fcfbf277b71e1085bc8993e7">&#9670;&nbsp;</a></span>remove() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e334f51fcfbf277b71e1085bc8993e7">&#9670;&nbsp;</a></span>remove() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -592,52 +638,6 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on Success. <code>false</code> if removal can't be performed. </dd></dl>
-
-</div>
-</div>
-<a id="a1c975b6333a32e90b94b464dad500ee6" name="a1c975b6333a32e90b94b464dad500ee6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c975b6333a32e90b94b464dad500ee6">&#9670;&nbsp;</a></span>remove() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * qOS::list::remove </td>
-          <td>(</td>
-          <td class="paramtype">void *const&#160;</td>
-          <td class="paramname"><em>xNode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4">listPosition</a>&#160;</td>
-          <td class="paramname"><em>p</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Remove an item from the list. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">xNode</td><td>A pointer to the node to be deleted (to ignore pass <code>nullptr</code> ). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>The position of the node that will be removed. Could be listPosition::AT_FRONT, listPosition::AT_BACK or any other index number. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the removed node. <code>nullptr</code> if removal can not be performed. </dd></dl>
 
 </div>
 </div>

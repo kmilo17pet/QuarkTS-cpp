@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['taskfcn_5ft_0',['taskFcn_t',['../group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91',1,'qOS']]],
-  ['taskflag_5ft_1',['taskFlag_t',['../group__qeventflags.html#gadab2a8e1d8f36731b1bcc666527e39eb',1,'qOS']]],
-  ['time_5ft_2',['time_t',['../group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711',1,'qOS']]],
-  ['timecount_5ft_3',['timeCount_t',['../group__qtypes.html#gab0515cffe8ece55935faa88d455b230e',1,'types.hpp']]],
-  ['timeoutspecoption_5ft_4',['timeoutSpecOption_t',['../group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9',1,'qOS::sm']]],
-  ['timeoutstatedefinition_5ft_5',['timeoutStateDefinition_t',['../group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea',1,'qOS::sm']]]
+  ['signalaction_5ft_0',['signalAction_t',['../group__qfsm.html#ga435dd60e77f0b3c14c5e5522e015ff87',1,'qOS::sm']]],
+  ['state_1',['state',['../group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323',1,'qOS::co']]],
+  ['statecallback_5ft_2',['stateCallback_t',['../group__qfsm.html#ga0a2b3e62daba65e93e9e2e0586c744d4',1,'qOS::sm']]],
+  ['surroundingcallback_5ft_3',['surroundingCallback_t',['../group__qfsm.html#gadbdca3ba7e7e329ecacc9c1510a14ad9',1,'qOS::sm']]]
 ];

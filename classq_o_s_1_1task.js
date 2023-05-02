@@ -23,7 +23,7 @@ var classq_o_s_1_1task =
     [ "setName", "classq_o_s_1_1task.html#ac52cce420afc21616880a98a4a38fadc", null ],
     [ "setPriority", "classq_o_s_1_1task.html#a2db8c5ba35184d6ac46f79367ed0d29e", null ],
     [ "setState", "classq_o_s_1_1task.html#ad2fdf129e7a52590f083503e8e505911", null ],
-    [ "setTime", "classq_o_s_1_1task.html#a7adb61dd04f68e735d2198463b6bacd4", null ],
+    [ "setTime", "classq_o_s_1_1task.html#a502d1da2b1c7ee760f660bc60345d9b5", null ],
     [ "suspend", "classq_o_s_1_1task.html#a9bf5d2fa8de8929aa2d45dade2c32740", null ],
     [ "core", "classq_o_s_1_1task.html#af764561c544bacc1b90b526ee8d3c708", null ],
     [ "INDEFINITE", "classq_o_s_1_1task.html#a9405db8642daf9f6fa97e16628476fe7", null ],

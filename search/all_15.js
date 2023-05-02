@@ -1,7 +1,7 @@
 var searchData=
 [
   ['waiting_0',['WAITING',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a1869d56535e8b1449a6da54ff5e11f50',1,'qOS']]],
-  ['waituntil_1',['waitUntil',['../group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20',1,'qOS::co::waitUntil(bool condition) noexcept'],['../group__qcoroutines.html#ga6187b4da6f70135cfda650c996f7d22d',1,'qOS::co::waitUntil(bool condition, qOS::time_t timeout) noexcept']]],
+  ['waituntil_1',['waitUntil',['../group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20',1,'qOS::co::waitUntil(bool condition) noexcept'],['../group__qcoroutines.html#ga62aa65d69c4600ba347dfe6f789ba240',1,'qOS::co::waitUntil(bool condition, qOS::duration_t timeout) noexcept']]],
   ['wht_2',['wht',['../group__qtrace.html#gaeef30d32eb143bb3a1d652e5640c4be8',1,'qOS::trace']]],
   ['wordbytehigh_3',['wordByteHigh',['../group__qflm.html#gad147633b6ac2fb2033c6cd10c93ba1af',1,'qOS']]],
   ['wordbytelow_4',['wordByteLow',['../group__qflm.html#ga5ba7e8ea3892eed319b02f8ede85ab5e',1,'qOS']]],

@@ -153,9 +153,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga32d97136944ad8457aa05a6f4d3c3749"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">qOS::clock_t</a> = <a class="el" href="group__qtypes.html#gab0515cffe8ece55935faa88d455b230e">timeCount_t</a></td></tr>
 <tr class="memdesc:ga32d97136944ad8457aa05a6f4d3c3749"><td class="mdescLeft">&#160;</td><td class="mdescRight">A unsigned integer to hold ticks count. Epochs counter.  <a href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">More...</a><br /></td></tr>
 <tr class="separator:ga32d97136944ad8457aa05a6f4d3c3749"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab011fc4588fbbf7bb6b0308a91dde711"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> = <a class="el" href="group__qtypes.html#gab0515cffe8ece55935faa88d455b230e">timeCount_t</a></td></tr>
-<tr class="memdesc:gab011fc4588fbbf7bb6b0308a91dde711"><td class="mdescLeft">&#160;</td><td class="mdescRight">The typedef that specified an time quantity, usually expressed in milliseconds.  <a href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">More...</a><br /></td></tr>
-<tr class="separator:gab011fc4588fbbf7bb6b0308a91dde711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77374d390d5c4b936e63742a8197edc6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">qOS::duration_t</a> = <a class="el" href="group__qtypes.html#gab0515cffe8ece55935faa88d455b230e">timeCount_t</a></td></tr>
+<tr class="memdesc:ga77374d390d5c4b936e63742a8197edc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The typedef that specified an time quantity, usually expressed in milliseconds.  <a href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">More...</a><br /></td></tr>
+<tr class="separator:ga77374d390d5c4b936e63742a8197edc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac63f3f01426513760291359b792ed55c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">qOS::getTickFcn_t</a> = <a class="el" href="group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749">clock_t</a>(*)(void)</td></tr>
 <tr class="memdesc:gac63f3f01426513760291359b792ed55c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a function that gets the current hardware tick value.  <a href="group__qclock.html#gac63f3f01426513760291359b792ed55c">More...</a><br /></td></tr>
 <tr class="separator:gac63f3f01426513760291359b792ed55c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,6 +179,22 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
+<a id="ga77374d390d5c4b936e63742a8197edc6" name="ga77374d390d5c4b936e63742a8197edc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga77374d390d5c4b936e63742a8197edc6">&#9670;&nbsp;</a></span>duration_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">qOS::duration_t</a> = typedef <a class="el" href="group__qtypes.html#gab0515cffe8ece55935faa88d455b230e">timeCount_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The typedef that specified an time quantity, usually expressed in milliseconds. </p>
+
+</div>
+</div>
 <a id="gac63f3f01426513760291359b792ed55c" name="gac63f3f01426513760291359b792ed55c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac63f3f01426513760291359b792ed55c">&#9670;&nbsp;</a></span>getTickFcn_t</h2>
 
@@ -197,22 +213,6 @@ Typedefs</h2></td></tr>
 <div class="line">}</div>
 </div><!-- fragment --> </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of ticks provided by the system HAL. </dd></dl>
-
-</div>
-</div>
-<a id="gab011fc4588fbbf7bb6b0308a91dde711" name="gab011fc4588fbbf7bb6b0308a91dde711"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab011fc4588fbbf7bb6b0308a91dde711">&#9670;&nbsp;</a></span>time_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> = typedef <a class="el" href="group__qtypes.html#gab0515cffe8ece55935faa88d455b230e">timeCount_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The typedef that specified an time quantity, usually expressed in milliseconds. </p>
 
 </div>
 </div>

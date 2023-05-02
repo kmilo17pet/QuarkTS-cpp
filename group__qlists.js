@@ -19,8 +19,8 @@ var group__qlists =
       [ "isEmpty", "classq_o_s_1_1list.html#a261730dd47a69f3edfb8bbd4f5559d0d", null ],
       [ "length", "classq_o_s_1_1list.html#a4d23a51c562b7dff95727a8625a4a1a5", null ],
       [ "move", "classq_o_s_1_1list.html#ae07617ca533526784159b1d164018a6c", null ],
+      [ "remove", "classq_o_s_1_1list.html#a4bf2c322bb22a04c26a05ccecbd11e9a", null ],
       [ "remove", "classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7", null ],
-      [ "remove", "classq_o_s_1_1list.html#a1c975b6333a32e90b94b464dad500ee6", null ],
       [ "sort", "classq_o_s_1_1list.html#aabf6cf1d0db7b5c8e3c818ecc6eb916e", null ],
       [ "swap", "classq_o_s_1_1list.html#a73e9beddcd46bcd21f9f6381d816ba5b", null ],
       [ "listIterator", "classq_o_s_1_1list.html#afbe88b0c492cef8bcfe3180effd933b3", null ]

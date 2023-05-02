@@ -180,13 +180,13 @@ First steps</h1>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
-<div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel nterfaces.</div><div class="ttdef"><b>Definition:</b> bytebuffer.hpp:7</div></div>
+<div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel interfaces.</div><div class="ttdef"><b>Definition:</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --><p >In the above code, the following considerations should be taken:</p><ul>
 <li>The function <code>os.init()</code> must be called before any interaction with the OS. Here, the <code>os</code> its an instance of the <a class="el" href="classq_o_s_1_1core.html" title="The class to interface the OS.">qOS::core</a> kernel interface.</li>
 <li>The procedure <code>HardwareSetup()</code> should be a function with all the hardware instructions needed to initialize the target system.</li>
 <li>The procedure <code>Configure_Periodic_Timer_Interrupt_1ms()</code> should be a function with all the hardware instructions needed to initialize and enable a timer with an overflow tick of one millisecond.</li>
 </ul>
-<p >Tasks can be later added to the scheduling scheme by simply calling <a class="el" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a" title="Add a task to the scheduling scheme. The task is scheduled to run every t time units,...">qOS::core::addTask()</a> or any of the other available methods for specific purpose tasks.</p>
+<p >Tasks can be later added to the scheduling scheme by simply calling <a class="el" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b" title="Add a task to the scheduling scheme. The task is scheduled to run every t time units,...">qOS::core::addTask()</a> or any of the other available methods for specific purpose tasks.</p>
 <h1><a class="anchor" id="q_os_demo"></a>
 Two simple demonstrative examples</h1>
 <h2><a class="anchor" id="q_os_example1"></a>
@@ -230,22 +230,22 @@ A simple scheduling</h2>
 <div class="line">    Configure_Periodic_Timer0_Interrupt_1ms();</div>
 <div class="line">    </div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a>( <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span> );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a>( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a>( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a>( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a6108a6807716a23d2af2db9ddadea99a"><div class="ttname"><a href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a615f44cfc4f4b4963b2b4cbb044ab76b"><div class="ttname"><a href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="q_os_example2"></a>
 Using the task argument</h2>
 <p >When adding tasks, they can accept a parameter of type pointer to void <code>void*</code> also called the storage pointer. This parameter could be used for multiple applications, including storage, task identification, duplication removal and others. The following example shows the usage of this argument to avoid callback duplication among tasks with the same behavior.</p>
 <p >Consider a scenario where you have to build a digital controller for several physical variables, for example, a PID controller for temperature, humidity and light. The PID algorithm will be the same for all variables. The only difference will be the variable input, the controlled output action and the PID gains. In this case, each of the PID tasks will utilize the same callback methods. The only difference will be the I/O parameters (specific for each PID controller).</p>
 <p >Let’s define a PID data structure with the I/O variables and gains.</p>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line">     <a class="code hl_typedef" href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a> dt; <span class="comment">/*Controller Time Step*/</span></div>
+<div class="line">     qOS::time_t dt; <span class="comment">/*Controller Time Step*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> yt; <span class="comment">/*Measured variable (Controller Input)*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> ut; <span class="comment">/*Controlled variable (Controller Output)*/</span></div>
 <div class="line">     <span class="keywordtype">float</span> ie; <span class="comment">/*Accumulated error*/</span></div>
@@ -272,7 +272,6 @@ Using the task argument</h2>
 <div class="line">    45.0f, <span class="comment">/*Set-Point*/</span></div>
 <div class="line">    5.36f, 0.0891f, 0.0f <span class="comment">/*Kc, Ki, Kd*/</span></div>
 <div class="line"> };</div>
-<div class="ttc" id="agroup__qclock_html_gab011fc4588fbbf7bb6b0308a91dde711"><div class="ttname"><a href="group__qclock.html#gab011fc4588fbbf7bb6b0308a91dde711">qOS::time_t</a></div><div class="ttdeci">timeCount_t time_t</div><div class="ttdoc">The typedef that specified an time quantity, usually expressed in milliseconds.</div><div class="ttdef"><b>Definition:</b> clock.hpp:18</div></div>
 </div><!-- fragment --><p >A task will be added to the scheme to collect the sensor data and apply the respective control output.</p>
 <div class="fragment"><div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.AddTask( IO_TASK , IO_TASK_Callback , core::MEDIUM_PRIORITY , 100, task::PERIODIC, taskState::ENABLED_STATE , <span class="stringliteral">&quot;iotask&quot;</span> );</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="keywordtype">void</span> IO_TASK_Callback( event_t e ) {</div>
@@ -284,13 +283,13 @@ Using the task argument</h2>
 <div class="line">    WriteLightActuatorValue( LightControl.ut );</div>
 <div class="line">}</div>
 </div><!-- fragment --><p >Then, three different tasks are created to apply the respective PID controller. Note that these tasks refer to the same callback method and we assign pointers to the respective variables.</p>
-<div class="fragment"><div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( TEMPERATURE_CONTROL_TASK, PIDControl_Callback,</div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a>( TEMPERATURE_CONTROL_TASK, PIDControl_Callback,</div>
 <div class="line">            core::HIGHEST_PRIORITY, TemperatureControl.dt ,</div>
 <div class="line">            task::PERIODIC, taskState::ENABLED_STATE, &amp;TemperatureControl );</div>
-<div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( HUMIDITY_CONTROL_TASK, PIDControl_Callback,</div>
+<div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a>( HUMIDITY_CONTROL_TASK, PIDControl_Callback,</div>
 <div class="line">            core::HIGHEST_PRIORITY, HumidityControl.dt,</div>
 <div class="line">            task::PERIODIC, taskState::ENABLED_STATE, &amp;HumidityControl );</div>
-<div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a6108a6807716a23d2af2db9ddadea99a">addTask</a>( LIGHT_CONTROL_TASK, PIDControl_Callback,</div>
+<div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a>( LIGHT_CONTROL_TASK, PIDControl_Callback,</div>
 <div class="line">            core::HIGHEST_PRIORITY, LightControl.dt,</div>
 <div class="line">            task::PERIODIC, taskState::ENABLED_STATE, &amp;LightControl );</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="keywordtype">void</span> PIDControl_Callback( event_t e ) {</div>

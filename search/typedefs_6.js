@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notifier_5ft_0',['notifier_t',['../group__qtaskmanip.html#ga466b47ce725c30974bd5e62fe363a37a',1,'qOS']]]
+  ['listcomparefcn_5ft_0',['listCompareFcn_t',['../group__qlists.html#ga805544d4c3b37262eabc39851d8060dc',1,'qOS']]]
 ];
