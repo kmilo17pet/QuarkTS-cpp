@@ -787,6 +787,9 @@ namespace qOS {
     /**
         * @brief An object to subscribe FSM(Finite State Machine) objects to 
         * specific user-defined signals
+        * @details This object provides a mechanism to decouple signal producers
+        * from the signal consumers, so state-machine objects interested in 
+        * certain signals subscribe to one or more Signals".
         */
         class signalPublisher {
             private:
