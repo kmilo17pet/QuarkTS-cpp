@@ -123,6 +123,8 @@ try_suspend	KEYWORD2
 try_resume	KEYWORD2
 try_set	KEYWORD2
 set	KEYWORD2
+perform	KEYWORD2
+until	KEYWORD2
 enter	KEYWORD2
 exit	KEYWORD2
 setInterruptsED	KEYWORD2

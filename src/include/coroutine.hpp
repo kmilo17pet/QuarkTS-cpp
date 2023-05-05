@@ -413,7 +413,7 @@ if ( !( (c) || _cr.timeout() ) ) {                                             \
     goto _co_break_;                                                           \
 } 
 /*============================================================================*/
-#define yield _co_yield(_co_label_)
+#define yield() _co_yield(_co_label_)
 #define _co_yield(label)                                                       \
 yield();                                                                       \
 _coSaveRestore( label, qOS::co::crNOP(), Q_NONE )                              \
@@ -440,7 +440,7 @@ _coSaveRestore( label, qOS::co::crNOP(), _co_t_cond(c) )                       \
 #define timeoutExpired()              timeoutExpired(), _cr.timeout()
 
 /*============================================================================*/
-#define restart _co_restart
+#define restart() _co_restart
 #define _co_restart                                                            \
 restart();                                                                     \
 _cr = qOS::co::BEGINNING;                                                      \

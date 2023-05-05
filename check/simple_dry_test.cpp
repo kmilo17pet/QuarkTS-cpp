@@ -52,8 +52,8 @@ void idleTask_callback( event_t e )
             co::delay( 0.5_sec );
             co::waitUntil( true == true );
             co::waitUntil( true == true , 500 );
-            co::yield;
-            co::restart;
+            co::yield();
+            co::restart();
             co::setPosition( pos1 );
             if ( co::timeoutExpired() ) {
 
@@ -71,7 +71,7 @@ void otherTask( event_t e )
         trace::log << e.thisTask() << trace::end;
     }
     co::reenter( otherTaskCrHandle ) {
-        co::restart;
+        co::restart();
         co::semWait( sem );
         co::semSignal( sem );
     }
