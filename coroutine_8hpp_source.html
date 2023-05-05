@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.0.9</span>
+   &#160;<span id="projectnumber">v1.1.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -339,7 +339,7 @@ $(document).ready(function(){initNavTree('coroutine_8hpp_source.html',''); initR
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span><span class="preprocessor">    goto _co_break_;                                                           \</span></div>
 <div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span><span class="preprocessor">} </span></div>
 <div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span><span class="comment">/*============================================================================*/</span></div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span><span class="preprocessor">#define yield _co_yield(_co_label_)</span></div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span><span class="preprocessor">#define yield() _co_yield(_co_label_)</span></div>
 <div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span><span class="preprocessor">#define _co_yield(label)                                                       \</span></div>
 <div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="preprocessor">yield();                                                                       \</span></div>
 <div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span><span class="preprocessor">_coSaveRestore( label, qOS::co::crNOP(), Q_NONE )                              \</span></div>
@@ -366,7 +366,7 @@ $(document).ready(function(){initNavTree('coroutine_8hpp_source.html',''); initR
 <div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span><span class="preprocessor">#define timeoutExpired()              timeoutExpired(), _cr.timeout()</span></div>
 <div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span> </div>
 <div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span><span class="comment">/*============================================================================*/</span></div>
-<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span><span class="preprocessor">#define restart _co_restart</span></div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span><span class="preprocessor">#define restart() _co_restart</span></div>
 <div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span><span class="preprocessor">#define _co_restart                                                            \</span></div>
 <div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span><span class="preprocessor">restart();                                                                     \</span></div>
 <div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span><span class="preprocessor">_cr = qOS::co::BEGINNING;                                                      \</span></div>
