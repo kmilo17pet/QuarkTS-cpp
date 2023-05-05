@@ -199,6 +199,15 @@ Functions</h2></td></tr>
 <tr class="memitem:gacf586fa36242eee6bcb2aa4052eb56dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc">qOS::co::setPosition</a> (<a class="el" href="classq_o_s_1_1co_1_1position.html">co::position</a> &amp;var) noexcept</td></tr>
 <tr class="memdesc:gacf586fa36242eee6bcb2aa4052eb56dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores the Co-Routine position saved in <em>var</em>.  <a href="group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc">More...</a><br /></td></tr>
 <tr class="separator:gacf586fa36242eee6bcb2aa4052eb56dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8580564fbde2487440f6e1606a0750d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">qOS::co::perform</a> (void) noexcept</td></tr>
+<tr class="memdesc:ga8580564fbde2487440f6e1606a0750d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This statement start a blocking Job segment.  <a href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">More...</a><br /></td></tr>
+<tr class="separator:ga8580564fbde2487440f6e1606a0750d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacaa96ae282349c5f6aa679785d43ec8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#gacaa96ae282349c5f6aa679785d43ec8c">qOS::co::perform</a> (<a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">qOS::duration_t</a> t) noexcept</td></tr>
+<tr class="memdesc:gacaa96ae282349c5f6aa679785d43ec8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This statement start a blocking Job segment.  <a href="group__qcoroutines.html#gacaa96ae282349c5f6aa679785d43ec8c">More...</a><br /></td></tr>
+<tr class="separator:gacaa96ae282349c5f6aa679785d43ec8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98a70f2deb294a8e2161eb07df049835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">qOS::co::until</a> (bool condition) noexcept</td></tr>
+<tr class="memdesc:ga98a70f2deb294a8e2161eb07df049835"><td class="mdescLeft">&#160;</td><td class="mdescRight">This statement ends a blocking Job segment starting with the <a class="el" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4" title="This statement start a blocking Job segment.">co::perform()</a> statement.  <a href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">More...</a><br /></td></tr>
+<tr class="separator:ga98a70f2deb294a8e2161eb07df049835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API interface for the <a class="el" href="q_qcoroutines.html">Co-Routines</a> extension. </p>
@@ -289,6 +298,82 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gacaa96ae282349c5f6aa679785d43ec8c" name="gacaa96ae282349c5f6aa679785d43ec8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacaa96ae282349c5f6aa679785d43ec8c">&#9670;&nbsp;</a></span>perform() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::co::perform </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">qOS::duration_t</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This statement start a blocking Job segment. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835" title="This statement ends a blocking Job segment starting with the co::perform() statement.">co::until()</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Must be used together with a matching <a class="el" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835" title="This statement ends a blocking Job segment starting with the co::perform() statement.">co::until()</a> statement. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Co-routines statements are not allowed within the job segment. and can produce undefined behavior. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The timeout for the specified job segment. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">co::perform</a>( timeout ) {</div>
+<div class="line"> </div>
+<div class="line">} <a class="code hl_function" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">co::until</a>( Condition );</div>
+<div class="ttc" id="agroup__qcoroutines_html_ga8580564fbde2487440f6e1606a0750d4"><div class="ttname"><a href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">qOS::co::perform</a></div><div class="ttdeci">void perform(void) noexcept</div><div class="ttdoc">This statement start a blocking Job segment.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:322</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga98a70f2deb294a8e2161eb07df049835"><div class="ttname"><a href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">qOS::co::until</a></div><div class="ttdeci">void until(bool condition) noexcept</div><div class="ttdoc">This statement ends a blocking Job segment starting with the co::perform() statement.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:355</div></div>
+</div><!-- fragment --> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga8580564fbde2487440f6e1606a0750d4" name="ga8580564fbde2487440f6e1606a0750d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8580564fbde2487440f6e1606a0750d4">&#9670;&nbsp;</a></span>perform() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::co::perform </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This statement start a blocking Job segment. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835" title="This statement ends a blocking Job segment starting with the co::perform() statement.">co::until()</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Must be used together with a matching <a class="el" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835" title="This statement ends a blocking Job segment starting with the co::perform() statement.">co::until()</a> statement. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Co-routines statements are not allowed within the job segment. and can produce undefined behavior. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">co::perform</a>() {</div>
+<div class="line"> </div>
+<div class="line">} <a class="code hl_function" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">co::until</a>( Condition );</div>
+</div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
 <a id="ga19c3bf29cd1b8289a20b9411e1e07587" name="ga19c3bf29cd1b8289a20b9411e1e07587"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga19c3bf29cd1b8289a20b9411e1e07587">&#9670;&nbsp;</a></span>reenter() <span class="overload">[1/2]</span></h2>
 
@@ -324,8 +409,8 @@ Functions</h2></td></tr>
 <p>Example: </p><div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>( <a class="code hl_class" href="classq_o_s_1_1co_1_1handle.html">handle</a> ) {</div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1co_1_1handle_html"><div class="ttname"><a href="classq_o_s_1_1co_1_1handle.html">qOS::co::handle</a></div><div class="ttdoc">A Co-Routine handle.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:51</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_gabb86ebfd79f14350a9ed1be1a44f3b91"><div class="ttname"><a href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">qOS::co::reenter</a></div><div class="ttdeci">void reenter(void) noexcept</div><div class="ttdoc">Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:177</div></div>
+<div class="ttc" id="aclassq_o_s_1_1co_1_1handle_html"><div class="ttname"><a href="classq_o_s_1_1co_1_1handle.html">qOS::co::handle</a></div><div class="ttdoc">A Co-Routine handle.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:55</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gabb86ebfd79f14350a9ed1be1a44f3b91"><div class="ttname"><a href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">qOS::co::reenter</a></div><div class="ttdeci">void reenter(void) noexcept</div><div class="ttdoc">Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:187</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -526,9 +611,48 @@ Functions</h2></td></tr>
 <div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">co::restart</a>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qcoroutines_html_ga13055a9326fa8e11d527715fadc7b528"><div class="ttname"><a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a></div><div class="ttdeci">void restart(void) noexcept</div><div class="ttdoc">This statement cause the running Coroutine to restart its execution at the place of the co::reenter()...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:261</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_ga59f41446fbbdda4769837208e03ddba6"><div class="ttname"><a href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">qOS::co::timeoutExpired</a></div><div class="ttdeci">void timeoutExpired(void) noexcept</div><div class="ttdoc">Check if the internal Co-routine timeout expires.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:254</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_gad0eca0c65e03d038bb7374ee75980f20"><div class="ttname"><a href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">qOS::co::waitUntil</a></div><div class="ttdeci">void waitUntil(bool condition) noexcept</div><div class="ttdoc">Yields until the logical condition is met.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:223</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga13055a9326fa8e11d527715fadc7b528"><div class="ttname"><a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a></div><div class="ttdeci">void restart(void) noexcept</div><div class="ttdoc">This statement cause the running Coroutine to restart its execution at the place of the co::reenter()...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:271</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga59f41446fbbdda4769837208e03ddba6"><div class="ttname"><a href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">qOS::co::timeoutExpired</a></div><div class="ttdeci">void timeoutExpired(void) noexcept</div><div class="ttdoc">Check if the internal Co-routine timeout expires.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:264</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_gad0eca0c65e03d038bb7374ee75980f20"><div class="ttname"><a href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">qOS::co::waitUntil</a></div><div class="ttdeci">void waitUntil(bool condition) noexcept</div><div class="ttdoc">Yields until the logical condition is met.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:233</div></div>
+</div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a id="ga98a70f2deb294a8e2161eb07df049835" name="ga98a70f2deb294a8e2161eb07df049835"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga98a70f2deb294a8e2161eb07df049835">&#9670;&nbsp;</a></span>until()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qOS::co::until </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>condition</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This statement ends a blocking Job segment starting with the <a class="el" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4" title="This statement start a blocking Job segment.">co::perform()</a> statement. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4" title="This statement start a blocking Job segment.">co::perform()</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">condition</td><td>The logical condition to be evaluated. The condition determines if the blocking job ends (if condition is True) or continue yielding (if false) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Must be used together with a matching <a class="el" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4" title="This statement start a blocking Job segment.">co::perform()</a> statement. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">co::perform</a>() {</div>
+<div class="line"> </div>
+<div class="line">} <a class="code hl_function" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">co::until</a>( Condition );</div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
