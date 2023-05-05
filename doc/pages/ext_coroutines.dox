@@ -74,7 +74,7 @@
 *
 * @note Co-Routine statements can only be invoked from the scope of the 
 * Co-Routine.
-* @remark You should but an endless-loop inside a Co-routine, this behavior is  
+* @remark You should put an endless-loop inside a Co-routine, this behavior is  
 * not hardcoded within the segment definition.
 *
 * @section q_coroutine_blocking Blocking calls in a Co-routine
@@ -96,6 +96,17 @@
 * An additional overload of this co::waitUntil() is also provided. This one
 * sets a timeout for the logical condition to be met.
 *
+* Optionally, the perform-until structure gives to application writer the ability
+* to perform a multi-line job before the yield, allowing more complex actions 
+* to being performed after the Co-Routine resumes:
+*
+*  @code{.c}
+*  co::perform() {
+*      /*Job : a set of instructions */
+*  } co::until( condition );
+*  @endcode
+*
+* @warning Co-routines statements are not allowed within the job segment. 
 *
 * @section q_coroutine_example1 Co-Routine usage example
 *

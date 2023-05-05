@@ -28,6 +28,10 @@ namespace qOS {
         /*cstat +MISRAC++2008-0-1-4_b*/
 
         class _coContext;
+
+        enum class _coAction {
+            _CO_TIMEOUT_DISARM,
+        };
         /*! @endcond  */
 
         /** @brief A placeholder for the Co-Routine current position or progress*/
@@ -141,6 +145,12 @@ namespace qOS {
                 inline void operator()( qOS::duration_t t ) 
                 {
                     (void)tm.set( t );
+                }
+                inline void operator()( _coAction action ) 
+                {
+                    if ( _coAction::_CO_TIMEOUT_DISARM == action ) {
+                        tm.disarm();
+                    }
                 }
                 inline bool operator==( const co::state l ) const
                 {
@@ -295,6 +305,54 @@ namespace qOS {
         * position to be restored.
         */
         inline void setPosition( co::position &var ) noexcept { Q_UNUSED(var); }
+
+        /**
+        * @brief This statement start a blocking Job segment.
+        * @see co::until()
+        * @note Must be used together with a matching co::until() statement.
+        * @warning Co-routines statements are not allowed within the job segment.
+        * and can produce undefined behavior.
+        * Example:
+        * @code{.c}
+        * co::perform() {
+        *
+        * } co::until( Condition );
+        * @endcode
+        */
+        inline void perform( void ) noexcept { }
+
+        /**
+        * @brief This statement start a blocking Job segment.
+        * @see co::until()
+        * @note Must be used together with a matching co::until() statement.
+        * @warning Co-routines statements are not allowed within the job segment.
+        * and can produce undefined behavior.
+        * @param[in] t The timeout for the specified job segment.
+        * Example:
+        * @code{.c}
+        * co::perform( timeout ) {
+        *
+        * } co::until( Condition );
+        * @endcode
+        */
+        inline void perform( qOS::duration_t t ) noexcept { Q_UNUSED(t); }
+
+        /**
+        * @brief This statement ends a blocking Job segment starting with the
+        * co::perform() statement.
+        * @see co::perform()
+        * @param[in] condition The logical condition to be evaluated.
+        * The condition determines if the blocking job ends (if condition is True)
+        * or continue yielding (if false)
+        * @note Must be used together with a matching co::perform() statement.
+        * Example:
+        * @code{.c}
+        * co::perform() {
+        *
+        * } co::until( Condition );
+        * @endcode
+        */
+        inline void until( bool condition ) noexcept { Q_UNUSED(condition); }
         /*cstat +MISRAC++2008-0-1-11 +MISRAC++2008-7-1-2*/
 
         /** @}*/
@@ -412,6 +470,20 @@ setPosition( var );                                                            \
 _cr = var();                                                                   \
 goto _co_break_                                                                \
 
+/*============================================================================*/
+#define perform_0()             _co_perform( co::_coAction::_CO_TIMEOUT_DISARM )
+#define perform_1( t )          _co_perform( t )
+#define perform(...)            MACRO_OVERLOAD( perform_ , __VA_ARGS__ )
+
+#define _co_perform( t )                                                       \
+perform();                                                                     \
+_coSaveRestore( _co_label_, _cr(t), Q_NONE );                                  \
+
+/*============================================================================*/
+#define until( c )                                                             \
+until( c );                                                                    \
+_co_cond( ( c ) || _cr.timeout() )                                             \
+/*============================================================================*/
 /*! @endcond  */
 
 #endif /*QOS_CPP_CO*/
