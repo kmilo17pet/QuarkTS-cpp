@@ -1,4 +1,4 @@
-name: Static-Analysis
+name: Build
 
 on:
   workflow_dispatch:
