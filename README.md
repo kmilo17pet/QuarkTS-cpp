@@ -6,6 +6,7 @@
 [![MISRAC++2008](https://img.shields.io/badge/MISRAC++2008-Compliant-blue.svg?logo=verizon)](https://www.misra.org.uk/)
 [![CERT](https://img.shields.io/badge/CERT-Compliant-blue.svg?logo=cplusplus)](https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards)
 [![C++ Standard](https://img.shields.io/badge/STD-C++11-green.svg?logo=cplusplus)](https://en.cppreference.com/w/cpp/11)
+[![Build](https://github.com/kmilo17pet/QuarkTS-cpp/actions/workflows/build.yml/badge.svg)](https://github.com/kmilo17pet/QuarkTS-cpp/actions/workflows/build.yml)
 [![Documentation](https://github.com/kmilo17pet/QuarkTS-cpp/actions/workflows/doxygen_gen.yml/badge.svg)](https://github.com/kmilo17pet/QuarkTS-cpp/actions/workflows/doxygen_gen.yml)
 [![arduino-library-badge](https://www.ardu-badge.com/badge/QuarkTS.svg?)](https://www.ardu-badge.com/QuarkTS)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?logo=textpattern)](https://github.com/kmilo17pet/QuarkTS-cpp/graphs/commit-activity)
