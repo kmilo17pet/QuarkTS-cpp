@@ -82,12 +82,12 @@ namespace qOS {
                 static constexpr source_location current(const char* fileName = __builtin_FILE(),
                     const char* functionName = __builtin_FUNCTION(),
                     const unsigned long lineNumber = __builtin_LINE(),
-                    const unsigned long columnOffset = __builtin_COLUMN()) noexcept
+                    const unsigned long columnOffset = __builtin_COLUMN() ) noexcept
             #elif defined(__GNUC__) and (__GNUC__ > 4 or (__GNUC__ == 4 and __GNUC_MINOR__ >= 8))
                 static constexpr source_location current(const char* fileName = __builtin_FILE(),
                     const char* functionName = __builtin_FUNCTION(),
                     const unsigned long lineNumber = __builtin_LINE(),
-                    const unsigned long columnOffset = 0) noexcept
+                    const unsigned long columnOffset = 0 ) noexcept
             #else
                 static constexpr source_location current(const char* fileName = "unsupported",
                     const char* functionName = "unsupported",
@@ -95,45 +95,40 @@ namespace qOS {
                     const unsigned long columnOffset = 0) noexcept
             #endif
                 {
-                    return source_location (fileName, functionName, lineNumber, columnOffset);
+                    return source_location( fileName, functionName, lineNumber, columnOffset ); // skipcq: CXX-W2033
                 }
 
-                source_location ( const source_location & ) = default;
-                source_location ( source_location && ) = default;
+                source_location( const source_location & ) = default;
+                source_location( source_location && ) = default;
 
-                constexpr const char* file_name() const noexcept
+                constexpr const char* file_name( void ) const noexcept
                 {
                     return fileName;
                 }
 
-                constexpr const char* function_name() const noexcept
+                constexpr const char* function_name( void ) const noexcept
                 {
                     return functionName;
                 }
 
-                constexpr unsigned long line() const noexcept
+                constexpr unsigned long line( void ) const noexcept
                 {
                     return lineNumber;
                 }
 
-                constexpr unsigned long column() const noexcept
+                constexpr unsigned long column( void ) const noexcept
                 {
                     return columnOffset;
                 }
 
             private:
-                constexpr source_location (const char* FileName, const char* FunctionName, const unsigned long LineNumber, const unsigned long ColumnOffset) noexcept
-                    : fileName(FileName)
-                    , functionName(FunctionName)
-                    , lineNumber(LineNumber)
-                    , columnOffset(ColumnOffset)
-                {
-                }
+                constexpr source_location( const char* FileName, const char* FunctionName, const unsigned long LineNumber, const unsigned long ColumnOffset ) noexcept
+                    : fileName(FileName), functionName(FunctionName), lineNumber(LineNumber), columnOffset(ColumnOffset) {}
 
                 const char* fileName;
                 const char* functionName;
-                const unsigned long lineNumber;
-                const unsigned long columnOffset;
+                const unsigned long lineNumber; // skipcq: CXX-W2010
+                const unsigned long columnOffset; // skipcq: CXX-W2010
         };
 
         class lout_base final {
