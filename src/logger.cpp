@@ -1,45 +1,45 @@
-#include "include/trace.hpp"
+#include "include/logger.hpp"
 
 namespace qOS {
     /*cstat -MISRAC++2008-0-1-4_b*/
-    const char * const trace::endl = "\r\n";
-    const char * const trace::end = "\x1B[0m\r\n";
-    const char * const trace::nrm = "\x1B[0m";
-    const char * const trace::red = "\x1B[31m";
-    const char * const trace::grn = "\x1B[32m";
-    const char * const trace::yel = "\x1B[33m";
-    const char * const trace::blu = "\x1B[34m";
-    const char * const trace::mag = "\x1B[35m";
-    const char * const trace::cyn = "\x1B[36m";
-    const char * const trace::wht = "\x1B[37m";
+    const char * const logger::endl = "\r\n";
+    const char * const logger::end = "\x1B[0m\r\n";
+    const char * const logger::nrm = "\x1B[0m";
+    const char * const logger::red = "\x1B[31m";
+    const char * const logger::grn = "\x1B[32m";
+    const char * const logger::yel = "\x1B[33m";
+    const char * const logger::blu = "\x1B[34m";
+    const char * const logger::mag = "\x1B[35m";
+    const char * const logger::cyn = "\x1B[36m";
+    const char * const logger::wht = "\x1B[37m";
     /*cstat +MISRAC++2008-0-1-4_b*/
     /* cppcheck-suppress noConstructor */
-    namespace trace {
-         _trace& _trace_out = _trace::getInstance(); // skipcq: CXX-W2011
-        const tout_base dec( 10u );
-        const tout_base hex( 16u );
-        const tout_base oct( 8u );
-        const tout_base bin( 2u );
+    namespace logger {
+         _logger& _logger_out = _logger::getInstance(); // skipcq: CXX-W2011
+        const lout_base dec( 10u );
+        const lout_base hex( 16u );
+        const lout_base oct( 8u );
+        const lout_base bin( 2u );
 
-        _trace& _trace::getInstance( void ) noexcept
+        _logger& _logger::getInstance( void ) noexcept
         {
-            static _trace instance;
+            static _logger instance;
             return instance;
         }
 
-        _trace& operator<<( _trace& tout, const char c )
+        _logger& operator<<( _logger& tout, const char c )
         {
             tout.writeChar( nullptr, c );
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const char * s )
+        _logger& operator<<( _logger& tout, const char * s )
         {
             (void)util::outputString( tout.writeChar, s );
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const int32_t& v )
+        _logger& operator<<( _logger& tout, const int32_t& v )
         {
             (void)util::integerToString( static_cast<int32_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
             if ( '\0' != tout.preFix[ 0 ] ) {
@@ -50,7 +50,7 @@ namespace qOS {
             return tout;
         }
         #if ULONG_MAX > UINT32_MAX
-        _trace& operator<<( _trace& tout, const uint32_t& v )
+        _logger& operator<<( _logger& tout, const uint32_t& v )
         {
             (void)util::unsignedToString( static_cast<unsigned_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
             if ( '\0' != tout.preFix[ 0 ] ) {
@@ -61,7 +61,7 @@ namespace qOS {
             return tout;
         }
         #endif
-        _trace& operator<<( _trace& tout, const unsigned_t& v )
+        _logger& operator<<( _logger& tout, const unsigned_t& v )
         {
             (void)util::unsignedToString( v, tout.buffer, tout.base ); // skipcq: CXX-C1000
             if ( '\0' != tout.preFix[ 0 ] ) {
@@ -72,7 +72,7 @@ namespace qOS {
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const void * const p )
+        _logger& operator<<( _logger& tout, const void * const p )
         {
             /*cstat -CERT-INT36-C*/
             (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), tout.buffer, 10u ); // skipcq: CXX-C1000
@@ -89,7 +89,7 @@ namespace qOS {
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const float64_t& v )
+        _logger& operator<<( _logger& tout, const float64_t& v )
         {
             (void)util::floatToString( v, tout.buffer, tout.precision ); // skipcq: CXX-C1000
             (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
@@ -97,39 +97,39 @@ namespace qOS {
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const tout_base& f )
+        _logger& operator<<( _logger& lout, const lout_base& f )
         {
-            tout.base = f.base;
+            lout.base = f.base;
             switch( f.base ) {
                 case 2u:
-                    (void)util::strcpy( tout.preFix, "0b", sizeof(tout.preFix) ); // skipcq: CXX-C1000
+                    (void)util::strcpy( lout.preFix, "0b", sizeof(lout.preFix) ); // skipcq: CXX-C1000
                     break;
                 case 8u:
-                    (void)util::strcpy( tout.preFix, "0", sizeof(tout.preFix) ); // skipcq: CXX-C1000
+                    (void)util::strcpy( lout.preFix, "0", sizeof(lout.preFix) ); // skipcq: CXX-C1000
                     break;
                 case 16u:
-                    (void)util::strcpy( tout.preFix, "0x", sizeof(tout.preFix) ); // skipcq: CXX-C1000
+                    (void)util::strcpy( lout.preFix, "0x", sizeof(lout.preFix) ); // skipcq: CXX-C1000
                     break;
                 default:
-                    (void)memset( tout.preFix, 0, sizeof(tout.preFix) ); // skipcq: CXX-C1000
+                    (void)memset( lout.preFix, 0, sizeof(lout.preFix) ); // skipcq: CXX-C1000
                     break;
             }
-            return tout;
+            return lout;
         }
 
-        _trace& operator<<( _trace& tout, const mem& m )
+        _logger& operator<<( _logger& tout, const mem& m )
         {
             tout.n = m.n;
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const pre& m )
+        _logger& operator<<( _logger& tout, const pre& m )
         {
             tout.precision = m.precision;
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const task& t )
+        _logger& operator<<( _logger& tout, const task& t )
         {
             (void)util::unsignedToString( t.getID(), tout.buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( tout.writeChar , "T{ \"" );
@@ -142,7 +142,7 @@ namespace qOS {
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const qOS::timer& t )
+        _logger& operator<<( _logger& tout, const qOS::timer& t )
         {
             (void)util::outputString( tout.writeChar , "t{ E:" );
             (void)util::unsignedToString( t.elapsed(), tout.buffer, 10 ); // skipcq: CXX-C1000
@@ -154,7 +154,7 @@ namespace qOS {
             return tout;
         }
         /*cstat -CERT-INT36-C*/
-        _trace& operator<<( _trace& tout, const qOS::stateMachine& sm )
+        _logger& operator<<( _logger& tout, const qOS::stateMachine& sm )
         {
             (void)util::outputString( tout.writeChar , "SM{ T: 0x" );
             (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &sm.getTop() ), tout.buffer, 16 ); // skipcq: CXX-C1000
@@ -166,7 +166,7 @@ namespace qOS {
             return tout;
         }
 
-        _trace& operator<<( _trace& tout, const qOS::sm::state& s )
+        _logger& operator<<( _logger& tout, const qOS::sm::state& s )
         {
             (void)util::outputString( tout.writeChar , "s{ 0x" );
             (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &s ), tout.buffer, 16 ); // skipcq: CXX-C1000
@@ -176,14 +176,14 @@ namespace qOS {
         }
         /*cstat +CERT-INT36-C*/
         #if defined( ARDUINO_PLATFORM )
-        _trace& operator<<( _trace& tout, const String & s )
+        _logger& operator<<( _logger& tout, const String & s )
         #else
-        _trace& operator<<( _trace& tout, const string & s )
+        _logger& operator<<( _logger& tout, const string & s )
         #endif
         {
             (void)util::outputString( tout.writeChar, s.c_str() );
             return tout;
-        } 
+        }
     }
 
 }

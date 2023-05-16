@@ -8,9 +8,9 @@ class customTask : public task {
     void activities( void ) override 
     {
         if ( eventData().firstCall() ) {
-            trace::log << eventData().thisTask().getName() << trace::endl; 
+            logger::out() << eventData().thisTask().getName() << logger::endl; 
         }
-        trace::log << trace::mag << "im a custom task" << trace::end;
+        logger::out() << logger::mag << "im a custom task" << logger::end;
     }
 };
 
@@ -38,17 +38,17 @@ unsigned long sysClock( void );
 void idleTask_callback( event_t e )
 {
     if ( e.firstCall() ) {
-        trace::log << "idle task" << trace::end;
+        logger::out() << "idle task" << logger::end;
     }
     co::reenter() {
         for(;;) {
             co::getPosition( pos1 );
-            trace::log << e.thisTask() << trace::end;
-            trace::log << "sec 1"<< trace::end;
+            logger::out() << e.thisTask() << logger::end;
+            logger::out() << "sec 1"<< logger::end;
             co::delay( 0.5_sec );
-            trace::log <<"sec 2"<< trace::end;
+            logger::out() <<"sec 2"<< logger::end;
             co::delay( 0.5_sec );
-            trace::log <<"sec 3"<< trace::end;
+            logger::out() <<"sec 3"<< logger::end;
             co::delay( 0.5_sec );
             co::waitUntil( true == true );
             co::waitUntil( true == true , 500 );
@@ -68,7 +68,7 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        trace::log << e.thisTask() << trace::end;
+        logger::out() << e.thisTask() << logger::end;
     }
     co::reenter( otherTaskCrHandle ) {
         co::restart();
@@ -81,7 +81,7 @@ sm::status s1_callback( sm::handler_t h )
 {
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<< trace::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< trace::end;
+            logger::out() << logger::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< logger::end;
             h.timeoutSet( 0, 5_sec );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
@@ -97,11 +97,11 @@ sm::status s2_callback( sm::handler_t h )
 {
     static timer tmr;
 
-    trace::log << trace::var(tmr) << trace::end;
+    logger::out() << logger::var(tmr) << logger::end;
 
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<< trace::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< trace::end;
+            logger::out() << logger::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< logger::end;
             tmr( 5_sec );
             break;
         default:
@@ -115,18 +115,18 @@ sm::status s2_callback( sm::handler_t h )
 
 void task_callback( event_t e )
 {
-    trace::log << e.self() << trace::end;
+    logger::out() << e.self() << logger::end;
 
     if ( e.firstCall() ) {
-        trace::log << trace::grn << "first call "<< e.thisTask() << trace::end;
+        logger::out() << logger::grn << "first call "<< e.thisTask() << logger::end;
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        trace::log << "notified(SIMPLE)! " << e.thisTask() << trace::end;
+        logger::out() << "notified(SIMPLE)! " << e.thisTask() << logger::end;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
-        trace::log << "notified(QUEUED)! " << e.thisTask() << trace::end;
+        logger::out() << "notified(QUEUED)! " << e.thisTask() << logger::end;
     }
    
     if ( e.lastIteration() ) {
@@ -134,12 +134,12 @@ void task_callback( event_t e )
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t2, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
-        trace::log << "last iteration "<< e.thisTask() << trace::end;
+        logger::out() << "last iteration "<< e.thisTask() << logger::end;
     }
 
     int someValue = 457;
     int *ptr = &someValue;
-    trace::log << trace::red <<"test trace "<< trace::dec << trace::var(someValue)<< "  " << ptr << trace::end;
+    logger::out() << logger::red <<"test trace "<< logger::dec << logger::var(someValue)<< "  " << ptr << logger::end;
 
 }
 
@@ -153,14 +153,18 @@ void putCharFcn( void* stp, char c ) {
     putchar(c);
 }
 
-
 int main()
 {
     uint32_t x = 0xFFAA2211;
     double y = -3.1416;
-    trace::setOutputFcn( &putCharFcn );
-    trace::log << trace::pre(8) <<trace::var(y) << trace::end; 
-    trace::log<< trace::var(x) << trace::mem( sizeof(x) ) << &x << trace::end;
+    logger::setOutputFcn( &putCharFcn );
+    logger::out() << logger::pre(8) << logger::var(y) << logger::end; 
+    logger::out() << logger::var(x) << logger::mem( sizeof(x) ) << &x << logger::end;
+    logger::out(logger::info) << "info message"<< logger::end;
+    logger::out(logger::error) << "error message"<< logger::end;
+    logger::out(logger::debug) << "debug message"<< logger::end;
+    logger::out(logger::verbose) << "verbose message"<< logger::end;
+
     os.init( sysClock, idleTask_callback );
     
     os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );

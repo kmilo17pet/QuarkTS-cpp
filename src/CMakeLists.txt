@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.2 )
 project( quarkts-cpp
-         VERSION 1.1.0
+         VERSION 1.2.1
          DESCRIPTION "An open-source OS for small embedded applications"
          LANGUAGES CXX )
 
@@ -23,7 +23,7 @@ target_sources( ${PROJECT_NAME} INTERFACE
              "${CMAKE_CURRENT_LIST_DIR}/bytebuffer.cpp"
              "${CMAKE_CURRENT_LIST_DIR}/response.cpp"
              "${CMAKE_CURRENT_LIST_DIR}/edgecheck.cpp"
-             "${CMAKE_CURRENT_LIST_DIR}/trace.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/logger.cpp"
            )
 
 target_compile_options( ${PROJECT_NAME} INTERFACE

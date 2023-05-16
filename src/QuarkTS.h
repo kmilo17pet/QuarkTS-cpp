@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.1.0
+ * @version 1.2.1
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/
@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.1.0"
-#define QUARKTS_CPP_VERNUM          ( 110u )
+#define QUARKTS_CPP_VERSION         "1.2.1"
+#define QUARKTS_CPP_VERNUM          ( 121u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -62,7 +62,7 @@ This file is part of the QuarkTS++ OS distribution.
 #include "include/bytebuffer.hpp"
 #include "include/edgecheck.hpp"
 #include "include/response.hpp"
-#include "include/trace.hpp"
+#include "include/logger.hpp"
 
 using namespace qOS;
 

@@ -5,15 +5,15 @@ task demoTask1, blinkTask;
 
 void blinkTask_callback( event_t e ) {
   if ( e.firstCall() ) {
-     trace::log << e.thisTask() << " Launched!" << trace::endl;
+     logger::out() << e.thisTask() << " Launched!" << logger::endl;
   }
   co::reenter() {
     for(;;) {
       digitalWrite( LED_BUILTIN, HIGH );
-      trace::log << e.thisTask() << trace::endl;
+      logger::out() << e.thisTask() << logger::endl;
       co::delay( 500_ms );
       digitalWrite( LED_BUILTIN, LOW );
-      trace::log << e.thisTask() << trace::endl;
+      logger::out() << e.thisTask() << logger::endl;
       co::delay( 500_ms );
     }
   }
@@ -21,19 +21,19 @@ void blinkTask_callback( event_t e ) {
 
 void demoTask1_Callback( event_t e ) {
   if ( e.firstCall() ) {
-     trace::log << e.thisTask() << " Launched!" << trace::endl;
+     logger::out() << e.thisTask() << " Launched!" << logger::endl;
   }
-  trace::log << e.thisTask() << trace::endl;
+  logger::out() << e.thisTask() << logger::endl;
 }
 
 void idleTask_callback( event_t e ) {
   if ( e.firstCall() ) {
-     trace::log << e.thisTask() << " Launched!" << trace::endl;
+     logger::out() << e.thisTask() << " Launched!" << logger::endl;
   }
   co::reenter() {
     for(;;) {
       co::delay( 500_ms );
-      trace::log << e.thisTask() << trace::endl;
+      logger::out() << e.thisTask() << logger::endl;
     }
   }
 }
@@ -54,7 +54,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(115200);
 
-  trace::setOutputFcn( tracePutcWrapper );
+  logger::setOutputFcn( tracePutcWrapper );
   critical::setInterruptsED( resetINTWrapper, disableINTWrapper );
   os.init( millis, idleTask_callback );
   demoTask1.setName("demoTask1");
