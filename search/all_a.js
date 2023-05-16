@@ -8,6 +8,9 @@ var searchData=
   ['listdirection_5',['listDirection',['../group__qlists.html#ga032e23f2e0cb931b9bc0189b479c8381',1,'qOS']]],
   ['listiterator_6',['listIterator',['../classq_o_s_1_1list_iterator.html#a38e5d575b74c462a65d3733e3c91c450',1,'qOS::listIterator::listIterator()=delete'],['../classq_o_s_1_1list_iterator.html#ae19eb42ed3d51f7be76e5d8696f2b5cd',1,'qOS::listIterator::listIterator(list &amp;xList, listDirection dir=listDirection::FORWARD, void *nodeOffset=nullptr) noexcept'],['../classq_o_s_1_1list_iterator.html',1,'qOS::listIterator']]],
   ['listposition_7',['listPosition',['../group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4',1,'qOS']]],
-  ['log_8',['log',['../classq_o_s_1_1trace.html#ab6c95f28fe39352c65d1962f09c48d8a',1,'qOS::trace']]],
-  ['lowest_5fpriority_9',['LOWEST_PRIORITY',['../classq_o_s_1_1core.html#adbace2acdfcb3e3e702bc5a35b692c80',1,'qOS::core']]]
+  ['logger_8',['Logger',['../group__qlogger.html',1,'']]],
+  ['logger_9',['logger',['../classq_o_s_1_1logger.html',1,'qOS']]],
+  ['logging_10',['Logging',['../q_trace.html',1,'q_extensions']]],
+  ['logseverity_11',['logSeverity',['../group__qlogger.html#ga8d02cc4e3735026bc7ceb4cb70940bc1',1,'qOS::logger']]],
+  ['lowest_5fpriority_12',['LOWEST_PRIORITY',['../classq_o_s_1_1core.html#adbace2acdfcb3e3e702bc5a35b692c80',1,'qOS::core']]]
 ];

@@ -17,7 +17,8 @@ var hierarchy =
       [ "qOS::commandLineInterface", "classq_o_s_1_1command_line_interface.html", null ]
     ] ],
     [ "qOS::listIterator", "classq_o_s_1_1list_iterator.html", null ],
-    [ "qOS::trace::mem", "classq_o_s_1_1trace_1_1mem.html", null ],
+    [ "qOS::logger", "classq_o_s_1_1logger.html", null ],
+    [ "qOS::logger::mem", "classq_o_s_1_1logger_1_1mem.html", null ],
     [ "qOS::node", "classq_o_s_1_1node.html", [
       [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", null ],
       [ "qOS::ec::inNode", "classq_o_s_1_1ec_1_1in_node.html", null ],
@@ -26,7 +27,7 @@ var hierarchy =
     ] ],
     [ "qOS::mem::pool", "classq_o_s_1_1mem_1_1pool.html", null ],
     [ "qOS::co::position", "classq_o_s_1_1co_1_1position.html", null ],
-    [ "qOS::trace::pre", "classq_o_s_1_1trace_1_1pre.html", null ],
+    [ "qOS::logger::pre", "classq_o_s_1_1logger_1_1pre.html", null ],
     [ "qOS::queue", "classq_o_s_1_1queue.html", null ],
     [ "qOS::response", "classq_o_s_1_1response.html", null ],
     [ "qOS::co::semaphore", "classq_o_s_1_1co_1_1semaphore.html", null ],
@@ -35,6 +36,5 @@ var hierarchy =
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", null ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ],
     [ "qOS::timer", "classq_o_s_1_1timer.html", null ],
-    [ "qOS::trace", "classq_o_s_1_1trace.html", null ],
     [ "qOS::sm::transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ]
 ];

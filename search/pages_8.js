@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['user_20manual_0',['User manual',['../index.html',1,'']]]
+  ['timers_0',['Timers',['../q_stimers.html',1,'q_extensions']]]
 ];

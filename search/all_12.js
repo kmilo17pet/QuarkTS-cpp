@@ -29,14 +29,12 @@ var searchData=
   ['timers_26',['Timers',['../q_stimers.html',1,'q_extensions'],['../group__qstimers.html',1,'(Global Namespace)']]],
   ['to_5fback_27',['TO_BACK',['../group__qqueues.html#ggaa2a592dbca5e6b54ae44c57f37d10e22a2e7ffa5560d8cdcc976ff1b0712ec889',1,'qOS']]],
   ['to_5ffront_28',['TO_FRONT',['../group__qqueues.html#ggaa2a592dbca5e6b54ae44c57f37d10e22a3b803ce5ee3b91971a3ed1d0587956c7',1,'qOS']]],
-  ['trace_29',['trace',['../classq_o_s_1_1trace.html',1,'qOS']]],
-  ['trace_30',['Trace',['../group__qtrace.html',1,'']]],
-  ['trace_2fdebugging_31',['Trace/Debugging',['../q_trace.html',1,'q_extensions']]],
-  ['transition_5ft_32',['transition_t',['../structq_o_s_1_1sm_1_1transition__t.html',1,'qOS::sm']]],
-  ['trigger_33',['trigger',['../group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7',1,'qOS']]],
-  ['try_5frestart_34',['try_restart',['../classq_o_s_1_1co_1_1handle.html#a6ea36b4383757cf055097b1e9d3e0995',1,'qOS::co::handle']]],
-  ['try_5fresume_35',['try_resume',['../classq_o_s_1_1co_1_1handle.html#a82073befda0f0a15666a8fa58bf73d5a',1,'qOS::co::handle']]],
-  ['try_5fset_36',['try_set',['../classq_o_s_1_1co_1_1handle.html#ac55d3f0e8fcd154aafc1927cbbf89b46',1,'qOS::co::handle']]],
-  ['try_5fsuspend_37',['try_suspend',['../classq_o_s_1_1co_1_1handle.html#ab40d871b5f3e4822ee20287ad57ebbd2',1,'qOS::co::handle']]],
-  ['types_20and_20macros_38',['Types and macros',['../group__qtypes.html',1,'']]]
+  ['trace_29',['Trace',['../group__qtrace.html',1,'']]],
+  ['transition_5ft_30',['transition_t',['../structq_o_s_1_1sm_1_1transition__t.html',1,'qOS::sm']]],
+  ['trigger_31',['trigger',['../group__qtaskmanip.html#ga7e4cfcb94ebb5b84bd080b487a2db8c7',1,'qOS']]],
+  ['try_5frestart_32',['try_restart',['../classq_o_s_1_1co_1_1handle.html#a6ea36b4383757cf055097b1e9d3e0995',1,'qOS::co::handle']]],
+  ['try_5fresume_33',['try_resume',['../classq_o_s_1_1co_1_1handle.html#a82073befda0f0a15666a8fa58bf73d5a',1,'qOS::co::handle']]],
+  ['try_5fset_34',['try_set',['../classq_o_s_1_1co_1_1handle.html#ac55d3f0e8fcd154aafc1927cbbf89b46',1,'qOS::co::handle']]],
+  ['try_5fsuspend_35',['try_suspend',['../classq_o_s_1_1co_1_1handle.html#ab40d871b5f3e4822ee20287ad57ebbd2',1,'qOS::co::handle']]],
+  ['types_20and_20macros_36',['Types and macros',['../group__qtypes.html',1,'']]]
 ];

@@ -53,9 +53,9 @@ var q_extensions =
       [ "Memory pools", "q_memmang.html#q_memmang_pools", null ],
       [ "Usage example", "q_memmang.html#q_memmang_usage", null ]
     ] ],
-    [ "Trace/Debugging", "q_trace.html", [
+    [ "Logging", "q_trace.html", [
       [ "Overview", "q_trace.html#q_trace_overview", null ],
-      [ "Viewing variables", "q_trace.html#q_trace_viewvars", null ],
+      [ "Logging text and variables", "q_trace.html#q_trace_viewvars", null ],
       [ "Viewing a memory block", "q_trace.html#q_trace_mblock", null ],
       [ "Usage", "q_trace.html#q_trace_usage", null ]
     ] ]

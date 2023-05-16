@@ -19,5 +19,5 @@ var searchData=
   ['count_16',['count',['../classq_o_s_1_1queue.html#a7c72087cd2f661c48861847cc828aa2f',1,'qOS::queue::count()'],['../classq_o_s_1_1byte_buffer.html#afcc85e15c7179199fc99557826d55f63',1,'qOS::byteBuffer::count()']]],
   ['critical_17',['Critical',['../group__qcritical.html',1,'']]],
   ['cycles_5ft_18',['cycles_t',['../group__qtypes.html#ga93e7465448a1947530425f4c140f9061',1,'types.hpp']]],
-  ['cyn_19',['cyn',['../group__qtrace.html#ga5d7e515e14ee6d63014e8aa874823680',1,'qOS::trace']]]
+  ['cyn_19',['cyn',['../group__qlogger.html#ga0cd46669b8448b3ec22986b3ca43cf54',1,'qOS::logger']]]
 ];

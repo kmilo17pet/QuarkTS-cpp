@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['managing_20tasks_0',['Managing tasks',['../group__qtaskmanip.html',1,'']]],
-  ['memory_20management_1',['Memory Management',['../group__qmemmang.html',1,'']]]
+  ['logger_0',['Logger',['../group__qlogger.html',1,'']]]
 ];

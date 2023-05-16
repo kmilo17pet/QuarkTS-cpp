@@ -6,7 +6,7 @@ var searchData=
   ['ready_3',['READY',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a2baa69eafc7204f3bd8648eba580c489',1,'qOS']]],
   ['receive_4',['receive',['../classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae',1,'qOS::queue']]],
   ['received_5',['received',['../classq_o_s_1_1response.html#a7b2436ae4dd3d1f0136a1780828716ae',1,'qOS::response']]],
-  ['red_6',['red',['../group__qtrace.html#ga9774794a82c583d6b0f54ead44b91a04',1,'qOS::trace']]],
+  ['red_6',['red',['../group__qlogger.html#ga0c15c4a4ece05ecc0d0f2e821fa665ba',1,'qOS::logger']]],
   ['reenter_7',['reenter',['../group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91',1,'qOS::co::reenter(void) noexcept'],['../group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587',1,'qOS::co::reenter(qOS::co::handle h) noexcept']]],
   ['reg_8',['reg',['../group__qedgecheck.html#ga87f4cb15ec91bfbd3cf6d8507bbd0aeb',1,'qOS::ec']]],
   ['reload_9',['reload',['../classq_o_s_1_1timer.html#a28117b138cfc3cbb1b93feb12b860355',1,'qOS::timer']]],

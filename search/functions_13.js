@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['var_0',['var',['../classq_o_s_1_1trace.html#a93204201649ab4b46f6ba133ebd60893',1,'qOS::trace']]]
+  ['var_0',['var',['../classq_o_s_1_1logger.html#a99da2d0e1081c03e6a397c86a45025dd',1,'qOS::logger']]]
 ];

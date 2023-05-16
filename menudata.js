@@ -145,4 +145,6 @@ var menudata={children:[
 {text:"s",url:"functions_vars.html#index_s"},
 {text:"t",url:"functions_vars.html#index_t"},
 {text:"w",url:"functions_vars.html#index_w"},
-{text:"y",url:"functions_vars.html#index_y"}]}]}]}]}
+{text:"y",url:"functions_vars.html#index_y"}]},
+{text:"Enumerations",url:"functions_enum.html"},
+{text:"Enumerator",url:"functions_eval.html"}]}]}]}

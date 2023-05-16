@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['memory_20management_0',['Memory Management',['../q_memmang.html',1,'q_extensions']]]
+  ['logging_0',['Logging',['../q_trace.html',1,'q_extensions']]]
 ];

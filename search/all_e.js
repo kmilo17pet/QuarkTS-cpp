@@ -7,7 +7,7 @@ var searchData=
   ['pinstate_4',['pinState',['../group__qedgecheck.html#ga8c8610c95dcd72ca8a1d5c3d926e507b',1,'qOS::ec']]],
   ['pool_5',['pool',['../classq_o_s_1_1mem_1_1pool.html#ac9e3988282addb3648fae80d3fcf310f',1,'qOS::mem::pool::pool()'],['../classq_o_s_1_1mem_1_1pool.html',1,'qOS::mem::pool']]],
   ['position_6',['position',['../classq_o_s_1_1co_1_1position.html',1,'qOS::co']]],
-  ['pre_7',['pre',['../classq_o_s_1_1trace_1_1pre.html#ab6ae96447979e901acd7885ca99ae5fe',1,'qOS::trace::pre::pre()'],['../classq_o_s_1_1trace_1_1pre.html',1,'qOS::trace::pre']]],
+  ['pre_7',['pre',['../classq_o_s_1_1logger_1_1pre.html#a12bd7d95459d1d60c78720ad0d706d11',1,'qOS::logger::pre::pre()'],['../classq_o_s_1_1logger_1_1pre.html',1,'qOS::logger::pre']]],
   ['printxdata_8',['printXData',['../group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67',1,'qOS::util']]],
   ['priority_5ft_9',['priority_t',['../group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5',1,'types.hpp']]],
   ['put_10',['put',['../classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22',1,'qOS::byteBuffer']]],

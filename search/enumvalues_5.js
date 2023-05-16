@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['missing_0',['MISSING',['../group__qresponse.html#ggaf0b51c328a9dd6215f23a32c98fb5586a10d1208b485425756fcc932229386b02',1,'qOS']]]
+  ['info_0',['info',['../group__qlogger.html#gga8d02cc4e3735026bc7ceb4cb70940bc1a5b07392609a69dcd9fb5cfd1c754df9b',1,'qOS::logger']]]
 ];

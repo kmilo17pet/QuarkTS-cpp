@@ -42,5 +42,5 @@ var searchData=
   ['gettrigger_39',['getTrigger',['../classq_o_s_1_1event__t.html#a7ea7de15a8fcaf57dc1384aa33cd1291',1,'qOS::event_t']]],
   ['gettype_40',['getType',['../classq_o_s_1_1cli_1_1handler__t.html#a7485235a5249fc75c76886b9ae227244',1,'qOS::cli::handler_t']]],
   ['globalstate_41',['globalState',['../group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790',1,'qOS']]],
-  ['grn_42',['grn',['../group__qtrace.html#ga474ba316675587e9ecd1b24372249e1b',1,'qOS::trace']]]
+  ['grn_42',['grn',['../group__qlogger.html#gaa2994cb884a30ce89436a23e34e7fdb9',1,'qOS::logger']]]
 ];

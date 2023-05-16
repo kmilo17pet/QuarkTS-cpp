@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queues_0',['Queues',['../group__qqueues.html',1,'']]]
+  ['operative_20system_0',['Operative System',['../group__qos.html',1,'']]]
 ];

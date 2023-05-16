@@ -15,7 +15,7 @@ var searchData=
   ['setinterruptsed_12',['setInterruptsED',['../group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3',1,'qOS::critical']]],
   ['setiterations_13',['setIterations',['../classq_o_s_1_1task.html#a651cad36723f0e24549066954708c8e2',1,'qOS::task']]],
   ['setname_14',['setName',['../classq_o_s_1_1task.html#ac52cce420afc21616880a98a4a38fadc',1,'qOS::task']]],
-  ['setoutputfcn_15',['setOutputFcn',['../group__qtrace.html#ga50f47c679f7086caa5c684176a18330e',1,'qOS::trace']]],
+  ['setoutputfcn_15',['setOutputFcn',['../group__qlogger.html#gaddfb8cc69a86f365870b6435f6607503',1,'qOS::logger']]],
   ['setposition_16',['setPosition',['../group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc',1,'qOS::co']]],
   ['setpriority_17',['setPriority',['../classq_o_s_1_1task.html#a2db8c5ba35184d6ac46f79367ed0d29e',1,'qOS::task']]],
   ['setschedulerreleasecallback_18',['setSchedulerReleaseCallback',['../classq_o_s_1_1core.html#a4d9ec6f77db0a44985f2793f2a47797b',1,'qOS::core']]],
