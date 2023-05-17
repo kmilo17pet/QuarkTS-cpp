@@ -29,7 +29,7 @@ var namespaceq_o_s =
       [ "floatToString", "group__qioutils.html#gac74928b5c05059b0f5daa5e0dea687c9", null ],
       [ "hexStringToUnsigned", "group__qioutils.html#ga502fd95e84b13046162174db24a665a5", null ],
       [ "inputRAW", "group__qioutils.html#gad16b6f751febd5914646970a812e636e", null ],
-      [ "integerToString", "group__qioutils.html#ga1601e2bd4f649a37f83ebd8f6ba442c6", null ],
+      [ "integerToString", "group__qioutils.html#gaf82c2a6fd06c4fc4386867be69a3ab8a", null ],
       [ "outputRAW", "group__qioutils.html#ga057bcfe88c1239c40169daaff9055383", null ],
       [ "outputString", "group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2", null ],
       [ "printXData", "group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67", null ],

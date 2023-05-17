@@ -8,6 +8,7 @@ var group__qtypes =
     [ "index_t", "group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba", null ],
     [ "iteration_t", "group__qtypes.html#gaf0c03ddb7df4048fd3b4764d994ee4da", null ],
     [ "priority_t", "group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5", null ],
+    [ "signed_t", "group__qtypes.html#gaf2465db8c191bb55433141c4a8006c7e", null ],
     [ "timeCount_t", "group__qtypes.html#gab0515cffe8ece55935faa88d455b230e", null ],
     [ "unsigned_t", "group__qtypes.html#gae2d1a31d7a2b9ad60ebeebd0b151f7d6", null ]
 ];

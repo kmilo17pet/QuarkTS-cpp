@@ -7,7 +7,7 @@ var group__qioutils =
     [ "qOS::util::floatToString", "group__qioutils.html#gac74928b5c05059b0f5daa5e0dea687c9", null ],
     [ "qOS::util::hexStringToUnsigned", "group__qioutils.html#ga502fd95e84b13046162174db24a665a5", null ],
     [ "qOS::util::inputRAW", "group__qioutils.html#gad16b6f751febd5914646970a812e636e", null ],
-    [ "qOS::util::integerToString", "group__qioutils.html#ga1601e2bd4f649a37f83ebd8f6ba442c6", null ],
+    [ "qOS::util::integerToString", "group__qioutils.html#gaf82c2a6fd06c4fc4386867be69a3ab8a", null ],
     [ "qOS::util::outputRAW", "group__qioutils.html#ga057bcfe88c1239c40169daaff9055383", null ],
     [ "qOS::util::outputString", "group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2", null ],
     [ "qOS::util::printXData", "group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67", null ],

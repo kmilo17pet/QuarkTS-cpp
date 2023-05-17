@@ -68,7 +68,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.2.2</span>
+   &#160;<span id="projectnumber">v1.2.3</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -255,9 +255,6 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void qOS::logger::setOutputFcn </td>
@@ -267,11 +264,6 @@ Variables</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set the output method for the logger stream. </p>
@@ -302,8 +294,8 @@ Variables</h2></td></tr>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
 <div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#ga9693b0c3e7b35917d312d70c8d34658c">logger::bin</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gafb50ddca6ac1689fdbb78f894719dc8d">logger::endl</a>;</div>
 <div class="ttc" id="aclassq_o_s_1_1logger_html_a840afc791f5c16b80756ed81ce3977b2"><div class="ttname"><a href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">qOS::logger::out</a></div><div class="ttdeci">static logger &amp; out(const logSeverity s)</div><div class="ttdoc">Specify a new logger output with severity level of information (if defined).</div></div>
-<div class="ttc" id="agroup__qlogger_html_ga9693b0c3e7b35917d312d70c8d34658c"><div class="ttname"><a href="group__qlogger.html#ga9693b0c3e7b35917d312d70c8d34658c">qOS::logger::bin</a></div><div class="ttdeci">const lout_base bin</div><div class="ttdoc">Modifies the default numeric base to binary for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:232</div></div>
-<div class="ttc" id="agroup__qlogger_html_gafb50ddca6ac1689fdbb78f894719dc8d"><div class="ttname"><a href="group__qlogger.html#gafb50ddca6ac1689fdbb78f894719dc8d">qOS::logger::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the logger output. Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:240</div></div>
+<div class="ttc" id="agroup__qlogger_html_ga9693b0c3e7b35917d312d70c8d34658c"><div class="ttname"><a href="group__qlogger.html#ga9693b0c3e7b35917d312d70c8d34658c">qOS::logger::bin</a></div><div class="ttdeci">const lout_base bin</div><div class="ttdoc">Modifies the default numeric base to binary for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:227</div></div>
+<div class="ttc" id="agroup__qlogger_html_gafb50ddca6ac1689fdbb78f894719dc8d"><div class="ttname"><a href="group__qlogger.html#gafb50ddca6ac1689fdbb78f894719dc8d">qOS::logger::endl</a></div><div class="ttdeci">const char *const endl</div><div class="ttdoc">Inserts a new-line character to the logger output. Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:235</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -321,8 +313,8 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "blue" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#ga2904c311b3e83e01f7dbf8ff72f3c64c">logger::blu</a> &lt;&lt;<span class="stringliteral">&quot;blue colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_ga2904c311b3e83e01f7dbf8ff72f3c64c"><div class="ttname"><a href="group__qlogger.html#ga2904c311b3e83e01f7dbf8ff72f3c64c">qOS::logger::blu</a></div><div class="ttdeci">const char *const blu</div><div class="ttdoc">Set colored output to &quot;blue&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:289</div></div>
-<div class="ttc" id="agroup__qlogger_html_gaea66b2201f90d2e937a431d4c1a808bc"><div class="ttname"><a href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">qOS::logger::end</a></div><div class="ttdeci">const char *const end</div><div class="ttdoc">Inserts a new-line character to the logger output and restore the default color Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:249</div></div>
+<div class="ttc" id="agroup__qlogger_html_ga2904c311b3e83e01f7dbf8ff72f3c64c"><div class="ttname"><a href="group__qlogger.html#ga2904c311b3e83e01f7dbf8ff72f3c64c">qOS::logger::blu</a></div><div class="ttdeci">const char *const blu</div><div class="ttdoc">Set colored output to &quot;blue&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:284</div></div>
+<div class="ttc" id="agroup__qlogger_html_gaea66b2201f90d2e937a431d4c1a808bc"><div class="ttname"><a href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">qOS::logger::end</a></div><div class="ttdeci">const char *const end</div><div class="ttdoc">Inserts a new-line character to the logger output and restore the default color Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:244</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -340,7 +332,7 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "cyan" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#ga0cd46669b8448b3ec22986b3ca43cf54">logger::cyn</a> &lt;&lt;<span class="stringliteral">&quot;cyan colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_ga0cd46669b8448b3ec22986b3ca43cf54"><div class="ttname"><a href="group__qlogger.html#ga0cd46669b8448b3ec22986b3ca43cf54">qOS::logger::cyn</a></div><div class="ttdeci">const char *const cyn</div><div class="ttdoc">Set colored output to &quot;cyan&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:305</div></div>
+<div class="ttc" id="agroup__qlogger_html_ga0cd46669b8448b3ec22986b3ca43cf54"><div class="ttname"><a href="group__qlogger.html#ga0cd46669b8448b3ec22986b3ca43cf54">qOS::logger::cyn</a></div><div class="ttdeci">const char *const cyn</div><div class="ttdoc">Set colored output to &quot;cyan&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:300</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -359,7 +351,7 @@ Variables</h2></td></tr>
 <p>Modifies the default numeric base to decimal for integer logger output Example: </p>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
 <div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gad8a37883a837280ed7e1984a8bc3c27c">logger::dec</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gafb50ddca6ac1689fdbb78f894719dc8d">logger::endl</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_gad8a37883a837280ed7e1984a8bc3c27c"><div class="ttname"><a href="group__qlogger.html#gad8a37883a837280ed7e1984a8bc3c27c">qOS::logger::dec</a></div><div class="ttdeci">const lout_base dec</div><div class="ttdoc">Modifies the default numeric base to decimal for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:202</div></div>
+<div class="ttc" id="agroup__qlogger_html_gad8a37883a837280ed7e1984a8bc3c27c"><div class="ttname"><a href="group__qlogger.html#gad8a37883a837280ed7e1984a8bc3c27c">qOS::logger::dec</a></div><div class="ttdeci">const lout_base dec</div><div class="ttdoc">Modifies the default numeric base to decimal for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:197</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -411,7 +403,7 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "green" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaa2994cb884a30ce89436a23e34e7fdb9">logger::grn</a> &lt;&lt;<span class="stringliteral">&quot;green colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_gaa2994cb884a30ce89436a23e34e7fdb9"><div class="ttname"><a href="group__qlogger.html#gaa2994cb884a30ce89436a23e34e7fdb9">qOS::logger::grn</a></div><div class="ttdeci">const char *const grn</div><div class="ttdoc">Set colored output to &quot;green&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:273</div></div>
+<div class="ttc" id="agroup__qlogger_html_gaa2994cb884a30ce89436a23e34e7fdb9"><div class="ttname"><a href="group__qlogger.html#gaa2994cb884a30ce89436a23e34e7fdb9">qOS::logger::grn</a></div><div class="ttdeci">const char *const grn</div><div class="ttdoc">Set colored output to &quot;green&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:268</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -430,7 +422,7 @@ Variables</h2></td></tr>
 <p>Modifies the default numeric base to hexadecimal for integer logger output Example: </p>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
 <div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gac8e33ac13f61cf20653afc35f087df01">logger::hex</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gafb50ddca6ac1689fdbb78f894719dc8d">logger::endl</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_gac8e33ac13f61cf20653afc35f087df01"><div class="ttname"><a href="group__qlogger.html#gac8e33ac13f61cf20653afc35f087df01">qOS::logger::hex</a></div><div class="ttdeci">const lout_base hex</div><div class="ttdoc">Modifies the default numeric base to hexadecimal for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:212</div></div>
+<div class="ttc" id="agroup__qlogger_html_gac8e33ac13f61cf20653afc35f087df01"><div class="ttname"><a href="group__qlogger.html#gac8e33ac13f61cf20653afc35f087df01">qOS::logger::hex</a></div><div class="ttdeci">const lout_base hex</div><div class="ttdoc">Modifies the default numeric base to hexadecimal for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:207</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -448,7 +440,7 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "magenta" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaad4d18badb863d05d76c5b0e4161b49e">logger::mag</a> &lt;&lt;<span class="stringliteral">&quot;magenta colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_gaad4d18badb863d05d76c5b0e4161b49e"><div class="ttname"><a href="group__qlogger.html#gaad4d18badb863d05d76c5b0e4161b49e">qOS::logger::mag</a></div><div class="ttdeci">const char *const mag</div><div class="ttdoc">Set colored output to &quot;magenta&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:297</div></div>
+<div class="ttc" id="agroup__qlogger_html_gaad4d18badb863d05d76c5b0e4161b49e"><div class="ttname"><a href="group__qlogger.html#gaad4d18badb863d05d76c5b0e4161b49e">qOS::logger::mag</a></div><div class="ttdeci">const char *const mag</div><div class="ttdoc">Set colored output to &quot;magenta&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:292</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -466,7 +458,7 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "normal" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gade95d6a0e0964758c9435eaca000bae6">logger::nrm</a> &lt;&lt;<span class="stringliteral">&quot;normal colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_gade95d6a0e0964758c9435eaca000bae6"><div class="ttname"><a href="group__qlogger.html#gade95d6a0e0964758c9435eaca000bae6">qOS::logger::nrm</a></div><div class="ttdeci">const char *const nrm</div><div class="ttdoc">Set colored output to &quot;normal&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:257</div></div>
+<div class="ttc" id="agroup__qlogger_html_gade95d6a0e0964758c9435eaca000bae6"><div class="ttname"><a href="group__qlogger.html#gade95d6a0e0964758c9435eaca000bae6">qOS::logger::nrm</a></div><div class="ttdeci">const char *const nrm</div><div class="ttdoc">Set colored output to &quot;normal&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:252</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -485,7 +477,7 @@ Variables</h2></td></tr>
 <p>Modifies the default numeric base to octal for integer logger output Example: </p>
 <div class="fragment"><div class="line">uint16_t myNumber = 1000;</div>
 <div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaaa3b17505e16e241c7ce360742d10ab7">logger::oct</a> &lt;&lt; myNumber &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gafb50ddca6ac1689fdbb78f894719dc8d">logger::endl</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_gaaa3b17505e16e241c7ce360742d10ab7"><div class="ttname"><a href="group__qlogger.html#gaaa3b17505e16e241c7ce360742d10ab7">qOS::logger::oct</a></div><div class="ttdeci">const lout_base oct</div><div class="ttdoc">Modifies the default numeric base to octal for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:222</div></div>
+<div class="ttc" id="agroup__qlogger_html_gaaa3b17505e16e241c7ce360742d10ab7"><div class="ttname"><a href="group__qlogger.html#gaaa3b17505e16e241c7ce360742d10ab7">qOS::logger::oct</a></div><div class="ttdeci">const lout_base oct</div><div class="ttdoc">Modifies the default numeric base to octal for integer logger output Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:217</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -503,7 +495,7 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "red" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#ga0c15c4a4ece05ecc0d0f2e821fa665ba">logger::red</a> &lt;&lt;<span class="stringliteral">&quot;red colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_ga0c15c4a4ece05ecc0d0f2e821fa665ba"><div class="ttname"><a href="group__qlogger.html#ga0c15c4a4ece05ecc0d0f2e821fa665ba">qOS::logger::red</a></div><div class="ttdeci">const char *const red</div><div class="ttdoc">Set colored output to &quot;red&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:265</div></div>
+<div class="ttc" id="agroup__qlogger_html_ga0c15c4a4ece05ecc0d0f2e821fa665ba"><div class="ttname"><a href="group__qlogger.html#ga0c15c4a4ece05ecc0d0f2e821fa665ba">qOS::logger::red</a></div><div class="ttdeci">const char *const red</div><div class="ttdoc">Set colored output to &quot;red&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:260</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -521,7 +513,7 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "white" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#ga733b172d6537dc9028df93553ccfc069">logger::wht</a> &lt;&lt;<span class="stringliteral">&quot;white colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_ga733b172d6537dc9028df93553ccfc069"><div class="ttname"><a href="group__qlogger.html#ga733b172d6537dc9028df93553ccfc069">qOS::logger::wht</a></div><div class="ttdeci">const char *const wht</div><div class="ttdoc">Set colored output to &quot;white&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:313</div></div>
+<div class="ttc" id="agroup__qlogger_html_ga733b172d6537dc9028df93553ccfc069"><div class="ttname"><a href="group__qlogger.html#ga733b172d6537dc9028df93553ccfc069">qOS::logger::wht</a></div><div class="ttdeci">const char *const wht</div><div class="ttdoc">Set colored output to &quot;white&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:308</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -539,7 +531,7 @@ Variables</h2></td></tr>
 
 <p>Set colored output to "yellow" after the usage of this statement Example: </p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2">logger::out</a>() &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#ga2621bc6331e0d8bbf4279537a3e78728">logger::yel</a> &lt;&lt;<span class="stringliteral">&quot;yellow colored!&quot;</span> &lt;&lt; <a class="code hl_variable" href="group__qlogger.html#gaea66b2201f90d2e937a431d4c1a808bc">logger::end</a>;</div>
-<div class="ttc" id="agroup__qlogger_html_ga2621bc6331e0d8bbf4279537a3e78728"><div class="ttname"><a href="group__qlogger.html#ga2621bc6331e0d8bbf4279537a3e78728">qOS::logger::yel</a></div><div class="ttdeci">const char *const yel</div><div class="ttdoc">Set colored output to &quot;yellow&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:281</div></div>
+<div class="ttc" id="agroup__qlogger_html_ga2621bc6331e0d8bbf4279537a3e78728"><div class="ttname"><a href="group__qlogger.html#ga2621bc6331e0d8bbf4279537a3e78728">qOS::logger::yel</a></div><div class="ttdeci">const char *const yel</div><div class="ttdoc">Set colored output to &quot;yellow&quot; after the usage of this statement Example:</div><div class="ttdef"><b>Definition:</b> logger.hpp:276</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
