@@ -7,7 +7,7 @@
 #######################################
 
 os	KEYWORD1
-trace KEYWORD1
+logger KEYWORD1
 task	KEYWORD1
 sm	KEYWORD1
 bits	KEYWORD1
