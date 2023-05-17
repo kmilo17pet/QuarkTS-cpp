@@ -47,6 +47,11 @@ using byte_t = uint8_t;
 using unsigned_t = unsigned long;
 
 /**
+* @brief A type to instantiate an signed variable
+*/
+using signed_t = long int;
+
+/**
 * @brief A type to instantiate a single-precision variable of 32-bits IEEE 754.
 */
 using float32_t = float;  /*this is not always true in some compilers*/

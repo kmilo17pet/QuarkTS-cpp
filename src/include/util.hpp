@@ -260,7 +260,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* integerToString( int32_t num, char* str, uint8_t base = 10u ) noexcept;
+        char* integerToString( signed_t num, char* str, uint8_t base = 10u ) noexcept;
         /**
         * @brief Converts a boolean value to a null-terminated string. Input is
         * considered true with any value different to zero (0).

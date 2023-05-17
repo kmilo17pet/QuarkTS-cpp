@@ -7,17 +7,12 @@
 #include "include/task.hpp"
 #include "include/fsm.hpp"
 #include "include/timer.hpp"
-#include "include/macro_overload.hpp"
 
 #if defined( ARDUINO_PLATFORM )
     #include <Arduino.h>
 #else
     #include <string>
 #endif
-
-
-#define _LOGGER_STRINGIFY(x)              #x
-#define _LOGGER_TOSTRING(x)               _LOGGER_STRINGIFY( x )
 
 namespace qOS {
 
@@ -313,51 +308,21 @@ namespace qOS {
         extern const char * const wht;
 
         /*! @cond */
-        class _logger final {
-            private:
-                _logger() = default;
-                _logger( _logger &other ) = delete;
-                void operator=( const _logger & ) = delete;
-
-                const char *s_str[ 7 ] = { "", "[fatal]: ", "[error]: ", "[warning]: ", "[info]: ", "[debug] ", "" };
-                uint8_t base = { 10u };
-                size_t n{ 0u };
-                uint8_t precision { 6u };
-                #if ( Q_TRACE_BUFSIZE < 36 )
-                    #define Q_TRACE_BUFSIZE     ( 36 )
-                #endif
-                char buffer[ Q_TRACE_BUFSIZE ] = { 0 };
-                char preFix[ 5 ] = { 0 };
-                util::putChar_t writeChar{ nullptr };
-            public:
-                static _logger& getInstance( void ) noexcept;
-            friend void setOutputFcn( util::putChar_t fcn );
-            friend _logger& operator<<( _logger& tout, const char c );
-            friend _logger& operator<<( _logger& tout, const char * s );
-            friend _logger& operator<<( _logger& tout, const int32_t& v );
-            #if ULONG_MAX > UINT32_MAX
-                friend _logger& operator<<( _logger& tout, const uint32_t& v );
+        struct _logger final {
+            _logger() = default;
+            _logger( _logger &other ) = delete;
+            void operator=( const _logger & ) = delete;
+            const char *s_str[ 7 ] = { "", "[fatal]: ", "[error]: ", "[warning]: ", "[info]: ", "[debug] ", "" };
+            uint8_t base = { 10u };
+            size_t n{ 0u };
+            uint8_t precision { 6u };
+            #if ( Q_TRACE_BUFSIZE < 36 )
+                #define Q_TRACE_BUFSIZE     ( 36 )
             #endif
-            friend _logger& operator<<( _logger& tout, const unsigned_t& v );
-            
-            friend _logger& operator<<( _logger& tout, const void * const p );
-            friend _logger& operator<<( _logger& tout, const float64_t& v );
-            friend _logger& operator<<( _logger& tout, const lout_base& f );
-            friend _logger& operator<<( _logger& tout, const mem& m );
-            friend _logger& operator<<( _logger& tout, const pre& m );
-
-            friend _logger& operator<<( _logger& tout, const task& t );
-            friend _logger& operator<<( _logger& tout, const qOS::timer& t );
-            friend _logger& operator<<( _logger& tout, const qOS::stateMachine& sm );
-            friend _logger& operator<<( _logger& tout, const qOS::sm::state& s );
-
-            #if defined( ARDUINO_PLATFORM )
-                friend _logger& operator<<( _logger& tout, const String & s );
-            #else
-                friend _logger& operator<<( _logger& tout, const string & s );
-            #endif
-
-            friend _logger& out( const logSeverity s, const source_location  loc );
+            char buffer[ Q_TRACE_BUFSIZE ] = { 0 };
+            char preFix[ 5 ] = { 0 };
+            util::putChar_t writeChar{ nullptr };
+            static _logger& getInstance( void ) noexcept;
         };
         extern _logger& _logger_out; // skipcq: CXX-W2011
         /*! @endcond */
@@ -367,30 +332,55 @@ namespace qOS {
         * @param[in] fcn The basic output byte function.
         * @return none.
         */
-        inline void setOutputFcn( util::putChar_t fcn )
-        {
-            if ( nullptr != fcn ) {
-                _logger_out.writeChar = fcn;
-            }
-        }
+        void setOutputFcn( util::putChar_t fcn );
 
         /*! @cond */
-        /* cppcheck-suppress functionStatic */
-        
-        inline _logger& out( const logSeverity s = logSeverity::none, const source_location loc = source_location::current() )
-        {
-            _logger_out << "[ " <<  dec << clock::getTick() << "] " << _logger_out.s_str[ s ];
-            if ( s == logSeverity::debug ) {
-                _logger_out << "( " << loc.function_name() << ":" << loc.line() << "): ";
-            }
-            else if ( s == logSeverity::verbose ) {
-                _logger_out << 
-                loc.file_name() << " ( " << loc.function_name() << ":" << loc.line() << "): ";
-            }
-            return _logger_out;
-        }
+        _logger& operator<<( _logger& tout, const char& c );
+        _logger& operator<<( _logger& tout, const char * s );
+        _logger& operator<<( _logger& tout, const short& v );
+        _logger& operator<<( _logger& tout, const int& v );
+        _logger& operator<<( _logger& tout, const long int& v );
+        _logger& operator<<( _logger& tout, const unsigned char& c );
+        _logger& operator<<( _logger& tout, const unsigned short& v );
+        _logger& operator<<( _logger& tout, const unsigned int& v );
+        _logger& operator<<( _logger& tout, const unsigned long& v );
+        _logger& operator<<( _logger& tout, const void * const p );
+        _logger& operator<<( _logger& tout, const float64_t& v );
+        _logger& operator<<( _logger& tout, const lout_base& f );
+        _logger& operator<<( _logger& tout, const mem& m );
+        _logger& operator<<( _logger& tout, const pre& m );
+        _logger& operator<<( _logger& tout, const task& t );
+        _logger& operator<<( _logger& tout, const qOS::timer& t );
+        _logger& operator<<( _logger& tout, const qOS::stateMachine& sm );
+        _logger& operator<<( _logger& tout, const qOS::sm::state& s );
+        #if defined( ARDUINO_PLATFORM )
+            _logger& operator<<( _logger& tout, const String & s );
+        #else
+            _logger& operator<<( _logger& tout, const string & s );
+        #endif
+
+        _logger& out( const logSeverity s = logSeverity::none, const source_location &loc = source_location::current() );
         /* cppcheck-suppress functionStatic */
         inline const char * var( const char * vname ){ return vname; }
+
+        template <typename T>
+        _logger& _log_integer( _logger& tout, const T& v, bool is_int )
+        {
+            if ( is_int ) {
+                (void)util::integerToString( static_cast<signed_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
+            }
+            else {
+                (void)util::unsignedToString( static_cast<unsigned_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
+            }
+            
+            if ( '\0' != tout.preFix[ 0 ] ) {
+                (void)util::outputString( tout.writeChar, tout.preFix ); // skipcq: CXX-C1000
+            } 
+            (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
+            tout.writeChar( nullptr, ' ' );
+            return tout;
+        }
+
         /*! @endcond */
 
         /** @}*/
@@ -399,7 +389,7 @@ namespace qOS {
 }
 
 /*! @cond */
-#define var(v)  var( _LOGGER_STRINGIFY(v) ) << '=' << v
+#define var(v)  var( #v ) << '=' << (v)
 /*! @endcond */
 
 #endif /*QOS_CPP_LOGGER*/

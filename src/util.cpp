@@ -16,7 +16,7 @@ using namespace qOS::util;
 
 static const char * discardWhitespaces( const char *s, size_t maxlen ) noexcept;
 static const char * checkStrSign( const char *s, int *sgn ) noexcept;
-static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept;
+static size_t xBaseUtoA( unsigned_t num, char* str, uint8_t base ) noexcept;
 static char nibbleToX( uint8_t value ) noexcept;
 static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip, bool operation ) noexcept;
 static uint8_t hexCharToUnsigned( const char c ) noexcept;
@@ -125,7 +125,7 @@ size_t util::strcat( char *dst, const char *src, size_t maxlen ) noexcept
 }
 /*============================================================================*/
 /*perform conversion of unsigned integer to ASCII. NULL Terminator not included*/
-static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept
+static size_t xBaseUtoA( unsigned_t num, char* str, uint8_t base ) noexcept
 {
     size_t i = 0u;
 
@@ -392,7 +392,7 @@ char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcep
             intPart = static_cast<uint32_t>( num );
             /*cstat -CERT-FLP36-C*/
             num -= static_cast<float64_t>( intPart );
-            i += xBaseU32toA( intPart, &str[ i ], 10u );
+            i += xBaseUtoA( intPart, &str[ i ], 10u );
             if ( precision > 0u ) {
                 str[ i++ ] = '.';
                 while ( 0u != precision-- ) {
@@ -448,14 +448,14 @@ char* util::unsignedToString( unsigned_t num, char* str, uint8_t base ) noexcept
     if ( nullptr != str ) {
         size_t i;
 
-        i = xBaseU32toA( num, str, base );
+        i = xBaseUtoA( num, str, base );
         str[ i ] = '\0';
     }
 
     return str;
 }
 /*============================================================================*/
-char* util::integerToString( int32_t num, char* str, uint8_t base ) noexcept
+char* util::integerToString( signed_t num, char* str, uint8_t base ) noexcept
 {
     if ( nullptr != str ) {
         size_t i = 0u;
@@ -467,7 +467,7 @@ char* util::integerToString( int32_t num, char* str, uint8_t base ) noexcept
             num = -num;
         }
         /*cstat -MISRAC++2008-5-0-9*/
-        i += xBaseU32toA( static_cast<uint32_t>( num ), &str[ i ], base );
+        i += xBaseUtoA( static_cast<unsigned_t>( num ), &str[ i ], base );
         /*cstat +MISRAC++2008-5-0-9*/
         str[ i ] = '\0';
     }

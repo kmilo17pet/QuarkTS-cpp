@@ -21,13 +21,33 @@ namespace qOS {
         const lout_base oct( 8u );
         const lout_base bin( 2u );
 
+        void setOutputFcn( util::putChar_t fcn )
+        {
+            if ( nullptr != fcn ) {
+                _logger_out.writeChar = fcn;
+            }
+        }
+
+        _logger& out( const logSeverity s, const source_location &loc )
+        {
+            _logger_out << "[ " <<  dec << clock::getTick() << "] " << _logger_out.s_str[ s ];
+            if ( s == logSeverity::debug ) {
+                _logger_out << "( " << loc.function_name() << ":" << loc.line() << "): ";
+            }
+            else if ( s == logSeverity::verbose ) {
+                _logger_out << 
+                loc.file_name() << " ( " << loc.function_name() << ":" << loc.line() << "): ";
+            }
+            return _logger_out;
+        }
+
         _logger& _logger::getInstance( void ) noexcept
         {
             static _logger instance;
             return instance;
         }
 
-        _logger& operator<<( _logger& tout, const char c )
+        _logger& operator<<( _logger& tout, const char& c )
         {
             tout.writeChar( nullptr, c );
             return tout;
@@ -39,43 +59,45 @@ namespace qOS {
             return tout;
         }
 
-        _logger& operator<<( _logger& tout, const int32_t& v )
+        _logger& operator<<( _logger& tout, const short& v )
         {
-            (void)util::integerToString( static_cast<int32_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
-            if ( '\0' != tout.preFix[ 0 ] ) {
-                (void)util::outputString( tout.writeChar, tout.preFix ); // skipcq: CXX-C1000
-            } 
-            (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
-            tout.writeChar( nullptr, ' ' );
-            return tout;
+            return _log_integer( tout, v, true );
         }
-        #if ULONG_MAX > UINT32_MAX
-        _logger& operator<<( _logger& tout, const uint32_t& v )
+
+        _logger& operator<<( _logger& tout, const int& v )
         {
-            (void)util::unsignedToString( static_cast<unsigned_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
-            if ( '\0' != tout.preFix[ 0 ] ) {
-                (void)util::outputString( tout.writeChar, tout.preFix ); // skipcq: CXX-C1000
-            } 
-            (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
-            tout.writeChar( nullptr, ' ' );
-            return tout;
+            return _log_integer( tout, v, true );
         }
-        #endif
-        _logger& operator<<( _logger& tout, const unsigned_t& v )
+
+        _logger& operator<<( _logger& tout, const long int& v )
         {
-            (void)util::unsignedToString( v, tout.buffer, tout.base ); // skipcq: CXX-C1000
-            if ( '\0' != tout.preFix[ 0 ] ) {
-                (void)util::outputString( tout.writeChar, tout.preFix ); // skipcq: CXX-C1000
-            } 
-            (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
-            tout.writeChar( nullptr, ' ' );
-            return tout;
+            return _log_integer( tout, v, true );
+        }
+
+        _logger& operator<<( _logger& tout, const unsigned char& v )
+        {
+            return _log_integer( tout, v, false );
+        }
+
+        _logger& operator<<( _logger& tout, const unsigned short& v )
+        {
+            return _log_integer( tout, v, false );
+        }
+
+        _logger& operator<<( _logger& tout, const unsigned int& v )
+        {
+            return _log_integer( tout, v, false );
+        }
+
+        _logger& operator<<( _logger& tout, const unsigned long& v )
+        {
+            return _log_integer( tout, v, false );
         }
 
         _logger& operator<<( _logger& tout, const void * const p )
         {
             /*cstat -CERT-INT36-C*/
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), tout.buffer, 10u ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), tout.buffer, 16u ); // skipcq: CXX-C1000
             /*cstat +CERT-INT36-C*/
             (void)util::outputString( tout.writeChar, "p@0x" );
             (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000

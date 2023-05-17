@@ -37,8 +37,10 @@ unsigned long sysClock( void );
 
 void idleTask_callback( event_t e )
 {
+    unsigned int a;
+
     if ( e.firstCall() ) {
-        logger::out() << "idle task" << logger::end;
+        logger::out() << "idle task" << a << logger::end;
     }
     co::reenter() {
         for(;;) {
