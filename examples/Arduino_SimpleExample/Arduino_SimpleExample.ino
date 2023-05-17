@@ -43,19 +43,12 @@ void tracePutcWrapper( void *arg, const char c ) {
   Serial.write( c );
   (void)arg;
 }
-void uint32_t disableINTWrapper( void ) {
-  noInterrupts();
-}
-void restoreINTWrapper( uint32_t s ) {
-  interrupts();
-}
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(115200);
 
   logger::setOutputFcn( tracePutcWrapper );
-  critical::setInterruptsED( resetINTWrapper, disableINTWrapper );
   os.init( millis, idleTask_callback );
   demoTask1.setName("demoTask1");
   blinkTask.setName("blinkTask");
