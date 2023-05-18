@@ -335,28 +335,28 @@ namespace qOS {
         void setOutputFcn( util::putChar_t fcn );
 
         /*! @cond */
-        _logger& operator<<( _logger& tout, const char& c );
-        _logger& operator<<( _logger& tout, const char * s );
-        _logger& operator<<( _logger& tout, const short& v );
-        _logger& operator<<( _logger& tout, const int& v );
-        _logger& operator<<( _logger& tout, const long int& v );
-        _logger& operator<<( _logger& tout, const unsigned char& c );
-        _logger& operator<<( _logger& tout, const unsigned short& v );
-        _logger& operator<<( _logger& tout, const unsigned int& v );
-        _logger& operator<<( _logger& tout, const unsigned long& v );
-        _logger& operator<<( _logger& tout, const void * const p );
-        _logger& operator<<( _logger& tout, const float64_t& v );
-        _logger& operator<<( _logger& tout, const lout_base& f );
-        _logger& operator<<( _logger& tout, const mem& m );
-        _logger& operator<<( _logger& tout, const pre& m );
-        _logger& operator<<( _logger& tout, const task& t );
-        _logger& operator<<( _logger& tout, const qOS::timer& t );
-        _logger& operator<<( _logger& tout, const qOS::stateMachine& sm );
-        _logger& operator<<( _logger& tout, const qOS::sm::state& s );
+        _logger& operator<<( _logger& lout, const char& v );
+        _logger& operator<<( _logger& lout, const char * s );
+        _logger& operator<<( _logger& lout, const short& v );
+        _logger& operator<<( _logger& lout, const int& v );
+        _logger& operator<<( _logger& lout, const long int& v );
+        _logger& operator<<( _logger& lout, const unsigned char& v );
+        _logger& operator<<( _logger& lout, const unsigned short& v );
+        _logger& operator<<( _logger& lout, const unsigned int& v );
+        _logger& operator<<( _logger& lout, const unsigned long& v );
+        _logger& operator<<( _logger& lout, const void * const p );
+        _logger& operator<<( _logger& lout, const float64_t& v );
+        _logger& operator<<( _logger& lout, const lout_base& f );
+        _logger& operator<<( _logger& lout, const mem& m );
+        _logger& operator<<( _logger& lout, const pre& m );
+        _logger& operator<<( _logger& lout, const task& t );
+        _logger& operator<<( _logger& lout, const qOS::timer& t );
+        _logger& operator<<( _logger& lout, const qOS::stateMachine& sm );
+        _logger& operator<<( _logger& lout, const qOS::sm::state& s );
         #if defined( ARDUINO_PLATFORM )
-            _logger& operator<<( _logger& tout, const String & s );
+            _logger& operator<<( _logger& lout, const String & s );
         #else
-            _logger& operator<<( _logger& tout, const string & s );
+            _logger& operator<<( _logger& lout, const string & s );
         #endif
 
         _logger& out( const logSeverity s = logSeverity::none, const source_location &loc = source_location::current() );
@@ -364,21 +364,22 @@ namespace qOS {
         inline const char * var( const char * vname ){ return vname; }
 
         template <typename T>
-        _logger& _log_integer( _logger& tout, const T& v, bool is_int )
+        inline _logger& _log_integer( _logger& lout, const T& v, bool is_int )
         {
+            /*cstat -MISRAC++2008-5-0-9 -MISRAC++2008-5-0-8*/
             if ( is_int ) {
-                (void)util::integerToString( static_cast<signed_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
+                (void)util::integerToString( static_cast<signed_t>( v ), lout.buffer, lout.base ); // skipcq: CXX-C1000
             }
             else {
-                (void)util::unsignedToString( static_cast<unsigned_t>( v ), tout.buffer, tout.base ); // skipcq: CXX-C1000
+                (void)util::unsignedToString( static_cast<unsigned_t>( v ), lout.buffer, lout.base ); // skipcq: CXX-C1000
             }
-            
-            if ( '\0' != tout.preFix[ 0 ] ) {
-                (void)util::outputString( tout.writeChar, tout.preFix ); // skipcq: CXX-C1000
+            /*cstat +MISRAC++2008-5-0-9 +MISRAC++2008-5-0-8*/
+            if ( '\0' != lout.preFix[ 0 ] ) {
+                (void)util::outputString( lout.writeChar, lout.preFix ); // skipcq: CXX-C1000
             } 
-            (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
-            tout.writeChar( nullptr, ' ' );
-            return tout;
+            (void)util::outputString( lout.writeChar, lout.buffer ); // skipcq: CXX-C1000
+            lout.writeChar( nullptr, ' ' );
+            return lout;
         }
 
         /*! @endcond */

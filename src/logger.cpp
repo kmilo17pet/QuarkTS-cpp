@@ -47,76 +47,76 @@ namespace qOS {
             return instance;
         }
 
-        _logger& operator<<( _logger& tout, const char& c )
+        _logger& operator<<( _logger& lout, const char& v )
         {
-            tout.writeChar( nullptr, c );
-            return tout;
+            lout.writeChar( nullptr, v );
+            return lout;
         }
 
-        _logger& operator<<( _logger& tout, const char * s )
+        _logger& operator<<( _logger& lout, const char * s )
         {
-            (void)util::outputString( tout.writeChar, s );
-            return tout;
+            (void)util::outputString( lout.writeChar, s );
+            return lout;
         }
 
-        _logger& operator<<( _logger& tout, const short& v )
+        _logger& operator<<( _logger& lout, const short& v )
         {
-            return _log_integer( tout, v, true );
+            return _log_integer( lout, v, true );
         }
 
-        _logger& operator<<( _logger& tout, const int& v )
+        _logger& operator<<( _logger& lout, const int& v )
         {
-            return _log_integer( tout, v, true );
+            return _log_integer( lout, v, true );
         }
 
-        _logger& operator<<( _logger& tout, const long int& v )
+        _logger& operator<<( _logger& lout, const long int& v )
         {
-            return _log_integer( tout, v, true );
+            return _log_integer( lout, v, true );
         }
 
-        _logger& operator<<( _logger& tout, const unsigned char& v )
+        _logger& operator<<( _logger& lout, const unsigned char& v )
         {
-            return _log_integer( tout, v, false );
+            return _log_integer( lout, v, false );
         }
 
-        _logger& operator<<( _logger& tout, const unsigned short& v )
+        _logger& operator<<( _logger& lout, const unsigned short& v )
         {
-            return _log_integer( tout, v, false );
+            return _log_integer( lout, v, false );
         }
 
-        _logger& operator<<( _logger& tout, const unsigned int& v )
+        _logger& operator<<( _logger& lout, const unsigned int& v )
         {
-            return _log_integer( tout, v, false );
+            return _log_integer( lout, v, false );
         }
 
-        _logger& operator<<( _logger& tout, const unsigned long& v )
+        _logger& operator<<( _logger& lout, const unsigned long& v )
         {
-            return _log_integer( tout, v, false );
+            return _log_integer( lout, v, false );
         }
 
-        _logger& operator<<( _logger& tout, const void * const p )
+        _logger& operator<<( _logger& lout, const void * const p )
         {
             /*cstat -CERT-INT36-C*/
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), tout.buffer, 16u ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), lout.buffer, 16u ); // skipcq: CXX-C1000
             /*cstat +CERT-INT36-C*/
-            (void)util::outputString( tout.writeChar, "p@0x" );
-            (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
-            if ( tout.n > 0u ) {
-                (void)util::outputString( tout.writeChar, " = [ " );
-                (void)util::printXData( tout.writeChar, const_cast<void*>( p ), tout.n, false );
-                tout.n  = 0u;
-                tout.writeChar( nullptr, ']' );
+            (void)util::outputString( lout.writeChar, "p@0x" );
+            (void)util::outputString( lout.writeChar, lout.buffer ); // skipcq: CXX-C1000
+            if ( lout.n > 0u ) {
+                (void)util::outputString( lout.writeChar, " = [ " );
+                (void)util::printXData( lout.writeChar, const_cast<void*>( p ), lout.n, false );
+                lout.n  = 0u;
+                lout.writeChar( nullptr, ']' );
             }
-            tout.writeChar( nullptr, ' ' );
-            return tout;
+            lout.writeChar( nullptr, ' ' );
+            return lout;
         }
 
-        _logger& operator<<( _logger& tout, const float64_t& v )
+        _logger& operator<<( _logger& lout, const float64_t& v )
         {
-            (void)util::floatToString( v, tout.buffer, tout.precision ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar, tout.buffer ); // skipcq: CXX-C1000
-            tout.writeChar( nullptr, ' ' );
-            return tout;
+            (void)util::floatToString( v, lout.buffer, lout.precision ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar, lout.buffer ); // skipcq: CXX-C1000
+            lout.writeChar( nullptr, ' ' );
+            return lout;
         }
 
         _logger& operator<<( _logger& lout, const lout_base& f )
@@ -139,72 +139,72 @@ namespace qOS {
             return lout;
         }
 
-        _logger& operator<<( _logger& tout, const mem& m )
+        _logger& operator<<( _logger& lout, const mem& m )
         {
-            tout.n = m.n;
-            return tout;
+            lout.n = m.n;
+            return lout;
         }
 
-        _logger& operator<<( _logger& tout, const pre& m )
+        _logger& operator<<( _logger& lout, const pre& m )
         {
-            tout.precision = m.precision;
-            return tout;
+            lout.precision = m.precision;
+            return lout;
         }
 
-        _logger& operator<<( _logger& tout, const task& t )
+        _logger& operator<<( _logger& lout, const task& t )
         {
-            (void)util::unsignedToString( t.getID(), tout.buffer, 10 ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , "T{ \"" );
-            (void)util::outputString( tout.writeChar , t.getName() );
-            (void)util::outputString( tout.writeChar , "\", " );
-            (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , ", " );
-            (void)util::outputString( tout.writeChar , ( taskState::ENABLED_STATE == t.getState() )? "enabled" : "disabled" );           
-            (void)util::outputString( tout.writeChar , " } " );
-            return tout;
+            (void)util::unsignedToString( t.getID(), lout.buffer, 10 ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , "T{ \"" );
+            (void)util::outputString( lout.writeChar , t.getName() );
+            (void)util::outputString( lout.writeChar , "\", " );
+            (void)util::outputString( lout.writeChar , lout.buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , ", " );
+            (void)util::outputString( lout.writeChar , ( taskState::ENABLED_STATE == t.getState() )? "enabled" : "disabled" );           
+            (void)util::outputString( lout.writeChar , " } " );
+            return lout;
         }
 
-        _logger& operator<<( _logger& tout, const qOS::timer& t )
+        _logger& operator<<( _logger& lout, const qOS::timer& t )
         {
-            (void)util::outputString( tout.writeChar , "t{ E:" );
-            (void)util::unsignedToString( t.elapsed(), tout.buffer, 10 ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , ", R: " );
-            (void)util::unsignedToString( t.remaining(), tout.buffer, 10 ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , " } " );
-            return tout;
+            (void)util::outputString( lout.writeChar , "t{ E:" );
+            (void)util::unsignedToString( t.elapsed(), lout.buffer, 10 ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , lout.buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , ", R: " );
+            (void)util::unsignedToString( t.remaining(), lout.buffer, 10 ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , lout.buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , " } " );
+            return lout;
         }
         /*cstat -CERT-INT36-C*/
-        _logger& operator<<( _logger& tout, const qOS::stateMachine& sm )
+        _logger& operator<<( _logger& lout, const qOS::stateMachine& sm )
         {
-            (void)util::outputString( tout.writeChar , "SM{ T: 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &sm.getTop() ), tout.buffer, 16 ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , ", C: 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( sm.getCurrent() ), tout.buffer, 16 ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , " } " );
-            return tout;
+            (void)util::outputString( lout.writeChar , "SM{ T: 0x" );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &sm.getTop() ), lout.buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , lout.buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , ", C: 0x" );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( sm.getCurrent() ), lout.buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , lout.buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , " } " );
+            return lout;
         }
 
-        _logger& operator<<( _logger& tout, const qOS::sm::state& s )
+        _logger& operator<<( _logger& lout, const qOS::sm::state& s )
         {
-            (void)util::outputString( tout.writeChar , "s{ 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &s ), tout.buffer, 16 ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , tout.buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( tout.writeChar , " } " );
-            return tout;
+            (void)util::outputString( lout.writeChar , "s{ 0x" );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &s ), lout.buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , lout.buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( lout.writeChar , " } " );
+            return lout;
         }
         /*cstat +CERT-INT36-C*/
         #if defined( ARDUINO_PLATFORM )
-        _logger& operator<<( _logger& tout, const String & s )
+        _logger& operator<<( _logger& lout, const String & s )
         #else
-        _logger& operator<<( _logger& tout, const string & s )
+        _logger& operator<<( _logger& lout, const string & s )
         #endif
         {
-            (void)util::outputString( tout.writeChar, s.c_str() );
-            return tout;
+            (void)util::outputString( lout.writeChar, s.c_str() );
+            return lout;
         }
     }
 
