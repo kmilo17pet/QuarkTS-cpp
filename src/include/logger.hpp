@@ -308,21 +308,63 @@ namespace qOS {
         extern const char * const wht;
 
         /*! @cond */
-        struct _logger final {
-            _logger() = default;
-            _logger( _logger &other ) = delete;
-            void operator=( const _logger & ) = delete;
-            const char *s_str[ 7 ] = { "", "[fatal]: ", "[error]: ", "[warning]: ", "[info]: ", "[debug] ", "" };
-            uint8_t base = { 10u };
-            size_t n{ 0u };
-            uint8_t precision { 6u };
-            #if ( Q_TRACE_BUFSIZE < 36 )
-                #define Q_TRACE_BUFSIZE     ( 36 )
-            #endif
-            char buffer[ Q_TRACE_BUFSIZE ] = { 0 };
-            char preFix[ 5 ] = { 0 };
-            util::putChar_t writeChar{ nullptr };
-            static _logger& getInstance( void ) noexcept;
+        class _logger final {
+            private:
+                _logger() = default;
+                _logger( _logger &other ) = delete;
+                void operator=( const _logger & ) = delete;
+                const char *s_str[ 7 ] = { "", "[fatal]: ", "[error]: ", "[warning]: ", "[info]: ", "[debug] ", "" };
+                uint8_t base = { 10u };
+                size_t n{ 0u };
+                uint8_t precision { 6u };
+                #if ( Q_TRACE_BUFSIZE < 36 )
+                    #define Q_TRACE_BUFSIZE     ( 36 )
+                #endif
+                char buffer[ Q_TRACE_BUFSIZE ] = { 0 };
+                char preFix[ 5 ] = { 0 };
+                util::putChar_t writeChar{ nullptr };
+                void writeNumStr( void ) noexcept;
+            public:
+                static _logger& getInstance( void ) noexcept;
+                template <typename T>
+                inline _logger& _log_integer( const T& v, bool is_int )
+                {
+                    /*cstat -MISRAC++2008-5-0-9 -MISRAC++2008-5-0-8*/
+                    if ( is_int ) {
+                        (void)util::integerToString( static_cast<signed_t>( v ), buffer, base ); // skipcq: CXX-C1000
+                    }
+                    else {
+                        (void)util::unsignedToString( static_cast<unsigned_t>( v ), buffer, base ); // skipcq: CXX-C1000
+                    }
+                    /*cstat +MISRAC++2008-5-0-9 +MISRAC++2008-5-0-8*/
+                    writeNumStr();
+                    return *this;
+                }
+                _logger& operator<<( const char& v );
+                _logger& operator<<( const char * s );
+                _logger& operator<<( const short& v );
+                _logger& operator<<( const int& v );
+                _logger& operator<<( const long int& v );
+                _logger& operator<<( const unsigned char& v );
+                _logger& operator<<( const unsigned short& v );
+                _logger& operator<<( const unsigned int& v );
+                _logger& operator<<( const unsigned long& v );
+                _logger& operator<<( const void * const p );
+                _logger& operator<<( const float64_t& v );
+                _logger& operator<<( const lout_base& f );
+                _logger& operator<<( const mem& m );
+                _logger& operator<<( const pre& m );
+                _logger& operator<<( const task& t );
+                _logger& operator<<( const qOS::timer& t );
+                _logger& operator<<( const qOS::stateMachine& sm );
+                _logger& operator<<( const qOS::sm::state& s );
+                #if defined( ARDUINO_PLATFORM )
+                    _logger& operator<<( const String & s );
+                #else
+                    _logger& operator<<( const string & s );
+                #endif
+            friend _logger& out( const logSeverity s, const source_location &loc ) noexcept;
+            friend void setOutputFcn( util::putChar_t fcn );
         };
         extern _logger& _logger_out; // skipcq: CXX-W2011
         /*! @endcond */
@@ -335,53 +377,9 @@ namespace qOS {
         void setOutputFcn( util::putChar_t fcn );
 
         /*! @cond */
-        _logger& operator<<( _logger& lout, const char& v );
-        _logger& operator<<( _logger& lout, const char * s );
-        _logger& operator<<( _logger& lout, const short& v );
-        _logger& operator<<( _logger& lout, const int& v );
-        _logger& operator<<( _logger& lout, const long int& v );
-        _logger& operator<<( _logger& lout, const unsigned char& v );
-        _logger& operator<<( _logger& lout, const unsigned short& v );
-        _logger& operator<<( _logger& lout, const unsigned int& v );
-        _logger& operator<<( _logger& lout, const unsigned long& v );
-        _logger& operator<<( _logger& lout, const void * const p );
-        _logger& operator<<( _logger& lout, const float64_t& v );
-        _logger& operator<<( _logger& lout, const lout_base& f );
-        _logger& operator<<( _logger& lout, const mem& m );
-        _logger& operator<<( _logger& lout, const pre& m );
-        _logger& operator<<( _logger& lout, const task& t );
-        _logger& operator<<( _logger& lout, const qOS::timer& t );
-        _logger& operator<<( _logger& lout, const qOS::stateMachine& sm );
-        _logger& operator<<( _logger& lout, const qOS::sm::state& s );
-        #if defined( ARDUINO_PLATFORM )
-            _logger& operator<<( _logger& lout, const String & s );
-        #else
-            _logger& operator<<( _logger& lout, const string & s );
-        #endif
-
-        _logger& out( const logSeverity s = logSeverity::none, const source_location &loc = source_location::current() );
+        _logger& out( const logSeverity s = logSeverity::none, const source_location &loc = source_location::current() ) noexcept;
         /* cppcheck-suppress functionStatic */
         inline const char * var( const char * vname ){ return vname; }
-
-        template <typename T>
-        inline _logger& _log_integer( _logger& lout, const T& v, bool is_int )
-        {
-            /*cstat -MISRAC++2008-5-0-9 -MISRAC++2008-5-0-8*/
-            if ( is_int ) {
-                (void)util::integerToString( static_cast<signed_t>( v ), lout.buffer, lout.base ); // skipcq: CXX-C1000
-            }
-            else {
-                (void)util::unsignedToString( static_cast<unsigned_t>( v ), lout.buffer, lout.base ); // skipcq: CXX-C1000
-            }
-            /*cstat +MISRAC++2008-5-0-9 +MISRAC++2008-5-0-8*/
-            if ( '\0' != lout.preFix[ 0 ] ) {
-                (void)util::outputString( lout.writeChar, lout.preFix ); // skipcq: CXX-C1000
-            } 
-            (void)util::outputString( lout.writeChar, lout.buffer ); // skipcq: CXX-C1000
-            lout.writeChar( nullptr, ' ' );
-            return lout;
-        }
-
         /*! @endcond */
 
         /** @}*/
