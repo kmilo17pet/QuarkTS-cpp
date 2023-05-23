@@ -32,7 +32,7 @@
 * <b>Why should I choose it?</b>
 *
 * QuarkTS++ is not intended to replace o compete with other great and proven
-* RTOS options already available today, for example, FreeRTOS or MicroC/OS-II,
+* RTOS options already available today, for example, FreeRTOS, Zephyr or MicroC/OS-II,
 * in fact, you should check these options first. However, due to its size and
 * features, is intended to play in the space between RTOSes and bare metal.
 * QuarkTS++ was written for embedded developers who want more functionality than
@@ -61,6 +61,7 @@
 * - 8Bit AVR, 8051, STM8, RL78/Gxx
 * - HCS12, ColdFire, MSP430
 * - PIC (PIC24, dsPIC, 32MX, 32MZ)
+* - Arduino support for all architectures (available from the <a style="font-weight:bold" href="https://www.ardu-badge.com/QuarkTS">Library Manager</a>)
 *
 * @section q_codstandard Development process and coding standard
 * QuarkTS is developed using a formal and rigorous process framed in compliance

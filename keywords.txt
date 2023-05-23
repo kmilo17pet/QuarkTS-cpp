@@ -251,8 +251,6 @@ stringToInt	KEYWORD2
 unsignedToString	KEYWORD2
 integerToString	KEYWORD2
 boolToString	KEYWORD2
-log	KEYWORD2
-msg	KEYWORD2
 var	KEYWORD2
 mem KEYWORD2
 hex KEYWORD2
