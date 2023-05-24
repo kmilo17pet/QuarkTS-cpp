@@ -21,6 +21,10 @@
     #include <climits>
 #endif
 
+#ifndef SIZE_MAX
+    #define SIZE_MAX ( ~static_cast<size_t>( 0 ) )
+#endif
+
 /** @addtogroup  qtypes
 * @brief Sets of types having specified widths used to design the entire OS.
 * It also define macros directives to perform specific actions and options

@@ -354,7 +354,7 @@ namespace qOS {
             char name[ 11 ] = "";
             timer time;
             cycles_t cycles{ 0uL };
-            size_t entry{ static_cast<size_t>( SIZE_MAX ) };
+            size_t entry{ SIZE_MAX };
             iteration_t iterations{ 0 };
             volatile notifier_t notifications{ 0uL };
             volatile taskFlag_t flags{ 0uL };
