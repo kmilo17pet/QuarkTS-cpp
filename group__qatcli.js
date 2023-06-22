@@ -18,6 +18,7 @@ var group__qatcli =
       [ "output", "classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0", null ]
     ] ],
     [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", [
+      [ "command", "classq_o_s_1_1cli_1_1command.html#aa62adb551a19b6c1d8c49101834b3ba9", null ],
       [ "~command", "classq_o_s_1_1cli_1_1command.html#a78614094a756a9b45845c94c6c3858a6", null ],
       [ "qOS::commandLineInterface", "classq_o_s_1_1cli_1_1command.html#aba6d9d0160c6476dd20d0f7dea7f14c6", null ]
     ] ],

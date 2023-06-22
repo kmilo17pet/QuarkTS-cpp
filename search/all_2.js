@@ -10,7 +10,7 @@ var searchData=
   ['clock_7',['clock',['../classq_o_s_1_1clock.html',1,'qOS']]],
   ['clock_5ft_8',['clock_t',['../group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749',1,'qOS']]],
   ['co_2droutines_9',['Co-Routines',['../q_qcoroutines.html',1,'q_extensions'],['../group__qcoroutines.html',1,'(Global Namespace)']]],
-  ['command_10',['command',['../classq_o_s_1_1cli_1_1command.html',1,'qOS::cli']]],
+  ['command_10',['command',['../classq_o_s_1_1cli_1_1command.html#aa62adb551a19b6c1d8c49101834b3ba9',1,'qOS::cli::command::command()'],['../classq_o_s_1_1cli_1_1command.html',1,'qOS::cli::command']]],
   ['commandcallback_5ft_11',['commandCallback_t',['../group__qatcli.html#gab20d33e9de974f49e535206ad7194289',1,'qOS::cli']]],
   ['commandlineinterface_12',['commandLineInterface',['../classq_o_s_1_1command_line_interface.html#a09065347eb890fe5b24b8c275ab7b33c',1,'qOS::commandLineInterface::commandLineInterface()'],['../classq_o_s_1_1command_line_interface.html',1,'qOS::commandLineInterface']]],
   ['commandtype_13',['commandType',['../group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2',1,'qOS::cli']]],
