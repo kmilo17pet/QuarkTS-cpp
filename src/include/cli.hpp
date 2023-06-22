@@ -297,6 +297,7 @@ namespace qOS {
                 command( command const& ) = delete;
                 void operator=( command const& ) = delete;
             public:
+                command() {}
                 virtual ~command() {}
             friend class qOS::commandLineInterface;
         };
