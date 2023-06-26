@@ -110,6 +110,16 @@ namespace qOS {
     }
 
     /*! @cond  */
+    template <typename DT, typename ST>
+    inline DT aligned_cast( ST& src )
+    {
+        DT dst;
+        (void)memcpy( &dst, &src, sizeof(ST) );
+        return dst;
+    }
+    /*! @endcond  */
+
+    /*! @cond  */
     template <typename T>
     constexpr size_t arraySize( const T& ) noexcept
     {
@@ -132,7 +142,7 @@ namespace qOS {
     template <typename T, size_t n>
     constexpr size_t arraySize( const T (&arr)[n] ) noexcept
     {
-        return n * arraySize(*arr);
+        return n*arraySize(*arr);
     }
     /**
     * @brief Ensures that @a x is between the limits set by @a Min and @a Max.

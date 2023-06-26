@@ -19,6 +19,7 @@
     #include <cstring>
     #include <cctype>
     #include <climits>
+    using namespace std;
 #endif
 
 #ifndef SIZE_MAX
@@ -31,8 +32,6 @@
 * for some OS APIs.
 * @{
 */
-
-using namespace std;
 
 /**
 * @brief A type to instantiate a integer-base variable. This size of this type is

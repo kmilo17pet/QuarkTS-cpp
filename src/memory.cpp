@@ -4,8 +4,9 @@
 using namespace qOS;
 
 
-static const size_t BYTE_ALIGN_MASK = static_cast<size_t>( Q_BYTE_ALIGNMENT ) - static_cast<size_t>( 1u ) ;
-static const size_t BLOCK_ALLOCATED_BIT = static_cast<size_t>( 1u ) << ( ( sizeof(size_t)*static_cast<size_t>( 8u ) ) - static_cast<size_t>( 1u ) );
+static const size_t BYTE_ALIGN_MASK = static_cast<size_t>( Q_BYTE_ALIGNMENT ) - static_cast<size_t>( 1u );
+static const size_t ALLOC_BIT_SEL = ( sizeof(size_t)*static_cast<size_t>( 8u ) ) - static_cast<size_t>( 1u );
+static const size_t BLOCK_ALLOCATED_BIT = static_cast<size_t>( 1u ) << ALLOC_BIT_SEL;
 static const size_t HEAP_STRUCT_SIZE = ( sizeof(mem::blockConnect_t) + ( BYTE_ALIGN_MASK - static_cast<size_t>( 1u ) ) ) & ~BYTE_ALIGN_MASK;
 
 /*============================================================================*/
@@ -67,9 +68,7 @@ void mem::pool::free( void *ptr ) noexcept
         mem::blockConnect_t *xConnect;
 
         pToFree -= HEAP_STRUCT_SIZE;
-        /*cstat -CERT-EXP39-C_d -CERT-EXP36-C_a*/
-        xConnect = reinterpret_cast<mem::blockConnect_t*>( pToFree );
-        /*cstat +CERT-EXP39-C_d +CERT-EXP36-C_a*/
+        xConnect = aligned_cast<mem::blockConnect_t*>( pToFree );
         if ( 0u != ( xConnect->blockSize & BLOCK_ALLOCATED_BIT ) ) {
             if ( NULL == xConnect->next ) {
                 bits::multipleClear( xConnect->blockSize, BLOCK_ALLOCATED_BIT );
@@ -83,7 +82,7 @@ void mem::pool::free( void *ptr ) noexcept
 void mem::pool::init( void ) noexcept
 {
     mem::blockConnect_t *firstFreeBlock;
-    uint8_t  *aligned;
+    uint8_t *aligned;
     mem::address_t address, xAddrTmp;
     size_t totalPoolSize = poolMemSize;
 
@@ -97,7 +96,7 @@ void mem::pool::init( void ) noexcept
     }
 
     aligned = reinterpret_cast<uint8_t*>( address );
-    start.next = reinterpret_cast<mem::blockConnect_t*>( aligned );
+    start.next = aligned_cast<mem::blockConnect_t*>( aligned );
     start.blockSize = static_cast<size_t>( 0u );
     xAddrTmp = reinterpret_cast<address_t>( aligned );
     address = xAddrTmp + totalPoolSize;
@@ -106,7 +105,7 @@ void mem::pool::init( void ) noexcept
     end = reinterpret_cast<mem::blockConnect_t*>( address );
     end->next = nullptr;
     end->blockSize = static_cast<size_t>( 0u );
-    firstFreeBlock = reinterpret_cast<mem::blockConnect_t*>( aligned );
+    firstFreeBlock = aligned_cast<mem::blockConnect_t*>( aligned );
     xAddrTmp = reinterpret_cast<mem::address_t>( firstFreeBlock );
     /*cstat +CERT-INT36-C +CERT-EXP39-C_d +CERT-EXP36-C_a*/
     firstFreeBlock->blockSize = address - xAddrTmp;
@@ -149,8 +148,9 @@ void* mem::pool::alloc( size_t pSize ) noexcept
                     mem::blockConnect_t *newBlockLink;
                     /*cstat -MISRAC++2008-7-1-1*/
                     uint8_t *pBlockU8 = reinterpret_cast<uint8_t*>( xBlock );
+                    uint8_t *ptrBlock = &pBlockU8[ pSize ];
                     /*cstat -CERT-EXP39-C_d -CERT-EXP36-C_a +MISRAC++2008-7-1-1*/
-                    newBlockLink = reinterpret_cast<mem::blockConnect_t*>( &pBlockU8[ pSize ] );
+                    newBlockLink = aligned_cast<mem::blockConnect_t*>( ptrBlock );
                     /*cstat +CERT-EXP39-C_d +CERT-EXP36-C_a*/
                     newBlockLink->blockSize = xBlock->blockSize - pSize;
                     /*cstat -ATH-overflow*/
