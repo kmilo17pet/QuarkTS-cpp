@@ -5,6 +5,7 @@ var classq_o_s_1_1cli_1_1handler__t =
     [ "getArgInt", "classq_o_s_1_1cli_1_1handler__t.html#a1fbf9b11e589397e7294e7b11c135981", null ],
     [ "getArgPtr", "classq_o_s_1_1cli_1_1handler__t.html#a411caaf1692fcc78cbd832d271cd9162", null ],
     [ "getArgString", "classq_o_s_1_1cli_1_1handler__t.html#a3d181802de2584e192df80f198f18ebd", null ],
+    [ "getCommand", "classq_o_s_1_1cli_1_1handler__t.html#a27ed4aa5828bc4b4236857f8599893a4", null ],
     [ "getData", "classq_o_s_1_1cli_1_1handler__t.html#ac1cbecc7c74ea17aebed8aabd5b86048", null ],
     [ "getNumArgs", "classq_o_s_1_1cli_1_1handler__t.html#aed5a93634b2007342818efb86771862c", null ],
     [ "getStringData", "classq_o_s_1_1cli_1_1handler__t.html#a89eb0d6805d577de5b8f9377bbf3580a", null ],

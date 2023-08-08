@@ -7,6 +7,7 @@ var group__qatcli =
       [ "getArgInt", "classq_o_s_1_1cli_1_1handler__t.html#a1fbf9b11e589397e7294e7b11c135981", null ],
       [ "getArgPtr", "classq_o_s_1_1cli_1_1handler__t.html#a411caaf1692fcc78cbd832d271cd9162", null ],
       [ "getArgString", "classq_o_s_1_1cli_1_1handler__t.html#a3d181802de2584e192df80f198f18ebd", null ],
+      [ "getCommand", "classq_o_s_1_1cli_1_1handler__t.html#a27ed4aa5828bc4b4236857f8599893a4", null ],
       [ "getData", "classq_o_s_1_1cli_1_1handler__t.html#ac1cbecc7c74ea17aebed8aabd5b86048", null ],
       [ "getNumArgs", "classq_o_s_1_1cli_1_1handler__t.html#aed5a93634b2007342818efb86771862c", null ],
       [ "getStringData", "classq_o_s_1_1cli_1_1handler__t.html#a89eb0d6805d577de5b8f9377bbf3580a", null ],
@@ -20,7 +21,7 @@ var group__qatcli =
     [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", [
       [ "command", "classq_o_s_1_1cli_1_1command.html#a4c799b5a884573be85204cea15828764", null ],
       [ "~command", "classq_o_s_1_1cli_1_1command.html#a78614094a756a9b45845c94c6c3858a6", null ],
-      [ "getParam", "classq_o_s_1_1cli_1_1command.html#a281c91c69e35a47a679cba35935e98a5", null ],
+      [ "getParam", "classq_o_s_1_1cli_1_1command.html#ab7aa6c04c39588fe1fe1f16c6e1db3b2", null ],
       [ "qOS::commandLineInterface", "classq_o_s_1_1cli_1_1command.html#aba6d9d0160c6476dd20d0f7dea7f14c6", null ]
     ] ],
     [ "qOS::commandLineInterface", "classq_o_s_1_1command_line_interface.html", [
