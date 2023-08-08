@@ -205,6 +205,10 @@ namespace qOS {
                 * @brief The CLI output buffer. Can be written by the user.
                 */
                 char *output{ nullptr };
+                /**
+                * @brief return the instance of command being evaluated
+                */
+                inline command& getCommand( void ) noexcept;
             friend class qOS::commandLineInterface;
         };
         #endif
@@ -243,6 +247,10 @@ namespace qOS {
                 inline size_t getNumArgs( void ) const
                 {
                     return NumArgs;
+                }
+                inline command& getCommand( void ) noexcept
+                {
+                    return *Command;
                 }
                 char* getArgPtr( index_t n ) const;
                 int getArgInt( index_t n ) const;
@@ -300,7 +308,7 @@ namespace qOS {
             public:
                 command() = default;
                 virtual ~command() {}
-                inline void* getParam( void )
+                inline void* getParam( void ) const noexcept
                 {
                     return param;
                 }
