@@ -209,11 +209,12 @@ namespace qOS {
         };
         #endif
 
+        class command;
         /*! @cond  */
         class _Handler final {
             private:
                 commandLineInterface *instance{ nullptr };
-                void *Command{ nullptr };
+                command *Command{ nullptr };
                 char *StrData{ nullptr };
                 void *Data{ nullptr };
                 size_t StrLen{ 0u };
@@ -299,6 +300,10 @@ namespace qOS {
             public:
                 command() = default;
                 virtual ~command() {}
+                inline void* getParam( void )
+                {
+                    return param;
+                }
             friend class qOS::commandLineInterface;
         };
         /** @}*/
