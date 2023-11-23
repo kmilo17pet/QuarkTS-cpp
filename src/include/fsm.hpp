@@ -92,6 +92,16 @@ namespace qOS {
         };
 
         /**
+        * @brief The type of a FSM signal-queue 
+        */
+        template <size_t N>
+        struct signalQueue_t {
+            queue q;
+            signal_t qStack[ N ];
+        };
+
+
+        /**
         * @brief This enumeration defines the built-in state-execution status values
         * that can be used as return value in a state callback.
         */
@@ -676,6 +686,20 @@ namespace qOS {
             * @return @c true on success, otherwise return @c false.
             */
             bool installSignalQueue( queue& q ) noexcept;
+
+            /**
+            * @brief Install a signal queue to the provided Finite State Machine (FSM).
+            * @param[in] sq The signal queue to be installed.
+            * @return @c true on success, otherwise return @c false.
+            */
+            template <size_t N>
+            bool installSignalQueue( sm::signalQueue_t<N> &sq ) 
+            {
+                sq.q.setup( sq.qStack, sizeof(sm::signal_t), N );
+                return installSignalQueue( sq.q );
+            }
+
+
             /**
             * @brief Sends a signal to a state machine 
             * @note If the signal queue is not available, an exclusion variable will be

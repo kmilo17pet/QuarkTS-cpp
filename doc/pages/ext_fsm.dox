@@ -610,8 +610,7 @@
 *  task LED_Task; /*The task node*/
 *  stateMachine LED_FSM; /*The state-machine handler*/
 *  sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
-*  queue LEDsigqueue; /*the signal-queue*/ 
-*  sm::signal_t led_sig_stack[ 5 ];  /*the signal-queue storage area*/
+*  sm::signalQueue_t<5> LEDsigqueue;
 *  sm::timeoutSpec tm_spectimeout;
 *  
 *  /*create the transition tables for every state*/
@@ -689,7 +688,6 @@
 *  LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
 *  LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
 *  
-*  LEDsigqueue.setup( led_sig_stack, sizeof(sm::signal_t), arraySize(led_sig_stack) );
 *  LED_FSM.installSignalQueue( LEDsigqueue );
 *  
 *  LED_FSM.installTimeoutSpec( tm_spectimeout );
@@ -766,9 +764,7 @@
 *  sm::state state_idle, state_initial, state_cruisingoff, state_automatedcontrol;
 *  /*states inside the state_automatedcontrol*/
 *  sm::state state_accelerating, state_cruising, state_resuming;
-*  
-*  queue top_sigqueue;
-*  sm::signal_t topsm_sig_stack[ 10 ];
+*  sm::signalQueue<10> top_sigqueue;
 *  
 *  /*=======================================================================*/
 *  /*                             TRANSITION TABLES                         */
@@ -901,11 +897,9 @@
 *  Top_SM.add( state_cruisingoff, state_cruisingoff_callback );
 *  Top_SM.add( state_automatedcontrol, state_automatedcontrol_callback );
 *  /*subscribe to the states within the state_automatedcontrol*/
-*  state_automatedcontrol.add( &state_accelerating, state_accelerating_callback );
-*  state_automatedcontrol.add( &state_resuming, state_resuming_callback );
-*  state_automatedcontrol.add( &state_cruising, state_cruising_callback );
-*  
-*  top_sigqueue.setup( topsm_sig_stack, sizeof(sm::signal_t), arraySize(topsm_sig_stack) );
+*  state_automatedcontrol.add( state_accelerating, state_accelerating_callback );
+*  state_automatedcontrol.add( state_resuming, state_resuming_callback );
+*  state_automatedcontrol.add( state_cruising, state_cruising_callback );
 *  Top_SM.installSignalQueue( top_sigqueue );
 *  
 *  state_idle.setTransitions( idle_transitions, arraySize(idle_transitions) );
@@ -963,8 +957,7 @@
 *  #define SIGNAL_E ( sm::SIGNAL_USER( 5 ) )
 *  #define SIGNAL_F ( sm::SIGNAL_USER( 6 ) )
 *
-*  queue_t sigqueue;
-*  sm::signal_t topsm_sig_stack[ 10 ];
+*  sm::signalQueue_t<10> sigqueue;
 *  stateMachine super;
 *  sm::state state1 , state2 , state3 , state4 , state5 , state6;
 *
@@ -1000,7 +993,6 @@
 *  state4.add( state5, state5_callback );
 *  state4.add( state6, state6_callback );
 *
-*  sigqueue.setup( topsm_sig_stack , sizeof(sm::signal_t), arraySize(topsm_sig_stack) );
 *  super.installSignalQueue( sigqueue );
 *  state1.setTransitions( state1_transitions , arraySize(state1_transitions) );
 *  state2.setTransitions( state2_transitions , arraySize(state2_transitions) );

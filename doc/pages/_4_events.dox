@@ -498,16 +498,14 @@
 *      /* next line is used to set up hardware with specific code to fire
 *       * interrupts at 1ms - timer tick*/
 *      Configure_Periodic_Timer0_Interrupt_1ms();
-*   
+* 
 *      os.init( nullptr, IdleTask_Callback );
 *      /*Setup the queue*/
-*      userQueue.setup( BufferMem /*Memory block used*/, 
-*                       sizeof(uint16_t) /*element size*/, 
-*                       16 /* element count*/ );
+*      userQueue.setup<uint16_t>( BufferMem, 16 );
 *                   
 *      /*  Append the producer task with 100mS rate. */
 *      os.addTask( tProducer, tProducer_Callback, core::MEDIUM_PRIORITY,
-                   100_ms, task::PERIODIC, taskState::ENABLED_STATE, "producer" );
+*                  100_ms, task::PERIODIC, taskState::ENABLED_STATE, "producer" );
 *      /* Append the consumer as an event task. The consumer will
 *       * wait until an event trigger their execution
 *       */

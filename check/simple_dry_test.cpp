@@ -18,6 +18,7 @@ task t1, t2, t3, t4;
 customTask t5;
 stateMachine m;
 sm::state s1, s2;
+sm::signalQueue_t<10> signalQueue;
 co::position pos1;
 
 sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
@@ -185,6 +186,7 @@ int main()
     m.installTimeoutSpec( tm_specTimeout );
     m.add( s1, s1_callback );
     m.add( s2, s2_callback );
+    m.installSignalQueue( signalQueue );
     os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 100_ms );
 
     os.run();

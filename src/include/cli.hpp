@@ -207,8 +207,9 @@ namespace qOS {
                 char *output{ nullptr };
                 /**
                 * @brief return the instance of command being evaluated
+                * @return The command instance.
                 */
-                inline command& getCommand( void ) noexcept;
+                inline command& thisCommand( void ) noexcept;
             friend class qOS::commandLineInterface;
         };
         #endif
@@ -248,7 +249,11 @@ namespace qOS {
                 {
                     return NumArgs;
                 }
-                inline command& getCommand( void ) noexcept
+                inline command& self( void ) noexcept
+                {
+                    return *Command;
+                }
+                inline command& thisCommand( void ) noexcept
                 {
                     return *Command;
                 }
@@ -308,7 +313,7 @@ namespace qOS {
             public:
                 command() = default;
                 virtual ~command() {}
-                inline void* getParam( void ) const noexcept
+                inline void* getParam( void ) noexcept
                 {
                     return param;
                 }

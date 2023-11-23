@@ -53,6 +53,7 @@ status	KEYWORD1
 historyMode	KEYWORD1
 handler_t	KEYWORD1
 stateCallback_t	KEYWORD1
+signalQueue_t   KEYWORD1
 surroundingCallback_t	KEYWORD1
 signalAction_t	KEYWORD1
 timeoutSpecOption_t	KEYWORD1
