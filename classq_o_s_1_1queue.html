@@ -147,6 +147,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae2aea7eb71321d3c399a11044be9e0e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6">setup</a> (void *pData, const size_t size, const size_t <a class="el" href="classq_o_s_1_1queue.html#a7c72087cd2f661c48861847cc828aa2f">count</a>) noexcept</td></tr>
 <tr class="memdesc:ae2aea7eb71321d3c399a11044be9e0e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures a Queue. Here, the RAM used to hold the queue data <em>pData</em> is statically allocated at compile time by the application writer.  <a href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6">More...</a><br /></td></tr>
 <tr class="separator:ae2aea7eb71321d3c399a11044be9e0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4bb24eb0dcb1bac136be6e8a045fe61"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac4bb24eb0dcb1bac136be6e8a045fe61"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#ac4bb24eb0dcb1bac136be6e8a045fe61">setup</a> (void *pData, const size_t <a class="el" href="classq_o_s_1_1queue.html#a7c72087cd2f661c48861847cc828aa2f">count</a>) noexcept</td></tr>
+<tr class="memdesc:ac4bb24eb0dcb1bac136be6e8a045fe61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures a Queue. Here, the RAM used to hold the queue data <em>pData</em> is statically allocated at compile time by the application writer.  <a href="classq_o_s_1_1queue.html#ac4bb24eb0dcb1bac136be6e8a045fe61">More...</a><br /></td></tr>
+<tr class="separator:ac4bb24eb0dcb1bac136be6e8a045fe61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b0ccfda22e78eaf7e91878b99bbf675"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1queue.html#a6b0ccfda22e78eaf7e91878b99bbf675">reset</a> (void) noexcept</td></tr>
 <tr class="memdesc:a6b0ccfda22e78eaf7e91878b99bbf675"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets a queue to its original empty state.  <a href="classq_o_s_1_1queue.html#a6b0ccfda22e78eaf7e91878b99bbf675">More...</a><br /></td></tr>
 <tr class="separator:a6b0ccfda22e78eaf7e91878b99bbf675"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -579,8 +583,62 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ac4bb24eb0dcb1bac136be6e8a045fe61" name="ac4bb24eb0dcb1bac136be6e8a045fe61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4bb24eb0dcb1bac136be6e8a045fe61">&#9670;&nbsp;</a></span>setup() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::queue::setup </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Configures a Queue. Here, the RAM used to hold the queue data <em>pData</em> is statically allocated at compile time by the application writer. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>in] T Type of one single item in the queue </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>Data block or array of data (Queue storage area). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>The maximum number of items the queue can hold. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
 <a id="ae2aea7eb71321d3c399a11044be9e0e6" name="ae2aea7eb71321d3c399a11044be9e0e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2aea7eb71321d3c399a11044be9e0e6">&#9670;&nbsp;</a></span>setup()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2aea7eb71321d3c399a11044be9e0e6">&#9670;&nbsp;</a></span>setup() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -622,7 +680,7 @@ Public Member Functions</h2></td></tr>
 <p>Configures a Queue. Here, the RAM used to hold the queue data <em>pData</em> is statically allocated at compile time by the application writer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>Data block or array of data. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>Data block or array of data (Queue storage area). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size, in bytes, of one single item in the queue. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>The maximum number of items the queue can hold. </td></tr>
   </table>

@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['init_0',['init',['../classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449',1,'qOS::core']]],
+  ['init_0',['init',['../classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a',1,'qOS::core']]],
   ['innode_1',['inNode',['../classq_o_s_1_1ec_1_1in_node.html#a91333336ae8434ecedc6c4ab71b20e84',1,'qOS::ec::inNode']]],
   ['inputflush_2',['inputFlush',['../classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b',1,'qOS::commandLineInterface']]],
   ['inputraw_3',['inputRAW',['../group__qioutils.html#gad16b6f751febd5914646970a812e636e',1,'qOS::util']]],
   ['insert_4',['insert',['../classq_o_s_1_1list.html#a084fde89ef2d870fd89807ba6d31aba0',1,'qOS::list']]],
-  ['installsignalqueue_5',['installSignalQueue',['../classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9',1,'qOS::stateMachine']]],
+  ['installsignalqueue_5',['installSignalQueue',['../classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9',1,'qOS::stateMachine::installSignalQueue(queue &amp;q) noexcept'],['../classq_o_s_1_1state_machine.html#abc48c6b8892138ab3b25ef3f406bc23d',1,'qOS::stateMachine::installSignalQueue(sm::signalQueue_t&lt; N &gt; &amp;sq)']]],
   ['installtimeoutspec_6',['installTimeoutSpec',['../classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47',1,'qOS::stateMachine']]],
   ['integertostring_7',['integerToString',['../group__qioutils.html#gaf82c2a6fd06c4fc4386867be69a3ab8a',1,'qOS::util']]],
   ['isbetween_8',['isBetween',['../group__qflm.html#gac3863848a03a8657a38b967be5746ef4',1,'qOS']]],

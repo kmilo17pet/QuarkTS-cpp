@@ -154,9 +154,9 @@ Collaboration diagram for qOS::core:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> tFcn, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callbackIdle=nullptr) noexcept</td></tr>
-<tr class="memdesc:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS.  <a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">More...</a><br /></td></tr>
-<tr class="separator:a4891aa8ea1ed2972b7dd96d5578b1449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76bcdcfaba5020967caff19f69f4270a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">init</a> (const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a> tFcn=nullptr, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callbackIdle=nullptr) noexcept</td></tr>
+<tr class="memdesc:a76bcdcfaba5020967caff19f69f4270a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task Scheduler initialization. This core method is required and must be called once in the application main thread before any task is being added to the OS.  <a href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">More...</a><br /></td></tr>
+<tr class="separator:a76bcdcfaba5020967caff19f69f4270a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a615f44cfc4f4b4963b2b4cbb044ab76b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91">taskFcn_t</a> callback, const <a class="el" href="group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5">priority_t</a> p, const <a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">duration_t</a> t, const <a class="el" href="group__qtypes.html#gaf0c03ddb7df4048fd3b4764d994ee4da">iteration_t</a> n, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
 <tr class="memdesc:a615f44cfc4f4b4963b2b4cbb044ab76b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme. The task is scheduled to run every <em>t</em> time units, <em>n</em> times and executing <em>callback</em> method on every pass.  <a href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">More...</a><br /></td></tr>
 <tr class="separator:a615f44cfc4f4b4963b2b4cbb044ab76b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -522,8 +522,8 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 
 </div>
 </div>
-<a id="a4891aa8ea1ed2972b7dd96d5578b1449" name="a4891aa8ea1ed2972b7dd96d5578b1449"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4891aa8ea1ed2972b7dd96d5578b1449">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a76bcdcfaba5020967caff19f69f4270a" name="a76bcdcfaba5020967caff19f69f4270a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76bcdcfaba5020967caff19f69f4270a">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -535,7 +535,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
           <td class="memname">void qOS::core::init </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__qclock.html#gac63f3f01426513760291359b792ed55c">getTickFcn_t</a>&#160;</td>
-          <td class="paramname"><em>tFcn</em>, </td>
+          <td class="paramname"><em>tFcn</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -578,9 +578,9 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Init();</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a>( HAL_GetTick, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">init</a>( HAL_GetTick, IdleTask_Callback );</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a4891aa8ea1ed2972b7dd96d5578b1449"><div class="ttname"><a href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a76bcdcfaba5020967caff19f69f4270a"><div class="ttname"><a href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn=nullptr, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
 <div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel interfaces.</div><div class="ttdef"><b>Definition:</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --><p >Example : When the tick is not provided </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;QuarkTS.h&quot;</span></div>
@@ -595,7 +595,7 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    MCU_Init();</div>
 <div class="line">    BSP_Setup_Timer0();</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a4891aa8ea1ed2972b7dd96d5578b1449">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1clock_html_aee283c6e9866c6570f66b4a2cfebdbae"><div class="ttname"><a href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">qOS::clock::sysTick</a></div><div class="ttdeci">static void sysTick(void) noexcept</div><div class="ttdoc">Feed the system tick.</div></div>

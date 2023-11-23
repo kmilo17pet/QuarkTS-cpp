@@ -10,6 +10,7 @@ var classq_o_s_1_1state_machine =
     [ "getTimeSpec", "classq_o_s_1_1state_machine.html#a036acf3824bb2ec63019f370ce7a52ec", null ],
     [ "getTop", "classq_o_s_1_1state_machine.html#a2410b87db316be4721849ca0920bbb8a", null ],
     [ "installSignalQueue", "classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9", null ],
+    [ "installSignalQueue", "classq_o_s_1_1state_machine.html#abc48c6b8892138ab3b25ef3f406bc23d", null ],
     [ "installTimeoutSpec", "classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47", null ],
     [ "run", "classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f", null ],
     [ "sendSignal", "classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a", null ],

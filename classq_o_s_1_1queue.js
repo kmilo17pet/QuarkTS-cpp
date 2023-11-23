@@ -13,5 +13,6 @@ var classq_o_s_1_1queue =
     [ "removeFront", "classq_o_s_1_1queue.html#afd677c7eae70d9fee25305dac94ba916", null ],
     [ "reset", "classq_o_s_1_1queue.html#a6b0ccfda22e78eaf7e91878b99bbf675", null ],
     [ "send", "classq_o_s_1_1queue.html#af169a6dfd12c38274568b7add4543f0b", null ],
+    [ "setup", "classq_o_s_1_1queue.html#ac4bb24eb0dcb1bac136be6e8a045fe61", null ],
     [ "setup", "classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6", null ]
 ];

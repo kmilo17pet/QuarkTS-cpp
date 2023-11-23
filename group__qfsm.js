@@ -5,6 +5,10 @@ var group__qfsm =
       [ "data", "structq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898", null ],
       [ "id", "structq_o_s_1_1sm_1_1signal__t.html#abc8c864b6424f544cc49c53be951d5d6", null ]
     ] ],
+    [ "qOS::sm::signalQueue_t< N >", "structq_o_s_1_1sm_1_1signal_queue__t.html", [
+      [ "q", "structq_o_s_1_1sm_1_1signal_queue__t.html#a28ce39e8b017444583b364f26fbec540", null ],
+      [ "qStack", "structq_o_s_1_1sm_1_1signal_queue__t.html#a9bed19214d77da60501509a0c11bf4b5", null ]
+    ] ],
     [ "qOS::sm::handler_t", "classq_o_s_1_1sm_1_1handler__t.html", [
       [ "lastStatus", "classq_o_s_1_1sm_1_1handler__t.html#a6e5c6e1c15742bf3b6f16428adc33d80", null ],
       [ "nextState", "classq_o_s_1_1sm_1_1handler__t.html#a0012ca01df6cee7276afa03680fd98cf", null ],
@@ -49,6 +53,7 @@ var group__qfsm =
       [ "getTimeSpec", "classq_o_s_1_1state_machine.html#a036acf3824bb2ec63019f370ce7a52ec", null ],
       [ "getTop", "classq_o_s_1_1state_machine.html#a2410b87db316be4721849ca0920bbb8a", null ],
       [ "installSignalQueue", "classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9", null ],
+      [ "installSignalQueue", "classq_o_s_1_1state_machine.html#abc48c6b8892138ab3b25ef3f406bc23d", null ],
       [ "installTimeoutSpec", "classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47", null ],
       [ "run", "classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f", null ],
       [ "sendSignal", "classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a", null ],

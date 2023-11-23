@@ -177,9 +177,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7db6bd8288700f2a6a0277da37a549da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1cli_1_1handler__t.html#a7db6bd8288700f2a6a0277da37a549da">writeOut</a> (const char *s) const</td></tr>
 <tr class="memdesc:a7db6bd8288700f2a6a0277da37a549da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a string to CLI output without the <code>EOF</code> string appended at the end.  <a href="classq_o_s_1_1cli_1_1handler__t.html#a7db6bd8288700f2a6a0277da37a549da">More...</a><br /></td></tr>
 <tr class="separator:a7db6bd8288700f2a6a0277da37a549da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27ed4aa5828bc4b4236857f8599893a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1cli_1_1command.html">command</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1cli_1_1handler__t.html#a27ed4aa5828bc4b4236857f8599893a4">getCommand</a> (void) noexcept</td></tr>
-<tr class="memdesc:a27ed4aa5828bc4b4236857f8599893a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the instance of command being evaluated  <a href="classq_o_s_1_1cli_1_1handler__t.html#a27ed4aa5828bc4b4236857f8599893a4">More...</a><br /></td></tr>
-<tr class="separator:a27ed4aa5828bc4b4236857f8599893a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44d855737e90646f26278b09f709d83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1cli_1_1command.html">command</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1cli_1_1handler__t.html#ab44d855737e90646f26278b09f709d83">thisCommand</a> (void) noexcept</td></tr>
+<tr class="memdesc:ab44d855737e90646f26278b09f709d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the instance of command being evaluated  <a href="classq_o_s_1_1cli_1_1handler__t.html#ab44d855737e90646f26278b09f709d83">More...</a><br /></td></tr>
+<tr class="separator:ab44d855737e90646f26278b09f709d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -340,34 +340,6 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a27ed4aa5828bc4b4236857f8599893a4" name="a27ed4aa5828bc4b4236857f8599893a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27ed4aa5828bc4b4236857f8599893a4">&#9670;&nbsp;</a></span>getCommand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1cli_1_1command.html">command</a> &amp; qOS::cli::handler_t::getCommand </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>return the instance of command being evaluated </p>
-
-</div>
-</div>
 <a id="ac1cbecc7c74ea17aebed8aabd5b86048" name="ac1cbecc7c74ea17aebed8aabd5b86048"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1cbecc7c74ea17aebed8aabd5b86048">&#9670;&nbsp;</a></span>getData()</h2>
 
@@ -509,6 +481,35 @@ Public Attributes</h2></td></tr>
 
 <p>Retrieve the he incoming command type.*. </p>
 <dl class="section return"><dt>Returns</dt><dd>The command type. </dd></dl>
+
+</div>
+</div>
+<a id="ab44d855737e90646f26278b09f709d83" name="ab44d855737e90646f26278b09f709d83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab44d855737e90646f26278b09f709d83">&#9670;&nbsp;</a></span>thisCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classq_o_s_1_1cli_1_1command.html">command</a> &amp; qOS::cli::handler_t::thisCommand </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return the instance of command being evaluated </p>
+<dl class="section return"><dt>Returns</dt><dd>The command instance. </dd></dl>
 
 </div>
 </div>
