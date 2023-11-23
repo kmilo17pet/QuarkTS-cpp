@@ -689,7 +689,6 @@
 *  LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
 *  
 *  LED_FSM.installSignalQueue( LEDsigqueue );
-*  
 *  LED_FSM.installTimeoutSpec( tm_spectimeout );
 *  State_LEDOn.setTimeouts( LedOn_Timeouts, arraySize(LedOn_Timeouts) );
 *  State_LEDBlink.setTimeouts( LEDBlink_timeouts, arraySize(LEDBlink_timeouts) );
@@ -764,7 +763,7 @@
 *  sm::state state_idle, state_initial, state_cruisingoff, state_automatedcontrol;
 *  /*states inside the state_automatedcontrol*/
 *  sm::state state_accelerating, state_cruising, state_resuming;
-*  sm::signalQueue<10> top_sigqueue;
+*  sm::signalQueue_t<10> top_sigqueue;
 *  
 *  /*=======================================================================*/
 *  /*                             TRANSITION TABLES                         */
