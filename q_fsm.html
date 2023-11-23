@@ -576,7 +576,6 @@ Demonstrative example using transition tables</h2>
 <div class="line">LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );</div>
 <div class="line"> </div>
 <div class="line">LED_FSM.installSignalQueue( LEDsigqueue );</div>
-<div class="line"> </div>
 <div class="line">LED_FSM.installTimeoutSpec( tm_spectimeout );</div>
 <div class="line">State_LEDOn.setTimeouts( LedOn_Timeouts, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LedOn_Timeouts) );</div>
 <div class="line">State_LEDBlink.setTimeouts( LEDBlink_timeouts, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LEDBlink_timeouts) );</div>
@@ -623,7 +622,7 @@ Example using a hierarchical FSM</h2>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> state_idle, state_initial, state_cruisingoff, state_automatedcontrol;</div>
 <div class="line"><span class="comment">/*states inside the state_automatedcontrol*/</span></div>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> state_accelerating, state_cruising, state_resuming;</div>
-<div class="line">sm::signalQueue&lt;10&gt; top_sigqueue;</div>
+<div class="line">sm::signalQueue_t&lt;10&gt; top_sigqueue;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><span class="comment">/*                             TRANSITION TABLES                         */</span></div>
