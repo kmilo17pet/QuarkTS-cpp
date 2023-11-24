@@ -333,7 +333,7 @@ bool commandLineInterface::run( void )
 {
     bool retValue = false;
 
-    if ( true == cli::input::ready ) { /*a new input has arrived*/
+    if ( cli::input::ready ) { /*a new input has arrived*/
         cli::response outRetval;
         cli::response cliRetVal;
         /*cstat -MISRAC++2008-7-1-1*/

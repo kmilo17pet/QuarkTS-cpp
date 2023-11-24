@@ -490,7 +490,7 @@ bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clea
         }
     }
 
-    if ( ( retValue ) && ( true == clearOnExit ) ) {
+    if ( ( retValue ) && ( clearOnExit ) ) {
         Task.flags &= ~flagsToCheck;
     }
 

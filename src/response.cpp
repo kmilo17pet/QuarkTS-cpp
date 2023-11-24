@@ -43,7 +43,7 @@ responseStatus response::received( const char *pattern, const size_t n, qOS::dur
         reset();
         retValue = responseStatus::TIMEOUT;
     }
-    else if ( true == responseReceived ) {
+    else if ( responseReceived ) {
         reset();
         retValue = responseStatus::SUCCESS;
     }
