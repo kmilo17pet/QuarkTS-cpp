@@ -1,11 +1,5 @@
 var hierarchy =
 [
-    [ "_Event", null, [
-      [ "qOS::core", "classq_o_s_1_1core.html", null ]
-    ] ],
-    [ "sm::_Handler", null, [
-      [ "qOS::stateMachine", "classq_o_s_1_1state_machine.html", null ]
-    ] ],
     [ "qOS::byteBuffer", "classq_o_s_1_1byte_buffer.html", null ],
     [ "qOS::clock", "classq_o_s_1_1clock.html", null ],
     [ "qOS::edgeCheck", "classq_o_s_1_1edge_check.html", null ],
@@ -33,8 +27,14 @@ var hierarchy =
     [ "qOS::co::semaphore", "classq_o_s_1_1co_1_1semaphore.html", null ],
     [ "qOS::sm::signal_t", "structq_o_s_1_1sm_1_1signal__t.html", null ],
     [ "qOS::sm::signalPublisher", "classq_o_s_1_1sm_1_1signal_publisher.html", null ],
-    [ "qOS::sm::signalQueue_t< N >", "structq_o_s_1_1sm_1_1signal_queue__t.html", null ],
+    [ "qOS::sm::signalQueue< N >", "structq_o_s_1_1sm_1_1signal_queue.html", null ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", null ],
+    [ "sm::stateHandler", null, [
+      [ "qOS::stateMachine", "classq_o_s_1_1state_machine.html", null ]
+    ] ],
+    [ "taskEvent", null, [
+      [ "qOS::core", "classq_o_s_1_1core.html", null ]
+    ] ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ],
     [ "qOS::timer", "classq_o_s_1_1timer.html", null ],
     [ "qOS::sm::transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ]

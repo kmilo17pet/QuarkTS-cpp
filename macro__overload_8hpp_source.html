@@ -132,34 +132,35 @@ $(document).ready(function(){initNavTree('macro__overload_8hpp_source.html','');
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef QOS_CPP_MACRO_OVERLOAD</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define QOS_CPP_MACRO_OVERLOAD</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">    #define _CAT(a, ...)                    _PRIMITIVE_CAT( a, __VA_ARGS__ )</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">    #define _PRIMITIVE_CAT(a, ...)          a ## __VA_ARGS__</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">    #define _SPLIT(i, ...)                  _PRIMITIVE_CAT( _SPLIT_, i )( __VA_ARGS__ )</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">    #define _SPLIT_0(a, ...)                a</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">    #define _SPLIT_1(a, ...)                __VA_ARGS__</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    #define IS_VARIADIC(...)                _SPLIT( 0, _CAT( IS_VARIADIC_R_, IS_VARIADIC_C __VA_ARGS__ ) )</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">    #define IS_VARIADIC_C(...)              1</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    #define IS_VARIADIC_R_1                 1,</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #define IS_VARIADIC_R_IS_VARIADIC_C     0,</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #define _IIF(bit)                       _PRIMITIVE_CAT( _IIF_, bit )</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define _IIF_0(t, ...)                  __VA_ARGS__</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #define _IIF_1(t, ...)                  t</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #define _IS_EMPTY_NON_FUNCTION(...)     _IIF( IS_VARIADIC( __VA_ARGS__ ) )( 0, IS_VARIADIC( _IS_EMPTY_NON_FUNCTION_C __VA_ARGS__ () ) )</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #define _IS_EMPTY_NON_FUNCTION_C()      ()</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #define _COMMA()                        ,</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    #define _REM(...)                       __VA_ARGS__</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">    #define _SIZE(...)                      _SPLIT( 0, _SPLIT( 1, _SIZE_A( _COMMA, _REM( __VA_ARGS__ ) ),, ) )</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #define _SIZE_A(_, im)                  _SIZE_B( im, _() 5, _() 4, _() 3, _() 2, _() 1,)</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #define _SIZE_B(a, b, c, d, e, _, ...)  _</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    #define _GTZ_OVERLOAD(prefix, ...)      _CAT( prefix, _SIZE( __VA_ARGS__) )</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    #define _SELECT(bit, t, f)              _SELECT_I( bit, t, f )</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">    #define _SELECT_I(bit, t, f)            _SELECT_ ## bit( t, f )</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">    #define _SELECT_0(t, f)                 f</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">    #define _SELECT_1(t, f)                 t</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">    #define QOS_MO_CAT(a, ...)                      QOS_MO_PRIMITIVE_CAT( a, __VA_ARGS__ )</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">    #define QOS_MO_PRIMITIVE_CAT(a, ...)            a ## __VA_ARGS__</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">    #define QOS_MO_SPLIT(i, ...)                    QOS_MO_PRIMITIVE_CAT( QOS_MO_SPLIT_, i )( __VA_ARGS__ )</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">    #define QOS_MO_SPLIT_0(a, ...)                  a</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">    #define QOS_MO_SPLIT_1(a, ...)                  __VA_ARGS__</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    #define QOS_IS_VARIADIC(...)                    QOS_MO_SPLIT( 0, QOS_MO_CAT( QOS_IS_VARIADIC_R_, QOS_IS_VARIADIC_C __VA_ARGS__ ) )</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">    #define QOS_IS_VARIADIC_C(...)                  1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    #define QOS_IS_VARIADIC_R_1                     1,</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #define QOS_IS_VARIADIC_R_QOS_IS_VARIADIC_C     0,</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #define QOS_MO_IIF(bit)                         QOS_MO_PRIMITIVE_CAT( QOS_MO_IIF_, bit )</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">    #define QOS_MO_IIF_0(t, ...)                    __VA_ARGS__</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    #define QOS_MO_IIF_1(t, ...)                    t</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #define QOS_MO_IS_EMPTY_NON_FUNCTION(...)       QOS_MO_IIF( QOS_IS_VARIADIC( __VA_ARGS__ ) )( 0, QOS_IS_VARIADIC( QOS_MO_IS_EMPTY_NON_FUNCTION_C __VA_ARGS__ () ) )</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #define QOS_MO_IS_EMPTY_NON_FUNCTION_C()        ()</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #define QOS_MO_COMMA()                          ,</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    #define QOS_MO_REM(...)                         __VA_ARGS__</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">    #define QOS_MO_SIZE(...)                        QOS_MO_SPLIT( 0, QOS_MO_SPLIT( 1, QOS_MO_SIZE_A( QOS_MO_COMMA, QOS_MO_REM( __VA_ARGS__ ) ),, ) )</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #define QOS_MO_SIZE_A(_, im)                    QOS_MO_SIZE_B( im, _() 5, _() 4, _() 3, _() 2, _() 1,)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #define QOS_MO_SIZE_B(a, b, c, d, e, _, ...)    _</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    #define QOS_MO_GTZ_OVERLOAD(prefix, ...)        QOS_MO_CAT( prefix, QOS_MO_SIZE( __VA_ARGS__) )</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    #define QOS_MO_SELECT(bit, t, f)                QOS_MO_SELECT_I( bit, t, f )</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">    #define QOS_MO_SELECT_I(bit, t, f)              QOS_MO_SELECT_ ## bit( t, f )</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">    #define QOS_MO_SELECT_0(t, f)                   f</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">    #define QOS_MO_SELECT_1(t, f)                   t</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">    #define MACRO_OVERLOAD( prefix, ... )   _SELECT( _IS_EMPTY_NON_FUNCTION( __VA_ARGS__ ), _CAT( prefix , 0() ), _GTZ_OVERLOAD( prefix , __VA_ARGS__ )( __VA_ARGS__ ) )</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">    #define MACRO_OVERLOAD( prefix, ... )           \</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">    QOS_MO_SELECT( QOS_MO_IS_EMPTY_NON_FUNCTION( __VA_ARGS__ ), QOS_MO_CAT( prefix , 0() ), QOS_MO_GTZ_OVERLOAD( prefix , __VA_ARGS__ )( __VA_ARGS__ ) )</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

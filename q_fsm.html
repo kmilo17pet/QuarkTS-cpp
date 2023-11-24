@@ -503,7 +503,7 @@ Demonstrative example using transition tables</h2>
 <div class="line">task LED_Task; <span class="comment">/*The task node*/</span></div>
 <div class="line">stateMachine LED_FSM; <span class="comment">/*The state-machine handler*/</span></div>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> State_LEDOff, State_LEDOn, State_LEDBlink;</div>
-<div class="line">sm::signalQueue_t&lt;5&gt; LEDsigqueue;</div>
+<div class="line">sm::signalQueue&lt;5&gt; LEDsigqueue;</div>
 <div class="line">sm::timeoutSpec tm_spectimeout;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*create the transition tables for every state*/</span></div>
@@ -622,7 +622,7 @@ Example using a hierarchical FSM</h2>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> state_idle, state_initial, state_cruisingoff, state_automatedcontrol;</div>
 <div class="line"><span class="comment">/*states inside the state_automatedcontrol*/</span></div>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> state_accelerating, state_cruising, state_resuming;</div>
-<div class="line">sm::signalQueue_t&lt;10&gt; top_sigqueue;</div>
+<div class="line">sm::signalQueue&lt;10&gt; top_sigqueue;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line"><span class="comment">/*                             TRANSITION TABLES                         */</span></div>
@@ -787,7 +787,7 @@ Example with history pseudo-states</h2>
 <div class="line"><span class="preprocessor">#define SIGNAL_E ( sm::SIGNAL_USER( 5 ) )</span></div>
 <div class="line"><span class="preprocessor">#define SIGNAL_F ( sm::SIGNAL_USER( 6 ) )</span></div>
 <div class="line"> </div>
-<div class="line">sm::signalQueue_t&lt;10&gt; sigqueue;</div>
+<div class="line">sm::signalQueue&lt;10&gt; sigqueue;</div>
 <div class="line">stateMachine super;</div>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> state1 , state2 , state3 , state4 , state5 , state6;</div>
 <div class="line"> </div>

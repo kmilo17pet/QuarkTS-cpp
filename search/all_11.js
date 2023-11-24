@@ -40,7 +40,7 @@ var searchData=
   ['signaldata_37',['SignalData',['../classq_o_s_1_1sm_1_1handler__t.html#a7aa24bb74e3c045474b5ecf4dde5a229',1,'qOS::sm::handler_t']]],
   ['signalid_38',['signalID',['../group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4',1,'qOS::sm']]],
   ['signalpublisher_39',['signalPublisher',['../classq_o_s_1_1sm_1_1signal_publisher.html',1,'qOS::sm::signalPublisher'],['../classq_o_s_1_1sm_1_1signal_publisher.html#a4a60b3bfcf363cec26e7d51ef87c98e8',1,'qOS::sm::signalPublisher::signalPublisher()']]],
-  ['signalqueue_5ft_40',['signalQueue_t',['../structq_o_s_1_1sm_1_1signal_queue__t.html',1,'qOS::sm']]],
+  ['signalqueue_40',['signalQueue',['../structq_o_s_1_1sm_1_1signal_queue.html',1,'qOS::sm']]],
   ['signed_5ft_41',['signed_t',['../group__qtypes.html#gaf2465db8c191bb55433141c4a8006c7e',1,'types.hpp']]],
   ['simple_42',['SIMPLE',['../group__qnot.html#gga5af9c877b9d556d828c72c01702aa193ae5564829e2f85f6a6873a9d5c4f26d09',1,'qOS']]],
   ['single_5fshot_43',['SINGLE_SHOT',['../classq_o_s_1_1task.html#a695b8b4c0828fc3823b1daaf7328f3af',1,'qOS::task']]],

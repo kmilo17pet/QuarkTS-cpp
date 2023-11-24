@@ -7,12 +7,12 @@ var group__qcoroutines =
       [ "try_resume", "classq_o_s_1_1co_1_1handle.html#a82073befda0f0a15666a8fa58bf73d5a", null ],
       [ "try_set", "classq_o_s_1_1co_1_1handle.html#ac55d3f0e8fcd154aafc1927cbbf89b46", null ],
       [ "try_suspend", "classq_o_s_1_1co_1_1handle.html#ab40d871b5f3e4822ee20287ad57ebbd2", null ],
-      [ "co::_coContext", "classq_o_s_1_1co_1_1handle.html#a3e89a13f2fae2923a0711c4552ef7af7", null ]
+      [ "co::coContext", "classq_o_s_1_1co_1_1handle.html#abc04d312c090a31fc484d1d38d6d75b5", null ]
     ] ],
     [ "qOS::co::semaphore", "classq_o_s_1_1co_1_1semaphore.html", [
       [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html#a713402886e02ed07e8893a020df3e981", null ],
       [ "set", "classq_o_s_1_1co_1_1semaphore.html#acbffd739246c86519d44552d00eb590f", null ],
-      [ "co::_coContext", "classq_o_s_1_1co_1_1semaphore.html#a3e89a13f2fae2923a0711c4552ef7af7", null ]
+      [ "co::coContext", "classq_o_s_1_1co_1_1semaphore.html#abc04d312c090a31fc484d1d38d6d75b5", null ]
     ] ],
     [ "qOS::co::state", "group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323", null ],
     [ "qOS::co::delay", "group__qcoroutines.html#ga3ba35f233837d549d971632444e00c06", null ],

@@ -12,6 +12,6 @@ var classq_o_s_1_1command_line_interface =
     [ "run", "classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd", null ],
     [ "setData", "classq_o_s_1_1command_line_interface.html#a8742a937930c771c28e4fe811e3d1eb6", null ],
     [ "setup", "classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679", null ],
-    [ "cli::_Handler", "classq_o_s_1_1command_line_interface.html#ab1e07a14b19a2ca3beb7206a7ed77c9a", null ],
+    [ "cli::commandHandler", "classq_o_s_1_1command_line_interface.html#adc7bc6f129933ede34202d70e4e4dd7d", null ],
     [ "core", "classq_o_s_1_1command_line_interface.html#af764561c544bacc1b90b526ee8d3c708", null ]
 ];

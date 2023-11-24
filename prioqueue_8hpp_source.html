@@ -139,8 +139,8 @@ $(document).ready(function(){initNavTree('prioqueue_8hpp_source.html',''); initR
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">namespace </span>pq {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keyword">struct </span>queueStack_t {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            task *pTask{<span class="keyword">nullptr</span>};</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="keywordtype">void</span> *qData{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            task *pTask{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="keywordtype">void</span> *qData{ <span class="keyword">nullptr</span> };</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        };</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
@@ -149,7 +149,7 @@ $(document).ready(function(){initNavTree('prioqueue_8hpp_source.html',''); initR
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keyword">volatile</span> <a class="code hl_typedef" href="group__qtypes.html#ga16b527d381bf20ae99c52d4c8b982a43">base_t</a> index{ -1 };</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordtype">void</span> *data{ <span class="keyword">nullptr</span> };</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            pq::queueStack_t *stack{ <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordtype">size_t</span> size{ 0u };</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordtype">size_t</span> size{ 0U };</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordtype">void</span> clearIndex( <a class="code hl_typedef" href="group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba">index_t</a> indexToClear ) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            prioQueue( prioQueue <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordtype">void</span> operator=( prioQueue <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>

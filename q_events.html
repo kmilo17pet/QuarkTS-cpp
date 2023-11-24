@@ -393,7 +393,7 @@ Setting up a queue</h3>
 <p >The required RAM for the queue data should be provided by the application writer and could be statically allocated at compile time or in run-time using the <a class="el" href="q_memmang.html">Memory Management</a> extension.</p>
 <h3><a class="anchor" id="q_attachqueue"></a>
 Attach a queue to a task</h3>
-<p >Additional features are provided by the kernel when the queues are attached to tasks; this allows the scheduler to pass specific queue events to it, usually, states of the object itself that needs to be handled, in this case by a task. For this, use the <a class="el" href="classq_o_s_1_1task.html#a0e1f95be7b3c7fc215a487d22ad656c9" title="Attach a queue to the Task.">qOS::task::attachQueue()</a> method.</p>
+<p >Additional features are provided by the kernel when the queues are attached to tasks; this allows the scheduler to pass specific queue events to it, usually, states of the object itself that needs to be handled, in this case by a task. For this, use the <a class="el" href="classq_o_s_1_1task.html#ad43545d022d9fc3d2232d37ccd26ea88" title="Attach a queue to the Task.">qOS::task::attachQueue()</a> method.</p>
 <p >The following attaching modes are provided:</p><ul>
 <li><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4a85bec350eace8b51b57fb60f5eec6da7">qOS::queueLinkMode::QUEUE_RECEIVER</a> : The task will be triggered if there are elements in the queue.</li>
 <li><a class="el" href="group__qtaskmanip.html#gga510a1627bf9fff09eec6bd9b02d82be4ae7178fccc5ed4efedaaf6cafebe0046b">qOS::queueLinkMode::QUEUE_FULL</a> : The task will be triggered if the queue is full.</li>

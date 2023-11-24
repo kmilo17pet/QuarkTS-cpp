@@ -189,18 +189,18 @@ Functions</h2></td></tr>
 <tr class="memitem:gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtypes.html#ga5e9a37eab818d71cd4a6a9344e776c7b">float64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d">qOS::util::stringToFloat</a> (const char *s) noexcept</td></tr>
 <tr class="memdesc:gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the C string <em>s</em>, interpreting its content as a floating point number and returns its value as a float( <code>float32_t</code>). The function first discards as many whitespace characters (as in isspace) as necessary until the first non-whitespace character is found. Then, starting from this character, takes as many characters as possible that are valid following a syntax resembling that of floating point literals, and interprets them as a numerical value. The rest of the string after the last valid character is ignored and has no effect on the behavior of this function.  <a href="group__qioutils.html#gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d">More...</a><br /></td></tr>
 <tr class="separator:gab184c9a73fb1e8fbc2a1cc8ef3bb3d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac74928b5c05059b0f5daa5e0dea687c9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gac74928b5c05059b0f5daa5e0dea687c9">qOS::util::floatToString</a> (<a class="el" href="group__qtypes.html#ga5e9a37eab818d71cd4a6a9344e776c7b">float64_t</a> num, char *str, uint8_t precision=10u) noexcept</td></tr>
-<tr class="memdesc:gac74928b5c05059b0f5daa5e0dea687c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a float value to a formatted string.  <a href="group__qioutils.html#gac74928b5c05059b0f5daa5e0dea687c9">More...</a><br /></td></tr>
-<tr class="separator:gac74928b5c05059b0f5daa5e0dea687c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga244b6d40bdc39888fb2ec70f8038e639"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga244b6d40bdc39888fb2ec70f8038e639">qOS::util::floatToString</a> (<a class="el" href="group__qtypes.html#ga5e9a37eab818d71cd4a6a9344e776c7b">float64_t</a> num, char *str, uint8_t precision=10U) noexcept</td></tr>
+<tr class="memdesc:ga244b6d40bdc39888fb2ec70f8038e639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a float value to a formatted string.  <a href="group__qioutils.html#ga244b6d40bdc39888fb2ec70f8038e639">More...</a><br /></td></tr>
+<tr class="separator:ga244b6d40bdc39888fb2ec70f8038e639"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7d7f19fb7e6919221a9a567daca5ff94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga7d7f19fb7e6919221a9a567daca5ff94">qOS::util::stringToInt</a> (const char *s) noexcept</td></tr>
 <tr class="memdesc:ga7d7f19fb7e6919221a9a567daca5ff94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the C-string <em>s</em> interpreting its content as an integral number, which is returned as a value of type int. The function first discards as many whitespace characters (as in <code>isspace</code>) as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many base-10 digits as possible, and interprets them as a numerical value. The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function. If the first sequence of non-whitespace characters in <em>s</em> is not a valid integral number, or if no such sequence exists because either <em>s</em> is empty or it contains only whitespace characters, no conversion is performed and zero is returned.  <a href="group__qioutils.html#ga7d7f19fb7e6919221a9a567daca5ff94">More...</a><br /></td></tr>
 <tr class="separator:ga7d7f19fb7e6919221a9a567daca5ff94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga599dbfc3b307c816a292f37251be7612"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga599dbfc3b307c816a292f37251be7612">qOS::util::unsignedToString</a> (<a class="el" href="group__qtypes.html#gae2d1a31d7a2b9ad60ebeebd0b151f7d6">unsigned_t</a> num, char *str, uint8_t base=10u) noexcept</td></tr>
-<tr class="memdesc:ga599dbfc3b307c816a292f37251be7612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an unsigned value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. The argument <em>str</em> should be an array long enough to contain any possible value: <code>"sizeof(int)*8+1"</code> for radix=2, i.e. 17 bytes in 16-bits platforms and 33 in 32-bits platforms.  <a href="group__qioutils.html#ga599dbfc3b307c816a292f37251be7612">More...</a><br /></td></tr>
-<tr class="separator:ga599dbfc3b307c816a292f37251be7612"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf82c2a6fd06c4fc4386867be69a3ab8a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaf82c2a6fd06c4fc4386867be69a3ab8a">qOS::util::integerToString</a> (<a class="el" href="group__qtypes.html#gaf2465db8c191bb55433141c4a8006c7e">signed_t</a> num, char *str, uint8_t base=10u) noexcept</td></tr>
-<tr class="memdesc:gaf82c2a6fd06c4fc4386867be69a3ab8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an integer value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. If base is 10 and value is negative, the resulting string is preceded with a minus sign (-). With any other base, value is always considered unsigned.  <a href="group__qioutils.html#gaf82c2a6fd06c4fc4386867be69a3ab8a">More...</a><br /></td></tr>
-<tr class="separator:gaf82c2a6fd06c4fc4386867be69a3ab8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77c028b6148dbbba70ad707c6c4235c8"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#ga77c028b6148dbbba70ad707c6c4235c8">qOS::util::unsignedToString</a> (<a class="el" href="group__qtypes.html#gae2d1a31d7a2b9ad60ebeebd0b151f7d6">unsigned_t</a> num, char *str, uint8_t base=10U) noexcept</td></tr>
+<tr class="memdesc:ga77c028b6148dbbba70ad707c6c4235c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an unsigned value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. The argument <em>str</em> should be an array long enough to contain any possible value: <code>"sizeof(int)*8+1"</code> for radix=2, i.e. 17 bytes in 16-bits platforms and 33 in 32-bits platforms.  <a href="group__qioutils.html#ga77c028b6148dbbba70ad707c6c4235c8">More...</a><br /></td></tr>
+<tr class="separator:ga77c028b6148dbbba70ad707c6c4235c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab07149b2d1611c1fb699ead02c675b6c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gab07149b2d1611c1fb699ead02c675b6c">qOS::util::integerToString</a> (<a class="el" href="group__qtypes.html#gaf2465db8c191bb55433141c4a8006c7e">signed_t</a> num, char *str, uint8_t base=10U) noexcept</td></tr>
+<tr class="memdesc:gab07149b2d1611c1fb699ead02c675b6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts an integer value to a null-terminated string using the specified base and stores the result in the array given by <em>str</em> parameter. If base is 10 and value is negative, the resulting string is preceded with a minus sign (-). With any other base, value is always considered unsigned.  <a href="group__qioutils.html#gab07149b2d1611c1fb699ead02c675b6c">More...</a><br /></td></tr>
+<tr class="separator:gab07149b2d1611c1fb699ead02c675b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaef815a06206e5a3aea9f23c4a6068f31"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qioutils.html#gaef815a06206e5a3aea9f23c4a6068f31">qOS::util::boolToString</a> (const bool num, char *str) noexcept</td></tr>
 <tr class="memdesc:gaef815a06206e5a3aea9f23c4a6068f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a boolean value to a null-terminated string. Input is considered true with any value different to zero (0). The argument <em>str</em> should be an array long enough to contain the output.  <a href="group__qioutils.html#gaef815a06206e5a3aea9f23c4a6068f31">More...</a><br /></td></tr>
 <tr class="separator:gaef815a06206e5a3aea9f23c4a6068f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,8 +348,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gac74928b5c05059b0f5daa5e0dea687c9" name="gac74928b5c05059b0f5daa5e0dea687c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac74928b5c05059b0f5daa5e0dea687c9">&#9670;&nbsp;</a></span>floatToString()</h2>
+<a id="ga244b6d40bdc39888fb2ec70f8038e639" name="ga244b6d40bdc39888fb2ec70f8038e639"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga244b6d40bdc39888fb2ec70f8038e639">&#9670;&nbsp;</a></span>floatToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,7 +373,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>precision</em> = <code>10u</code>&#160;</td>
+          <td class="paramname"><em>precision</em> = <code>10U</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -503,8 +503,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaf82c2a6fd06c4fc4386867be69a3ab8a" name="gaf82c2a6fd06c4fc4386867be69a3ab8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf82c2a6fd06c4fc4386867be69a3ab8a">&#9670;&nbsp;</a></span>integerToString()</h2>
+<a id="gab07149b2d1611c1fb699ead02c675b6c" name="gab07149b2d1611c1fb699ead02c675b6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab07149b2d1611c1fb699ead02c675b6c">&#9670;&nbsp;</a></span>integerToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -528,7 +528,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10u</code>&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10U</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1072,8 +1072,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga599dbfc3b307c816a292f37251be7612" name="ga599dbfc3b307c816a292f37251be7612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga599dbfc3b307c816a292f37251be7612">&#9670;&nbsp;</a></span>unsignedToString()</h2>
+<a id="ga77c028b6148dbbba70ad707c6c4235c8" name="ga77c028b6148dbbba70ad707c6c4235c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga77c028b6148dbbba70ad707c6c4235c8">&#9670;&nbsp;</a></span>unsignedToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1097,7 +1097,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10u</code>&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10U</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

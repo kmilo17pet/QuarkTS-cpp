@@ -147,9 +147,9 @@ $(document).ready(function(){initNavTree('queue_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            uint8_t *tail{ <span class="keyword">nullptr</span> };</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            uint8_t *writer{ <span class="keyword">nullptr</span> };</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            uint8_t *reader{ <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keyword">volatile</span> <span class="keywordtype">size_t</span> itemsWaiting = 0u;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordtype">size_t</span> itemsCount = 0u;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordtype">size_t</span> itemSize = 0u;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keyword">volatile</span> <span class="keywordtype">size_t</span> itemsWaiting = 0U;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordtype">size_t</span> itemsCount = 0U;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordtype">size_t</span> itemSize = 0U;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordtype">void</span> moveReader( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordtype">void</span> copyDataFromQueue( <span class="keywordtype">void</span> * <span class="keyword">const</span> dst ) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordtype">void</span> copyDataToQueue( <span class="keyword">const</span> <span class="keywordtype">void</span> *itemToQueue, <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22">queueSendMode</a> xPosition ) <span class="keyword">noexcept</span>; </div>
