@@ -26,10 +26,12 @@ namespace qOS {
 
         class state;
 
+        using signalIDType = uint32_t;
+
         /**
         * @brief The type for signal ID.
         */
-        enum signalID : uint32_t {
+        enum signalID : signalIDType {
             /**
             * @brief Built-in signal that can be used to set a nested initial-transition
             *  (aka default transition) by using the sm::handler_t::startState() method.

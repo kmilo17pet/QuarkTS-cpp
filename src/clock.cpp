@@ -4,9 +4,10 @@ using namespace qOS;
 
 volatile qOS::clock_t clock::sysTick_Epochs = 0U; // skipcq: CXX-W2009
 qOS::getTickFcn_t clock::getTick = &internalTick; // skipcq: CXX-W2009
+/*cstat -MISRAC++2008-2-13-3*/
 const qOS::duration_t clock::NONE = 0_ms;
 const qOS::duration_t clock::IMMEDIATE = 0_ms;
-
+/*cstat +MISRAC++2008-2-13-3*/
 /*============================================================================*/
 void clock::sysTick( void ) noexcept
 {
