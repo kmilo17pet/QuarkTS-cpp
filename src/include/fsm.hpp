@@ -261,8 +261,6 @@ namespace qOS {
                 {
                     StartState = &s;
                 }
-                bool timeoutSet( const index_t i, const qOS::duration_t t ) noexcept;
-                bool timeoutStop( const index_t i ) noexcept;
                 inline state& thisState( void ) noexcept
                 {
                     return *State;

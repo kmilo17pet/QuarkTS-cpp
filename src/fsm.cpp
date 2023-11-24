@@ -147,16 +147,6 @@ bool sm::signalPublisher::sendSignal( sm::signalID sig, void *sData, bool isUrge
     return static_cast<bool>( r );
 }
 /*============================================================================*/
-bool sm::stateHandler::timeoutSet( const index_t i, const qOS::duration_t t ) noexcept
-{
-    return thisMachine().timeoutSet( i, t );
-}
-/*============================================================================*/
-bool sm::stateHandler::timeoutStop( const index_t i ) noexcept
-{
-    return thisMachine().timeoutStop( i );
-}
-/*============================================================================*/
 bool stateMachine::smSetup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept
 {
     current = nullptr;

@@ -88,7 +88,7 @@ sm::status s1_callback( sm::handler_t h )
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
             logger::out() << logger::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< logger::end;
-            h.timeoutSet( 0, 5_sec );
+            h.thisMachine().timeoutSet( 0, 5_sec );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
             h.nextState( s2 );
