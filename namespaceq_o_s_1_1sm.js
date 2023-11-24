@@ -8,6 +8,7 @@ var namespaceq_o_s_1_1sm =
     [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", "classq_o_s_1_1sm_1_1timeout_spec" ],
     [ "transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ],
     [ "signalAction_t", "group__qfsm.html#ga435dd60e77f0b3c14c5e5522e015ff87", null ],
+    [ "signalIDType", "group__qfsm.html#ga1214d31027505c6ca71c4639fd8c9a6d", null ],
     [ "stateCallback_t", "group__qfsm.html#ga0a2b3e62daba65e93e9e2e0586c744d4", null ],
     [ "surroundingCallback_t", "group__qfsm.html#gadbdca3ba7e7e329ecacc9c1510a14ad9", null ],
     [ "timeoutSpecOption_t", "group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9", null ],
@@ -17,11 +18,11 @@ var namespaceq_o_s_1_1sm =
       [ "SHALLOW_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420aff183b3b4e6b9cf5e3ba5358b79390d8", null ],
       [ "DEEP_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420af75d7163021d5531e73cf6595ff9ac1f", null ]
     ] ],
-    [ "signalID", "group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4", [
-      [ "SIGNAL_START", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e", null ],
-      [ "SIGNAL_EXIT", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453", null ],
-      [ "SIGNAL_ENTRY", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6", null ],
-      [ "SIGNAL_NONE", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac21d96e512302f448d03ed1b4831cb7d", null ]
+    [ "signalID", "group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d", [
+      [ "SIGNAL_START", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e", null ],
+      [ "SIGNAL_EXIT", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453", null ],
+      [ "SIGNAL_ENTRY", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6", null ],
+      [ "SIGNAL_NONE", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d", null ]
     ] ],
     [ "status", "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c", [
       [ "BEFORE_ANY", "group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4", null ],
