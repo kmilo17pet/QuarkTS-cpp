@@ -184,16 +184,20 @@ void sm::state::topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noe
 /*============================================================================*/
 bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept
 {
-    s->lastRunningChild = init;
-    s->initState = init;
-    s->sCallback = sFcn;
-    s->parent = this;
-    s->tTable = nullptr;
-    s->tEntries = 0U;
-    s->tdef = nullptr;
-    s->nTm = 0U;
+    int retValue = false;
 
-    return true;
+    if ( ( s != this ) && ( init != this ) ) {
+        s->lastRunningChild = init;
+        s->initState = init;
+        s->sCallback = sFcn;
+        s->parent = this;
+        s->tTable = nullptr;
+        s->tEntries = 0U;
+        s->tdef = nullptr;
+        s->nTm = 0U;
+        retValue = true;
+    }
+    return retValue;
 }
 /*============================================================================*/
 bool sm::state::setTransitions( sm::transition_t *table, size_t n ) noexcept
