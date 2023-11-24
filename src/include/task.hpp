@@ -351,7 +351,7 @@ namespace qOS {
             void *aObj{ nullptr };
             queue *aQueue{ nullptr };
             size_t aQueueCount{ 0UL };
-            char name[ 11 ] = "";
+            char name[ 11 ] = ""; // skipcq: CXX-W2066, CXX-W2066
             timer time;
             cycles_t cycles{ 0UL };
             size_t entry{ SIZE_MAX };

@@ -727,7 +727,7 @@ sm::signal_t stateMachine::checkForSignals( sm::signal_t sig ) noexcept
 bool stateMachine::run( sm::signal_t sig ) noexcept
 {
     bool retValue = false;
-    sm::state *entryPath[ Q_FSM_MAX_NEST_DEPTH ];
+    sm::state *entryPath[ Q_FSM_MAX_NEST_DEPTH ]; // skipcq: CXX-W2066
 
     sig = checkForSignals( sig );
     if ( nullptr == current ) { /*Enter here only once to start the top state*/

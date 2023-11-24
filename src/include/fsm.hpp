@@ -97,7 +97,7 @@ namespace qOS {
         template <size_t N>
         struct signalQueue {
             queue q;
-            signal_t qStack[ N ];
+            signal_t qStack[ N ]; // skipcq: CXX-W2066
         };
 
 
@@ -515,7 +515,7 @@ namespace qOS {
         */
         class timeoutSpec {
             uint32_t isPeriodic{ 0U };
-            timer timeout[ Q_FSM_MAX_TIMEOUTS ];
+            timer timeout[ Q_FSM_MAX_TIMEOUTS ]; // skipcq: CXX-W2066
             friend class qOS::stateMachine;
         };
 
@@ -626,9 +626,9 @@ namespace qOS {
             bool smSetup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept;
 
             /*cstat -MISRAC++2008-8-5-2*/
-            static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ]; // skipcq: CXX-W2009
+            static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ]; // skipcq: CXX-W2009, CXX-W2066
             /*cstat +MISRAC++2008-8-5-2*/
-            static stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009
+            static stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009, CXX-W2066
             static const sm::timeoutSpecOption_t OPT_INDEX_MASK;
         public:
             stateMachine() = default;
@@ -821,8 +821,8 @@ namespace qOS {
         */
         class signalPublisher {
             private:
-                sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START }; // skipcq: CXX-W2009
-                stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009
+                sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START }; // skipcq: CXX-W2009, CXX-W2066
+                stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009, CXX-W2066
                 sm::psIndex_t getSubscriptionStatus( stateMachine &m, sm::signalID s ) const noexcept;
                 void unsubscribeAll( void ) noexcept;
             public:

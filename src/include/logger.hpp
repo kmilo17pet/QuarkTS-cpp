@@ -313,15 +313,15 @@ namespace qOS {
                 _logger() = default;
                 _logger( _logger &other ) = delete;
                 void operator=( const _logger & ) = delete;
-                const char *s_str[ 7 ] = { "", "[fatal]: ", "[error]: ", "[warning]: ", "[info]: ", "[debug] ", "" };
+                const char *s_str[ 7 ] = { "", "[fatal]: ", "[error]: ", "[warning]: ", "[info]: ", "[debug] ", "" }; // skipcq: CXX-W2066
                 uint8_t base = { 10U };
                 size_t n{ 0U };
                 uint8_t precision { 6U };
                 #if ( Q_TRACE_BUFSIZE < 36 )
                     #define Q_TRACE_BUFSIZE     ( 36 )
                 #endif
-                char buffer[ Q_TRACE_BUFSIZE ] = { 0 };
-                char preFix[ 5 ] = { 0 };
+                char buffer[ Q_TRACE_BUFSIZE ] = { 0 }; // skipcq: CXX-W2066
+                char preFix[ 5 ] = { 0 }; // skipcq: CXX-W2066
                 util::putChar_t writeChar{ nullptr };
                 void writeNumStr( void ) noexcept;
             public:

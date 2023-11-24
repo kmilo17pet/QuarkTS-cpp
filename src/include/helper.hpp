@@ -140,7 +140,7 @@ namespace qOS {
      * @return The size of the array.
      */
     template <typename T, size_t n>
-    constexpr size_t arraySize( const T (&arr)[n] ) noexcept
+    constexpr size_t arraySize( const T (&arr)[n] ) noexcept // skipcq: CXX-W2066
     {
         return n*arraySize(*arr);
     }

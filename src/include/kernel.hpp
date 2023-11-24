@@ -84,12 +84,12 @@ namespace qOS {
             task idle;
             taskFcn_t releaseSchedCallback{ nullptr };
             task *yieldTask{ nullptr };
-            pq::queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
+            pq::queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ]; // skipcq: CXX-W2066
             prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(pq::queueStack_t) }; // skipcq: CXX-C1000
             volatile coreFlags_t flag{ 0UL };
             notificationSpreader_t nSpreader{ notifyMode::NOTIFY_NONE, nullptr };
             size_t taskEntries{ 0UL };
-            list coreLists[ Q_PRIORITY_LEVELS + 2 ];
+            list coreLists[ Q_PRIORITY_LEVELS + 2 ]; // skipcq: CXX-W2066
             list& waitingList;  // skipcq: CXX-W2012
             list& suspendedList;  // skipcq: CXX-W2012
             static const priority_t MAX_PRIORITY_VALUE;
