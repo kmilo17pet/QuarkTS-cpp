@@ -90,8 +90,8 @@ namespace qOS {
             notificationSpreader_t nSpreader{ notifyMode::NOTIFY_NONE, nullptr };
             size_t taskEntries{ 0UL };
             list coreLists[ Q_PRIORITY_LEVELS + 2 ]; // skipcq: CXX-W2066
-            list& waitingList;  // skipcq: CXX-W2012
-            list& suspendedList;  // skipcq: CXX-W2012
+            list& waitingList;  // skipcq: CXX-W2012, CXX-W2010
+            list& suspendedList;  // skipcq: CXX-W2012, CXX-W2010
             static const priority_t MAX_PRIORITY_VALUE;
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_FCALL_IDLE;

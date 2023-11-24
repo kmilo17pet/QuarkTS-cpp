@@ -296,9 +296,8 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
                 priorityQueue.data = nullptr;
                 break;
         #endif
-            case trigger::byEventFlags:
+            default:
                 break;
-            default: break;
     }
     /*Fill the event info structure: Trigger, FirstCall and TaskData */
     taskEvent::Trigger = Task->Trigger;
