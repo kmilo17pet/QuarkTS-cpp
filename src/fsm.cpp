@@ -59,7 +59,7 @@ bool sm::signalPublisher::subscribeToSignal( stateMachine &m, sm::signalID s ) n
 /*============================================================================*/
 sm::psIndex_t sm::signalPublisher::getSubscriptionStatus( stateMachine &m, sm::signalID s ) const noexcept
 {
-    sm::psIndex_t idx = { sm::PS_SIGNAL_NOT_FOUND, 0u ,0U };
+    sm::psIndex_t idx = { sm::PS_SIGNAL_NOT_FOUND, 0U ,0U };
     size_t i;
     size_t j = 0U;
     const size_t maxSig = static_cast<size_t>( Q_FSM_PS_SIGNALS_MAX );
@@ -126,7 +126,7 @@ bool sm::signalPublisher::unsubscribeFromSignal( stateMachine &m, sm::signalID s
 /*============================================================================*/
 bool sm::signalPublisher::sendSignal( sm::signalID sig, void *sData, bool isUrgent ) noexcept
 {
-    uint8_t r = 0u;
+    uint8_t r = 0U;
 
     if ( sig < sm::signalID::SIGNAL_NONE ) {
         #if ( Q_FSM_PS_SIGNALS_MAX > 0 )  && ( Q_FSM_PS_SUB_PER_SIGNAL_MAX > 0 )
@@ -322,7 +322,7 @@ void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::sign
             setCheck = sm::TIMEOUT_SET_EXIT;
             resetCheck = sm::TIMEOUT_RST_EXIT;
         }
-        for ( size_t i = 0u ; i < n ; ++i ) { /*loop table */
+        for ( size_t i = 0U ; i < n ; ++i ) { /*loop table */
             const sm::timeoutSpecOption_t opt = tbl[ i ].options;
             const index_t index = static_cast<index_t>( opt & OPT_INDEX_MASK );
             /*state match and index is valid?*/

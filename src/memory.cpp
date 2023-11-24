@@ -90,7 +90,7 @@ void mem::pool::init( void ) noexcept
     /*cstat -CERT-INT36-C -CERT-EXP39-C_d -CERT-EXP36-C_a*/
     address = reinterpret_cast<mem::address_t>( poolMemory );
 
-    if ( 0uL != ( address & BYTE_ALIGN_MASK ) ) {
+    if ( 0UL != ( address & BYTE_ALIGN_MASK ) ) {
         address += BYTE_ALIGN_MASK;
         address &= ~BYTE_ALIGN_MASK;
         totalPoolSize -= address - reinterpret_cast<mem::address_t>( poolMemory );

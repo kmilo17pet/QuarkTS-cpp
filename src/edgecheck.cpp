@@ -50,7 +50,7 @@ void edgeCheck::stateCheck( void )
         }
     }
 
-    if ( nodeChange > 0u ) {
+    if ( nodeChange > 0U ) {
         state = &edgeCheck::stateWait;
     }
 }

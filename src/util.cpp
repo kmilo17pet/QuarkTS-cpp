@@ -88,7 +88,7 @@ size_t util::strcpy( char * dst, const char * src, size_t maxlen ) noexcept
     const size_t srclen = util::strlen( src, Q_IO_UTIL_MAX_STRLEN );
 
     if ( ( srclen + 1U ) < maxlen ) {
-        (void)memcpy( dst, src, srclen + 1u );
+        (void)memcpy( dst, src, srclen + 1U );
     }
     else if ( 0U != maxlen ) {
         (void)memcpy( dst, src, maxlen - 1U );
@@ -133,7 +133,7 @@ static size_t xBaseUtoA( unsigned_t num, char* str, uint8_t base ) noexcept
         str[ i++ ] = '0';
     }
     else {
-        while ( 0uL != num ) {
+        while ( 0UL != num ) {
             const unsigned long r = num % static_cast<unsigned long>( base );
             /*cstat -CERT-INT30-C_a*/
             str[ i++ ] = ( r > 9UL ) ? /*i++ never wraps*/

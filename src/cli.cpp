@@ -170,7 +170,7 @@ size_t commandLineInterface::numOfArgs( const char *str ) const
         }
     }
 
-    return ( count + 1u );
+    return ( count + 1U );
 }
 /*============================================================================*/
 bool commandLineInterface::preProcessing( cli::command *cmd, char *inputBuffer )
