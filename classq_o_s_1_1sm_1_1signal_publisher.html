@@ -144,13 +144,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4a60b3bfcf363cec26e7d51ef87c98e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9294e484c4708b2b3e2cdd349093bb5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1signal_publisher.html#a9294e484c4708b2b3e2cdd349093bb5d">~signalPublisher</a> ()</td></tr>
 <tr class="separator:a9294e484c4708b2b3e2cdd349093bb5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae72c8bca77a6562854ca6fa4dc05a70b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1signal_publisher.html#ae72c8bca77a6562854ca6fa4dc05a70b">subscribeToSignal</a> (<a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, <a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">sm::signalID</a> s) noexcept</td></tr>
+<tr class="memitem:ae72c8bca77a6562854ca6fa4dc05a70b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1signal_publisher.html#ae72c8bca77a6562854ca6fa4dc05a70b">subscribeToSignal</a> (<a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, <a class="el" href="group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4">sm::signalID</a> s) noexcept</td></tr>
 <tr class="memdesc:ae72c8bca77a6562854ca6fa4dc05a70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe state machine to a particular signal.  <a href="classq_o_s_1_1sm_1_1signal_publisher.html#ae72c8bca77a6562854ca6fa4dc05a70b">More...</a><br /></td></tr>
 <tr class="separator:ae72c8bca77a6562854ca6fa4dc05a70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9dc7fb83b0364f412ff708ac3c8e3e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0">unsubscribeFromSignal</a> (<a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, <a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">sm::signalID</a> s) noexcept</td></tr>
+<tr class="memitem:af9dc7fb83b0364f412ff708ac3c8e3e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0">unsubscribeFromSignal</a> (<a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, <a class="el" href="group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4">sm::signalID</a> s) noexcept</td></tr>
 <tr class="memdesc:af9dc7fb83b0364f412ff708ac3c8e3e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribe state machine from a particular signal.  <a href="classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0">More...</a><br /></td></tr>
 <tr class="separator:af9dc7fb83b0364f412ff708ac3c8e3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93add601246df9037864c90cb2ca5225"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1signal_publisher.html#a93add601246df9037864c90cb2ca5225">sendSignal</a> (<a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">sm::signalID</a> sig, void *sData=nullptr, bool isUrgent=false) noexcept</td></tr>
+<tr class="memitem:a93add601246df9037864c90cb2ca5225"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1signal_publisher.html#a93add601246df9037864c90cb2ca5225">sendSignal</a> (<a class="el" href="group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4">sm::signalID</a> sig, void *sData=nullptr, bool isUrgent=false) noexcept</td></tr>
 <tr class="memdesc:a93add601246df9037864c90cb2ca5225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a signal to all its subscribers.  <a href="classq_o_s_1_1sm_1_1signal_publisher.html#a93add601246df9037864c90cb2ca5225">More...</a><br /></td></tr>
 <tr class="separator:a93add601246df9037864c90cb2ca5225"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -213,7 +213,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool qOS::sm::signalPublisher::sendSignal </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">sm::signalID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4">sm::signalID</a>&#160;</td>
           <td class="paramname"><em>sig</em>, </td>
         </tr>
         <tr>
@@ -276,7 +276,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">sm::signalID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4">sm::signalID</a>&#160;</td>
           <td class="paramname"><em>s</em>&#160;</td>
         </tr>
         <tr>
@@ -322,7 +322,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">sm::signalID</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4">sm::signalID</a>&#160;</td>
           <td class="paramname"><em>s</em>&#160;</td>
         </tr>
         <tr>
