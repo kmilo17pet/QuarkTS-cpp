@@ -26,12 +26,10 @@ namespace qOS {
 
         class state;
 
-        using signalIDType = uint32_t;
-
         /**
         * @brief The type for signal ID.
         */
-        enum signalID : signalIDType {
+        enum signalID : uint32_t {
             /**
             * @brief Built-in signal that can be used to set a nested initial-transition
             *  (aka default transition) by using the sm::handler_t::startState() method.
@@ -119,7 +117,7 @@ namespace qOS {
         * @brief This enumeration defines the possible modes to perform a
         * transition to history
         */
-        enum class historyMode : uint8_t {
+        enum historyMode : uint8_t {
             NO_HISTORY = 0U,
             SHALLOW_HISTORY,
             DEEP_HISTORY,

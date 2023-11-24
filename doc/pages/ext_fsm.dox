@@ -603,7 +603,7 @@
 *
 *  @code{.c}
 *  /*define the FSM application event-signals*/
-*  #define SIGNAL_BUTTON_PRESSED   ( static_cast<sm::signalID>( 1 ) )
+*  #define SIGNAL_BUTTON_PRESSED   ( sm::SIGNAL_USER( 1 ) )
 *  #define SIGNAL_DELAY            ( sm::SIGNAL_TIMEOUT( 0 ) )
 *  #define SIGNAL_BLINK            ( sm::SIGNAL_TIMEOUT( 1 ) )
 *  
@@ -615,17 +615,17 @@
 *  
 *  /*create the transition tables for every state*/
 *  sm::transition_t LEDOff_transitions[] = {
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOn , 0, nullptr }
+*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOn , sm::historyMode::NO_HISTORY, nullptr }
 *  };
 *  
 *  sm::transition_t LEDOn_transitions[] = {
-*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , 0, nullptr},
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDBlink , 0, nullptr}
+*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , sm::historyMode::NO_HISTORY, nullptr},
+*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDBlink , sm::historyMode::NO_HISTORY, nullptr}
 *  };
 *  
 *  sm::transition_t LEDBlink_transitions[] = {
-*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , 0, nullptr},
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOff   , 0, nullptr}
+*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , sm::historyMode::NO_HISTORY, nullptr},
+*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOff   , sm::historyMode::NO_HISTORY, nullptr}
 *  };
 *  
 *  /*define the timeout specifications */
