@@ -118,7 +118,7 @@ namespace qOS {
         private:
             node *head{ nullptr };
             node *tail{ nullptr };
-            size_t size{ 0u };
+            size_t size{ 0U };
             bool isMember( const void * const xNode ) const noexcept;
             void insertAtFront( node * const xNode ) noexcept;
             void insertAtBack( node * const xNode ) noexcept;

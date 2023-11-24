@@ -68,9 +68,9 @@ namespace qOS {
                 virtual ~input() {}
             protected:
                 char *storage{ nullptr };
-                volatile index_t index{ 0u };
-                index_t maxIndex{ 0u };
-                size_t size{ 0u };
+                volatile index_t index{ 0U };
+                index_t maxIndex{ 0U };
+                size_t size{ 0U };
                 volatile bool ready{ false };
                 void flush( void );
                 void operator=( input const& ) = delete;
@@ -96,8 +96,8 @@ namespace qOS {
                 void *Command{ nullptr };
                 char *StrData{ nullptr };
                 void *Data{ nullptr };
-                size_t StrLen{ 0u };
-                size_t NumArgs{ 0u };
+                size_t StrLen{ 0U };
+                size_t NumArgs{ 0U };
                 commandType Type{ UNDEF };
                 _Handler( _Handler const& ) = delete;
                 void operator=( _Handler const& ) = delete;
@@ -216,18 +216,18 @@ namespace qOS {
 
         class command;
         /*! @cond  */
-        class _Handler final {
+        class commandHandler final {
             private:
                 commandLineInterface *instance{ nullptr };
                 command *Command{ nullptr };
                 char *StrData{ nullptr };
                 void *Data{ nullptr };
-                size_t StrLen{ 0u };
-                size_t NumArgs{ 0u };
+                size_t StrLen{ 0U };
+                size_t NumArgs{ 0U };
                 commandType Type{ UNDEF };
-                _Handler( _Handler const& ) = delete;
-                void operator=( _Handler const& ) = delete;
-                _Handler() = default;
+                commandHandler( commandHandler const& ) = delete;
+                void operator=( commandHandler const& ) = delete;
+                commandHandler() = default;
             public:
                 inline commandType getType( void ) const
                 {
@@ -267,7 +267,7 @@ namespace qOS {
                 char *output{ nullptr };
             friend class qOS::commandLineInterface;
         };
-        using handler_t = _Handler&;
+        using handler_t = commandHandler&;
         /*! @endcond  */
 
         /**
@@ -304,8 +304,8 @@ namespace qOS {
         class command : protected node {
             private:
                 commandCallback_t cmdCallback{ nullptr };
-                options_t cmdOpt{ 0u };
-                size_t cmdLen{ 0u };
+                options_t cmdOpt{ 0U };
+                size_t cmdLen{ 0U };
                 void *param{ nullptr };
                 char *Text{ nullptr };
                 command( command const& ) = delete;
@@ -333,7 +333,7 @@ namespace qOS {
     class commandLineInterface : protected cli::input {
         private:
             list subscribed;
-            cli::_Handler handler;
+            cli::commandHandler handler;
             const char *ok_rsp{ "OK" };
             const char *er_rsp{ "ERROR" };
             const char *nf_rsp{ "UNKNOWN" };
@@ -341,7 +341,7 @@ namespace qOS {
             const char *eol{ "\r\n" };
             char delim{ ',' };
             util::putChar_t outputFcn{ nullptr };
-            size_t sizeOutput{ 0u };
+            size_t sizeOutput{ 0U };
             void *owner{ nullptr };
             bool notify( void );
             bool preProcessing( cli::command *cmd, char *inputBuffer );
@@ -455,7 +455,7 @@ namespace qOS {
             {
                 handler.Data = pData;
             }
-        friend class cli::_Handler;
+        friend class cli::commandHandler;
         friend class core;
     };
     /** @}*/

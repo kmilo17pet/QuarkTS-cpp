@@ -9,7 +9,7 @@ struct criticalHandler_t {
     int_restorer_t restore;     /*< Point to the user-supplied function used to restore the hardware interrupts. */
     volatile uint32_t flags;    /*< To save the current interrupt flags before the disable action is performed. */
 };
-static criticalHandler_t c = { nullptr, nullptr , 0uL }; // skipcq: CXX-W2009
+static criticalHandler_t c = { nullptr, nullptr , 0UL }; // skipcq: CXX-W2009
 /*! @endcond  */
 
 /*============================================================================*/

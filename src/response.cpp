@@ -8,7 +8,7 @@ bool response::setup( char *xLocBuff, const size_t nMax ) noexcept
 {
     bool retValue = false;
 
-    if ( ( nullptr != xLocBuff ) && ( nMax > 0u ) ) {
+    if ( ( nullptr != xLocBuff ) && ( nMax > 0U ) ) {
         pattern2Match = xLocBuff;
         maxStrLength = nMax;
         reset();
@@ -20,8 +20,8 @@ bool response::setup( char *xLocBuff, const size_t nMax ) noexcept
 /*============================================================================*/
 void response::reset( void ) noexcept
 {
-    patternLength = 0u;
-    matchedCount = 0u;
+    patternLength = 0U;
+    matchedCount = 0U;
     responseReceived = false;
     timeout.disarm();
 }
@@ -30,10 +30,10 @@ responseStatus response::received( const char *pattern, const size_t n, qOS::dur
 {
     responseStatus retValue = responseStatus::MISSING;
 
-    if ( ( false == responseReceived ) && ( 0u == patternLength ) ) {
+    if ( ( !responseReceived ) && ( 0U == patternLength ) ) {
         (void)util::strcpy( pattern2Match, pattern, maxStrLength );
-        patternLength = ( 0u == n ) ? util::strlen( pattern, maxStrLength ) : n;
-        matchedCount = 0u;
+        patternLength = ( 0U == n ) ? util::strlen( pattern, maxStrLength ) : n;
+        matchedCount = 0U;
         responseReceived = false;
         if ( t > clock::IMMEDIATE ) {
             (void)timeout.set( t );
@@ -58,7 +58,7 @@ bool response::isrHandler( const char rxChar ) noexcept
 {
     bool retValue = false;
 
-    if ( ( false == responseReceived ) && ( patternLength > 0u ) ) {
+    if ( ( !responseReceived ) && ( patternLength > 0U ) ) {
         if ( pattern2Match[ matchedCount ] == rxChar ) {
             ++matchedCount;
             if ( matchedCount == patternLength ) {
@@ -73,6 +73,6 @@ bool response::isrHandler( const char rxChar ) noexcept
 /*============================================================================*/
 bool response::isInitialized( void ) const noexcept
 {
-    return ( maxStrLength > 0u );
+    return ( maxStrLength > 0U );
 }
 /*============================================================================*/

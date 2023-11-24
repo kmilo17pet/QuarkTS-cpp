@@ -47,9 +47,9 @@ namespace qOS {
             uint8_t *tail{ nullptr };
             uint8_t *writer{ nullptr };
             uint8_t *reader{ nullptr };
-            volatile size_t itemsWaiting = 0u;
-            size_t itemsCount = 0u;
-            size_t itemSize = 0u;
+            volatile size_t itemsWaiting = 0U;
+            size_t itemsCount = 0U;
+            size_t itemSize = 0U;
             void moveReader( void ) noexcept;
             void copyDataFromQueue( void * const dst ) noexcept;
             void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept; 

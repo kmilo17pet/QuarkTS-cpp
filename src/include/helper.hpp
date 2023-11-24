@@ -46,7 +46,7 @@ namespace qOS {
         template <typename T>
         inline void singleSet( T &dst, const size_t xBit )
         {
-            dst |= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
+            dst |= ( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
         }
         /**
         * @brief Uses the bitwise AND operator to clear a single bit into @a dst
@@ -56,7 +56,7 @@ namespace qOS {
         template <typename T>
         inline void singleClear( T &dst, const size_t xBit )
         {
-            dst &= ~( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
+            dst &= ~( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
         }
         /**
         * @brief Uses the bitwise AND operator to read the value of a single bit
@@ -68,7 +68,7 @@ namespace qOS {
         template <typename T>
         inline bool singleRead( T dst, const size_t xBit )
         {
-            return ( static_cast<T>( 0u ) == ( dst & ( static_cast<T>( 1u ) << static_cast<T>( xBit ) ) ) ) ? false : true;
+            return ( static_cast<T>( 0U ) != ( dst & ( static_cast<T>( 1U ) << static_cast<T>( xBit ) ) ) );
         }
         /**
         * @brief Uses the bitwise XOR operator to toggle the value of a single bit
@@ -79,7 +79,7 @@ namespace qOS {
         template <typename T>
         inline void singleToggle( T &dst, const size_t xBit )
         {
-            dst ^= ( static_cast<T>( 1u ) << static_cast<T>( xBit ) );
+            dst ^= ( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
         }
         /*cstat +CERT-INT34-C_a +MISRAC++2008-5-0-10*/
         /**
@@ -104,7 +104,7 @@ namespace qOS {
         template <typename T, typename W>
         inline bool multipleGet( T reg, W xBits )
         {
-            return ( 0u != ( reg & xBits) ) ? true : false;
+            return ( 0U != ( reg & xBits) );
         }
         /** @}*/
     }
@@ -200,7 +200,7 @@ namespace qOS {
     */
     inline uint8_t byteNibbleHigh( uint8_t x )
     {
-        return static_cast<uint8_t>( x >> 4u );
+        return static_cast<uint8_t>( x >> 4U );
     }
     /**
     * @brief Read the low-nibble from @a x
@@ -209,7 +209,7 @@ namespace qOS {
     */
     inline uint8_t byteNibbleLow( uint8_t x )
     {
-        return static_cast<uint8_t>( x & 0x0Fu );
+        return static_cast<uint8_t>( x & 0x0FU );
     }
     /**
     * @brief Merges two nibbles to form one byte.
@@ -219,7 +219,7 @@ namespace qOS {
     */
     inline uint8_t byteMergeNibbles( uint8_t h, uint8_t l )
     {
-        return static_cast<uint8_t>( ( h << 4u ) | ( 0x0Fu & l ) );
+        return static_cast<uint8_t>( ( h << 4U ) | ( 0x0FU & l ) );
     }
     /**
     * @brief Read the high-byte from @a x
@@ -228,7 +228,7 @@ namespace qOS {
     */
     inline uint16_t wordByteHigh( uint16_t x )
     {
-        return static_cast<uint16_t>( x >> 8u );
+        return static_cast<uint16_t>( x >> 8U );
     }
     /**
     * @brief Read the low-byte from @a x
@@ -237,7 +237,7 @@ namespace qOS {
     */
     inline uint16_t wordByteLow( uint16_t x )
     {
-        return static_cast<uint16_t>( x & 0x00FFu );
+        return static_cast<uint16_t>( x & 0x00FFU );
     }
     /**
     * @brief Merges two bytes to form one Word.
@@ -247,7 +247,7 @@ namespace qOS {
     */
     inline uint16_t wordMergeBytes( uint16_t h, uint16_t l )
     {
-        return static_cast<uint16_t>( ( h << 8u ) | ( 0x00FFu & l ) );
+        return static_cast<uint16_t>( ( h << 8U ) | ( 0x00FFU & l ) );
     }
     /**
     * @brief Read the high-word from @a x
@@ -256,7 +256,7 @@ namespace qOS {
     */
     inline uint32_t dWordWordHigh( uint32_t x )
     {
-        return static_cast<uint32_t>( x >> 16u );
+        return static_cast<uint32_t>( x >> 16U );
     }
     /**
     * @brief Read the low-word from @a x
@@ -265,7 +265,7 @@ namespace qOS {
     */
     inline uint32_t dWordWordLow( uint32_t x )
     {
-        return static_cast<uint32_t>( x & 0xFFFFu );
+        return static_cast<uint32_t>( x & 0xFFFFU );
     }
     /**
     * @brief Merges two words to form one DWord.
@@ -275,7 +275,7 @@ namespace qOS {
     */
     inline uint32_t dwordMergeWords( uint32_t h, uint32_t l )
     {
-        return static_cast<uint32_t>( ( h << 16u ) | ( 0xFFFFu & l ) );
+        return static_cast<uint32_t>( ( h << 16U ) | ( 0xFFFFU & l ) );
     }
 
     /** @}*/

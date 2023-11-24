@@ -610,7 +610,7 @@
 *  task LED_Task; /*The task node*/
 *  stateMachine LED_FSM; /*The state-machine handler*/
 *  sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
-*  sm::signalQueue_t<5> LEDsigqueue;
+*  sm::signalQueue<5> LEDsigqueue;
 *  sm::timeoutSpec tm_spectimeout;
 *  
 *  /*create the transition tables for every state*/
@@ -763,7 +763,7 @@
 *  sm::state state_idle, state_initial, state_cruisingoff, state_automatedcontrol;
 *  /*states inside the state_automatedcontrol*/
 *  sm::state state_accelerating, state_cruising, state_resuming;
-*  sm::signalQueue_t<10> top_sigqueue;
+*  sm::signalQueue<10> top_sigqueue;
 *  
 *  /*=======================================================================*/
 *  /*                             TRANSITION TABLES                         */
@@ -956,7 +956,7 @@
 *  #define SIGNAL_E ( sm::SIGNAL_USER( 5 ) )
 *  #define SIGNAL_F ( sm::SIGNAL_USER( 6 ) )
 *
-*  sm::signalQueue_t<10> sigqueue;
+*  sm::signalQueue<10> sigqueue;
 *  stateMachine super;
 *  sm::state state1 , state2 , state3 , state4 , state5 , state6;
 *

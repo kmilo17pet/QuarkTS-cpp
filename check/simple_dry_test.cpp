@@ -18,7 +18,7 @@ task t1, t2, t3, t4;
 customTask t5;
 stateMachine m;
 sm::state s1, s2;
-sm::signalQueue_t<10> signalQueue;
+sm::signalQueue<10> signalQueue;
 co::position pos1;
 
 sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
@@ -53,14 +53,17 @@ void idleTask_callback( event_t e )
             co::delay( 0.5_sec );
             logger::out() <<"sec 3"<< logger::end;
             co::delay( 0.5_sec );
-            co::waitUntil( true == true );
-            co::waitUntil( true == true , 500 );
+            co::waitUntil( true );
+            co::waitUntil( true , 500 );
             co::yield();
             co::restart();
             co::setPosition( pos1 );
             if ( co::timeoutExpired() ) {
 
             }
+            co::perform() {
+
+            }co::until(false);
         }
     }
 }
@@ -171,7 +174,7 @@ int main()
     os.init( sysClock, idleTask_callback );
     
     os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
-    os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10u );
+    os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10U );
     os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
     os.addTask( t5, nullptr, core::MEDIUM_PRIORITY, 1_sec, task::PERIODIC );
 

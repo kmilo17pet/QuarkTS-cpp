@@ -93,7 +93,7 @@ bool list::insert( void * const xNode, const listPosition p ) noexcept
     bool retValue = false;
 
     if ( ( nullptr != xNode ) && ( p >= listPosition::AT_BACK ) ) {
-        if ( false == isMember( xNode ) ) {
+        if ( !isMember( xNode ) ) {
             /*cstat -CERT-EXP36-C_b*/
             node * const newNode = static_cast<node*>( xNode );
             /*cstat +CERT-EXP36-C_b*/
@@ -211,7 +211,7 @@ void* list::getBack( void ) const noexcept
 /*============================================================================*/
 bool list::isEmpty( void ) const noexcept
 {
-    return ( nullptr == head ) ? true : false;
+    return ( nullptr == head );
 }
 /*============================================================================*/
 size_t list::length( void ) const noexcept
@@ -228,16 +228,18 @@ bool list::sort( listCompareFcn_t f ) noexcept
     if ( nullptr != f ) {
         const size_t count = size;
 
-        if ( count >= 2u ) {
-            node *current = nullptr, *before, *after;
+        if ( count >= 2U ) {
+            node *current = nullptr;
+            node *before;
+            node *after;
             bool xRetCmp;
 
-            for ( size_t i = 1u ; i < count ; ++i ) {
-                const size_t n = count - i - 1u;
+            for ( size_t i = 1U ; i < count ; ++i ) {
+                const size_t n = count - i - 1U;
                 current = head;
-                for ( size_t j = 0u; j <= n; ++j ) {
+                for ( size_t j = 0U; j <= n; ++j ) {
                     xRetCmp = f( current, current->next );
-                    if ( true == xRetCmp ) {
+                    if ( xRetCmp ) {
                         before = current->prev;
                         after = current->next;
 
@@ -284,7 +286,8 @@ bool list::swap( void* node1, void* node2 ) noexcept
         /*cstat +CERT-EXP36-C_b*/
         if ( ( this == n1->container ) && ( n1->container == n2->container ) ) {
             /*nodes are part of the same list*/
-            node *tmp1, *tmp2;
+            node *tmp1;
+            node *tmp2;
 
             if ( n2->next == n1 ) {
                 /*cstat -CERT-EXP36-C_b*/
@@ -401,7 +404,7 @@ void list::clean( void ) noexcept
 {
     head = nullptr;
     tail = nullptr;
-    size = 0u;
+    size = 0U;
 }
 /*============================================================================*/
 listIterator list::begin( void ) noexcept

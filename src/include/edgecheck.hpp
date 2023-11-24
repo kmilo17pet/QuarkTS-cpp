@@ -45,7 +45,7 @@ namespace qOS {
                 void *xPort{ nullptr };
                 pinState prevPinValue{ pinState::UNKNOWN  };
                 pinState status{ pinState::UNKNOWN };
-                index_t xPin{ 0u };
+                index_t xPin{ 0U };
                 inNode( inNode const& ) = delete;
                 void operator=( inNode const& ) = delete;
             public:
@@ -93,8 +93,8 @@ namespace qOS {
             void stateWait( void );
             void stateUpdate( void );
             void (edgeCheck::* state)( void ) = nullptr;
-            qOS::clock_t start{ 0u };
-            qOS::clock_t debounceTime{ 0u };
+            qOS::clock_t start{ 0U };
+            qOS::clock_t debounceTime{ 0U };
             ec::nodeReaderFcn_t reader{ nullptr };
             ec::nodeReaderFcn_t getReader( ec::reg rSize ) noexcept;
             edgeCheck( edgeCheck const& ) = delete;

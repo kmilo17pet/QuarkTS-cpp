@@ -35,12 +35,12 @@ static bool read32bit( void *addr, index_t pinNumber )
 /*============================================================================*/
 void edgeCheck::stateCheck( void )
 {
-    size_t nodeChange = 0u;
+    size_t nodeChange = 0U;
 
     for ( auto i = nodes.begin(); i.until() ; i++ ) {
         ec::inNode * const n = i.get<ec::inNode*>();
-        const ec::pinState v = ( true == reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
-                                                                         ec::pinState::OFF;
+        const ec::pinState v = ( reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
+                                                                 ec::pinState::OFF;
         if ( n->prevPinValue != v ) {
             n->status = ec::pinState::UNKNOWN;
             ++nodeChange;
@@ -66,8 +66,8 @@ void edgeCheck::stateUpdate( void )
 {
     for ( auto i = nodes.begin(); i.until() ; i++ ) {
         ec::inNode * const n = i.get<ec::inNode*>();
-        const ec::pinState v = ( true == reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
-                                                                         ec::pinState::OFF;
+        const ec::pinState v = ( reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
+                                                                 ec::pinState::OFF;
         
         if ( n->prevPinValue != v ) {
             n->status = ( ec::pinState::ON == v ) ? ec::pinState::RISING_EDGE :
@@ -107,10 +107,10 @@ bool edgeCheck::add( ec::inNode& n, void *portAddress, const index_t pinNumber) 
 {
     bool retValue = false;
 
-    if ( ( nullptr != portAddress ) && ( pinNumber < 32u ) ) {
+    if ( ( nullptr != portAddress ) && ( pinNumber < 32U ) ) {
         n.xPort = portAddress;
         n.xPin = pinNumber;
-        n.prevPinValue = ( true == reader( n.xPort, n.xPin ) ) ? ec::pinState::ON : ec::pinState::OFF;
+        n.prevPinValue = ( reader( n.xPort, n.xPin ) ) ? ec::pinState::ON : ec::pinState::OFF;
         retValue = nodes.insert( &n );
     }
 
@@ -133,7 +133,7 @@ bool ec::inNode::selectPin( const index_t pinNumber ) noexcept
 {
     bool retValue = false;
 
-    if ( pinNumber < 32u ) {
+    if ( pinNumber < 32U ) {
         xPin = pinNumber;
         retValue = true;
     }

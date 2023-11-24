@@ -27,7 +27,7 @@ namespace qOS {
         using address_t = size_t;
         struct blockConnect_t {
             blockConnect_t *next{ nullptr };
-            size_t blockSize{ 0u };
+            size_t blockSize{ 0U };
         };
         /*! @endcond */
 
@@ -44,8 +44,8 @@ namespace qOS {
                 blockConnect_t *end{ nullptr };
                 blockConnect_t start;
                 uint8_t *poolMemory{ nullptr };
-                size_t poolMemSize{ 0u };
-                size_t freeBytesRemaining{ 0u };
+                size_t poolMemSize{ 0U };
+                size_t freeBytesRemaining{ 0U };
                 void insertBlockIntoFreeList( blockConnect_t *xBlock ) noexcept;
                 void init( void ) noexcept;
                 pool( pool const& ) = delete;

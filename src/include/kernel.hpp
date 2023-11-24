@@ -42,10 +42,10 @@ namespace qOS {
     * delivered
     */
     enum class notifyMode : uint8_t {
-        SIMPLE = 0u,    /**< To notify a task using the simple approach. */
-        QUEUED = 1u,    /**< To notify a task using the FIFO priority queue. */
+        SIMPLE = 0U,    /**< To notify a task using the simple approach. */
+        QUEUED = 1U,    /**< To notify a task using the FIFO priority queue. */
         /*! @cond  */
-        _NONE_ = 3u,    /**< Do not use this value. Used only internally.*/
+        NOTIFY_NONE = 3U,    /**< Do not use this value. Used only internally.*/
         /*! @endcond  */
     };
 
@@ -70,7 +70,7 @@ namespace qOS {
     */
     constexpr taskFlag_t EVENT_FLAG( index_t i )
     {
-        return ( ( i >= 1u ) && ( i <= 20u ) ) ?  0x00001000uL << ( i - 1u ) : 0x00001000uL;
+        return ( ( i >= 1U ) && ( i <= 20U ) ) ?  0x00001000UL << ( i - 1U ) : 0x00001000UL;
     }
 
     /** @}*/
@@ -79,16 +79,16 @@ namespace qOS {
     * @brief The class to interface the OS
     * @note Use the predefined os instance
     */
-    class core final : protected _Event {
+    class core final : protected taskEvent {
         private:
             task idle;
             taskFcn_t releaseSchedCallback{ nullptr };
             task *yieldTask{ nullptr };
             pq::queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
             prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(pq::queueStack_t) }; // skipcq: CXX-C1000
-            volatile coreFlags_t flag{ 0uL };
-            notificationSpreader_t nSpreader{ notifyMode::_NONE_, nullptr };
-            size_t taskEntries{ 0uL };
+            volatile coreFlags_t flag{ 0UL };
+            notificationSpreader_t nSpreader{ notifyMode::NOTIFY_NONE, nullptr };
+            size_t taskEntries{ 0UL };
             list coreLists[ Q_PRIORITY_LEVELS + 2 ];
             list& waitingList;  // skipcq: CXX-W2012
             list& suspendedList;  // skipcq: CXX-W2012
@@ -427,7 +427,7 @@ namespace qOS {
             globalState getGlobalState( task &Task ) const noexcept;
     };
     /** @brief The predefined instance of the OS kernel interface */
-    extern core& os; // skipcq: CXX-W2011
+    extern core& os; // skipcq: CXX-W2011, CXX-W2009
 
     /** @}*/
 }

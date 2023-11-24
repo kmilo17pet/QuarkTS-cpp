@@ -314,9 +314,9 @@ namespace qOS {
                 _logger( _logger &other ) = delete;
                 void operator=( const _logger & ) = delete;
                 const char *s_str[ 7 ] = { "", "[fatal]: ", "[error]: ", "[warning]: ", "[info]: ", "[debug] ", "" };
-                uint8_t base = { 10u };
-                size_t n{ 0u };
-                uint8_t precision { 6u };
+                uint8_t base = { 10U };
+                size_t n{ 0U };
+                uint8_t precision { 6U };
                 #if ( Q_TRACE_BUFSIZE < 36 )
                     #define Q_TRACE_BUFSIZE     ( 36 )
                 #endif
@@ -366,7 +366,7 @@ namespace qOS {
             friend _logger& out( const logSeverity s, const source_location &loc ) noexcept;
             friend void setOutputFcn( util::putChar_t fcn );
         };
-        extern _logger& _logger_out; // skipcq: CXX-W2011
+        extern _logger& _logger_out; // skipcq: CXX-W2011, CXX-W2009
         /*! @endcond */
 
         /**

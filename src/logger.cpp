@@ -15,11 +15,11 @@ namespace qOS {
     /*cstat +MISRAC++2008-0-1-4_b*/
     /* cppcheck-suppress noConstructor */
     namespace logger {
-         _logger& _logger_out = _logger::getInstance(); // skipcq: CXX-W2011
-        const lout_base dec( 10u );
-        const lout_base hex( 16u );
-        const lout_base oct( 8u );
-        const lout_base bin( 2u );
+         _logger& _logger_out = _logger::getInstance(); // skipcq: CXX-W2011, CXX-W2009
+        const lout_base dec( 10U );
+        const lout_base hex( 16U );
+        const lout_base oct( 8U );
+        const lout_base bin( 2U );
 
         void setOutputFcn( util::putChar_t fcn )
         {
@@ -106,14 +106,14 @@ namespace qOS {
         _logger& _logger::operator<<( const void * const p )
         {
             /*cstat -CERT-INT36-C*/
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), buffer, 16u ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), buffer, 16U ); // skipcq: CXX-C1000
             /*cstat +CERT-INT36-C*/
             (void)util::outputString( writeChar, "p@0x" );
             (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
-            if ( n > 0u ) {
+            if ( n > 0U ) {
                 (void)util::outputString( writeChar, " = [ " );
                 (void)util::printXData( writeChar, const_cast<void*>( p ), n, false );
-                n  = 0u;
+                n  = 0U;
                 writeChar( nullptr, ']' );
             }
             writeChar( nullptr, ' ' );
@@ -132,13 +132,13 @@ namespace qOS {
         {
             base = f.base;
             switch( f.base ) {
-                case 2u:
+                case 2U:
                     (void)util::strcpy( preFix, "0b", sizeof(preFix) ); // skipcq: CXX-C1000
                     break;
-                case 8u:
+                case 8U:
                     (void)util::strcpy( preFix, "0", sizeof(preFix) ); // skipcq: CXX-C1000
                     break;
-                case 16u:
+                case 16U:
                     (void)util::strcpy( preFix, "0x", sizeof(preFix) ); // skipcq: CXX-C1000
                     break;
                 default:

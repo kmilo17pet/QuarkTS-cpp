@@ -4,8 +4,8 @@ using namespace qOS;
 
 const bool timer::ARMED = true;
 const bool timer::DISARMED = false;
-const qOS::clock_t timer::DISARM_VALUE = 0uL ;
-const qOS::clock_t timer::REMAINING_IN_DISARMED_STATE = 0xFFFFFFFFuL;
+const qOS::clock_t timer::DISARM_VALUE = 0UL ;
+const qOS::clock_t timer::REMAINING_IN_DISARMED_STATE = 0xFFFFFFFFUL;
 
 /*============================================================================*/
 timer::timer()
@@ -90,7 +90,7 @@ void timer::operator()( bool en )
 /*============================================================================*/
 qOS::clock_t timer::elapsed( void ) const noexcept
 {
-    return ( timer::ARMED == status() ) ? clock::getTick() - tStart : 0u; 
+    return ( timer::ARMED == status() ) ? clock::getTick() - tStart : 0U;
 }
 /*============================================================================*/
 qOS::clock_t timer::remaining( void ) const noexcept
@@ -111,7 +111,7 @@ bool timer::expired( void ) const noexcept
 /*============================================================================*/
 bool timer::status( void ) const noexcept
 {
-    return ( tv != 0u );
+    return ( tv != 0U );
 }
 /*============================================================================*/
 bool timer::deadLineCheck( void ) const noexcept

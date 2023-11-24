@@ -28,9 +28,9 @@ namespace qOS {
         private:
             char *pattern2Match{ nullptr };
             timer timeout;
-            size_t maxStrLength{ 0u };
-            size_t patternLength{ 0u };
-            volatile size_t matchedCount{ 0u };
+            size_t maxStrLength{ 0U };
+            size_t patternLength{ 0U };
+            volatile size_t matchedCount{ 0U };
             volatile bool responseReceived{ false };
             response( response const& ) = delete;
             void operator=( response const& ) = delete;

@@ -25,31 +25,31 @@ namespace qOS {
     }
     constexpr qOS::duration_t operator "" _sec( unsigned long long int x )
     {
-        return static_cast<qOS::duration_t>( 1000u*x );
+        return static_cast<qOS::duration_t>( 1000U*x );
     }
     constexpr qOS::duration_t operator "" _sec( long double x )
     {
-        return static_cast<qOS::duration_t>( 1000u*x );
+        return static_cast<qOS::duration_t>( 1000U*x );
     }
     constexpr qOS::duration_t operator "" _minutes( unsigned long long int x )
     {
-        return static_cast<qOS::duration_t>( 60000u*x );
+        return static_cast<qOS::duration_t>( 60000U*x );
     }
     constexpr qOS::duration_t operator "" _minutes( long double x )
     {
-        return static_cast<qOS::duration_t>( 60000u*x );
+        return static_cast<qOS::duration_t>( 60000U*x );
     }
     constexpr qOS::duration_t operator "" _hours( unsigned long long int x )
     {
-        return static_cast<qOS::duration_t>( 3600000u*x );
+        return static_cast<qOS::duration_t>( 3600000U*x );
     }
     constexpr qOS::duration_t operator "" _hours( long double x )
     {
-        return static_cast<qOS::duration_t>( 3600000u*x );
+        return static_cast<qOS::duration_t>( 3600000U*x );
     }
     constexpr qOS::duration_t operator "" _days( unsigned long long int x )
     {
-        return static_cast<qOS::duration_t>( 86400000u*x );
+        return static_cast<qOS::duration_t>( 86400000U*x );
     }
     constexpr qOS::duration_t operator "" _days( long double x )
     {

@@ -25,8 +25,8 @@ namespace qOS {
     */
     class timer {
         private:
-            qOS::clock_t tStart{ 0u };
-            qOS::clock_t tv{ 0u };
+            qOS::clock_t tStart{ 0U };
+            qOS::clock_t tv{ 0U };
         public:
             timer();
             virtual ~timer() {}

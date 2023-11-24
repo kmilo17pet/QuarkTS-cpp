@@ -36,27 +36,27 @@ namespace qOS {
             * @note Transitions by setting the sm::handler_t::nextState() member are not
             * allowed here
             */
-            SIGNAL_START = 0xFFFFFFFFuL,
+            SIGNAL_START = 0xFFFFFFFFUL,
             /**
             * @brief Built-in signal to indicate if the current state has just exit to
             * another state.
             * @note Transitions are not allowed here
             */
-            SIGNAL_EXIT = 0xFFFFFFFEuL,
+            SIGNAL_EXIT = 0xFFFFFFFEUL,
             /**
             * @brief Built-in signal to indicate if the current state has just entered
             * from another state.
             * @note Transitions are not allowed here
             */
-            SIGNAL_ENTRY = 0xFFFFFFFDuL,
+            SIGNAL_ENTRY = 0xFFFFFFFDUL,
             /**
             * @brief Built-in signal to indicate that there is not signal available.
             */
-            SIGNAL_NONE = 0xFFFFFFFCuL,
+            SIGNAL_NONE = 0xFFFFFFFCUL,
             /*! @cond */
-            TM_MAX = 0xFFFFFFFBuL,
+            TM_MAX = 0xFFFFFFFBUL,
             TM_MIN = TM_MAX - ( Q_FSM_MAX_TIMEOUTS - 1 ),
-            MIN_SIGNAL = 0x0uL,
+            MIN_SIGNAL = 0x0UL,
             MAX_SIGNAL = TM_MIN - 1
             /*! @endcond */
         };
@@ -95,7 +95,7 @@ namespace qOS {
         * @brief The type of a FSM signal-queue 
         */
         template <size_t N>
-        struct signalQueue_t {
+        struct signalQueue {
             queue q;
             signal_t qStack[ N ];
         };
@@ -118,7 +118,7 @@ namespace qOS {
         * transition to history
         */
         enum class historyMode : uint8_t {
-            NO_HISTORY = 0u,
+            NO_HISTORY = 0U,
             SHALLOW_HISTORY,
             DEEP_HISTORY,
         };
@@ -236,7 +236,7 @@ namespace qOS {
         #endif
 
         /*! @cond  */
-        class _Handler {
+        class stateHandler {
             protected:
                 state *StartState{ nullptr };
                 state *NextState{ nullptr };
@@ -245,10 +245,10 @@ namespace qOS {
                 historyMode TransitionHistory{ historyMode::NO_HISTORY };
                 status Status{ SUCCESS };
                 signalID Signal{ signalID::SIGNAL_NONE };
-                _Handler( _Handler const& ) = delete;      /* not copyable*/
-                void operator=( _Handler const& ) = delete;  /* not assignable*/
+                stateHandler( stateHandler const& ) = delete;      /* not copyable*/
+                void operator=( stateHandler const& ) = delete;  /* not assignable*/
             public:
-                _Handler() = default;
+                stateHandler() = default;
                 void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
                 void *Data{ nullptr };          /**< The user storage pointer. If the FSM its running as a task, this will point to the event_t structure*/
                 void *StateData{ nullptr };     /**< The state user storage pointer*/
@@ -281,7 +281,7 @@ namespace qOS {
                 }
             friend class qOS::sm::state;
         };
-        using handler_t = _Handler&;
+        using handler_t = stateHandler&;
         /*! @endcond  */
 
         /**
@@ -408,10 +408,10 @@ namespace qOS {
                 timeoutStateDefinition_t *tdef{ nullptr };
                 transition_t *tTable{ nullptr };
                 void *sData{ nullptr };
-                size_t tEntries{ 0u };
-                size_t nTm{ 0u };
-                _Handler *pHandler{ nullptr };
-                void sweepTransitionTable( _Handler &h ) const noexcept;
+                size_t tEntries{ 0U };
+                size_t nTm{ 0U };
+                stateHandler *pHandler{ nullptr };
+                void sweepTransitionTable( stateHandler &h ) const noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
                 bool subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept;
@@ -514,7 +514,7 @@ namespace qOS {
         * @note Do not access any member of this structure directly.
         */
         class timeoutSpec {
-            uint32_t isPeriodic{ 0u };
+            uint32_t isPeriodic{ 0U };
             timer timeout[ Q_FSM_MAX_TIMEOUTS ];
             friend class qOS::stateMachine;
         };
@@ -578,7 +578,7 @@ namespace qOS {
         */
         constexpr timeoutSpecOption_t TIMEOUT_INDEX( index_t i )
         {
-            return ( 0x00FFFFFFuL & static_cast<timeoutSpecOption_t>( i ) );
+            return ( 0x00FFFFFFUL & static_cast<timeoutSpecOption_t>( i ) );
         }
 
         /** @}*/
@@ -594,7 +594,7 @@ namespace qOS {
     * the instance, sets the callback for the top state, sets the initial state
     * and the surrounding callback function.
     */
-    class stateMachine : protected sm::_Handler {
+    class stateMachine : protected sm::stateHandler {
         private:
             sm::state *current{ nullptr };
             sm::state *next{ nullptr };
@@ -679,6 +679,9 @@ namespace qOS {
             }
             /**
             * @brief Install a signal queue to the provided Finite State Machine (FSM).
+            * @note It is recommended to define the queue as an object of type 
+            * sm::signalQueue o that the queue is configured automatically. 
+            * Otherwise the user must configure it explicitly.
             * @pre Queue object should be previously initialized by using
             * queue::setup()
             * @attention Queue item size = sizeof( @ref sm::signal_t )
@@ -689,11 +692,12 @@ namespace qOS {
 
             /**
             * @brief Install a signal queue to the provided Finite State Machine (FSM).
+            * @note This function will setup the queue automatically
             * @param[in] sq The signal queue to be installed.
             * @return @c true on success, otherwise return @c false.
             */
             template <size_t N>
-            bool installSignalQueue( sm::signalQueue_t<N> &sq ) 
+            bool installSignalQueue( sm::signalQueue<N> &sq ) 
             {
                 sq.q.setup( sq.qStack, sizeof(sm::signal_t), N );
                 return installSignalQueue( sq.q );

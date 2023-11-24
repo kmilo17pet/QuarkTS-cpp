@@ -9,7 +9,7 @@ prioQueue::prioQueue( pq::queueStack_t *area, const size_t pq_size ) noexcept
     critical::enter();
     stack = area;
     size = pq_size;
-    for ( size_t i = 0u ; i < size ; ++i ) {
+    for ( size_t i = 0U ; i < size ; ++i ) {
         stack[ i ].pTask = nullptr;
     }
     index = -1;
@@ -18,10 +18,10 @@ prioQueue::prioQueue( pq::queueStack_t *area, const size_t pq_size ) noexcept
 /*============================================================================*/
 size_t prioQueue::count( void ) const noexcept
 {
-    size_t retValue = 0u;
+    size_t retValue = 0U;
 
     if ( hasElements() ) {
-        retValue = static_cast<size_t>( index ) + 1u;
+        retValue = static_cast<size_t>( index ) + 1U;
     }
 
     return retValue;
@@ -33,11 +33,11 @@ task* prioQueue::get( void ) noexcept
 
     if ( hasElements() ) {
         priority_t maxPriority;
-        index_t indexTaskToExtract = 0u;
+        index_t indexTaskToExtract = 0U;
 
         critical::enter();
         maxPriority = stack[ 0 ].pTask->getPriority();
-        for ( index_t i = 1u ; ( i < size ) && ( nullptr != stack[ i ].pTask ) ; ++i ) {
+        for ( index_t i = 1U ; ( i < size ) && ( nullptr != stack[ i ].pTask ) ; ++i ) {
             const priority_t iPriorityValue = stack[ i ].pTask->getPriority();
             if ( iPriorityValue > maxPriority ) {
                 maxPriority = iPriorityValue;
@@ -96,14 +96,14 @@ void prioQueue::clearIndex( index_t indexToClear ) noexcept
     
     stack[ indexToClear ].pTask = nullptr;
     for ( index_t j = indexToClear ; static_cast<base_t>( j ) < queueIndex ; ++j ) {
-        stack[ j ] = stack[ j + 1u ];
+        stack[ j ] = stack[ j + 1U ];
     }
     --index;
 }
 /*============================================================================*/
 void prioQueue::cleanUp( const task &Task ) noexcept
 {
-    for ( index_t i = 1u ; i < size ; ++i ) {
+    for ( index_t i = 1U ; i < size ; ++i ) {
         if ( stack[ i ].pTask == &Task ) {
             clearIndex( i );
         }

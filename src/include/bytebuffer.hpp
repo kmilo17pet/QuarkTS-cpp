@@ -17,9 +17,9 @@ namespace qOS {
     class byteBuffer {
         private:
             volatile uint8_t *buffer{ nullptr };
-            volatile index_t tail{ 0u };
-            volatile index_t head{ 0u };
-            size_t length{ 0u };
+            volatile index_t tail{ 0U };
+            volatile index_t head{ 0U };
+            size_t length{ 0U };
             static size_t checkValidPowerOfTwo( size_t k ) noexcept;
             byteBuffer( byteBuffer const& ) = delete;
             void operator=( byteBuffer const& ) = delete;
