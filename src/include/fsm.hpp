@@ -370,14 +370,13 @@ namespace qOS {
         */
         struct transition_t {
             /*! @cond  */
-            signalID xSignal{ signalID::SIGNAL_NONE };
-            signalAction_t guard{ nullptr };
-            state *nextState{ nullptr };
-            historyMode history{ historyMode::NO_HISTORY };
-            void *signalData{ nullptr };
+            signalID xSignal;
+            signalAction_t guard;
+            state *nextState;
+            historyMode history;
+            void *signalData;
             /*! @endcond  */
         };
-
 
         /**
         * @brief A state object
