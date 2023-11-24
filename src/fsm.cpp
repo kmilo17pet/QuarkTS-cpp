@@ -174,7 +174,7 @@ void sm::state::topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noe
 /*============================================================================*/
 bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept
 {
-    int retValue = false;
+    bool retValue = false;
 
     if ( ( s != this ) && ( init != this ) ) {
         s->lastRunningChild = init;
