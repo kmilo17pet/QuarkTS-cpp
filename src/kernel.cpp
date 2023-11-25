@@ -37,9 +37,6 @@ core& core::getInstance( void ) noexcept
 /*cstat -MISRAC++2008-7-1-2*/
 void core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
 {
-    /*cstat -CERT-EXP39-C_d*/
-    task::pEventInfo = static_cast<taskEvent*>( this );
-    /*cstat -CERT-EXP39-C_d*/
     (void)clock::setTickProvider( tFcn );
     (void)idle.setName( "idle" );
     (void)idle.setPriority( core::LOWEST_PRIORITY );
@@ -59,9 +56,6 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
     Task.setFlags( task::BIT_SHUTDOWN | task::BIT_ENABLED, true );
     (void)Task.setState( s );
     Task.entry = ++core::taskEntries;
-    /*cstat -CERT-EXP39-C_d*/
-    Task.pEventInfo = static_cast<taskEvent*>( this ); // skipcq: CXX-C2022 
-    /*cstat +CERT-EXP39-C_d*/
     return waitingList.insert( &Task, AT_BACK );
 }
 /*============================================================================*/
@@ -311,15 +305,17 @@ void core::dispatch( list * const xList ) noexcept
 {
     for ( auto i = xList->begin() ; i.until() ; i++ ) {
         task * const xTask = i.get<task*>();
-
+        /*cstat -CERT-EXP39-C_d*/
+        event_t e = *( static_cast<taskEvent*>( this ) );
+        /*cstat +CERT-EXP39-C_d*/
         dispatchTaskFillEventInfo( xTask );
         yieldTask = nullptr;
-        xTask->activities();
+        xTask->activities( e );
         /*cppcheck-suppress knownConditionTrueFalse */
         while ( nullptr != yieldTask ) {
             taskEvent::currentTask = yieldTask;
             yieldTask = nullptr;
-            taskEvent::currentTask->activities();
+            taskEvent::currentTask->activities( e );
         }
         
         currentTask = nullptr;
@@ -342,11 +338,14 @@ void core::dispatch( list * const xList ) noexcept
 /*============================================================================*/
 void core::dispatchIdle( void ) noexcept
 {
+    /*cstat -CERT-EXP39-C_d*/
+    event_t e = *( static_cast<taskEvent*>( this ) );
+    /*cstat +CERT-EXP39-C_d*/
     taskEvent::FirstCall = !bits::multipleGet( flag, BIT_FCALL_IDLE );
     taskEvent::TaskData = nullptr;
     taskEvent::Trigger = trigger::byNoReadyTasks;
     taskEvent::currentTask = &idle;
-    idle.activities();
+    idle.activities( e );
     bits::multipleSet( flag, BIT_FCALL_IDLE );
 }
 /*============================================================================*/

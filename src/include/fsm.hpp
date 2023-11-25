@@ -508,7 +508,7 @@ namespace qOS {
                 bool subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept;
                 void topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept;
             protected:
-                virtual sm::status activities( void );
+                virtual sm::status activities( sm::handler_t h );
             public:
                 state() = default;
                 virtual ~state() {}
@@ -587,16 +587,6 @@ namespace qOS {
                 * @param[in] sFcn The state callback function.
                 */
                 void setCallback( const stateCallback_t sFcn ) noexcept;
-                /**
-                * @brief Return a reference to the state handler
-                * @warning Use only within the @c activities method or the state callback function
-                * If used outside can cause an undefined behavior or a runtime error.
-                * @return The state handler.
-                */
-                inline handler_t getHandler( void ) noexcept
-                {
-                    return *pHandler;
-                }
             friend class qOS::stateMachine;
         };
 

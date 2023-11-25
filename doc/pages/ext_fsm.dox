@@ -86,7 +86,7 @@
 *
 *  @code{.c}
 *  class myCustomState : public sm::state {
-*      sm::status activities( void ) override {
+*      sm::status activities( sm::handler_t h ) override {
 *          // TODO : State code
 *          return sm::status::SUCCESS;
 *      }

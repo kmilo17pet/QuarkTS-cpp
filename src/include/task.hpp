@@ -364,7 +364,6 @@ namespace qOS {
             bool getFlag( const uint32_t flag ) const noexcept;
             bool deadLineReached( void ) const noexcept;
             trigger queueCheckEvents( void ) noexcept;
-            static taskEvent * pEventInfo; // skipcq: CXX-W2011, CXX-W2009
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_ENABLED;
             static const uint32_t BIT_QUEUE_RECEIVER;
@@ -378,7 +377,7 @@ namespace qOS {
             task( task const& ) = delete;
             void operator=( task const& ) = delete;
         protected:
-            virtual void activities( void );
+            virtual void activities( event_t e );
         public:
             task() = default;
             virtual ~task(){}
@@ -578,11 +577,6 @@ namespace qOS {
             * @return A @c void pointer to the attached object.
             */
             void * const & getAttachedObject( void ) const noexcept;
-            /**
-            * @brief Retrieves the last task event data
-            * @return The event data at its last execution status.
-            */
-            event_t eventData( void ) const noexcept;
             /** @brief A constant to indicate that the task will run every time 
             * its timeout has expired.
             */

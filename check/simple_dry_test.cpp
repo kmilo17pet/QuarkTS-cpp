@@ -5,10 +5,10 @@
 using namespace std;
 
 class customTask : public task {
-    void activities( void ) override 
+    void activities( event_t e ) override
     {
-        if ( eventData().firstCall() ) {
-            logger::out() << eventData().thisTask().getName() << logger::endl; 
+        if ( e.firstCall() ) {
+            logger::out() << e.thisTask() << logger::endl;
         }
         logger::out() << logger::mag << "im a custom task" << logger::end;
     }

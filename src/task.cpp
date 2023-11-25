@@ -19,7 +19,6 @@ const uint32_t task::BIT_SHUTDOWN = 0x00000040UL;
 const uint32_t task::BIT_REMOVE_REQUEST = 0x00000080UL;
 const uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000UL;
 const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CUL;
-taskEvent * task::pEventInfo = nullptr; // skipcq: CXX-W2011, CXX-W2009
 
 /*============================================================================*/
 constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
@@ -27,10 +26,10 @@ constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
     return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x; 
 }
 /*============================================================================*/
-void task::activities( void )
+void task::activities( event_t e )
 {
     if ( nullptr != callback ) {
-        callback( *pEventInfo );
+        callback( e );
     }
 }
 /*============================================================================*/
@@ -262,10 +261,5 @@ bool task::attachQueue( queue &q, const queueLinkMode mode, const size_t arg ) n
 void * const & task::getAttachedObject( void ) const noexcept
 {
     return aObj;
-}
-/*============================================================================*/
-event_t task::eventData( void ) const noexcept
-{
-    return *pEventInfo;
 }
 /*============================================================================*/

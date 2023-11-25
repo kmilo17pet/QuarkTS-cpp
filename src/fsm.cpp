@@ -531,10 +531,10 @@ void stateMachine::exitUpToLCA( uint8_t lca ) noexcept
     current = s;
 }
 /*============================================================================*/
-sm::status sm::state::activities( void )
+sm::status sm::state::activities( sm::handler_t h )
 {
     /*cstat -MISRAC++2008-5-0-3*/
-    return ( nullptr != sCallback ) ? sCallback( *pHandler ) : sm::status::FAILURE;
+    return ( nullptr != sCallback ) ? sCallback( h ) : sm::status::FAILURE;
     /*cstat +MISRAC++2008-5-0-3*/
 }
 /*============================================================================*/
@@ -550,7 +550,7 @@ sm::status stateMachine::invokeStateActivities( sm::state * const s ) noexcept
     }
 
     sm::stateHandler::Status = sm::status::ABSENT;
-    sm::stateHandler::Status = s->activities();
+    sm::stateHandler::Status = s->activities( *pHandler );
 
     if ( nullptr != surrounding ) {
         if ( sm::stateHandler::Status < sm::status::FAILURE ) {
