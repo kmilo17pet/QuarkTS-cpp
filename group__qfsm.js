@@ -23,7 +23,17 @@ var group__qfsm =
       [ "SignalData", "classq_o_s_1_1sm_1_1handler__t.html#a7aa24bb74e3c045474b5ecf4dde5a229", null ],
       [ "StateData", "classq_o_s_1_1sm_1_1handler__t.html#ab6a46f5f102667474a5ae6c1d4851b98", null ]
     ] ],
-    [ "qOS::sm::transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ],
+    [ "qOS::sm::timeoutStateDefinition", "structq_o_s_1_1sm_1_1timeout_state_definition.html", [
+      [ "options", "structq_o_s_1_1sm_1_1timeout_state_definition.html#a3a3bd17b93a4630ee097ac7ffb28bba3", null ],
+      [ "xTimeout", "structq_o_s_1_1sm_1_1timeout_state_definition.html#a818deecb94e5617deec0c11d925b7e18", null ]
+    ] ],
+    [ "qOS::sm::transition", "structq_o_s_1_1sm_1_1transition.html", [
+      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a5e61fa0ceaab379ad66abcf427b82550", null ],
+      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a3dd37789a5a636143940a5288a614be8", null ],
+      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a6984ed6be55a73884d5db601ef292842", null ],
+      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a3078431142caad759e494c24ba5a5956", null ],
+      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a8d92ab541da467cc67f09b138182c1ac", null ]
+    ] ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", [
       [ "state", "classq_o_s_1_1sm_1_1state.html#ae368a34da51507d9497ca01816bf34ef", null ],
       [ "~state", "classq_o_s_1_1sm_1_1state.html#aa68f13a440895ffef56d29161b70fbab", null ],
@@ -32,11 +42,11 @@ var group__qfsm =
       [ "add", "classq_o_s_1_1sm_1_1state.html#a9e9e639662e875b11df5675aa455ae39", null ],
       [ "getData", "classq_o_s_1_1sm_1_1state.html#a8d777ae3e9a4a2248c8463016d61bc5b", null ],
       [ "getHandler", "classq_o_s_1_1sm_1_1state.html#af2cdfa6ea300cbf0c49460292ff34880", null ],
-      [ "getTransitionTable", "classq_o_s_1_1sm_1_1state.html#ab8693e791ca3a6124083cba93ec3cd6a", null ],
+      [ "getTransitionTable", "classq_o_s_1_1sm_1_1state.html#a1a6c2d0fd5898f6d06ffcd8759955aea", null ],
       [ "setCallback", "classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced", null ],
       [ "setData", "classq_o_s_1_1sm_1_1state.html#af9a1425838929a5145504668b7b5d2f4", null ],
-      [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a59447a5efbe8e4857e7f67479c927788", null ],
-      [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a3baa5c742c3ac4324d61edaaa68ab6bb", null ],
+      [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a00853be678975da84a3c56e8ef7377f0", null ],
+      [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a7f79aa9b88e6c2a75562c044b5f52aed", null ],
       [ "qOS::stateMachine", "classq_o_s_1_1sm_1_1state.html#acd87719420916c47dafcb4865fb5cb2e", null ]
     ] ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", [
@@ -71,20 +81,20 @@ var group__qfsm =
       [ "unsubscribeFromSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0", null ]
     ] ],
     [ "qOS::sm::signalAction_t", "group__qfsm.html#ga435dd60e77f0b3c14c5e5522e015ff87", null ],
+    [ "qOS::sm::signalIDType", "group__qfsm.html#ga1214d31027505c6ca71c4639fd8c9a6d", null ],
     [ "qOS::sm::stateCallback_t", "group__qfsm.html#ga0a2b3e62daba65e93e9e2e0586c744d4", null ],
     [ "qOS::sm::surroundingCallback_t", "group__qfsm.html#gadbdca3ba7e7e329ecacc9c1510a14ad9", null ],
     [ "qOS::sm::timeoutSpecOption_t", "group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9", null ],
-    [ "qOS::sm::timeoutStateDefinition_t", "group__qfsm.html#gaf43c279ea5475762a31afc11e5a868ea", null ],
     [ "qOS::sm::historyMode", "group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420", [
       [ "qOS::sm::NO_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420aaa2fcb98daff51f76c7f684eb310714a", null ],
       [ "qOS::sm::SHALLOW_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a8236d1ff4bbc57189bcc456ba3835316", null ],
       [ "qOS::sm::DEEP_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a9479952ac02915d74a931ec1665b779f", null ]
     ] ],
-    [ "qOS::sm::signalID", "group__qfsm.html#gadb12f8a6365c1a683991fdaf811e72d4", [
-      [ "qOS::sm::SIGNAL_START", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a6b02384b04b60b27c36083cd2a1a486e", null ],
-      [ "qOS::sm::SIGNAL_EXIT", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac3197c8c7ace138b4e0bf3889b0d9453", null ],
-      [ "qOS::sm::SIGNAL_ENTRY", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4a15174ef2df1cf13de02328bd8f6789c6", null ],
-      [ "qOS::sm::SIGNAL_NONE", "group__qfsm.html#ggadb12f8a6365c1a683991fdaf811e72d4ac21d96e512302f448d03ed1b4831cb7d", null ]
+    [ "qOS::sm::signalID", "group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d", [
+      [ "qOS::sm::SIGNAL_START", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e", null ],
+      [ "qOS::sm::SIGNAL_EXIT", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453", null ],
+      [ "qOS::sm::SIGNAL_ENTRY", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6", null ],
+      [ "qOS::sm::SIGNAL_NONE", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d", null ]
     ] ],
     [ "qOS::sm::status", "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c", [
       [ "qOS::sm::BEFORE_ANY", "group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4", null ],

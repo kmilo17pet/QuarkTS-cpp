@@ -36,6 +36,7 @@ var hierarchy =
       [ "qOS::core", "classq_o_s_1_1core.html", null ]
     ] ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ],
+    [ "qOS::sm::timeoutStateDefinition", "structq_o_s_1_1sm_1_1timeout_state_definition.html", null ],
     [ "qOS::timer", "classq_o_s_1_1timer.html", null ],
-    [ "qOS::sm::transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ]
+    [ "qOS::sm::transition", "structq_o_s_1_1sm_1_1transition.html", null ]
 ];

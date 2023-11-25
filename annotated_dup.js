@@ -27,7 +27,8 @@ var annotated_dup =
         [ "signalQueue", "structq_o_s_1_1sm_1_1signal_queue.html", "structq_o_s_1_1sm_1_1signal_queue" ],
         [ "state", "classq_o_s_1_1sm_1_1state.html", "classq_o_s_1_1sm_1_1state" ],
         [ "timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", "classq_o_s_1_1sm_1_1timeout_spec" ],
-        [ "transition_t", "structq_o_s_1_1sm_1_1transition__t.html", null ]
+        [ "timeoutStateDefinition", "structq_o_s_1_1sm_1_1timeout_state_definition.html", "structq_o_s_1_1sm_1_1timeout_state_definition" ],
+        [ "transition", "structq_o_s_1_1sm_1_1transition.html", "structq_o_s_1_1sm_1_1transition" ]
       ] ],
       [ "byteBuffer", "classq_o_s_1_1byte_buffer.html", "classq_o_s_1_1byte_buffer" ],
       [ "clock", "classq_o_s_1_1clock.html", "classq_o_s_1_1clock" ],
