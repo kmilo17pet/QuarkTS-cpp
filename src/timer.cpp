@@ -95,7 +95,7 @@ qOS::clock_t timer::elapsed( void ) const noexcept
 /*============================================================================*/
 qOS::clock_t timer::remaining( void ) const noexcept
 {
-    return ( timer::DISARM_VALUE != status() ) ? tv - elapsed() : timer::REMAINING_IN_DISARMED_STATE; 
+    return ( timer::DISARM_VALUE != status() ) ? ( tv - elapsed() ) : timer::REMAINING_IN_DISARMED_STATE;  // skipcq: CXX-W2065
 }
 /*============================================================================*/
 bool timer::expired( void ) const noexcept
