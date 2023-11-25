@@ -169,14 +169,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab04273bc570b210568b9b5491a58dced"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced">setCallback</a> (const <a class="el" href="group__qfsm.html#ga0a2b3e62daba65e93e9e2e0586c744d4">stateCallback_t</a> sFcn) noexcept</td></tr>
 <tr class="memdesc:ab04273bc570b210568b9b5491a58dced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the state callback.  <a href="classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced">More...</a><br /></td></tr>
 <tr class="separator:ab04273bc570b210568b9b5491a58dced"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2cdfa6ea300cbf0c49460292ff34880"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">handler_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#af2cdfa6ea300cbf0c49460292ff34880">getHandler</a> (void) noexcept</td></tr>
-<tr class="memdesc:af2cdfa6ea300cbf0c49460292ff34880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the state handler.  <a href="classq_o_s_1_1sm_1_1state.html#af2cdfa6ea300cbf0c49460292ff34880">More...</a><br /></td></tr>
-<tr class="separator:af2cdfa6ea300cbf0c49460292ff34880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a072c30cb24e0e006e9829f6cb2bf0f4f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a072c30cb24e0e006e9829f6cb2bf0f4f">activities</a> (void)</td></tr>
-<tr class="separator:a072c30cb24e0e006e9829f6cb2bf0f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fae78b92703668ad67b43f03ec72226"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a0fae78b92703668ad67b43f03ec72226">activities</a> (<a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">sm::handler_t</a> h)</td></tr>
+<tr class="separator:a0fae78b92703668ad67b43f03ec72226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A state object. </p>
@@ -236,8 +233,8 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a072c30cb24e0e006e9829f6cb2bf0f4f" name="a072c30cb24e0e006e9829f6cb2bf0f4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a072c30cb24e0e006e9829f6cb2bf0f4f">&#9670;&nbsp;</a></span>activities()</h2>
+<a id="a0fae78b92703668ad67b43f03ec72226" name="a0fae78b92703668ad67b43f03ec72226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fae78b92703668ad67b43f03ec72226">&#9670;&nbsp;</a></span>activities()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,8 +245,8 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual <a class="el" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> qOS::sm::state::activities </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">sm::handler_t</a>&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -395,36 +392,6 @@ Protected Member Functions</h2></td></tr>
 
 <p>Retrieve the state data or storage-pointer. </p>
 <dl class="section return"><dt>Returns</dt><dd>The state data or storage-pointer. </dd></dl>
-
-</div>
-</div>
-<a id="af2cdfa6ea300cbf0c49460292ff34880" name="af2cdfa6ea300cbf0c49460292ff34880"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2cdfa6ea300cbf0c49460292ff34880">&#9670;&nbsp;</a></span>getHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classq_o_s_1_1sm_1_1handler__t.html">handler_t</a> qOS::sm::state::getHandler </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Return a reference to the state handler. </p>
-<dl class="section warning"><dt>Warning</dt><dd>Use only within the <code>activities</code> method or the state callback function If used outside can cause an undefined behavior or a runtime error. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>The state handler. </dd></dl>
 
 </div>
 </div>

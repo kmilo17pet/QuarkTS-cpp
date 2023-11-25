@@ -227,7 +227,7 @@ Tasks</h1>
 <div class="line">}</div>
 </div><!-- fragment --><p >Tasks can also be defined using the object-oriented programming approach. In this particular case, a class must be defined that inherits from <a class="el" href="classq_o_s_1_1task.html" title="A task node object.">qOS::task</a> and the <code>activities</code> method, where the behavior of the task resides, must be overridden.</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>myCustomTask : <span class="keyword">public</span> task {</div>
-<div class="line">    <span class="keywordtype">void</span> activities( <span class="keywordtype">void</span> )<span class="keyword"> override </span>{</div>
+<div class="line">    <span class="keywordtype">void</span> activities( event_t e )<span class="keyword"> override </span>{</div>
 <div class="line">        <span class="comment">// TODO : Task code</span></div>
 <div class="line">    }</div>
 <div class="line">};</div>
