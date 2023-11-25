@@ -438,9 +438,11 @@ Using a transition table</h1>
 <p >The method <a class="el" href="classq_o_s_1_1sm_1_1state.html#a7f79aa9b88e6c2a75562c044b5f52aed" title="Installs a table with the outgoing transitions for this state.">qOS::sm::state::setTransitions()</a>, should be used to perform the transition table installation to a specific state.</p>
 <center> <a class="anchor" id="multi_row"></a>
 <table class="doxtable">
-<caption>Transition table layout for a state</caption>
+<caption>General transition table layout for a state</caption>
 <tr>
 <th>Signal Id </th><th>Signal action/guard </th><th>Target state </th><th>History mode </th><th>Signal data </th></tr>
+<tr>
+<th><code>sm::signalID</code> </th><th><code>signalAction_t</code> </th><th><code>sm::state*</code> </th><th><code>historyMode</code> </th><th><code>void*</code> </th></tr>
 <tr>
 <td><code>Signal1</code> </td><td><code>nullptr</code> </td><td><code>StateB</code> </td><td><code>0</code> </td><td><code>nullptr</code> </td></tr>
 <tr>
@@ -449,6 +451,20 @@ Using a transition table</h1>
 <td>... </td><td>... </td><td>... </td><td>... </td><td>... </td></tr>
 <tr>
 <td><code>Signal6</code> </td><td><code>nullptr</code> </td><td><code>StateA</code> </td><td><code>0</code> </td><td><code>nullptr</code> </td></tr>
+</table>
+</center><center> <a class="anchor" id="multi_row"></a>
+<table class="doxtable">
+<caption>reduced transition table layout for a state</caption>
+<tr>
+<th>Signal Id </th><th>Target state </th></tr>
+<tr>
+<th><code>sm::signalID</code> </th><th><code>sm::state*</code> </th></tr>
+<tr>
+<td><code>Signal1</code> </td><td><code>StateB</code> </td></tr>
+<tr>
+<td>... </td><td>... </td></tr>
+<tr>
+<td><code>Signal6</code> </td><td><code>StateA</code> </td></tr>
 </table>
 </center><p ><b> Caveats: </b></p>
 <ul>
