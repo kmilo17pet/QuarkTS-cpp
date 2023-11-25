@@ -489,12 +489,24 @@
 *
 * <center>
 * <table>
-* <caption id="multi_row">Transition table layout for a state</caption>
+* <caption id="multi_row">General transition table layout for a state</caption>
 * <tr><th>Signal Id <th>Signal action/guard <th>Target state  <th>History mode  <th>Signal data
+* <tr><th>@c sm::signalID <th>@c signalAction_t <th>@c sm::state* <th>@c historyMode <th> @c void*  
 * <tr><td> @c Signal1 <td>@c nullptr <td>@c StateB <td>@c 0 <td>@c nullptr
 * <tr><td> @c Signal3 <td>@c DoOnSignal3 <td>@c StateD <td>@c 0 <td>@c &sig3data
 * <tr><td> ... <td>... <td> ... <td> ... <td> ...
 * <tr><td> @c Signal6 <td>@c nullptr <td>@c StateA <td>@c 0 <td>@c nullptr
+* </table>
+* </center>
+*
+* <center>
+* <table>
+* <caption id="multi_row">reduced transition table layout for a state</caption>
+* <tr><th>Signal Id <th>Target state
+* <tr><th>@c sm::signalID <th>@c sm::state*
+* <tr><td> @c Signal1 <td>@c StateB
+* <tr><td> ... <td>...
+* <tr><td> @c Signal6 <td>@c StateA
 * </table>
 * </center>
 *
