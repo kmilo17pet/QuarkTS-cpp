@@ -456,13 +456,13 @@ namespace qOS {
                           nextState(next),
                           history(mHistory),
                           signalData(sigData) {}
-            transition( signalIDType iSignal, signalAction_t sGuard, state *next, uint8_t mHistory = 0u, void *sigData = nullptr ) :
+            transition( signalIDType iSignal, signalAction_t sGuard, state *next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
                           xSignal( static_cast<signalID>( iSignal ) ),
                           guard(sGuard),
                           nextState(next),
                           history( static_cast<historyMode>(mHistory) ),
                           signalData(sigData) {}
-            transition( signalIDType iSignal, state *next, uint8_t mHistory = 0u, void *sigData = nullptr ) :
+            transition( signalIDType iSignal, state *next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
                           xSignal( static_cast<signalID>( iSignal ) ),
                           guard(nullptr),
                           nextState(next),
@@ -815,6 +815,11 @@ namespace qOS {
             * and the signal cannot be inserted because it is full.
             */
             bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
+            bool sendSignal( sm::signalIDType sig, void *sData = nullptr, bool isUrgent = false ) noexcept
+            {
+                return sendSignal( static_cast<sm::signalID>( sig ), sData, isUrgent );
+            }
+            
             /**
             * @brief Install the Timeout-specification object to target FSM to allow
             * timed signals within states.
@@ -926,6 +931,10 @@ namespace qOS {
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
                 bool subscribeToSignal( stateMachine &m, sm::signalID s ) noexcept;
+                bool subscribeToSignal( stateMachine &m, sm::signalIDType s ) noexcept
+                {
+                    return subscribeToSignal( m, static_cast<sm::signalID>( s ) );
+                }
                 /**
                 * @brief Unsubscribe state machine from a particular signal
                 * @param[in] m State-machine to be subscribed
@@ -933,6 +942,10 @@ namespace qOS {
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
                 bool unsubscribeFromSignal( stateMachine &m, sm::signalID s ) noexcept;
+                bool unsubscribeFromSignal( stateMachine &m, sm::signalIDType s ) noexcept
+                {
+                    return unsubscribeFromSignal( m, static_cast<sm::signalID>( s ) );
+                }
                 /**
                 * @brief Sends a signal to all its subscribers.
                 * @note If the signal queue is not available, an exclusion variable will be
@@ -956,6 +969,10 @@ namespace qOS {
                 * is a queue, and the signal cannot be inserted because it is full.
                 */
                 bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
+                bool sendSignal( sm::signalIDType sig, void *sData = nullptr, bool isUrgent = false ) noexcept
+                {
+                    return sendSignal( static_cast<sm::signalID>( sig ), sData, isUrgent );
+                }
         };
         /** @}*/
     }
