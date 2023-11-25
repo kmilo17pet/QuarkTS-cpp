@@ -14,6 +14,7 @@ var classq_o_s_1_1state_machine =
     [ "installTimeoutSpec", "classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47", null ],
     [ "run", "classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f", null ],
     [ "sendSignal", "classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a", null ],
+    [ "sendSignal", "classq_o_s_1_1state_machine.html#a300f2596901ad235750a3d5b5d3f3f79", null ],
     [ "setSurrounding", "classq_o_s_1_1state_machine.html#a8b3970a69481be50434492e1c6f54c3b", null ],
     [ "setup", "classq_o_s_1_1state_machine.html#a408a336915c438e3a9aaa49914aa002e", null ],
     [ "timeoutSet", "classq_o_s_1_1state_machine.html#ac7039f53d6500dd4df73b571c8da18bf", null ],

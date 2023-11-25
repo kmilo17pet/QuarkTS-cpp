@@ -31,8 +31,8 @@ var group__qfsm =
       [ "transition", "structq_o_s_1_1sm_1_1transition.html#a5e61fa0ceaab379ad66abcf427b82550", null ],
       [ "transition", "structq_o_s_1_1sm_1_1transition.html#a3dd37789a5a636143940a5288a614be8", null ],
       [ "transition", "structq_o_s_1_1sm_1_1transition.html#a6984ed6be55a73884d5db601ef292842", null ],
-      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a3078431142caad759e494c24ba5a5956", null ],
-      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a8d92ab541da467cc67f09b138182c1ac", null ]
+      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a0eec9b18bc6b6536836a74e7d099af13", null ],
+      [ "transition", "structq_o_s_1_1sm_1_1transition.html#a3170bcf8254088d7ab745caf46137394", null ]
     ] ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", [
       [ "state", "classq_o_s_1_1sm_1_1state.html#ae368a34da51507d9497ca01816bf34ef", null ],
@@ -67,6 +67,7 @@ var group__qfsm =
       [ "installTimeoutSpec", "classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47", null ],
       [ "run", "classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f", null ],
       [ "sendSignal", "classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a", null ],
+      [ "sendSignal", "classq_o_s_1_1state_machine.html#a300f2596901ad235750a3d5b5d3f3f79", null ],
       [ "setSurrounding", "classq_o_s_1_1state_machine.html#a8b3970a69481be50434492e1c6f54c3b", null ],
       [ "setup", "classq_o_s_1_1state_machine.html#a408a336915c438e3a9aaa49914aa002e", null ],
       [ "timeoutSet", "classq_o_s_1_1state_machine.html#ac7039f53d6500dd4df73b571c8da18bf", null ],
@@ -77,8 +78,11 @@ var group__qfsm =
       [ "signalPublisher", "classq_o_s_1_1sm_1_1signal_publisher.html#a4a60b3bfcf363cec26e7d51ef87c98e8", null ],
       [ "~signalPublisher", "classq_o_s_1_1sm_1_1signal_publisher.html#a9294e484c4708b2b3e2cdd349093bb5d", null ],
       [ "sendSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#a93add601246df9037864c90cb2ca5225", null ],
+      [ "sendSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#a23acb349cca8d496db720487cb362bfc", null ],
       [ "subscribeToSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#ae72c8bca77a6562854ca6fa4dc05a70b", null ],
-      [ "unsubscribeFromSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0", null ]
+      [ "subscribeToSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#a3eec2af0b8c6a7b17cb5a2300c703566", null ],
+      [ "unsubscribeFromSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0", null ],
+      [ "unsubscribeFromSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#a63d21e83a0cbe1d55f33303f787b9acb", null ]
     ] ],
     [ "qOS::sm::signalAction_t", "group__qfsm.html#ga435dd60e77f0b3c14c5e5522e015ff87", null ],
     [ "qOS::sm::signalIDType", "group__qfsm.html#ga1214d31027505c6ca71c4639fd8c9a6d", null ],

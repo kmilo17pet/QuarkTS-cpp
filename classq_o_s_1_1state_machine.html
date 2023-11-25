@@ -175,6 +175,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa1b0366a82122518fd23e138ca41666a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a">sendSignal</a> (<a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">sm::signalID</a> sig, void *sData=nullptr, bool isUrgent=false) noexcept</td></tr>
 <tr class="memdesc:aa1b0366a82122518fd23e138ca41666a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a signal to a state machine.  <a href="classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a">More...</a><br /></td></tr>
 <tr class="separator:aa1b0366a82122518fd23e138ca41666a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a300f2596901ad235750a3d5b5d3f3f79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1state_machine.html#a300f2596901ad235750a3d5b5d3f3f79">sendSignal</a> (<a class="el" href="group__qfsm.html#ga1214d31027505c6ca71c4639fd8c9a6d">sm::signalIDType</a> sig, void *sData=nullptr, bool isUrgent=false) noexcept</td></tr>
+<tr class="separator:a300f2596901ad235750a3d5b5d3f3f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a594379711962e4a75ec8bb049d2aea47"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47">installTimeoutSpec</a> (<a class="el" href="classq_o_s_1_1sm_1_1timeout_spec.html">sm::timeoutSpec</a> &amp;ts) noexcept</td></tr>
 <tr class="memdesc:a594379711962e4a75ec8bb049d2aea47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install the Timeout-specification object to target FSM to allow timed signals within states.  <a href="classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47">More...</a><br /></td></tr>
 <tr class="separator:a594379711962e4a75ec8bb049d2aea47"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -667,7 +669,7 @@ template&lt;size_t N&gt; </div>
 </div>
 </div>
 <a id="aa1b0366a82122518fd23e138ca41666a" name="aa1b0366a82122518fd23e138ca41666a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1b0366a82122518fd23e138ca41666a">&#9670;&nbsp;</a></span>sendSignal()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1b0366a82122518fd23e138ca41666a">&#9670;&nbsp;</a></span>sendSignal() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -719,6 +721,48 @@ template&lt;size_t N&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the provided signal was successfully delivered to the state machine , otherwise return <code>false</code>. <code>false</code> if there is a queue, and the signal cannot be inserted because it is full. </dd></dl>
+
+</div>
+</div>
+<a id="a300f2596901ad235750a3d5b5d3f3f79" name="a300f2596901ad235750a3d5b5d3f3f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a300f2596901ad235750a3d5b5d3f3f79">&#9670;&nbsp;</a></span>sendSignal() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::stateMachine::sendSignal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfsm.html#ga1214d31027505c6ca71c4639fd8c9a6d">sm::signalIDType</a>&#160;</td>
+          <td class="paramname"><em>sig</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>sData</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isUrgent</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
