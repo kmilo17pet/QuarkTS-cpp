@@ -26,10 +26,12 @@ namespace qOS {
 
         class state;
 
+        using signalIDType = uint32_t;
+
         /**
         * @brief The type for signal ID.
         */
-        enum signalID : uint32_t {
+        enum signalID : signalIDType {
             /**
             * @brief Built-in signal that can be used to set a nested initial-transition
             *  (aka default transition) by using the sm::handler_t::startState() method.
@@ -56,10 +58,81 @@ namespace qOS {
             /*! @cond */
             TM_MAX = 0xFFFFFFFBUL,
             TM_MIN = TM_MAX - ( Q_FSM_MAX_TIMEOUTS - 1 ),
+            #if ( 0 == Q_FSM_MAX_TIMEOUTS )
+                #warning "FSM has no defined internal timeouts"
+            #elif ( 1 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+            #elif ( 2 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0= 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+            #elif ( 3 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+            #elif ( 4 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+            #elif ( 5 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+            #elif ( 6 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+            #elif ( 7 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+            #elif ( 8 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+                SIGNAL_TIMEOUT7 = 0xFFFFFFF4UL,
+            #elif ( 9 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+                SIGNAL_TIMEOUT7 = 0xFFFFFFF4UL,
+                SIGNAL_TIMEOUT8 = 0xFFFFFFF3UL,
+            #elif ( 10 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+                SIGNAL_TIMEOUT7 = 0xFFFFFFF4UL,
+                SIGNAL_TIMEOUT8 = 0xFFFFFFF3UL,
+                SIGNAL_TIMEOUT9 = 0xFFFFFFF2UL,
+            #elif ( Q_FSM_MAX_TIMEOUTS > 10 )
+                #error "Max FSM allowed timeout should not be greater that 10"
+            #endif
             MIN_SIGNAL = 0x0UL,
-            MAX_SIGNAL = TM_MIN - 1
-            /*! @endcond */
+            MAX_SIGNAL = TM_MIN - 1            /*! @endcond */
         };
+
+
 
         /**
         * @brief Built-in signal to indicate that a timeout expiration event occurs.
@@ -349,31 +422,52 @@ namespace qOS {
         */
         using timeoutSpecOption_t = uint32_t;
 
-        /*! @cond  */
-        struct _timeoutStateDefinition_s{
-            qOS::duration_t xTimeout;
-            timeoutSpecOption_t options;
-        };
-        /*! @endcond  */
-
         /**
         * @brief This type should be used to define an item for a 
         * timeout-specification table.
         */
-        using timeoutStateDefinition_t = struct _timeoutStateDefinition_s;
+        struct timeoutStateDefinition {
+            qOS::duration_t xTimeout;
+            timeoutSpecOption_t options;
+        };
 
         /**
         * @brief This structure should be used to define an item for a state
         * transition table.
         */
-        struct transition_t {
+        struct transition {
             /*! @cond  */
-            signalID xSignal;
-            signalAction_t guard;
-            state *nextState;
-            historyMode history;
-            void *signalData;
+            signalID xSignal{ signalID::SIGNAL_NONE };
+            signalAction_t guard{ nullptr };
+            state *nextState{ nullptr };
+            historyMode history{ historyMode::NO_HISTORY };
+            void *signalData{ nullptr };
             /*! @endcond  */
+            transition() = default;
+            transition( signalID iSignal, signalAction_t sGuard, state *next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
+                          xSignal(iSignal),
+                          guard(sGuard),
+                          nextState(next),
+                          history(mHistory),
+                          signalData(sigData) {}
+            transition( signalID iSignal, state *next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
+                          xSignal(iSignal),
+                          guard(nullptr),
+                          nextState(next),
+                          history(mHistory),
+                          signalData(sigData) {}
+            transition( signalIDType iSignal, signalAction_t sGuard, state *next, uint8_t mHistory = 0u, void *sigData = nullptr ) :
+                          xSignal( static_cast<signalID>( iSignal ) ),
+                          guard(sGuard),
+                          nextState(next),
+                          history( static_cast<historyMode>(mHistory) ),
+                          signalData(sigData) {}
+            transition( signalIDType iSignal, state *next, uint8_t mHistory = 0u, void *sigData = nullptr ) :
+                          xSignal( static_cast<signalID>( iSignal ) ),
+                          guard(nullptr),
+                          nextState(next),
+                          history( static_cast<historyMode>(mHistory) ),
+                          signalData(sigData) {}
         };
 
         /**
@@ -402,8 +496,8 @@ namespace qOS {
                 state *lastRunningChild{ nullptr };
                 state *initState{ nullptr };
                 stateCallback_t sCallback{ nullptr};
-                timeoutStateDefinition_t *tdef{ nullptr };
-                transition_t *tTable{ nullptr };
+                timeoutStateDefinition *tdef{ nullptr };
+                transition *tTable{ nullptr };
                 void *sData{ nullptr };
                 size_t tEntries{ 0U };
                 size_t nTm{ 0U };
@@ -455,7 +549,7 @@ namespace qOS {
                 * @param[in] n The number of elements inside @a table.
                 * @return @c true on success, otherwise return @c false.
                 */
-                bool setTransitions( transition_t *table, size_t n ) noexcept;
+                bool setTransitions( transition *table, size_t n ) noexcept;
                 /**
                 * @brief Setup fixed timeouts for the specified state using a lookup-table.
                 * @attention This feature its only available if the FSM has a signal-queue
@@ -463,7 +557,7 @@ namespace qOS {
                 * @pre The container state-machine must have a timeout-specification
                 * installed.
                 * @note The lookup table should be an array of type
-                * timeoutStateDefinition_t with @a n elements matching { time, options }.
+                * timeoutStateDefinition with @a n elements matching { time, options }.
                 * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
                 * @param[in] def The lookup table matching the requested timeout values
                 * with their respective options.
@@ -471,7 +565,7 @@ namespace qOS {
                 * @param[in] n The number of elements inside @a def.
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
-                bool setTimeouts( timeoutStateDefinition_t *def, size_t n ) noexcept;
+                bool setTimeouts( timeoutStateDefinition *def, size_t n ) noexcept;
                 /**
                 * @brief Retrieve the state data or storage-pointer
                 * @return The state data or storage-pointer.
@@ -487,7 +581,7 @@ namespace qOS {
                 * @return A pointer to the state transition table if available, 
                 * otherwise return @c nullptr.
                 */
-                transition_t* getTransitionTable( void ) noexcept;
+                transition* getTransitionTable( void ) noexcept;
                 /**
                 * @brief Set/Change the state callback
                 * @param[in] sFcn The state callback function.

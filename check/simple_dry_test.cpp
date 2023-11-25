@@ -21,7 +21,7 @@ sm::state s1, s2;
 sm::signalQueue<10> signalQueue;
 co::position pos1;
 
-sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
+sm::timeoutStateDefinition LedOn_Timeouts[] = {
     { 10000,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 };
 

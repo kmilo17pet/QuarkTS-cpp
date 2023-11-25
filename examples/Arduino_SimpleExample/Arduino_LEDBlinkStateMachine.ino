@@ -2,11 +2,19 @@
 
 using namespace qOS;
 
+const int BUTTON_PIN = 2;
 /*define the FSM application event-signals*/
-#define SIGNAL_BUTTON_PRESSED   ( sm::SIGNAL_USER( 1 ) )
-#define SIGNAL_DELAY            ( sm::SIGNAL_TIMEOUT( 0 ) )
-#define SIGNAL_BLINK            ( sm::SIGNAL_TIMEOUT( 1 ) )
- 
+enum : sm::signalIDType {
+    SIGNAL_BUTTON_PRESSED = sm::SIGNAL_USER( 1 ),
+    SIGNAL_DELAY          = sm::SIGNAL_TIMEOUT( 0 ),
+    SIGNAL_BLINK          = sm::SIGNAL_TIMEOUT( 1 ),
+};
+
+/*
+This example uses a push button (tact switch) attached to digital pin 2 and GND,
+using an internal pull-up resistor so pin 2 is HIGH when the button is not pressed.
+*/
+
 task LED_Task; /*The task node*/
 stateMachine LED_FSM; /*The state-machine handler*/
 sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
@@ -14,26 +22,26 @@ sm::signalQueue<5> LEDsigqueue;
 sm::timeoutSpec tm_spectimeout;
  
 /*create the transition tables for every state*/
-sm::transition_t LEDOff_transitions[] = {
-    { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOn , sm::NO_HISTORY, nullptr }
+sm::transition LEDOff_transitions[] = {
+    { SIGNAL_BUTTON_PRESSED, &State_LEDOn }
 };
  
-sm::transition_t LEDOn_transitions[] = {
-    { SIGNAL_DELAY,          nullptr, &State_LEDOff   , sm::NO_HISTORY, nullptr},
-    { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDBlink , sm::NO_HISTORY, nullptr}
+sm::transition LEDOn_transitions[] = {
+    { SIGNAL_DELAY,          &State_LEDOff   },
+    { SIGNAL_BUTTON_PRESSED, &State_LEDBlink }
 };
  
-sm::transition_t LEDBlink_transitions[] = {
-    { SIGNAL_DELAY,          nullptr, &State_LEDOff   , sm::NO_HISTORY, nullptr},
-    { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOff   , sm::NO_HISTORY, nullptr}
+sm::transition LEDBlink_transitions[] = {
+    { SIGNAL_DELAY,          &State_LEDOff  },
+    { SIGNAL_BUTTON_PRESSED, &State_LEDOff  }
 };
  
 /*define the timeout specifications */
-sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
+sm::timeoutStateDefinition LedOn_Timeouts[] = {
     { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 };
  
-sm::timeoutStateDefinition_t LEDBlink_timeouts[] = {
+sm::timeoutStateDefinition LEDBlink_timeouts[] = {
     { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
     { 0.5_sec, sm::TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 };
@@ -41,6 +49,7 @@ sm::timeoutStateDefinition_t LEDBlink_timeouts[] = {
 sm::status State_LEDOff_Callback( sm::handler_t h ) {
     switch ( h.signal() ) {
         case sm::signalID::SIGNAL_ENTRY:
+            logger::out() << "LED Off state" << logger::end;
             digitalWrite( LED_BUILTIN, LOW );
             break;
         default:
@@ -52,6 +61,7 @@ sm::status State_LEDOff_Callback( sm::handler_t h ) {
 sm::status State_LEDOn_Callback( sm::handler_t h ) {
     switch ( h.signal() ) {
         case sm::signalID::SIGNAL_ENTRY:
+            logger::out() << "LED On state" << logger::end;
             digitalWrite( LED_BUILTIN, HIGH );
             break;
         default:
@@ -62,6 +72,9 @@ sm::status State_LEDOn_Callback( sm::handler_t h ) {
 
 sm::status State_LEDBlink_Callback( sm::handler_t h ) {
     switch ( h.signal() ) {
+        case sm::signalID::SIGNAL_ENTRY:
+            logger::out() << "LED blink state" << logger::end;
+            break;
         case SIGNAL_BLINK:
             digitalWrite( LED_BUILTIN, !digitalRead(LED_BUILTIN) );
             break;
@@ -77,8 +90,14 @@ void tracePutcWrapper( void *arg, const char c ) {
   (void)arg;
 }
 
+void buttonChangeISR() {
+    LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
+}
+
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode( LED_BUILTIN, OUTPUT );
+  pinMode( BUTTON_PIN, INPUT_PULLUP );
+  attachInterrupt( digitalPinToInterrupt( BUTTON_PIN ), buttonChangeISR, FALLING ); // trigger when button pressed, but not when released.
   Serial.begin(115200);
 
   logger::setOutputFcn( tracePutcWrapper );

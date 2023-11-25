@@ -481,7 +481,7 @@
 * Here, the application writer gets a quick picture of the FSM and the embedded 
 * software maintenance is also much more under control. A transition table 
 * should be  explicitly installed in the target state with the corresponding 
-* entries, an n-sized array of @c sm::transition_t elements following the layout
+* entries, an n-sized array of @c sm::transition elements following the layout
 * described below:
 *
 * The method qOS::sm::state::setTransitions(), should be used to perform the 
@@ -559,7 +559,7 @@
 * in a table for each state by using the qOS::sm::state::setTimeouts().
 *
 * A timeout specification element is defined as a structure of type 
-* @c sm::timeoutStateDefinition_t and should follow this layout:
+* @c sm::timeoutStateDefinition and should follow this layout:
 *
 * <center>
 * <table>
@@ -603,9 +603,11 @@
 *
 *  @code{.c}
 *  /*define the FSM application event-signals*/
-*  #define SIGNAL_BUTTON_PRESSED   ( sm::SIGNAL_USER( 1 ) )
-*  #define SIGNAL_DELAY            ( sm::SIGNAL_TIMEOUT( 0 ) )
-*  #define SIGNAL_BLINK            ( sm::SIGNAL_TIMEOUT( 1 ) )
+*  enum : sm::signalIDType {
+*      SIGNAL_BUTTON_PRESSED = sm::SIGNAL_USER( 1 ),
+*      SIGNAL_DELAY          = sm::SIGNAL_TIMEOUT( 0 ),
+*      SIGNAL_BLINK          = sm::SIGNAL_TIMEOUT( 1 ),
+*  };
 *  
 *  task LED_Task; /*The task node*/
 *  stateMachine LED_FSM; /*The state-machine handler*/
@@ -614,27 +616,27 @@
 *  sm::timeoutSpec tm_spectimeout;
 *  
 *  /*create the transition tables for every state*/
-*  sm::transition_t LEDOff_transitions[] = {
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOn , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition LEDOff_transitions[] = {
+*      { SIGNAL_BUTTON_PRESSED, &State_LEDOn}
 *  };
 *  
-*  sm::transition_t LEDOn_transitions[] = {
-*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , sm::historyMode::NO_HISTORY, nullptr},
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDBlink , sm::historyMode::NO_HISTORY, nullptr}
+*  sm::transition LEDOn_transitions[] = {
+*      { SIGNAL_DELAY,          &State_LEDOff   },
+*      { SIGNAL_BUTTON_PRESSED, &State_LEDBlink }
 *  };
 *  
-*  sm::transition_t LEDBlink_transitions[] = {
-*      { SIGNAL_DELAY,          nullptr, &State_LEDOff   , sm::historyMode::NO_HISTORY, nullptr},
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOff   , sm::historyMode::NO_HISTORY, nullptr}
+*  sm::transition LEDBlink_transitions[] = {
+*      { SIGNAL_DELAY,          &State_LEDOff },
+*      { SIGNAL_BUTTON_PRESSED, &State_LEDOff }
 *  };
 *  
 *  /*define the timeout specifications */
-*  sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
+*  sm::timeoutStateDefinition LedOn_Timeouts[] = {
 *      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 *  };
 *  
-*  sm::timeoutStateDefinition_t LEDBlink_timeouts[] = {
-*      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
+*  sm::timeoutStateDefinition LEDBlink_timeouts[] = {
+*      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT },
 *      { 0.5_sec, sm::TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 *  };
 *  @endcode 
@@ -747,15 +749,17 @@
 * entries of the transition table should be defined:
 * 
 *  @code{.c}
-*  #define  SIGNAL_ENGINE_ON           ( sm::SIGNAL_USER( 1 ) )
-*  #define  SIGNAL_ACCEL               ( sm::SIGNAL_USER( 2 ) )
-*  #define  SIGNAL_RESUME              ( sm::SIGNAL_USER( 3 ) )
-*  #define  SIGNAL_OFF                 ( sm::SIGNAL_USER( 4 ) )
-*  #define  SIGNAL_BRAKE_PRESSED       ( sm::SIGNAL_USER( 5 ) )
-*  #define  SIGNAL_CRUISE              ( sm::SIGNAL_USER( 6 ) )
-*  #define  SIGNAL_REACHED_CRUISING    ( sm::SIGNAL_USER( 7 ) )
-*  #define  SIGNAL_ENGINE_OFF          ( sm::SIGNAL_USER( 8 ) )
-*  
+*  enum : sm::signalIDType {
+*      SIGNAL_ENGINE_ON         = sm::SIGNAL_USER( 1 ),
+*      SIGNAL_ACCEL             = sm::SIGNAL_USER( 2 ),
+*      SIGNAL_RESUME            = sm::SIGNAL_USER( 3 ),
+*      SIGNAL_OFF               = sm::SIGNAL_USER( 4 ),
+*      SIGNAL_BRAKE_PRESSED     = sm::SIGNAL_USER( 5 ),
+*      SIGNAL_CRUISE            = sm::SIGNAL_USER( 6 ),
+*      SIGNAL_REACHED_CRUISING  = sm::SIGNAL_USER( 7 ),
+*      SIGNAL_ENGINE_OFF        = sm::SIGNAL_USER( 8 ),
+*  };
+*
 *  task CruiseControlTask;
 *  stateMachine Top_SM;
 *  
@@ -768,42 +772,35 @@
 *  /*=======================================================================*/
 *  /*                             TRANSITION TABLES                         */
 *  /*=======================================================================*/
-*  sm::transition_t idle_transitions[] =
-*  {
-*  { SIGNAL_ENGINE_ON, SigAct_ClearDesiredSpeed, &state_initial , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition idle_transitions[] = {
+*       { SIGNAL_ENGINE_ON, SigAct_ClearDesiredSpeed, &state_initial }
 *  };
 *  
-*  sm::transition_t initial_transitions[] =
-*  {
-*  { SIGNAL_ACCEL, SigAct_BrakeOff, &state_accelerating , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition initial_transitions[] = {
+*       { SIGNAL_ACCEL, SigAct_BrakeOff, &state_accelerating }
 *  };
 *  
-*  sm::transition_t accel_transitions[] =
-*  {
-*  { SIGNAL_CRUISE,  nullptr, &state_cruising , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition accel_transitions[] = {
+*       { SIGNAL_CRUISE, &state_cruising }
 *  };
 *  
-*  sm::transition_t cruising_transitions[] =
-*  {
-*  { SIGNAL_OFF,   nullptr, &state_cruisingoff  , sm::historyMode::NO_HISTORY, nullptr },
-*  { SIGNAL_ACCEL, nullptr, &state_accelerating , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition cruising_transitions[] = {
+*       { SIGNAL_OFF, &state_cruisingoff },
+*       { SIGNAL_ACCEL, &state_accelerating }
 *  };
 *  
-*  sm::transition_t resuming_transitions[] =
-*  {
-*  { SIGNAL_ACCEL, nullptr,  &state_accelerating , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition resuming_transitions[] = {
+*       { SIGNAL_ACCEL, &state_accelerating }
 *  };
 *  
-*  sm::transition_t cruisingoff_transitions[] =
-*  {
-*  { SIGNAL_ACCEL,      SigAct_BrakeOff, &state_accelerating , sm::historyMode::NO_HISTORY, nullptr },
-*  { SIGNAL_RESUME,     SigAct_BrakeOff, &state_resuming     , sm::historyMode::NO_HISTORY, nullptr },
-*  { SIGNAL_ENGINE_OFF, nullptr,         &state_idle         , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition cruisingoff_transitions[] = {
+*       { SIGNAL_ACCEL,      SigAct_BrakeOff, &state_accelerating },
+*       { SIGNAL_RESUME,     SigAct_BrakeOff, &state_resuming },
+*       { SIGNAL_ENGINE_OFF, &state_idle  }
 *  };
 *  
-*  sm::transition_t automated_transitions[] =
-*  {
-*  { SIGNAL_BRAKE_PRESSED,   nullptr,  &state_cruisingoff  , 0, nullptr }
+*  sm::transition automated_transitions[] = {
+*       { SIGNAL_BRAKE_PRESSED, &state_cruisingoff }
 *  };
 *  /*---------------------------------------------------------------------*/
 *  @endcode 
@@ -949,33 +946,35 @@
 * of the transition as shown below:
 *
 *  @code{.c}
-*  #define SIGNAL_A ( sm::SIGNAL_USER( 1 ) )
-*  #define SIGNAL_B ( sm::SIGNAL_USER( 2 ) )
-*  #define SIGNAL_C ( sm::SIGNAL_USER( 3 ) )
-*  #define SIGNAL_D ( sm::SIGNAL_USER( 4 ) )
-*  #define SIGNAL_E ( sm::SIGNAL_USER( 5 ) )
-*  #define SIGNAL_F ( sm::SIGNAL_USER( 6 ) )
+*  enum : sm::signalIDType {
+*      SIGNAL_A  = sm::SIGNAL_USER( 1 ),
+*      SIGNAL_B  = sm::SIGNAL_USER( 2 ),
+*      SIGNAL_C  = sm::SIGNAL_USER( 3 ),
+*      SIGNAL_D  = sm::SIGNAL_USER( 4 ),
+*      SIGNAL_E  = sm::SIGNAL_USER( 5 ),
+*      SIGNAL_F  = sm::SIGNAL_USER( 6 ),
+*  };
 *
 *  sm::signalQueue<10> sigqueue;
 *  stateMachine super;
 *  sm::state state1 , state2 , state3 , state4 , state5 , state6;
 *
-*  sm::transition_t state1_transitions [] = {
-*      { SIGNAL_A , nullptr , &state2 , sm::historyMode::SHALLOW_HISTORY, nullptr },
-*      { SIGNAL_B , nullptr , &state2 , sm::historyMode::DEEP_HISTORY, nullptr },
-*      { SIGNAL_C , nullptr , &state2 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state1_transitions [] = {
+*      { SIGNAL_A , &state2 , sm::historyMode::SHALLOW_HISTORY },
+*      { SIGNAL_B , &state2 , sm::historyMode::DEEP_HISTORY },
+*      { SIGNAL_C , &state2 }
 *  };
 *
-*  sm::transition_t state2_transitions [] = {
-*      { SIGNAL_D , nullptr , &state1 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state2_transitions [] = {
+*      { SIGNAL_D , &state1  }
 *  };
 *
-*  sm::transition_t state3_transitions [] = {
-*      { SIGNAL_E , nullptr , &state4 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state3_transitions [] = {
+*      { SIGNAL_E , &state4 }
 *  };
 *
-*  sm::transition_t state5_transitions [] = {
-*      { SIGNAL_F , nullptr , &state6 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state5_transitions [] = {
+*      { SIGNAL_F , &state6 }
 *  };
 *  @endcode
 *

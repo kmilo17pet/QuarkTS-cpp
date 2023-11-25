@@ -190,7 +190,7 @@ bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::sta
     return retValue;
 }
 /*============================================================================*/
-bool sm::state::setTransitions( sm::transition_t *table, size_t n ) noexcept
+bool sm::state::setTransitions( sm::transition *table, size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -224,7 +224,7 @@ bool stateMachine::installSignalQueue( queue& q ) noexcept
 void sm::state::sweepTransitionTable( sm::stateHandler &h ) const noexcept
 {
     const size_t n = tEntries;
-    const sm::transition_t *iTransition;
+    const sm::transition *iTransition;
     
     for ( size_t i = 0U ; i < n ; ++i ) {
         iTransition = &tTable[ i ]; /*get the i-element from the table*/
@@ -301,7 +301,7 @@ void stateMachine::timeoutCheckSignals( void ) noexcept
 /*============================================================================*/
 void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::signalID sig ) noexcept
 {
-    sm::timeoutStateDefinition_t * const tbl = s->tdef;
+    sm::timeoutStateDefinition * const tbl = s->tdef;
     const size_t n = s->nTm;
 
     if ( ( n > 0U ) && ( nullptr != tbl ) ) {
@@ -354,7 +354,7 @@ bool stateMachine::installTimeoutSpec( sm::timeoutSpec &ts ) noexcept
     return true;
 }
 /*============================================================================*/
-bool sm::state::setTimeouts( sm::timeoutStateDefinition_t *def, size_t n ) noexcept
+bool sm::state::setTimeouts( sm::timeoutStateDefinition *def, size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -441,7 +441,7 @@ void sm::state::setData( void* pData ) noexcept
     sData = pData;
 }
 /*============================================================================*/
-sm::transition_t* sm::state::getTransitionTable( void ) noexcept
+sm::transition* sm::state::getTransitionTable( void ) noexcept
 {
     return tTable;
 }

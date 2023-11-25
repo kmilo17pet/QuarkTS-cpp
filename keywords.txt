@@ -57,8 +57,8 @@ signalQueue KEYWORD1
 surroundingCallback_t	KEYWORD1
 signalAction_t	KEYWORD1
 timeoutSpecOption_t	KEYWORD1
-timeoutStateDefinition_t	KEYWORD1
-transition_t	KEYWORD1
+timeoutStateDefinition	KEYWORD1
+transition	KEYWORD1
 timeoutSpec	KEYWORD1
 psReqStatus	KEYWORD1
 psIndex_t	KEYWORD1
