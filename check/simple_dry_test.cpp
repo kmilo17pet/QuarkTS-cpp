@@ -21,9 +21,40 @@ sm::state s1, s2;
 sm::signalQueue<10> signalQueue;
 co::position pos1;
 
-sm::timeoutStateDefinition LedOn_Timeouts[] = {
-    { 10000,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+enum : sm::signalIDType {
+    SIGNAL_BUTTON_PRESSED = sm::SIGNAL_USER( 1 ),
+    SIGNAL_DELAY          = sm::SIGNAL_TIMEOUT( 0 ),
+    SIGNAL_BLINK          = sm::SIGNAL_TIMEOUT( 1 ),
 };
+
+stateMachine LED_FSM; /*The state-machine handler*/
+sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
+sm::signalQueue<5> LEDsigqueue;
+sm::timeoutSpec tm_spectimeout;
+
+sm::transition LEDOff_transitions[] = {
+    { SIGNAL_BUTTON_PRESSED, &State_LEDOn }
+};
+
+sm::transition LEDOn_transitions[] = {
+    { SIGNAL_DELAY,          &State_LEDOff   },
+    { SIGNAL_BUTTON_PRESSED, &State_LEDBlink }
+};
+ 
+sm::transition LEDBlink_transitions[] = {
+    { SIGNAL_DELAY,          &State_LEDOff  },
+    { SIGNAL_BUTTON_PRESSED, &State_LEDOff  }
+};
+
+sm::timeoutStateDefinition LedOn_Timeouts[] = {
+    { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+};
+ 
+sm::timeoutStateDefinition LEDBlink_timeouts[] = {
+    { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
+    { 0.5_sec, sm::TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
+};
+
 
 void idleTask_callback( event_t e );
 void otherTask( event_t e );
@@ -172,7 +203,15 @@ int main()
     logger::out(logger::verbose) << "verbose message"<< logger::end;
 
     os.init( sysClock, idleTask_callback );
-    
+
+    LED_FSM.installSignalQueue( LEDsigqueue );
+    LED_FSM.installTimeoutSpec( tm_spectimeout );
+    State_LEDOn.setTimeouts( LedOn_Timeouts );
+    State_LEDBlink.setTimeouts( LEDBlink_timeouts );
+    State_LEDOff.setTransitions( LEDOff_transitions );
+    State_LEDOn.setTransitions( LEDOn_transitions );
+    State_LEDBlink.setTransitions( LEDBlink_transitions );
+
     os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
     os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10U );
     os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
