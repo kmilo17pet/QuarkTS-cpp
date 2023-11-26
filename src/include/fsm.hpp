@@ -550,6 +550,11 @@ namespace qOS {
                 * @return @c true on success, otherwise return @c false.
                 */
                 bool setTransitions( transition *table, size_t n ) noexcept;
+                template <size_t size>
+                bool setTransitions( transition (&table)[size] ) noexcept
+                {
+                    return setTransitions( table, size );
+                }
                 /**
                 * @brief Setup fixed timeouts for the specified state using a lookup-table.
                 * @attention This feature its only available if the FSM has a signal-queue
@@ -566,6 +571,11 @@ namespace qOS {
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
                 bool setTimeouts( timeoutStateDefinition *def, size_t n ) noexcept;
+                template <size_t size>
+                bool setTimeouts( timeoutStateDefinition (&def)[size] ) noexcept
+                {
+                    return setTimeouts( def, size );
+                }
                 /**
                 * @brief Retrieve the state data or storage-pointer
                 * @return The state data or storage-pointer.

@@ -110,12 +110,12 @@ void setup() {
   
   LED_FSM.installSignalQueue( LEDsigqueue );
   LED_FSM.installTimeoutSpec( tm_spectimeout );
-  State_LEDOn.setTimeouts( LedOn_Timeouts, arraySize(LedOn_Timeouts) );
-  State_LEDBlink.setTimeouts( LEDBlink_timeouts, arraySize(LEDBlink_timeouts) );
+  State_LEDOn.setTimeouts( LedOn_Timeouts );
+  State_LEDBlink.setTimeouts( LEDBlink_timeouts );
   
-  State_LEDOff.setTransitions( LEDOff_transitions, arraySize(LEDOff_transitions) );
-  State_LEDOn.setTransitions( LEDOn_transitions, arraySize(LEDOn_transitions) );
-  State_LEDBlink.setTransitions( LEDBlink_transitions, arraySize(LEDBlink_transitions) );
+  State_LEDOff.setTransitions( LEDOff_transitions );
+  State_LEDOn.setTransitions( LEDOn_transitions );
+  State_LEDBlink.setTransitions( LEDBlink_transitions );
   
   os.addStateMachineTask( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
 }
