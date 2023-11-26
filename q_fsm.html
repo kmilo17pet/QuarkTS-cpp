@@ -550,7 +550,7 @@ Demonstrative example using transition tables</h2>
 <div class="line">};</div>
 <div class="ttc" id="agroup__qfsm_html_ga1214d31027505c6ca71c4639fd8c9a6d"><div class="ttname"><a href="group__qfsm.html#ga1214d31027505c6ca71c4639fd8c9a6d">qOS::sm::signalIDType</a></div><div class="ttdeci">uint32_t signalIDType</div><div class="ttdef"><b>Definition:</b> fsm.hpp:29</div></div>
 <div class="ttc" id="agroup__qfsm_html_ga3c6b00ebb0cc213342339189c9d71a40"><div class="ttname"><a href="group__qfsm.html#ga3c6b00ebb0cc213342339189c9d71a40">qOS::sm::TIMEOUT_PERIODIC</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_PERIODIC</div><div class="ttdoc">This timeout-specification option its used setup the timeout in periodic mode.</div></div>
-<div class="ttc" id="agroup__qfsm_html_ga646289fa705250d5f8b950aee747becc"><div class="ttname"><a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a></div><div class="ttdeci">constexpr timeoutSpecOption_t TIMEOUT_INDEX(index_t i)</div><div class="ttdoc">Timeout-specification option. Should be used to specify the timeout index.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:660</div></div>
+<div class="ttc" id="agroup__qfsm_html_ga646289fa705250d5f8b950aee747becc"><div class="ttname"><a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a></div><div class="ttdeci">constexpr timeoutSpecOption_t TIMEOUT_INDEX(index_t i)</div><div class="ttdoc">Timeout-specification option. Should be used to specify the timeout index.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:670</div></div>
 <div class="ttc" id="agroup__qfsm_html_ga9a8c0296382e335616419ce163437b89"><div class="ttname"><a href="group__qfsm.html#ga9a8c0296382e335616419ce163437b89">qOS::sm::TIMEOUT_SET_ENTRY</a></div><div class="ttdeci">const timeoutSpecOption_t TIMEOUT_SET_ENTRY</div><div class="ttdoc">This timeout-specification option its used to specify that the engine should set the timeout when the...</div></div>
 <div class="ttc" id="agroup__qfsm_html_gad36d499b2329aa049d98062b0f1c69a9"><div class="ttname"><a href="group__qfsm.html#gad36d499b2329aa049d98062b0f1c69a9">qOS::sm::SIGNAL_USER</a></div><div class="ttdeci">constexpr signalID SIGNAL_USER(uint32_t s)</div><div class="ttdoc">Function to define a user-defined signal.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:152</div></div>
 <div class="ttc" id="agroup__qfsm_html_gad5476e06fde92efddf507ec60e492be3"><div class="ttname"><a href="group__qfsm.html#gad5476e06fde92efddf507ec60e492be3">qOS::sm::SIGNAL_TIMEOUT</a></div><div class="ttdeci">constexpr signalID SIGNAL_TIMEOUT(index_t iTm)</div><div class="ttdoc">Built-in signal to indicate that a timeout expiration event occurs.</div><div class="ttdef"><b>Definition:</b> fsm.hpp:142</div></div>
@@ -597,15 +597,14 @@ Demonstrative example using transition tables</h2>
 <div class="line"> </div>
 <div class="line">LED_FSM.installSignalQueue( LEDsigqueue );</div>
 <div class="line">LED_FSM.installTimeoutSpec( tm_spectimeout );</div>
-<div class="line">State_LEDOn.setTimeouts( LedOn_Timeouts, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LedOn_Timeouts) );</div>
-<div class="line">State_LEDBlink.setTimeouts( LEDBlink_timeouts, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LEDBlink_timeouts) );</div>
+<div class="line">State_LEDOn.setTimeouts( LedOn_Timeouts );</div>
+<div class="line">State_LEDBlink.setTimeouts( LEDBlink_timeouts );</div>
 <div class="line"> </div>
-<div class="line">State_LEDOff.setTransitions( LEDOff_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LEDOff_transitions) );</div>
-<div class="line">State_LEDOn.setTransitions( LEDOn_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LEDOn_transitions) );</div>
-<div class="line">State_LEDBlink.setTransitions( LEDBlink_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(LEDBlink_transitions) );</div>
+<div class="line">State_LEDOff.setTransitions( LEDOff_transitions );</div>
+<div class="line">State_LEDOn.setTransitions( LEDOn_transitions );</div>
+<div class="line">State_LEDBlink.setTransitions( LEDBlink_transitions );</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qfsm.html#ga86639c0e76496b0a1577b634452f5811">addStateMachineTask</a>( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );</div>
-<div class="ttc" id="agroup__qflm_html_gab5754d9611462696a65a030ff771f4bb"><div class="ttname"><a href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">qOS::arraySize</a></div><div class="ttdeci">constexpr size_t arraySize(const T(&amp;arr)[n]) noexcept</div><div class="ttdoc">Calculates the size of an array. This function takes a reference to an array and calculates its size....</div><div class="ttdef"><b>Definition:</b> helper.hpp:143</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qfsm_happroach"></a>
 Using the hierarchical approach</h1>
 <p >In conventional state machine designs, all states are considered at the same level. The design does not capture the commonality that exists among states. In real life, many states handle most transitions in similar fashion and differ only in a few key components. Even when the actual handling differs, there is still some commonality. It is in these situations where the hierarchical designs make the most sense.</p>
@@ -767,13 +766,13 @@ Example using a hierarchical FSM</h2>
 <div class="line">state_automatedcontrol.add( state_cruising, state_cruising_callback );</div>
 <div class="line">Top_SM.installSignalQueue( top_sigqueue );</div>
 <div class="line"> </div>
-<div class="line">state_idle.setTransitions( idle_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(idle_transitions) );</div>
-<div class="line">state_initial.setTransitions( initial_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(initial_transitions) );</div>
-<div class="line">state_cruisingoff.setTransitions( cruisingoff_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(cruisingoff_transitions) );</div>
-<div class="line">state_automatedcontrol.setTransitions( automated_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(automated_transitions) );</div>
-<div class="line">state_accelerating.setTransitions( accel_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(accel_transitions) );</div>
-<div class="line">state_resuming.setTransitions( resuming_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(resuming_transitions) );</div>
-<div class="line">state_cruising.setTransitions( cruising_transitions, <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(cruising_transitions) );</div>
+<div class="line">state_idle.setTransitions( idle_transitions );</div>
+<div class="line">state_initial.setTransitions( initial_transitions );</div>
+<div class="line">state_cruisingoff.setTransitions( cruisingoff_transitions );</div>
+<div class="line">state_automatedcontrol.setTransitions( automated_transitions );</div>
+<div class="line">state_accelerating.setTransitions( accel_transitions );</div>
+<div class="line">state_resuming.setTransitions( resuming_transitions );</div>
+<div class="line">state_cruising.setTransitions( cruising_transitions );</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qfsm.html#ga86639c0e76496b0a1577b634452f5811">addStateMachineTask</a>( CruiseControlTask, Top_SM, core::MEDIUM_PRIORITY, 100_ms );</div>
 </div><!-- fragment --><h2><a class="anchor" id="q_fsm_example4"></a>
@@ -837,10 +836,10 @@ Example with history pseudo-states</h2>
 <div class="line">state4.add( state6, state6_callback );</div>
 <div class="line"> </div>
 <div class="line">super.installSignalQueue( sigqueue );</div>
-<div class="line">state1.setTransitions( state1_transitions , <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(state1_transitions) );</div>
-<div class="line">state2.setTransitions( state2_transitions , <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(state2_transitions) );</div>
-<div class="line">state3.setTransitions( state3_transitions , <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(state3_transitions) );</div>
-<div class="line">state5.setTransitions( state5_transitions , <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(state5_transitions) );</div>
+<div class="line">state1.setTransitions( state1_transitions );</div>
+<div class="line">state2.setTransitions( state2_transitions );</div>
+<div class="line">state3.setTransitions( state3_transitions );</div>
+<div class="line">state5.setTransitions( state5_transitions );</div>
 <div class="line"><a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qfsm.html#ga86639c0e76496b0a1577b634452f5811">addStateMachineTask</a>( SMTask , super , core::MEDIUM_PRIORITY, 100_ms );</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->

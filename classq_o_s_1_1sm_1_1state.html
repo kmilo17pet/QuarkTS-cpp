@@ -154,9 +154,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7f79aa9b88e6c2a75562c044b5f52aed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a7f79aa9b88e6c2a75562c044b5f52aed">setTransitions</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a> *table, size_t n) noexcept</td></tr>
 <tr class="memdesc:a7f79aa9b88e6c2a75562c044b5f52aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Installs a table with the outgoing transitions for this state.  <a href="classq_o_s_1_1sm_1_1state.html#a7f79aa9b88e6c2a75562c044b5f52aed">More...</a><br /></td></tr>
 <tr class="separator:a7f79aa9b88e6c2a75562c044b5f52aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb27511988a7a2148ffec6ff0cbe9716"><td class="memTemplParams" colspan="2">template&lt;size_t size&gt; </td></tr>
+<tr class="memitem:afb27511988a7a2148ffec6ff0cbe9716"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#afb27511988a7a2148ffec6ff0cbe9716">setTransitions</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;table)[size]) noexcept</td></tr>
+<tr class="separator:afb27511988a7a2148ffec6ff0cbe9716"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00853be678975da84a3c56e8ef7377f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a00853be678975da84a3c56e8ef7377f0">setTimeouts</a> (<a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a> *def, size_t n) noexcept</td></tr>
 <tr class="memdesc:a00853be678975da84a3c56e8ef7377f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup fixed timeouts for the specified state using a lookup-table.  <a href="classq_o_s_1_1sm_1_1state.html#a00853be678975da84a3c56e8ef7377f0">More...</a><br /></td></tr>
 <tr class="separator:a00853be678975da84a3c56e8ef7377f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74d9eab59b4374d814815c742e19b693"><td class="memTemplParams" colspan="2">template&lt;size_t size&gt; </td></tr>
+<tr class="memitem:a74d9eab59b4374d814815c742e19b693"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a74d9eab59b4374d814815c742e19b693">setTimeouts</a> (<a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;def)[size]) noexcept</td></tr>
+<tr class="separator:a74d9eab59b4374d814815c742e19b693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d777ae3e9a4a2248c8463016d61bc5b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1sm_1_1state.html#a8d777ae3e9a4a2248c8463016d61bc5b">getData</a> (void) noexcept</td></tr>
 <tr class="memdesc:a8d777ae3e9a4a2248c8463016d61bc5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the state data or storage-pointer.  <a href="classq_o_s_1_1sm_1_1state.html#a8d777ae3e9a4a2248c8463016d61bc5b">More...</a><br /></td></tr>
 <tr class="separator:a8d777ae3e9a4a2248c8463016d61bc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -493,7 +499,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a00853be678975da84a3c56e8ef7377f0" name="a00853be678975da84a3c56e8ef7377f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00853be678975da84a3c56e8ef7377f0">&#9670;&nbsp;</a></span>setTimeouts()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00853be678975da84a3c56e8ef7377f0">&#9670;&nbsp;</a></span>setTimeouts() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -542,8 +548,36 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a74d9eab59b4374d814815c742e19b693" name="a74d9eab59b4374d814815c742e19b693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74d9eab59b4374d814815c742e19b693">&#9670;&nbsp;</a></span>setTimeouts() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t size&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::setTimeouts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;)&#160;</td>
+          <td class="paramname"><em>def</em>[size]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7f79aa9b88e6c2a75562c044b5f52aed" name="a7f79aa9b88e6c2a75562c044b5f52aed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f79aa9b88e6c2a75562c044b5f52aed">&#9670;&nbsp;</a></span>setTransitions()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f79aa9b88e6c2a75562c044b5f52aed">&#9670;&nbsp;</a></span>setTransitions() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -585,6 +619,34 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="afb27511988a7a2148ffec6ff0cbe9716" name="afb27511988a7a2148ffec6ff0cbe9716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb27511988a7a2148ffec6ff0cbe9716">&#9670;&nbsp;</a></span>setTransitions() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t size&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::setTransitions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;)&#160;</td>
+          <td class="paramname"><em>table</em>[size]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -45,7 +45,9 @@ var group__qfsm =
       [ "setCallback", "classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced", null ],
       [ "setData", "classq_o_s_1_1sm_1_1state.html#af9a1425838929a5145504668b7b5d2f4", null ],
       [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a00853be678975da84a3c56e8ef7377f0", null ],
+      [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a74d9eab59b4374d814815c742e19b693", null ],
       [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a7f79aa9b88e6c2a75562c044b5f52aed", null ],
+      [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#afb27511988a7a2148ffec6ff0cbe9716", null ],
       [ "qOS::stateMachine", "classq_o_s_1_1sm_1_1state.html#acd87719420916c47dafcb4865fb5cb2e", null ]
     ] ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", [
