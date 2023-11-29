@@ -5,9 +5,9 @@ var group__qfsm =
       [ "data", "structq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898", null ],
       [ "id", "structq_o_s_1_1sm_1_1signal__t.html#abc8c864b6424f544cc49c53be951d5d6", null ]
     ] ],
-    [ "qOS::sm::signalQueue< N >", "structq_o_s_1_1sm_1_1signal_queue.html", [
-      [ "q", "structq_o_s_1_1sm_1_1signal_queue.html#ad9767a9ea67ec73368cf4d9cf740f70e", null ],
-      [ "qStack", "structq_o_s_1_1sm_1_1signal_queue.html#a1fff35e342dac563cf3be133dcdd7e14", null ]
+    [ "qOS::sm::signalQueue< numberOfSignals >", "structq_o_s_1_1sm_1_1signal_queue.html", [
+      [ "q", "structq_o_s_1_1sm_1_1signal_queue.html#aea3d22f7514b96b3919cad1bf99a3cd0", null ],
+      [ "qStack", "structq_o_s_1_1sm_1_1signal_queue.html#ad7aeb9fe0bb54acdb5ae91c101793dac", null ]
     ] ],
     [ "qOS::sm::handler_t", "classq_o_s_1_1sm_1_1handler__t.html", [
       [ "lastStatus", "classq_o_s_1_1sm_1_1handler__t.html#a6e5c6e1c15742bf3b6f16428adc33d80", null ],
@@ -45,9 +45,9 @@ var group__qfsm =
       [ "setCallback", "classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced", null ],
       [ "setData", "classq_o_s_1_1sm_1_1state.html#af9a1425838929a5145504668b7b5d2f4", null ],
       [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a00853be678975da84a3c56e8ef7377f0", null ],
-      [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a74d9eab59b4374d814815c742e19b693", null ],
+      [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a991b711185d980e4e8beb27388f7e290", null ],
       [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a7f79aa9b88e6c2a75562c044b5f52aed", null ],
-      [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#afb27511988a7a2148ffec6ff0cbe9716", null ],
+      [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a0cd86d5c426cfa906a48e54b7670a2d9", null ],
       [ "qOS::stateMachine", "classq_o_s_1_1sm_1_1state.html#acd87719420916c47dafcb4865fb5cb2e", null ]
     ] ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", [

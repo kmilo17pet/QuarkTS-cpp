@@ -159,6 +159,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac14307ef47fc8707faf51681812d0679"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679">setup</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut)</td></tr>
 <tr class="memdesc:ac14307ef47fc8707faf51681812d0679"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup an instance of the AT Command Line Interface.  <a href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679">More...</a><br /></td></tr>
 <tr class="separator:ac14307ef47fc8707faf51681812d0679"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5060b33b6ffd1f4b6524c9f4c40933d"><td class="memTemplParams" colspan="2">template&lt;size_t inBufferSize, size_t outBufferSize&gt; </td></tr>
+<tr class="memitem:ab5060b33b6ffd1f4b6524c9f4c40933d"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#ab5060b33b6ffd1f4b6524c9f4c40933d">setup</a> (<a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a> outFcn, char(&amp;pInput)[inBufferSize], char(&amp;pOutput)[outBufferSize])</td></tr>
+<tr class="separator:ab5060b33b6ffd1f4b6524c9f4c40933d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe67850838a669ea2aa5943371deb188"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1command_line_interface.html#abe67850838a669ea2aa5943371deb188">add</a> (<a class="el" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;cmd, char *textCommand, <a class="el" href="group__qatcli.html#gab20d33e9de974f49e535206ad7194289">cli::commandCallback_t</a> cFcn, <a class="el" href="group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a">cli::options_t</a> cmdOpt, void *param=nullptr)</td></tr>
 <tr class="memdesc:abe67850838a669ea2aa5943371deb188"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function subscribes the CLI instance to a specific command with an associated <em>Callback</em> function, so that next time the required command is sent to the CLI input, the callback function will be executed. The CLI parser only analyze commands that follows the extended AT-Commands syntax (the + char can be ignored).  <a href="classq_o_s_1_1command_line_interface.html#abe67850838a669ea2aa5943371deb188">More...</a><br /></td></tr>
 <tr class="separator:abe67850838a669ea2aa5943371deb188"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -539,7 +542,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="ac14307ef47fc8707faf51681812d0679" name="ac14307ef47fc8707faf51681812d0679"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac14307ef47fc8707faf51681812d0679">&#9670;&nbsp;</a></span>setup()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac14307ef47fc8707faf51681812d0679">&#9670;&nbsp;</a></span>setup() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -596,6 +599,50 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ab5060b33b6ffd1f4b6524c9f4c40933d" name="ab5060b33b6ffd1f4b6524c9f4c40933d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5060b33b6ffd1f4b6524c9f4c40933d">&#9670;&nbsp;</a></span>setup() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t inBufferSize, size_t outBufferSize&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::commandLineInterface::setup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qioutils.html#ga590b120a141394c83550952547d27555">util::putChar_t</a>&#160;</td>
+          <td class="paramname"><em>outFcn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char(&amp;)&#160;</td>
+          <td class="paramname"><em>pInput</em>[inBufferSize], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char(&amp;)&#160;</td>
+          <td class="paramname"><em>pOutput</em>[outBufferSize]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

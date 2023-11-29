@@ -1,5 +1,5 @@
-<map id="qOS::sm::signalQueue&lt; N &gt;" name="qOS::sm::signalQueue&lt; N &gt;">
-<area shape="rect" id="node1" title="The type of a FSM signal&#45;queue." alt="" coords="24,95,207,121"/>
+<map id="qOS::sm::signalQueue&lt; numberOfSignals &gt;" name="qOS::sm::signalQueue&lt; numberOfSignals &gt;">
+<area shape="rect" id="node1" title="The type of a FSM signal&#45;queue." alt="" coords="40,95,191,136"/>
 <area shape="rect" id="node2" href="$classq_o_s_1_1queue.html" title="A Queue object." alt="" coords="5,5,95,32"/>
 <area shape="rect" id="node3" href="$structq_o_s_1_1sm_1_1signal__t.html" title="The type to be used as a container variable for a signal." alt="" coords="119,5,242,32"/>
 </map>

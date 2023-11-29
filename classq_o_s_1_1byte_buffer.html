@@ -145,9 +145,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3c382b68fedbf6cbea3efeff7085fe2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1byte_buffer.html#a3c382b68fedbf6cbea3efeff7085fe2c">byteBuffer</a> (volatile uint8_t *pBuffer, const size_t bLength)</td></tr>
 <tr class="memdesc:a3c382b68fedbf6cbea3efeff7085fe2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Byte-sized buffer instance.  <a href="classq_o_s_1_1byte_buffer.html#a3c382b68fedbf6cbea3efeff7085fe2c">More...</a><br /></td></tr>
 <tr class="separator:a3c382b68fedbf6cbea3efeff7085fe2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbdfbb32549b232757069460061946b1"><td class="memTemplParams" colspan="2">template&lt;size_t numberOfBytes&gt; </td></tr>
+<tr class="memitem:afbdfbb32549b232757069460061946b1"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1byte_buffer.html#afbdfbb32549b232757069460061946b1">byteBuffer</a> (volatile uint8_t(&amp;area)[numberOfBytes]) noexcept</td></tr>
+<tr class="separator:afbdfbb32549b232757069460061946b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a668ffef4b07ee46638870b330d78e23c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1byte_buffer.html#a668ffef4b07ee46638870b330d78e23c">setup</a> (volatile uint8_t *pBuffer, const size_t bLength) noexcept</td></tr>
 <tr class="memdesc:a668ffef4b07ee46638870b330d78e23c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Byte-sized buffer.  <a href="classq_o_s_1_1byte_buffer.html#a668ffef4b07ee46638870b330d78e23c">More...</a><br /></td></tr>
 <tr class="separator:a668ffef4b07ee46638870b330d78e23c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad43510236197c188968edacf2e8a93e7"><td class="memTemplParams" colspan="2">template&lt;size_t numberOfBytes&gt; </td></tr>
+<tr class="memitem:ad43510236197c188968edacf2e8a93e7"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1byte_buffer.html#ad43510236197c188968edacf2e8a93e7">setup</a> (volatile uint8_t(&amp;area)[numberOfBytes]) noexcept</td></tr>
+<tr class="separator:ad43510236197c188968edacf2e8a93e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8202833521e7a636c7d27b8cd981ce22"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22">put</a> (const uint8_t bData) noexcept</td></tr>
 <tr class="memdesc:a8202833521e7a636c7d27b8cd981ce22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an element of data to the Byte-sized buffer.  <a href="classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22">More...</a><br /></td></tr>
 <tr class="separator:a8202833521e7a636c7d27b8cd981ce22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,7 +205,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a3c382b68fedbf6cbea3efeff7085fe2c" name="a3c382b68fedbf6cbea3efeff7085fe2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c382b68fedbf6cbea3efeff7085fe2c">&#9670;&nbsp;</a></span>byteBuffer()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c382b68fedbf6cbea3efeff7085fe2c">&#9670;&nbsp;</a></span>byteBuffer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -240,6 +246,34 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="afbdfbb32549b232757069460061946b1" name="afbdfbb32549b232757069460061946b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbdfbb32549b232757069460061946b1">&#9670;&nbsp;</a></span>byteBuffer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t numberOfBytes&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::byteBuffer::byteBuffer </td>
+          <td>(</td>
+          <td class="paramtype">volatile uint8_t(&amp;)&#160;</td>
+          <td class="paramname"><em>area</em>[numberOfBytes]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -477,7 +511,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a668ffef4b07ee46638870b330d78e23c" name="a668ffef4b07ee46638870b330d78e23c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a668ffef4b07ee46638870b330d78e23c">&#9670;&nbsp;</a></span>setup()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a668ffef4b07ee46638870b330d78e23c">&#9670;&nbsp;</a></span>setup() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -519,6 +553,34 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ad43510236197c188968edacf2e8a93e7" name="ad43510236197c188968edacf2e8a93e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad43510236197c188968edacf2e8a93e7">&#9670;&nbsp;</a></span>setup() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t numberOfBytes&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::byteBuffer::setup </td>
+          <td>(</td>
+          <td class="paramtype">volatile uint8_t(&amp;)&#160;</td>
+          <td class="paramname"><em>area</em>[numberOfBytes]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
