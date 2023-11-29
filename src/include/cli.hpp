@@ -366,6 +366,11 @@ namespace qOS {
             * @return @c true on success, otherwise return @c false.
             */
             bool setup( util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut );
+            template <size_t inBufferSize, size_t outBufferSize>
+            bool setup( util::putChar_t outFcn, char (&pInput)[ inBufferSize ], char (&pOutput)[ outBufferSize ] )
+            {
+                return setup( outFcn, pInput, inBufferSize, pOutput, outBufferSize );
+            }
             /**
             * @brief This function subscribes the CLI instance to a specific command
             * with an associated @a Callback function, so that next time the required

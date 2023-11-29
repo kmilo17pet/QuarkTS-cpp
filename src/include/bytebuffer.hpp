@@ -34,6 +34,11 @@ namespace qOS {
             {
                 (void)setup( pBuffer, bLength );
             }
+            template <size_t numberOfBytes>
+            byteBuffer( volatile uint8_t (&area)[numberOfBytes] ) noexcept
+            {
+                (void)setup( area, numberOfBytes );
+            }
             /**
             * @brief Initialize the Byte-sized buffer
             * @param[in] pBuffer Block of memory or array of data
@@ -41,6 +46,11 @@ namespace qOS {
             * @return @c true on success, otherwise returns @c false.
             */
             bool setup( volatile uint8_t *pBuffer, const size_t bLength ) noexcept;
+            template <size_t numberOfBytes>
+            bool setup( volatile uint8_t (&area)[numberOfBytes] ) noexcept
+            {
+                return setup( area, numberOfBytes );
+            }
             /**
             * @brief Adds an element of data to the Byte-sized buffer
             * @param[in] bData The data to be added

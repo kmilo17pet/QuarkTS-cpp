@@ -167,10 +167,10 @@ namespace qOS {
         /**
         * @brief The type of a FSM signal-queue 
         */
-        template <size_t N>
+        template <size_t numberOfSignals>
         struct signalQueue {
             queue q;
-            signal_t qStack[ N ]; // skipcq: CXX-W2066
+            signal_t qStack[ numberOfSignals ]; // skipcq: CXX-W2066
         };
 
 
@@ -550,10 +550,10 @@ namespace qOS {
                 * @return @c true on success, otherwise return @c false.
                 */
                 bool setTransitions( transition *table, size_t n ) noexcept;
-                template <size_t size>
-                bool setTransitions( transition (&table)[size] ) noexcept
+                template <size_t numberOfTransitions>
+                bool setTransitions( transition (&table)[ numberOfTransitions ] ) noexcept
                 {
-                    return setTransitions( table, size );
+                    return setTransitions( table, numberOfTransitions );
                 }
                 /**
                 * @brief Setup fixed timeouts for the specified state using a lookup-table.
@@ -571,10 +571,10 @@ namespace qOS {
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
                 bool setTimeouts( timeoutStateDefinition *def, size_t n ) noexcept;
-                template <size_t size>
-                bool setTimeouts( timeoutStateDefinition (&def)[size] ) noexcept
+                template <size_t numberOfTimeoutDefs>
+                bool setTimeouts( timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept
                 {
-                    return setTimeouts( def, size );
+                    return setTimeouts( def, numberOfTimeoutDefs );
                 }
                 /**
                 * @brief Retrieve the state data or storage-pointer
