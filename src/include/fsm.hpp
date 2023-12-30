@@ -787,10 +787,10 @@ namespace qOS {
             * @param[in] sq The signal queue to be installed.
             * @return @c true on success, otherwise return @c false.
             */
-            template <size_t N>
-            bool installSignalQueue( sm::signalQueue<N> &sq ) 
+            template <size_t numberOfSignals>
+            bool installSignalQueue( sm::signalQueue<numberOfSignals> &sq )
             {
-                sq.q.setup( sq.qStack, sizeof(sm::signal_t), N );
+                sq.q.setup( sq.qStack, sizeof(sm::signal_t), numberOfSignals );
                 return installSignalQueue( sq.q );
             }
 
