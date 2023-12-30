@@ -1,7 +1,7 @@
 var searchData=
 [
   ['backward_0',['BACKWARD',['../group__qlists.html#gga032e23f2e0cb931b9bc0189b479c8381a6377b4908ae38f9a57fe9120cf179eb1',1,'qOS']]],
-  ['base_5ft_1',['base_t',['../group__qtypes.html#ga16b527d381bf20ae99c52d4c8b982a43',1,'types.hpp']]],
+  ['base_5ft_1',['base_t',['../group__qtypes.html#ga5f853ca6eeb960ecce08243c2d6c17ff',1,'qOS']]],
   ['before_5fany_2',['BEFORE_ANY',['../group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4',1,'qOS::sm']]],
   ['begin_3',['begin',['../classq_o_s_1_1list.html#a0ebd5669f9c3f441e932bb8a72ea9624',1,'qOS::list']]],
   ['bin_4',['bin',['../group__qlogger.html#ga9693b0c3e7b35917d312d70c8d34658c',1,'qOS::logger']]],
@@ -17,7 +17,7 @@ var searchData=
   ['byqueuereceiver_14',['byQueueReceiver',['../group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a1e061f1354d2a8d008937202744e8388',1,'qOS']]],
   ['byschedulingrelease_15',['bySchedulingRelease',['../group__qtaskmanip.html#gga7e4cfcb94ebb5b84bd080b487a2db8c7a19e69dabdbfeaa567e1c54e681034792',1,'qOS']]],
   ['byte_2dsized_20buffers_16',['Byte-Sized buffers',['../group__qbsbuffers.html',1,'']]],
-  ['byte_5ft_17',['byte_t',['../group__qtypes.html#ga11f018d226b5517a1b05e065843af7ae',1,'types.hpp']]],
+  ['byte_5ft_17',['byte_t',['../group__qtypes.html#ga76116f9f47b2859d92863ca342d389e4',1,'qOS']]],
   ['bytebuffer_18',['byteBuffer',['../classq_o_s_1_1byte_buffer.html#afbdfbb32549b232757069460061946b1',1,'qOS::byteBuffer::byteBuffer(volatile uint8_t(&amp;area)[numberOfBytes]) noexcept'],['../classq_o_s_1_1byte_buffer.html#a3c382b68fedbf6cbea3efeff7085fe2c',1,'qOS::byteBuffer::byteBuffer(volatile uint8_t *pBuffer, const size_t bLength)'],['../classq_o_s_1_1byte_buffer.html',1,'qOS::byteBuffer']]],
   ['bytemergenibbles_19',['byteMergeNibbles',['../group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4',1,'qOS']]],
   ['bytenibblehigh_20',['byteNibbleHigh',['../group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75',1,'qOS']]],

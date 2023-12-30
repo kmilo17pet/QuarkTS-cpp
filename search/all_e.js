@@ -9,7 +9,7 @@ var searchData=
   ['position_6',['position',['../classq_o_s_1_1co_1_1position.html',1,'qOS::co']]],
   ['pre_7',['pre',['../classq_o_s_1_1logger_1_1pre.html#a12bd7d95459d1d60c78720ad0d706d11',1,'qOS::logger::pre::pre()'],['../classq_o_s_1_1logger_1_1pre.html',1,'qOS::logger::pre']]],
   ['printxdata_8',['printXData',['../group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67',1,'qOS::util']]],
-  ['priority_5ft_9',['priority_t',['../group__qtypes.html#ga8b99e3efec0f566d99ce4cb42b25aed5',1,'types.hpp']]],
+  ['priority_5ft_9',['priority_t',['../group__qtypes.html#gae013b5397e13f9ce1e58298de62d0b37',1,'qOS']]],
   ['put_10',['put',['../classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22',1,'qOS::byteBuffer']]],
   ['putchar_5ft_11',['putChar_t',['../group__qioutils.html#ga590b120a141394c83550952547d27555',1,'qOS::util']]]
 ];

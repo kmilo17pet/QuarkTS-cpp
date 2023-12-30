@@ -5,14 +5,14 @@ var searchData=
   ['id_2',['id',['../structq_o_s_1_1sm_1_1signal__t.html#abc8c864b6424f544cc49c53be951d5d6',1,'qOS::sm::signal_t']]],
   ['immediate_3',['IMMEDIATE',['../classq_o_s_1_1clock.html#ab7cab803d7a7792ee382a9cfcceb96b5',1,'qOS::clock']]],
   ['indefinite_4',['INDEFINITE',['../classq_o_s_1_1task.html#a9405db8642daf9f6fa97e16628476fe7',1,'qOS::task']]],
-  ['index_5ft_5',['index_t',['../group__qtypes.html#ga3f38acd6cf545937a16254ff779ec4ba',1,'types.hpp']]],
+  ['index_5ft_5',['index_t',['../group__qtypes.html#ga5cf336a03a4a44a0cda9d327511b8209',1,'qOS']]],
   ['info_6',['info',['../group__qlogger.html#gga8d02cc4e3735026bc7ceb4cb70940bc1a5b07392609a69dcd9fb5cfd1c754df9b',1,'qOS::logger']]],
   ['init_7',['init',['../classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a',1,'qOS::core']]],
   ['innode_8',['inNode',['../classq_o_s_1_1ec_1_1in_node.html#a91333336ae8434ecedc6c4ab71b20e84',1,'qOS::ec::inNode::inNode()'],['../classq_o_s_1_1ec_1_1in_node.html',1,'qOS::ec::inNode']]],
   ['inputflush_9',['inputFlush',['../classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b',1,'qOS::commandLineInterface']]],
   ['inputraw_10',['inputRAW',['../group__qioutils.html#gad16b6f751febd5914646970a812e636e',1,'qOS::util']]],
   ['insert_11',['insert',['../classq_o_s_1_1list.html#a084fde89ef2d870fd89807ba6d31aba0',1,'qOS::list']]],
-  ['installsignalqueue_12',['installSignalQueue',['../classq_o_s_1_1state_machine.html#a0e5cb212c4c4336787308d0be63a8a4a',1,'qOS::stateMachine::installSignalQueue(sm::signalQueue&lt; N &gt; &amp;sq)'],['../classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9',1,'qOS::stateMachine::installSignalQueue(queue &amp;q) noexcept']]],
+  ['installsignalqueue_12',['installSignalQueue',['../classq_o_s_1_1state_machine.html#afe15a2caee3e47bad83c17eec1f72f6c',1,'qOS::stateMachine::installSignalQueue(sm::signalQueue&lt; numberOfSignals &gt; &amp;sq)'],['../classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9',1,'qOS::stateMachine::installSignalQueue(queue &amp;q) noexcept']]],
   ['installtimeoutspec_13',['installTimeoutSpec',['../classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47',1,'qOS::stateMachine']]],
   ['int_5fdisabler_5ft_14',['int_disabler_t',['../group__qcritical.html#ga5799cabfdffb3f30a7897479239b0139',1,'qOS']]],
   ['int_5frestorer_5ft_15',['int_restorer_t',['../group__qcritical.html#gac93b1a4231800d82b28a9f25f01f1867',1,'qOS']]],
@@ -26,5 +26,5 @@ var searchData=
   ['isinitialized_23',['isInitialized',['../classq_o_s_1_1response.html#abd22e5157cb6f45cdc6710220f574c6d',1,'qOS::response::isInitialized()'],['../classq_o_s_1_1queue.html#ab89e03ac145a43b19121bac6a1a6c07d',1,'qOS::queue::isInitialized()']]],
   ['isrhandler_24',['isrHandler',['../classq_o_s_1_1response.html#a719e731c27f2ca3fdfa5302782ff1f08',1,'qOS::response::isrHandler()'],['../classq_o_s_1_1command_line_interface.html#ada75a69d25806c5aa86fe9cd52666ee1',1,'qOS::commandLineInterface::isrHandler(char *pData, const size_t n)'],['../classq_o_s_1_1command_line_interface.html#a8c70e232920a3b771b064a9ded969a5a',1,'qOS::commandLineInterface::isrHandler(const char c)']]],
   ['itemsavailable_25',['itemsAvailable',['../classq_o_s_1_1queue.html#a3121e761675f080661ead71b9cc59b95',1,'qOS::queue']]],
-  ['iteration_5ft_26',['iteration_t',['../group__qtypes.html#gaf0c03ddb7df4048fd3b4764d994ee4da',1,'types.hpp']]]
+  ['iteration_5ft_26',['iteration_t',['../group__qtypes.html#ga7a1944e8ec598b99bbee3488ff5a6414',1,'qOS']]]
 ];
