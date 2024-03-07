@@ -386,9 +386,9 @@ A demonstrative example for a FSM</h1>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 <div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> State_LEDBlink_Callback( sm::handler_t h ) {</div>
-<div class="line">    <span class="keyword">static</span> timer timeout; </div>
+<div class="line">    <span class="keyword">static</span> timer timeout;</div>
 <div class="line">    <span class="keyword">static</span> timer blinktime;</div>
-<div class="line">    </div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.signal() ) {</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6">sm::signalID::SIGNAL_ENTRY</a>:</div>
 <div class="line">            timeout.set( 10_sec );</div>
@@ -442,7 +442,7 @@ Using a transition table</h1>
 <tr>
 <th>Signal Id </th><th>Signal action/guard </th><th>Target state </th><th>History mode </th><th>Signal data </th></tr>
 <tr>
-<th><code>sm::signalID</code> </th><th><code>signalAction_t</code> </th><th><code>sm::state*</code> </th><th><code>historyMode</code> </th><th><code>void*</code> </th></tr>
+<th><code>sm::signalID</code> </th><th><code>signalAction_t</code> </th><th><code>sm::state&amp;</code> </th><th><code>historyMode</code> </th><th><code>void*</code> </th></tr>
 <tr>
 <td><code>Signal1</code> </td><td><code>nullptr</code> </td><td><code>StateB</code> </td><td><code>0</code> </td><td><code>nullptr</code> </td></tr>
 <tr>
@@ -526,17 +526,17 @@ Demonstrative example using transition tables</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*create the transition tables for every state*/</span></div>
 <div class="line">sm::transition LEDOff_transitions[] = {</div>
-<div class="line">    { SIGNAL_BUTTON_PRESSED, &amp;State_LEDOn}</div>
+<div class="line">    { SIGNAL_BUTTON_PRESSED, State_LEDOn}</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition LEDOn_transitions[] = {</div>
-<div class="line">    { SIGNAL_DELAY,          &amp;State_LEDOff   },</div>
-<div class="line">    { SIGNAL_BUTTON_PRESSED, &amp;State_LEDBlink }</div>
+<div class="line">    { SIGNAL_DELAY,          State_LEDOff   },</div>
+<div class="line">    { SIGNAL_BUTTON_PRESSED, State_LEDBlink }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition LEDBlink_transitions[] = {</div>
-<div class="line">    { SIGNAL_DELAY,          &amp;State_LEDOff },</div>
-<div class="line">    { SIGNAL_BUTTON_PRESSED, &amp;State_LEDOff }</div>
+<div class="line">    { SIGNAL_DELAY,          State_LEDOff },</div>
+<div class="line">    { SIGNAL_BUTTON_PRESSED, State_LEDOff }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*define the timeout specifications */</span></div>
@@ -649,34 +649,34 @@ Example using a hierarchical FSM</h2>
 <div class="line"><span class="comment">/*                             TRANSITION TABLES                         */</span></div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
 <div class="line">sm::transition idle_transitions[] = {</div>
-<div class="line">     { SIGNAL_ENGINE_ON, SigAct_ClearDesiredSpeed, &amp;state_initial }</div>
+<div class="line">     { SIGNAL_ENGINE_ON, SigAct_ClearDesiredSpeed, state_initial }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition initial_transitions[] = {</div>
-<div class="line">     { SIGNAL_ACCEL, SigAct_BrakeOff, &amp;state_accelerating }</div>
+<div class="line">     { SIGNAL_ACCEL, SigAct_BrakeOff, state_accelerating }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition accel_transitions[] = {</div>
-<div class="line">     { SIGNAL_CRUISE, &amp;state_cruising }</div>
+<div class="line">     { SIGNAL_CRUISE, state_cruising }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition cruising_transitions[] = {</div>
-<div class="line">     { SIGNAL_OFF, &amp;state_cruisingoff },</div>
-<div class="line">     { SIGNAL_ACCEL, &amp;state_accelerating }</div>
+<div class="line">     { SIGNAL_OFF, state_cruisingoff },</div>
+<div class="line">     { SIGNAL_ACCEL, state_accelerating }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition resuming_transitions[] = {</div>
-<div class="line">     { SIGNAL_ACCEL, &amp;state_accelerating }</div>
+<div class="line">     { SIGNAL_ACCEL, state_accelerating }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition cruisingoff_transitions[] = {</div>
-<div class="line">     { SIGNAL_ACCEL,      SigAct_BrakeOff, &amp;state_accelerating },</div>
-<div class="line">     { SIGNAL_RESUME,     SigAct_BrakeOff, &amp;state_resuming },</div>
-<div class="line">     { SIGNAL_ENGINE_OFF, &amp;state_idle  }</div>
+<div class="line">     { SIGNAL_ACCEL,      SigAct_BrakeOff, state_accelerating },</div>
+<div class="line">     { SIGNAL_RESUME,     SigAct_BrakeOff, state_resuming },</div>
+<div class="line">     { SIGNAL_ENGINE_OFF, state_idle  }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition automated_transitions[] = {</div>
-<div class="line">     { SIGNAL_BRAKE_PRESSED, &amp;state_cruisingoff }</div>
+<div class="line">     { SIGNAL_BRAKE_PRESSED, state_cruisingoff }</div>
 <div class="line">};</div>
 <div class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></div>
 </div><!-- fragment --><p >Then, signal-actions and state callbacks are later defined</p>
@@ -703,7 +703,7 @@ Example using a hierarchical FSM</h2>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453">sm::signalID::SIGNAL_EXIT</a>:</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
-<div class="line">    } </div>
+<div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> RetVal;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*=======================================================================*/</span></div>
@@ -808,21 +808,21 @@ Example with history pseudo-states</h2>
 <div class="line"><a class="code hl_typedef" href="group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323">sm::state</a> state1 , state2 , state3 , state4 , state5 , state6;</div>
 <div class="line"> </div>
 <div class="line">sm::transition state1_transitions [] = {</div>
-<div class="line">    { SIGNAL_A , &amp;state2 , <a class="code hl_enumvalue" href="group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a8236d1ff4bbc57189bcc456ba3835316">sm::historyMode::SHALLOW_HISTORY</a> },</div>
-<div class="line">    { SIGNAL_B , &amp;state2 , <a class="code hl_enumvalue" href="group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a9479952ac02915d74a931ec1665b779f">sm::historyMode::DEEP_HISTORY</a> },</div>
-<div class="line">    { SIGNAL_C , &amp;state2 }</div>
+<div class="line">    { SIGNAL_A , state2 , <a class="code hl_enumvalue" href="group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a8236d1ff4bbc57189bcc456ba3835316">sm::historyMode::SHALLOW_HISTORY</a> },</div>
+<div class="line">    { SIGNAL_B , state2 , <a class="code hl_enumvalue" href="group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a9479952ac02915d74a931ec1665b779f">sm::historyMode::DEEP_HISTORY</a> },</div>
+<div class="line">    { SIGNAL_C , state2 }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition state2_transitions [] = {</div>
-<div class="line">    { SIGNAL_D , &amp;state1  }</div>
+<div class="line">    { SIGNAL_D , state1  }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition state3_transitions [] = {</div>
-<div class="line">    { SIGNAL_E , &amp;state4 }</div>
+<div class="line">    { SIGNAL_E , state4 }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition state5_transitions [] = {</div>
-<div class="line">    { SIGNAL_F , &amp;state6 }</div>
+<div class="line">    { SIGNAL_F , state6 }</div>
 <div class="line">};</div>
 <div class="ttc" id="agroup__qfsm_html_gga1719763177c7b3ccf0d6b6934a2be420a8236d1ff4bbc57189bcc456ba3835316"><div class="ttname"><a href="group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a8236d1ff4bbc57189bcc456ba3835316">qOS::sm::SHALLOW_HISTORY</a></div><div class="ttdeci">@ SHALLOW_HISTORY</div><div class="ttdef"><b>Definition:</b> fsm.hpp:195</div></div>
 <div class="ttc" id="agroup__qfsm_html_gga1719763177c7b3ccf0d6b6934a2be420a9479952ac02915d74a931ec1665b779f"><div class="ttname"><a href="group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a9479952ac02915d74a931ec1665b779f">qOS::sm::DEEP_HISTORY</a></div><div class="ttdeci">@ DEEP_HISTORY</div><div class="ttdef"><b>Definition:</b> fsm.hpp:196</div></div>

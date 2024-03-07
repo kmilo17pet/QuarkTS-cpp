@@ -181,9 +181,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga62aa65d69c4600ba347dfe6f789ba240"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga62aa65d69c4600ba347dfe6f789ba240">qOS::co::waitUntil</a> (bool condition, <a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">qOS::duration_t</a> timeout) noexcept</td></tr>
 <tr class="memdesc:ga62aa65d69c4600ba347dfe6f789ba240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yields until the logical condition is met or the specified timeout expires.  <a href="group__qcoroutines.html#ga62aa65d69c4600ba347dfe6f789ba240">More...</a><br /></td></tr>
 <tr class="separator:ga62aa65d69c4600ba347dfe6f789ba240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga59f41446fbbdda4769837208e03ddba6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">qOS::co::timeoutExpired</a> (void) noexcept</td></tr>
-<tr class="memdesc:ga59f41446fbbdda4769837208e03ddba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the internal Co-routine timeout expires.  <a href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">More...</a><br /></td></tr>
-<tr class="separator:ga59f41446fbbdda4769837208e03ddba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga094c50ce769a5928eb3be4a782bb7be8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga094c50ce769a5928eb3be4a782bb7be8">qOS::co::timeoutExpired</a> (void) noexcept</td></tr>
+<tr class="memdesc:ga094c50ce769a5928eb3be4a782bb7be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the internal Co-routine timeout expires.  <a href="group__qcoroutines.html#ga094c50ce769a5928eb3be4a782bb7be8">More...</a><br /></td></tr>
+<tr class="separator:ga094c50ce769a5928eb3be4a782bb7be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga13055a9326fa8e11d527715fadc7b528"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a> (void) noexcept</td></tr>
 <tr class="memdesc:ga13055a9326fa8e11d527715fadc7b528"><td class="mdescLeft">&#160;</td><td class="mdescRight">This statement cause the running Coroutine to restart its execution at the place of the <a class="el" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91" title="Defines a Coroutine segment. The co::reenter() statement is used to declare the starting point of a C...">co::reenter()</a> statement.  <a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">More...</a><br /></td></tr>
 <tr class="separator:ga13055a9326fa8e11d527715fadc7b528"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -331,8 +331,8 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The timeout for the specified job segment. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">co::perform</a>( timeout ) {</div>
 <div class="line"> </div>
 <div class="line">} <a class="code hl_function" href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">co::until</a>( Condition );</div>
-<div class="ttc" id="agroup__qcoroutines_html_ga8580564fbde2487440f6e1606a0750d4"><div class="ttname"><a href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">qOS::co::perform</a></div><div class="ttdeci">void perform(void) noexcept</div><div class="ttdoc">This statement start a blocking Job segment.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:322</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_ga98a70f2deb294a8e2161eb07df049835"><div class="ttname"><a href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">qOS::co::until</a></div><div class="ttdeci">void until(bool condition) noexcept</div><div class="ttdoc">This statement ends a blocking Job segment starting with the co::perform() statement.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:355</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga8580564fbde2487440f6e1606a0750d4"><div class="ttname"><a href="group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4">qOS::co::perform</a></div><div class="ttdeci">void perform(void) noexcept</div><div class="ttdoc">This statement start a blocking Job segment.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:325</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga98a70f2deb294a8e2161eb07df049835"><div class="ttname"><a href="group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835">qOS::co::until</a></div><div class="ttdeci">void until(bool condition) noexcept</div><div class="ttdoc">This statement ends a blocking Job segment starting with the co::perform() statement.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:358</div></div>
 </div><!-- fragment --> </td></tr>
   </table>
   </dd>
@@ -580,8 +580,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga59f41446fbbdda4769837208e03ddba6" name="ga59f41446fbbdda4769837208e03ddba6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga59f41446fbbdda4769837208e03ddba6">&#9670;&nbsp;</a></span>timeoutExpired()</h2>
+<a id="ga094c50ce769a5928eb3be4a782bb7be8" name="ga094c50ce769a5928eb3be4a782bb7be8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga094c50ce769a5928eb3be4a782bb7be8">&#9670;&nbsp;</a></span>timeoutExpired()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -590,7 +590,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void qOS::co::timeoutExpired </td>
+          <td class="memname">bool qOS::co::timeoutExpired </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -607,12 +607,12 @@ Functions</h2></td></tr>
 <p>Check if the internal Co-routine timeout expires. </p>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> when timer expires, otherwise, returns <code>false</code>. Example: <div class="fragment"><div class="line"><a class="code hl_function" href="group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91">co::reenter</a>( <a class="code hl_class" href="classq_o_s_1_1co_1_1handle.html">handle</a> ) {</div>
 <div class="line">    <a class="code hl_function" href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">co::waitUntil</a>( count &gt; 10 , 5.0f );</div>
-<div class="line">    <span class="keywordflow">if</span> ( <a class="code hl_function" href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">co::timeoutExpired</a>() ) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code hl_function" href="group__qcoroutines.html#ga094c50ce769a5928eb3be4a782bb7be8">co::timeoutExpired</a>() ) {</div>
 <div class="line">        <a class="code hl_function" href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">co::restart</a>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qcoroutines_html_ga13055a9326fa8e11d527715fadc7b528"><div class="ttname"><a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a></div><div class="ttdeci">void restart(void) noexcept</div><div class="ttdoc">This statement cause the running Coroutine to restart its execution at the place of the co::reenter()...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:271</div></div>
-<div class="ttc" id="agroup__qcoroutines_html_ga59f41446fbbdda4769837208e03ddba6"><div class="ttname"><a href="group__qcoroutines.html#ga59f41446fbbdda4769837208e03ddba6">qOS::co::timeoutExpired</a></div><div class="ttdeci">void timeoutExpired(void) noexcept</div><div class="ttdoc">Check if the internal Co-routine timeout expires.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:264</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga094c50ce769a5928eb3be4a782bb7be8"><div class="ttname"><a href="group__qcoroutines.html#ga094c50ce769a5928eb3be4a782bb7be8">qOS::co::timeoutExpired</a></div><div class="ttdeci">bool timeoutExpired(void) noexcept</div><div class="ttdoc">Check if the internal Co-routine timeout expires.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:264</div></div>
+<div class="ttc" id="agroup__qcoroutines_html_ga13055a9326fa8e11d527715fadc7b528"><div class="ttname"><a href="group__qcoroutines.html#ga13055a9326fa8e11d527715fadc7b528">qOS::co::restart</a></div><div class="ttdeci">void restart(void) noexcept</div><div class="ttdoc">This statement cause the running Coroutine to restart its execution at the place of the co::reenter()...</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:274</div></div>
 <div class="ttc" id="agroup__qcoroutines_html_gad0eca0c65e03d038bb7374ee75980f20"><div class="ttname"><a href="group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20">qOS::co::waitUntil</a></div><div class="ttdeci">void waitUntil(bool condition) noexcept</div><div class="ttdoc">Yields until the logical condition is met.</div><div class="ttdef"><b>Definition:</b> coroutine.hpp:233</div></div>
 </div><!-- fragment --> </dd></dl>
 
