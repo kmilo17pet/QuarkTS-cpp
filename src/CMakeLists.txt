@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.2 )
 project( quarkts-cpp
-         VERSION 1.2.4
+         VERSION 1.3.8
          DESCRIPTION "An open-source OS for small embedded applications"
          LANGUAGES CXX )
 
@@ -31,12 +31,12 @@ target_compile_options( ${PROJECT_NAME} INTERFACE
                -std=c++11 -Wall -Wextra -Wpedantic -Wconversion
                -flto -Wimplicit-fallthrough=0 -Wformat-security
                -Wduplicated-cond -Wfloat-equal -Wshadow -Wsign-conversion
-               -Wlogical-not-parentheses -Wnull-dereference  -Wstringop-overflow 
-               -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing 
+               -Wlogical-not-parentheses -Wnull-dereference  -Wstringop-overflow
+               -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing
                -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs
-               -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wshadow 
-               -Wwrite-strings -Wsign-compare  -Wmissing-declarations -Wformat 
-               -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked 
+               -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wshadow
+               -Wwrite-strings -Wsign-compare  -Wmissing-declarations -Wformat
+               -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked
                -Wredundant-decls -Wunreachable-code
             >
 )

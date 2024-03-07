@@ -33,23 +33,23 @@ sm::signalQueue<5> LEDsigqueue;
 sm::timeoutSpec tm_spectimeout;
 
 sm::transition LEDOff_transitions[] = {
-    { SIGNAL_BUTTON_PRESSED, &State_LEDOn }
+    { SIGNAL_BUTTON_PRESSED, State_LEDOn }
 };
 
 sm::transition LEDOn_transitions[] = {
-    { SIGNAL_DELAY,          &State_LEDOff   },
-    { SIGNAL_BUTTON_PRESSED, &State_LEDBlink }
+    { SIGNAL_DELAY,          State_LEDOff   },
+    { SIGNAL_BUTTON_PRESSED, State_LEDBlink }
 };
- 
+
 sm::transition LEDBlink_transitions[] = {
-    { SIGNAL_DELAY,          &State_LEDOff  },
-    { SIGNAL_BUTTON_PRESSED, &State_LEDOff  }
+    { SIGNAL_DELAY,          State_LEDOff  },
+    { SIGNAL_BUTTON_PRESSED, State_LEDOff  }
 };
 
 sm::timeoutStateDefinition LedOn_Timeouts[] = {
     { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 };
- 
+
 sm::timeoutStateDefinition LEDBlink_timeouts[] = {
     { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
     { 0.5_sec, sm::TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
@@ -165,7 +165,7 @@ void task_callback( event_t e )
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
         logger::out() << "notified(QUEUED)! " << e.thisTask() << logger::end;
     }
-   
+
     if ( e.lastIteration() ) {
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
@@ -195,7 +195,7 @@ int main()
     uint32_t x = 0xFFAA2211;
     double y = -3.1416;
     logger::setOutputFcn( &putCharFcn );
-    logger::out() << logger::pre(8) << logger::var(y) << logger::end; 
+    logger::out() << logger::pre(8) << logger::var(y) << logger::end;
     logger::out() << logger::var(x) << logger::mem( sizeof(x) ) << &x << logger::end;
     logger::out(logger::info) << "info message"<< logger::end;
     logger::out(logger::error) << "error message"<< logger::end;

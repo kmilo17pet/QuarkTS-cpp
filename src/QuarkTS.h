@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.3.6
+ * @version 1.3.8
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/
@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.3.7"
-#define QUARKTS_CPP_VERNUM          ( 137u )
+#define QUARKTS_CPP_VERSION         "1.3.8"
+#define QUARKTS_CPP_VERNUM          ( 138u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -71,7 +71,7 @@ using namespace qOS;
 
 /**
 *  @defgroup qos Operative System
-*  This section contains the documentation related to all the Interfaces and 
+*  This section contains the documentation related to all the Interfaces and
 *  intrinsic definitions of the operating system.
 */
 
@@ -128,7 +128,7 @@ using namespace qOS;
 
 /**
 *  @defgroup qmodules Kernel extensions
-*  This section contains the documentation related to all the extensions that 
+*  This section contains the documentation related to all the extensions that
 *  adds additional functionality to the operating system.
 */
 

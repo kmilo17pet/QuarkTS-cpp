@@ -14,13 +14,13 @@ namespace qOS {
      */
 
     class stateMachine;
-    
+
     /**
     * @brief Finite State Machine interfaces.
     */
     namespace sm {
 
-        /** @addtogroup  qfsm 
+        /** @addtogroup  qfsm
          *  @{
          */
 
@@ -139,7 +139,7 @@ namespace qOS {
         * @param iTm The index of the timeout (0, 1, 2... ( @c Q_FSM_MAX_TIMEOUTS-1 ) )
         * @return The built-int timeout signal at index @a iTm.
         */
-        constexpr signalID SIGNAL_TIMEOUT( index_t iTm ) 
+        constexpr signalID SIGNAL_TIMEOUT( index_t iTm )
         {
             return static_cast<signalID>( signalID::TM_MAX - static_cast<signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<signalID>( iTm ) );
         }
@@ -165,7 +165,7 @@ namespace qOS {
         };
 
         /**
-        * @brief The type of a FSM signal-queue 
+        * @brief The type of a FSM signal-queue
         */
         template <size_t numberOfSignals>
         struct signalQueue {
@@ -236,10 +236,10 @@ namespace qOS {
                 }
                 /**
                 * @brief Set the nested initial state ( sub-state ). This
-                * The application writer should change this field to set the 
-                * initial transition if the current state is a 
-                * parent(or composite state). Using this method only takes 
-                * effect when the state is executed under the 
+                * The application writer should change this field to set the
+                * initial transition if the current state is a
+                * parent(or composite state). Using this method only takes
+                * effect when the state is executed under the
                 * @c signalID::SIGNAL_START signal.
                 * @param[in] s The state object.
                 */
@@ -279,12 +279,12 @@ namespace qOS {
                     return *State;
                 }
                 /**
-                * @brief Gets a reference to the state machine in which this 
+                * @brief Gets a reference to the state machine in which this
                 * state is contained.
                 * @return a reference to the state machine.
                 */
                 inline stateMachine& thisMachine( void ) noexcept
-                { 
+                {
                     return *Machine;
                 }
                 /**
@@ -339,7 +339,7 @@ namespace qOS {
                     return *State;
                 }
                 inline stateMachine& thisMachine( void ) noexcept
-                { 
+                {
                     return *Machine;
                 }
                 inline signalID signal( void ) const noexcept
@@ -423,7 +423,7 @@ namespace qOS {
         using timeoutSpecOption_t = uint32_t;
 
         /**
-        * @brief This type should be used to define an item for a 
+        * @brief This type should be used to define an item for a
         * timeout-specification table.
         */
         struct timeoutStateDefinition {
@@ -444,30 +444,30 @@ namespace qOS {
             void *signalData{ nullptr };
             /*! @endcond  */
             transition() = default;
-            transition( signalID iSignal, signalAction_t sGuard, state *next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
-                          xSignal(iSignal),
-                          guard(sGuard),
-                          nextState(next),
-                          history(mHistory),
-                          signalData(sigData) {}
-            transition( signalID iSignal, state *next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
-                          xSignal(iSignal),
-                          guard(nullptr),
-                          nextState(next),
-                          history(mHistory),
-                          signalData(sigData) {}
-            transition( signalIDType iSignal, signalAction_t sGuard, state *next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
-                          xSignal( static_cast<signalID>( iSignal ) ),
-                          guard(sGuard),
-                          nextState(next),
-                          history( static_cast<historyMode>(mHistory) ),
-                          signalData(sigData) {}
-            transition( signalIDType iSignal, state *next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
-                          xSignal( static_cast<signalID>( iSignal ) ),
-                          guard(nullptr),
-                          nextState(next),
-                          history( static_cast<historyMode>(mHistory) ),
-                          signalData(sigData) {}
+            transition( signalID iSignal, signalAction_t sGuard, state &next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
+                        xSignal(iSignal),
+                        guard(sGuard),
+                        nextState(&next),
+                        history(mHistory),
+                        signalData(sigData) {}
+            transition( signalID iSignal, state &next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
+                        xSignal(iSignal),
+                        guard(nullptr),
+                        nextState(&next),
+                        history(mHistory),
+                        signalData(sigData) {}
+            transition( signalIDType iSignal, signalAction_t sGuard, state &next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
+                        xSignal( static_cast<signalID>( iSignal ) ),
+                        guard(sGuard),
+                        nextState(&next),
+                        history( static_cast<historyMode>(mHistory) ),
+                        signalData(sigData) {}
+            transition( signalIDType iSignal, state &next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
+                        xSignal( static_cast<signalID>( iSignal ) ),
+                        guard(nullptr),
+                        nextState(&next),
+                        history( static_cast<historyMode>(mHistory) ),
+                        signalData(sigData) {}
         };
 
         /**
@@ -487,7 +487,7 @@ namespace qOS {
         * containing sub-states) and leaf states. All states are potentially
         * composite.
         *
-        * The APIs stateMachine::add() and state::add()  should be used to 
+        * The APIs stateMachine::add() and state::add()  should be used to
         * initialize the state and define its position in the topology.
         */
         class state {
@@ -588,7 +588,7 @@ namespace qOS {
                 void setData( void *pData ) noexcept;
                 /**
                 * @brief Retrieve a pointer to the state transition table
-                * @return A pointer to the state transition table if available, 
+                * @return A pointer to the state transition table if available,
                 * otherwise return @c nullptr.
                 */
                 transition* getTransitionTable( void ) noexcept;
@@ -770,8 +770,8 @@ namespace qOS {
             }
             /**
             * @brief Install a signal queue to the provided Finite State Machine (FSM).
-            * @note It is recommended to define the queue as an object of type 
-            * sm::signalQueue o that the queue is configured automatically. 
+            * @note It is recommended to define the queue as an object of type
+            * sm::signalQueue o that the queue is configured automatically.
             * Otherwise the user must configure it explicitly.
             * @pre Queue object should be previously initialized by using
             * queue::setup()
@@ -796,14 +796,14 @@ namespace qOS {
 
 
             /**
-            * @brief Sends a signal to a state machine 
+            * @brief Sends a signal to a state machine
             * @note If the signal queue is not available, an exclusion variable will be
             * used.This means that the signal cannot be sent until the variable is empty.
             * (the signal was handled by the state-machine engine).
-            * @warning Data associated to the signal is not deep-copied to a queue or any 
+            * @warning Data associated to the signal is not deep-copied to a queue or any
             * buffer. It's only data pointer (address in memory) that is shallow-copied
-            * to a signal queue so it has to point to a globally accessible memory. 
-            * If it pointed to a sender's local variable (from the stack) it would be 
+            * to a signal queue so it has to point to a globally accessible memory.
+            * If it pointed to a sender's local variable (from the stack) it would be
             * invalid after sender returns from the function that sends the signal.
             * @note The signal-queue event has the highest precedence.
             * @param[in] sig The user-defined signal.
@@ -819,7 +819,7 @@ namespace qOS {
             {
                 return sendSignal( static_cast<sm::signalID>( sig ), sData, isUrgent );
             }
-            
+
             /**
             * @brief Install the Timeout-specification object to target FSM to allow
             * timed signals within states.
@@ -869,13 +869,13 @@ namespace qOS {
             sm::state * const & getCurrent( void ) const noexcept;
             /**
             * @brief Get a pointer to the installed queue if available
-            * @return A pointer to the installed queue if available, 
+            * @return A pointer to the installed queue if available,
             * otherwise returns @c nullptr.
             */
             queue * const & getQueue( void ) const noexcept;
             /**
             * @brief Get a pointer to the installed timeout specification if available
-            * @return A pointer to the installed timeout specification if available, 
+            * @return A pointer to the installed timeout specification if available,
             * otherwise returns @c nullptr.
             */
             sm::timeoutSpec * const & getTimeSpec( void ) const noexcept;
@@ -904,15 +904,15 @@ namespace qOS {
     };
     /** @}*/
     namespace sm {
-         /** @addtogroup  qfsm 
+         /** @addtogroup  qfsm
          *  @{
          */
 
     /**
-        * @brief An object to subscribe FSM(Finite State Machine) objects to 
+        * @brief An object to subscribe FSM(Finite State Machine) objects to
         * specific user-defined signals
         * @details This object provides a mechanism to decouple signal producers
-        * from the signal consumers, so state-machine objects interested in 
+        * from the signal consumers, so state-machine objects interested in
         * certain signals subscribe to one or more Signals".
         */
         class signalPublisher {
@@ -954,10 +954,10 @@ namespace qOS {
                 * @remark To enable the functionality of sending signals to subscribers, you
                 * must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX
                 * in the configuration file @c config.h
-                * @warning Data associated to the signal is not deep-copied to a queue or any 
+                * @warning Data associated to the signal is not deep-copied to a queue or any
                 * buffer. It's only data pointer (address in memory) that is shallow-copied
-                * to a signal queue so it has to point to a globally accessible memory. 
-                * If it pointed to a sender's local variable (from the stack) it would be 
+                * to a signal queue so it has to point to a globally accessible memory.
+                * If it pointed to a sender's local variable (from the stack) it would be
                 * invalid after sender returns from the function that sends the signal.
                 * @note The signal-queue event has the highest precedence.
                 * @param[in] sig The user-defined signal.

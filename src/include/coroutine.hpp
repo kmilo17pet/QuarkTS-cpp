@@ -142,11 +142,11 @@ namespace qOS {
                 {
                     return label;
                 }
-                inline void operator()( qOS::duration_t t ) 
+                inline void operator()( qOS::duration_t t )
                 {
                     (void)tm.set( t );
                 }
-                inline void operator()( coAction action ) 
+                inline void operator()( coAction action )
                 {
                     if ( coAction::CO_TIMEOUT_DISARM == action ) {
                         tm.disarm();
@@ -160,7 +160,7 @@ namespace qOS {
                 {
                     return l != label;
                 }
-                inline bool timeout( void ) const 
+                inline bool timeout( void ) const
                 {
                     return tm.expired();
                 }
@@ -172,11 +172,11 @@ namespace qOS {
         /*! @endcond */
 
         /**
-        * @brief Defines a Coroutine segment. The co::reenter() statement is used 
-        * to declare the starting point of a Coroutine. It should be placed at 
+        * @brief Defines a Coroutine segment. The co::reenter() statement is used
+        * to declare the starting point of a Coroutine. It should be placed at
         * the start of the function in which the Coroutine runs.
         * @warning Only one segment is allowed inside a task.
-        * 
+        *
         * Example:
         * @code{.c}
         * co::reenter() {
@@ -189,11 +189,11 @@ namespace qOS {
         /**
         * @brief Defines a Coroutine segment with a supplied external handle.
         * The co::reenter() statement is used to declare the starting point of a
-        * Coroutine. It should be placed at the start of the function in which 
+        * Coroutine. It should be placed at the start of the function in which
         * the Coroutine runs.
         * @param[in] h The handle of a coroutine.
         * @warning Only one segment is allowed inside a task.
-        * 
+        *
         * Example:
         * @code{.c}
         * co::reenter( handle ) {
@@ -204,9 +204,9 @@ namespace qOS {
         inline void reenter( qOS::co::handle h ) noexcept { Q_UNUSED(h); }
 
         /**
-        * @brief This statement is only allowed inside a Coroutine segment. 
+        * @brief This statement is only allowed inside a Coroutine segment.
         * co::yield return the CPU control back to the scheduler but saving the
-        * execution progress. With the next task activation, the Coroutine will 
+        * execution progress. With the next task activation, the Coroutine will
         * resume the execution after the last co::yield statement.
         * @verbatim Action sequence : [Save progress] then [Yield] @endverbatim
         */
@@ -220,8 +220,8 @@ namespace qOS {
 
         /**
         * @brief Yields until the logical condition is met.
-        * @param[in] condition The logical condition to be evaluated. The 
-        * condition determines if the blocking job ends (if condition is true) 
+        * @param[in] condition The logical condition to be evaluated. The
+        * condition determines if the blocking job ends (if condition is true)
         * or continue yielding (if false)
         * @verbatim
         * Action sequence : [Save progress]
@@ -233,10 +233,10 @@ namespace qOS {
         inline void waitUntil( bool condition ) noexcept { Q_UNUSED(condition); }
 
         /**
-        * @brief Yields until the logical condition is met or the specified 
+        * @brief Yields until the logical condition is met or the specified
         * timeout expires.
-        * @param[in] condition The logical condition to be evaluated. The 
-        * condition determines if the blocking job ends (if condition is @c true) 
+        * @param[in] condition The logical condition to be evaluated. The
+        * condition determines if the blocking job ends (if condition is @c true)
         * or continue yielding (if false)
         * @param[in] timeout The specific amount of time to wait given in milliseconds..
         * @verbatim
@@ -261,10 +261,13 @@ namespace qOS {
         * }
         * @endcode
         */
-        inline void timeoutExpired( void ) noexcept {}
+        inline bool timeoutExpired( void ) noexcept
+        {
+            return false;
+        }
 
         /**
-        * @brief This statement cause the running Coroutine to restart its 
+        * @brief This statement cause the running Coroutine to restart its
         * execution at the place of the co::reenter() statement.
         * @verbatim Action sequence : [Reload progress] then [Yield] @endverbatim
         */
@@ -411,7 +414,7 @@ if ( !(c) ) {                                                                  \
 #define q_co_t_cond( c )                                                       \
 if ( !( (c) || co_ctx.timeout() ) ) {                                          \
     goto q_co_break;                                                           \
-} 
+}
 /*============================================================================*/
 #define yield() q_co_yield( q_co_label )
 #define q_co_yield(label)                                                      \
@@ -437,7 +440,7 @@ q_co_SaveRestore( label, qOS::co::crNOP(), q_co_t_cond(c) )                    \
 
 #define waitUntil(...)                  MACRO_OVERLOAD( q_co_wu_ , __VA_ARGS__ )
 /*============================================================================*/
-#define timeoutExpired()              timeoutExpired(), co_ctx.timeout()
+#define timeoutExpired()                timeoutExpired() || co_ctx.timeout()
 
 /*============================================================================*/
 #define restart() q_co_restart
