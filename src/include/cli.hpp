@@ -83,8 +83,8 @@ namespace qOS {
         /**
         * @brief The command argument with all the regarding information of the
         * incoming AT command.
-        * @details From the callback context, can be used to print out extra 
-        * information as a command response, parse the command parameters, and 
+        * @details From the callback context, can be used to print out extra
+        * information as a command response, parse the command parameters, and
         * query properties with crucial information about the
         * detected command, like the type, the number of arguments, and the
         * subsequent string after the command text.
@@ -367,7 +367,7 @@ namespace qOS {
             */
             bool setup( util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut );
             template <size_t inBufferSize, size_t outBufferSize>
-            bool setup( util::putChar_t outFcn, char (&pInput)[ inBufferSize ], char (&pOutput)[ outBufferSize ] )
+            bool setup( util::putChar_t outFcn, char (&pInput)[ inBufferSize ], char (&pOutput)[ outBufferSize ] ) // skipcq : CXX-W2066
             {
                 return setup( outFcn, pInput, inBufferSize, pOutput, outBufferSize );
             }

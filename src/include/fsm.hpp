@@ -551,7 +551,7 @@ namespace qOS {
                 */
                 bool setTransitions( transition *table, size_t n ) noexcept;
                 template <size_t numberOfTransitions>
-                bool setTransitions( transition (&table)[ numberOfTransitions ] ) noexcept
+                bool setTransitions( transition (&table)[ numberOfTransitions ] ) noexcept // skipcq : CXX-W2066
                 {
                     return setTransitions( table, numberOfTransitions );
                 }
@@ -572,7 +572,7 @@ namespace qOS {
                 */
                 bool setTimeouts( timeoutStateDefinition *def, size_t n ) noexcept;
                 template <size_t numberOfTimeoutDefs>
-                bool setTimeouts( timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept
+                bool setTimeouts( timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept // skipcq : CXX-W2066
                 {
                     return setTimeouts( def, numberOfTimeoutDefs );
                 }

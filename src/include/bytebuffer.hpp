@@ -47,7 +47,7 @@ namespace qOS {
             */
             bool setup( volatile uint8_t *pBuffer, const size_t bLength ) noexcept;
             template <size_t numberOfBytes>
-            bool setup( volatile uint8_t (&area)[numberOfBytes] ) noexcept
+            bool setup( volatile uint8_t (&area)[numberOfBytes] ) noexcept // skipcq : CXX-W2066
             {
                 return setup( area, numberOfBytes );
             }
