@@ -34,6 +34,7 @@ var namespaceq_o_s_1_1sm =
     [ "SIGNAL_TIMEOUT", "group__qfsm.html#gad5476e06fde92efddf507ec60e492be3", null ],
     [ "SIGNAL_USER", "group__qfsm.html#gad36d499b2329aa049d98062b0f1c69a9", null ],
     [ "TIMEOUT_INDEX", "group__qfsm.html#ga646289fa705250d5f8b950aee747becc", null ],
+    [ "TIMEOUT_USE_SIGNAL", "group__qfsm.html#ga7c35035562f829904bfa2d89c5be7287", null ],
     [ "TIMEOUT_KEEP_IF_SET", "group__qfsm.html#ga5f5c7078fc1b8137559aaa2297d6890d", null ],
     [ "TIMEOUT_PERIODIC", "group__qfsm.html#ga3c6b00ebb0cc213342339189c9d71a40", null ],
     [ "TIMEOUT_RST_ENTRY", "group__qfsm.html#ga30fd4d66bf395aeeaaeff12d09faa30a", null ],

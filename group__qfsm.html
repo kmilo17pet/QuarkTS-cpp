@@ -235,8 +235,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:gad36d499b2329aa049d98062b0f1c69a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to define a user-defined signal.  <a href="group__qfsm.html#gad36d499b2329aa049d98062b0f1c69a9">More...</a><br /></td></tr>
 <tr class="separator:gad36d499b2329aa049d98062b0f1c69a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga646289fa705250d5f8b950aee747becc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a> (<a class="el" href="group__qtypes.html#ga5cf336a03a4a44a0cda9d327511b8209">index_t</a> i)</td></tr>
-<tr class="memdesc:ga646289fa705250d5f8b950aee747becc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used to specify the timeout index.  <a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">More...</a><br /></td></tr>
+<tr class="memdesc:ga646289fa705250d5f8b950aee747becc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used only to specify which timeout signal to use.  <a href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">More...</a><br /></td></tr>
 <tr class="separator:ga646289fa705250d5f8b950aee747becc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c35035562f829904bfa2d89c5be7287"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga7c35035562f829904bfa2d89c5be7287">qOS::sm::TIMEOUT_USE_SIGNAL</a> (<a class="el" href="group__qtypes.html#ga5cf336a03a4a44a0cda9d327511b8209">index_t</a> i)</td></tr>
+<tr class="memdesc:ga7c35035562f829904bfa2d89c5be7287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used only to specify which timeout signal to use.  <a href="group__qfsm.html#ga7c35035562f829904bfa2d89c5be7287">More...</a><br /></td></tr>
+<tr class="separator:ga7c35035562f829904bfa2d89c5be7287"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga86639c0e76496b0a1577b634452f5811"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga86639c0e76496b0a1577b634452f5811">qOS::core::addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#gae013b5397e13f9ce1e58298de62d0b37">priority_t</a> p, const <a class="el" href="group__qclock.html#ga77374d390d5c4b936e63742a8197edc6">duration_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
 <tr class="memdesc:ga86639c0e76496b0a1577b634452f5811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <a href="group__qfsm.html#ga86639c0e76496b0a1577b634452f5811">More...</a><br /></td></tr>
 <tr class="separator:ga86639c0e76496b0a1577b634452f5811"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -652,7 +655,38 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Timeout-specification option. Should be used to specify the timeout index. </p>
+<p>Timeout-specification option. Should be used only to specify which timeout signal to use. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qfsm.html#ga7c35035562f829904bfa2d89c5be7287" title="Timeout-specification option. Should be used only to specify which timeout signal to use.">TIMEOUT_USE_SIGNAL()</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Can be combined with a bitwise OR </dd></dl>
+
+</div>
+</div>
+<a id="ga7c35035562f829904bfa2d89c5be7287" name="ga7c35035562f829904bfa2d89c5be7287"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7c35035562f829904bfa2d89c5be7287">&#9670;&nbsp;</a></span>TIMEOUT_USE_SIGNAL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9">timeoutSpecOption_t</a> qOS::sm::TIMEOUT_USE_SIGNAL </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#ga5cf336a03a4a44a0cda9d327511b8209">index_t</a>&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timeout-specification option. Should be used only to specify which timeout signal to use. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc" title="Timeout-specification option. Should be used only to specify which timeout signal to use.">TIMEOUT_INDEX()</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Can be combined with a bitwise OR </dd></dl>
 
 </div>
