@@ -585,8 +585,8 @@
 * state-machine engine. These options can be combined with a bitwise OR and are
 * detailed as follows:
 *
-* - @c sm::TIMEOUT_INDEX(index) : To select the timeout to be used in the
-* specification. Should be a value between @c 0 and @c Q_FSM_MAX_TIMEOUTS-1
+* - @c sm::TIMEOUT_USE_SIGNAL(index) : To select the timeout signal to be used
+* in the specification. Should be a value between @c 0 and @c Q_FSM_MAX_TIMEOUTS-1
 * - @c sm::TIMEOUT_SET_ENTRY : To set the timeout when the specified state its
 * entering.
 * - @c sm::TIMEOUT_RST_ENTRY : To reset the timeout when the specified state its
@@ -644,12 +644,12 @@
 *
 *  /*define the timeout specifications */
 *  sm::timeoutStateDefinition LedOn_Timeouts[] = {
-*      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+*      { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 *  };
 *
 *  sm::timeoutStateDefinition LEDBlink_timeouts[] = {
-*      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT },
-*      { 0.5_sec, sm::TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
+*      { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT },
+*      { 0.5_sec, sm::TIMEOUT_USE_SIGNAL( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 *  };
 *  @endcode
 *

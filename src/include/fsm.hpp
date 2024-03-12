@@ -663,15 +663,25 @@ namespace qOS {
         */
         extern const timeoutSpecOption_t TIMEOUT_PERIODIC;
         /**
-        * @brief Timeout-specification option. Should be used to specify the timeout
-        * index.
+        * @brief Timeout-specification option. Should be used only to specify
+        * which timeout signal to use
+        * @see TIMEOUT_USE_SIGNAL()
         * @note Can be combined with a bitwise OR
         */
         constexpr timeoutSpecOption_t TIMEOUT_INDEX( index_t i )
         {
             return ( 0x00FFFFFFUL & static_cast<timeoutSpecOption_t>( i ) );
         }
-
+        /**
+        * @brief Timeout-specification option. Should be used only to specify
+        * which timeout signal to use
+        * @see TIMEOUT_INDEX()
+        * @note Can be combined with a bitwise OR
+        */
+        constexpr timeoutSpecOption_t TIMEOUT_USE_SIGNAL( index_t i )
+        {
+            return ( 0x00FFFFFFUL & static_cast<timeoutSpecOption_t>( i ) );
+        }
         /** @}*/
     }
 
@@ -976,7 +986,6 @@ namespace qOS {
         };
         /** @}*/
     }
-
 }
 
 

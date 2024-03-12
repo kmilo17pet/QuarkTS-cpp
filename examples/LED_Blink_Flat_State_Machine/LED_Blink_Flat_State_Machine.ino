@@ -38,12 +38,12 @@ sm::transition LEDBlink_transitions[] = {
 
 /*define the timeout specifications */
 sm::timeoutStateDefinition LedOn_Timeouts[] = {
-    { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+    { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 };
 
 sm::timeoutStateDefinition LEDBlink_timeouts[] = {
-    { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
-    { 0.5_sec, sm::TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
+    { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+    { 0.5_sec, sm::TIMEOUT_USE_SIGNAL( 1 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 };
 
 sm::status State_LEDOff_Callback( sm::handler_t h ) {
