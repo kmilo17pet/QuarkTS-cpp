@@ -3,7 +3,7 @@ var namespaceq_o_s_1_1co =
     [ "handle", "classq_o_s_1_1co_1_1handle.html", "classq_o_s_1_1co_1_1handle" ],
     [ "position", "classq_o_s_1_1co_1_1position.html", null ],
     [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html", "classq_o_s_1_1co_1_1semaphore" ],
-    [ "state", "group__qcoroutines.html#gaeb641677e59c4b4fcf76e63c1a598323", null ],
+    [ "state", "group__qcoroutines.html#ga550f463edf9a0fc722cddf336a6d8f18", null ],
     [ "delay", "group__qcoroutines.html#ga3ba35f233837d549d971632444e00c06", null ],
     [ "getPosition", "group__qcoroutines.html#gac8354b5da4ab66b7e049c615af830c97", null ],
     [ "perform", "group__qcoroutines.html#gacaa96ae282349c5f6aa679785d43ec8c", null ],

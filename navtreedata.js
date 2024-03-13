@@ -88,7 +88,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Extensions", "q_extensions.html", "q_extensions" ],
-    [ "Modules", "modules.html", "modules" ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -119,8 +119,7 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "classq_o_s_1_1task.html#a695b8b4c0828fc3823b1daaf7328f3af",
-"group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe",
-"structq_o_s_1_1sm_1_1transition.html#aedb274fd11e13d1139b2c606fcb534f1"
+"group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

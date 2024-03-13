@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['generic_20double_2dlinked_20lists_0',['Generic double-linked lists',['../group__qlists.html',1,'']]]
+  ['finite_20state_20machines_0',['Finite State Machines',['../group__qfsm.html',1,'']]],
+  ['flags_1',['Event Flags',['../group__qeventflags.html',1,'']]],
+  ['for_20edge_20checking_2',['I/O Groups for edge checking',['../group__qedgecheck.html',1,'']]],
+  ['functions_3',['Helper functions',['../group__qflm.html',1,'']]]
 ];

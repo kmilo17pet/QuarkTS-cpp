@@ -1,10 +1,10 @@
 <map id="Utilities" name="Utilities">
-<area shape="rect" id="node1" href="$group__qbsbuffers.html" title="An interrupt&#45;safe byte&#45;sized ring buffer interface." alt="" coords="130,5,257,31"/>
-<area shape="rect" id="node2" href="$group__qedgecheck.html" title="An interface to manage and simplify the value(with edge&#45;checking) of incoming digital&#45;signal groups." alt="" coords="126,55,261,95"/>
-<area shape="rect" id="node3" href="$group__qflm.html" title=" " alt="" coords="135,120,251,145"/>
-<area shape="rect" id="node4" href="$group__qioutils.html" title="API for input/output utilities and safe string interfaces." alt="" coords="158,169,229,195"/>
-<area shape="rect" id="node5" href="$group__qlists.html" title="The provided list implementation uses a generic doubly&#45;linked approach in which each node,..." alt="" coords="120,219,267,259"/>
-<area shape="rect" id="node6" href="$group__qresponse.html" title="API to simplify the handling of requested responses from terminal interfaces." alt="" coords="131,284,256,309"/>
-<area shape="rect" id="node7" href="$group__qtrace.html" title=" " alt="" coords="166,333,221,359"/>
-<area shape="rect" id="node8" title=" " alt="" coords="5,169,72,195"/>
+<area shape="rect" id="Node000003" href="$group__qbsbuffers.html" title="An interrupt&#45;safe byte&#45;sized ring buffer interface." alt="" coords="129,5,254,31"/>
+<area shape="rect" id="Node000004" href="$group__qedgecheck.html" title="An interface to manage and simplify the value(with edge&#45;checking) of incoming digital&#45;signal groups." alt="" coords="125,55,258,96"/>
+<area shape="rect" id="Node000008" href="$group__qflm.html" title=" " alt="" coords="134,120,249,146"/>
+<area shape="rect" id="Node000005" href="$group__qioutils.html" title="API for input/output utilities and safe string interfaces." alt="" coords="157,169,226,195"/>
+<area shape="rect" id="Node000002" href="$group__qlists.html" title="The provided list implementation uses a generic doubly&#45;linked approach in which each node,..." alt="" coords="119,219,264,260"/>
+<area shape="rect" id="Node000006" href="$group__qresponse.html" title="API to simplify the handling of requested responses from terminal interfaces." alt="" coords="129,284,254,310"/>
+<area shape="rect" id="Node000007" href="$group__qtrace.html" title=" " alt="" coords="164,333,219,359"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,169,71,195"/>
 </map>

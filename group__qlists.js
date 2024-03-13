@@ -34,7 +34,7 @@ var group__qlists =
       [ "until", "classq_o_s_1_1list_iterator.html#a80d606eff09b9fe93244455817955475", null ],
       [ "until", "classq_o_s_1_1list_iterator.html#a45919f4212bd04942b47622c45f9ff85", null ]
     ] ],
-    [ "qOS::listCompareFcn_t", "group__qlists.html#ga805544d4c3b37262eabc39851d8060dc", null ],
+    [ "qOS::listCompareFcn_t", "group__qlists.html#gae31fb6c81de5ef602e110ff89c55123e", null ],
     [ "qOS::listDirection", "group__qlists.html#ga032e23f2e0cb931b9bc0189b479c8381", [
       [ "qOS::listDirection::FORWARD", "group__qlists.html#gga032e23f2e0cb931b9bc0189b479c8381abfec72bb37910c61f36b6c29a1f7ec31", null ],
       [ "qOS::listDirection::BACKWARD", "group__qlists.html#gga032e23f2e0cb931b9bc0189b479c8381a6377b4908ae38f9a57fe9120cf179eb1", null ]

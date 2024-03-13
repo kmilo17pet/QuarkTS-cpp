@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['managing_20tasks_0',['Managing tasks',['../group__qtaskmanip.html',1,'']]],
-  ['memory_20management_1',['Memory Management',['../group__qmemmang.html',1,'']]]
+  ['line_20interface_0',['AT Command Line Interface',['../group__qatcli.html',1,'']]],
+  ['linked_20lists_1',['Generic double-linked lists',['../group__qlists.html',1,'']]],
+  ['lists_2',['Generic double-linked lists',['../group__qlists.html',1,'']]],
+  ['logger_3',['Logger',['../group__qlogger.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operative_20system_0',['Operative System',['../group__qos.html',1,'']]]
+  ['notifications_0',['Notifications',['../group__qnot.html',1,'']]]
 ];

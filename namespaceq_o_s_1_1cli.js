@@ -2,8 +2,8 @@ var namespaceq_o_s_1_1cli =
 [
     [ "command", "classq_o_s_1_1cli_1_1command.html", "classq_o_s_1_1cli_1_1command" ],
     [ "handler_t", "classq_o_s_1_1cli_1_1handler__t.html", "classq_o_s_1_1cli_1_1handler__t" ],
-    [ "commandCallback_t", "group__qatcli.html#gab20d33e9de974f49e535206ad7194289", null ],
-    [ "options_t", "group__qatcli.html#ga65eb4c32eb2231ef413a3226d62b895a", null ],
+    [ "commandCallback_t", "group__qatcli.html#ga544f081ab9f3bb639a6c52156281bd84", null ],
+    [ "options_t", "group__qatcli.html#ga9f637013318ba4b55c33129741c5e8dc", null ],
     [ "commandType", "group__qatcli.html#gacd8a64c92cd0126e8e392a3d7a002db2", [
       [ "UNDEF", "group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2ab4b55c3ad6e26fcdb624757c4f7ffc11", null ],
       [ "PARA", "group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e", null ],

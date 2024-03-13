@@ -1,5 +1,27 @@
 var searchData=
 [
-  ['var_0',['var',['../classq_o_s_1_1logger.html#a99da2d0e1081c03e6a397c86a45025dd',1,'qOS::logger']]],
-  ['verbose_1',['verbose',['../group__qlogger.html#gga8d02cc4e3735026bc7ceb4cb70940bc1aa509bd8a53ed01c0c143fd93338295d0',1,'qOS::logger']]]
+  ['undef_0',['UNDEF',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2ab4b55c3ad6e26fcdb624757c4f7ffc11',1,'qOS::cli']]],
+  ['undefined_1',['UNDEFINED',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a0db45d2a4141101bdfe48e3314cfbca3',1,'qOS']]],
+  ['unknown_2',['UNKNOWN',['../group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba696b031073e74bf2cb98e5ef201d4aa3',1,'qOS::ec']]],
+  ['unsigned_5ft_3',['unsigned_t',['../group__qtypes.html#ga9f41f10b13cb1c211d1822ea2c389405',1,'qOS']]],
+  ['unsignedtostring_4',['unsignedToString',['../group__qioutils.html#ga77c028b6148dbbba70ad707c6c4235c8',1,'qOS::util']]],
+  ['unsubscribefromsignal_5',['unsubscribeFromSignal',['../classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0',1,'qOS::sm::signalPublisher::unsubscribeFromSignal(stateMachine &amp;m, sm::signalID s) noexcept'],['../classq_o_s_1_1sm_1_1signal_publisher.html#a63d21e83a0cbe1d55f33303f787b9acb',1,'qOS::sm::signalPublisher::unsubscribeFromSignal(stateMachine &amp;m, sm::signalIDType s) noexcept']]],
+  ['until_6',['until',['../classq_o_s_1_1list_iterator.html#a45919f4212bd04942b47622c45f9ff85',1,'qOS::listIterator::until(void) const noexcept'],['../classq_o_s_1_1list_iterator.html#a80d606eff09b9fe93244455817955475',1,'qOS::listIterator::until(void *node) const noexcept'],['../group__qcoroutines.html#ga98a70f2deb294a8e2161eb07df049835',1,'qOS::co::until()']]],
+  ['up_20a_20queue_7',['Setting up a queue',['../q_events.html#q_queuesetup',1,'']]],
+  ['up_20a_20state_20machine_8',['Setting up a state machine',['../q_fsm.html#q_fsmsetup',1,'']]],
+  ['up_20an_20at_20cli_20instance_9',['Setting up an AT-CLI instance',['../q_atcli.html#q_atcli_setup',1,'']]],
+  ['update_10',['update',['../classq_o_s_1_1edge_check.html#ab3d657ed8783c025f35403b6d473052a',1,'qOS::edgeCheck']]],
+  ['usage_11',['Usage',['../q_background.html#q_memusage',1,'Memory usage'],['../q_trace.html#q_trace_usage',1,'Usage']]],
+  ['usage_20example_12',['Usage example',['../q_qcoroutines.html#q_coroutine_example1',1,'Co-Routine usage example'],['../q_memmang.html#q_memmang_usage',1,'Usage example']]],
+  ['user_20manual_13',['User manual',['../index.html',1,'']]],
+  ['using_20a_20hierarchical_20fsm_14',['Example using a hierarchical FSM',['../q_fsm.html#q_fsm_example3',1,'']]],
+  ['using_20a_20timer_15',['Using a Timer',['../q_stimers.html#q_stimerusage',1,'']]],
+  ['using_20a_20transition_20table_16',['Using a transition table',['../q_fsm.html#q_fsm_ttable',1,'']]],
+  ['using_20quarkts_20in_20arduino_17',['Using QuarkTS++ in Arduino',['../q_gettingstarted.html#qarduinousage',1,'']]],
+  ['using_20the_20hierarchical_20approach_18',['Using the hierarchical approach',['../q_fsm.html#qfsm_happroach',1,'']]],
+  ['using_20the_20task_20argument_19',['Using the task argument',['../q_gettingstarted.html#q_os_example2',1,'']]],
+  ['using_20the_20task_20event_20flags_20',['Using the task Event-flags',['../q_events.html#q_eventflagsexample',1,'']]],
+  ['using_20transition_20tables_21',['Demonstrative example using transition tables',['../q_fsm.html#q_fsm_example2',1,'']]],
+  ['utilities_22',['Utilities',['../group__qutility.html',1,'']]],
+  ['utils_23',['I/O Utils',['../group__qioutils.html',1,'']]]
 ];

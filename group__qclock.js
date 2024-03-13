@@ -10,7 +10,7 @@ var group__qclock =
       [ "IMMEDIATE", "classq_o_s_1_1clock.html#ab7cab803d7a7792ee382a9cfcceb96b5", null ],
       [ "NONE", "classq_o_s_1_1clock.html#a23a6cb5f0d851dfbf0c4cef0dcddf616", null ]
     ] ],
-    [ "qOS::clock_t", "group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749", null ],
-    [ "qOS::duration_t", "group__qclock.html#ga77374d390d5c4b936e63742a8197edc6", null ],
-    [ "qOS::getTickFcn_t", "group__qclock.html#gac63f3f01426513760291359b792ed55c", null ]
+    [ "qOS::clock_t", "group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f", null ],
+    [ "qOS::duration_t", "group__qclock.html#ga23120959288587741e4741198212c8e9", null ],
+    [ "qOS::getTickFcn_t", "group__qclock.html#ga2924839108cb02f05b30a1fa03465e58", null ]
 ];

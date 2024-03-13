@@ -41,8 +41,8 @@ var group__qtaskmanip =
       [ "PERIODIC", "classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45", null ],
       [ "SINGLE_SHOT", "classq_o_s_1_1task.html#a695b8b4c0828fc3823b1daaf7328f3af", null ]
     ] ],
-    [ "qOS::notifier_t", "group__qtaskmanip.html#ga466b47ce725c30974bd5e62fe363a37a", null ],
-    [ "qOS::taskFcn_t", "group__qtaskmanip.html#gad8240d45c1eb44a3684bc447bb9a4a91", null ],
+    [ "qOS::notifier_t", "group__qtaskmanip.html#ga8cdcc0b5bdd1c6ec09955c0b4b4e18f1", null ],
+    [ "qOS::taskFcn_t", "group__qtaskmanip.html#ga0570508d64e1001573d1910d89cec472", null ],
     [ "qOS::globalState", "group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790", [
       [ "qOS::globalState::UNDEFINED", "group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a0db45d2a4141101bdfe48e3314cfbca3", null ],
       [ "qOS::globalState::READY", "group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a2baa69eafc7204f3bd8648eba580c489", null ],

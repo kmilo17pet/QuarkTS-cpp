@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['clock_5ft_0',['clock_t',['../group__qclock.html#ga32d97136944ad8457aa05a6f4d3c3749',1,'qOS']]],
-  ['commandcallback_5ft_1',['commandCallback_t',['../group__qatcli.html#gab20d33e9de974f49e535206ad7194289',1,'qOS::cli']]],
-  ['cycles_5ft_2',['cycles_t',['../group__qtypes.html#ga13799fb3736896fe84f3fa3e99829cfd',1,'qOS']]]
+  ['clock_5ft_0',['clock_t',['../group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f',1,'qOS']]],
+  ['commandcallback_5ft_1',['commandCallback_t',['../group__qatcli.html#ga544f081ab9f3bb639a6c52156281bd84',1,'qOS::cli']]],
+  ['cycles_5ft_2',['cycles_t',['../group__qtypes.html#ga9394539c10e581a05c0566c3b987f8c8',1,'qOS']]]
 ];

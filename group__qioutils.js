@@ -1,7 +1,7 @@
 var group__qioutils =
 [
-    [ "qOS::util::ioFcn_t", "group__qioutils.html#gaaf436491ddc3a5341177e1ac0aa54bbe", null ],
-    [ "qOS::util::putChar_t", "group__qioutils.html#ga590b120a141394c83550952547d27555", null ],
+    [ "qOS::util::ioFcn_t", "group__qioutils.html#ga1be9c619286a659bec074263cf582f4d", null ],
+    [ "qOS::util::putChar_t", "group__qioutils.html#ga2d1dc078cfeaafc3e3723662a9eff629", null ],
     [ "qOS::util::boolToString", "group__qioutils.html#gaef815a06206e5a3aea9f23c4a6068f31", null ],
     [ "qOS::util::checkEndianness", "group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d", null ],
     [ "qOS::util::floatToString", "group__qioutils.html#ga244b6d40bdc39888fb2ec70f8038e639", null ],

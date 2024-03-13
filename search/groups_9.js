@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_0',['Logger',['../group__qlogger.html',1,'']]]
+  ['kernel_20extensions_0',['Kernel extensions',['../group__qmodules.html',1,'']]]
 ];

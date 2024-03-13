@@ -4,7 +4,7 @@ var searchData=
   ['read_1',['read',['../classq_o_s_1_1byte_buffer.html#a5606af1fab73ee13728d33d306cc1d41',1,'qOS::byteBuffer']]],
   ['receive_2',['receive',['../classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae',1,'qOS::queue']]],
   ['received_3',['received',['../classq_o_s_1_1response.html#a7b2436ae4dd3d1f0136a1780828716ae',1,'qOS::response']]],
-  ['reenter_4',['reenter',['../group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587',1,'qOS::co::reenter(qOS::co::handle h) noexcept'],['../group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91',1,'qOS::co::reenter(void) noexcept']]],
+  ['reenter_4',['reenter',['../group__qcoroutines.html#gabb86ebfd79f14350a9ed1be1a44f3b91',1,'qOS::co::reenter(void) noexcept'],['../group__qcoroutines.html#ga19c3bf29cd1b8289a20b9411e1e07587',1,'qOS::co::reenter(qOS::co::handle h) noexcept']]],
   ['reload_5',['reload',['../classq_o_s_1_1timer.html#a28117b138cfc3cbb1b93feb12b860355',1,'qOS::timer']]],
   ['remaining_6',['remaining',['../classq_o_s_1_1timer.html#aff79958773cab990688fcccc7d155e5a',1,'qOS::timer']]],
   ['remove_7',['remove',['../classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7',1,'qOS::list::remove(void *const xNode) noexcept'],['../classq_o_s_1_1list.html#a4bf2c322bb22a04c26a05ccecbd11e9a',1,'qOS::list::remove(const listPosition p, void *const xNode=nullptr) noexcept']]],

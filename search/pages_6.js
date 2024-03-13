@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['memory_20management_0',['Memory Management',['../q_memmang.html',1,'q_extensions']]]
+  ['line_20interface_20cli_0',['AT Command Line Interface (CLI)',['../q_atcli.html',1,'q_extensions']]],
+  ['logging_1',['Logging',['../q_trace.html',1,'q_extensions']]]
 ];

@@ -85,11 +85,11 @@ var group__qfsm =
       [ "unsubscribeFromSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#af9dc7fb83b0364f412ff708ac3c8e3e0", null ],
       [ "unsubscribeFromSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#a63d21e83a0cbe1d55f33303f787b9acb", null ]
     ] ],
-    [ "qOS::sm::signalAction_t", "group__qfsm.html#ga435dd60e77f0b3c14c5e5522e015ff87", null ],
-    [ "qOS::sm::signalIDType", "group__qfsm.html#ga1214d31027505c6ca71c4639fd8c9a6d", null ],
-    [ "qOS::sm::stateCallback_t", "group__qfsm.html#ga0a2b3e62daba65e93e9e2e0586c744d4", null ],
-    [ "qOS::sm::surroundingCallback_t", "group__qfsm.html#gadbdca3ba7e7e329ecacc9c1510a14ad9", null ],
-    [ "qOS::sm::timeoutSpecOption_t", "group__qfsm.html#ga40a31e5986da20febe66eeb818ebcae9", null ],
+    [ "qOS::sm::signalAction_t", "group__qfsm.html#ga775c5e5a879c8cf6b798fc8d46540a81", null ],
+    [ "qOS::sm::signalIDType", "group__qfsm.html#ga8c5a4670f1f82562bdac083546b13fa1", null ],
+    [ "qOS::sm::stateCallback_t", "group__qfsm.html#ga452ff125ce90025a087527f27d9abfb4", null ],
+    [ "qOS::sm::surroundingCallback_t", "group__qfsm.html#ga8e4e70e06f74af5f016e5a4eba0e6967", null ],
+    [ "qOS::sm::timeoutSpecOption_t", "group__qfsm.html#gab372ec86302ddefe79964993c3c56e15", null ],
     [ "qOS::sm::historyMode", "group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420", [
       [ "qOS::sm::NO_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420aaa2fcb98daff51f76c7f684eb310714a", null ],
       [ "qOS::sm::SHALLOW_HISTORY", "group__qfsm.html#gga1719763177c7b3ccf0d6b6934a2be420a8236d1ff4bbc57189bcc456ba3835316", null ],
