@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - name: Checkout repository and submodules
       uses: actions/checkout@v2
@@ -27,11 +27,11 @@ jobs:
         sed -i 's#\(<meta property="twitter:title" content="\)[^"]*\(" \/>$\)#\1QuarkTS++ OS\2#' doc/stylesheet/doxygen-custom/header.html
         sed -i 's#\(<meta property="twitter:description" content="\)[^"]*\(" \/>$\)#\1An open-source OS for small embedded applications\2#' doc/stylesheet/doxygen-custom/header.html
     - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.9.2
+      uses: mattnotmitt/doxygen-action@edge
       with:
         doxyfile-path: './doc/Doxygen'
     - name: rm gitignore
-      run: rm .gitignore  
+      run: rm .gitignore
     - name: Deploy doc
       uses: peaceiris/actions-gh-pages@v3
       with:
