@@ -38,7 +38,7 @@ core& core::getInstance( void ) noexcept
 void core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
 {
     (void)clock::setTickProvider( tFcn );
-    (void)idle.setName( "idle" );
+    (void)setNameIdleTask( "idle" );
     (void)idle.setPriority( core::LOWEST_PRIORITY );
     (void)idle.setState( taskState::DISABLED_STATE );
     (void)idle.setCallback( callbackIdle );
@@ -69,7 +69,7 @@ static void fsmTaskCallback( event_t e )
     const sm::signal_t sig;
     (void)sm->run( sig );
     Q_UNUSED(e);
-} 
+}
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
 bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::duration_t t, const taskState s, void *arg ) noexcept
@@ -93,7 +93,7 @@ bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p,
 static void cliTaskCallback( event_t e )
 {
     /*cstat -CERT-EXP36-C_b*/
-    commandLineInterface * const c = static_cast<commandLineInterface*>( e.thisTask().getAttachedObject() ); 
+    commandLineInterface * const c = static_cast<commandLineInterface*>( e.thisTask().getAttachedObject() );
     /*cstat +CERT-EXP36-C_b*/
     c->setData( &e );
     (void)c->run();
@@ -127,6 +127,20 @@ bool core::setIdleTask( taskFcn_t callback ) noexcept
     return idle.setCallback( callback );
 }
 /*cstat +MISRAC++2008-7-1-2*/
+/*============================================================================*/
+bool core::setNameIdleTask( const char *tName ) noexcept
+{
+    bool retValue = false;
+    const size_t nl = util::strlen( tName , sizeof(idle.name) );
+    /*cstat -MISRAC++2008-5-14-1*/
+    if ( ( nl > 0U ) && ( nl < sizeof(idle.name) ) ) {
+        (void)util::strcpy( idle.name, tName , sizeof( idle.name ) ); // skipcq: CXX-C1000
+        retValue = true;
+
+    }
+    /*cstat +MISRAC++2008-5-14-1*/
+    return retValue;
+}
 /*============================================================================*/
 bool core::schedulerRelease( void ) noexcept
 {
@@ -190,7 +204,7 @@ bool core::checkIfReady( void ) noexcept
 
     for( auto i = waitingList.begin() ; i.until() ; i++ ) {
         xTask = i.get<task*>();
-        
+
         if ( notifyMode::NOTIFY_NONE != nSpreader.mode ) {
             (void)notify( nSpreader.mode, *xTask, nSpreader.eventData );
             break;
@@ -317,7 +331,7 @@ void core::dispatch( list * const xList ) noexcept
             yieldTask = nullptr;
             taskEvent::currentTask->activities( e );
         }
-        
+
         currentTask = nullptr;
         (void)xList->remove( listPosition::AT_FRONT );
         (void)waitingList.insert( xTask, listPosition::AT_BACK );
@@ -512,7 +526,7 @@ task* core::getTaskByName( const char *name ) noexcept
                     r = true;
                     break;
                 }
-                
+
             }
         }
     }

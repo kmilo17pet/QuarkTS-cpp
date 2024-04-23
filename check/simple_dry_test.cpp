@@ -73,6 +73,7 @@ void idleTask_callback( event_t e )
 
     if ( e.firstCall() ) {
         logger::out() << "idle task" << a << logger::end;
+        logger::out() << e.thisTask() << logger::end;
     }
     co::reenter() {
         for(;;) {
