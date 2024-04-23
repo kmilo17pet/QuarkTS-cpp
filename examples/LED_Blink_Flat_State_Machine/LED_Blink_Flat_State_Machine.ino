@@ -90,14 +90,19 @@ void tracePutcWrapper( void *arg, const char c ) {
   (void)arg;
 }
 
-void buttonChangeISR() {
+void idleTaskCallback( event_t e )
+{
+  static bool lastValue = false;
+  bool currentValue = digitalRead( BUTTON_PIN );
+  if ( lastValue && !currentValue ) {
     LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
+  }
+  lastValue = currentValue;
 }
 
 void setup() {
   pinMode( LED_BUILTIN, OUTPUT );
   pinMode( BUTTON_PIN, INPUT_PULLUP );
-  attachInterrupt( digitalPinToInterrupt( BUTTON_PIN ), buttonChangeISR, FALLING ); // trigger when button pressed, but not when released.
   Serial.begin(115200);
 
   logger::setOutputFcn( tracePutcWrapper );

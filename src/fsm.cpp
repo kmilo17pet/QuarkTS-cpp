@@ -136,7 +136,7 @@ bool sm::signalPublisher::sendSignal( sm::signalID sig, void *sData, bool isUrge
                 if ( sig == psSignals[ i ] ) {
                     r = 1U;
                     for ( size_t j = 0U ; ( j < maxSub ) && ( nullptr != psSubs[ i ][ j ] ) ; ++j ) {
-                        r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ? 
+                        r &= psSubs[ i ][ j ]->sendSignal( sig, sData, isUrgent ) ?
                         static_cast<uint8_t>( 1U ) : static_cast<uint8_t>( 0U );
                     }
                     break;
@@ -213,7 +213,7 @@ bool stateMachine::installSignalQueue( queue& q ) noexcept
             retValue = true;
         }
         /*cstat +MISRAC++2008-5-14-1*/
-        
+
     #else
         Q_UNUSED( q );
     #endif
@@ -225,7 +225,7 @@ void sm::state::sweepTransitionTable( sm::stateHandler &h ) const noexcept
 {
     const size_t n = tEntries;
     const sm::transition *iTransition;
-    
+
     for ( size_t i = 0U ; i < n ; ++i ) {
         iTransition = &tTable[ i ]; /*get the i-element from the table*/
         if ( ( h.Signal >= sm::signalID::TM_MIN ) && ( h.Signal <= sm::signalID::TM_MAX ) ) {
@@ -358,7 +358,7 @@ bool sm::state::setTimeouts( sm::timeoutStateDefinition *def, size_t n ) noexcep
 {
     bool retValue = false;
 
-    if ( ( nullptr != tdef ) && ( n > 0U ) ) {
+    if ( ( nullptr != def ) && ( n > 0U ) ) {
         tdef = def;
         nTm = n;
         retValue = true;
