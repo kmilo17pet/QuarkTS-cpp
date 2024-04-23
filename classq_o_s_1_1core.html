@@ -178,6 +178,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4991fda84316e63029be7e200dff6aa0" id="r_a4991fda84316e63029be7e200dff6aa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4991fda84316e63029be7e200dff6aa0">setIdleTask</a> (<a class="el" href="group__qtaskmanip.html#ga0570508d64e1001573d1910d89cec472">taskFcn_t</a> callback) noexcept</td></tr>
 <tr class="memdesc:a4991fda84316e63029be7e200dff6aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the callback for the Idle-task.  <br /></td></tr>
 <tr class="separator:a4991fda84316e63029be7e200dff6aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf84d8d34d0dafcdd934daa6737fec78" id="r_abf84d8d34d0dafcdd934daa6737fec78"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf84d8d34d0dafcdd934daa6737fec78">setNameIdleTask</a> (const char *tName) noexcept</td></tr>
+<tr class="memdesc:abf84d8d34d0dafcdd934daa6737fec78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the name for the idle task.  <br /></td></tr>
+<tr class="separator:abf84d8d34d0dafcdd934daa6737fec78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add44643c29c6e26b52cb032fe4b31c12" id="r_add44643c29c6e26b52cb032fe4b31c12"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add44643c29c6e26b52cb032fe4b31c12">schedulerRelease</a> (void) noexcept</td></tr>
 <tr class="memdesc:add44643c29c6e26b52cb032fe4b31c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the kernel scheduling. The main thread will continue after the <a class="el" href="#a30b4c1ac78976e2d289a710647300d5c" title="Executes the scheduling scheme. It must be called once after the task pool has been defined.">core::run()</a> call.  <br /></td></tr>
 <tr class="separator:add44643c29c6e26b52cb032fe4b31c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -693,6 +696,41 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>A pointer to a void callback method with a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">qOS::event_t</a> parameter as input argument. To disable pass <code>nullptr</code> as argument. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="abf84d8d34d0dafcdd934daa6737fec78" name="abf84d8d34d0dafcdd934daa6737fec78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf84d8d34d0dafcdd934daa6737fec78">&#9670;&#160;</a></span>setNameIdleTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::core::setNameIdleTask </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>tName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the name for the idle task. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>The size of the string must be less than 11 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tName</td><td>A raw-string with the task name </td></tr>
   </table>
   </dd>
 </dl>

@@ -19,6 +19,7 @@ var classq_o_s_1_1core =
     [ "run", "classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c", null ],
     [ "schedulerRelease", "classq_o_s_1_1core.html#add44643c29c6e26b52cb032fe4b31c12", null ],
     [ "setIdleTask", "classq_o_s_1_1core.html#a4991fda84316e63029be7e200dff6aa0", null ],
+    [ "setNameIdleTask", "classq_o_s_1_1core.html#abf84d8d34d0dafcdd934daa6737fec78", null ],
     [ "setSchedulerReleaseCallback", "classq_o_s_1_1core.html#a4d9ec6f77db0a44985f2793f2a47797b", null ],
     [ "yieldToTask", "classq_o_s_1_1core.html#a2d04f84700e6e54d5eab75ac95f6768d", null ],
     [ "HIGHEST_PRIORITY", "classq_o_s_1_1core.html#a9b090820d0612980def0501f89653020", null ],
