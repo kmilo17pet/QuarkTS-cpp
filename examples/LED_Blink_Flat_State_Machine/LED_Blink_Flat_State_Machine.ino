@@ -102,7 +102,7 @@ void setup() {
 
   logger::setOutputFcn( tracePutcWrapper );
   os.init( millis );
-  LED_Task.setName("LEDFSM_Task1");
+
   LED_FSM.setup( nullptr, State_LEDOff );
   LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
   LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
@@ -118,6 +118,7 @@ void setup() {
   State_LEDBlink.setTransitions( LEDBlink_transitions );
 
   os.addStateMachineTask( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
+  LED_Task.setName("LEDFSM_Task1");
 }
 
 void loop() {
