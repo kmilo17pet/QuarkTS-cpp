@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.4.0
+ * @version 1.4.2
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/
@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.4.1"
-#define QUARKTS_CPP_VERNUM          ( 141u )
+#define QUARKTS_CPP_VERSION         "1.4.2"
+#define QUARKTS_CPP_VERNUM          ( 142u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"

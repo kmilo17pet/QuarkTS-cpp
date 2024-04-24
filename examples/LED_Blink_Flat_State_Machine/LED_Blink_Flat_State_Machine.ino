@@ -43,7 +43,7 @@ sm::timeoutStateDefinition LedOn_Timeouts[] = {
 
 sm::timeoutStateDefinition LEDBlink_timeouts[] = {
     { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
-    { 0.5_sec, sm::TIMEOUT_USE_SIGNAL( 1 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
+    { 0.25_sec, sm::TIMEOUT_USE_SIGNAL( 1 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 };
 
 sm::status State_LEDOff_Callback( sm::handler_t h ) {
@@ -93,11 +93,15 @@ void tracePutcWrapper( void *arg, const char c ) {
 void idleTaskCallback( event_t e )
 {
   static bool lastValue = false;
-  bool currentValue = digitalRead( BUTTON_PIN );
-  if ( lastValue && !currentValue ) {
-    LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
+  static timer debounceTime;
+
+  if ( debounceTime.freeRun( 50_ms ) ) {
+    bool currentValue = digitalRead( BUTTON_PIN );
+    if ( lastValue && !currentValue ) {
+      LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
+    }
+    lastValue = currentValue;
   }
-  lastValue = currentValue;
 }
 
 void setup() {
@@ -106,7 +110,7 @@ void setup() {
   Serial.begin(115200);
 
   logger::setOutputFcn( tracePutcWrapper );
-  os.init( millis );
+  os.init( millis, idleTaskCallback );
 
   LED_FSM.setup( nullptr, State_LEDOff );
   LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
