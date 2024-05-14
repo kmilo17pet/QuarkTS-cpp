@@ -1,7 +1,7 @@
 var searchData=
 [
   ['edge_20checking_0',['I/O Groups for edge checking',['../group__qedgecheck.html',1,'']]],
-  ['edgecheck_1',['edgeCheck',['../classq_o_s_1_1edge_check.html',1,'qOS::edgeCheck'],['../classq_o_s_1_1edge_check.html#a81e8d9e2af1582488318778d3e46361f',1,'qOS::edgeCheck::edgeCheck()']]],
+  ['edgecheck_1',['edgeCheck',['../classq_o_s_1_1edge_check.html',1,'qOS::edgeCheck'],['../classq_o_s_1_1edge_check.html#a11df4756525c73cbd577f5c8ee57a9bf',1,'qOS::edgeCheck::edgeCheck(ec::nodePinReaderFcn_t bitReader, const qOS::clock_t timeDebounce) noexcept'],['../classq_o_s_1_1edge_check.html#a81e8d9e2af1582488318778d3e46361f',1,'qOS::edgeCheck::edgeCheck(ec::reg rSize, const qOS::clock_t timeDebounce) noexcept']]],
   ['elapsed_2',['elapsed',['../classq_o_s_1_1timer.html#a39902c09df65b24ae8e25c6c8ffb9385',1,'qOS::timer']]],
   ['elapsed_20event_3',['The Time-Elapsed event',['../q_events.html#q_event_timeelapsed',1,'']]],
   ['enable_4',['enable',['../classq_o_s_1_1task.html#a496308de8f95998921d6611bd101a8fc',1,'qOS::task']]],

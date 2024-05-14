@@ -168,9 +168,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab5060b33b6ffd1f4b6524c9f4c40933d" id="r_ab5060b33b6ffd1f4b6524c9f4c40933d"><td class="memTemplParams" colspan="2">template&lt;size_t inBufferSize, size_t outBufferSize&gt; </td></tr>
 <tr class="memitem:ab5060b33b6ffd1f4b6524c9f4c40933d"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab5060b33b6ffd1f4b6524c9f4c40933d">setup</a> (<a class="el" href="group__qioutils.html#ga2d1dc078cfeaafc3e3723662a9eff629">util::putChar_t</a> outFcn, char(&amp;pInput)[inBufferSize], char(&amp;pOutput)[outBufferSize])</td></tr>
 <tr class="separator:ab5060b33b6ffd1f4b6524c9f4c40933d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe67850838a669ea2aa5943371deb188" id="r_abe67850838a669ea2aa5943371deb188"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe67850838a669ea2aa5943371deb188">add</a> (<a class="el" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;cmd, char *textCommand, <a class="el" href="group__qatcli.html#ga544f081ab9f3bb639a6c52156281bd84">cli::commandCallback_t</a> cFcn, <a class="el" href="group__qatcli.html#ga9f637013318ba4b55c33129741c5e8dc">cli::options_t</a> cmdOpt, void *param=nullptr)</td></tr>
-<tr class="memdesc:abe67850838a669ea2aa5943371deb188"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function subscribes the CLI instance to a specific command with an associated <em>Callback</em> function, so that next time the required command is sent to the CLI input, the callback function will be executed. The CLI parser only analyze commands that follows the extended AT-Commands syntax (the + char can be ignored).  <br /></td></tr>
-<tr class="separator:abe67850838a669ea2aa5943371deb188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee8123d61fa0982d3e913fc4851f0c7" id="r_abee8123d61fa0982d3e913fc4851f0c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abee8123d61fa0982d3e913fc4851f0c7">add</a> (<a class="el" href="classq_o_s_1_1cli_1_1command.html">cli::command</a> &amp;cmd, char *textCommand, const <a class="el" href="group__qatcli.html#ga544f081ab9f3bb639a6c52156281bd84">cli::commandCallback_t</a> &amp;cFcn, <a class="el" href="group__qatcli.html#ga9f637013318ba4b55c33129741c5e8dc">cli::options_t</a> cmdOpt, void *param=nullptr)</td></tr>
+<tr class="memdesc:abee8123d61fa0982d3e913fc4851f0c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function subscribes the CLI instance to a specific command with an associated <em>Callback</em> function, so that next time the required command is sent to the CLI input, the callback function will be executed. The CLI parser only analyze commands that follows the extended AT-Commands syntax (the + char can be ignored).  <br /></td></tr>
+<tr class="separator:abee8123d61fa0982d3e913fc4851f0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c70e232920a3b771b064a9ded969a5a" id="r_a8c70e232920a3b771b064a9ded969a5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c70e232920a3b771b064a9ded969a5a">isrHandler</a> (const char c)</td></tr>
 <tr class="memdesc:a8c70e232920a3b771b064a9ded969a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feed the CLI input with a single character. This call is mandatory from an interrupt context. Put it inside the desired peripheral's ISR.  <br /></td></tr>
 <tr class="separator:a8c70e232920a3b771b064a9ded969a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -252,8 +252,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abe67850838a669ea2aa5943371deb188" name="abe67850838a669ea2aa5943371deb188"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe67850838a669ea2aa5943371deb188">&#9670;&#160;</a></span>add()</h2>
+<a id="abee8123d61fa0982d3e913fc4851f0c7" name="abee8123d61fa0982d3e913fc4851f0c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abee8123d61fa0982d3e913fc4851f0c7">&#9670;&#160;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,7 +271,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qatcli.html#ga544f081ab9f3bb639a6c52156281bd84">cli::commandCallback_t</a></td>          <td class="paramname"><span class="paramname"><em>cFcn</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="group__qatcli.html#ga544f081ab9f3bb639a6c52156281bd84">cli::commandCallback_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cFcn</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>

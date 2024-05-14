@@ -215,7 +215,7 @@ Setting up an AT-CLI instance</h1>
 <p>Before starting the CLI development, the corresponding instance must be defined; a variable of class <a class="el" href="classq_o_s_1_1command_line_interface.html" title="An AT Command Line Interface (CLI) object.">qOS::commandLineInterface</a>. The instance should be initialized using the <a class="el" href="classq_o_s_1_1command_line_interface.html#ac14307ef47fc8707faf51681812d0679" title="Setup an instance of the AT Command Line Interface.">qOS::commandLineInterface::setup()</a> method.</p>
 <h1><a class="anchor" id="q_atcli_sub_commands"></a>
 Subscribing commands to the parser</h1>
-<p>The AT CLI is able to subscribe to any number of custom AT commands. For this, the <a class="el" href="classq_o_s_1_1command_line_interface.html#abe67850838a669ea2aa5943371deb188" title="This function subscribes the CLI instance to a specific command with an associated Callback function,...">qOS::commandLineInterface::add()</a> method should be used.</p>
+<p>The AT CLI is able to subscribe to any number of custom AT commands. For this, the <a class="el" href="classq_o_s_1_1command_line_interface.html#abee8123d61fa0982d3e913fc4851f0c7" title="This function subscribes the CLI instance to a specific command with an associated Callback function,...">qOS::commandLineInterface::add()</a> method should be used.</p>
 <p>This function subscribes the CLI instance to a specific command with an associated callback function, so that the next time the required command is sent to the CLI input, the callback function will be executed. The CLI parser only analyzes commands that follow the simplified AT-Commands syntax already described.</p>
 <h1><a class="anchor" id="q_atcli_cmd_callback"></a>
 Writing a command callback</h1>

@@ -9,8 +9,9 @@ var group__qedgecheck =
       [ "qOS::edgeCheck", "classq_o_s_1_1ec_1_1in_node.html#a7b3bec127b4a1f00a12d2cb3ee17f6dc", null ]
     ] ],
     [ "qOS::edgeCheck", "classq_o_s_1_1edge_check.html", [
+      [ "edgeCheck", "classq_o_s_1_1edge_check.html#a11df4756525c73cbd577f5c8ee57a9bf", null ],
       [ "edgeCheck", "classq_o_s_1_1edge_check.html#a81e8d9e2af1582488318778d3e46361f", null ],
-      [ "add", "classq_o_s_1_1edge_check.html#a6843796c5d712c27e04a201bfc67d0fe", null ],
+      [ "add", "classq_o_s_1_1edge_check.html#aad6aa0b46dfb1796e6c4a1540c23619d", null ],
       [ "update", "classq_o_s_1_1edge_check.html#ab3d657ed8783c025f35403b6d473052a", null ]
     ] ],
     [ "qOS::ec::pinState", "group__qedgecheck.html#ga8c8610c95dcd72ca8a1d5c3d926e507b", [
