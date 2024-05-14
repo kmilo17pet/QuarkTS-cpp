@@ -158,10 +158,12 @@ Collaboration diagram for qOS::ec::inNode:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a15e33be5def5ea31bf3944cfcb89a530" id="r_a15e33be5def5ea31bf3944cfcb89a530"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15e33be5def5ea31bf3944cfcb89a530">inNode</a> (uint8_t inputPin, void *portAddress=nullptr)</td></tr>
-<tr class="separator:a15e33be5def5ea31bf3944cfcb89a530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a373865585e1e947a1c6cb5ee97fc272f" id="r_a373865585e1e947a1c6cb5ee97fc272f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a373865585e1e947a1c6cb5ee97fc272f">inNode</a> (uint8_t inputPin, bool invert=false, void *portAddress=nullptr)</td></tr>
+<tr class="separator:a373865585e1e947a1c6cb5ee97fc272f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17cfc2f793fa11a97469bdc3106a630e" id="r_a17cfc2f793fa11a97469bdc3106a630e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17cfc2f793fa11a97469bdc3106a630e">~inNode</a> ()</td></tr>
 <tr class="separator:a17cfc2f793fa11a97469bdc3106a630e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82f77187b92bcf31a20d205f8f2e3ee0" id="r_a82f77187b92bcf31a20d205f8f2e3ee0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82f77187b92bcf31a20d205f8f2e3ee0">setCallback</a> (ec::inNodeEvent e, ec::inNodeCallback_t c, <a class="el" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> t=1000U)</td></tr>
+<tr class="separator:a82f77187b92bcf31a20d205f8f2e3ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab03f6a73cc0807a9e09793db1a221c67" id="r_ab03f6a73cc0807a9e09793db1a221c67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qedgecheck.html#ga8c8610c95dcd72ca8a1d5c3d926e507b">pinState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab03f6a73cc0807a9e09793db1a221c67">getState</a> (void) const noexcept</td></tr>
 <tr class="memdesc:ab03f6a73cc0807a9e09793db1a221c67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the state of the specified input-node.  <br /></td></tr>
 <tr class="separator:ab03f6a73cc0807a9e09793db1a221c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,8 +188,8 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An input node object for edge checking. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a15e33be5def5ea31bf3944cfcb89a530" name="a15e33be5def5ea31bf3944cfcb89a530"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15e33be5def5ea31bf3944cfcb89a530">&#9670;&#160;</a></span>inNode()</h2>
+<a id="a373865585e1e947a1c6cb5ee97fc272f" name="a373865585e1e947a1c6cb5ee97fc272f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a373865585e1e947a1c6cb5ee97fc272f">&#9670;&#160;</a></span>inNode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -199,6 +201,11 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">qOS::ec::inNode::inNode </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>inputPin</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>invert</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -328,6 +335,32 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a82f77187b92bcf31a20d205f8f2e3ee0" name="a82f77187b92bcf31a20d205f8f2e3ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82f77187b92bcf31a20d205f8f2e3ee0">&#9670;&#160;</a></span>setCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::ec::inNode::setCallback </td>
+          <td>(</td>
+          <td class="paramtype">ec::inNodeEvent</td>          <td class="paramname"><span class="paramname"><em>e</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ec::inNodeCallback_t</td>          <td class="paramname"><span class="paramname"><em>c</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval">1000U</span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
