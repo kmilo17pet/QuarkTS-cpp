@@ -2,16 +2,17 @@ var group__qedgecheck =
 [
     [ "qOS::ec", "namespaceq_o_s_1_1ec.html", null ],
     [ "qOS::ec::inNode", "classq_o_s_1_1ec_1_1in_node.html", [
-      [ "inNode", "classq_o_s_1_1ec_1_1in_node.html#a91333336ae8434ecedc6c4ab71b20e84", null ],
+      [ "inNode", "classq_o_s_1_1ec_1_1in_node.html#a15e33be5def5ea31bf3944cfcb89a530", null ],
       [ "~inNode", "classq_o_s_1_1ec_1_1in_node.html#a17cfc2f793fa11a97469bdc3106a630e", null ],
-      [ "getStatus", "classq_o_s_1_1ec_1_1in_node.html#ae61455ce4d1f0e52b3882e6ac662cd8b", null ],
-      [ "selectPin", "classq_o_s_1_1ec_1_1in_node.html#a97865ca769d62770c31d1b4348a0eb5a", null ],
+      [ "getCurrent", "classq_o_s_1_1ec_1_1in_node.html#a65f86279e7fef3cdd54c48e2902725fa", null ],
+      [ "getState", "classq_o_s_1_1ec_1_1in_node.html#ab03f6a73cc0807a9e09793db1a221c67", null ],
+      [ "selectPin", "classq_o_s_1_1ec_1_1in_node.html#a9f00e49495a3a07855df28dc1146f0cb", null ],
       [ "qOS::edgeCheck", "classq_o_s_1_1ec_1_1in_node.html#a7b3bec127b4a1f00a12d2cb3ee17f6dc", null ]
     ] ],
     [ "qOS::edgeCheck", "classq_o_s_1_1edge_check.html", [
-      [ "edgeCheck", "classq_o_s_1_1edge_check.html#a11df4756525c73cbd577f5c8ee57a9bf", null ],
-      [ "edgeCheck", "classq_o_s_1_1edge_check.html#a81e8d9e2af1582488318778d3e46361f", null ],
-      [ "add", "classq_o_s_1_1edge_check.html#aad6aa0b46dfb1796e6c4a1540c23619d", null ],
+      [ "edgeCheck", "classq_o_s_1_1edge_check.html#ade8b2a20426bb1f69d7ce0367dec676f", null ],
+      [ "edgeCheck", "classq_o_s_1_1edge_check.html#a4533af8b396df73b38b121e8be532f4c", null ],
+      [ "add", "classq_o_s_1_1edge_check.html#a081e012a286877fdaef8566ef2699402", null ],
       [ "update", "classq_o_s_1_1edge_check.html#ab3d657ed8783c025f35403b6d473052a", null ]
     ] ],
     [ "qOS::ec::pinState", "group__qedgecheck.html#ga8c8610c95dcd72ca8a1d5c3d926e507b", [

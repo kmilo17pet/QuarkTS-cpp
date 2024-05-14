@@ -7,7 +7,7 @@ var searchData=
   ['scheduling_20rules_4',['Global states and scheduling rules',['../q_foundations.html#q_globalstates',1,'']]],
   ['scheme_5',['Adding tasks to the scheme',['../q_foundations.html#q_addtasks',1,'']]],
   ['sections_6',['Critical sections',['../q_foundations.html#q_critical',1,'']]],
-  ['selectpin_7',['selectPin',['../classq_o_s_1_1ec_1_1in_node.html#a97865ca769d62770c31d1b4348a0eb5a',1,'qOS::ec::inNode']]],
+  ['selectpin_7',['selectPin',['../classq_o_s_1_1ec_1_1in_node.html#a9f00e49495a3a07855df28dc1146f0cb',1,'qOS::ec::inNode']]],
   ['semaphore_8',['semaphore',['../classq_o_s_1_1co_1_1semaphore.html',1,'qOS::co::semaphore'],['../classq_o_s_1_1co_1_1semaphore.html#a713402886e02ed07e8893a020df3e981',1,'qOS::co::semaphore::semaphore()']]],
   ['semaphores_9',['Semaphores',['../q_qcoroutines.html#q_coroutine_example2',1,'Co-Routine example with semaphores.'],['../q_qcoroutines.html#q_coroutine_semaphores',1,'Semaphores']]],
   ['semsignal_10',['semSignal',['../group__qcoroutines.html#gae5fa49283e366f3201de3fe515f5caae',1,'qOS::co']]],
