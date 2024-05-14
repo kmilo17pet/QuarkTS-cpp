@@ -18,17 +18,17 @@ list::list() noexcept
 bool list::isMember( const void * const xNode ) const noexcept
 {
     bool retValue = false;
-    
+
     if ( nullptr != xNode ) {
         /*cstat -CERT-EXP36-C_b*/
         const node * const Node = static_cast<const node*>( xNode );
-        
+
         if ( this == Node->container ) {
             retValue = true;
         }
         /*cstat +CERT-EXP36-C_b*/
     }
-    
+
     return retValue;
 }
 /*============================================================================*/
@@ -98,7 +98,7 @@ bool list::insert( void * const xNode, const listPosition p ) noexcept
             node * const newNode = static_cast<node*>( xNode );
             /*cstat +CERT-EXP36-C_b*/
             newNode->init();
-            
+
             retValue = true;
             if ( nullptr == head ){
                 head = newNode;
@@ -131,12 +131,12 @@ bool list::insert( void * const xNode, const listPosition p ) noexcept
 bool list::remove( void * const xNode ) noexcept
 {
     bool retValue = false;
-    
+
     if ( nullptr != xNode ) {
         /*cstat -CERT-EXP36-C_b*/
         node * const toRemove = static_cast<node*>( xNode );
         /*cstat +CERT-EXP36-C_b*/
-        
+
         if ( this == toRemove->container ) {
             if ( toRemove == head ) {
                 (void)removeFront();
@@ -155,7 +155,7 @@ bool list::remove( void * const xNode ) noexcept
             retValue = true;
         }
     }
-    
+
     return retValue;
 }
 /*============================================================================*/
@@ -366,7 +366,7 @@ bool list::move( list& src, const listPosition p ) noexcept
     if ( ( nullptr != src.head) && ( p >= listPosition::AT_BACK ) ) {
         node *iNode;
         /* cppcheck-suppress postfixOperator */
-        for ( listIterator i = src.begin() ; i.until() ; i++ ) {
+        for ( listIterator i = src.begin() ; i.untilEnd() ; i++ ) {
             iNode = i.get<node*>();
             iNode->container = this;
         }
@@ -443,12 +443,12 @@ listIterator::listIterator( list& xList, listDirection dir, void *nodeOffset ) n
     current = static_cast<void*>( ret );
 }
 /*============================================================================*/
-bool listIterator::until( void ) const noexcept
+bool listIterator::untilEnd( void ) const noexcept
 {
     return ( nullptr != current );
 }
 /*============================================================================*/
-bool listIterator::until( void* node ) const noexcept
+bool listIterator::untilEnd( void* node ) const noexcept
 {
     return ( l->isMember( node ) ) && ( node != current );
 }

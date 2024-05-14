@@ -3,7 +3,7 @@
 
 #include "include/types.hpp"
 #include "include/list.hpp"
-#include "include/clock.hpp"
+#include "include/timer.hpp"
 
 namespace qOS {
 
@@ -42,29 +42,48 @@ namespace qOS {
         */
         class inNode : protected node {
             private:
-                void *xPort{ nullptr };
+                void *xPort;
                 pinState prevPinValue{ pinState::UNKNOWN  };
-                pinState status{ pinState::UNKNOWN };
-                index_t xPin{ 0U };
+                pinState state{ pinState::UNKNOWN };
+                pinState current{ pinState::UNKNOWN };
+                uint8_t xPin;
                 inNode( inNode const& ) = delete;
                 void operator=( inNode const& ) = delete;
             public:
-                inNode() = default;
+                inNode( uint8_t inputPin, void *portAddress = nullptr ) : xPort( portAddress ), xPin( inputPin ) {}
                 virtual ~inNode() {}
                 /**
-                * @brief Query the status of the specified input-node.
-                * @return The status of the input node.
+                * @brief Query the state of the specified input-node.
+                * @return The state of the input node.
                 */
-                inline pinState getStatus( void ) const noexcept
+                inline pinState getState( void ) const noexcept
                 {
-                    return status;
+                    return state;
+                }
+                /**
+                * @brief Query the current value of the specified input-node.
+                * @return The current value of the input node.
+                */
+                inline pinState getCurrent( void ) const noexcept
+                {
+                    return current;
                 }
                 /**
                 * @brief Set/Change the pin number for the provided node.
                 * @param[in] pinNumber The specified Pin to read from PortAddress.
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool selectPin( const index_t pinNumber ) noexcept;
+                inline bool selectPin( const uint8_t pinNumber ) noexcept
+                {
+                    bool retValue = false;
+
+                    if ( pinNumber < 32U ) {
+                        xPin = pinNumber;
+                        retValue = true;
+                    }
+
+                    return retValue;
+                }
             friend class qOS::edgeCheck;
         };
 
@@ -90,15 +109,10 @@ namespace qOS {
     class edgeCheck {
         private:
             list nodes;
-            void stateCheck( void );
-            void stateWait( void );
-            void stateUpdate( void );
-            void (edgeCheck::* state)( void ) = nullptr;
-            qOS::clock_t start{ 0U };
-            qOS::clock_t debounceTime{ 0U };
+            qOS::timer waitDebounce;
+            qOS::duration_t debounceTime{ 100_ms };
             ec::nodePortReaderFcn_t portReader{ nullptr };
             ec::nodePinReaderFcn_t pinReader{ nullptr };
-
             ec::nodePortReaderFcn_t getReader( ec::reg rSize ) noexcept;
             edgeCheck( edgeCheck const& ) = delete;
             void operator=( edgeCheck const& ) = delete;
@@ -130,7 +144,11 @@ namespace qOS {
             * to bypass the bounce of the input nodes
             * @return @c true on success. Otherwise @c false.
             */
-            edgeCheck( ec::nodePinReaderFcn_t bitReader, const qOS::clock_t timeDebounce ) noexcept;
+            edgeCheck( ec::nodePinReaderFcn_t bitReader, const qOS::duration_t timeDebounce ) noexcept
+            {
+                debounceTime = timeDebounce;
+                pinReader = bitReader;
+            }
             /**
             * @brief Initialize a I/O Edge-Check instance
             * @param[in] rSize The specific-core register size: ec::reg::SIZE_8_BIT,
@@ -139,7 +157,11 @@ namespace qOS {
             * to bypass the bounce of the input nodes
             * @return @c true on success. Otherwise @c false.
             */
-            edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept;
+            edgeCheck( ec::reg rSize, const qOS::duration_t timeDebounce ) noexcept
+            {
+                debounceTime = timeDebounce;
+                portReader = getReader( rSize );
+            }
             /**
             * @brief Add an input node to the Edge-Check instance
             * @param[in] n An input-Node object
@@ -148,11 +170,16 @@ namespace qOS {
             * @param[in] pinNumber The specified Pin to read from PortAddress
             * @return @c true on success. Otherwise @c false.
             */
-            bool add( ec::inNode& n, const index_t pinNumber, void *portAddress = nullptr ) noexcept;
+            bool add( ec::inNode& n ) noexcept
+            {
+                n.prevPinValue = readPin( &n );
+                return nodes.insert( &n );
+            }
             /**
             * @brief Update the status of all nodes inside the Input Edge-Check instance
             * (Non-Blocking call).
-            * @return @c true on success. Otherwise @c false.
+            * @return @c true when the input nodes have been updated after the
+            * debounce time. Otherwise @c false.
             */
             bool update( void ) noexcept;
     };

@@ -33,51 +33,6 @@ static bool read32bit( void *addr, index_t pinNumber )
     return bits::singleRead( reg[ 0 ], pinNumber );
 }
 /*============================================================================*/
-void edgeCheck::stateCheck( void )
-{
-    size_t nodeChange = 0U;
-
-    for ( auto i = nodes.begin(); i.until() ; i++ ) {
-        ec::inNode * const n = i.get<ec::inNode*>();
-
-        const ec::pinState v = readPin( n );
-        if ( n->prevPinValue != v ) {
-            n->status = ec::pinState::UNKNOWN;
-            ++nodeChange;
-        }
-        else {
-            n->status = v;
-        }
-    }
-
-    if ( nodeChange > 0U ) {
-        state = &edgeCheck::stateWait;
-    }
-}
-/*============================================================================*/
-void edgeCheck::stateWait( void )
-{
-    if ( clock::timeDeadLineCheck( start, debounceTime ) ) {
-        state = &edgeCheck::stateUpdate;
-    }
-}
-/*============================================================================*/
-void edgeCheck::stateUpdate( void )
-{
-    for ( auto i = nodes.begin(); i.until() ; i++ ) {
-        ec::inNode * const n = i.get<ec::inNode*>();
-        const ec::pinState v = readPin( n );
-
-        if ( n->prevPinValue != v ) {
-            n->status = ( ec::pinState::ON == v ) ? ec::pinState::RISING_EDGE :
-                                                    ec::pinState::FALLING_EDGE;
-        }
-        n->prevPinValue = v;
-    }
-    state = &edgeCheck::stateCheck;
-    start = clock::getTick();
-}
-/*============================================================================*/
 ec::nodePortReaderFcn_t edgeCheck::getReader( ec::reg rSize ) noexcept
 {
     ec::nodePortReaderFcn_t f;
@@ -95,55 +50,29 @@ ec::nodePortReaderFcn_t edgeCheck::getReader( ec::reg rSize ) noexcept
     return f;
 }
 /*============================================================================*/
-edgeCheck::edgeCheck( ec::nodePinReaderFcn_t bitReader, const qOS::clock_t timeDebounce ) noexcept : debounceTime( timeDebounce )
-{
-    state = &edgeCheck::stateCheck;
-    pinReader = bitReader;
-    start = clock::getTick();
-}
-/*============================================================================*/
-edgeCheck::edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept : debounceTime( timeDebounce )
-{
-    state = &edgeCheck::stateCheck;
-    portReader = getReader( rSize );
-    start = clock::getTick();
-}
-/*============================================================================*/
-bool edgeCheck::add( ec::inNode& n, const index_t pinNumber, void *portAddress ) noexcept
-{
-    bool retValue = false;
-
-    if ( ( nullptr != portAddress ) && ( pinNumber < 32U ) ) {
-        n.xPort = portAddress;
-        n.xPin = pinNumber;
-        n.prevPinValue = readPin( &n );
-        retValue = nodes.insert( &n );
-    }
-
-    return retValue;
-}
-/*============================================================================*/
 bool edgeCheck::update( void ) noexcept
 {
     bool retValue = false;
 
-    if ( nullptr != portReader ) {
-       (this->*state)();
-       retValue = true;
+    for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
+        ec::inNode * const n = i.get<ec::inNode*>();
+        n->current = readPin( n );
+        n->state = ec::pinState::UNKNOWN;
     }
+    if ( waitDebounce.freeRun( debounceTime ) ) {
+        for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
+            ec::inNode * const n = i.get<ec::inNode*>();
+            const auto v = readPin( n );
 
-    return retValue;
-}
-/*============================================================================*/
-bool ec::inNode::selectPin( const index_t pinNumber ) noexcept
-{
-    bool retValue = false;
-
-    if ( pinNumber < 32U ) {
-        xPin = pinNumber;
+            if ( n->prevPinValue != v ) {
+                n->state = ( ec::pinState::ON == v ) ? ec::pinState::RISING_EDGE :
+                                                       ec::pinState::FALLING_EDGE;
+            }
+            n->prevPinValue = v;
+        }
         retValue = true;
     }
 
     return retValue;
 }
-/*============================================================================*/
+

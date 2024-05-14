@@ -5,19 +5,19 @@
 
 namespace qOS {
 
-    /** 
+    /**
     * @addtogroup qlists
-    * @brief The provided list implementation uses a generic doubly-linked 
-    * approach in which each node, apart from storing its data, has two link 
-    * pointers. The first link points to the previous node in the list and the 
-    * second link, points to the next node in the list. The first node of the 
+    * @brief The provided list implementation uses a generic doubly-linked
+    * approach in which each node, apart from storing its data, has two link
+    * pointers. The first link points to the previous node in the list and the
+    * second link, points to the next node in the list. The first node of the
     * list has its previous link pointing to @c nullptr, similarly, the last node
     * of the list has its next node pointing to @c nullptr.
-    * 
-    * The list data-structure, referenced through an object of type qList_t 
-    * also has a head and a tail pointer, to allow fast operations on boundary 
+    *
+    * The list data-structure, referenced through an object of type qList_t
+    * also has a head and a tail pointer, to allow fast operations on boundary
     * nodes.
-    * 
+    *
     * <center>
     * @htmlonly
     * <!DOCTYPE html>
@@ -33,9 +33,9 @@ namespace qOS {
     * @endhtmlonly
     * <em>Doubly-linked list implementation</em>
     * </center>
-    * 
-    * Nodes should be an user-defined class inherited fromt he node class 
-    * 
+    *
+    * Nodes should be an user-defined class inherited fromt he node class
+    *
     * @code{.c}
     * class mynode : public node {
     *     int a;
@@ -43,7 +43,7 @@ namespace qOS {
     *     float y;
     * };
     * @endcode
-    * 
+    *
     *  @{
     */
 
@@ -78,7 +78,7 @@ namespace qOS {
             }
             node() : next(nullptr), prev(nullptr), container(nullptr) {}
             virtual ~node() {}
-            
+
         friend class list;
         friend class listIterator;
     };
@@ -136,7 +136,7 @@ namespace qOS {
             * @brief Insert an item into the list.
             * @param[in] xNode A pointer to the node to be inserted
             * @param[in] p The position where the node will be inserted. Could be
-            * listPosition::AT_FRONT, listPosition::AT_BACK or any other index 
+            * listPosition::AT_FRONT, listPosition::AT_BACK or any other index
             * number where the node will be inserted after.
             * @return @c true if the item was successfully added to the list, otherwise
             * returns @c false
@@ -151,11 +151,11 @@ namespace qOS {
             /**
             * @brief Remove an item from the list.
             * @param[in] p The position of the node that will be removed. Could be
-            * listPosition::AT_FRONT, listPosition::AT_BACK or any other index 
+            * listPosition::AT_FRONT, listPosition::AT_BACK or any other index
             * number.
-            * @param[in] xNode A pointer to the node to be deleted (to ignore 
+            * @param[in] xNode A pointer to the node to be deleted (to ignore
             * pass @c nullptr ).
-            * @return A pointer to the removed node. @c nullptr if removal 
+            * @return A pointer to the removed node. @c nullptr if removal
             * can not be performed.
             */
             void* remove( const listPosition p, void * const xNode = nullptr ) noexcept;
@@ -212,13 +212,13 @@ namespace qOS {
             bool swap( void* node1, void* node2 ) noexcept;
             /**
             * @brief Moves(or merge) the entire list @a src to the given list.
-            * After the move operation, this function leaves empty the list 
+            * After the move operation, this function leaves empty the list
             * given by @a src.
             * @param[in] src Source list to be moved.
-            * @param[in] p The position where @a src list will be inserted. 
-            * Could be listPosition::AT_FRONT, listPosition::AT_BACK or any 
+            * @param[in] p The position where @a src list will be inserted.
+            * Could be listPosition::AT_FRONT, listPosition::AT_BACK or any
             * other index number.
-            * @return @c true if the move operation is performed successfully, 
+            * @return @c true if the move operation is performed successfully,
             * otherwise returns @c false
             */
             bool move( list& src, const listPosition p = listPosition::AT_BACK ) noexcept;
@@ -227,19 +227,19 @@ namespace qOS {
             */
             void clean( void ) noexcept;
             /**
-            * @brief Returns an iterator pointing to the first element in the 
+            * @brief Returns an iterator pointing to the first element in the
             * list container.
             * @return An iterator to the beginning of the sequence container.
             */
             listIterator begin( void ) noexcept;
             /**
-            * @brief Returns an iterator pointing to the last element in the 
+            * @brief Returns an iterator pointing to the last element in the
             * list container.
             * @return An iterator to the latest item of the sequence container.
             */
             listIterator end( void ) noexcept;
             /**
-            * @brief Returns an iterator pointing to the element given by 
+            * @brief Returns an iterator pointing to the element given by
             * @a offset in the list container.
             * @return An iterator to the @a offset of the sequence container.
             */
@@ -259,8 +259,8 @@ namespace qOS {
             listIterator() = delete;
             /**
             * @brief Instantiate a list iterator for the given list.
-            * @param[in] xList The list 
-            * @param[in] dir The direction in which the iterator will traverse 
+            * @param[in] xList The list
+            * @param[in] dir The direction in which the iterator will traverse
             * the list
             * @param[in] nodeOffset A pointer to the node offset in the list
             */
@@ -269,13 +269,13 @@ namespace qOS {
             * @brief Check until current iterator reach one of its ends
             * @return @c true if the iterator has reach on of its ends.
             */
-            bool until( void ) const noexcept;
+            bool untilEnd( void ) const noexcept;
             /**
             * @brief Check until current iterator reach the given node
             * @param[in] node A pointer to the node you want to reach
             * @return @c true if the iterator has reach the given node.
             */
-            bool until( void* node ) const noexcept;
+            bool untilEnd( void* node ) const noexcept;
             /**
             * @brief Move the iterator forward
             */

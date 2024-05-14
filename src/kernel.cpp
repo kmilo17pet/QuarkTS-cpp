@@ -202,7 +202,7 @@ bool core::checkIfReady( void ) noexcept
         }
     #endif
 
-    for( auto i = waitingList.begin() ; i.until() ; i++ ) {
+    for( auto i = waitingList.begin() ; i.untilEnd() ; i++ ) {
         xTask = i.get<task*>();
 
         if ( notifyMode::NOTIFY_NONE != nSpreader.mode ) {
@@ -317,7 +317,7 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
 /*============================================================================*/
 void core::dispatch( list * const xList ) noexcept
 {
-    for ( auto i = xList->begin() ; i.until() ; i++ ) {
+    for ( auto i = xList->begin() ; i.untilEnd() ; i++ ) {
         task * const xTask = i.get<task*>();
         /*cstat -CERT-EXP39-C_d*/
         event_t e = *( static_cast<taskEvent*>( this ) );
@@ -518,7 +518,7 @@ task* core::getTaskByName( const char *name ) noexcept
         bool r = false;
 
         for ( size_t i = 0U ; ( !r ) && ( i < maxLists ) ; ++i ) {
-            for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
+            for ( auto it = coreLists[ i ].begin() ; it.untilEnd() ; it++ ) {
                 task * const xTask = it.get<task*>();
 
                 if ( 0 == strncmp( name, xTask->name, sizeof(xTask->name) - 1U ) ) {  // skipcq: CXX-C1000
@@ -543,7 +543,7 @@ task* core::getTaskByID( size_t id ) noexcept
         bool r = false;
 
         for ( size_t i = 0U ; ( !r ) && ( i < maxLists ) ; ++i ) {
-            for ( auto it = coreLists[ i ].begin() ; it.until() ; it++ ) {
+            for ( auto it = coreLists[ i ].begin() ; it.untilEnd() ; it++ ) {
                 task * const xTask = it.get<task*>();
 
                 if ( id == xTask->entry ) {

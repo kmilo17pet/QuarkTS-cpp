@@ -258,7 +258,7 @@ cli::response commandLineInterface::exec( const char *cmd )
     cli::response retValue = cli::response::NOT_FOUND;
 
     if ( nullptr != cmd ) {
-        for ( auto i = subscribed.begin(); i.until(); i++ ) {
+        for ( auto i = subscribed.begin(); i.untilEnd(); i++ ) {
             cli::command * const iCmd = i.get<cli::command*>();
             /*check if the input matches the subscribed command */
             if ( 0 == strncmp( cmd, iCmd->Text, iCmd->cmdLen ) ) {
