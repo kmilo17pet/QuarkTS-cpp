@@ -68,12 +68,16 @@ bool edgeCheck::update( void ) noexcept
                 if ( ec::pinState::ON == v ) {
                     n->state = ec::pinState::RISING_EDGE;
                     n->bPressed = true;
-                    n->risingCB( n->xPin, ec::inNodeEvent::IN_NODE_RISING );
+                    if ( nullptr != n->risingCB ) {
+                        n->risingCB( n->xPin, ec::inNodeEvent::IN_NODE_RISING );
+                    }
                 }
                 else {
                     n->state = ec::pinState::FALLING_EDGE;
                     n->bReleased = true;
-                    n->fallingCB( n->xPin, ec::inNodeEvent::IN_NODE_RISING );
+                    if ( nullptr != n->fallingCB ) {
+                        n->fallingCB( n->xPin, ec::inNodeEvent::IN_NODE_FALLING );
+                    }
                 }
             }
             else {
