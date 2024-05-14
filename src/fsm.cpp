@@ -160,7 +160,7 @@ bool stateMachine::smSetup( sm::stateCallback_t topFcn, sm::state *init, const s
     return true;
 }
 /*============================================================================*/
-void sm::state::topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept
+void sm::state::topSelf( const sm::stateCallback_t &topFcn, sm::state *init ) noexcept
 {
     lastRunningChild = init;
     initState = init;
@@ -172,7 +172,7 @@ void sm::state::topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noe
     nTm = 0U;
 }
 /*============================================================================*/
-bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept
+bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t &sFcn, sm::state *init ) noexcept
 {
     bool retValue = false;
 
@@ -451,7 +451,7 @@ void sm::state::setCallback( const sm::stateCallback_t sFcn ) noexcept
     sCallback = sFcn;
 }
 /*============================================================================*/
-void stateMachine::setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept
+void stateMachine::setSurrounding( const sm::surroundingCallback_t &sFcn ) noexcept
 {
     surrounding = sFcn;
 }
@@ -475,9 +475,9 @@ void stateMachine::transition( sm::state *target, sm::historyMode mHistory ) noe
     }
     else {
         /*
-        nothing to do : qSM_TRANSITION_DEEP_HISTORY handled by default all deep
+        nothing to do : historyMode::DEEP_HISTORY handled by default all deep
         history its preserved in the "lastRunningChild" attribute, so there is
-        no need to change it. qStateMachine_StateOnStart will assign this by
+        no need to change it. stateMachine::stateOnStart will assign this by
         default.
         */
     }

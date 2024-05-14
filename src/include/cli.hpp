@@ -403,7 +403,7 @@ namespace qOS {
             * @param[in] param User storage pointer.
             * @return @c true on success, otherwise return @c false.
             */
-            bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param = nullptr );
+            bool add( cli::command &cmd, char *textCommand, const cli::commandCallback_t &cFcn, cli::options_t cmdOpt, void *param = nullptr );
             /**
             * @brief Feed the CLI input with a single character. This call is mandatory
             * from an interrupt context. Put it inside the desired peripheral's ISR.

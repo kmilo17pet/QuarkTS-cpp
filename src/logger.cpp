@@ -3,15 +3,27 @@
 namespace qOS {
     /*cstat -MISRAC++2008-0-1-4_b*/
     const char * const logger::endl = "\r\n";
-    const char * const logger::end = "\x1B[0m\r\n";
-    const char * const logger::nrm = "\x1B[0m";
-    const char * const logger::red = "\x1B[31m";
-    const char * const logger::grn = "\x1B[32m";
-    const char * const logger::yel = "\x1B[33m";
-    const char * const logger::blu = "\x1B[34m";
-    const char * const logger::mag = "\x1B[35m";
-    const char * const logger::cyn = "\x1B[36m";
-    const char * const logger::wht = "\x1B[37m";
+    #if ( Q_LOGGER_COLORED == 1 )
+        const char * const logger::end = "\x1B[0m\r\n";
+        const char * const logger::nrm = "\x1B[0m";
+        const char * const logger::red = "\x1B[31m";
+        const char * const logger::grn = "\x1B[32m";
+        const char * const logger::yel = "\x1B[33m";
+        const char * const logger::blu = "\x1B[34m";
+        const char * const logger::mag = "\x1B[35m";
+        const char * const logger::cyn = "\x1B[36m";
+        const char * const logger::wht = "\x1B[37m";
+    #else
+        const char * const logger::end = "\r\n";
+        const char * const logger::nrm = "";
+        const char * const logger::red = "";
+        const char * const logger::grn = "";
+        const char * const logger::yel = "";
+        const char * const logger::blu = "";
+        const char * const logger::mag = "";
+        const char * const logger::cyn = "";
+        const char * const logger::wht = "";
+    #endif
     /*cstat +MISRAC++2008-0-1-4_b*/
     /* cppcheck-suppress noConstructor */
     namespace logger {
@@ -27,7 +39,7 @@ namespace qOS {
                 _logger_out.writeChar = fcn;
             }
         }
-
+        /*cstat -MISRAC++2008-0-1-7*/
         _logger& out( const logSeverity s, const source_location &loc ) noexcept
         {
             _logger_out << "[ " <<  dec << clock::getTick() << "] " << _logger_out.s_str[ s ];
@@ -35,17 +47,17 @@ namespace qOS {
                 _logger_out << "( " << loc.function_name() << ":" << loc.line() << "): ";
             }
             else if ( s == logSeverity::verbose ) {
-                _logger_out << 
+                _logger_out <<
                 loc.file_name() << " ( " << loc.function_name() << ":" << loc.line() << "): ";
             }
             return _logger_out;
         }
-
+        /*cstat +MISRAC++2008-0-1-7*/
         void _logger::writeNumStr( void ) noexcept
         {
             if ( '\0' != preFix[ 0 ] ) {
                 (void)util::outputString( writeChar, preFix ); // skipcq: CXX-C1000
-            } 
+            }
             (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
             writeChar( nullptr, ' ' );
         }

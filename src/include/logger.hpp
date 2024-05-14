@@ -7,6 +7,7 @@
 #include "include/task.hpp"
 #include "include/fsm.hpp"
 #include "include/timer.hpp"
+#include "config/config.h"
 
 #if defined( ARDUINO_PLATFORM )
     #include <Arduino.h>
@@ -20,7 +21,7 @@ namespace qOS {
     * @brief API interfaces to print out logging messages.
     *  @{
     */
-    
+
     #ifdef DOXYGEN
         /**
         * @brief The global class to output logging streams. Its usage requires
@@ -29,11 +30,11 @@ namespace qOS {
         class logger final {
             public:
                 /**
-                * @brief Specify a new logger output with severity level of 
+                * @brief Specify a new logger output with severity level of
                 * information (if defined).
                 * @note Should be used only at the beginning of logger stream
                 * @param[in] s Severity of the message
-                * 
+                *
                 * Example 1:
                 * @code{.c}
                 * logger::out() << "some message" << logger::endl;
@@ -165,7 +166,7 @@ namespace qOS {
         };
 
         /**
-        * @brief Class that sets the decimal precision to be used to format 
+        * @brief Class that sets the decimal precision to be used to format
         * floating-point values on logger operations.
         * Example:
         * @code{.c}
@@ -186,7 +187,7 @@ namespace qOS {
         };
 
         /**
-        * @brief Modifies the default numeric base to decimal for integer 
+        * @brief Modifies the default numeric base to decimal for integer
         * logger output
         * Example:
         * @code{.c}
@@ -196,7 +197,7 @@ namespace qOS {
         */
         extern const lout_base dec;
         /**
-        * @brief Modifies the default numeric base to hexadecimal for integer 
+        * @brief Modifies the default numeric base to hexadecimal for integer
         * logger output
         * Example:
         * @code{.c}
@@ -206,7 +207,7 @@ namespace qOS {
         */
         extern const lout_base hex;
         /**
-        * @brief Modifies the default numeric base to octal for integer 
+        * @brief Modifies the default numeric base to octal for integer
         * logger output
         * Example:
         * @code{.c}
@@ -216,7 +217,7 @@ namespace qOS {
         */
         extern const lout_base oct;
         /**
-        * @brief Modifies the default numeric base to binary for integer 
+        * @brief Modifies the default numeric base to binary for integer
         * logger output
         * Example:
         * @code{.c}

@@ -20,6 +20,15 @@
         <LogFile>_ "$PROJ_DIR$\LogFile1.log"</LogFile>
         <Category2>_ 2</Category2>
     </LogFile>
+    <TerminalIO>
+        <InputSource>1</InputSource>
+        <InputMode2>10</InputMode2>
+        <Filename>$PROJ_DIR$\TermIOInput.txt</Filename>
+        <InputEcho>1</InputEcho>
+        <ShowReset>0</ShowReset>
+        <InputEncodingICU>0</InputEncodingICU>
+        <OutputEncodingICU>0</OutputEncodingICU>
+    </TerminalIO>
     <InterruptLog>
         <GraphEnabled>0</GraphEnabled>
         <LogEnabled>0</LogEnabled>
@@ -35,15 +44,6 @@
         <SumEnabled>0</SumEnabled>
         <ShowTimeSum>1</ShowTimeSum>
     </DataLog>
-    <TerminalIO>
-        <InputSource>1</InputSource>
-        <InputMode2>10</InputMode2>
-        <Filename>$PROJ_DIR$\TermIOInput.txt</Filename>
-        <InputEcho>1</InputEcho>
-        <ShowReset>0</ShowReset>
-        <InputEncodingICU>0</InputEncodingICU>
-        <OutputEncodingICU>0</OutputEncodingICU>
-    </TerminalIO>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>

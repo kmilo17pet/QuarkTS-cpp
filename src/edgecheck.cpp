@@ -12,7 +12,7 @@ static bool read32bit( void *addr, index_t pinNumber );
 static bool read8bit( void *addr, index_t pinNumber )
 {
     /*cstat -CERT-EXP36-C_b*/
-    uint8_t * const reg = static_cast<uint8_t*>( addr ); 
+    uint8_t * const reg = static_cast<uint8_t*>( addr );
     /*cstat +CERT-EXP36-C_b*/
     return bits::singleRead( reg[ 0 ], pinNumber );
 }
@@ -20,7 +20,7 @@ static bool read8bit( void *addr, index_t pinNumber )
 static bool read16bit( void *addr, index_t pinNumber )
 {
     /*cstat -CERT-EXP36-C_b*/
-    uint16_t * const reg = static_cast<uint16_t*>( addr ); 
+    uint16_t * const reg = static_cast<uint16_t*>( addr );
     /*cstat +CERT-EXP36-C_b*/
     return bits::singleRead( reg[ 0 ], pinNumber );
 }
@@ -28,7 +28,7 @@ static bool read16bit( void *addr, index_t pinNumber )
 static bool read32bit( void *addr, index_t pinNumber )
 {
     /*cstat -CERT-EXP36-C_b*/
-    uint32_t * const reg = static_cast<uint32_t*>( addr ); 
+    uint32_t * const reg = static_cast<uint32_t*>( addr );
     /*cstat +CERT-EXP36-C_b*/
     return bits::singleRead( reg[ 0 ], pinNumber );
 }
@@ -39,8 +39,8 @@ void edgeCheck::stateCheck( void )
 
     for ( auto i = nodes.begin(); i.until() ; i++ ) {
         ec::inNode * const n = i.get<ec::inNode*>();
-        const ec::pinState v = ( reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
-                                                                 ec::pinState::OFF;
+
+        const ec::pinState v = readPin( n );
         if ( n->prevPinValue != v ) {
             n->status = ec::pinState::UNKNOWN;
             ++nodeChange;
@@ -66,9 +66,8 @@ void edgeCheck::stateUpdate( void )
 {
     for ( auto i = nodes.begin(); i.until() ; i++ ) {
         ec::inNode * const n = i.get<ec::inNode*>();
-        const ec::pinState v = ( reader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
-                                                                 ec::pinState::OFF;
-        
+        const ec::pinState v = readPin( n );
+
         if ( n->prevPinValue != v ) {
             n->status = ( ec::pinState::ON == v ) ? ec::pinState::RISING_EDGE :
                                                     ec::pinState::FALLING_EDGE;
@@ -79,9 +78,9 @@ void edgeCheck::stateUpdate( void )
     start = clock::getTick();
 }
 /*============================================================================*/
-ec::nodeReaderFcn_t edgeCheck::getReader( ec::reg rSize ) noexcept
+ec::nodePortReaderFcn_t edgeCheck::getReader( ec::reg rSize ) noexcept
 {
-    ec::nodeReaderFcn_t f;
+    ec::nodePortReaderFcn_t f;
 
     if ( ec::reg::SIZE_8_BIT == rSize ) {
         f = &read8bit;
@@ -96,21 +95,28 @@ ec::nodeReaderFcn_t edgeCheck::getReader( ec::reg rSize ) noexcept
     return f;
 }
 /*============================================================================*/
-edgeCheck::edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept : debounceTime( timeDebounce )
+edgeCheck::edgeCheck( ec::nodePinReaderFcn_t bitReader, const qOS::clock_t timeDebounce ) noexcept : debounceTime( timeDebounce )
 {
     state = &edgeCheck::stateCheck;
-    reader = getReader( rSize );
+    pinReader = bitReader;
     start = clock::getTick();
 }
 /*============================================================================*/
-bool edgeCheck::add( ec::inNode& n, void *portAddress, const index_t pinNumber) noexcept
+edgeCheck::edgeCheck( ec::reg rSize, const qOS::clock_t timeDebounce ) noexcept : debounceTime( timeDebounce )
+{
+    state = &edgeCheck::stateCheck;
+    portReader = getReader( rSize );
+    start = clock::getTick();
+}
+/*============================================================================*/
+bool edgeCheck::add( ec::inNode& n, const index_t pinNumber, void *portAddress ) noexcept
 {
     bool retValue = false;
 
     if ( ( nullptr != portAddress ) && ( pinNumber < 32U ) ) {
         n.xPort = portAddress;
         n.xPin = pinNumber;
-        n.prevPinValue = ( reader( n.xPort, n.xPin ) ) ? ec::pinState::ON : ec::pinState::OFF;
+        n.prevPinValue = readPin( &n );
         retValue = nodes.insert( &n );
     }
 
@@ -121,7 +127,7 @@ bool edgeCheck::update( void ) noexcept
 {
     bool retValue = false;
 
-    if ( nullptr != reader ) {
+    if ( nullptr != portReader ) {
        (this->*state)();
        retValue = true;
     }

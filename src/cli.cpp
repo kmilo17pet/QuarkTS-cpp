@@ -75,7 +75,7 @@ bool commandLineInterface::setup( util::putChar_t outFcn, char *pInput, const si
     return retValue;
 }
 /*============================================================================*/
-bool commandLineInterface::add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param )
+bool commandLineInterface::add( cli::command &cmd, char *textCommand, const cli::commandCallback_t &cFcn, cli::options_t cmdOpt, void *param )
 {
     bool retValue = false;
 
@@ -373,7 +373,7 @@ bool commandLineInterface::run( void )
         handler.output[ 0 ] = '\0';
         retValue = inputFlush(); /*flush buffers*/
     }
-    
+
 
     return retValue;
 }

@@ -26,7 +26,7 @@ namespace qOS {
         */
 
         /**
-        * @brief An enum with all the possible states detected by the 
+        * @brief An enum with all the possible states detected by the
         * qOS::edgeCheck class  for a specified input node.
         */
         enum class pinState {
@@ -77,7 +77,8 @@ namespace qOS {
             SIZE_32_BIT,
         };
         /*! @cond  */
-        using nodeReaderFcn_t = bool (*)( void *, index_t );
+        using nodePortReaderFcn_t = bool (*)( void *, index_t );
+        using nodePinReaderFcn_t = int (*)( uint8_t );
         /*! @endcond  */
 
         /** @}*/
@@ -95,16 +96,46 @@ namespace qOS {
             void (edgeCheck::* state)( void ) = nullptr;
             qOS::clock_t start{ 0U };
             qOS::clock_t debounceTime{ 0U };
-            ec::nodeReaderFcn_t reader{ nullptr };
-            ec::nodeReaderFcn_t getReader( ec::reg rSize ) noexcept;
+            ec::nodePortReaderFcn_t portReader{ nullptr };
+            ec::nodePinReaderFcn_t pinReader{ nullptr };
+
+            ec::nodePortReaderFcn_t getReader( ec::reg rSize ) noexcept;
             edgeCheck( edgeCheck const& ) = delete;
             void operator=( edgeCheck const& ) = delete;
+            inline ec::pinState readPin( ec::inNode * const n )
+            {
+                ec::pinState s;
+
+                if ( nullptr != pinReader ) {
+                    /*cstat -MISRAC++2008-5-0-14*/
+                    s = pinReader( static_cast<uint8_t>( n->xPin ) ) ? ec::pinState::ON :
+                                                                       ec::pinState::OFF;
+                }
+                else if ( nullptr != portReader ) {
+                    s = ( portReader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
+                                                              ec::pinState::OFF;
+                    /*cstat +MISRAC++2008-5-0-14*/
+                }
+                else {
+                    s = ec::pinState::UNKNOWN;
+                }
+                return s;
+            }
         public:
             /**
             * @brief Initialize a I/O Edge-Check instance
-            * @param[in] rSize The specific-core register size: ec::reg::SIZE_8_BIT, 
+            * @param[in] pinReader A pointer to a function that reads the specific
+            * pin
+            * @param[in] timeDebounce The specified time given in milliseconds
+            * to bypass the bounce of the input nodes
+            * @return @c true on success. Otherwise @c false.
+            */
+            edgeCheck( ec::nodePinReaderFcn_t bitReader, const qOS::clock_t timeDebounce ) noexcept;
+            /**
+            * @brief Initialize a I/O Edge-Check instance
+            * @param[in] rSize The specific-core register size: ec::reg::SIZE_8_BIT,
             * ec::reg::SIZE_16_BIT or ec::reg::SIZE_32_BIT(Default)
-            * @param[in] timeDebounce The specified time given in milliseconds 
+            * @param[in] timeDebounce The specified time given in milliseconds
             * to bypass the bounce of the input nodes
             * @return @c true on success. Otherwise @c false.
             */
@@ -117,7 +148,7 @@ namespace qOS {
             * @param[in] pinNumber The specified Pin to read from PortAddress
             * @return @c true on success. Otherwise @c false.
             */
-            bool add( ec::inNode& n, void *portAddress, const index_t pinNumber ) noexcept;
+            bool add( ec::inNode& n, const index_t pinNumber, void *portAddress = nullptr ) noexcept;
             /**
             * @brief Update the status of all nodes inside the Input Edge-Check instance
             * (Non-Blocking call).

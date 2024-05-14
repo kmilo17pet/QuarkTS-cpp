@@ -444,6 +444,7 @@ namespace qOS {
             void *signalData{ nullptr };
             /*! @endcond  */
             transition() = default;
+            /*cstat -MISRAC++2008-7-1-2*/
             transition( signalID iSignal, signalAction_t sGuard, state &next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
                         xSignal(iSignal),
                         guard(sGuard),
@@ -462,6 +463,7 @@ namespace qOS {
                         nextState(&next),
                         history( static_cast<historyMode>(mHistory) ),
                         signalData(sigData) {}
+            /*cstat +MISRAC++2008-7-1-2*/
             transition( signalIDType iSignal, state &next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
                         xSignal( static_cast<signalID>( iSignal ) ),
                         guard(nullptr),
@@ -505,8 +507,8 @@ namespace qOS {
                 void sweepTransitionTable( stateHandler &h ) const noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
-                bool subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept;
-                void topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept;
+                bool subscribe( sm::state *s, const sm::stateCallback_t &sFcn, sm::state *init ) noexcept;
+                void topSelf( const sm::stateCallback_t &topFcn, sm::state *init ) noexcept;
             protected:
                 virtual sm::status activities( sm::handler_t h );
             public:
@@ -523,7 +525,7 @@ namespace qOS {
                 * You can ignore this argument.
                 * @return @c true on success, otherwise return @c false.
                 */
-                inline bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
+                inline bool add( sm::state &s, const sm::stateCallback_t &sFcn, sm::state &init ) noexcept
                 {
                     return subscribe( &s, sFcn, &init );
                 }
@@ -535,7 +537,7 @@ namespace qOS {
                 * Prototype: @code sm::status xCallback( sm::handler_t h ) @endcode
                 * @return @c true on success, otherwise return @c false.
                 */
-                inline bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
+                inline bool add( sm::state &s, const sm::stateCallback_t &sFcn ) noexcept
                 {
                     return subscribe( &s, sFcn, nullptr );
                 }
@@ -746,7 +748,7 @@ namespace qOS {
             * ignore pass @c nullptr.
             * @return @c Returns true on Success, otherwise returns @c false.
             */
-            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn = nullptr, void* pData = nullptr)  noexcept
+            inline bool setup( const sm::stateCallback_t &topFcn, sm::state &init, sm::surroundingCallback_t sFcn = nullptr, void* pData = nullptr)  noexcept
             {
                 return smSetup( topFcn, &init, sFcn, pData );
             }
@@ -761,7 +763,7 @@ namespace qOS {
             * You can ignore this argument.
             * @return @c true on success, otherwise return @c false.
             */
-            inline bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
+            inline bool add( sm::state &s, const sm::stateCallback_t &sFcn, sm::state &init ) noexcept
             {
                 return top.subscribe( &s, sFcn, &init );
             }
@@ -774,7 +776,7 @@ namespace qOS {
             * Prototype: @code sm::status xCallback( sm::handler_t h ) @endcode
             * @return @c true on success, otherwise return @c false.
             */
-            inline bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
+            inline bool add( sm::state &s, const sm::stateCallback_t &sFcn ) noexcept
             {
                 return top.subscribe( &s, sFcn, nullptr );
             }
@@ -898,7 +900,7 @@ namespace qOS {
             * @brief Set the state-machine surrounding callback
             * @param[in] sFcn The surrounding callback function.
             */
-            void setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept;
+            void setSurrounding( const sm::surroundingCallback_t &sFcn ) noexcept;
             /**
             * @brief Execute the Finite State Machine (FSM).
             * @see core::addStateMachineTask()

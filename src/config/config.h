@@ -10,7 +10,7 @@
     #define QCONFIG_H
 
     /** @addtogroup  qconfiguration
-     * @brief  Some OS features can be customized using a set of macros located 
+     * @brief  Some OS features can be customized using a set of macros located
      * in the header file @c config.h.
     *  @{
     */
@@ -55,7 +55,7 @@
     #define Q_DEFAULT_HEAP_SIZE         ( 0 )
     /**
     * @brief Finite State Machine enabler.
-    * @details Used to enable or disable the Finite State Machine (FSM) module 
+    * @details Used to enable or disable the Finite State Machine (FSM) module
     * @note Default value @c 1 @a enabled
     */
     #define Q_FSM                       ( 1 )
@@ -69,7 +69,7 @@
     #define Q_FSM_MAX_NEST_DEPTH        ( 5 )
     /**
     * @brief Finite State Machine : number of timeouts.
-    * @details Max number of timeouts inside a timeout specification for the 
+    * @details Max number of timeouts inside a timeout specification for the
     * Finite State machine (FSM) module
     * @note Default value @c 3
     */
@@ -105,8 +105,14 @@
     * @note Default value @c 1 @a enabled
     */
     #define Q_QUEUES                    ( 1 )
-
-    /*================================================================================================================================*/  
+    /**
+    * @brief Colored output in logger
+    * @details Used to enable colored output in supported terminals when using
+    * logger
+    * @note Default value @c 0 @a disabled
+    */
+    #define Q_LOGGER_COLORED            ( 0 )
+    /*================================================================================================================================*/
 
     /** @}*/
 #endif
