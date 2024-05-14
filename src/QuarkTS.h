@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.4.4"
-#define QUARKTS_CPP_VERNUM          ( 144u )
+#define QUARKTS_CPP_VERSION         "1.4.5"
+#define QUARKTS_CPP_VERNUM          ( 145u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"

@@ -37,21 +37,44 @@ namespace qOS {
             FALLING_EDGE = 3,
         };
 
+        /*! @cond  */
+        enum class inNodeEvent {
+            IN_NODE_FALLING,
+            IN_NODE_RISING,
+            IN_NODE_PRESSED,
+            IN_NODE_RELEASED,
+        };
+        using nodePortReaderFcn_t = bool (*)( void *, index_t );
+        using nodePinReaderFcn_t = int (*)( uint8_t );
+        using inNodeCallback_t = void(*)( uint8_t, const inNodeEvent );
+        /*! @endcond  */
+
         /**
         * @brief An input node object for edge checking.
         */
         class inNode : protected node {
             private:
                 void *xPort;
+                ec::inNodeCallback_t fallingCB;
+                ec::inNodeCallback_t risingCB;
+                ec::inNodeCallback_t pressedCB;
+                ec::inNodeCallback_t releasedCB;
+                bool bPressed{ false };
+                bool bReleased{ false };
                 pinState prevPinValue{ pinState::UNKNOWN  };
                 pinState state{ pinState::UNKNOWN };
                 pinState current{ pinState::UNKNOWN };
+                qOS::clock_t tChange;
+                qOS::clock_t tPressed;
+                qOS::clock_t tReleased;
+                bool negValue{ false };
                 uint8_t xPin;
                 inNode( inNode const& ) = delete;
                 void operator=( inNode const& ) = delete;
             public:
-                inNode( uint8_t inputPin, void *portAddress = nullptr ) : xPort( portAddress ), xPin( inputPin ) {}
+                inNode( uint8_t inputPin, bool invert = false, void *portAddress = nullptr ) : xPort( portAddress ), negValue( invert ), xPin( inputPin ) {}
                 virtual ~inNode() {}
+                bool setCallback( ec::inNodeEvent e, ec::inNodeCallback_t c, qOS::clock_t t = 1000U );
                 /**
                 * @brief Query the state of the specified input-node.
                 * @return The state of the input node.
@@ -95,10 +118,8 @@ namespace qOS {
             SIZE_16_BIT,
             SIZE_32_BIT,
         };
-        /*! @cond  */
-        using nodePortReaderFcn_t = bool (*)( void *, index_t );
-        using nodePinReaderFcn_t = int (*)( uint8_t );
-        /*! @endcond  */
+
+
 
         /** @}*/
     }
@@ -119,15 +140,15 @@ namespace qOS {
             inline ec::pinState readPin( ec::inNode * const n )
             {
                 ec::pinState s;
+                const ec::pinState vOn = ( n->negValue ) ? ec::pinState::OFF : ec::pinState::ON;
+                const ec::pinState vOff = ( n->negValue ) ? ec::pinState::ON : ec::pinState::OFF;
 
                 if ( nullptr != pinReader ) {
                     /*cstat -MISRAC++2008-5-0-14*/
-                    s = pinReader( static_cast<uint8_t>( n->xPin ) ) ? ec::pinState::ON :
-                                                                       ec::pinState::OFF;
+                    s = pinReader( static_cast<uint8_t>( n->xPin ) ) ? vOn : vOff;
                 }
                 else if ( nullptr != portReader ) {
-                    s = ( portReader( n->xPort, n->xPin ) ) ? ec::pinState::ON :
-                                                              ec::pinState::OFF;
+                    s = ( portReader( n->xPort, n->xPin ) ) ? vOn : vOff;
                     /*cstat +MISRAC++2008-5-0-14*/
                 }
                 else {
@@ -173,6 +194,7 @@ namespace qOS {
             bool add( ec::inNode& n ) noexcept
             {
                 n.prevPinValue = readPin( &n );
+                n.tChange = clock::getTick();
                 return nodes.insert( &n );
             }
             /**
