@@ -43,8 +43,8 @@ namespace qOS {
         * qOS::input::observer class for a specified qOS::input::channel.
         */
         enum class event {
-            FALLING,
-            RISING,
+            FALLING_EDGE,
+            RISING_EDGE,
             PRESSED,
             RELEASED,
         };

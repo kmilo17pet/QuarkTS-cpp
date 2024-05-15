@@ -24,14 +24,14 @@ bool input::observer::update( void ) noexcept
                     n->state = input::state::RISING_EDGE;
                     n->bPressed = true;
                     if ( nullptr != n->risingCB ) {
-                        n->risingCB( n->xChannel, input::event::RISING );
+                        n->risingCB( n->xChannel, input::event::RISING_EDGE );
                     }
                 }
                 else {
                     n->state = input::state::FALLING_EDGE;
                     n->bReleased = true;
                     if ( nullptr != n->fallingCB ) {
-                        n->fallingCB( n->xChannel, input::event::FALLING );
+                        n->fallingCB( n->xChannel, input::event::FALLING_EDGE );
                     }
                 }
             }
