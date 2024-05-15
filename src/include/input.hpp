@@ -43,10 +43,10 @@ namespace qOS {
         * qOS::input::observer class for a specified qOS::input::channel.
         */
         enum class event {
-            IN_NODE_FALLING,
-            IN_NODE_RISING,
-            IN_NODE_PRESSED,
-            IN_NODE_RELEASED,
+            FALLING,
+            RISING,
+            PRESSED,
+            RELEASED,
         };
 
         using channelReaderFcn_t = int (*)( uint8_t );

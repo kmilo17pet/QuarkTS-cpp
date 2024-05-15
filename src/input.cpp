@@ -24,25 +24,25 @@ bool input::observer::update( void ) noexcept
                     n->state = input::state::RISING_EDGE;
                     n->bPressed = true;
                     if ( nullptr != n->risingCB ) {
-                        n->risingCB( n->xChannel, input::event::IN_NODE_RISING );
+                        n->risingCB( n->xChannel, input::event::RISING );
                     }
                 }
                 else {
                     n->state = input::state::FALLING_EDGE;
                     n->bReleased = true;
                     if ( nullptr != n->fallingCB ) {
-                        n->fallingCB( n->xChannel, input::event::IN_NODE_FALLING );
+                        n->fallingCB( n->xChannel, input::event::FALLING );
                     }
                 }
             }
             else {
                 const qOS::clock_t tDiff = clock::getTick() - n->tChange;
                 if ( n->bPressed && ( nullptr != n->pressedCB ) && ( n->current == input::state::ON ) && ( tDiff >= n->tPressed ) ) {
-                    n->pressedCB( n->xChannel, input::event::IN_NODE_PRESSED );
+                    n->pressedCB( n->xChannel, input::event::PRESSED );
                     n->bPressed = false;
                 }
                 if ( n->bReleased && ( nullptr != n->releasedCB ) && ( n->current == input::state::OFF ) && ( tDiff >= n->tReleased ) ) {
-                    n->releasedCB( n->xChannel, input::event::IN_NODE_RELEASED );
+                    n->releasedCB( n->xChannel, input::event::RELEASED );
                     n->bReleased = false;
                 }
             }
@@ -59,17 +59,17 @@ bool input::channel::setCallback( input::event e, input::eventCallback_t c, qOS:
     bool retVal = true;
 
     switch ( e ) {
-        case input::event::IN_NODE_RISING:
+        case input::event::RISING:
             risingCB = c;
             break;
-        case input::event::IN_NODE_FALLING:
+        case input::event::FALLING:
             fallingCB = c;
             break;
-        case input::event::IN_NODE_PRESSED:
+        case input::event::PRESSED:
             pressedCB = c;
             tPressed = t;
             break;
-        case input::event::IN_NODE_RELEASED:
+        case input::event::RELEASED:
             releasedCB = c;
             tReleased = t;
             break;
