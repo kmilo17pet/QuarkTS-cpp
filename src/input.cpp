@@ -9,7 +9,7 @@ void input::watcher::watchAnalog( channel * const n ) noexcept
     int current = 0;
 
     if ( nullptr != analogReader ) {
-        current = analogReader( static_cast<uint8_t>( n->xChannel ) );
+        current = analogReader( n->xChannel );
     }
 
     if ( ( input::state::OFF == n->prevState ) && ( current >= n->riseThreshold ) ) {
@@ -46,9 +46,10 @@ void input::watcher::watchAnalog( channel * const n ) noexcept
 void input::watcher::watchDigital( channel * const n ) noexcept
 {
     auto current = read( n );
+
     if ( n->prevState != current ) {
         n->tChange = clock::getTick();
-        if ( input::state::ON == n->current ) {
+        if ( input::state::ON == current ) {
             n->state = input::state::RISING_EDGE;
             n->bSteadyOn = true;
             if ( nullptr != n->risingCB ) {

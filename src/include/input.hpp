@@ -71,7 +71,6 @@ namespace qOS {
                 bool bSteadyOn{ false };
                 bool bSteadyOff{ false };
                 input::state prevState{ input::state::UNKNOWN };
-                input::state current{ input::state::UNKNOWN };
                 input::state state{ input::state::UNKNOWN };
                 qOS::clock_t tChange{0U};
                 qOS::clock_t tSteadyOn{0xFFFFFFFFU};
@@ -148,7 +147,7 @@ namespace qOS {
                     const state vOff = ( n->negValue ) ? state::ON : state::OFF;
 
                     if ( nullptr != digitalReader ) {
-                        s = digitalReader( static_cast<uint8_t>( n->xChannel ) ) ? vOn : vOff;
+                        s = digitalReader( n->xChannel ) ? vOn : vOff;
                     }
                     return s;
                 }
