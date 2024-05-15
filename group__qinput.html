@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="QuarkTS++ OS" />
+<meta property="og:image" content="https://user-images.githubusercontent.com/11412210/235049017-242f1c64-52ef-46db-8008-2c3d8a578320.png" />
+<meta property="og:description" content="An open-source OS for small embedded applications" />
+<meta property="og:url" content="https://github.com/kmilo17pet/QuarkTS-cpp" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: Input channel utilities</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTS-cpp" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v1.3.8</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('group__qinput.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
+  <div class="headertitle"><div class="title">Input channel utilities<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a></div></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>An interface to manage and simplify the value state (with edge-checking) of incoming binary signals.  
+<a href="#details">More...</a></p>
+<div class="dynheader">
+Collaboration diagram for Input channel utilities:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="group__qinput.svg" width="267" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceq_o_s_1_1input" id="r_namespaceq_o_s_1_1input"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceq_o_s_1_1input.html">qOS::input</a></td></tr>
+<tr class="memdesc:namespaceq_o_s_1_1input"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input Intefaces. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An input channel object.  <a href="classq_o_s_1_1input_1_1channel.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1observer.html">qOS::input::observer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The input channel observer class.  <a href="classq_o_s_1_1input_1_1observer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga7d3b9fc08985bd00916b549b73ef1c6a" id="r_ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7d3b9fc08985bd00916b549b73ef1c6a">qOS::input::channelReaderFcn_t</a></td></tr>
+<tr class="separator:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1edc963829bdde6bf7526075ba5135ec" id="r_ga1edc963829bdde6bf7526075ba5135ec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1edc963829bdde6bf7526075ba5135ec">qOS::input::eventCallback_t</a></td></tr>
+<tr class="separator:ga1edc963829bdde6bf7526075ba5135ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga78226dd21564a598124985dfa62a8e11" id="r_ga78226dd21564a598124985dfa62a8e11"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga78226dd21564a598124985dfa62a8e11">qOS::input::state</a> { <br />
+&#160;&#160;<a class="el" href="#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3">qOS::input::state::UNKNOWN</a>
+, <a class="el" href="#gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4">qOS::input::state::OFF</a>
+, <a class="el" href="#gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c">qOS::input::state::ON</a>
+, <a class="el" href="#gga78226dd21564a598124985dfa62a8e11ad85243a747ac5537ef0b7adde99c3e98">qOS::input::state::RISING_EDGE</a>
+, <br />
+&#160;&#160;<a class="el" href="#gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52">qOS::input::state::FALLING_EDGE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga78226dd21564a598124985dfa62a8e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible states detected by the <a class="el" href="classq_o_s_1_1input_1_1observer.html" title="The input channel observer class.">qOS::input::observer</a> class for a specified <a class="el" href="classq_o_s_1_1input_1_1channel.html" title="An input channel object.">qOS::input::channel</a>.  <a href="#ga78226dd21564a598124985dfa62a8e11">More...</a><br /></td></tr>
+<tr class="separator:ga78226dd21564a598124985dfa62a8e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72d9a973c87da11f11a8aeabbbb25aa7" id="r_ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga72d9a973c87da11f11a8aeabbbb25aa7">qOS::input::event</a> { <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a1d5f4a961d27d148bbce7e615b3948ac">qOS::input::event::IN_NODE_FALLING</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ace18cca0edf8d8a8eb9d5f8d88b3bafe">qOS::input::event::IN_NODE_RISING</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a2721f7e7524f2f7ffe4a39694ce2a6c0">qOS::input::event::IN_NODE_PRESSED</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7aa75c73d7e46707fb81c770bf7aa98542">qOS::input::event::IN_NODE_RELEASED</a>
+ }</td></tr>
+<tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the <a class="el" href="classq_o_s_1_1input_1_1observer.html" title="The input channel observer class.">qOS::input::observer</a> class for a specified <a class="el" href="classq_o_s_1_1input_1_1channel.html" title="An input channel object.">qOS::input::channel</a>.  <a href="#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>
+<tr class="separator:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>An interface to manage and simplify the value state (with edge-checking) of incoming binary signals. </p>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ga7d3b9fc08985bd00916b549b73ef1c6a" name="ga7d3b9fc08985bd00916b549b73ef1c6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7d3b9fc08985bd00916b549b73ef1c6a">&#9670;&#160;</a></span>channelReaderFcn_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ga7d3b9fc08985bd00916b549b73ef1c6a">qOS::input::channelReaderFcn_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga1edc963829bdde6bf7526075ba5135ec" name="ga1edc963829bdde6bf7526075ba5135ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1edc963829bdde6bf7526075ba5135ec">&#9670;&#160;</a></span>eventCallback_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ga1edc963829bdde6bf7526075ba5135ec">qOS::input::eventCallback_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga72d9a973c87da11f11a8aeabbbb25aa7" name="ga72d9a973c87da11f11a8aeabbbb25aa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga72d9a973c87da11f11a8aeabbbb25aa7">&#9670;&#160;</a></span>event</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ga72d9a973c87da11f11a8aeabbbb25aa7">qOS::input::event</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An enum with all the possible events that can be detected by the <a class="el" href="classq_o_s_1_1input_1_1observer.html" title="The input channel observer class.">qOS::input::observer</a> class for a specified <a class="el" href="classq_o_s_1_1input_1_1channel.html" title="An input channel object.">qOS::input::channel</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a1d5f4a961d27d148bbce7e615b3948ac" name="gga72d9a973c87da11f11a8aeabbbb25aa7a1d5f4a961d27d148bbce7e615b3948ac"></a>IN_NODE_FALLING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ace18cca0edf8d8a8eb9d5f8d88b3bafe" name="gga72d9a973c87da11f11a8aeabbbb25aa7ace18cca0edf8d8a8eb9d5f8d88b3bafe"></a>IN_NODE_RISING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a2721f7e7524f2f7ffe4a39694ce2a6c0" name="gga72d9a973c87da11f11a8aeabbbb25aa7a2721f7e7524f2f7ffe4a39694ce2a6c0"></a>IN_NODE_PRESSED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7aa75c73d7e46707fb81c770bf7aa98542" name="gga72d9a973c87da11f11a8aeabbbb25aa7aa75c73d7e46707fb81c770bf7aa98542"></a>IN_NODE_RELEASED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="ga78226dd21564a598124985dfa62a8e11" name="ga78226dd21564a598124985dfa62a8e11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga78226dd21564a598124985dfa62a8e11">&#9670;&#160;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#ga78226dd21564a598124985dfa62a8e11">qOS::input::state</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An enum with all the possible states detected by the <a class="el" href="classq_o_s_1_1input_1_1observer.html" title="The input channel observer class.">qOS::input::observer</a> class for a specified <a class="el" href="classq_o_s_1_1input_1_1channel.html" title="An input channel object.">qOS::input::channel</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3" name="gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3"></a>UNKNOWN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4" name="gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4"></a>OFF&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c" name="gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c"></a>ON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga78226dd21564a598124985dfa62a8e11ad85243a747ac5537ef0b7adde99c3e98" name="gga78226dd21564a598124985dfa62a8e11ad85243a747ac5537ef0b7adde99c3e98"></a>RISING_EDGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52" name="gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52"></a>FALLING_EDGE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

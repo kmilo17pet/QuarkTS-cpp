@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gettickfcn_5ft_0',['getTickFcn_t',['../group__qclock.html#ga2924839108cb02f05b30a1fa03465e58',1,'qOS']]]
+  ['float32_5ft_0',['float32_t',['../group__qtypes.html#ga64f42cfde1a2cc775884cb819cde09bd',1,'qOS']]],
+  ['float64_5ft_1',['float64_t',['../group__qtypes.html#gae67348d4bdb8af563f97b2e3d1fa3636',1,'qOS']]]
 ];

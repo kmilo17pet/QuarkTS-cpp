@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>OS: qOS::ec Namespace Reference</title>
+<title>OS: qOS::input::observer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -108,7 +108,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('namespaceq_o_s_1_1ec.html',''); initResizable(); });
+$(function(){initNavTree('classq_o_s_1_1input_1_1observer.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -135,49 +135,140 @@ $(function(){initNavTree('namespaceq_o_s_1_1ec.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
-  <div class="headertitle"><div class="title">qOS::ec Namespace Reference<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a> &raquo; <a class="el" href="group__qedgecheck.html">I/O Groups for edge checking</a></div></div></div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classq_o_s_1_1input_1_1observer-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">qOS::input::observer Class Reference<div class="ingroups"><a class="el" href="group__qutility.html">Utilities</a> &raquo; <a class="el" href="group__qinput.html">Input channel utilities</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Edge-Check interfaces for I/O groups.  
-<a href="#details">More...</a></p>
+<p>The input channel observer class.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="input_8hpp_source.html">input.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1ec_1_1in_node.html">inNode</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An input node object for edge checking.  <a href="classq_o_s_1_1ec_1_1in_node.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:ga8c8610c95dcd72ca8a1d5c3d926e507b" id="r_ga8c8610c95dcd72ca8a1d5c3d926e507b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qedgecheck.html#ga8c8610c95dcd72ca8a1d5c3d926e507b">pinState</a> { <br />
-&#160;&#160;<a class="el" href="group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba696b031073e74bf2cb98e5ef201d4aa3">pinState::UNKNOWN</a>
-, <a class="el" href="group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba88559a0cfd8250c9d65970cc145c92d4">pinState::OFF</a>
-, <a class="el" href="group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba90651ebea9a35ec4e018c8157492e17c">pinState::ON</a>
-, <a class="el" href="group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507bad85243a747ac5537ef0b7adde99c3e98">pinState::RISING_EDGE</a>
-, <br />
-&#160;&#160;<a class="el" href="group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba297f5ea19073f4b51715b029f48d5d52">pinState::FALLING_EDGE</a>
-<br />
- }</td></tr>
-<tr class="memdesc:ga8c8610c95dcd72ca8a1d5c3d926e507b"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible states detected by the <a class="el" href="classq_o_s_1_1edge_check.html" title="An I/O edge check object.">qOS::edgeCheck</a> class for a specified input node.  <a href="group__qedgecheck.html#ga8c8610c95dcd72ca8a1d5c3d926e507b">More...</a><br /></td></tr>
-<tr class="separator:ga8c8610c95dcd72ca8a1d5c3d926e507b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga87f4cb15ec91bfbd3cf6d8507bbd0aeb" id="r_ga87f4cb15ec91bfbd3cf6d8507bbd0aeb"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qedgecheck.html#ga87f4cb15ec91bfbd3cf6d8507bbd0aeb">reg</a> { <a class="el" href="group__qedgecheck.html#gga87f4cb15ec91bfbd3cf6d8507bbd0aebac4002854aaff7fd4c034fa7fe2d28b44">reg::SIZE_8_BIT</a>
-, <a class="el" href="group__qedgecheck.html#gga87f4cb15ec91bfbd3cf6d8507bbd0aeba6ce5a2583dd3f3912a030ff7f01a859f">reg::SIZE_16_BIT</a>
-, <a class="el" href="group__qedgecheck.html#gga87f4cb15ec91bfbd3cf6d8507bbd0aeba859ffd2a99d8864abe6513cb0b67f96d">reg::SIZE_32_BIT</a>
- }</td></tr>
-<tr class="memdesc:ga87f4cb15ec91bfbd3cf6d8507bbd0aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum class to specify the input register size for edge checking.  <a href="group__qedgecheck.html#ga87f4cb15ec91bfbd3cf6d8507bbd0aeb">More...</a><br /></td></tr>
-<tr class="separator:ga87f4cb15ec91bfbd3cf6d8507bbd0aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a73e233f5fb801aa952297e6ea0d3cac4" id="r_a73e233f5fb801aa952297e6ea0d3cac4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73e233f5fb801aa952297e6ea0d3cac4">observer</a> (const <a class="el" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">channelReaderFcn_t</a> &amp;rFcn, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> timeDebounce) noexcept</td></tr>
+<tr class="memdesc:a73e233f5fb801aa952297e6ea0d3cac4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a input observer instance.  <br /></td></tr>
+<tr class="separator:a73e233f5fb801aa952297e6ea0d3cac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bef0b1af8f4fba341ccb8c617bd86d5" id="r_a5bef0b1af8f4fba341ccb8c617bd86d5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bef0b1af8f4fba341ccb8c617bd86d5">add</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;n) noexcept</td></tr>
+<tr class="memdesc:a5bef0b1af8f4fba341ccb8c617bd86d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a channel to the observer instance.  <br /></td></tr>
+<tr class="separator:a5bef0b1af8f4fba341ccb8c617bd86d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c8d2044ce1c2d674ee5bb4eeff7b01" id="r_ae6c8d2044ce1c2d674ee5bb4eeff7b01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6c8d2044ce1c2d674ee5bb4eeff7b01">update</a> (void) noexcept</td></tr>
+<tr class="memdesc:ae6c8d2044ce1c2d674ee5bb4eeff7b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the state of all channels inside the observer instance (Non-Blocking call).  <br /></td></tr>
+<tr class="separator:ae6c8d2044ce1c2d674ee5bb4eeff7b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Edge-Check interfaces for I/O groups. </p>
-</div></div><!-- contents -->
+<div class="textblock"><p>The input channel observer class. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a73e233f5fb801aa952297e6ea0d3cac4" name="a73e233f5fb801aa952297e6ea0d3cac4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73e233f5fb801aa952297e6ea0d3cac4">&#9670;&#160;</a></span>observer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::input::observer::observer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">channelReaderFcn_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rFcn</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>timeDebounce</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initialize a input observer instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rFcn</td><td>A pointer to a function that reads the specific channel </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeDebounce</td><td>The specified time to bypass the bounce of the digital input channels </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5bef0b1af8f4fba341ccb8c617bd86d5" name="a5bef0b1af8f4fba341ccb8c617bd86d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bef0b1af8f4fba341ccb8c617bd86d5">&#9670;&#160;</a></span>add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::input::observer::add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a channel to the observer instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The input-Channel to observe </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ae6c8d2044ce1c2d674ee5bb4eeff7b01" name="ae6c8d2044ce1c2d674ee5bb4eeff7b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6c8d2044ce1c2d674ee5bb4eeff7b01">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::input::observer::update </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update the state of all channels inside the observer instance (Non-Blocking call). </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> when the input channels have been updated after the debounce time. Otherwise <code>false</code>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceq_o_s.html">qOS</a></li><li class="navelem"><a class="el" href="namespaceq_o_s_1_1ec.html">ec</a></li>
+    <li class="navelem"><a class="el" href="namespaceq_o_s.html">qOS</a></li><li class="navelem"><a class="el" href="namespaceq_o_s_1_1input.html">input</a></li><li class="navelem"><a class="el" href="classq_o_s_1_1input_1_1observer.html">observer</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

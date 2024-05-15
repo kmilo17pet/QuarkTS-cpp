@@ -17,7 +17,7 @@ var namespaceq_o_s =
       [ "exit", "group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d", null ],
       [ "setInterruptsED", "group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3", null ]
     ] ],
-    [ "ec", "namespaceq_o_s_1_1ec.html", "namespaceq_o_s_1_1ec" ],
+    [ "input", "namespaceq_o_s_1_1input.html", "namespaceq_o_s_1_1input" ],
     [ "logger", "namespaceq_o_s_1_1logger.html", "namespaceq_o_s_1_1logger" ],
     [ "mem", "namespaceq_o_s_1_1mem.html", "namespaceq_o_s_1_1mem" ],
     [ "sm", "namespaceq_o_s_1_1sm.html", "namespaceq_o_s_1_1sm" ],
@@ -46,7 +46,6 @@ var namespaceq_o_s =
     [ "clock", "classq_o_s_1_1clock.html", "classq_o_s_1_1clock" ],
     [ "commandLineInterface", "classq_o_s_1_1command_line_interface.html", "classq_o_s_1_1command_line_interface" ],
     [ "core", "classq_o_s_1_1core.html", "classq_o_s_1_1core" ],
-    [ "edgeCheck", "classq_o_s_1_1edge_check.html", "classq_o_s_1_1edge_check" ],
     [ "event_t", "classq_o_s_1_1event__t.html", "classq_o_s_1_1event__t" ],
     [ "list", "classq_o_s_1_1list.html", "classq_o_s_1_1list" ],
     [ "listIterator", "classq_o_s_1_1list_iterator.html", "classq_o_s_1_1list_iterator" ],

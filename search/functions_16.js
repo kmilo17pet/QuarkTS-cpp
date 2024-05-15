@@ -1,9 +1,9 @@
 var searchData=
 [
   ['_7ebytebuffer_0',['~byteBuffer',['../classq_o_s_1_1byte_buffer.html#a5dc803bd1960de3ab81aeb24c3a9b26f',1,'qOS::byteBuffer']]],
-  ['_7ecommand_1',['~command',['../classq_o_s_1_1cli_1_1command.html#a78614094a756a9b45845c94c6c3858a6',1,'qOS::cli::command']]],
-  ['_7ecommandlineinterface_2',['~commandLineInterface',['../classq_o_s_1_1command_line_interface.html#a1e575dd211dd12cf7a25ad011fbdb5e3',1,'qOS::commandLineInterface']]],
-  ['_7einnode_3',['~inNode',['../classq_o_s_1_1ec_1_1in_node.html#a17cfc2f793fa11a97469bdc3106a630e',1,'qOS::ec::inNode']]],
+  ['_7echannel_1',['~channel',['../classq_o_s_1_1input_1_1channel.html#a4817b47d848db9dc53fd5405388006e7',1,'qOS::input::channel']]],
+  ['_7ecommand_2',['~command',['../classq_o_s_1_1cli_1_1command.html#a78614094a756a9b45845c94c6c3858a6',1,'qOS::cli::command']]],
+  ['_7ecommandlineinterface_3',['~commandLineInterface',['../classq_o_s_1_1command_line_interface.html#a1e575dd211dd12cf7a25ad011fbdb5e3',1,'qOS::commandLineInterface']]],
   ['_7enode_4',['~node',['../classq_o_s_1_1node.html#a3b9b6d91c2aec2c10106fb39437c0150',1,'qOS::node']]],
   ['_7epool_5',['~pool',['../classq_o_s_1_1mem_1_1pool.html#a19483a850c37e11e58796f210dc7448e',1,'qOS::mem::pool']]],
   ['_7equeue_6',['~queue',['../classq_o_s_1_1queue.html#ac2658fe8ee8564ac183a063797b560f6',1,'qOS::queue']]],

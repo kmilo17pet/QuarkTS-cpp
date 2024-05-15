@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['o_20groups_20for_20edge_20checking_0',['I/O Groups for edge checking',['../group__qedgecheck.html',1,'']]],
-  ['o_20utils_1',['I/O Utils',['../group__qioutils.html',1,'']]],
+  ['o_20utils_0',['I/O Utils',['../group__qioutils.html',1,'']]],
+  ['observer_1',['observer',['../classq_o_s_1_1input_1_1observer.html',1,'qOS::input::observer'],['../classq_o_s_1_1input_1_1observer.html#a73e233f5fb801aa952297e6ea0d3cac4',1,'qOS::input::observer::observer()']]],
   ['oct_2',['oct',['../group__qlogger.html#gaaa3b17505e16e241c7ce360742d10ab7',1,'qOS::logger']]],
   ['of_20operation_3',['Principle of operation',['../q_memmang.html#q_memmang_principle',1,'']]],
   ['of_20the_20cli_4',['The components of the CLI',['../q_atcli.html#q_atcli_components',1,'']]],
   ['of_20the_20os_20configuration_20file_5',['Get a copy of the OS configuration file',['../q_gettingstarted.html#q_getqconfig',1,'']]],
-  ['off_6',['OFF',['../group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba88559a0cfd8250c9d65970cc145c92d4',1,'qOS::ec']]],
+  ['off_6',['OFF',['../group__qinput.html#gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4',1,'qOS::input']]],
   ['ok_7',['OK',['../group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a9270a0379c34d778fe6aa6e3c2c52239',1,'qOS::cli']]],
-  ['on_8',['ON',['../group__qedgecheck.html#gga8c8610c95dcd72ca8a1d5c3d926e507ba90651ebea9a35ec4e018c8157492e17c',1,'qOS::ec']]],
+  ['on_8',['ON',['../group__qinput.html#gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c',1,'qOS::input']]],
   ['operation_9',['Principle of operation',['../q_memmang.html#q_memmang_principle',1,'']]],
   ['operational_20states_10',['Additional operational states',['../q_foundations.html#q_os_operational_states',1,'']]],
   ['operative_20system_11',['Operative System',['../group__qos.html',1,'']]],

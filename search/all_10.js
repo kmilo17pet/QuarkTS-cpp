@@ -21,7 +21,7 @@ var searchData=
   ['qos_3a_3acli_18',['cli',['../namespaceq_o_s_1_1cli.html',1,'qOS']]],
   ['qos_3a_3aco_19',['co',['../namespaceq_o_s_1_1co.html',1,'qOS']]],
   ['qos_3a_3acritical_20',['critical',['../namespaceq_o_s_1_1critical.html',1,'qOS']]],
-  ['qos_3a_3aec_21',['ec',['../namespaceq_o_s_1_1ec.html',1,'qOS']]],
+  ['qos_3a_3ainput_21',['input',['../namespaceq_o_s_1_1input.html',1,'qOS']]],
   ['qos_3a_3alogger_22',['logger',['../namespaceq_o_s_1_1logger.html',1,'qOS']]],
   ['qos_3a_3amem_23',['mem',['../namespaceq_o_s_1_1mem.html',1,'qOS']]],
   ['qos_3a_3asm_24',['sm',['../namespaceq_o_s_1_1sm.html',1,'qOS']]],

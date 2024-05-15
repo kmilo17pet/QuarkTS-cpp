@@ -2,7 +2,6 @@ var hierarchy =
 [
     [ "qOS::byteBuffer", "classq_o_s_1_1byte_buffer.html", null ],
     [ "qOS::clock", "classq_o_s_1_1clock.html", null ],
-    [ "qOS::edgeCheck", "classq_o_s_1_1edge_check.html", null ],
     [ "qOS::event_t", "classq_o_s_1_1event__t.html", null ],
     [ "qOS::co::handle", "classq_o_s_1_1co_1_1handle.html", null ],
     [ "qOS::cli::handler_t", "classq_o_s_1_1cli_1_1handler__t.html", null ],
@@ -15,10 +14,11 @@ var hierarchy =
     [ "qOS::logger::mem", "classq_o_s_1_1logger_1_1mem.html", null ],
     [ "qOS::node", "classq_o_s_1_1node.html", [
       [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", null ],
-      [ "qOS::ec::inNode", "classq_o_s_1_1ec_1_1in_node.html", null ],
+      [ "qOS::input::channel", "classq_o_s_1_1input_1_1channel.html", null ],
       [ "qOS::list", "classq_o_s_1_1list.html", null ],
       [ "qOS::task", "classq_o_s_1_1task.html", null ]
     ] ],
+    [ "qOS::input::observer", "classq_o_s_1_1input_1_1observer.html", null ],
     [ "qOS::mem::pool", "classq_o_s_1_1mem_1_1pool.html", null ],
     [ "qOS::co::position", "classq_o_s_1_1co_1_1position.html", null ],
     [ "qOS::logger::pre", "classq_o_s_1_1logger_1_1pre.html", null ],

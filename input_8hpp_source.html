@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="QuarkTS++ OS" />
+<meta property="og:image" content="https://user-images.githubusercontent.com/11412210/235049017-242f1c64-52ef-46db-8008-2c3d8a578320.png" />
+<meta property="og:description" content="An open-source OS for small embedded applications" />
+<meta property="og:url" content="https://github.com/kmilo17pet/QuarkTS-cpp" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>OS: input.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/kmilo17pet/QuarkTS-cpp" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OS
+   &#160;<span id="projectnumber">v1.3.8</span>
+   </div>
+   <div id="projectbrief">Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('input_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">input.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef QOS_EDGE_CHECK</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define QOS_EDGE_CHECK</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;include/types.hpp&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;include/list.hpp&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;include/timer.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespaceq_o_s_1_1input.html">   20</a></span>    <span class="keyword">namespace </span>input {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1input_1_1observer.html">observer</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">   33</a></span>        <span class="keyword">enum class</span> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">state</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3">UNKNOWN</a> = -1,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4">OFF</a> = 0,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c">ON</a> = 1,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11ad85243a747ac5537ef0b7adde99c3e98">RISING_EDGE</a> = 2,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52">FALLING_EDGE</a> = 3,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        };</div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">   45</a></span>        <span class="keyword">enum class</span> <span class="keyword">event</span> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a1d5f4a961d27d148bbce7e615b3948ac">IN_NODE_FALLING</a>,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ace18cca0edf8d8a8eb9d5f8d88b3bafe">IN_NODE_RISING</a>,</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a2721f7e7524f2f7ffe4a39694ce2a6c0">IN_NODE_PRESSED</a>,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <a class="code hl_enumvalue" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aa75c73d7e46707fb81c770bf7aa98542">IN_NODE_RELEASED</a>,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        };</div>
+</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">   52</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">channelReaderFcn_t</a> = int (*)( uint8_t );</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">   53</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a> = void(*)( uint8_t, <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> );</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="};">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html">   58</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">channel</a> : <span class="keyword">protected</span> <a class="code hl_class" href="classq_o_s_1_1node.html">node</a> {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <a class="code hl_typedef" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a> fallingCB{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <a class="code hl_typedef" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a> risingCB{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <a class="code hl_typedef" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a> pressedCB{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                <a class="code hl_typedef" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a> releasedCB{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <span class="keywordtype">bool</span> bPressed{ <span class="keyword">false</span> };</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordtype">bool</span> bReleased{ <span class="keyword">false</span> };</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a> prevPinValue{ <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3">input::state::UNKNOWN</a> };</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">state</a>{ <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3">input::state::UNKNOWN</a> };</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a> current{ <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3">input::state::UNKNOWN</a> };</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> tChange{0U};</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> tPressed{0xFFFFFFFFU};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> tReleased{0xFFFFFFFFU};</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <span class="keywordtype">bool</span> negValue{ <span class="keyword">false</span> };</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                uint8_t xChannel;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                <a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">channel</a>( <a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">channel</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                <span class="keywordtype">void</span> operator=( <a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">channel</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058">   83</a></span>                <a class="code hl_function" href="classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058">channel</a>( uint8_t inputChannel, <span class="keywordtype">bool</span> invert = <span class="keyword">false</span> ) : negValue( invert ), xChannel( inputChannel ) {}</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html#a4817b47d848db9dc53fd5405388006e7">   84</a></span>                <span class="keyword">virtual</span> <a class="code hl_function" href="classq_o_s_1_1input_1_1channel.html#a4817b47d848db9dc53fd5405388006e7">~channel</a>() {}</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html#a4dc933c97a3bd40da00b4ea52f9a879f">   85</a></span>                <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1input_1_1channel.html#a4dc933c97a3bd40da00b4ea52f9a879f">setCallback</a>( <a class="code hl_enumeration" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, <a class="code hl_typedef" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a> c, <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> t = 1000U );</div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html#a53149308aa69b638e5592cbb9b7d2142">   90</a></span>                <span class="keyword">inline</span> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a> <a class="code hl_function" href="classq_o_s_1_1input_1_1channel.html#a53149308aa69b638e5592cbb9b7d2142">getState</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                    <span class="keywordflow">return</span> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">state</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                }</div>
+</div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html#a815a043620c6be57417567f1a4208189">   98</a></span>                <span class="keyword">inline</span> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a> <a class="code hl_function" href="classq_o_s_1_1input_1_1channel.html#a815a043620c6be57417567f1a4208189">getCurrent</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                    <span class="keywordflow">return</span> current;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                }</div>
+</div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7">  107</a></span>                <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7">setChannel</a>( <span class="keyword">const</span> uint8_t inputChannel ) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                    <span class="keywordtype">bool</span> retValue = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    <span class="keywordflow">if</span> ( inputChannel &lt; 32U ) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                        xChannel = inputChannel;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                        retValue = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                    }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                    <span class="keywordflow">return</span> retValue;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                }</div>
+</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1channel.html#a778b68ef8b5c58ce07162f0e8a5d9318">  118</a></span>            <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1input_1_1observer.html">observer</a>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        };</div>
+</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="foldopen" id="foldopen00124" data-start="{" data-end="};">
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1observer.html">  124</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classq_o_s_1_1input_1_1observer.html">observer</a> {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                <a class="code hl_class" href="classq_o_s_1_1list.html">list</a> nodes;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                <a class="code hl_class" href="classq_o_s_1_1timer.html">qOS::timer</a> waitDebounce;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                <a class="code hl_typedef" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> debounceTime{ 100_ms };</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                <a class="code hl_typedef" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">channelReaderFcn_t</a> channelReader{ <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                <a class="code hl_class" href="classq_o_s_1_1input_1_1observer.html">observer</a>( <a class="code hl_class" href="classq_o_s_1_1input_1_1observer.html">observer</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                <span class="keywordtype">void</span> operator=( <a class="code hl_class" href="classq_o_s_1_1input_1_1observer.html">observer</a> <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                <span class="keyword">inline</span> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">state</a> readPin( <a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">channel</a> * <span class="keyword">const</span> n )</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                    <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">state</a> s;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                    <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">state</a> vOn = ( n-&gt;negValue ) ? <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4">state::OFF</a> : <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c">state::ON</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                    <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">state</a> vOff = ( n-&gt;negValue ) ? <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c">state::ON</a> : <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4">state::OFF</a>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                    <span class="keywordflow">if</span> ( <span class="keyword">nullptr</span> != channelReader ) {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                        s = channelReader( <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>( n-&gt;xChannel ) ) ? vOn : vOff;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                    }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>                    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                        s = <a class="code hl_enumvalue" href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3">state::UNKNOWN</a>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                    }</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                    <span class="keywordflow">return</span> s;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="}">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1observer.html#a73e233f5fb801aa952297e6ea0d3cac4">  155</a></span>                <a class="code hl_function" href="classq_o_s_1_1input_1_1observer.html#a73e233f5fb801aa952297e6ea0d3cac4">observer</a>( <span class="keyword">const</span> <a class="code hl_typedef" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">channelReaderFcn_t</a>&amp; rFcn, <span class="keyword">const</span> <a class="code hl_typedef" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> timeDebounce ) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                    debounceTime = timeDebounce;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                    channelReader = rFcn;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                }</div>
+</div>
+<div class="foldopen" id="foldopen00165" data-start="{" data-end="}">
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1observer.html#a5bef0b1af8f4fba341ccb8c617bd86d5">  165</a></span>                <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1input_1_1observer.html#a5bef0b1af8f4fba341ccb8c617bd86d5">add</a>( <a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">channel</a>&amp; n ) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                    n.prevPinValue = readPin( &amp;n );</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                    n.tChange = <a class="code hl_variable" href="classq_o_s_1_1clock.html#a6363cb8fda1990fbe538297c13f4595a">clock::getTick</a>();</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                    <span class="keywordflow">return</span> nodes.<a class="code hl_function" href="classq_o_s_1_1list.html#a084fde89ef2d870fd89807ba6d31aba0">insert</a>( &amp;n );</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                }</div>
+</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="classq_o_s_1_1input_1_1observer.html#ae6c8d2044ce1c2d674ee5bb4eeff7b01">  177</a></span>                <span class="keywordtype">bool</span> <a class="code hl_function" href="classq_o_s_1_1input_1_1observer.html#ae6c8d2044ce1c2d674ee5bb4eeff7b01">update</a>( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        };</div>
+</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
+</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_EDGE_CHECK*/</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassq_o_s_1_1clock_html_a6363cb8fda1990fbe538297c13f4595a"><div class="ttname"><a href="classq_o_s_1_1clock.html#a6363cb8fda1990fbe538297c13f4595a">qOS::clock::getTick</a></div><div class="ttdeci">static getTickFcn_t getTick</div><div class="ttdoc">Return the current tick used by the OS.</div><div class="ttdef"><b>Definition</b> clock.hpp:93</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></div><div class="ttdoc">An input channel object.</div><div class="ttdef"><b>Definition</b> input.hpp:58</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html_a4817b47d848db9dc53fd5405388006e7"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html#a4817b47d848db9dc53fd5405388006e7">qOS::input::channel::~channel</a></div><div class="ttdeci">virtual ~channel()</div><div class="ttdef"><b>Definition</b> input.hpp:84</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html_a4dc933c97a3bd40da00b4ea52f9a879f"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html#a4dc933c97a3bd40da00b4ea52f9a879f">qOS::input::channel::setCallback</a></div><div class="ttdeci">bool setCallback(event e, eventCallback_t c, qOS::clock_t t=1000U)</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html_a53149308aa69b638e5592cbb9b7d2142"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html#a53149308aa69b638e5592cbb9b7d2142">qOS::input::channel::getState</a></div><div class="ttdeci">input::state getState(void) const noexcept</div><div class="ttdoc">Query the state of the specified channel.</div><div class="ttdef"><b>Definition</b> input.hpp:90</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html_a815a043620c6be57417567f1a4208189"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html#a815a043620c6be57417567f1a4208189">qOS::input::channel::getCurrent</a></div><div class="ttdeci">input::state getCurrent(void) const noexcept</div><div class="ttdoc">Query the current value of the specified input-channel.</div><div class="ttdef"><b>Definition</b> input.hpp:98</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html_ac394f68da414dfe8401700f25acd9058"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058">qOS::input::channel::channel</a></div><div class="ttdeci">channel(uint8_t inputChannel, bool invert=false)</div><div class="ttdoc">Constructor for the input channel instance.</div><div class="ttdef"><b>Definition</b> input.hpp:83</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html_afe9029d08ecd265b09bb44546dd384e7"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7">qOS::input::channel::setChannel</a></div><div class="ttdeci">bool setChannel(const uint8_t inputChannel) noexcept</div><div class="ttdoc">Set/Change the pin number for the provided channel.</div><div class="ttdef"><b>Definition</b> input.hpp:107</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1observer_html"><div class="ttname"><a href="classq_o_s_1_1input_1_1observer.html">qOS::input::observer</a></div><div class="ttdoc">The input channel observer class.</div><div class="ttdef"><b>Definition</b> input.hpp:124</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1observer_html_a5bef0b1af8f4fba341ccb8c617bd86d5"><div class="ttname"><a href="classq_o_s_1_1input_1_1observer.html#a5bef0b1af8f4fba341ccb8c617bd86d5">qOS::input::observer::add</a></div><div class="ttdeci">bool add(channel &amp;n) noexcept</div><div class="ttdoc">Add a channel to the observer instance.</div><div class="ttdef"><b>Definition</b> input.hpp:165</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1observer_html_a73e233f5fb801aa952297e6ea0d3cac4"><div class="ttname"><a href="classq_o_s_1_1input_1_1observer.html#a73e233f5fb801aa952297e6ea0d3cac4">qOS::input::observer::observer</a></div><div class="ttdeci">observer(const channelReaderFcn_t &amp;rFcn, const qOS::duration_t timeDebounce) noexcept</div><div class="ttdoc">Initialize a input observer instance.</div><div class="ttdef"><b>Definition</b> input.hpp:155</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1observer_html_ae6c8d2044ce1c2d674ee5bb4eeff7b01"><div class="ttname"><a href="classq_o_s_1_1input_1_1observer.html#ae6c8d2044ce1c2d674ee5bb4eeff7b01">qOS::input::observer::update</a></div><div class="ttdeci">bool update(void) noexcept</div><div class="ttdoc">Update the state of all channels inside the observer instance (Non-Blocking call).</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html"><div class="ttname"><a href="classq_o_s_1_1list.html">qOS::list</a></div><div class="ttdoc">A list object (Generic double-linked)</div><div class="ttdef"><b>Definition</b> list.hpp:117</div></div>
+<div class="ttc" id="aclassq_o_s_1_1list_html_a084fde89ef2d870fd89807ba6d31aba0"><div class="ttname"><a href="classq_o_s_1_1list.html#a084fde89ef2d870fd89807ba6d31aba0">qOS::list::insert</a></div><div class="ttdeci">bool insert(void *const xNode, const listPosition p=listPosition::AT_BACK) noexcept</div><div class="ttdoc">Insert an item into the list.</div></div>
+<div class="ttc" id="aclassq_o_s_1_1node_html"><div class="ttname"><a href="classq_o_s_1_1node.html">qOS::node</a></div><div class="ttdoc">A list-node object (Used internally)</div><div class="ttdef"><b>Definition</b> list.hpp:62</div></div>
+<div class="ttc" id="aclassq_o_s_1_1timer_html"><div class="ttname"><a href="classq_o_s_1_1timer.html">qOS::timer</a></div><div class="ttdoc">A non-blocking Timer object.</div><div class="ttdef"><b>Definition</b> timer.hpp:26</div></div>
+<div class="ttc" id="agroup__qclock_html_ga23120959288587741e4741198212c8e9"><div class="ttname"><a href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></div><div class="ttdeci">timeCount_t duration_t</div><div class="ttdoc">The typedef that specified an time quantity, usually expressed in milliseconds.</div><div class="ttdef"><b>Definition</b> clock.hpp:18</div></div>
+<div class="ttc" id="agroup__qclock_html_gad964cc2538515fbb14dba55fa65dee5f"><div class="ttname"><a href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a></div><div class="ttdeci">timeCount_t clock_t</div><div class="ttdoc">A unsigned integer to hold ticks count. Epochs counter.</div><div class="ttdef"><b>Definition</b> clock.hpp:15</div></div>
+<div class="ttc" id="agroup__qinput_html_ga1edc963829bdde6bf7526075ba5135ec"><div class="ttname"><a href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">qOS::input::eventCallback_t</a></div><div class="ttdeci">void(*)(uint8_t, const event) eventCallback_t</div><div class="ttdef"><b>Definition</b> input.hpp:53</div></div>
+<div class="ttc" id="agroup__qinput_html_ga72d9a973c87da11f11a8aeabbbb25aa7"><div class="ttname"><a href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">qOS::input::event</a></div><div class="ttdeci">event</div><div class="ttdoc">An enum with all the possible events that can be detected by the qOS::input::observer class for a spe...</div><div class="ttdef"><b>Definition</b> input.hpp:45</div></div>
+<div class="ttc" id="agroup__qinput_html_ga78226dd21564a598124985dfa62a8e11"><div class="ttname"><a href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">qOS::input::state</a></div><div class="ttdeci">state</div><div class="ttdoc">An enum with all the possible states detected by the qOS::input::observer class for a specified qOS::...</div><div class="ttdef"><b>Definition</b> input.hpp:33</div></div>
+<div class="ttc" id="agroup__qinput_html_ga7d3b9fc08985bd00916b549b73ef1c6a"><div class="ttname"><a href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">qOS::input::channelReaderFcn_t</a></div><div class="ttdeci">int(*)(uint8_t) channelReaderFcn_t</div><div class="ttdef"><b>Definition</b> input.hpp:52</div></div>
+<div class="ttc" id="agroup__qinput_html_gga72d9a973c87da11f11a8aeabbbb25aa7a1d5f4a961d27d148bbce7e615b3948ac"><div class="ttname"><a href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a1d5f4a961d27d148bbce7e615b3948ac">qOS::input::event::IN_NODE_FALLING</a></div><div class="ttdeci">@ IN_NODE_FALLING</div></div>
+<div class="ttc" id="agroup__qinput_html_gga72d9a973c87da11f11a8aeabbbb25aa7a2721f7e7524f2f7ffe4a39694ce2a6c0"><div class="ttname"><a href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a2721f7e7524f2f7ffe4a39694ce2a6c0">qOS::input::event::IN_NODE_PRESSED</a></div><div class="ttdeci">@ IN_NODE_PRESSED</div></div>
+<div class="ttc" id="agroup__qinput_html_gga72d9a973c87da11f11a8aeabbbb25aa7aa75c73d7e46707fb81c770bf7aa98542"><div class="ttname"><a href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aa75c73d7e46707fb81c770bf7aa98542">qOS::input::event::IN_NODE_RELEASED</a></div><div class="ttdeci">@ IN_NODE_RELEASED</div></div>
+<div class="ttc" id="agroup__qinput_html_gga72d9a973c87da11f11a8aeabbbb25aa7ace18cca0edf8d8a8eb9d5f8d88b3bafe"><div class="ttname"><a href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ace18cca0edf8d8a8eb9d5f8d88b3bafe">qOS::input::event::IN_NODE_RISING</a></div><div class="ttdeci">@ IN_NODE_RISING</div></div>
+<div class="ttc" id="agroup__qinput_html_gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52"><div class="ttname"><a href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52">qOS::input::state::FALLING_EDGE</a></div><div class="ttdeci">@ FALLING_EDGE</div></div>
+<div class="ttc" id="agroup__qinput_html_gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3"><div class="ttname"><a href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3">qOS::input::state::UNKNOWN</a></div><div class="ttdeci">@ UNKNOWN</div></div>
+<div class="ttc" id="agroup__qinput_html_gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4"><div class="ttname"><a href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4">qOS::input::state::OFF</a></div><div class="ttdeci">@ OFF</div></div>
+<div class="ttc" id="agroup__qinput_html_gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c"><div class="ttname"><a href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c">qOS::input::state::ON</a></div><div class="ttdeci">@ ON</div></div>
+<div class="ttc" id="agroup__qinput_html_gga78226dd21564a598124985dfa62a8e11ad85243a747ac5537ef0b7adde99c3e98"><div class="ttname"><a href="group__qinput.html#gga78226dd21564a598124985dfa62a8e11ad85243a747ac5537ef0b7adde99c3e98">qOS::input::state::RISING_EDGE</a></div><div class="ttdeci">@ RISING_EDGE</div></div>
+<div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel interfaces.</div><div class="ttdef"><b>Definition</b> bytebuffer.hpp:7</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li><li class="navelem"><b>input.hpp</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

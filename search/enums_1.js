@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['globalstate_0',['globalState',['../group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790',1,'qOS']]]
+  ['event_0',['event',['../group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7',1,'qOS::input']]]
 ];

@@ -10,8 +10,9 @@ var annotated_dup =
         [ "position", "classq_o_s_1_1co_1_1position.html", null ],
         [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html", "classq_o_s_1_1co_1_1semaphore" ]
       ] ],
-      [ "ec", "namespaceq_o_s_1_1ec.html", [
-        [ "inNode", "classq_o_s_1_1ec_1_1in_node.html", "classq_o_s_1_1ec_1_1in_node" ]
+      [ "input", "namespaceq_o_s_1_1input.html", [
+        [ "channel", "classq_o_s_1_1input_1_1channel.html", "classq_o_s_1_1input_1_1channel" ],
+        [ "observer", "classq_o_s_1_1input_1_1observer.html", "classq_o_s_1_1input_1_1observer" ]
       ] ],
       [ "logger", "namespaceq_o_s_1_1logger.html", [
         [ "mem", "classq_o_s_1_1logger_1_1mem.html", "classq_o_s_1_1logger_1_1mem" ],
@@ -34,7 +35,6 @@ var annotated_dup =
       [ "clock", "classq_o_s_1_1clock.html", "classq_o_s_1_1clock" ],
       [ "commandLineInterface", "classq_o_s_1_1command_line_interface.html", "classq_o_s_1_1command_line_interface" ],
       [ "core", "classq_o_s_1_1core.html", "classq_o_s_1_1core" ],
-      [ "edgeCheck", "classq_o_s_1_1edge_check.html", "classq_o_s_1_1edge_check" ],
       [ "event_t", "classq_o_s_1_1event__t.html", "classq_o_s_1_1event__t" ],
       [ "list", "classq_o_s_1_1list.html", "classq_o_s_1_1list" ],
       [ "listIterator", "classq_o_s_1_1list_iterator.html", "classq_o_s_1_1list_iterator" ],

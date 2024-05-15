@@ -11,7 +11,7 @@ var searchData=
   ['getattachedobject_8',['getAttachedObject',['../classq_o_s_1_1task.html#ab76060c54d3cdd67f64c0bfa80bf4b33',1,'qOS::task']]],
   ['getback_9',['getBack',['../classq_o_s_1_1list.html#ad13760728ef20c6d7211164612361f37',1,'qOS::list']]],
   ['getcontainer_10',['getContainer',['../classq_o_s_1_1node.html#a14ad556d2634b1faf3ce9767efbb9136',1,'qOS::node']]],
-  ['getcurrent_11',['getCurrent',['../classq_o_s_1_1ec_1_1in_node.html#a65f86279e7fef3cdd54c48e2902725fa',1,'qOS::ec::inNode::getCurrent()'],['../classq_o_s_1_1state_machine.html#a04778ea269ed32926df1e9d7f2d71cae',1,'qOS::stateMachine::getCurrent()']]],
+  ['getcurrent_11',['getCurrent',['../classq_o_s_1_1state_machine.html#a04778ea269ed32926df1e9d7f2d71cae',1,'qOS::stateMachine::getCurrent()'],['../classq_o_s_1_1input_1_1channel.html#a815a043620c6be57417567f1a4208189',1,'qOS::input::channel::getCurrent()']]],
   ['getcycles_12',['getCycles',['../classq_o_s_1_1task.html#ace9a80c835ab1106b89273c73edefac0',1,'qOS::task']]],
   ['getdata_13',['getData',['../classq_o_s_1_1cli_1_1handler__t.html#ac1cbecc7c74ea17aebed8aabd5b86048',1,'qOS::cli::handler_t::getData()'],['../classq_o_s_1_1sm_1_1state.html#a8d777ae3e9a4a2248c8463016d61bc5b',1,'qOS::sm::state::getData()'],['../classq_o_s_1_1state_machine.html#aebd708dabbf5236af34b90b68a7998e0',1,'qOS::stateMachine::getData()']]],
   ['getfreesize_14',['getFreeSize',['../classq_o_s_1_1mem_1_1pool.html#ae794604d6b2206cf47f21d324c7a6d55',1,'qOS::mem::pool']]],
@@ -28,7 +28,7 @@ var searchData=
   ['getposition_25',['getPosition',['../group__qcoroutines.html#gac8354b5da4ab66b7e049c615af830c97',1,'qOS::co']]],
   ['getpriority_26',['getPriority',['../classq_o_s_1_1task.html#a1de14744e37cb6a8c1276ff039d84767',1,'qOS::task']]],
   ['getqueue_27',['getQueue',['../classq_o_s_1_1state_machine.html#a59016149f22fc3603ad8aebb3b243d23',1,'qOS::stateMachine']]],
-  ['getstate_28',['getState',['../classq_o_s_1_1ec_1_1in_node.html#ab03f6a73cc0807a9e09793db1a221c67',1,'qOS::ec::inNode::getState()'],['../classq_o_s_1_1task.html#aa8a716dcd545daff5cd0003513b6e6ac',1,'qOS::task::getState()']]],
+  ['getstate_28',['getState',['../classq_o_s_1_1input_1_1channel.html#a53149308aa69b638e5592cbb9b7d2142',1,'qOS::input::channel::getState()'],['../classq_o_s_1_1task.html#aa8a716dcd545daff5cd0003513b6e6ac',1,'qOS::task::getState()']]],
   ['getstringdata_29',['getStringData',['../classq_o_s_1_1cli_1_1handler__t.html#a89eb0d6805d577de5b8f9377bbf3580a',1,'qOS::cli::handler_t']]],
   ['getstringlength_30',['getStringLength',['../classq_o_s_1_1cli_1_1handler__t.html#a58b8404949da19db86c109eb059e1ef5',1,'qOS::cli::handler_t']]],
   ['gettaskbyid_31',['getTaskByID',['../classq_o_s_1_1core.html#a3b6ddd61cdf225cf2109feca14b26d0c',1,'qOS::core']]],
@@ -46,6 +46,5 @@ var searchData=
   ['global_20states_20and_20scheduling_20rules_43',['Global states and scheduling rules',['../q_foundations.html#q_globalstates',1,'']]],
   ['globalstate_44',['globalState',['../group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790',1,'qOS']]],
   ['grn_45',['grn',['../group__qlogger.html#gaa2994cb884a30ce89436a23e34e7fdb9',1,'qOS::logger']]],
-  ['groups_20for_20edge_20checking_46',['I/O Groups for edge checking',['../group__qedgecheck.html',1,'']]],
-  ['guards_47',['Signal actions and guards',['../q_fsm.html#q_fsm_sigactions',1,'']]]
+  ['guards_46',['Signal actions and guards',['../q_fsm.html#q_fsm_sigactions',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['historymode_0',['historyMode',['../group__qfsm.html#ga1719763177c7b3ccf0d6b6934a2be420',1,'qOS::sm']]]
+  ['globalstate_0',['globalState',['../group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790',1,'qOS']]]
 ];
