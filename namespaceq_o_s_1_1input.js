@@ -5,10 +5,10 @@ var namespaceq_o_s_1_1input =
     [ "channelReaderFcn_t", "group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a", null ],
     [ "eventCallback_t", "group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec", null ],
     [ "event", "group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7", [
-      [ "IN_NODE_FALLING", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a1d5f4a961d27d148bbce7e615b3948ac", null ],
-      [ "IN_NODE_RISING", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ace18cca0edf8d8a8eb9d5f8d88b3bafe", null ],
-      [ "IN_NODE_PRESSED", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a2721f7e7524f2f7ffe4a39694ce2a6c0", null ],
-      [ "IN_NODE_RELEASED", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aa75c73d7e46707fb81c770bf7aa98542", null ]
+      [ "FALLING", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a4f9d4539ac1e11a251e2afe022eba4e6", null ],
+      [ "RISING", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab3762d500f2ada6030da058853c195d6", null ],
+      [ "PRESSED", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a5381dc876ab002103a027265bc14ae52", null ],
+      [ "RELEASED", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a109d54efbb64d71f9a6ab18d0fb8add8", null ]
     ] ],
     [ "state", "group__qinput.html#ga78226dd21564a598124985dfa62a8e11", [
       [ "UNKNOWN", "group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3", null ],
