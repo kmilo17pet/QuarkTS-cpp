@@ -59,10 +59,10 @@ bool input::channel::setCallback( input::event e, input::eventCallback_t c, qOS:
     bool retVal = true;
 
     switch ( e ) {
-        case input::event::RISING:
+        case input::event::RISING_EDGE:
             risingCB = c;
             break;
-        case input::event::FALLING:
+        case input::event::FALLING_EDGE:
             fallingCB = c;
             break;
         case input::event::PRESSED:
