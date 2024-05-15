@@ -12,13 +12,12 @@ var searchData=
   ['positional_20jumps_9',['Positional jumps',['../q_qcoroutines.html#q_coroutine_positions',1,'']]],
   ['pre_10',['pre',['../classq_o_s_1_1logger_1_1pre.html',1,'qOS::logger::pre'],['../classq_o_s_1_1logger_1_1pre.html#a12bd7d95459d1d60c78720ad0d706d11',1,'qOS::logger::pre::pre()']]],
   ['precedence_11',['Event precedence',['../q_foundations.html#q_os_evenprecedence',1,'']]],
-  ['pressed_12',['PRESSED',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a5381dc876ab002103a027265bc14ae52',1,'qOS::input']]],
-  ['principle_20of_20operation_13',['Principle of operation',['../q_memmang.html#q_memmang_principle',1,'']]],
-  ['printxdata_14',['printXData',['../group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67',1,'qOS::util']]],
-  ['priority_5ft_15',['priority_t',['../group__qtypes.html#gabf769a2519cf3a113a1bd291fa7fbeab',1,'qOS']]],
-  ['process_20and_20coding_20standard_16',['Development process and coding standard',['../q_background.html#q_codstandard',1,'']]],
-  ['provided_20approach_17',['The provided approach',['../q_fsm.html#qfsm_approach',1,'']]],
-  ['pseudo_20states_18',['Example with history pseudo-states',['../q_fsm.html#q_fsm_example4',1,'']]],
-  ['put_19',['put',['../classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22',1,'qOS::byteBuffer']]],
-  ['putchar_5ft_20',['putChar_t',['../group__qioutils.html#ga2d1dc078cfeaafc3e3723662a9eff629',1,'qOS::util']]]
+  ['principle_20of_20operation_12',['Principle of operation',['../q_memmang.html#q_memmang_principle',1,'']]],
+  ['printxdata_13',['printXData',['../group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67',1,'qOS::util']]],
+  ['priority_5ft_14',['priority_t',['../group__qtypes.html#gabf769a2519cf3a113a1bd291fa7fbeab',1,'qOS']]],
+  ['process_20and_20coding_20standard_15',['Development process and coding standard',['../q_background.html#q_codstandard',1,'']]],
+  ['provided_20approach_16',['The provided approach',['../q_fsm.html#qfsm_approach',1,'']]],
+  ['pseudo_20states_17',['Example with history pseudo-states',['../q_fsm.html#q_fsm_example4',1,'']]],
+  ['put_18',['put',['../classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22',1,'qOS::byteBuffer']]],
+  ['putchar_5ft_19',['putChar_t',['../group__qioutils.html#ga2d1dc078cfeaafc3e3723662a9eff629',1,'qOS::util']]]
 ];
