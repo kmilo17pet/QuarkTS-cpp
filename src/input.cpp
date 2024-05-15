@@ -22,14 +22,14 @@ bool input::observer::update( void ) noexcept
                 n->tChange = clock::getTick();
                 if ( input::state::ON == v ) {
                     n->state = input::state::RISING_EDGE;
-                    n->bPressed = true;
+                    n->bSteadyOn = true;
                     if ( nullptr != n->risingCB ) {
                         n->risingCB( n->xChannel, input::event::RISING_EDGE );
                     }
                 }
                 else {
                     n->state = input::state::FALLING_EDGE;
-                    n->bReleased = true;
+                    n->bSteadyOff = true;
                     if ( nullptr != n->fallingCB ) {
                         n->fallingCB( n->xChannel, input::event::FALLING_EDGE );
                     }
@@ -37,13 +37,13 @@ bool input::observer::update( void ) noexcept
             }
             else {
                 const qOS::clock_t tDiff = clock::getTick() - n->tChange;
-                if ( n->bPressed && ( nullptr != n->pressedCB ) && ( n->current == input::state::ON ) && ( tDiff >= n->tPressed ) ) {
-                    n->pressedCB( n->xChannel, input::event::PRESSED );
-                    n->bPressed = false;
+                if ( n->bSteadyOn && ( nullptr != n->steadyOnCB ) && ( n->current == input::state::ON ) && ( tDiff >= n->tSteadyOn ) ) {
+                    n->steadyOnCB( n->xChannel, input::event::STEADY_ON );
+                    n->bSteadyOn = false;
                 }
-                if ( n->bReleased && ( nullptr != n->releasedCB ) && ( n->current == input::state::OFF ) && ( tDiff >= n->tReleased ) ) {
-                    n->releasedCB( n->xChannel, input::event::RELEASED );
-                    n->bReleased = false;
+                if ( n->bSteadyOff && ( nullptr != n->steadyOffCB ) && ( n->current == input::state::OFF ) && ( tDiff >= n->tSteadyOff ) ) {
+                    n->steadyOffCB( n->xChannel, input::event::STEADY_OFF );
+                    n->bSteadyOff = false;
                 }
             }
             n->prevPinValue = v;
@@ -65,13 +65,13 @@ bool input::channel::setCallback( input::event e, input::eventCallback_t c, qOS:
         case input::event::FALLING_EDGE:
             fallingCB = c;
             break;
-        case input::event::PRESSED:
-            pressedCB = c;
-            tPressed = t;
+        case input::event::STEADY_ON:
+            steadyOnCB = c;
+            tSteadyOn = t;
             break;
-        case input::event::RELEASED:
-            releasedCB = c;
-            tReleased = t;
+        case input::event::STEADY_OFF:
+            steadyOffCB = c;
+            tSteadyOff = t;
             break;
         default:
             retVal = false;

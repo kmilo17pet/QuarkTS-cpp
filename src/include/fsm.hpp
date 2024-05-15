@@ -179,10 +179,31 @@ namespace qOS {
         * that can be used as return value in a state callback.
         */
         enum status : int16_t {
+            /**
+            * @brief (Only available in the surrounding callback) Indicates an
+            * execution of the surrounding callback before launching the state
+            * callback
+            */
             BEFORE_ANY = -32767,
+            /**
+            * @brief Not to be used at the application level. This value is
+            * reserved for use.
+            */
             ABSENT = -32766,
+            /**
+            * @brief To indicate that the state had a failure or abnormal
+            * execution. It can be used to handle exceptions.
+            */
             FAILURE = -32765,
+            /**
+            * @brief To indicate that the status was successful.
+            */
             SUCCESS = -32764,
+            /**
+            * @brief To indicate that the state handled the signal and therefore
+            * it is not necessary to continue propagating the signal through the
+            * rest of the hierarchy
+            */
             SIGNAL_HANDLED = -32763,
         };
 
@@ -191,8 +212,21 @@ namespace qOS {
         * transition to history
         */
         enum historyMode : uint8_t {
+            /**
+            * @brief History is not preserved. Composite states will start
+            * according to their default transition.
+            */
             NO_HISTORY = 0U,
+            /**
+            * @brief History will be kept to allow the return to only the
+            * top-most sub-state of the most recent state configuration, which
+            * is entered using the default entry rule.
+            */
             SHALLOW_HISTORY,
+            /**
+            * @brief History will be kept to allow full state configuration of
+            * the most recent visit to the containing region..
+            */
             DEEP_HISTORY,
         };
 

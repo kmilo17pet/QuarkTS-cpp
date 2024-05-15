@@ -43,10 +43,10 @@ namespace qOS {
         * qOS::input::observer class for a specified qOS::input::channel.
         */
         enum class event {
-            FALLING_EDGE,
-            RISING_EDGE,
-            PRESSED,
-            RELEASED,
+            FALLING_EDGE, /**< Event on falling-edge of the digital input-channel*/
+            RISING_EDGE,  /**< Event on rising-edge of the digital input-channel*/
+            STEADY_ON,    /**< Event when the digital input-channel has been kept on for a while .*/
+            STEADY_OFF,   /**< Event when the digital input-channel has been kept off for a while .*/
         };
 
         using channelReaderFcn_t = int (*)( uint8_t );
@@ -59,16 +59,16 @@ namespace qOS {
             private:
                 eventCallback_t fallingCB{ nullptr };
                 eventCallback_t risingCB{ nullptr };
-                eventCallback_t pressedCB{ nullptr };
-                eventCallback_t releasedCB{ nullptr };
-                bool bPressed{ false };
-                bool bReleased{ false };
+                eventCallback_t steadyOnCB{ nullptr };
+                eventCallback_t steadyOffCB{ nullptr };
+                bool bSteadyOn{ false };
+                bool bSteadyOff{ false };
                 input::state prevPinValue{ input::state::UNKNOWN };
                 input::state state{ input::state::UNKNOWN };
                 input::state current{ input::state::UNKNOWN };
                 qOS::clock_t tChange{0U};
-                qOS::clock_t tPressed{0xFFFFFFFFU};
-                qOS::clock_t tReleased{0xFFFFFFFFU};
+                qOS::clock_t tSteadyOn{0xFFFFFFFFU};
+                qOS::clock_t tSteadyOff{0xFFFFFFFFU};
                 bool negValue{ false };
                 uint8_t xChannel;
                 channel( channel const& ) = delete;
