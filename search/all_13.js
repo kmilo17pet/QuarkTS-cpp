@@ -82,5 +82,6 @@ var searchData=
   ['try_5fset_79',['try_set',['../classq_o_s_1_1co_1_1handle.html#ac55d3f0e8fcd154aafc1927cbbf89b46',1,'qOS::co::handle']]],
   ['try_5fsuspend_80',['try_suspend',['../classq_o_s_1_1co_1_1handle.html#ab40d871b5f3e4822ee20287ad57ebbd2',1,'qOS::co::handle']]],
   ['two_20simple_20demonstrative_20examples_81',['Two simple demonstrative examples',['../q_gettingstarted.html#q_os_demo',1,'']]],
-  ['types_20and_20macros_82',['Types and macros',['../group__qtypes.html',1,'']]]
+  ['type_82',['type',['../group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520',1,'qOS::input']]],
+  ['types_20and_20macros_83',['Types and macros',['../group__qtypes.html',1,'']]]
 ];

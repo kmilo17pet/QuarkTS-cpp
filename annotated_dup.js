@@ -12,7 +12,7 @@ var annotated_dup =
       ] ],
       [ "input", "namespaceq_o_s_1_1input.html", [
         [ "channel", "classq_o_s_1_1input_1_1channel.html", "classq_o_s_1_1input_1_1channel" ],
-        [ "observer", "classq_o_s_1_1input_1_1observer.html", "classq_o_s_1_1input_1_1observer" ]
+        [ "watcher", "classq_o_s_1_1input_1_1watcher.html", "classq_o_s_1_1input_1_1watcher" ]
       ] ],
       [ "logger", "namespaceq_o_s_1_1logger.html", [
         [ "mem", "classq_o_s_1_1logger_1_1mem.html", "classq_o_s_1_1logger_1_1mem" ],

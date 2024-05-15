@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="An input channel object.">
+<g id="a_Node000001"><a xlink:title="An digital input&#45;channel object.">
 <polygon fill="#999999" stroke="#666666" points="99.25,-19.25 0,-19.25 0,0 99.25,0 99.25,-19.25"/>
 <text text-anchor="middle" x="49.62" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">qOS::input::channel</text>
 </a>

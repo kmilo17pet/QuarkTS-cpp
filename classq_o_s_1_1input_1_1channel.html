@@ -141,7 +141,7 @@ $(function(){initNavTree('classq_o_s_1_1input_1_1channel.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>An input channel object.  
+<p>An digital input-channel object.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="input_8hpp_source.html">input.hpp</a>&gt;</code></p>
@@ -158,21 +158,16 @@ Collaboration diagram for qOS::input::channel:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac394f68da414dfe8401700f25acd9058" id="r_ac394f68da414dfe8401700f25acd9058"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac394f68da414dfe8401700f25acd9058">channel</a> (uint8_t inputChannel, bool invert=false)</td></tr>
-<tr class="memdesc:ac394f68da414dfe8401700f25acd9058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the input channel instance.  <br /></td></tr>
-<tr class="separator:ac394f68da414dfe8401700f25acd9058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4817b47d848db9dc53fd5405388006e7" id="r_a4817b47d848db9dc53fd5405388006e7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4817b47d848db9dc53fd5405388006e7">~channel</a> ()</td></tr>
 <tr class="separator:a4817b47d848db9dc53fd5405388006e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dc933c97a3bd40da00b4ea52f9a879f" id="r_a4dc933c97a3bd40da00b4ea52f9a879f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dc933c97a3bd40da00b4ea52f9a879f">setCallback</a> (<a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, <a class="el" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a> c, <a class="el" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> t=1000U)</td></tr>
-<tr class="separator:a4dc933c97a3bd40da00b4ea52f9a879f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53149308aa69b638e5592cbb9b7d2142" id="r_a53149308aa69b638e5592cbb9b7d2142"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53149308aa69b638e5592cbb9b7d2142">getState</a> (void) const noexcept</td></tr>
-<tr class="memdesc:a53149308aa69b638e5592cbb9b7d2142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the state of the specified channel.  <br /></td></tr>
-<tr class="separator:a53149308aa69b638e5592cbb9b7d2142"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a815a043620c6be57417567f1a4208189" id="r_a815a043620c6be57417567f1a4208189"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a815a043620c6be57417567f1a4208189">getCurrent</a> (void) const noexcept</td></tr>
-<tr class="memdesc:a815a043620c6be57417567f1a4208189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the current value of the specified input-channel.  <br /></td></tr>
-<tr class="separator:a815a043620c6be57417567f1a4208189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f6e74d8a79df8c410ce1a861b134c32" id="r_a9f6e74d8a79df8c410ce1a861b134c32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f6e74d8a79df8c410ce1a861b134c32">channel</a> (uint8_t inputChannel, int upperThreshold, int lowerThreshold)</td></tr>
+<tr class="memdesc:a9f6e74d8a79df8c410ce1a861b134c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the analog input channel instance.  <br /></td></tr>
+<tr class="separator:a9f6e74d8a79df8c410ce1a861b134c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac394f68da414dfe8401700f25acd9058" id="r_ac394f68da414dfe8401700f25acd9058"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac394f68da414dfe8401700f25acd9058">channel</a> (uint8_t inputChannel, bool invert=false)</td></tr>
+<tr class="memdesc:ac394f68da414dfe8401700f25acd9058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the digital input channel instance.  <br /></td></tr>
+<tr class="separator:ac394f68da414dfe8401700f25acd9058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe9029d08ecd265b09bb44546dd384e7" id="r_afe9029d08ecd265b09bb44546dd384e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe9029d08ecd265b09bb44546dd384e7">setChannel</a> (const uint8_t inputChannel) noexcept</td></tr>
-<tr class="memdesc:afe9029d08ecd265b09bb44546dd384e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the pin number for the provided channel.  <br /></td></tr>
+<tr class="memdesc:afe9029d08ecd265b09bb44546dd384e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the channel(pin) number.  <br /></td></tr>
 <tr class="separator:afe9029d08ecd265b09bb44546dd384e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -187,47 +182,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3b9b6d91c2aec2c10106fb39437c0150 inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An input channel object. </p>
+<div class="textblock"><p>An digital input-channel object. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac394f68da414dfe8401700f25acd9058" name="ac394f68da414dfe8401700f25acd9058"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac394f68da414dfe8401700f25acd9058">&#9670;&#160;</a></span>channel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">qOS::input::channel::channel </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>inputChannel</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>invert</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Constructor for the input channel instance. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">inputChannel</td><td>The specified channel(pin) to read. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">invert</td><td>To invert/negate the raw-reading. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">portAddress</td><td>To read the input addressThe specified Pin to read. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a4817b47d848db9dc53fd5405388006e7" name="a4817b47d848db9dc53fd5405388006e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4817b47d848db9dc53fd5405388006e7">&#9670;&#160;</a></span>~channel()</h2>
 
@@ -253,89 +209,89 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a9f6e74d8a79df8c410ce1a861b134c32" name="a9f6e74d8a79df8c410ce1a861b134c32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f6e74d8a79df8c410ce1a861b134c32">&#9670;&#160;</a></span>channel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::input::channel::channel </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>inputChannel</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperThreshold</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerThreshold</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for the analog input channel instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">inputChannel</td><td>The specified channel(pin) to read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">upperThreshold</td><td>The upper threshold value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lowerThreshold</td><td>The lower threshold value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac394f68da414dfe8401700f25acd9058" name="ac394f68da414dfe8401700f25acd9058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac394f68da414dfe8401700f25acd9058">&#9670;&#160;</a></span>channel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::input::channel::channel </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>inputChannel</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>invert</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for the digital input channel instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">inputChannel</td><td>The specified channel(pin) to read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">invert</td><td>To invert/negate the raw-reading. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a815a043620c6be57417567f1a4208189" name="a815a043620c6be57417567f1a4208189"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a815a043620c6be57417567f1a4208189">&#9670;&#160;</a></span>getCurrent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a> qOS::input::channel::getCurrent </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Query the current value of the specified input-channel. </p>
-<dl class="section return"><dt>Returns</dt><dd>The current value of the input channel. </dd></dl>
-
-</div>
-</div>
-<a id="a53149308aa69b638e5592cbb9b7d2142" name="a53149308aa69b638e5592cbb9b7d2142"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53149308aa69b638e5592cbb9b7d2142">&#9670;&#160;</a></span>getState()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">input::state</a> qOS::input::channel::getState </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Query the state of the specified channel. </p>
-<dl class="section return"><dt>Returns</dt><dd>The state of the input channel. </dd></dl>
-
-</div>
-</div>
-<a id="a4dc933c97a3bd40da00b4ea52f9a879f" name="a4dc933c97a3bd40da00b4ea52f9a879f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dc933c97a3bd40da00b4ea52f9a879f">&#9670;&#160;</a></span>setCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::input::channel::setCallback </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec">eventCallback_t</a></td>          <td class="paramname"><span class="paramname"><em>c</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval">1000U</span></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="afe9029d08ecd265b09bb44546dd384e7" name="afe9029d08ecd265b09bb44546dd384e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe9029d08ecd265b09bb44546dd384e7">&#9670;&#160;</a></span>setChannel()</h2>
 
@@ -359,7 +315,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set/Change the pin number for the provided channel. </p>
+<p>Set/Change the channel(pin) number. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">inputChannel</td><td>The specified channel(pin) to read. </td></tr>
