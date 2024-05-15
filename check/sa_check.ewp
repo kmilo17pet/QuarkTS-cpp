@@ -2193,13 +2193,13 @@
             <name>$PROJ_DIR$\..\src\include\critical.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\include\edgecheck.hpp</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\..\src\include\fsm.hpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\include\helper.hpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\include\input.hpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\include\kernel.hpp</name>
@@ -2251,10 +2251,10 @@
         <name>$PROJ_DIR$\..\src\critical.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\edgecheck.cpp</name>
+        <name>$PROJ_DIR$\..\src\fsm.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\fsm.cpp</name>
+        <name>$PROJ_DIR$\..\src\input.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\kernel.cpp</name>

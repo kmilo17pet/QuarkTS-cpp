@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.4.6"
-#define QUARKTS_CPP_VERNUM          ( 146u )
+#define QUARKTS_CPP_VERSION         "1.4.7"
+#define QUARKTS_CPP_VERNUM          ( 147u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -60,7 +60,7 @@ This file is part of the QuarkTS++ OS distribution.
 #include "include/memory.hpp"
 #include "include/util.hpp"
 #include "include/bytebuffer.hpp"
-#include "include/edgecheck.hpp"
+#include "include/input.hpp"
 #include "include/response.hpp"
 #include "include/logger.hpp"
 
@@ -173,7 +173,7 @@ using namespace qOS;
 */
 
 /**
-*  @defgroup qedgecheck I/O Groups for edge checking
+*  @defgroup qinput Input channel utilities
 *  @ingroup qutility
 */
 
