@@ -18,8 +18,8 @@ var group__qinput =
     [ "qOS::input::channelReaderFcn_t", "group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a", null ],
     [ "qOS::input::eventCallback_t", "group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec", null ],
     [ "qOS::input::event", "group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7", [
-      [ "qOS::input::event::FALLING", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a4f9d4539ac1e11a251e2afe022eba4e6", null ],
-      [ "qOS::input::event::RISING", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab3762d500f2ada6030da058853c195d6", null ],
+      [ "qOS::input::event::FALLING_EDGE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52", null ],
+      [ "qOS::input::event::RISING_EDGE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98", null ],
       [ "qOS::input::event::PRESSED", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a5381dc876ab002103a027265bc14ae52", null ],
       [ "qOS::input::event::RELEASED", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a109d54efbb64d71f9a6ab18d0fb8add8", null ]
     ] ],
