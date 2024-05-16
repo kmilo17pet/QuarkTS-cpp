@@ -15,6 +15,7 @@ var hierarchy =
     [ "qOS::node", "classq_o_s_1_1node.html", [
       [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", null ],
       [ "qOS::input::channel", "classq_o_s_1_1input_1_1channel.html", null ],
+      [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", null ],
       [ "qOS::list", "classq_o_s_1_1list.html", null ],
       [ "qOS::task", "classq_o_s_1_1task.html", null ]
     ] ],
@@ -37,6 +38,5 @@ var hierarchy =
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", null ],
     [ "qOS::sm::timeoutStateDefinition", "structq_o_s_1_1sm_1_1timeout_state_definition.html", null ],
     [ "qOS::timer", "classq_o_s_1_1timer.html", null ],
-    [ "qOS::sm::transition", "structq_o_s_1_1sm_1_1transition.html", null ],
-    [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", null ]
+    [ "qOS::sm::transition", "structq_o_s_1_1sm_1_1transition.html", null ]
 ];

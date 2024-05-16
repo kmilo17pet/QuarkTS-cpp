@@ -223,6 +223,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abf9024e617bd777e7a8d26a313e871c4" id="r_abf9024e617bd777e7a8d26a313e871c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qtaskmanip.html#ga34268c083fc5881f4027b4100fb1f790">globalState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf9024e617bd777e7a8d26a313e871c4">getGlobalState</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task) const noexcept</td></tr>
 <tr class="memdesc:abf9024e617bd777e7a8d26a313e871c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the task global-state.  <br /></td></tr>
 <tr class="separator:abf9024e617bd777e7a8d26a313e871c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88a7638b6ae7a42a9bf253b3049bfbe2" id="r_a88a7638b6ae7a42a9bf253b3049bfbe2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88a7638b6ae7a42a9bf253b3049bfbe2">addInputWatcher</a> (<a class="el" href="classq_o_s_1_1input_1_1watcher.html">input::watcher</a> &amp;w) noexcept</td></tr>
+<tr class="memdesc:a88a7638b6ae7a42a9bf253b3049bfbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an input-watcher so that its function is executed by the kernel.  <br /></td></tr>
+<tr class="separator:a88a7638b6ae7a42a9bf253b3049bfbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8372a4835103df04b8294dae6a947c65" id="r_a8372a4835103df04b8294dae6a947c65"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8372a4835103df04b8294dae6a947c65">removeInputWatcher</a> (<a class="el" href="classq_o_s_1_1input_1_1watcher.html">input::watcher</a> &amp;w) noexcept</td></tr>
+<tr class="memdesc:a8372a4835103df04b8294dae6a947c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an input-watcher so that the kernel stops executing its function.  <br /></td></tr>
+<tr class="separator:a8372a4835103df04b8294dae6a947c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -294,6 +300,41 @@ Static Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a88a7638b6ae7a42a9bf253b3049bfbe2" name="a88a7638b6ae7a42a9bf253b3049bfbe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88a7638b6ae7a42a9bf253b3049bfbe2">&#9670;&#160;</a></span>addInputWatcher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::core::addInputWatcher </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1input_1_1watcher.html">input::watcher</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>w</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add an input-watcher so that its function is executed by the kernel. </p>
+<dl class="section note"><dt>Note</dt><dd>The input-watcher is considered as an always-active task </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">w</td><td>The input watcher. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> if success, otherwise returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
@@ -577,6 +618,40 @@ Asynchronous triggers do not affect the iteration counter. </dd></dl>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1clock_html_aee283c6e9866c6570f66b4a2cfebdbae"><div class="ttname"><a href="classq_o_s_1_1clock.html#aee283c6e9866c6570f66b4a2cfebdbae">qOS::clock::sysTick</a></div><div class="ttdeci">static void sysTick(void) noexcept</div><div class="ttdoc">Feed the system tick.</div></div>
 </div><!-- fragment --> 
+</div>
+</div>
+<a id="a8372a4835103df04b8294dae6a947c65" name="a8372a4835103df04b8294dae6a947c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8372a4835103df04b8294dae6a947c65">&#9670;&#160;</a></span>removeInputWatcher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::core::removeInputWatcher </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classq_o_s_1_1input_1_1watcher.html">input::watcher</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>w</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove an input-watcher so that the kernel stops executing its function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">w</td><td>The input-watcher. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> if success, otherwise returns <code>false</code>. </dd></dl>
+
 </div>
 </div>
 <a id="a1448493a77ab1a2e7fd3d46954bbf537" name="a1448493a77ab1a2e7fd3d46954bbf537"></a>

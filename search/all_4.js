@@ -19,7 +19,7 @@ var searchData=
   ['event_20triggered_20tasks_16',['Event-triggered tasks',['../q_foundations.html#q_eventtasks',1,'']]],
   ['event_5fflag_17',['EVENT_FLAG',['../group__qeventflags.html#ga7f7273ea1c026d4c8a7ba52ec39e6442',1,'qOS']]],
   ['event_5ft_18',['event_t',['../classq_o_s_1_1event__t.html',1,'qOS']]],
-  ['eventcallback_5ft_19',['eventCallback_t',['../group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec',1,'qOS::input']]],
+  ['eventcallback_5ft_19',['eventCallback_t',['../group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94',1,'qOS::input']]],
   ['eventdata_20',['EventData',['../classq_o_s_1_1event__t.html#aab52427241a29dfd601229464182956e',1,'qOS::event_t']]],
   ['eventflagscheck_21',['eventFlagsCheck',['../group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858',1,'qOS::core']]],
   ['eventflagsmodify_22',['eventFlagsModify',['../group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937',1,'qOS::core']]],

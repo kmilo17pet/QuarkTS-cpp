@@ -3,7 +3,7 @@ var namespaceq_o_s_1_1input =
     [ "channel", "classq_o_s_1_1input_1_1channel.html", "classq_o_s_1_1input_1_1channel" ],
     [ "watcher", "classq_o_s_1_1input_1_1watcher.html", "classq_o_s_1_1input_1_1watcher" ],
     [ "channelReaderFcn_t", "group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a", null ],
-    [ "eventCallback_t", "group__qinput.html#ga1edc963829bdde6bf7526075ba5135ec", null ],
+    [ "eventCallback_t", "group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94", null ],
     [ "event", "group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7", [
       [ "FALLING_EDGE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52", null ],
       [ "RISING_EDGE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98", null ],

@@ -5,6 +5,7 @@ var group__qtaskcreation =
     [ "qOS::core", "classq_o_s_1_1core.html", [
       [ "addCommandLineInterfaceTask", "group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f", null ],
       [ "addEventTask", "classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b", null ],
+      [ "addInputWatcher", "classq_o_s_1_1core.html#a88a7638b6ae7a42a9bf253b3049bfbe2", null ],
       [ "addStateMachineTask", "group__qfsm.html#ga86639c0e76496b0a1577b634452f5811", null ],
       [ "addTask", "classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b", null ],
       [ "eventFlagsCheck", "group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858", null ],
@@ -18,6 +19,7 @@ var group__qtaskcreation =
       [ "init", "classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a", null ],
       [ "notify", "group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298", null ],
       [ "notify", "group__qnot.html#gab865aa8541244ae16444e52691823a41", null ],
+      [ "removeInputWatcher", "classq_o_s_1_1core.html#a8372a4835103df04b8294dae6a947c65", null ],
       [ "removeTask", "classq_o_s_1_1core.html#a1448493a77ab1a2e7fd3d46954bbf537", null ],
       [ "run", "classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c", null ],
       [ "schedulerRelease", "classq_o_s_1_1core.html#add44643c29c6e26b52cb032fe4b31c12", null ],
