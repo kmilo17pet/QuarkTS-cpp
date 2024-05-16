@@ -385,6 +385,9 @@ bool core::run( void ) noexcept
                 dispatchIdle();
             }
         }
+        if ( inputWatchers.length() > 0U ) {
+            handleInputWatchers();
+        }
         if ( suspendedList.length() > 0U ) {
             (void)waitingList.move( suspendedList, listPosition::AT_BACK );
             #if ( Q_PRESERVE_TASK_ENTRY_ORDER == 1 )
@@ -595,3 +598,20 @@ globalState core::getGlobalState( task &Task ) const noexcept
     return retValue;
 }
 /*============================================================================*/
+bool core::addInputWatcher( input::watcher &w ) noexcept
+{
+    return inputWatchers.insert( &w );
+}
+/*============================================================================*/
+bool core::removeInputWatcher( input::watcher &w ) noexcept
+{
+    return inputWatchers.remove( &w );
+}
+/*============================================================================*/
+void core::handleInputWatchers( void ) noexcept
+{
+    for ( auto i = inputWatchers.begin(); i.untilEnd() ; i++ ) {
+        input::watcher * const w = i.get<input::watcher*>();
+        (void)w->watch();
+    }
+}

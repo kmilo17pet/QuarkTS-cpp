@@ -7,6 +7,7 @@
 #include "include/types.hpp"
 #include "include/task.hpp"
 #include "include/prioqueue.hpp"
+#include "include/input.hpp"
 
 #if ( Q_FSM == 1 )
     #include "include/fsm.hpp"
@@ -92,6 +93,7 @@ namespace qOS {
             list coreLists[ Q_PRIORITY_LEVELS + 2 ]; // skipcq: CXX-W2066
             list& waitingList;  // skipcq: CXX-W2012, CXX-W2010
             list& suspendedList;  // skipcq: CXX-W2012, CXX-W2010
+            list inputWatchers;
             static const priority_t MAX_PRIORITY_VALUE;
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_FCALL_IDLE;
@@ -102,6 +104,7 @@ namespace qOS {
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
             void dispatch( list * const xList ) noexcept;
             void dispatchIdle( void ) noexcept;
+            void handleInputWatchers( void ) noexcept;
             core() : waitingList( coreLists[ Q_PRIORITY_LEVELS ] ), suspendedList( coreLists[ Q_PRIORITY_LEVELS + 1 ] ) {}
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
@@ -432,6 +435,22 @@ namespace qOS {
             * current kernel transaction
             */
             globalState getGlobalState( task &Task ) const noexcept;
+
+            /**
+            * @brief Add an input-watcher so that its function is executed by
+            * the kernel
+            * @note The input-watcher is considered as an always-active task
+            * @param[in] w The input watcher.
+            * @return Returns @c true if success, otherwise returns @c false.
+            */
+            bool addInputWatcher( input::watcher &w ) noexcept;
+            /**
+            * @brief Remove an input-watcher so that the kernel stops executing
+            * its function
+            * @param[in] w The input-watcher.
+            * @return Returns @c true if success, otherwise returns @c false.
+            */
+            bool removeInputWatcher( input::watcher &w ) noexcept;
     };
     /** @brief The predefined instance of the OS kernel interface */
     extern core& os; // skipcq: CXX-W2011, CXX-W2009

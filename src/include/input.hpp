@@ -21,6 +21,7 @@ namespace qOS {
 
 
         class watcher;
+        class channel;
 
         /** @addtogroup qinput
         *  @{
@@ -56,7 +57,7 @@ namespace qOS {
         };
 
         using channelReaderFcn_t = int (*)( uint8_t );
-        using eventCallback_t = void(*)( uint8_t, const event );
+        using eventCallback_t = void(*)( channel&, const event );
 
 
         /**
@@ -80,9 +81,10 @@ namespace qOS {
                 uint8_t xChannel;
                 int riseThreshold;
                 int fallThreshold;
+                void *userData{ nullptr };
                 channel( channel const& ) = delete;
                 void operator=( channel const& ) = delete;
-                bool registerEvent( event e, eventCallback_t c, qOS::clock_t t = 1000U ) noexcept;
+                bool registerEvent( event e, eventCallback_t c, qOS::duration_t t = 1_sec ) noexcept;
                 inline bool unregisterEvent( event e ) noexcept
                 {
                     return registerEvent( e, nullptr );
@@ -124,13 +126,46 @@ namespace qOS {
 
                     return retValue;
                 }
+                /**
+                * @brief Get the channel(pin) number.
+                * @return The channel(pin) number.
+                */
+                inline uint8_t getChannel( void ) const
+                {
+                    return xChannel;
+                }
+                /**
+                * @brief Get the channel type.
+                * @return The channel type.
+                */
+                inline input::type getChannelType( void ) const
+                {
+                    return channelType;
+                }
+
+                /**
+                * @brief Set the channel user-data.
+                * @param[in] A pointer to the user-data
+                */
+                inline void setUserData( void* pUserData )
+                {
+                    userData = pUserData;
+                }
+                /**
+                * @brief Get the channel user-data.
+                * @return A pointer to the user-data
+                */
+                inline void* getUserData( void )
+                {
+                    return userData;
+                }
             friend class watcher;
         };
 
         /**
         * @brief The digital input-channel watcher class.
         */
-        class watcher {
+        class watcher : protected node {
             private:
                 eventCallback_t exception{ nullptr };
                 list nodes;
@@ -142,10 +177,10 @@ namespace qOS {
                 void operator=( watcher const& ) = delete;
                 void watchDigital( channel * const n ) noexcept;
                 void watchAnalog( channel * const n ) noexcept;
-                inline void exceptionEvent( uint8_t chan )
+                inline void exceptionEvent( channel * const n )
                 {
                     if ( nullptr != exception ) {
-                        exception( chan, input::event::EXCEPTION );
+                        exception( *n, input::event::EXCEPTION );
                     }
                 }
             public:
@@ -194,7 +229,7 @@ namespace qOS {
                 * @param[in] t The time associated to the event.
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool registerEvent( channel& n, event e, eventCallback_t c, qOS::clock_t t = 1000U ) noexcept
+                bool registerEvent( channel& n, event e, eventCallback_t c, qOS::duration_t t = 1_sec ) noexcept
                 {
                     return n.registerEvent( e, c, t );
                 }
@@ -218,7 +253,7 @@ namespace qOS {
                 * @return @c true if operation succeeds in all input-channels.
                 * Otherwise @c false.
                 */
-                bool registerEvent( event e, eventCallback_t c, qOS::clock_t t = 1000U ) noexcept;
+                bool registerEvent( event e, eventCallback_t c, qOS::duration_t t = 1_sec ) noexcept;
                 /**
                 * @brief Un-Register an event-callback for all input-channels
                 * being added.
