@@ -91,6 +91,8 @@ index_t	KEYWORD1
 byte_t	KEYWORD1
 putChar_t	KEYWORD1
 ioFcn_t	KEYWORD1
+input	KEYWORD1
+channel	KEYWORD1
 
 #######################################
 # Methods and Functions(KEYWORD2)

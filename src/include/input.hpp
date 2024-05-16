@@ -47,6 +47,7 @@ namespace qOS {
             RISING_EDGE,  /**< Event on rising-edge of the digital input-channel*/
             STEADY_ON,    /**< Event when the digital input-channel has been kept on for a while .*/
             STEADY_OFF,   /**< Event when the digital input-channel has been kept off for a while .*/
+            EXCEPTION,    /**< Error due a bad reading or channel configuration .*/
         };
 
         enum class type {
@@ -91,10 +92,10 @@ namespace qOS {
                 /**
                 * @brief Constructor for the analog input channel instance.
                 * @param[in] inputChannel The specified channel(pin) to read.
-                * @param[in] upperThreshold The upper threshold value.
                 * @param[in] lowerThreshold The lower threshold value.
+                * @param[in] upperThreshold The upper threshold value.
                 */
-                channel( uint8_t inputChannel, int upperThreshold, int lowerThreshold ) : xChannel( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold )
+                channel( uint8_t inputChannel, int lowerThreshold, int upperThreshold ) : xChannel( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold )
                 {
                     channelType = input::type::ANALOG;
                 }
@@ -131,6 +132,7 @@ namespace qOS {
         */
         class watcher {
             private:
+                eventCallback_t exception{ nullptr };
                 list nodes;
                 qOS::timer waitDebounce;
                 qOS::duration_t debounceTime{ 100_ms };
@@ -140,16 +142,11 @@ namespace qOS {
                 void operator=( watcher const& ) = delete;
                 void watchDigital( channel * const n ) noexcept;
                 void watchAnalog( channel * const n ) noexcept;
-                inline state read( channel * const n ) noexcept
+                inline void exceptionEvent( uint8_t chan )
                 {
-                    state s = state::UNKNOWN;
-                    const state vOn = ( n->negValue ) ? state::OFF : state::ON;
-                    const state vOff = ( n->negValue ) ? state::ON : state::OFF;
-
-                    if ( nullptr != digitalReader ) {
-                        s = digitalReader( n->xChannel ) ? vOn : vOff;
+                    if ( nullptr != exception ) {
+                        exception( chan, input::event::EXCEPTION );
                     }
-                    return s;
                 }
             public:
                 /**
@@ -171,12 +168,7 @@ namespace qOS {
                 * @param[in] n The input-Channel to watch
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool add( channel& n ) noexcept
-                {
-                    n.prevState = ( input::type::DIGITAL == n.channelType ) ? read( &n ) : input::state::OFF;
-                    n.tChange = clock::getTick();
-                    return nodes.insert( &n );
-                }
+                bool add( channel& n ) noexcept;
                 /**
                 * @brief Remove a channel to the watcher instance
                 * @param[in] n The input-Channel to watch
@@ -226,15 +218,7 @@ namespace qOS {
                 * @return @c true if operation succeeds in all input-channels.
                 * Otherwise @c false.
                 */
-                bool registerEvent( event e, eventCallback_t c, qOS::clock_t t = 1000U ) noexcept
-                {
-                    bool retValue = true;
-                    for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
-                        input::channel * const n = i.get<input::channel*>();
-                        retValue &= n->registerEvent( e, c, t );
-                    }
-                    return retValue;
-                }
+                bool registerEvent( event e, eventCallback_t c, qOS::clock_t t = 1000U ) noexcept;
                 /**
                 * @brief Un-Register an event-callback for all input-channels
                 * being added.
@@ -244,12 +228,7 @@ namespace qOS {
                 */
                 bool unregisterEvent( event e ) noexcept
                 {
-                    bool retValue = true;
-                    for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
-                        input::channel * const n = i.get<input::channel*>();
-                        retValue &= n->unregisterEvent( e );
-                    }
-                    return retValue;
+                    return registerEvent( e, nullptr );
                 }
         };
 
