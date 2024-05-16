@@ -160,9 +160,9 @@ Collaboration diagram for qOS::input::channel:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4817b47d848db9dc53fd5405388006e7" id="r_a4817b47d848db9dc53fd5405388006e7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4817b47d848db9dc53fd5405388006e7">~channel</a> ()</td></tr>
 <tr class="separator:a4817b47d848db9dc53fd5405388006e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f6e74d8a79df8c410ce1a861b134c32" id="r_a9f6e74d8a79df8c410ce1a861b134c32"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f6e74d8a79df8c410ce1a861b134c32">channel</a> (uint8_t inputChannel, int upperThreshold, int lowerThreshold)</td></tr>
-<tr class="memdesc:a9f6e74d8a79df8c410ce1a861b134c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the analog input channel instance.  <br /></td></tr>
-<tr class="separator:a9f6e74d8a79df8c410ce1a861b134c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa32a4271b8322aba1c070f24a2330dfb" id="r_aa32a4271b8322aba1c070f24a2330dfb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa32a4271b8322aba1c070f24a2330dfb">channel</a> (uint8_t inputChannel, int lowerThreshold, int upperThreshold)</td></tr>
+<tr class="memdesc:aa32a4271b8322aba1c070f24a2330dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the analog input channel instance.  <br /></td></tr>
+<tr class="separator:aa32a4271b8322aba1c070f24a2330dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac394f68da414dfe8401700f25acd9058" id="r_ac394f68da414dfe8401700f25acd9058"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac394f68da414dfe8401700f25acd9058">channel</a> (uint8_t inputChannel, bool invert=false)</td></tr>
 <tr class="memdesc:ac394f68da414dfe8401700f25acd9058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the digital input channel instance.  <br /></td></tr>
 <tr class="separator:ac394f68da414dfe8401700f25acd9058"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,8 +209,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a9f6e74d8a79df8c410ce1a861b134c32" name="a9f6e74d8a79df8c410ce1a861b134c32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f6e74d8a79df8c410ce1a861b134c32">&#9670;&#160;</a></span>channel() <span class="overload">[1/2]</span></h2>
+<a id="aa32a4271b8322aba1c070f24a2330dfb" name="aa32a4271b8322aba1c070f24a2330dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa32a4271b8322aba1c070f24a2330dfb">&#9670;&#160;</a></span>channel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,12 +226,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperThreshold</em>, </span></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerThreshold</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>lowerThreshold</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>upperThreshold</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -245,8 +245,8 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">inputChannel</td><td>The specified channel(pin) to read. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">upperThreshold</td><td>The upper threshold value. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">lowerThreshold</td><td>The lower threshold value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">upperThreshold</td><td>The upper threshold value. </td></tr>
   </table>
   </dd>
 </dl>

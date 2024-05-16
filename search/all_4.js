@@ -33,10 +33,11 @@ var searchData=
   ['example_20with_20history_20pseudo_20states_30',['Example with history pseudo-states',['../q_fsm.html#q_fsm_example4',1,'']]],
   ['example_20with_20semaphores_31',['Co-Routine example with semaphores.',['../q_qcoroutines.html#q_coroutine_example2',1,'']]],
   ['examples_32',['Two simple demonstrative examples',['../q_gettingstarted.html#q_os_demo',1,'']]],
-  ['exec_33',['exec',['../classq_o_s_1_1command_line_interface.html#a1c3b2f43317b8b4fca1b4ae38ed0d755',1,'qOS::commandLineInterface']]],
-  ['exit_34',['exit',['../group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d',1,'qOS::critical']]],
-  ['expired_35',['expired',['../classq_o_s_1_1timer.html#aaef5ff5b14bb68c184b70420110424de',1,'qOS::timer']]],
-  ['extensions_36',['Extensions',['../q_extensions.html',1,'']]],
-  ['extensions_37',['Kernel extensions',['../group__qmodules.html',1,'']]],
-  ['external_20control_38',['External control',['../q_qcoroutines.html#q_coroutine_ext',1,'']]]
+  ['exception_33',['EXCEPTION',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf',1,'qOS::input']]],
+  ['exec_34',['exec',['../classq_o_s_1_1command_line_interface.html#a1c3b2f43317b8b4fca1b4ae38ed0d755',1,'qOS::commandLineInterface']]],
+  ['exit_35',['exit',['../group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d',1,'qOS::critical']]],
+  ['expired_36',['expired',['../classq_o_s_1_1timer.html#aaef5ff5b14bb68c184b70420110424de',1,'qOS::timer']]],
+  ['extensions_37',['Extensions',['../q_extensions.html',1,'']]],
+  ['extensions_38',['Kernel extensions',['../group__qmodules.html',1,'']]],
+  ['external_20control_39',['External control',['../q_qcoroutines.html#q_coroutine_ext',1,'']]]
 ];

@@ -186,10 +186,14 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga78226dd21564a598124985dfa62a8e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible states detected by the <a class="el" href="classq_o_s_1_1input_1_1watcher.html" title="The digital input-channel watcher class.">qOS::input::watcher</a> class for a specified <a class="el" href="classq_o_s_1_1input_1_1channel.html" title="An digital input-channel object.">qOS::input::channel</a>.  <a href="#ga78226dd21564a598124985dfa62a8e11">More...</a><br /></td></tr>
 <tr class="separator:ga78226dd21564a598124985dfa62a8e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga72d9a973c87da11f11a8aeabbbb25aa7" id="r_ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga72d9a973c87da11f11a8aeabbbb25aa7">qOS::input::event</a> { <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">qOS::input::event::FALLING_EDGE</a>
+<tr class="memitem:ga72d9a973c87da11f11a8aeabbbb25aa7" id="r_ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga72d9a973c87da11f11a8aeabbbb25aa7">qOS::input::event</a> { <br />
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">qOS::input::event::FALLING_EDGE</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98">qOS::input::event::RISING_EDGE</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ad264a2d9c77f72d3d3150953aacc2e00">qOS::input::event::STEADY_ON</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a806247cc27ace0fd672674e08896aef5">qOS::input::event::STEADY_OFF</a>
+, <br />
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf">qOS::input::event::EXCEPTION</a>
+<br />
  }</td></tr>
 <tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the watcher class for a specified input-channel.  <a href="#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>
 <tr class="separator:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -259,6 +263,8 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ad264a2d9c77f72d3d3150953aacc2e00" name="gga72d9a973c87da11f11a8aeabbbb25aa7ad264a2d9c77f72d3d3150953aacc2e00"></a>STEADY_ON&#160;</td><td class="fielddoc"><p>Event when the digital input-channel has been kept on for a while . </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a806247cc27ace0fd672674e08896aef5" name="gga72d9a973c87da11f11a8aeabbbb25aa7a806247cc27ace0fd672674e08896aef5"></a>STEADY_OFF&#160;</td><td class="fielddoc"><p>Event when the digital input-channel has been kept off for a while . </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf" name="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf"></a>EXCEPTION&#160;</td><td class="fielddoc"><p>Error due a bad reading or channel configuration . </p>
 </td></tr>
 </table>
 

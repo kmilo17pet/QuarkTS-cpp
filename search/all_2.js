@@ -4,7 +4,7 @@ var searchData=
   ['callback_20handler_3a_20performing_20transitions_20and_20retrieving_20data_1',['The state callback handler: performing transitions and retrieving data',['../q_fsm.html#q_fsmhandler',1,'']]],
   ['callbacks_2',['Subscribing states and defining callbacks',['../q_fsm.html#q_fsm_subscribe_states',1,'']]],
   ['calls_20in_20a_20co_20routine_3',['Blocking calls in a Co-routine',['../q_qcoroutines.html#q_coroutine_blocking',1,'']]],
-  ['channel_4',['channel',['../classq_o_s_1_1input_1_1channel.html',1,'qOS::input::channel'],['../classq_o_s_1_1input_1_1channel.html#a9f6e74d8a79df8c410ce1a861b134c32',1,'qOS::input::channel::channel(uint8_t inputChannel, int upperThreshold, int lowerThreshold)'],['../classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058',1,'qOS::input::channel::channel(uint8_t inputChannel, bool invert=false)']]],
+  ['channel_4',['channel',['../classq_o_s_1_1input_1_1channel.html',1,'qOS::input::channel'],['../classq_o_s_1_1input_1_1channel.html#aa32a4271b8322aba1c070f24a2330dfb',1,'qOS::input::channel::channel(uint8_t inputChannel, int lowerThreshold, int upperThreshold)'],['../classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058',1,'qOS::input::channel::channel(uint8_t inputChannel, bool invert=false)']]],
   ['channel_20utilities_5',['Input channel utilities',['../group__qinput.html',1,'']]],
   ['channelreaderfcn_5ft_6',['channelReaderFcn_t',['../group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a',1,'qOS::input']]],
   ['checkendianness_7',['checkEndianness',['../group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d',1,'qOS::util']]],

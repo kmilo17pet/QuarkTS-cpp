@@ -3,7 +3,7 @@ var group__qinput =
     [ "qOS::input", "namespaceq_o_s_1_1input.html", null ],
     [ "qOS::input::channel", "classq_o_s_1_1input_1_1channel.html", [
       [ "~channel", "classq_o_s_1_1input_1_1channel.html#a4817b47d848db9dc53fd5405388006e7", null ],
-      [ "channel", "classq_o_s_1_1input_1_1channel.html#a9f6e74d8a79df8c410ce1a861b134c32", null ],
+      [ "channel", "classq_o_s_1_1input_1_1channel.html#aa32a4271b8322aba1c070f24a2330dfb", null ],
       [ "channel", "classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058", null ],
       [ "setChannel", "classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7", null ],
       [ "watcher", "classq_o_s_1_1input_1_1channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
@@ -24,7 +24,8 @@ var group__qinput =
       [ "qOS::input::event::FALLING_EDGE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52", null ],
       [ "qOS::input::event::RISING_EDGE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98", null ],
       [ "qOS::input::event::STEADY_ON", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad264a2d9c77f72d3d3150953aacc2e00", null ],
-      [ "qOS::input::event::STEADY_OFF", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a806247cc27ace0fd672674e08896aef5", null ]
+      [ "qOS::input::event::STEADY_OFF", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a806247cc27ace0fd672674e08896aef5", null ],
+      [ "qOS::input::event::EXCEPTION", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf", null ]
     ] ],
     [ "qOS::input::state", "group__qinput.html#ga78226dd21564a598124985dfa62a8e11", [
       [ "qOS::input::state::FALLING_EDGE", "group__qinput.html#gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52", null ],

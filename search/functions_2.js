@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['channel_0',['channel',['../classq_o_s_1_1input_1_1channel.html#a9f6e74d8a79df8c410ce1a861b134c32',1,'qOS::input::channel::channel(uint8_t inputChannel, int upperThreshold, int lowerThreshold)'],['../classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058',1,'qOS::input::channel::channel(uint8_t inputChannel, bool invert=false)']]],
+  ['channel_0',['channel',['../classq_o_s_1_1input_1_1channel.html#aa32a4271b8322aba1c070f24a2330dfb',1,'qOS::input::channel::channel(uint8_t inputChannel, int lowerThreshold, int upperThreshold)'],['../classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058',1,'qOS::input::channel::channel(uint8_t inputChannel, bool invert=false)']]],
   ['checkendianness_1',['checkEndianness',['../group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d',1,'qOS::util']]],
   ['clean_2',['clean',['../classq_o_s_1_1list.html#ad7069316196cd86a1fca8a517a6cdd75',1,'qOS::list']]],
   ['clip_3',['clip',['../group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9',1,'qOS']]],
