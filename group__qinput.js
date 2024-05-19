@@ -13,7 +13,7 @@ var group__qinput =
       [ "watcher", "classq_o_s_1_1input_1_1channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
     [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", [
-      [ "watcher", "classq_o_s_1_1input_1_1watcher.html#aca59e6cd30dca03b6f21f9ef14f56963", null ],
+      [ "watcher", "classq_o_s_1_1input_1_1watcher.html#a070110959b1864da3396af8e93c4ee22", null ],
       [ "add", "classq_o_s_1_1input_1_1watcher.html#aab71da51c936194194feed99d7443667", null ],
       [ "registerEvent", "classq_o_s_1_1input_1_1watcher.html#a3c2ca46c2d411dc09d46809b8635d682", null ],
       [ "registerEvent", "classq_o_s_1_1input_1_1watcher.html#af2971be02d17d9cea9cc1b419789fd54", null ],

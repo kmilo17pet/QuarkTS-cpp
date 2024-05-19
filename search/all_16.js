@@ -4,7 +4,7 @@ var searchData=
   ['waituntil_1',['waitUntil',['../group__qcoroutines.html#gad0eca0c65e03d038bb7374ee75980f20',1,'qOS::co::waitUntil(bool condition) noexcept'],['../group__qcoroutines.html#ga62aa65d69c4600ba347dfe6f789ba240',1,'qOS::co::waitUntil(bool condition, qOS::duration_t timeout) noexcept']]],
   ['warning_2',['warning',['../group__qlogger.html#gga8d02cc4e3735026bc7ceb4cb70940bc1a842dff2b50e9745beb9274c0cd399da8',1,'qOS::logger']]],
   ['watch_3',['watch',['../classq_o_s_1_1input_1_1watcher.html#a0703b4fef051351cd863d303dade48cb',1,'qOS::input::watcher']]],
-  ['watcher_4',['watcher',['../classq_o_s_1_1input_1_1watcher.html',1,'qOS::input::watcher'],['../classq_o_s_1_1input_1_1watcher.html#aca59e6cd30dca03b6f21f9ef14f56963',1,'qOS::input::watcher::watcher()']]],
+  ['watcher_4',['watcher',['../classq_o_s_1_1input_1_1watcher.html',1,'qOS::input::watcher'],['../classq_o_s_1_1input_1_1watcher.html#a070110959b1864da3396af8e93c4ee22',1,'qOS::input::watcher::watcher()']]],
   ['wht_5',['wht',['../group__qlogger.html#ga733b172d6537dc9028df93553ccfc069',1,'qOS::logger']]],
   ['with_20history_20pseudo_20states_6',['Example with history pseudo-states',['../q_fsm.html#q_fsm_example4',1,'']]],
   ['with_20semaphores_7',['Co-Routine example with semaphores.',['../q_qcoroutines.html#q_coroutine_example2',1,'']]],
