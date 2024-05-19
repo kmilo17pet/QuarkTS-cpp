@@ -53,7 +53,9 @@ namespace qOS {
             STEADY_ON,          /**< Event when the input-channel has been kept on for the specified time .*/
             STEADY_OFF,         /**< Event when the input-channel has been kept off for the specified time .*/
             STEADY_IN_BAND,     /**< Event when the the analog input-channel has remained within the band for the specified time .*/
+            /*! @cond  */
             MAX_EVENTS,
+            /*! @endcond  */
         };
 
         enum class type {
