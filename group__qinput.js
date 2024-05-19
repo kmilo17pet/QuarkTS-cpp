@@ -3,7 +3,7 @@ var group__qinput =
     [ "qOS::input", "namespaceq_o_s_1_1input.html", null ],
     [ "qOS::input::channel", "classq_o_s_1_1input_1_1channel.html", [
       [ "~channel", "classq_o_s_1_1input_1_1channel.html#a4817b47d848db9dc53fd5405388006e7", null ],
-      [ "channel", "classq_o_s_1_1input_1_1channel.html#aa32a4271b8322aba1c070f24a2330dfb", null ],
+      [ "channel", "classq_o_s_1_1input_1_1channel.html#abae2b1454ff54f4383bb26b8febd34f0", null ],
       [ "channel", "classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058", null ],
       [ "getChannel", "classq_o_s_1_1input_1_1channel.html#afa6ca68a435f92ec6e612fe1d77bd0f9", null ],
       [ "getChannelType", "classq_o_s_1_1input_1_1channel.html#a76a41d1fc714232924865f00715e84ca", null ],
@@ -15,10 +15,10 @@ var group__qinput =
     [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", [
       [ "watcher", "classq_o_s_1_1input_1_1watcher.html#a070110959b1864da3396af8e93c4ee22", null ],
       [ "add", "classq_o_s_1_1input_1_1watcher.html#aab71da51c936194194feed99d7443667", null ],
-      [ "registerEvent", "classq_o_s_1_1input_1_1watcher.html#a3c2ca46c2d411dc09d46809b8635d682", null ],
-      [ "registerEvent", "classq_o_s_1_1input_1_1watcher.html#af2971be02d17d9cea9cc1b419789fd54", null ],
+      [ "registerEvent", "classq_o_s_1_1input_1_1watcher.html#adc7e663984aafea67baec5e7811d9a99", null ],
+      [ "registerEvent", "classq_o_s_1_1input_1_1watcher.html#a47176a1bfd4e9baf3f64c6f2890ae52f", null ],
       [ "remove", "classq_o_s_1_1input_1_1watcher.html#a72ddb2978024202aa6241481e3ad21f1", null ],
-      [ "unregisterEvent", "classq_o_s_1_1input_1_1watcher.html#a87612f2cb700be2825483d92212d54a7", null ],
+      [ "unregisterEvent", "classq_o_s_1_1input_1_1watcher.html#a2eff023a0552ee182d2fa534de8242f0", null ],
       [ "unregisterEvent", "classq_o_s_1_1input_1_1watcher.html#adfefe90d4d277f4a31b2b6edfd67e61d", null ],
       [ "watch", "classq_o_s_1_1input_1_1watcher.html#a0703b4fef051351cd863d303dade48cb", null ]
     ] ],

@@ -351,7 +351,7 @@ Additional operational states</h3>
 <li><code>DISABLED</code> : In this state, the time events will be discarded. This operational state is available when the <code>ENABLE</code> bit is cleared.</li>
 </ul>
 </li>
-<li><code>ASLEEP</code> : Task operability is put into a deep doze mode, so the task can not be triggered by the lower precedence events. This operational state is available when the <code>SHUTDOWN</code> bit is cleared. The task can exit from this operational state when it receives a high precedence event (a queued notification) or using the <a class="el" href="classq_o_s_1_1task.html#ad2fdf129e7a52590f083503e8e505911" title="Set the task operational state.">qOS::task::setState()</a> method.</li>
+<li><code>ASLEEP</code> : Task operability is put into a deep doze mode, so the task can not be triggered by the lower precedence events. This operational state is available when the <code>SHUTDOWN</code> bit is cleared. The task can exit from this operational state when it receives a high precedence event (a queued notification) or using the <a class="el" href="classq_o_s_1_1task.html#aad3ca38ab793ff8ea7b14925f4edccbf" title="Set the task operational state.">qOS::task::setState()</a> method.</li>
 </ul>
 <p>The figure below shows a better representation of how the event flow can be affected by these operational states.</p>
 <center>  

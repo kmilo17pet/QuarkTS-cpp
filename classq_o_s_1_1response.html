@@ -158,9 +158,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a375e3c0dcaa1d08b3375489c90f0b424" id="r_a375e3c0dcaa1d08b3375489c90f0b424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a375e3c0dcaa1d08b3375489c90f0b424">reset</a> (void) noexcept</td></tr>
 <tr class="memdesc:a375e3c0dcaa1d08b3375489c90f0b424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the Response Handler.  <br /></td></tr>
 <tr class="separator:a375e3c0dcaa1d08b3375489c90f0b424"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b2436ae4dd3d1f0136a1780828716ae" id="r_a7b2436ae4dd3d1f0136a1780828716ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qresponse.html#gaf0b51c328a9dd6215f23a32c98fb5586">responseStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b2436ae4dd3d1f0136a1780828716ae">received</a> (const char *pattern, const size_t n, <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=<a class="el" href="classq_o_s_1_1clock.html#ab7cab803d7a7792ee382a9cfcceb96b5">clock::IMMEDIATE</a>) noexcept</td></tr>
-<tr class="memdesc:a7b2436ae4dd3d1f0136a1780828716ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking response check.  <br /></td></tr>
-<tr class="separator:a7b2436ae4dd3d1f0136a1780828716ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8795c0cf673c33047774b71dcd4c9576" id="r_a8795c0cf673c33047774b71dcd4c9576"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qresponse.html#gaf0b51c328a9dd6215f23a32c98fb5586">responseStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8795c0cf673c33047774b71dcd4c9576">received</a> (const char *pattern, const size_t n, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=<a class="el" href="classq_o_s_1_1clock.html#ab7cab803d7a7792ee382a9cfcceb96b5">clock::IMMEDIATE</a>) noexcept</td></tr>
+<tr class="memdesc:a8795c0cf673c33047774b71dcd4c9576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking response check.  <br /></td></tr>
+<tr class="separator:a8795c0cf673c33047774b71dcd4c9576"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a719e731c27f2ca3fdfa5302782ff1f08" id="r_a719e731c27f2ca3fdfa5302782ff1f08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a719e731c27f2ca3fdfa5302782ff1f08">isrHandler</a> (const char rxChar) noexcept</td></tr>
 <tr class="memdesc:a719e731c27f2ca3fdfa5302782ff1f08"><td class="mdescLeft">&#160;</td><td class="mdescRight">ISR receiver for the response handler.  <br /></td></tr>
 <tr class="separator:a719e731c27f2ca3fdfa5302782ff1f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -280,12 +280,12 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True when the Response handler match the request from <a class="el" href="#a7b2436ae4dd3d1f0136a1780828716ae" title="Non-Blocking response check.">response::received()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True when the Response handler match the request from <a class="el" href="#a8795c0cf673c33047774b71dcd4c9576" title="Non-Blocking response check.">response::received()</a> </dd></dl>
 
 </div>
 </div>
-<a id="a7b2436ae4dd3d1f0136a1780828716ae" name="a7b2436ae4dd3d1f0136a1780828716ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b2436ae4dd3d1f0136a1780828716ae">&#9670;&#160;</a></span>received()</h2>
+<a id="a8795c0cf673c33047774b71dcd4c9576" name="a8795c0cf673c33047774b71dcd4c9576"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8795c0cf673c33047774b71dcd4c9576">&#9670;&#160;</a></span>received()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -306,7 +306,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classq_o_s_1_1clock.html#ab7cab803d7a7792ee382a9cfcceb96b5">clock::IMMEDIATE</a></span></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="classq_o_s_1_1clock.html#ab7cab803d7a7792ee382a9cfcceb96b5">clock::IMMEDIATE</a></span></span>&#160;)</td>
         </tr>
       </table>
   </td>

@@ -214,11 +214,11 @@ A simple scheduling</h2>
 <div class="line">    BSP_UART1_WriteString( e.<a class="code hl_function" href="classq_o_s_1_1event__t.html#ae7822b28c203859688aec792766f6c95">thisTask</a>().<a class="code hl_function" href="classq_o_s_1_1task.html#a96304aeb1e49dcd311c83e77fa5f0435">getName</a>() );</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> ( e.<a class="code hl_function" href="classq_o_s_1_1event__t.html#a2a46c4fa4a46ae5162590b300af64c33">firstIteration</a>() ) {</div>
-<div class="line">        task3.<a class="code hl_function" href="classq_o_s_1_1task.html#ad2fdf129e7a52590f083503e8e505911">setState</a>( taskState::ENABLED );</div>
+<div class="line">        task3.<a class="code hl_function" href="classq_o_s_1_1task.html#aad3ca38ab793ff8ea7b14925f4edccbf">setState</a>( taskState::ENABLED );</div>
 <div class="line">    }</div>
 <div class="line">    </div>
 <div class="line">    <span class="keywordflow">if</span> ( e.<a class="code hl_function" href="classq_o_s_1_1event__t.html#adb72cf2acd6148d96a8c03635fc049c7">lastIteration</a>() ) {</div>
-<div class="line">        e.<a class="code hl_function" href="classq_o_s_1_1event__t.html#ae7822b28c203859688aec792766f6c95">thisTask</a>().<a class="code hl_function" href="classq_o_s_1_1task.html#ad2fdf129e7a52590f083503e8e505911">setState</a>( taskState::SUSPENDED );</div>
+<div class="line">        e.<a class="code hl_function" href="classq_o_s_1_1event__t.html#ae7822b28c203859688aec792766f6c95">thisTask</a>().<a class="code hl_function" href="classq_o_s_1_1task.html#aad3ca38ab793ff8ea7b14925f4edccbf">setState</a>( taskState::SUSPENDED );</div>
 <div class="line">        e.<a class="code hl_function" href="classq_o_s_1_1event__t.html#ae7822b28c203859688aec792766f6c95">thisTask</a>().<a class="code hl_function" href="classq_o_s_1_1task.html#a502d1da2b1c7ee760f660bc60345d9b5">setTime</a>( 500 );</div>
 <div class="line">    }</div>
 <div class="line">}</div>
@@ -253,7 +253,7 @@ A simple scheduling</h2>
 <div class="ttc" id="aclassq_o_s_1_1task_html"><div class="ttname"><a href="classq_o_s_1_1task.html">qOS::task</a></div><div class="ttdoc">A task node object.</div><div class="ttdef"><b>Definition</b> task.hpp:345</div></div>
 <div class="ttc" id="aclassq_o_s_1_1task_html_a502d1da2b1c7ee760f660bc60345d9b5"><div class="ttname"><a href="classq_o_s_1_1task.html#a502d1da2b1c7ee760f660bc60345d9b5">qOS::task::setTime</a></div><div class="ttdeci">bool setTime(const qOS::duration_t tValue) noexcept</div><div class="ttdoc">Set/Change the Task execution interval.</div></div>
 <div class="ttc" id="aclassq_o_s_1_1task_html_a96304aeb1e49dcd311c83e77fa5f0435"><div class="ttname"><a href="classq_o_s_1_1task.html#a96304aeb1e49dcd311c83e77fa5f0435">qOS::task::getName</a></div><div class="ttdeci">const char * getName(void) const noexcept</div><div class="ttdoc">Retrieves the task name.</div></div>
-<div class="ttc" id="aclassq_o_s_1_1task_html_ad2fdf129e7a52590f083503e8e505911"><div class="ttname"><a href="classq_o_s_1_1task.html#ad2fdf129e7a52590f083503e8e505911">qOS::task::setState</a></div><div class="ttdeci">bool setState(taskState s) noexcept</div><div class="ttdoc">Set the task operational state.</div></div>
+<div class="ttc" id="aclassq_o_s_1_1task_html_aad3ca38ab793ff8ea7b14925f4edccbf"><div class="ttname"><a href="classq_o_s_1_1task.html#aad3ca38ab793ff8ea7b14925f4edccbf">qOS::task::setState</a></div><div class="ttdeci">bool setState(const taskState s) noexcept</div><div class="ttdoc">Set the task operational state.</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="q_os_example2"></a>
 Using the task argument</h2>

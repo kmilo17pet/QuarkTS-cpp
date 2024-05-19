@@ -59,7 +59,7 @@ var searchData=
   ['timeoutspecoption_5ft_56',['timeoutSpecOption_t',['../group__qfsm.html#gab372ec86302ddefe79964993c3c56e15',1,'qOS::sm']]],
   ['timeoutstatedefinition_57',['timeoutStateDefinition',['../structq_o_s_1_1sm_1_1timeout_state_definition.html',1,'qOS::sm']]],
   ['timeoutstop_58',['timeoutStop',['../classq_o_s_1_1sm_1_1handler__t.html#aa39dc4568f361edc3c2ad5032270b224',1,'qOS::sm::handler_t::timeoutStop()'],['../classq_o_s_1_1state_machine.html#a7c7c4087c79da2cac0e37111dea70195',1,'qOS::stateMachine::timeoutStop()']]],
-  ['timer_59',['timer',['../classq_o_s_1_1timer.html',1,'qOS::timer'],['../classq_o_s_1_1timer.html#a5e34eecac429e202d1703d3f1ed387d0',1,'qOS::timer::timer()'],['../classq_o_s_1_1timer.html#af70e967edb5e17c7e057573e84df021f',1,'qOS::timer::timer(qOS::duration_t tTime)']]],
+  ['timer_59',['timer',['../classq_o_s_1_1timer.html',1,'qOS::timer'],['../classq_o_s_1_1timer.html#a5e34eecac429e202d1703d3f1ed387d0',1,'qOS::timer::timer()'],['../classq_o_s_1_1timer.html#a4c956ba729d96cbbdd9620d4cc1c9b4d',1,'qOS::timer::timer(const qOS::duration_t tTime)']]],
   ['timer_60',['Using a Timer',['../q_stimers.html#q_stimerusage',1,'']]],
   ['timer_20example_61',['Timer example',['../q_stimers.html#q_stimerexample',1,'']]],
   ['timers_62',['Timers',['../group__qstimers.html',1,'Timers'],['../q_stimers.html',1,'Timers']]],

@@ -153,12 +153,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5e34eecac429e202d1703d3f1ed387d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8e4480220b1b09b4ed3a2505da63895" id="r_ac8e4480220b1b09b4ed3a2505da63895"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8e4480220b1b09b4ed3a2505da63895">~timer</a> ()</td></tr>
 <tr class="separator:ac8e4480220b1b09b4ed3a2505da63895"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af70e967edb5e17c7e057573e84df021f" id="r_af70e967edb5e17c7e057573e84df021f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af70e967edb5e17c7e057573e84df021f">timer</a> (<a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime)</td></tr>
-<tr class="memdesc:af70e967edb5e17c7e057573e84df021f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the instance of the timer with the specified expiration time. Timer will start armed.  <br /></td></tr>
-<tr class="separator:af70e967edb5e17c7e057573e84df021f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae400b0858dbad0698214e9a9b514886c" id="r_ae400b0858dbad0698214e9a9b514886c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae400b0858dbad0698214e9a9b514886c">set</a> (<a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime) noexcept</td></tr>
-<tr class="memdesc:ae400b0858dbad0698214e9a9b514886c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expiration time for a timer. On success, the timer gets armed immediately.  <br /></td></tr>
-<tr class="separator:ae400b0858dbad0698214e9a9b514886c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c956ba729d96cbbdd9620d4cc1c9b4d" id="r_a4c956ba729d96cbbdd9620d4cc1c9b4d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c956ba729d96cbbdd9620d4cc1c9b4d">timer</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime)</td></tr>
+<tr class="memdesc:a4c956ba729d96cbbdd9620d4cc1c9b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the instance of the timer with the specified expiration time. Timer will start armed.  <br /></td></tr>
+<tr class="separator:a4c956ba729d96cbbdd9620d4cc1c9b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ecd9c9f620be00091a73fbf3c92cebf" id="r_a3ecd9c9f620be00091a73fbf3c92cebf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ecd9c9f620be00091a73fbf3c92cebf">set</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime) noexcept</td></tr>
+<tr class="memdesc:a3ecd9c9f620be00091a73fbf3c92cebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expiration time for a timer. On success, the timer gets armed immediately.  <br /></td></tr>
+<tr class="separator:a3ecd9c9f620be00091a73fbf3c92cebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3a5a79fbf62111e048435d0804aee66" id="r_ab3a5a79fbf62111e048435d0804aee66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3a5a79fbf62111e048435d0804aee66">disarm</a> (void) noexcept</td></tr>
 <tr class="memdesc:ab3a5a79fbf62111e048435d0804aee66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disarms the timer object.  <br /></td></tr>
 <tr class="separator:ab3a5a79fbf62111e048435d0804aee66"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,9 +168,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a758dbbec1aeca8c8398403e349555f3b" id="r_a758dbbec1aeca8c8398403e349555f3b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a758dbbec1aeca8c8398403e349555f3b">status</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a758dbbec1aeca8c8398403e349555f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current status of the Timer (Armed or Disarmed)  <br /></td></tr>
 <tr class="separator:a758dbbec1aeca8c8398403e349555f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad66b8312e5e271144eb7d689a5bf271e" id="r_ad66b8312e5e271144eb7d689a5bf271e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad66b8312e5e271144eb7d689a5bf271e">freeRun</a> (<a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime) noexcept</td></tr>
-<tr class="memdesc:ad66b8312e5e271144eb7d689a5bf271e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking timer check with automatic arming.  <br /></td></tr>
-<tr class="separator:ad66b8312e5e271144eb7d689a5bf271e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd1dfb38ba34a7a021c28a61795b6f98" id="r_acd1dfb38ba34a7a021c28a61795b6f98"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd1dfb38ba34a7a021c28a61795b6f98">freeRun</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime) noexcept</td></tr>
+<tr class="memdesc:acd1dfb38ba34a7a021c28a61795b6f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking timer check with automatic arming.  <br /></td></tr>
+<tr class="separator:acd1dfb38ba34a7a021c28a61795b6f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff79958773cab990688fcccc7d155e5a" id="r_aff79958773cab990688fcccc7d155e5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff79958773cab990688fcccc7d155e5a">remaining</a> (void) const noexcept</td></tr>
 <tr class="memdesc:aff79958773cab990688fcccc7d155e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the remaining time in epochs.  <br /></td></tr>
 <tr class="separator:aff79958773cab990688fcccc7d155e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,21 +186,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a851424288eb8b90246e3f434abb614eb" id="r_a851424288eb8b90246e3f434abb614eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a851424288eb8b90246e3f434abb614eb">getInterval</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a851424288eb8b90246e3f434abb614eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the timer interval value.  <br /></td></tr>
 <tr class="separator:a851424288eb8b90246e3f434abb614eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace9e6ea0017370b7f49dcf53e10e6e68" id="r_ace9e6ea0017370b7f49dcf53e10e6e68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1timer.html">timer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace9e6ea0017370b7f49dcf53e10e6e68">operator=</a> (<a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime)</td></tr>
-<tr class="memdesc:ace9e6ea0017370b7f49dcf53e10e6e68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expiration time for a timer and gets armed immediately.  <br /></td></tr>
-<tr class="separator:ace9e6ea0017370b7f49dcf53e10e6e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18059f24cc63b88fc7f6b7b1b3c25a1f" id="r_a18059f24cc63b88fc7f6b7b1b3c25a1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1timer.html">timer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18059f24cc63b88fc7f6b7b1b3c25a1f">operator=</a> (bool en)</td></tr>
-<tr class="memdesc:a18059f24cc63b88fc7f6b7b1b3c25a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disarm or reload the timer.  <br /></td></tr>
-<tr class="separator:a18059f24cc63b88fc7f6b7b1b3c25a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a539a14cdf46d94c22af3497cc70dbfe1" id="r_a539a14cdf46d94c22af3497cc70dbfe1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1timer.html">timer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a539a14cdf46d94c22af3497cc70dbfe1">operator=</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime)</td></tr>
+<tr class="memdesc:a539a14cdf46d94c22af3497cc70dbfe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expiration time for a timer and gets armed immediately.  <br /></td></tr>
+<tr class="separator:a539a14cdf46d94c22af3497cc70dbfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6cd1e37af3127aeb2f7d77147c74bf3" id="r_af6cd1e37af3127aeb2f7d77147c74bf3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1timer.html">timer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6cd1e37af3127aeb2f7d77147c74bf3">operator=</a> (const bool en)</td></tr>
+<tr class="memdesc:af6cd1e37af3127aeb2f7d77147c74bf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disarm or reload the timer.  <br /></td></tr>
+<tr class="separator:af6cd1e37af3127aeb2f7d77147c74bf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafad4ddc74a56df3783ee26909906659" id="r_aafad4ddc74a56df3783ee26909906659"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafad4ddc74a56df3783ee26909906659">operator()</a> (void) const</td></tr>
 <tr class="memdesc:aafad4ddc74a56df3783ee26909906659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking timer check.  <br /></td></tr>
 <tr class="separator:aafad4ddc74a56df3783ee26909906659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63e9e24056f02e3124b0c2f0145ee7a5" id="r_a63e9e24056f02e3124b0c2f0145ee7a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63e9e24056f02e3124b0c2f0145ee7a5">operator()</a> (<a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime)</td></tr>
-<tr class="memdesc:a63e9e24056f02e3124b0c2f0145ee7a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expiration time for a timer and gets armed immediately.  <br /></td></tr>
-<tr class="separator:a63e9e24056f02e3124b0c2f0145ee7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac257471fd175c69bad6ec80c98b612f2" id="r_ac257471fd175c69bad6ec80c98b612f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac257471fd175c69bad6ec80c98b612f2">operator()</a> (bool en)</td></tr>
-<tr class="memdesc:ac257471fd175c69bad6ec80c98b612f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disarm or reload the timer.  <br /></td></tr>
-<tr class="separator:ac257471fd175c69bad6ec80c98b612f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ec65bc8675a9cf865014cc374b9da38" id="r_a1ec65bc8675a9cf865014cc374b9da38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ec65bc8675a9cf865014cc374b9da38">operator()</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime)</td></tr>
+<tr class="memdesc:a1ec65bc8675a9cf865014cc374b9da38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expiration time for a timer and gets armed immediately.  <br /></td></tr>
+<tr class="separator:a1ec65bc8675a9cf865014cc374b9da38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65739451562d42418b3ac34560ffdfae" id="r_a65739451562d42418b3ac34560ffdfae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65739451562d42418b3ac34560ffdfae">operator()</a> (const bool en)</td></tr>
+<tr class="memdesc:a65739451562d42418b3ac34560ffdfae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disarm or reload the timer.  <br /></td></tr>
+<tr class="separator:a65739451562d42418b3ac34560ffdfae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -263,8 +263,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af70e967edb5e17c7e057573e84df021f" name="af70e967edb5e17c7e057573e84df021f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af70e967edb5e17c7e057573e84df021f">&#9670;&#160;</a></span>timer() <span class="overload">[2/2]</span></h2>
+<a id="a4c956ba729d96cbbdd9620d4cc1c9b4d" name="a4c956ba729d96cbbdd9620d4cc1c9b4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c956ba729d96cbbdd9620d4cc1c9b4d">&#9670;&#160;</a></span>timer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,7 +275,7 @@ Static Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">qOS::timer::timer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -412,8 +412,8 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 </div>
 </div>
-<a id="ad66b8312e5e271144eb7d689a5bf271e" name="ad66b8312e5e271144eb7d689a5bf271e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad66b8312e5e271144eb7d689a5bf271e">&#9670;&#160;</a></span>freeRun()</h2>
+<a id="acd1dfb38ba34a7a021c28a61795b6f98" name="acd1dfb38ba34a7a021c28a61795b6f98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd1dfb38ba34a7a021c28a61795b6f98">&#9670;&#160;</a></span>freeRun()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,7 +424,7 @@ The expiration time should be at least, two times greater than the clock-Tick. <
         <tr>
           <td class="memname">bool qOS::timer::freeRun </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -481,8 +481,8 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 </div>
 </div>
-<a id="ac257471fd175c69bad6ec80c98b612f2" name="ac257471fd175c69bad6ec80c98b612f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac257471fd175c69bad6ec80c98b612f2">&#9670;&#160;</a></span>operator()() <span class="overload">[1/3]</span></h2>
+<a id="a65739451562d42418b3ac34560ffdfae" name="a65739451562d42418b3ac34560ffdfae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65739451562d42418b3ac34560ffdfae">&#9670;&#160;</a></span>operator()() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -490,7 +490,7 @@ The expiration time should be at least, two times greater than the clock-Tick. <
         <tr>
           <td class="memname">void qOS::timer::operator() </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>en</em></span></td><td>)</td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>en</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -509,8 +509,8 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 </div>
 </div>
-<a id="a63e9e24056f02e3124b0c2f0145ee7a5" name="a63e9e24056f02e3124b0c2f0145ee7a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63e9e24056f02e3124b0c2f0145ee7a5">&#9670;&#160;</a></span>operator()() <span class="overload">[2/3]</span></h2>
+<a id="a1ec65bc8675a9cf865014cc374b9da38" name="a1ec65bc8675a9cf865014cc374b9da38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec65bc8675a9cf865014cc374b9da38">&#9670;&#160;</a></span>operator()() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -518,7 +518,7 @@ The expiration time should be at least, two times greater than the clock-Tick. <
         <tr>
           <td class="memname">bool qOS::timer::operator() </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -558,8 +558,8 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 </div>
 </div>
-<a id="a18059f24cc63b88fc7f6b7b1b3c25a1f" name="a18059f24cc63b88fc7f6b7b1b3c25a1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18059f24cc63b88fc7f6b7b1b3c25a1f">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+<a id="af6cd1e37af3127aeb2f7d77147c74bf3" name="af6cd1e37af3127aeb2f7d77147c74bf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6cd1e37af3127aeb2f7d77147c74bf3">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -567,7 +567,7 @@ The expiration time should be at least, two times greater than the clock-Tick. <
         <tr>
           <td class="memname"><a class="el" href="classq_o_s_1_1timer.html">timer</a> &amp; qOS::timer::operator= </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>en</em></span></td><td>)</td>
+          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>en</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -586,8 +586,8 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 </div>
 </div>
-<a id="ace9e6ea0017370b7f49dcf53e10e6e68" name="ace9e6ea0017370b7f49dcf53e10e6e68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace9e6ea0017370b7f49dcf53e10e6e68">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<a id="a539a14cdf46d94c22af3497cc70dbfe1" name="a539a14cdf46d94c22af3497cc70dbfe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a539a14cdf46d94c22af3497cc70dbfe1">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +595,7 @@ The expiration time should be at least, two times greater than the clock-Tick. <
         <tr>
           <td class="memname"><a class="el" href="classq_o_s_1_1timer.html">timer</a> &amp; qOS::timer::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -670,8 +670,8 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 </div>
 </div>
-<a id="ae400b0858dbad0698214e9a9b514886c" name="ae400b0858dbad0698214e9a9b514886c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae400b0858dbad0698214e9a9b514886c">&#9670;&#160;</a></span>set()</h2>
+<a id="a3ecd9c9f620be00091a73fbf3c92cebf" name="a3ecd9c9f620be00091a73fbf3c92cebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ecd9c9f620be00091a73fbf3c92cebf">&#9670;&#160;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -682,7 +682,7 @@ The expiration time should be at least, two times greater than the clock-Tick. <
         <tr>
           <td class="memname">bool qOS::timer::set </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

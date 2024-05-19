@@ -170,15 +170,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0703b4fef051351cd863d303dade48cb" id="r_a0703b4fef051351cd863d303dade48cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0703b4fef051351cd863d303dade48cb">watch</a> (void) noexcept</td></tr>
 <tr class="memdesc:a0703b4fef051351cd863d303dade48cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Watch for the state and events for all channels registered inside the watcher instance (Non-Blocking call).  <br /></td></tr>
 <tr class="separator:a0703b4fef051351cd863d303dade48cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c2ca46c2d411dc09d46809b8635d682" id="r_a3c2ca46c2d411dc09d46809b8635d682"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c2ca46c2d411dc09d46809b8635d682">registerEvent</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;n, <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> c, <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=1_sec) noexcept</td></tr>
-<tr class="memdesc:a3c2ca46c2d411dc09d46809b8635d682"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance where the input-channel is being added.  <br /></td></tr>
-<tr class="separator:a3c2ca46c2d411dc09d46809b8635d682"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87612f2cb700be2825483d92212d54a7" id="r_a87612f2cb700be2825483d92212d54a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87612f2cb700be2825483d92212d54a7">unregisterEvent</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;n, <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e) noexcept</td></tr>
-<tr class="memdesc:a87612f2cb700be2825483d92212d54a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for the specified input-channel.  <br /></td></tr>
-<tr class="separator:a87612f2cb700be2825483d92212d54a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2971be02d17d9cea9cc1b419789fd54" id="r_af2971be02d17d9cea9cc1b419789fd54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2971be02d17d9cea9cc1b419789fd54">registerEvent</a> (<a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> c, <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=1_sec) noexcept</td></tr>
-<tr class="memdesc:af2971be02d17d9cea9cc1b419789fd54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance for all the input-channels being added.  <br /></td></tr>
-<tr class="separator:af2971be02d17d9cea9cc1b419789fd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc7e663984aafea67baec5e7811d9a99" id="r_adc7e663984aafea67baec5e7811d9a99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc7e663984aafea67baec5e7811d9a99">registerEvent</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;n, const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;c, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=1_sec) noexcept</td></tr>
+<tr class="memdesc:adc7e663984aafea67baec5e7811d9a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance where the input-channel is being added.  <br /></td></tr>
+<tr class="separator:adc7e663984aafea67baec5e7811d9a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eff023a0552ee182d2fa534de8242f0" id="r_a2eff023a0552ee182d2fa534de8242f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2eff023a0552ee182d2fa534de8242f0">unregisterEvent</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;n, const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e) noexcept</td></tr>
+<tr class="memdesc:a2eff023a0552ee182d2fa534de8242f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for the specified input-channel.  <br /></td></tr>
+<tr class="separator:a2eff023a0552ee182d2fa534de8242f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47176a1bfd4e9baf3f64c6f2890ae52f" id="r_a47176a1bfd4e9baf3f64c6f2890ae52f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47176a1bfd4e9baf3f64c6f2890ae52f">registerEvent</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;c, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=1_sec) noexcept</td></tr>
+<tr class="memdesc:a47176a1bfd4e9baf3f64c6f2890ae52f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance for all the input-channels being added.  <br /></td></tr>
+<tr class="separator:a47176a1bfd4e9baf3f64c6f2890ae52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfefe90d4d277f4a31b2b6edfd67e61d" id="r_adfefe90d4d277f4a31b2b6edfd67e61d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfefe90d4d277f4a31b2b6edfd67e61d">unregisterEvent</a> (<a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e) noexcept</td></tr>
 <tr class="memdesc:adfefe90d4d277f4a31b2b6edfd67e61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for all input-channels being added.  <br /></td></tr>
 <tr class="separator:adfefe90d4d277f4a31b2b6edfd67e61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -276,8 +276,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a3c2ca46c2d411dc09d46809b8635d682" name="a3c2ca46c2d411dc09d46809b8635d682"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c2ca46c2d411dc09d46809b8635d682">&#9670;&#160;</a></span>registerEvent() <span class="overload">[1/2]</span></h2>
+<a id="adc7e663984aafea67baec5e7811d9a99" name="adc7e663984aafea67baec5e7811d9a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc7e663984aafea67baec5e7811d9a99">&#9670;&#160;</a></span>registerEvent() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -293,17 +293,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a></td>          <td class="paramname"><span class="paramname"><em>c</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>c</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval">1_sec</span></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval">1_sec</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -327,8 +327,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="af2971be02d17d9cea9cc1b419789fd54" name="af2971be02d17d9cea9cc1b419789fd54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2971be02d17d9cea9cc1b419789fd54">&#9670;&#160;</a></span>registerEvent() <span class="overload">[2/2]</span></h2>
+<a id="a47176a1bfd4e9baf3f64c6f2890ae52f" name="a47176a1bfd4e9baf3f64c6f2890ae52f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47176a1bfd4e9baf3f64c6f2890ae52f">&#9670;&#160;</a></span>registerEvent() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -339,17 +339,17 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">bool qOS::input::watcher::registerEvent </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a></td>          <td class="paramname"><span class="paramname"><em>c</em>, </span></td>
+          <td class="paramtype">const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>c</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval">1_sec</span></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em><span class="paramdefsep"> = </span><span class="paramdefval">1_sec</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -406,8 +406,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a87612f2cb700be2825483d92212d54a7" name="a87612f2cb700be2825483d92212d54a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87612f2cb700be2825483d92212d54a7">&#9670;&#160;</a></span>unregisterEvent() <span class="overload">[1/2]</span></h2>
+<a id="a2eff023a0552ee182d2fa534de8242f0" name="a2eff023a0552ee182d2fa534de8242f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eff023a0552ee182d2fa534de8242f0">&#9670;&#160;</a></span>unregisterEvent() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,7 +423,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
