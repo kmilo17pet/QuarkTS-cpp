@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"q_trace.html#q_trace_usage":[5,5,3],
 "q_trace.html#q_trace_viewvars":[5,5,1],
 "structq_o_s_1_1sm_1_1signal__t.html":[6,1,0,1],
 "structq_o_s_1_1sm_1_1signal__t.html#abc8c864b6424f544cc49c53be951d5d6":[6,1,0,1,1],
