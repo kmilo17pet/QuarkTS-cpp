@@ -199,7 +199,7 @@ $(function(){initNavTree('helper_8hpp_source.html',''); initResizable(); });
 <div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">   93</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">singleWrite</a>( T &amp;dst, <span class="keyword">const</span> <span class="keywordtype">size_t</span> xBit, <span class="keyword">const</span> <span class="keywordtype">bool</span> value )</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            ( value ) ? bitSet( dst, xBit ) : bitClear( dst, xBit );</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            ( value ) ? <a class="code hl_function" href="group__qflm.html#gae371fc016f5298e25033dd3c70e5ce20">bits::singleSet</a>( dst, xBit ) : <a class="code hl_function" href="group__qflm.html#ga3886e484675d93e1cf1db88b4c0040f0">bits::singleClear</a>( dst, xBit );</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
 </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> W&gt;</div>

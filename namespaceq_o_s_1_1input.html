@@ -142,7 +142,7 @@ $(function(){initNavTree('namespaceq_o_s_1_1input.html',''); initResizable(); })
 </div><!--header-->
 <div class="contents">
 
-<p>Input Intefaces.  
+<p>Input Interfaces.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -157,8 +157,10 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga7d3b9fc08985bd00916b549b73ef1c6a" id="r_ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">channelReaderFcn_t</a></td></tr>
+<tr class="memdesc:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the wrapper function that reads the specific input-channel.  <br /></td></tr>
 <tr class="separator:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2a63c559082c8c8b51fdce40867f3e94" id="r_ga2a63c559082c8c8b51fdce40867f3e94"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a></td></tr>
+<tr class="memdesc:ga2a63c559082c8c8b51fdce40867f3e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the input-channel event callback.  <br /></td></tr>
 <tr class="separator:ga2a63c559082c8c8b51fdce40867f3e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -175,12 +177,15 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:ga78226dd21564a598124985dfa62a8e11"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible states detected by the <a class="el" href="classq_o_s_1_1input_1_1watcher.html" title="The digital input-channel watcher class.">qOS::input::watcher</a> class for a specified <a class="el" href="classq_o_s_1_1input_1_1channel.html" title="An digital input-channel object.">qOS::input::channel</a>.  <a href="group__qinput.html#ga78226dd21564a598124985dfa62a8e11">More...</a><br /></td></tr>
 <tr class="separator:ga78226dd21564a598124985dfa62a8e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga72d9a973c87da11f11a8aeabbbb25aa7" id="r_ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> { <br />
-&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">event::FALLING_EDGE</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98">event::RISING_EDGE</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad264a2d9c77f72d3d3150953aacc2e00">event::STEADY_ON</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a806247cc27ace0fd672674e08896aef5">event::STEADY_OFF</a>
-, <br />
 &#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf">event::EXCEPTION</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">event::FALLING_EDGE</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98">event::RISING_EDGE</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7">event::IN_BAND</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad264a2d9c77f72d3d3150953aacc2e00">event::STEADY_ON</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a806247cc27ace0fd672674e08896aef5">event::STEADY_OFF</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764">event::STEADY_IN_BAND</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a198c668b4b28782df159eeec6181ef6e">event::MAX_EVENTS</a>
 <br />
  }</td></tr>
 <tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the watcher class for a specified input-channel.  <a href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>
@@ -191,7 +196,7 @@ Enumerations</h2></td></tr>
 <tr class="separator:ga1fa89c23afc36bdea1a290368c7ae520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Input Intefaces. </p>
+<div class="textblock"><p>Input Interfaces. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
