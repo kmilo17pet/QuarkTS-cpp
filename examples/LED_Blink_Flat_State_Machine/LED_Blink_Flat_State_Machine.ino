@@ -2,7 +2,13 @@
 
 using namespace qOS;
 
-const int BUTTON_PIN = 2;
+/*
+This example uses a push button (tact switch) attached to digital pin 2 and GND,
+using an internal pull-up resistor so pin 2 is HIGH when the button is not pressed.
+*/
+input::channel button( 2, true ); /* Pin D2 -> invert value = true (due internal pull-up)*/
+input::watcher inWatcher( digitalRead, nullptr, 50_ms ); /*inWatcher will use digitalRead to read the channel using a debounce time of 50_ms*/
+
 /*define the FSM application event-signals*/
 enum : sm::signalIDType {
     SIGNAL_BUTTON_PRESSED = sm::SIGNAL_USER( 1 ),
@@ -10,16 +16,11 @@ enum : sm::signalIDType {
     SIGNAL_BLINK          = sm::SIGNAL_TIMEOUT( 1 ),
 };
 
-/*
-This example uses a push button (tact switch) attached to digital pin 2 and GND,
-using an internal pull-up resistor so pin 2 is HIGH when the button is not pressed.
-*/
-
 task LED_Task; /*The task node*/
 stateMachine LED_FSM; /*The state-machine handler*/
 sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
-sm::signalQueue<5> LEDsigqueue;
-sm::timeoutSpec tm_spectimeout;
+sm::signalQueue<5> LEDsigqueue; /*The signal queue for the state machine*/
+sm::timeoutSpec tm_spectimeout; /*The timeout specification to handle timers within states*/
 
 /*create the transition tables for every state*/
 sm::transition LEDOff_transitions[] = {
@@ -92,25 +93,25 @@ void tracePutcWrapper( void *arg, const char c ) {
 
 void idleTaskCallback( event_t e )
 {
-  static bool lastValue = false;
-  static timer debounceTime;
-
-  if ( debounceTime.freeRun( 50_ms ) ) {
-    bool currentValue = digitalRead( BUTTON_PIN );
-    if ( lastValue && !currentValue ) {
-      LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
-    }
-    lastValue = currentValue;
+  if ( e.firstCall() ) {
+    logger::out() << QUARKTS_CPP_CAPTION << logger::end;
   }
+}
+
+void buttonEvent( input::channel& chan , const input::event e )
+{
+  LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
 }
 
 void setup() {
   pinMode( LED_BUILTIN, OUTPUT );
-  pinMode( BUTTON_PIN, INPUT_PULLUP );
+  pinMode( 2, INPUT_PULLUP );
   Serial.begin(115200);
-
   logger::setOutputFcn( tracePutcWrapper );
   os.init( millis, idleTaskCallback );
+  inWatcher.add( button );
+  inWatcher.registerEvent( input::event::RISING_EDGE, buttonEvent );
+  os.addInputWatcher( inWatcher );
 
   LED_FSM.setup( nullptr, State_LEDOff );
   LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
