@@ -122,7 +122,7 @@ bool input::channel::registerEvent( input::event e, input::eventCallback_t c, qO
     const auto cbIndex = static_cast<int>( e );
 
     switch ( e ) {
-        case input::event::RISING_EDGE: case input::event::FALLING_EDGE: case input::event::IN_BAND:
+        case input::event::RISING_EDGE: case input::event::FALLING_EDGE: case input::event::IN_BAND: // skipcq: CXX-C1001
             cb[ cbIndex ] = c;
             break;
         case input::event::STEADY_ON:
@@ -150,7 +150,7 @@ bool input::watcher::add( channel& n ) noexcept
     if ( input::type::DIGITAL == n.channelType ) {
         auto val = ( nullptr != digitalReader ) ? digitalReader( n.xChannel ) : -1;
         if ( bits::singleRead( n.flags, input::channel::BIT_INVERT ) ) {
-            val = !val;
+            val = !val; // skipcq: CXX-W2065
         }
         n.prevState = static_cast<input::state>( val );
     }

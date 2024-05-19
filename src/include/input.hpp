@@ -82,7 +82,7 @@ namespace qOS {
                 static const size_t BIT_STEADY_OFF;
                 static const size_t BIT_STEADY_BAND;
                 type channelType;
-                eventCallback_t cb[ static_cast<size_t>( input::event::MAX_EVENTS ) ] = { nullptr };
+                eventCallback_t cb[ static_cast<size_t>( input::event::MAX_EVENTS ) ] = { nullptr }; // skipcq: CXX-W2066
                 size_t flags{ 0U };
                 input::state prevState{ input::state::UNKNOWN };
                 input::state state{ input::state::UNKNOWN };
@@ -221,12 +221,8 @@ namespace qOS {
                 * bounce of the digital input channels
                 * @return @c true on success. Otherwise @c false.
                 */
-                watcher( const channelReaderFcn_t& rDigital, const channelReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce ) noexcept
-                {
-                    debounceTime = timeDebounce;
-                    digitalReader = rDigital;
-                    analogReader = rAnalog;
-                }
+                watcher( const channelReaderFcn_t& rDigital, const channelReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce ) :
+                    debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
                 /**
                 * @brief Add a channel to the watcher instance
                 * @param[in] n The input-Channel to watch
