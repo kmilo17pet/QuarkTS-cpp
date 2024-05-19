@@ -18,7 +18,7 @@ void timer::reload( void ) noexcept
     tStart = clock::getTick();
 }
 /*============================================================================*/
-bool timer::set( qOS::duration_t tTime ) noexcept
+bool timer::set( const qOS::duration_t tTime ) noexcept
 {
     bool retValue = false;
     /*cstat -CERT-FLP36-C*/
@@ -31,7 +31,7 @@ bool timer::set( qOS::duration_t tTime ) noexcept
     return retValue;
 }
 /*============================================================================*/
-timer& timer::operator=( qOS::duration_t tTime )
+timer& timer::operator=( const qOS::duration_t tTime )
 {
     /*cstat -CERT-FLP36-C*/
     if( tTime > static_cast<qOS::duration_t>( 0 ) ) {
@@ -44,7 +44,7 @@ timer& timer::operator=( qOS::duration_t tTime )
     return *this;
 }
 /*============================================================================*/
-timer& timer::operator=( bool en )
+timer& timer::operator=( const bool en )
 {
     ( en ) ? reload() : disarm();
     return *this;
@@ -61,7 +61,7 @@ void timer::disarm( void ) noexcept
     tStart = timer::DISARM_VALUE;
 }
 /*============================================================================*/
-bool timer::freeRun( qOS::duration_t tTime ) noexcept
+bool timer::freeRun( const qOS::duration_t tTime ) noexcept
 {
     bool retValue = false;
 
@@ -78,12 +78,12 @@ bool timer::freeRun( qOS::duration_t tTime ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool timer::operator()( qOS::duration_t tTime )
+bool timer::operator()( const qOS::duration_t tTime )
 {
     return set( tTime );
 }
 /*============================================================================*/
-void timer::operator()( bool en )
+void timer::operator()( const bool en )
 {
     ( en )? reload() : disarm();
 }
@@ -101,11 +101,11 @@ qOS::clock_t timer::remaining( void ) const noexcept
 bool timer::expired( void ) const noexcept
 {
     bool retValue = false;
-    
+
     if ( timer::ARMED == status() ) {
         retValue = deadLineCheck();
     }
-    
+
     return retValue;
 }
 /*============================================================================*/

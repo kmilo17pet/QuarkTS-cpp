@@ -116,7 +116,7 @@ bool input::watcher::watch( void ) noexcept
     return true;
 }
 /*============================================================================*/
-bool input::channel::registerEvent( input::event e, input::eventCallback_t c, qOS::duration_t t ) noexcept
+bool input::channel::registerEvent( const input::event e, const input::eventCallback_t &c, const qOS::duration_t t ) noexcept
 {
     bool retVal = true;
     const auto cbIndex = static_cast<int>( e );
@@ -162,7 +162,7 @@ bool input::watcher::add( channel& n ) noexcept
     return nodes.insert( &n );
 }
 /*============================================================================*/
-bool input::watcher::registerEvent( event e, eventCallback_t c, qOS::duration_t t ) noexcept
+bool input::watcher::registerEvent( const event e, const eventCallback_t &c, const qOS::duration_t t ) noexcept
 {
     bool retValue = true;
 

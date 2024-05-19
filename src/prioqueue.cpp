@@ -80,7 +80,7 @@ bool prioQueue::insert( task &Task, void *pData ) noexcept
 
     if ( index < queueMaxIndex ) {
         pq::queueStack_t tmp;
-        
+
         tmp.pTask = &Task;
         tmp.qData = pData;
         stack[ ++index ] = tmp;
@@ -90,10 +90,10 @@ bool prioQueue::insert( task &Task, void *pData ) noexcept
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-void prioQueue::clearIndex( index_t indexToClear ) noexcept
+void prioQueue::clearIndex( const index_t indexToClear ) noexcept
 {
     const base_t queueIndex = static_cast<base_t>( index );
-    
+
     stack[ indexToClear ].pTask = nullptr;
     for ( index_t j = indexToClear ; static_cast<base_t>( j ) < queueIndex ; ++j ) {
         stack[ j ] = stack[ j + 1U ];

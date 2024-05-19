@@ -391,7 +391,7 @@ namespace qOS {
             * @param[in] pValue Priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @return @c true on success. Otherwise return @c false.
             */
-            bool setPriority( priority_t pValue ) noexcept;
+            bool setPriority( const priority_t pValue ) noexcept;
             /**
             * @brief Retrieve the number of task activations.
             * @return An unsigned long value containing the number of task
@@ -423,7 +423,7 @@ namespace qOS {
             * was put in the sleep state.( @c SHUTDOWN_Bit=1 )
             * @return @c true on success. Otherwise return @c false.
             */
-            bool setState( taskState s ) noexcept;
+            bool setState( const taskState s ) noexcept;
             /**
             * @brief Put the task into a disabled state.
             * @see task::setState()
@@ -500,7 +500,7 @@ namespace qOS {
             * need to perform another set of iterations, you need to set the
             * number of iterations again and resume.
             */
-            void setIterations( iteration_t iValue ) noexcept;
+            void setIterations( const iteration_t iValue ) noexcept;
             /**
             * @brief Set/Change the Task execution interval
             * @param[in] tValue Execution interval given in milliseconds. For

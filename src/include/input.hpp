@@ -96,7 +96,7 @@ namespace qOS {
                 void *userData{ nullptr };
                 channel( channel const& ) = delete;
                 void operator=( channel const& ) = delete;
-                bool registerEvent( event e, eventCallback_t c, qOS::duration_t t = 1_sec ) noexcept;
+                bool registerEvent( const event e, const eventCallback_t &c, const qOS::duration_t t = 1_sec ) noexcept;
                 inline bool unregisterEvent( event e ) noexcept
                 {
                     return registerEvent( e, nullptr );
@@ -123,7 +123,7 @@ namespace qOS {
                 * @param[in] lowerThreshold The lower threshold value.
                 * @param[in] upperThreshold The upper threshold value.
                 */
-                channel( uint8_t inputChannel, int lowerThreshold, int upperThreshold ) : xChannel( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold )
+                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold ) : xChannel( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold )
                 {
                     channelType = input::type::ANALOG;
                     cbInit();
@@ -255,7 +255,7 @@ namespace qOS {
                 * certain events).
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool registerEvent( channel& n, event e, eventCallback_t c, qOS::duration_t t = 1_sec ) noexcept
+                bool registerEvent( channel& n, const event e, const eventCallback_t &c, const qOS::duration_t t = 1_sec ) noexcept
                 {
                     return n.registerEvent( e, c, t );
                 }
@@ -266,7 +266,7 @@ namespace qOS {
                 * @param[in] e The event to unregister.
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool unregisterEvent( channel& n, event e ) noexcept
+                bool unregisterEvent( channel& n, const event e ) noexcept
                 {
                     return n.unregisterEvent( e );
                 }
@@ -280,7 +280,7 @@ namespace qOS {
                 * @return @c true if operation succeeds in all input-channels.
                 * Otherwise @c false.
                 */
-                bool registerEvent( event e, eventCallback_t c, qOS::duration_t t = 1_sec ) noexcept;
+                bool registerEvent( const event e, const eventCallback_t &c, const qOS::duration_t t = 1_sec ) noexcept;
                 /**
                 * @brief Un-Register an event-callback for all input-channels
                 * being added.

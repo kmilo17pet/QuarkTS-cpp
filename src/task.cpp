@@ -23,7 +23,7 @@ const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CUL;
 /*============================================================================*/
 constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
 {
-    return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x; 
+    return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x;
 }
 /*============================================================================*/
 void task::activities( event_t e )
@@ -54,7 +54,7 @@ priority_t task::getPriority( void ) const noexcept
     return priority;
 }
 /*============================================================================*/
-bool task::setPriority( priority_t pValue ) noexcept
+bool task::setPriority( const priority_t pValue ) noexcept
 {
     bool retValue = false;
 
@@ -104,7 +104,7 @@ bool task::deadLineReached( void ) const noexcept
     return retValue;
 }
 /*============================================================================*/
-bool task::setState( taskState s ) noexcept
+bool task::setState( const taskState s ) noexcept
 {
     bool retValue = false;
 
@@ -131,7 +131,7 @@ bool task::setState( taskState s ) noexcept
     return retValue;
 }
 /*============================================================================*/
-void task::setIterations( iteration_t iValue ) noexcept
+void task::setIterations( const iteration_t iValue ) noexcept
 {
     if ( iValue > 0 ) {
         iterations = -iValue;
@@ -183,7 +183,7 @@ bool task::setName( const char *tName ) noexcept
     /*cstat -MISRAC++2008-5-14-1*/
     if ( ( nullptr != getContainer() ) && ( nl > 0U ) && ( nl < sizeof(name) ) ) {
         if ( nullptr == os.getTaskByName( tName ) ) {
-            (void)util::strcpy( name, tName , sizeof( name ) ); // skipcq: CXX-C1000 
+            (void)util::strcpy( name, tName , sizeof( name ) ); // skipcq: CXX-C1000
             retValue = true;
         }
     }
@@ -193,7 +193,7 @@ bool task::setName( const char *tName ) noexcept
 /*============================================================================*/
 const char* task::getName( void ) const noexcept
 {
-    return name; // skipcq: CXX-C1000 
+    return name; // skipcq: CXX-C1000
 }
 /*============================================================================*/
 trigger task::queueCheckEvents( void ) noexcept

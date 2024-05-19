@@ -56,10 +56,10 @@ namespace qOS {
             * (if @a pattern is string, set @a n to 0 to auto-compute the length)
             * @param[in] t The timeout value given in milliseconds.
             * @return responseStatus::SUCCESS if there is a response acknowledge,
-            * responseStatus::TIMEOUT if timeout expires otherwise returns 
+            * responseStatus::TIMEOUT if timeout expires otherwise returns
             * responseStatus::MISSING
             */
-            responseStatus received( const char *pattern, const size_t n, qOS::duration_t t = clock::IMMEDIATE ) noexcept;
+            responseStatus received( const char *pattern, const size_t n, const qOS::duration_t t = clock::IMMEDIATE ) noexcept;
             /**
             * @brief ISR receiver for the response handler
             * @param[in] rxChar The byte-data from the receiver
@@ -68,7 +68,7 @@ namespace qOS {
             */
             bool isrHandler( const char rxChar ) noexcept;
             /**
-            * @brief Check if the response object is already initialized by 
+            * @brief Check if the response object is already initialized by
             * using response::setup()
             * @return @c true if the response object is initialized, @c false if not.
             */

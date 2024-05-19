@@ -21,7 +21,7 @@ namespace qOS {
             void *data{ nullptr };
             pq::queueStack_t *stack{ nullptr };
             size_t size{ 0U };
-            void clearIndex( index_t indexToClear ) noexcept;
+            void clearIndex( const index_t indexToClear ) noexcept;
             prioQueue( prioQueue const& ) = delete;
             void operator=( prioQueue const& ) = delete;
         protected:
