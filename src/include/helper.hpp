@@ -92,7 +92,7 @@ namespace qOS {
         template <typename T>
         inline void singleWrite( T &dst, const size_t xBit, const bool value )
         {
-            ( value ) ? bitSet( dst, xBit ) : bitClear( dst, xBit );
+            ( value ) ? bits::singleSet( dst, xBit ) : bits::singleClear( dst, xBit );
         }
         /**
         * @brief Read multiple bits by applying the mask given by @a xBits to
@@ -130,9 +130,9 @@ namespace qOS {
      * @brief Calculates the size of an array.
      * This function takes a reference to an array and calculates its size.
      * For a one-dimensional array, the size is simply the number of elements.
-     * For a multi-dimensional array, the size is the product of the sizes of 
+     * For a multi-dimensional array, the size is the product of the sizes of
      * all dimensions.
-     * @warning This function only works for raw-arrays. It is not intended for 
+     * @warning This function only works for raw-arrays. It is not intended for
      * boost or STL arrays and vectors
      * @tparam T The type of the array elements.
      * @tparam n The size of the first dimension (for a multi-dimensional array).

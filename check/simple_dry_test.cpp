@@ -3,6 +3,7 @@
 #include <QuarkTS.h>
 
 using namespace std;
+using namespace qOS;
 
 class customTask : public task {
     void activities( event_t e ) override
