@@ -7,6 +7,7 @@
 #include "include/task.hpp"
 #include "include/fsm.hpp"
 #include "include/timer.hpp"
+#include "include/input.hpp"
 #include "config/config.h"
 
 #if defined( ARDUINO_PLATFORM )
@@ -359,6 +360,9 @@ namespace qOS {
                 _logger& operator<<( const qOS::timer& t );
                 _logger& operator<<( const qOS::stateMachine& sm );
                 _logger& operator<<( const qOS::sm::state& s );
+                _logger& operator<<( const qOS::input::channel& in );
+                _logger& operator<<( const qOS::input::event& e );
+
                 #if defined( ARDUINO_PLATFORM )
                     _logger& operator<<( const String & s );
                 #else

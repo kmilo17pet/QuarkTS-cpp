@@ -4,10 +4,10 @@ using namespace qOS;
 
 
 const size_t input::channel::BIT_INVERT = 0U;
-const size_t input::channel::BIT_IN_BAND = 0U;
-const size_t input::channel::BIT_STEADY_ON = 1U;
-const size_t input::channel::BIT_STEADY_OFF = 2U;
-const size_t input::channel::BIT_STEADY_BAND = 3U;
+const size_t input::channel::BIT_IN_BAND = 1U;
+const size_t input::channel::BIT_STEADY_ON = 2U;
+const size_t input::channel::BIT_STEADY_OFF = 3U;
+const size_t input::channel::BIT_STEADY_BAND = 4U;
 
 /*============================================================================*/
 void input::watcher::watchAnalog( channel * const n ) noexcept
@@ -18,6 +18,7 @@ void input::watcher::watchAnalog( channel * const n ) noexcept
             n->state = input::state::RISING_EDGE;
             bits::singleSet( n->flags, input::channel::BIT_STEADY_ON );
             bits::singleClear( n->flags, input::channel::BIT_IN_BAND );
+            bits::singleClear( n->flags, input::channel::BIT_STEADY_OFF );
             n->tChange = clock::getTick();
             n->prevState = input::state::ON;
             n->invokeEvent( input::event::RISING_EDGE );
@@ -26,6 +27,7 @@ void input::watcher::watchAnalog( channel * const n ) noexcept
             n->state = input::state::FALLING_EDGE;
             bits::singleSet( n->flags, input::channel::BIT_STEADY_OFF );
             bits::singleClear( n->flags, input::channel::BIT_IN_BAND );
+            bits::singleClear( n->flags, input::channel::BIT_STEADY_ON );
             n->tChange = clock::getTick();
             n->prevState = input::state::OFF;
             n->invokeEvent( input::event::FALLING_EDGE );
@@ -103,6 +105,7 @@ bool input::watcher::watch( void ) noexcept
 
     for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
         input::channel * const n = i.get<input::channel*>();
+
         if ( ( input::type::ANALOG == n->channelType ) ) {
             watchAnalog( n );
         }
@@ -118,28 +121,25 @@ bool input::watcher::watch( void ) noexcept
 /*============================================================================*/
 bool input::channel::registerEvent( const input::event e, const input::eventCallback_t &c, const qOS::duration_t t ) noexcept
 {
-    bool retVal = true;
+    bool retVal = false;
     const auto cbIndex = static_cast<int>( e );
 
-    switch ( e ) {
-        case input::event::RISING_EDGE: case input::event::FALLING_EDGE: case input::event::IN_BAND: // skipcq: CXX-C1001
-            cb[ cbIndex ] = c;
-            break;
-        case input::event::STEADY_ON:
-            cb[ cbIndex ] = c;
-            tSteadyOn = static_cast<qOS::clock_t>( t );
-            break;
-        case input::event::STEADY_OFF:
-            cb[ cbIndex ] = c;
-            tSteadyOff = static_cast<qOS::clock_t>( t );
-            break;
-        case input::event::STEADY_IN_BAND:
-            cb[ cbIndex ] = c;
-            tSteadyBand = static_cast<qOS::clock_t>( t );
-            break;
-        default:
-            retVal = false;
-            break;
+    if ( e < input::event::MAX_EVENTS ) {
+        cb[ cbIndex ] = c;
+        switch ( e ) {
+            case input::event::STEADY_ON:
+                tSteadyOn = static_cast<qOS::clock_t>( t );
+                break;
+            case input::event::STEADY_OFF:
+                tSteadyOff = static_cast<qOS::clock_t>( t );
+                break;
+            case input::event::STEADY_IN_BAND:
+                tSteadyBand = static_cast<qOS::clock_t>( t );
+                break;
+            default:
+                break;
+        }
+        retVal = true;
     }
 
     return retVal;
@@ -178,3 +178,4 @@ bool input::watcher::registerEvent( const event e, const eventCallback_t &c, con
 
     return retValue;
 }
+/*============================================================================*/

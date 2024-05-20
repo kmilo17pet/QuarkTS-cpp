@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.2 )
 project( quarkts-cpp
-         VERSION 1.5.3
+         VERSION 1.5.4
          DESCRIPTION "An open-source OS for small embedded applications"
          LANGUAGES CXX )
 

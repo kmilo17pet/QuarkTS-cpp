@@ -217,6 +217,30 @@ namespace qOS {
             (void)util::outputString( writeChar , " } " );
             return *this;
         }
+
+        _logger& _logger::operator<<( const qOS::input::channel& in )
+        {
+            (void)util::outputString( writeChar , "in{ 0x" );
+            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &in ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ( qOS::input::type::ANALOG == in.getChannelType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
+            (void)util::unsignedToString( static_cast<unsigned_t>( in.getChannel() ), buffer, 10 ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , " } " );
+            return *this;
+        }
+
+        _logger& _logger::operator<<( const qOS::input::event& e )
+        {
+            static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = {
+                "EXCEPTION ", "FALLING_EDGE ", "RISING_EDGE ", "IN_BAND ", "STEADY_ON ", "STEADY_OFF ", "STEADY_IN_BAND "
+            };
+            (void)util::outputString( writeChar , "in{ 0x" );
+            (void)util::outputString( writeChar , str[ static_cast<int>( e ) + 1 ] ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , " } " );
+            return *this;
+        }
+
         /*cstat +CERT-INT36-C*/
         #if defined( ARDUINO_PLATFORM )
         _logger& _logger::operator<<( const String & s )
