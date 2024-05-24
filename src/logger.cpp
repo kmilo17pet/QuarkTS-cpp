@@ -235,9 +235,7 @@ namespace qOS {
             static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = {
                 "EXCEPTION ", "FALLING_EDGE ", "RISING_EDGE ", "IN_BAND ", "STEADY_ON ", "STEADY_OFF ", "STEADY_IN_BAND "
             };
-            (void)util::outputString( writeChar , "in{ 0x" );
             (void)util::outputString( writeChar , str[ static_cast<int>( e ) + 1 ] ); // skipcq: CXX-C1000
-            (void)util::outputString( writeChar , " } " );
             return *this;
         }
 
