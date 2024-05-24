@@ -1,7 +1,7 @@
 var searchData=
 [
   ['para_0',['PARA',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e',1,'qOS::cli']]],
-  ['parser_1',['Parser',['../q_atcli.html#q_atcli_run',1,'Running the CLI parser'],['../q_atcli.html#q_atcli_sub_commands',1,'Subscribing commands to the parser']]],
+  ['parser_1',['parser',['../q_atcli.html#q_atcli_run',1,'Running the CLI parser'],['../q_atcli.html#q_atcli_sub_commands',1,'Subscribing commands to the parser']]],
   ['peek_2',['peek',['../classq_o_s_1_1byte_buffer.html#aabb6ed057c77f3d7c1afff8f4077e9a3',1,'qOS::byteBuffer::peek()'],['../classq_o_s_1_1queue.html#a1fb79997438c19c5dcddb037c9e250a2',1,'qOS::queue::peek()']]],
   ['perform_3',['perform',['../group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4',1,'qOS::co::perform(void) noexcept'],['../group__qcoroutines.html#gacaa96ae282349c5f6aa679785d43ec8c',1,'qOS::co::perform(qOS::duration_t t) noexcept']]],
   ['performing_20transitions_20and_20retrieving_20data_4',['The state callback handler: performing transitions and retrieving data',['../q_fsm.html#q_fsmhandler',1,'']]],

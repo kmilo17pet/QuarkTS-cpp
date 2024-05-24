@@ -120,7 +120,7 @@ var NAVTREEINDEX =
 "annotated.html",
 "classq_o_s_1_1task.html",
 "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764",
-"q_trace.html#q_trace_viewvars"
+"q_stimers.html#q_stimers_overview"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

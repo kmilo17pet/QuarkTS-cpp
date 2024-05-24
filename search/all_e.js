@@ -17,14 +17,13 @@ var searchData=
   ['operator_3d_14',['operator=',['../classq_o_s_1_1clock.html#a2fc1886c7d857e20dd557558828c42e1',1,'qOS::clock::operator=()'],['../classq_o_s_1_1timer.html#a539a14cdf46d94c22af3497cc70dbfe1',1,'qOS::timer::operator=(const qOS::duration_t tTime)'],['../classq_o_s_1_1timer.html#af6cd1e37af3127aeb2f7d77147c74bf3',1,'qOS::timer::operator=(const bool en)']]],
   ['options_15',['options',['../structq_o_s_1_1sm_1_1timeout_state_definition.html#a3a3bd17b93a4630ee097ac7ffb28bba3',1,'qOS::sm::timeoutStateDefinition']]],
   ['options_5ft_16',['options_t',['../group__qatcli.html#ga9f637013318ba4b55c33129741c5e8dc',1,'qOS::cli']]],
-  ['os_17',['OS',['../q_background.html#q_about',1,'About the OS'],['../q_gettingstarted.html#q_getos',1,'Getting the OS']]],
+  ['os_17',['OS',['../q_background.html#q_about',1,'About the OS'],['../q_gettingstarted.html#q_getos',1,'Getting the OS'],['../q_foundations.html#q_runos',1,'Running the OS']]],
   ['os_18',['os',['../group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c',1,'qOS']]],
-  ['os_19',['Running the OS',['../q_foundations.html#q_runos',1,'']]],
-  ['os_20configuration_20file_20',['Get a copy of the OS configuration file',['../q_gettingstarted.html#q_getqconfig',1,'']]],
-  ['out_21',['out',['../classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2',1,'qOS::logger']]],
-  ['output_22',['output',['../classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0',1,'qOS::cli::handler_t']]],
-  ['output_5fresponse_23',['OUTPUT_RESPONSE',['../group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a2ee3d3e354422ee365d9c0d4d4cd10b7',1,'qOS::cli']]],
-  ['outputraw_24',['outputRAW',['../group__qioutils.html#ga057bcfe88c1239c40169daaff9055383',1,'qOS::util']]],
-  ['outputstring_25',['outputString',['../group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2',1,'qOS::util']]],
-  ['overview_26',['Overview',['../q_background.html',1,'Overview'],['../q_atcli.html#q_atcli_overview',1,'Overview'],['../q_qcoroutines.html#q_qcoroutines_overview',1,'Overview'],['../q_fsm.html#q_fsm_overview',1,'Overview'],['../q_memmang.html#q_memmang_overview',1,'Overview'],['../q_stimers.html#q_stimers_overview',1,'Overview'],['../q_trace.html#q_trace_overview',1,'Overview']]]
+  ['os_20configuration_20file_19',['Get a copy of the OS configuration file',['../q_gettingstarted.html#q_getqconfig',1,'']]],
+  ['out_20',['out',['../classq_o_s_1_1logger.html#a840afc791f5c16b80756ed81ce3977b2',1,'qOS::logger']]],
+  ['output_21',['output',['../classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0',1,'qOS::cli::handler_t']]],
+  ['output_5fresponse_22',['OUTPUT_RESPONSE',['../group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a2ee3d3e354422ee365d9c0d4d4cd10b7',1,'qOS::cli']]],
+  ['outputraw_23',['outputRAW',['../group__qioutils.html#ga057bcfe88c1239c40169daaff9055383',1,'qOS::util']]],
+  ['outputstring_24',['outputString',['../group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2',1,'qOS::util']]],
+  ['overview_25',['Overview',['../q_background.html',1,'Overview'],['../q_atcli.html#q_atcli_overview',1,'Overview'],['../q_qcoroutines.html#q_qcoroutines_overview',1,'Overview'],['../q_fsm.html#q_fsm_overview',1,'Overview'],['../q_memmang.html#q_memmang_overview',1,'Overview'],['../q_stimers.html#q_stimers_overview',1,'Overview'],['../q_trace.html#q_trace_overview',1,'Overview']]]
 ];

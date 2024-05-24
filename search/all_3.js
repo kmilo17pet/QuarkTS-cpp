@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['data_0',['data',['../structq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898',1,'qOS::sm::signal_t']]],
-  ['data_1',['Data',['../classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a',1,'qOS::sm::handler_t::Data'],['../q_events.html#eventdata',1,'Retrieving the event data'],['../q_fsm.html#q_fsmhandler',1,'The state callback handler: performing transitions and retrieving data']]],
+  ['data_0',['Data',['../classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a',1,'qOS::sm::handler_t']]],
+  ['data_1',['data',['../structq_o_s_1_1sm_1_1signal__t.html#accadec9b287e54e30a60138383945898',1,'qOS::sm::signal_t::data'],['../q_events.html#eventdata',1,'Retrieving the event data'],['../q_fsm.html#q_fsmhandler',1,'The state callback handler: performing transitions and retrieving data']]],
   ['deadlinecheck_2',['deadLineCheck',['../classq_o_s_1_1timer.html#a54e329e34d38a085efc49d3d078ecd96',1,'qOS::timer']]],
   ['debug_3',['debug',['../group__qlogger.html#gga8d02cc4e3735026bc7ceb4cb70940bc1ae3ff46d14d9239503248cc970615ce41',1,'qOS::logger']]],
   ['dec_4',['dec',['../group__qlogger.html#gad8a37883a837280ed7e1984a8bc3c27c',1,'qOS::logger']]],
