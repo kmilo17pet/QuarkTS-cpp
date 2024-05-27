@@ -2,100 +2,211 @@
 
 using namespace qOS;
 
-
-const size_t input::channel::BIT_INVERT = 0U;
-const size_t input::channel::BIT_IN_BAND = 1U;
-const size_t input::channel::BIT_STEADY_ON = 2U;
-const size_t input::channel::BIT_STEADY_OFF = 3U;
-const size_t input::channel::BIT_STEADY_BAND = 4U;
-
 /*============================================================================*/
-void input::watcher::watchAnalog( channel * const n ) noexcept
+void input::watcher::watchAnalog( channel& c ) noexcept
 {
-    if ( ( nullptr != analogReader ) && ( n->riseThreshold > n->fallThreshold ) ) {
-        const int current = analogReader( n->xChannel );
-        if ( ( input::state::OFF == n->prevState ) && ( current >= n->riseThreshold ) ) {
-            n->state = input::state::RISING_EDGE;
-            bits::singleSet( n->flags, input::channel::BIT_STEADY_ON );
-            bits::singleClear( n->flags, input::channel::BIT_IN_BAND );
-            bits::singleClear( n->flags, input::channel::BIT_STEADY_OFF );
-            n->tChange = clock::getTick();
-            n->prevState = input::state::ON;
-            n->invokeEvent( input::event::RISING_EDGE );
-        }
-        else if ( ( input::state::ON == n->prevState ) && ( current <= n->fallThreshold ) ) {
-            n->state = input::state::FALLING_EDGE;
-            bits::singleSet( n->flags, input::channel::BIT_STEADY_OFF );
-            bits::singleClear( n->flags, input::channel::BIT_IN_BAND );
-            bits::singleClear( n->flags, input::channel::BIT_STEADY_ON );
-            n->tChange = clock::getTick();
-            n->prevState = input::state::OFF;
-            n->invokeEvent( input::event::FALLING_EDGE );
-        }
-        else if ( !bits::singleRead( n->flags, input::channel::BIT_IN_BAND ) && ( current > n->fallThreshold ) && ( current < n->riseThreshold ) ) {
-            bits::singleSet( n->flags, input::channel::BIT_IN_BAND );
-            bits::singleSet( n->flags, input::channel::BIT_STEADY_BAND );
-            n->tChange = clock::getTick();
-            n->invokeEvent( input::event::IN_BAND );
-        }
-        else {
-            const qOS::clock_t tDiff = clock::getTick() - n->tChange;
-            if ( bits::singleRead( n->flags, input::channel::BIT_STEADY_ON ) && ( tDiff >= n->tSteadyOn ) ) {
-                n->invokeEvent( input::event::STEADY_ON );
-                bits::singleClear( n->flags, input::channel::BIT_STEADY_ON );
-            }
-            if ( bits::singleRead( n->flags, input::channel::BIT_STEADY_OFF ) && ( tDiff >= n->tSteadyOff ) ) {
-                n->invokeEvent( input::event::STEADY_OFF );
-                bits::singleClear( n->flags, input::channel::BIT_STEADY_OFF );
-            }
-            if ( bits::singleRead( n->flags, input::channel::BIT_STEADY_BAND ) && ( tDiff >= n->tSteadyBand ) ) {
-                n->invokeEvent( input::event::STEADY_IN_BAND );
-                bits::singleClear( n->flags, input::channel::BIT_STEADY_BAND );
-            }
-        }
+    if ( ( nullptr != analogReader ) && ( ( c.riseThreshold - c.fallThreshold ) > c.hysteresis ) ) {
+        const int val = analogReader( c.xChannel );
+        c.channelState( c, val );
     }
     else {
-        exceptionEvent( n );
+        exceptionEvent( c );
     }
 }
 /*============================================================================*/
-void input::watcher::watchDigital( channel * const n ) noexcept
+void input::watcher::watchDigital( channel& c ) noexcept
 {
     if ( nullptr != digitalReader ) {
-        auto val = digitalReader( n->xChannel );
-        if ( bits::singleRead( n->flags, input::channel::BIT_INVERT ) ) {
+        auto val = digitalReader( c.xChannel );
+        if ( c.negate ) {
             val = !val; // skipcq: CXX-W2065
         }
-        const auto current = static_cast<input::state>( val );
-
-        if ( n->prevState != current ) {
-            n->tChange = clock::getTick();
-            if ( input::state::ON == current ) {
-                n->state = input::state::RISING_EDGE;
-                bits::singleSet( n->flags, input::channel::BIT_STEADY_ON );
-                n->invokeEvent( input::event::RISING_EDGE );
-            }
-            else {
-                n->state = input::state::FALLING_EDGE;
-                bits::singleSet( n->flags, input::channel::BIT_STEADY_OFF );
-                n->invokeEvent( input::event::FALLING_EDGE );
-            }
-        }
-        else {
-            const qOS::clock_t tDiff = clock::getTick() - n->tChange;
-            if ( bits::singleRead( n->flags, input::channel::BIT_STEADY_ON ) && ( current == input::state::ON ) && ( tDiff >= n->tSteadyOn ) ) {
-                n->invokeEvent( input::event::STEADY_ON );
-                bits::singleClear( n->flags, input::channel::BIT_STEADY_ON );
-            }
-            if ( bits::singleRead( n->flags, input::channel::BIT_STEADY_OFF ) && ( current == input::state::OFF ) && ( tDiff >= n->tSteadyOff ) ) {
-                n->invokeEvent( input::event::STEADY_OFF );
-                bits::singleClear( n->flags, input::channel::BIT_STEADY_OFF );
-            }
-        }
-        n->prevState = current;
+        c.channelState( c, val );
     }
     else {
-        exceptionEvent( n );
+        exceptionEvent( c );
+    }
+}
+/*============================================================================*/
+void input::channel::digitalFallingEdgeState( channel& c, int value )
+{
+    if ( 0 != value ) {
+        c.channelState = &input::channel::digitalRisingEdgeState;
+        c.invokeEvent( input::event::RISING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    if ( ( clock::getTick() - c.tChange ) > c.tSteadyOff ) {
+        c.channelState = &input::channel::digitalSteadyInLowState;
+        c.invokeEvent( input::event::STEADY_IN_LOW );
+        c.tChange = clock::getTick();
+    }
+}
+/*============================================================================*/
+void input::channel::digitalSteadyInLowState( channel& c, int value )
+{
+    if ( 0 != value ) {
+        c.channelState = &input::channel::digitalRisingEdgeState;
+        c.invokeEvent( input::event::RISING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+}
+/*============================================================================*/
+void input::channel::digitalRisingEdgeState( channel& c, int value )
+{
+    if ( 0 == value ) {
+        c.channelState = &input::channel::digitalFallingEdgeState;
+        c.invokeEvent( input::event::FALLING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    if ( ( clock::getTick() - c.tChange ) > c.tSteadyOn ) {
+        c.channelState = &input::channel::digitalSteadyInHighState;
+        c.invokeEvent( input::event::STEADY_IN_HIGH );
+        c.tChange = clock::getTick();
+    }
+}
+/*============================================================================*/
+void input::channel::digitalSteadyInHighState( channel& c, int value )
+{
+    if ( 0 == value ) {
+        c.channelState = &input::channel::digitalFallingEdgeState;
+        c.invokeEvent( input::event::FALLING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+}
+/*============================================================================*/
+void input::channel::analogFallingEdgeState( channel& c, int value )
+{
+    if ( value > c.riseThreshold ) {
+        c.channelState = &input::channel::analogRisingEdgeState;
+        c.invokeEvent( input::event::RISING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else if ( value > ( c.fallThreshold + c.hysteresis ) ) {
+        c.channelState = &input::channel::analogInBandState;
+        c.invokeEvent( input::event::IN_BAND );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else {
+        /*Nothing to do here*/
+    }
+
+    if ( ( clock::getTick() - c.tChange ) > c.tSteadyOff ) {
+        c.channelState = &input::channel::analogSteadyInLowState;
+        c.invokeEvent( input::event::STEADY_IN_LOW );
+        c.tChange = clock::getTick();
+    }
+}
+/*============================================================================*/
+void input::channel::analogRisingEdgeState( channel& c, int value )
+{
+    if ( value < c.fallThreshold ) {
+        c.channelState = &input::channel::analogFallingEdgeState;
+        c.invokeEvent( input::event::FALLING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else if ( value < ( c.riseThreshold - c.hysteresis ) ) {
+        c.channelState = &input::channel::analogInBandState;
+        c.invokeEvent( input::event::IN_BAND );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else {
+        /*Nothing to do here*/
+    }
+
+    if ( ( clock::getTick() - c.tChange ) > c.tSteadyOn ) {
+        c.channelState = &input::channel::analogSteadyInHighState;
+        c.invokeEvent( input::event::STEADY_IN_HIGH );
+        c.tChange = clock::getTick();
+    }
+}
+/*============================================================================*/
+void input::channel::analogInBandState( channel& c, int value )
+{
+    if ( value > c.riseThreshold ) {
+        c.channelState = &input::channel::analogRisingEdgeState;
+        c.invokeEvent( input::event::RISING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else if ( value < c.fallThreshold ) {
+        c.channelState = &input::channel::analogFallingEdgeState;
+        c.invokeEvent( input::event::FALLING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else {
+        /*Nothing to do here*/
+    }
+
+    if ( ( clock::getTick() - c.tChange ) > c.tSteadyBand ) {
+        c.channelState = &input::channel::analogSteadyInBandState;
+        c.invokeEvent( input::event::STEADY_IN_BAND );
+        c.tChange = clock::getTick();
+    }
+}
+/*============================================================================*/
+void input::channel::analogSteadyInHighState( channel& c, int value )
+{
+    if ( value < c.fallThreshold ) {
+        c.channelState = &input::channel::analogFallingEdgeState;
+        c.invokeEvent( input::event::FALLING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else if ( value < ( c.riseThreshold - c.hysteresis ) ) {
+        c.channelState = &input::channel::analogInBandState;
+        c.invokeEvent( input::event::IN_BAND );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else {
+        /*Nothing to do here*/
+    }
+}
+/*============================================================================*/
+void input::channel::analogSteadyInLowState( channel& c, int value )
+{
+    if ( value > c.riseThreshold ) {
+        c.channelState = &input::channel::analogRisingEdgeState;
+        c.invokeEvent( input::event::RISING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else if ( value > ( c.fallThreshold + c.hysteresis ) ) {
+        c.channelState = &input::channel::analogInBandState;
+        c.invokeEvent( input::event::IN_BAND );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else {
+        /*Nothing to do here*/
+    }
+}
+/*============================================================================*/
+void input::channel::analogSteadyInBandState( channel& c, int value )
+{
+    if ( value > c.riseThreshold ) {
+        c.channelState = &input::channel::analogRisingEdgeState;
+        c.invokeEvent( input::event::RISING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else if ( value < c.fallThreshold ) {
+        c.channelState = &input::channel::analogFallingEdgeState;
+        c.invokeEvent( input::event::FALLING_EDGE );
+        c.invokeEvent( input::event::ON_CHANGE );
+        c.tChange = clock::getTick();
+    }
+    else {
+        /*Nothing to do here*/
     }
 }
 /*============================================================================*/
@@ -104,9 +215,9 @@ bool input::watcher::watch( void ) noexcept
     const auto debouncePassed = waitDebounce.freeRun( debounceTime );
 
     for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
-        input::channel * const n = i.get<input::channel*>();
+        input::channel& n = *i.get<input::channel*>();
 
-        if ( ( input::type::ANALOG == n->channelType ) ) {
+        if ( ( input::type::ANALOG == n.channelType ) ) {
             watchAnalog( n );
         }
         else if ( debouncePassed ) {
@@ -127,10 +238,10 @@ bool input::channel::registerEvent( const input::event e, const input::eventCall
     if ( e < input::event::MAX_EVENTS ) {
         cb[ cbIndex ] = c;
         switch ( e ) {
-            case input::event::STEADY_ON:
+            case input::event::STEADY_IN_HIGH:
                 tSteadyOn = static_cast<qOS::clock_t>( t );
                 break;
-            case input::event::STEADY_OFF:
+            case input::event::STEADY_IN_LOW:
                 tSteadyOff = static_cast<qOS::clock_t>( t );
                 break;
             case input::event::STEADY_IN_BAND:
@@ -145,21 +256,31 @@ bool input::channel::registerEvent( const input::event e, const input::eventCall
     return retVal;
 }
 /*============================================================================*/
-bool input::watcher::add( channel& n ) noexcept
+bool input::watcher::add( channel& c ) noexcept
 {
-    if ( input::type::DIGITAL == n.channelType ) {
-        auto val = ( nullptr != digitalReader ) ? digitalReader( n.xChannel ) : -1;
-        if ( bits::singleRead( n.flags, input::channel::BIT_INVERT ) ) {
+    if ( input::type::DIGITAL == c.channelType ) {
+        auto val = ( nullptr != digitalReader ) ? digitalReader( c.xChannel ) : -1;
+        if ( c.negate ) {
             val = !val; // skipcq: CXX-W2065
         }
-        n.prevState = static_cast<input::state>( val );
+        c.channelState = ( 0 == val ) ? &input::channel::digitalFallingEdgeState
+                                      : &input::channel::digitalRisingEdgeState;
     }
     else {
-        n.prevState = input::state::OFF;
+        const auto val = ( nullptr != analogReader ) ? analogReader( c.xChannel ) : -1;
+        if ( val > c.riseThreshold ) {
+            c.channelState = &input::channel::analogRisingEdgeState;
+        }
+        else if ( val < c.fallThreshold ) {
+            c.channelState = &input::channel::analogFallingEdgeState;
+        }
+        else {
+            c.channelState = &input::channel::analogInBandState;
+        }
     }
-    n.tChange = clock::getTick();
+    c.tChange = clock::getTick();
 
-    return nodes.insert( &n );
+    return nodes.insert( &c );
 }
 /*============================================================================*/
 bool input::watcher::registerEvent( const event e, const eventCallback_t &c, const qOS::duration_t t ) noexcept

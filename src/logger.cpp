@@ -232,8 +232,8 @@ namespace qOS {
 
         _logger& _logger::operator<<( const qOS::input::event& e )
         {
-            static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = {
-                "EXCEPTION ", "FALLING_EDGE ", "RISING_EDGE ", "IN_BAND ", "STEADY_ON ", "STEADY_OFF ", "STEADY_IN_BAND "
+            static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = { // skipcq: CXX-W2066
+                "EXCEPTION ", "FALLING_EDGE ", "RISING_EDGE ", "ON_CHANGE ", "IN_BAND ", "STEADY_IN_HIGH ", "STEADY_IN_LOW ", "STEADY_IN_BAND "
             };
             (void)util::outputString( writeChar , str[ static_cast<int>( e ) + 1 ] ); // skipcq: CXX-C1000
             return *this;

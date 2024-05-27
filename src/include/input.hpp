@@ -30,29 +30,18 @@ namespace qOS {
         */
 
         /**
-        * @brief An enum with all the possible states detected by the
-        * qOS::input::watcher class  for a specified qOS::input::channel.
-        */
-        enum class state {
-            FALLING_EDGE = -3,  /**< (Or negative edge) is the high-to-low transition*/
-            RISING_EDGE = -2,   /**< (Or positive edge) is the low-to-high transition*/
-            UNKNOWN = -1,       /**< Unkown state*/
-            OFF = 0,            /**< Value on false*/
-            ON = 1,             /**< Value on true*/
-        };
-
-        /**
         * @brief An enum with all the possible events that can be detected by the
         * watcher class for a specified input-channel.
         */
         enum class event {
-            EXCEPTION = -1,     /**< Error due a bad reading or channel configuration .*/
-            FALLING_EDGE,       /**< Event on falling-edge of the digital input-channel*/
-            RISING_EDGE,        /**< Event on rising-edge of the digital input-channel*/
-            IN_BAND,            /**< Event when the analog input-channel enters the band*/
-            STEADY_ON,          /**< Event when the input-channel has been kept on for the specified time .*/
-            STEADY_OFF,         /**< Event when the input-channel has been kept off for the specified time .*/
-            STEADY_IN_BAND,     /**< Event when the the analog input-channel has remained within the band for the specified time .*/
+            EXCEPTION = -1,  /**< Error due a bad reading or channel configuration .*/
+            FALLING_EDGE,    /**< Event on falling-edge of the input-channel (On analog when the reading is below the rise threshold)*/
+            RISING_EDGE,     /**< Event on rising-edge of the digital input-channel(On analog when the reading is above the rise threshold)*/
+            ON_CHANGE,       /**< Event on any input-channel change when crossing the thresholds*/
+            IN_BAND,         /**< Event when the analog input-channel enters the band*/
+            STEADY_IN_HIGH,  /**< Event when the input-channel has been kept on high (or above the rise threshold) for the specified time .*/
+            STEADY_IN_LOW,   /**< Event when the input-channel has been kept on low (or below the fall threshold) for the specified time .*/
+            STEADY_IN_BAND,  /**< Event when the the analog input-channel has remained within the band for the specified time .*/
             /*! @cond  */
             MAX_EVENTS,
             /*! @endcond  */
@@ -73,21 +62,18 @@ namespace qOS {
         */
         using eventCallback_t = void(*)( channel&, const event );
 
+        /*! @cond  */
+        using channelStateFcn_t = void(*)( channel&, int );
+        /*! @endcond  */
+
         /**
         * @brief An digital input-channel object.
         */
         class channel : protected node {
             private:
-                static const size_t BIT_INVERT;
-                static const size_t BIT_IN_BAND;
-                static const size_t BIT_STEADY_ON;
-                static const size_t BIT_STEADY_OFF;
-                static const size_t BIT_STEADY_BAND;
+                bool negate{ false };
                 type channelType;
                 eventCallback_t cb[ static_cast<size_t>( input::event::MAX_EVENTS ) ] = { nullptr }; // skipcq: CXX-W2066
-                size_t flags{ 0U };
-                input::state prevState{ input::state::UNKNOWN };
-                input::state state{ input::state::UNKNOWN };
                 qOS::clock_t tChange{ 0U };
                 qOS::clock_t tSteadyOn{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyOff{ 0xFFFFFFFFU };
@@ -95,6 +81,7 @@ namespace qOS {
                 uint8_t xChannel;
                 int riseThreshold;
                 int fallThreshold;
+                int hysteresis{ 20 };
                 void *userData{ nullptr };
                 channel( channel const& ) = delete;
                 void operator=( channel const& ) = delete;
@@ -116,6 +103,18 @@ namespace qOS {
                         cb[ i ] = nullptr;
                     }
                 }
+                channelStateFcn_t channelState{ nullptr };
+                static void digitalFallingEdgeState( channel& c, int value );
+                static void digitalRisingEdgeState( channel& c, int value );
+                static void digitalSteadyInHighState( channel& c, int value );
+                static void digitalSteadyInLowState( channel& c, int value );
+
+                static void analogFallingEdgeState( channel& c, int value );
+                static void analogRisingEdgeState( channel& c, int value );
+                static void analogInBandState( channel& c, int value );
+                static void analogSteadyInHighState( channel& c, int value );
+                static void analogSteadyInLowState( channel& c, int value );
+                static void analogSteadyInBandState( channel& c, int value );
             public:
                 virtual ~channel() {}
                 /**
@@ -124,8 +123,9 @@ namespace qOS {
                 * @param[in] inputChannel The specified channel(pin) to read.
                 * @param[in] lowerThreshold The lower threshold value.
                 * @param[in] upperThreshold The upper threshold value.
+                * @param[in] h Hysteresis for the in-band transition.
                 */
-                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold ) : xChannel( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold )
+                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : xChannel( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold ), hysteresis( h )
                 {
                     channelType = input::type::ANALOG;
                     cbInit();
@@ -135,11 +135,11 @@ namespace qOS {
                 * @param[in] inputChannel The specified channel(pin) to read.
                 * @param[in] invert To invert/negate the raw-reading.
                 */
-                channel( uint8_t inputChannel, bool invert = false ) : xChannel( inputChannel )
+                channel( uint8_t inputChannel, bool invert = false ) : negate( invert), xChannel( inputChannel )
                 {
-                    bits::singleWrite( flags, BIT_INVERT, invert );
                     channelType = input::type::DIGITAL;
                     cbInit();
+
                 }
                 /**
                 * @brief Set/Change the channel(pin) number.
@@ -206,12 +206,12 @@ namespace qOS {
                 channelReaderFcn_t analogReader{ nullptr };
                 watcher( watcher const& ) = delete;
                 void operator=( watcher const& ) = delete;
-                void watchDigital( channel * const n ) noexcept;
-                void watchAnalog( channel * const n ) noexcept;
-                inline void exceptionEvent( channel * const n )
+                void watchDigital( channel& c ) noexcept;
+                void watchAnalog( channel& c ) noexcept;
+                inline void exceptionEvent( channel& c )
                 {
                     if ( nullptr != exception ) {
-                        exception( *n, input::event::EXCEPTION );
+                        exception( c, input::event::EXCEPTION );
                     }
                 }
             public:
