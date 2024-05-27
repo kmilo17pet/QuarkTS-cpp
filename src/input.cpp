@@ -283,17 +283,17 @@ bool input::watcher::add( channel& c ) noexcept
     return nodes.insert( &c );
 }
 /*============================================================================*/
-bool input::watcher::registerEvent( const event e, const eventCallback_t &c, const qOS::duration_t t ) noexcept
+bool input::watcher::registerEvent( const event e, const eventCallback_t &f, const qOS::duration_t t ) noexcept
 {
     bool retValue = true;
 
     if ( input::event::EXCEPTION == e ) {
-        exception = c;
+        exception = f;
     }
     else {
         for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
             input::channel * const n = i.get<input::channel*>();
-            retValue &= n->registerEvent( e, c, t );
+            retValue &= n->registerEvent( e, f, t );
         }
     }
 

@@ -79,8 +79,8 @@ namespace qOS {
                 qOS::clock_t tSteadyOff{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
                 uint8_t xChannel;
-                int riseThreshold;
-                int fallThreshold;
+                int riseThreshold{ 800 };
+                int fallThreshold{ 200 };
                 int hysteresis{ 20 };
                 void *userData{ nullptr };
                 channel( channel const& ) = delete;
