@@ -215,13 +215,13 @@ bool input::watcher::watch( void ) noexcept
     const auto debouncePassed = waitDebounce.freeRun( debounceTime );
 
     for ( auto i = nodes.begin(); i.untilEnd() ; i++ ) {
-        input::channel& n = *i.get<input::channel*>();
+        input::channel& c = *i.get<input::channel*>();
 
-        if ( ( input::type::ANALOG == n.channelType ) ) {
-            watchAnalog( n );
+        if ( ( input::type::ANALOG == c.channelType ) ) {
+            watchAnalog( c );
         }
         else if ( debouncePassed ) {
-            watchDigital( n );
+            watchDigital( c );
         }
         else {
             /*nothing to do here*/
@@ -230,13 +230,13 @@ bool input::watcher::watch( void ) noexcept
     return true;
 }
 /*============================================================================*/
-bool input::channel::registerEvent( const input::event e, const input::eventCallback_t &c, const qOS::duration_t t ) noexcept
+bool input::channel::registerEvent( const input::event e, const input::eventCallback_t &f, const qOS::duration_t t ) noexcept
 {
     bool retVal = false;
     const auto cbIndex = static_cast<int>( e );
 
     if ( e < input::event::MAX_EVENTS ) {
-        cb[ cbIndex ] = c;
+        cb[ cbIndex ] = f;
         switch ( e ) {
             case input::event::STEADY_IN_HIGH:
                 tSteadyOn = static_cast<qOS::clock_t>( t );

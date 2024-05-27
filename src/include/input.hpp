@@ -120,7 +120,7 @@ namespace qOS {
                 /**
                 * @brief Constructor for the analog input channel instance.
                 * @note Both lower and upper define the band
-                * @param[in] inputChannel The specified channel(pin) to read.
+                * @param[in] inputChannel The specified channel(pin) number to read.
                 * @param[in] lowerThreshold The lower threshold value.
                 * @param[in] upperThreshold The upper threshold value.
                 * @param[in] h Hysteresis for the in-band transition.
@@ -132,7 +132,7 @@ namespace qOS {
                 }
                 /**
                 * @brief Constructor for the digital input channel instance.
-                * @param[in] inputChannel The specified channel(pin) to read.
+                * @param[in] inputChannel The specified channel(pin) number to read.
                 * @param[in] invert To invert/negate the raw-reading.
                 */
                 channel( uint8_t inputChannel, bool invert = false ) : negate( invert), xChannel( inputChannel )
@@ -143,7 +143,7 @@ namespace qOS {
                 }
                 /**
                 * @brief Set/Change the channel(pin) number.
-                * @param[in] inputChannel The specified channel(pin) to read.
+                * @param[in] inputChannel The specified channel number (pin) to read.
                 * @return @c true on success. Otherwise @c false.
                 */
                 inline bool setChannel( const uint8_t inputChannel ) noexcept
@@ -227,18 +227,18 @@ namespace qOS {
                     debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
                 /**
                 * @brief Add a channel to the watcher instance
-                * @param[in] n The input-Channel to watch
+                * @param[in] c The input-Channel to watch
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool add( channel& n ) noexcept;
+                bool add( channel& c ) noexcept;
                 /**
                 * @brief Remove a channel to the watcher instance
-                * @param[in] n The input-Channel to watch
+                * @param[in] c The input-Channel to watch
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool remove( channel& n ) noexcept
+                bool remove( channel& c ) noexcept
                 {
-                    return nodes.remove( &n );
+                    return nodes.remove( &c );
                 }
                 /**
                 * @brief Watch for the state and events for all channels
@@ -250,39 +250,39 @@ namespace qOS {
                 /**
                 * @brief Register an event-callback to be activated in the
                 * watcher instance where the input-channel is being added.
-                * @param[in] n The input-channel instance.
+                * @param[in] c The input-channel instance.
                 * @param[in] e The event to register.
-                * @param[in] c The callback to be invoked when the event is detected.
+                * @param[in] f The callback to be invoked when the event is detected.
                 * @param[in] t The time associated to the event (only valid for
                 * certain events).
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool registerEvent( channel& n, const event e, const eventCallback_t &c, const qOS::duration_t t = 1_sec ) noexcept
+                bool registerEvent( channel& c, const event e, const eventCallback_t &f, const qOS::duration_t t = 1_sec ) noexcept
                 {
-                    return n.registerEvent( e, c, t );
+                    return c.registerEvent( e, f, t );
                 }
                 /**
                 * @brief Un-Register an event-callback for the specified
                 * input-channel.
-                * @param[in] n The input-channel instance.
+                * @param[in] c The input-channel instance.
                 * @param[in] e The event to unregister.
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool unregisterEvent( channel& n, const event e ) noexcept
+                bool unregisterEvent( channel& c, const event e ) noexcept
                 {
-                    return n.unregisterEvent( e );
+                    return c.unregisterEvent( e );
                 }
                 /**
                 * @brief Register an event-callback to be activated in the
                 * watcher instance for all the input-channels being added.
                 * @param[in] e The event to register.
-                * @param[in] c The callback to be invoked when the event is detected.
+                * @param[in] f The callback to be invoked when the event is detected.
                 * @param[in] t The time associated to the event (only valid for
                 * certain events).
                 * @return @c true if operation succeeds in all input-channels.
                 * Otherwise @c false.
                 */
-                bool registerEvent( const event e, const eventCallback_t &c, const qOS::duration_t t = 1_sec ) noexcept;
+                bool registerEvent( const event e, const eventCallback_t &f, const qOS::duration_t t = 1_sec ) noexcept;
                 /**
                 * @brief Un-Register an event-callback for all input-channels
                 * being added.
