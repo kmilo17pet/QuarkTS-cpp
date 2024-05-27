@@ -1,15 +1,10 @@
 var NAVTREEINDEX2 =
 {
-"group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764":[6,2,2,5,6],
+"group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3":[6,2,2,5,5],
+"group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ac9793ae986c35ff04f67759a6bff806b":[6,2,2,5,3],
 "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf":[6,2,2,5,0],
-"group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad264a2d9c77f72d3d3150953aacc2e00":[6,2,2,5,4],
 "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98":[6,2,2,5,2],
-"group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7":[6,2,2,5,3],
-"group__qinput.html#gga78226dd21564a598124985dfa62a8e11a297f5ea19073f4b51715b029f48d5d52":[6,2,2,6,0],
-"group__qinput.html#gga78226dd21564a598124985dfa62a8e11a696b031073e74bf2cb98e5ef201d4aa3":[6,2,2,6,2],
-"group__qinput.html#gga78226dd21564a598124985dfa62a8e11a88559a0cfd8250c9d65970cc145c92d4":[6,2,2,6,3],
-"group__qinput.html#gga78226dd21564a598124985dfa62a8e11a90651ebea9a35ec4e018c8157492e17c":[6,2,2,6,4],
-"group__qinput.html#gga78226dd21564a598124985dfa62a8e11ad85243a747ac5537ef0b7adde99c3e98":[6,2,2,6,1],
+"group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7":[6,2,2,5,4],
 "group__qioutils.html":[6,2,3],
 "group__qioutils.html#ga057bcfe88c1239c40169daaff9055383":[6,2,3,8],
 "group__qioutils.html#ga1877d86a8e6add07e15a0d78b38a35d1":[6,2,3,11],
@@ -249,5 +244,10 @@ var NAVTREEINDEX2 =
 "q_qcoroutines.html#q_coroutine_semaphores":[5,1,5],
 "q_qcoroutines.html#q_qcoroutines_overview":[5,1,0],
 "q_stimers.html":[5,2],
-"q_stimers.html#q_stimerexample":[5,2,2]
+"q_stimers.html#q_stimerexample":[5,2,2],
+"q_stimers.html#q_stimers_overview":[5,2,0],
+"q_stimers.html#q_stimerusage":[5,2,1],
+"q_trace.html":[5,5],
+"q_trace.html#q_trace_mblock":[5,5,2],
+"q_trace.html#q_trace_overview":[5,5,0]
 };
