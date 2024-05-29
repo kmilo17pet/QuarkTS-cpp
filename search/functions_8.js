@@ -13,5 +13,6 @@ var searchData=
   ['isfull_10',['isFull',['../classq_o_s_1_1byte_buffer.html#a51fd9989f0dc93b24adf4ac6710bbb45',1,'qOS::byteBuffer::isFull()'],['../classq_o_s_1_1queue.html#ae64dca50e370e1e6a35a5ac175364737',1,'qOS::queue::isFull(void) const noexcept']]],
   ['isinitialized_11',['isInitialized',['../classq_o_s_1_1queue.html#ab89e03ac145a43b19121bac6a1a6c07d',1,'qOS::queue::isInitialized()'],['../classq_o_s_1_1response.html#abd22e5157cb6f45cdc6710220f574c6d',1,'qOS::response::isInitialized()']]],
   ['isrhandler_12',['isrHandler',['../classq_o_s_1_1command_line_interface.html#a8c70e232920a3b771b064a9ded969a5a',1,'qOS::commandLineInterface::isrHandler(const char c)'],['../classq_o_s_1_1command_line_interface.html#ada75a69d25806c5aa86fe9cd52666ee1',1,'qOS::commandLineInterface::isrHandler(char *pData, const size_t n)'],['../classq_o_s_1_1response.html#a719e731c27f2ca3fdfa5302782ff1f08',1,'qOS::response::isrHandler()']]],
-  ['itemsavailable_13',['itemsAvailable',['../classq_o_s_1_1queue.html#a3121e761675f080661ead71b9cc59b95',1,'qOS::queue']]]
+  ['isshared_13',['isShared',['../classq_o_s_1_1input_1_1channel.html#a6b114e28bce381a3cb516eb5bf40d1ec',1,'qOS::input::channel']]],
+  ['itemsavailable_14',['itemsAvailable',['../classq_o_s_1_1queue.html#a3121e761675f080661ead71b9cc59b95',1,'qOS::queue']]]
 ];
