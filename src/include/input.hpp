@@ -63,7 +63,7 @@ namespace qOS {
         using eventCallback_t = void(*)( channel&, const event );
 
         /*! @cond  */
-        using channelStateFcn_t = void(*)( channel&, int );
+        using channelStateFcn_t = void(*)( channel& );
         /*! @endcond  */
 
         /**
@@ -72,13 +72,16 @@ namespace qOS {
         class channel : protected node {
             private:
                 bool negate{ false };
+                int value;
+                int *ptrValue{ &value };
+
                 type channelType;
                 eventCallback_t cb[ static_cast<size_t>( input::event::MAX_EVENTS ) ] = { nullptr }; // skipcq: CXX-W2066
                 qOS::clock_t tChange{ 0U };
                 qOS::clock_t tSteadyOn{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyOff{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
-                uint8_t xChannel;
+                uint8_t number;
                 int riseThreshold{ 800 };
                 int fallThreshold{ 200 };
                 int hysteresis{ 20 };
@@ -104,17 +107,17 @@ namespace qOS {
                     }
                 }
                 channelStateFcn_t channelState{ nullptr };
-                static void digitalFallingEdgeState( channel& c, int value );
-                static void digitalRisingEdgeState( channel& c, int value );
-                static void digitalSteadyInHighState( channel& c, int value );
-                static void digitalSteadyInLowState( channel& c, int value );
+                static void digitalFallingEdgeState( channel& c );
+                static void digitalRisingEdgeState( channel& c );
+                static void digitalSteadyInHighState( channel& c );
+                static void digitalSteadyInLowState( channel& c );
 
-                static void analogFallingEdgeState( channel& c, int value );
-                static void analogRisingEdgeState( channel& c, int value );
-                static void analogInBandState( channel& c, int value );
-                static void analogSteadyInHighState( channel& c, int value );
-                static void analogSteadyInLowState( channel& c, int value );
-                static void analogSteadyInBandState( channel& c, int value );
+                static void analogFallingEdgeState( channel& c );
+                static void analogRisingEdgeState( channel& c );
+                static void analogInBandState( channel& c );
+                static void analogSteadyInHighState( channel& c );
+                static void analogSteadyInLowState( channel& c );
+                static void analogSteadyInBandState( channel& c );
             public:
                 virtual ~channel() {}
                 /**
@@ -125,7 +128,7 @@ namespace qOS {
                 * @param[in] upperThreshold The upper threshold value.
                 * @param[in] h Hysteresis for the in-band transition.
                 */
-                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : xChannel( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold ), hysteresis( h )
+                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : number( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold ), hysteresis( h )
                 {
                     channelType = input::type::ANALOG;
                     cbInit();
@@ -135,11 +138,10 @@ namespace qOS {
                 * @param[in] inputChannel The specified channel(pin) number to read.
                 * @param[in] invert To invert/negate the raw-reading.
                 */
-                channel( uint8_t inputChannel, bool invert = false ) : negate( invert), xChannel( inputChannel )
+                channel( uint8_t inputChannel, bool invert = false ) : negate( invert), number( inputChannel )
                 {
                     channelType = input::type::DIGITAL;
                     cbInit();
-
                 }
                 /**
                 * @brief Set/Change the channel(pin) number.
@@ -151,7 +153,7 @@ namespace qOS {
                     bool retValue = false;
 
                     if ( inputChannel < 32U ) {
-                        xChannel = inputChannel;
+                        number = inputChannel;
                         retValue = true;
                     }
 
@@ -163,7 +165,7 @@ namespace qOS {
                 */
                 inline uint8_t getChannel( void ) const
                 {
-                    return xChannel;
+                    return number;
                 }
                 /**
                 * @brief Get the channel type.
@@ -173,7 +175,6 @@ namespace qOS {
                 {
                     return channelType;
                 }
-
                 /**
                 * @brief Set the channel user-data.
                 * @param[in] A pointer to the user-data
@@ -190,6 +191,15 @@ namespace qOS {
                 {
                     return userData;
                 }
+                /**
+                * @brief Check if the channel value is shared with other channel
+                * with the same (pin) number.
+                * @return @c true if shared. Otherwise @c false.
+                */
+                inline bool isShared( void ) const
+                {
+                    return ( &value != ptrValue );
+                }
             friend class watcher;
         };
 
@@ -199,7 +209,8 @@ namespace qOS {
         class watcher : protected node {
             private:
                 eventCallback_t exception{ nullptr };
-                list nodes;
+                list digitalChannels;
+                list analogChannels;
                 qOS::timer waitDebounce;
                 qOS::duration_t debounceTime{ 100_ms };
                 channelReaderFcn_t digitalReader{ nullptr };
@@ -227,6 +238,11 @@ namespace qOS {
                     debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
                 /**
                 * @brief Add a channel to the watcher instance
+                * @note If the analog channel has channel-number equal to one of
+                * the channels already existing in the container, it will be
+                * marked as a shared channel. For shared channels the reader
+                * function will be invoked once and the value will be the same
+                * until the scan of all channels is completed.
                 * @param[in] c The input-Channel to watch
                 * @return @c true on success. Otherwise @c false.
                 */
@@ -236,10 +252,7 @@ namespace qOS {
                 * @param[in] c The input-Channel to watch
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool remove( channel& c ) noexcept
-                {
-                    return nodes.remove( &c );
-                }
+                bool remove( channel& c ) noexcept;
                 /**
                 * @brief Watch for the state and events for all channels
                 * registered inside the watcher instance (Non-Blocking call).
