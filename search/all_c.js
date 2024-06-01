@@ -21,10 +21,7 @@ var searchData=
   ['model_18',['RTC(Run To Completion) model',['../q_foundations.html#rtcmodel',1,'']]],
   ['module_19',['Including QuarkTS++ as a git sub-module',['../q_gettingstarted.html#q_submodule',1,'']]],
   ['move_20',['move',['../classq_o_s_1_1list.html#ae07617ca533526784159b1d164018a6c',1,'qOS::list']]],
-  ['multi_5fpress_5fdouble_21',['MULTI_PRESS_DOUBLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a3973ade7021fc566538da31063d8e813',1,'qOS::input']]],
-  ['multi_5fpress_5fmany_22',['MULTI_PRESS_MANY',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7adfe9b71802607e0031b86d81fb4103e8',1,'qOS::input']]],
-  ['multi_5fpress_5ftriple_23',['MULTI_PRESS_TRIPLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ac32852cac951780b6f868ea97310191c',1,'qOS::input']]],
-  ['multipleclear_24',['multipleClear',['../group__qflm.html#ga780ea4cb7bc1234784bca8fc01807560',1,'qOS::bits']]],
-  ['multipleget_25',['multipleGet',['../group__qflm.html#gacd3c021c74959669887fc42f2f193907',1,'qOS::bits']]],
-  ['multipleset_26',['multipleSet',['../group__qflm.html#gab8e15a186a9b8c4cc6b3b36671f7dc6b',1,'qOS::bits']]]
+  ['multipleclear_21',['multipleClear',['../group__qflm.html#ga780ea4cb7bc1234784bca8fc01807560',1,'qOS::bits']]],
+  ['multipleget_22',['multipleGet',['../group__qflm.html#gacd3c021c74959669887fc42f2f193907',1,'qOS::bits']]],
+  ['multipleset_23',['multipleSet',['../group__qflm.html#gab8e15a186a9b8c4cc6b3b36671f7dc6b',1,'qOS::bits']]]
 ];

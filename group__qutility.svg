@@ -29,7 +29,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="group__qinput.html" target="_top" xlink:title="An interface to manage and simplify the value state (with edge&#45;checking) of incoming binary signals.">
+<g id="a_Node000004"><a xlink:href="group__qinput.html" target="_top" xlink:title="A comprehensive event class for efficient, maintainable working with input channels.">
 <polygon fill="white" stroke="#666666" points="192.88,-179.25 86.12,-179.25 86.12,-160 192.88,-160 192.88,-179.25"/>
 <text text-anchor="middle" x="139.5" y="-165.75" font-family="Helvetica,sans-Serif" font-size="10.00">Input channel utilities</text>
 </a>

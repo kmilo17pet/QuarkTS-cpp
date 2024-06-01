@@ -1,7 +1,7 @@
 <map id="Utilities" name="Utilities">
 <area shape="rect" id="Node000003" href="$group__qbsbuffers.html" title="An interrupt&#45;safe byte&#45;sized ring buffer interface." alt="" coords="129,5,254,31"/>
 <area shape="rect" id="Node000008" href="$group__qflm.html" title=" " alt="" coords="134,55,249,80"/>
-<area shape="rect" id="Node000004" href="$group__qinput.html" title="An interface to manage and simplify the value state (with edge&#45;checking) of incoming binary signals." alt="" coords="120,104,263,130"/>
+<area shape="rect" id="Node000004" href="$group__qinput.html" title="A comprehensive event class for efficient, maintainable working with input channels." alt="" coords="120,104,263,130"/>
 <area shape="rect" id="Node000005" href="$group__qioutils.html" title="API for input/output utilities and safe string interfaces." alt="" coords="157,153,226,179"/>
 <area shape="rect" id="Node000002" href="$group__qlists.html" title="The provided list implementation uses a generic doubly&#45;linked approach in which each node,..." alt="" coords="119,203,264,244"/>
 <area shape="rect" id="Node000006" href="$group__qresponse.html" title="API to simplify the handling of requested responses from terminal interfaces." alt="" coords="129,268,254,294"/>

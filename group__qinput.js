@@ -36,9 +36,9 @@ var group__qinput =
       [ "qOS::input::event::STEADY_IN_HIGH", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3", null ],
       [ "qOS::input::event::STEADY_IN_LOW", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107", null ],
       [ "qOS::input::event::STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ],
-      [ "qOS::input::event::MULTI_PRESS_DOUBLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a3973ade7021fc566538da31063d8e813", null ],
-      [ "qOS::input::event::MULTI_PRESS_TRIPLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ac32852cac951780b6f868ea97310191c", null ],
-      [ "qOS::input::event::MULTI_PRESS_MANY", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7adfe9b71802607e0031b86d81fb4103e8", null ]
+      [ "qOS::input::event::PULSATION_DOUBLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f", null ],
+      [ "qOS::input::event::PULSATION_TRIPLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e", null ],
+      [ "qOS::input::event::PULSATION_MULTI", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa", null ]
     ] ],
     [ "qOS::input::type", "group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520", [
       [ "qOS::input::type::DIGITAL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2", null ],

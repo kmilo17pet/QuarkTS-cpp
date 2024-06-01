@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="An interface to manage and simplify the value state (with edge&#45;checking) of incoming binary signals.">
+<g id="a_Node000001"><a xlink:title="A comprehensive event class for efficient, maintainable working with input channels.">
 <polygon fill="#999999" stroke="#666666" points="191.75,-19.25 85,-19.25 85,0 191.75,0 191.75,-19.25"/>
 <text text-anchor="middle" x="138.38" y="-5.75" font-family="Helvetica,sans-Serif" font-size="10.00">Input channel utilities</text>
 </a>

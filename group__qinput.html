@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.5.6</span>
+   &#160;<span id="projectnumber">v1.5.8</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -148,7 +148,7 @@ $(function(){initNavTree('group__qinput.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>An interface to manage and simplify the value state (with edge-checking) of incoming binary signals.  
+<p>A comprehensive event class for efficient, maintainable working with input channels.  
 <a href="#details">More...</a></p>
 <div class="dynheader">
 Collaboration diagram for Input channel utilities:</div>
@@ -193,9 +193,9 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107">qOS::input::event::STEADY_IN_LOW</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764">qOS::input::event::STEADY_IN_BAND</a>
 , <br />
-&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a3973ade7021fc566538da31063d8e813">qOS::input::event::MULTI_PRESS_DOUBLE</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ac32852cac951780b6f868ea97310191c">qOS::input::event::MULTI_PRESS_TRIPLE</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7adfe9b71802607e0031b86d81fb4103e8">qOS::input::event::MULTI_PRESS_MANY</a>
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f">qOS::input::event::PULSATION_DOUBLE</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e">qOS::input::event::PULSATION_TRIPLE</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa">qOS::input::event::PULSATION_MULTI</a>
 <br />
  }</td></tr>
 <tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the watcher class for a specified input-channel.  <a href="#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>
@@ -206,7 +206,7 @@ Enumerations</h2></td></tr>
 <tr class="separator:ga1fa89c23afc36bdea1a290368c7ae520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>An interface to manage and simplify the value state (with edge-checking) of incoming binary signals. </p>
+<p>A comprehensive event class for efficient, maintainable working with input channels. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ga7d3b9fc08985bd00916b549b73ef1c6a" name="ga7d3b9fc08985bd00916b549b73ef1c6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga7d3b9fc08985bd00916b549b73ef1c6a">&#9670;&#160;</a></span>channelReaderFcn_t</h2>
@@ -265,7 +265,7 @@ Enumerations</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf" name="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf"></a>EXCEPTION&#160;</td><td class="fielddoc"><p>Error due a bad reading or channel configuration . </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52" name="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52"></a>FALLING_EDGE&#160;</td><td class="fielddoc"><p>Event on falling-edge of the input-channel (On analog when the reading is below the rise threshold) </p>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52" name="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52"></a>FALLING_EDGE&#160;</td><td class="fielddoc"><p>Event on falling-edge of the input-channel (On analog when the reading is below the fall threshold) </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98" name="gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98"></a>RISING_EDGE&#160;</td><td class="fielddoc"><p>Event on rising-edge of the digital input-channel(On analog when the reading is above the rise threshold) </p>
 </td></tr>
@@ -279,11 +279,11 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764" name="gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764"></a>STEADY_IN_BAND&#160;</td><td class="fielddoc"><p>Event when the analog input-channel has remained within the band for the specified time . </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a3973ade7021fc566538da31063d8e813" name="gga72d9a973c87da11f11a8aeabbbb25aa7a3973ade7021fc566538da31063d8e813"></a>MULTI_PRESS_DOUBLE&#160;</td><td class="fielddoc"><p>Event when the digital input is pressed two times within the interval </p>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f" name="gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f"></a>PULSATION_DOUBLE&#160;</td><td class="fielddoc"><p>Event when the digital input is pulsated two times within the interval </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ac32852cac951780b6f868ea97310191c" name="gga72d9a973c87da11f11a8aeabbbb25aa7ac32852cac951780b6f868ea97310191c"></a>MULTI_PRESS_TRIPLE&#160;</td><td class="fielddoc"><p>Event when the digital input is pressed three times within the interval </p>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e" name="gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e"></a>PULSATION_TRIPLE&#160;</td><td class="fielddoc"><p>Event when the digital input is pulsated three times within the interval </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7adfe9b71802607e0031b86d81fb4103e8" name="gga72d9a973c87da11f11a8aeabbbb25aa7adfe9b71802607e0031b86d81fb4103e8"></a>MULTI_PRESS_MANY&#160;</td><td class="fielddoc"><p>Event when the digital input is pressed more than three times within the interval </p>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa" name="gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa"></a>PULSATION_MULTI&#160;</td><td class="fielddoc"><p>Event when the digital input is pulsated more than three times within the interval </p>
 </td></tr>
 </table>
 
