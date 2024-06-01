@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.5.6
+ * @version 1.5.7
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/
@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.5.6"
-#define QUARKTS_CPP_VERNUM          ( 156u )
+#define QUARKTS_CPP_VERSION         "1.5.7"
+#define QUARKTS_CPP_VERNUM          ( 157u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -63,6 +63,33 @@ This file is part of the QuarkTS++ OS distribution.
 #include "include/input.hpp"
 #include "include/response.hpp"
 #include "include/logger.hpp"
+
+namespace qOS {
+    namespace version {
+        constexpr const char* str = QUARKTS_CPP_VERSION;
+        constexpr const uint8_t number = QUARKTS_CPP_VERNUM;
+        constexpr const uint8_t mayor = 1U;
+        constexpr const uint8_t minor = 5U;
+        constexpr const uint8_t rev = 7U;
+    }
+    namespace product {
+        constexpr const char* author = "J. Camilo Gomez C.";
+        constexpr const char* copyright = "Copyright (C) 2012 J. Camilo Gomez C. All Rights Reserved.";
+        constexpr const char* name = "QuarkTS++";
+        constexpr const char* category = "OS";
+        constexpr const char* scheme = "cooperative";
+        constexpr const char* caption = QUARKTS_CPP_CAPTION;
+        constexpr const char* compliance = "MISRAC++2008,SEI-CERT";
+        constexpr const char* license = "MIT";
+    }
+
+    namespace build {
+        constexpr const uint32_t number = 4121;
+        constexpr const char* date = __DATE__;
+        constexpr const char* time = __TIME__;
+        constexpr const char* std = "c++11";
+    }
+}
 
 #endif /*QOS_CPP_H*/
 

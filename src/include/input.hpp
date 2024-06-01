@@ -34,14 +34,17 @@ namespace qOS {
         * watcher class for a specified input-channel.
         */
         enum class event {
-            EXCEPTION = -1,  /**< Error due a bad reading or channel configuration .*/
-            FALLING_EDGE,    /**< Event on falling-edge of the input-channel (On analog when the reading is below the rise threshold)*/
-            RISING_EDGE,     /**< Event on rising-edge of the digital input-channel(On analog when the reading is above the rise threshold)*/
-            ON_CHANGE,       /**< Event on any input-channel change when crossing the thresholds*/
-            IN_BAND,         /**< Event when the analog input-channel enters the band*/
-            STEADY_IN_HIGH,  /**< Event when the input-channel has been kept on high (or above the rise threshold) for the specified time .*/
-            STEADY_IN_LOW,   /**< Event when the input-channel has been kept on low (or below the fall threshold) for the specified time .*/
-            STEADY_IN_BAND,  /**< Event when the the analog input-channel has remained within the band for the specified time .*/
+            EXCEPTION = -1,         /**< Error due a bad reading or channel configuration .*/
+            FALLING_EDGE,           /**< Event on falling-edge of the input-channel (On analog when the reading is below the rise threshold)*/
+            RISING_EDGE,            /**< Event on rising-edge of the digital input-channel(On analog when the reading is above the rise threshold)*/
+            ON_CHANGE,              /**< Event on any input-channel change when crossing the thresholds*/
+            IN_BAND,                /**< Event when the analog input-channel enters the band*/
+            STEADY_IN_HIGH,         /**< Event when the input-channel has been kept on high (or above the rise threshold) for the specified time .*/
+            STEADY_IN_LOW,          /**< Event when the input-channel has been kept on low (or below the fall threshold) for the specified time .*/
+            STEADY_IN_BAND,         /**< Event when the analog input-channel has remained within the band for the specified time .*/
+            MULTI_PRESS_DOUBLE,     /**< Event when the digital input is pressed two times within the interval*/
+            MULTI_PRESS_TRIPLE,     /**< Event when the digital input is pressed three times within the interval*/
+            MULTI_PRESS_MANY,       /**< Event when the digital input is pressed more than three times within the interval*/
             /*! @cond  */
             MAX_EVENTS,
             /*! @endcond  */
@@ -81,7 +84,9 @@ namespace qOS {
                 qOS::clock_t tSteadyOn{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyOff{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
+                qOS::clock_t tMultiPressInterval{ 250U };
                 uint8_t number;
+                uint8_t multiPressCount{ 0 };
                 int riseThreshold{ 800 };
                 int fallThreshold{ 200 };
                 int hysteresis{ 20 };
@@ -128,9 +133,10 @@ namespace qOS {
                 * @param[in] upperThreshold The upper threshold value.
                 * @param[in] h Hysteresis for the in-band transition.
                 */
-                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : number( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold ), hysteresis( h )
+                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : number( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold )
                 {
                     channelType = input::type::ANALOG;
+                    hysteresis = ( h < 0 ) ? -h : h;
                     cbInit();
                 }
                 /**
@@ -200,6 +206,30 @@ namespace qOS {
                 {
                     return ( &value != ptrValue );
                 }
+                /**
+                * @brief Set/Change the interval duration between multiple press
+                * @param[in] interval The specified interval
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool setMultiPressInterval( qOS::duration_t interval )
+                {
+                    bool retValue = false;
+
+                    if ( interval > 50 ) {
+                        tMultiPressInterval = interval;
+                    }
+
+                    return retValue;
+                }
+                /**
+                * @brief Get the multi-press count.
+                * @note Returned value should be only trusted if is read from
+                * the input event-callback.
+                * @return A pointer to the user-data
+                */
+                inline uint8_t getMultiPressCount( void ) const {
+                    return multiPressCount;
+                }
             friend class watcher;
         };
 
@@ -238,11 +268,6 @@ namespace qOS {
                     debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
                 /**
                 * @brief Add a channel to the watcher instance
-                * @note If the analog channel has channel-number equal to one of
-                * the channels already existing in the container, it will be
-                * marked as a shared channel. For shared channels the reader
-                * function will be invoked once and the value will be the same
-                * until the scan of all channels is completed.
                 * @param[in] c The input-Channel to watch
                 * @return @c true on success. Otherwise @c false.
                 */
@@ -287,7 +312,9 @@ namespace qOS {
                 }
                 /**
                 * @brief Register an event-callback to be activated in the
-                * watcher instance for all the input-channels being added.
+                * watcher instance for all the input-channels inside the watcher.
+                * @pre The input channel should already be added to the watcher
+                * for the registration to take effect
                 * @param[in] e The event to register.
                 * @param[in] f The callback to be invoked when the event is detected.
                 * @param[in] t The time associated to the event (only valid for
@@ -298,7 +325,9 @@ namespace qOS {
                 bool registerEvent( const event e, const eventCallback_t &f, const qOS::duration_t t = 1_sec ) noexcept;
                 /**
                 * @brief Un-Register an event-callback for all input-channels
-                * being added.
+                * inside the watcher added.
+                * @pre The input channel should already be added to the watcher
+                * for the un-registration to take effect
                 * @param[in] e The event to unregister.
                 * @return @c true if operation succeeds in all input-channels.
                 * Otherwise @c false.
