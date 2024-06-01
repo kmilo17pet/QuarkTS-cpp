@@ -36,8 +36,8 @@ void input::channel::digitalFallingEdgeState( channel& c )
         c.channelState = &input::channel::digitalRisingEdgeState;
         c.invokeEvent( input::event::RISING_EDGE );
         c.invokeEvent( input::event::ON_CHANGE );
-        if ( ( CURRENT_TIME - c.tChange ) > c.tMultiPressInterval ) {
-            c.multiPressCount = 0U;
+        if ( ( CURRENT_TIME - c.tChange ) > c.pulsationInterval ) {
+            c.pulsationCount = 0U;
         }
         c.tChange = CURRENT_TIME;
     }
@@ -66,21 +66,21 @@ void input::channel::digitalRisingEdgeState( channel& c )
         c.channelState = &input::channel::digitalFallingEdgeState;
         c.invokeEvent( input::event::FALLING_EDGE );
         c.invokeEvent( input::event::ON_CHANGE );
-        if ( ( CURRENT_TIME - c.tChange ) <= c.tMultiPressInterval ) {
-            ++c.multiPressCount;
+        if ( ( CURRENT_TIME - c.tChange ) <= c.pulsationInterval ) {
+            ++c.pulsationCount;
         }
         c.tChange = CURRENT_TIME;
 
-        switch ( c.multiPressCount ) {
+        switch ( c.pulsationCount ) {
             case 0 : case 1: break;
             case 2:
-                c.invokeEvent( input::event::MULTI_PRESS_DOUBLE );
+                c.invokeEvent( input::event::PULSATION_DOUBLE );
                 break;
             case 3:
-                c.invokeEvent( input::event::MULTI_PRESS_TRIPLE );
+                c.invokeEvent( input::event::PULSATION_TRIPLE );
                 break;
             default:
-                c.invokeEvent( input::event::MULTI_PRESS_MANY );
+                c.invokeEvent( input::event::PULSATION_MULTI );
                 break;
         }
     }

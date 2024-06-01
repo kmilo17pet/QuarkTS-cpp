@@ -16,7 +16,7 @@
       "maintainer": true
     }
   ],
-  "version": "1.5.7",
+  "version": "1.5.8",
   "license": "MIT",
   "frameworks": "arduino",
   "platforms": "*"

@@ -10,8 +10,8 @@ namespace qOS {
 
 
     /** @addtogroup qinput Input channel utilities
-    * @brief An interface to manage and simplify the value state (with edge-checking)
-    * of incoming binary signals.
+    * @brief A comprehensive event class for efficient, maintainable working with
+    * input channels.
     *  @{
     */
 
@@ -35,16 +35,16 @@ namespace qOS {
         */
         enum class event {
             EXCEPTION = -1,         /**< Error due a bad reading or channel configuration .*/
-            FALLING_EDGE,           /**< Event on falling-edge of the input-channel (On analog when the reading is below the rise threshold)*/
+            FALLING_EDGE,           /**< Event on falling-edge of the input-channel (On analog when the reading is below the fall threshold)*/
             RISING_EDGE,            /**< Event on rising-edge of the digital input-channel(On analog when the reading is above the rise threshold)*/
             ON_CHANGE,              /**< Event on any input-channel change when crossing the thresholds*/
             IN_BAND,                /**< Event when the analog input-channel enters the band*/
             STEADY_IN_HIGH,         /**< Event when the input-channel has been kept on high (or above the rise threshold) for the specified time .*/
             STEADY_IN_LOW,          /**< Event when the input-channel has been kept on low (or below the fall threshold) for the specified time .*/
             STEADY_IN_BAND,         /**< Event when the analog input-channel has remained within the band for the specified time .*/
-            MULTI_PRESS_DOUBLE,     /**< Event when the digital input is pressed two times within the interval*/
-            MULTI_PRESS_TRIPLE,     /**< Event when the digital input is pressed three times within the interval*/
-            MULTI_PRESS_MANY,       /**< Event when the digital input is pressed more than three times within the interval*/
+            PULSATION_DOUBLE,       /**< Event when the digital input is pulsated two times within the interval*/
+            PULSATION_TRIPLE,       /**< Event when the digital input is pulsated three times within the interval*/
+            PULSATION_MULTI,        /**< Event when the digital input is pulsated more than three times within the interval*/
             /*! @cond  */
             MAX_EVENTS,
             /*! @endcond  */
@@ -84,9 +84,9 @@ namespace qOS {
                 qOS::clock_t tSteadyOn{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyOff{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
-                qOS::clock_t tMultiPressInterval{ 250U };
+                qOS::clock_t pulsationInterval{ 250U };
                 uint8_t number;
-                uint8_t multiPressCount{ 0 };
+                uint8_t pulsationCount{ 0 };
                 int riseThreshold{ 800 };
                 int fallThreshold{ 200 };
                 int hysteresis{ 20 };
@@ -208,6 +208,7 @@ namespace qOS {
                 }
                 /**
                 * @brief Set/Change the interval duration between multiple press
+                * for a digital input
                 * @param[in] interval The specified interval
                 * @return @c true on success. Otherwise @c false.
                 */
@@ -215,20 +216,20 @@ namespace qOS {
                 {
                     bool retValue = false;
 
-                    if ( interval > 50 ) {
-                        tMultiPressInterval = interval;
+                    if ( ( input::type::DIGITAL == channelType ) && ( interval > 50 ) ) {
+                        pulsationInterval = interval;
                     }
 
                     return retValue;
                 }
                 /**
-                * @brief Get the multi-press count.
+                * @brief Get the pulsation count the digital input.
                 * @note Returned value should be only trusted if is read from
                 * the input event-callback.
-                * @return A pointer to the user-data
+                * @return The pulsation count.
                 */
                 inline uint8_t getMultiPressCount( void ) const {
-                    return multiPressCount;
+                    return pulsationCount;
                 }
             friend class watcher;
         };
