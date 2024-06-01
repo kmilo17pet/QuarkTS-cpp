@@ -182,10 +182,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a8fa091c5b692bf69136fafbef1dda99a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for the specified input-channel.  <br /></td></tr>
 <tr class="separator:a8fa091c5b692bf69136fafbef1dda99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c23cdc7c5e7f250572c2c6db9edb31d" id="r_a9c23cdc7c5e7f250572c2c6db9edb31d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c23cdc7c5e7f250572c2c6db9edb31d">registerEvent</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;f, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=1_sec) noexcept</td></tr>
-<tr class="memdesc:a9c23cdc7c5e7f250572c2c6db9edb31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance for all the input-channels being added.  <br /></td></tr>
+<tr class="memdesc:a9c23cdc7c5e7f250572c2c6db9edb31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance for all the input-channels inside the watcher.  <br /></td></tr>
 <tr class="separator:a9c23cdc7c5e7f250572c2c6db9edb31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfefe90d4d277f4a31b2b6edfd67e61d" id="r_adfefe90d4d277f4a31b2b6edfd67e61d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfefe90d4d277f4a31b2b6edfd67e61d">unregisterEvent</a> (<a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e) noexcept</td></tr>
-<tr class="memdesc:adfefe90d4d277f4a31b2b6edfd67e61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for all input-channels being added.  <br /></td></tr>
+<tr class="memdesc:adfefe90d4d277f4a31b2b6edfd67e61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for all input-channels inside the watcher added.  <br /></td></tr>
 <tr class="separator:adfefe90d4d277f4a31b2b6edfd67e61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -271,7 +271,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a channel to the watcher instance. </p>
-<dl class="section note"><dt>Note</dt><dd>If the analog channel has channel-number equal to one of the channels already existing in the container, it will be marked as a shared channel. For shared channels the reader function will be invoked once and the value will be the same until the scan of all channels is completed. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The input-Channel to watch </td></tr>
@@ -365,7 +364,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Register an event-callback to be activated in the watcher instance for all the input-channels being added. </p>
+<p>Register an event-callback to be activated in the watcher instance for all the input-channels inside the watcher. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>The input channel should already be added to the watcher for the registration to take effect </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>The event to register. </td></tr>
@@ -474,7 +474,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Un-Register an event-callback for all input-channels being added. </p>
+<p>Un-Register an event-callback for all input-channels inside the watcher added. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>The input channel should already be added to the watcher for the un-registration to take effect </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>The event to unregister. </td></tr>

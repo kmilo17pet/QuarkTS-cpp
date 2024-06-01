@@ -7,9 +7,11 @@ var group__qinput =
       [ "channel", "classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058", null ],
       [ "getChannel", "classq_o_s_1_1input_1_1channel.html#afa6ca68a435f92ec6e612fe1d77bd0f9", null ],
       [ "getChannelType", "classq_o_s_1_1input_1_1channel.html#a76a41d1fc714232924865f00715e84ca", null ],
+      [ "getMultiPressCount", "classq_o_s_1_1input_1_1channel.html#ad0db667d1539e2c7ade6d58045a46edf", null ],
       [ "getUserData", "classq_o_s_1_1input_1_1channel.html#a842c0454b8b0355a4fc2a7b3ad9fac77", null ],
       [ "isShared", "classq_o_s_1_1input_1_1channel.html#a6b114e28bce381a3cb516eb5bf40d1ec", null ],
       [ "setChannel", "classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7", null ],
+      [ "setMultiPressInterval", "classq_o_s_1_1input_1_1channel.html#ac5f070e1bdf18c7d5ac579727ce30d49", null ],
       [ "setUserData", "classq_o_s_1_1input_1_1channel.html#af17c9dbff0da8b8a4870e3a0908f30be", null ],
       [ "watcher", "classq_o_s_1_1input_1_1channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
@@ -33,7 +35,10 @@ var group__qinput =
       [ "qOS::input::event::IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7", null ],
       [ "qOS::input::event::STEADY_IN_HIGH", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3", null ],
       [ "qOS::input::event::STEADY_IN_LOW", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107", null ],
-      [ "qOS::input::event::STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ]
+      [ "qOS::input::event::STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ],
+      [ "qOS::input::event::MULTI_PRESS_DOUBLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a3973ade7021fc566538da31063d8e813", null ],
+      [ "qOS::input::event::MULTI_PRESS_TRIPLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ac32852cac951780b6f868ea97310191c", null ],
+      [ "qOS::input::event::MULTI_PRESS_MANY", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7adfe9b71802607e0031b86d81fb4103e8", null ]
     ] ],
     [ "qOS::input::type", "group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520", [
       [ "qOS::input::type::DIGITAL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2", null ],

@@ -64,6 +64,7 @@ var searchData=
   ['at_5ffront_61',['AT_FRONT',['../group__qlists.html#ggac09d38844e64e8cebdff8971d2aa1bc4a6cf01148556cbb33ff5058bada60d9ee',1,'qOS']]],
   ['attach_20a_20queue_20to_20a_20task_62',['Attach a queue to a task',['../q_events.html#q_attachqueue',1,'']]],
   ['attachqueue_63',['attachQueue',['../classq_o_s_1_1task.html#ad43545d022d9fc3d2232d37ccd26ea88',1,'qOS::task']]],
-  ['awake_64',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]],
-  ['awake_5fstate_65',['AWAKE_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1',1,'qOS']]]
+  ['author_64',['author',['../namespaceq_o_s_1_1product.html#a322edbeb7f5e6ae867bd455ff8b203a5',1,'qOS::product']]],
+  ['awake_65',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]],
+  ['awake_5fstate_66',['AWAKE_STATE',['../group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1',1,'qOS']]]
 ];

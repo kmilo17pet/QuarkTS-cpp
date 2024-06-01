@@ -10,6 +10,12 @@ var namespaceq_o_s =
       [ "singleToggle", "group__qflm.html#ga91a66e9443d43c48a0472be74a31fa3a", null ],
       [ "singleWrite", "group__qflm.html#gae74888689aace3cb5a85771082ed6438", null ]
     ] ],
+    [ "build", "namespaceq_o_s_1_1build.html", [
+      [ "date", "namespaceq_o_s_1_1build.html#a2c2302eeef3b172a6e1fb2d284be2986", null ],
+      [ "number", "namespaceq_o_s_1_1build.html#a27c970683652208708f6459448654fdc", null ],
+      [ "std", "namespaceq_o_s_1_1build.html#af3aa4785810f7d68c98ca02563d652b4", null ],
+      [ "time", "namespaceq_o_s_1_1build.html#a1da253a113b51b9dbade069624efebae", null ]
+    ] ],
     [ "cli", "namespaceq_o_s_1_1cli.html", "namespaceq_o_s_1_1cli" ],
     [ "co", "namespaceq_o_s_1_1co.html", "namespaceq_o_s_1_1co" ],
     [ "critical", "namespaceq_o_s_1_1critical.html", [
@@ -20,6 +26,16 @@ var namespaceq_o_s =
     [ "input", "namespaceq_o_s_1_1input.html", "namespaceq_o_s_1_1input" ],
     [ "logger", "namespaceq_o_s_1_1logger.html", "namespaceq_o_s_1_1logger" ],
     [ "mem", "namespaceq_o_s_1_1mem.html", "namespaceq_o_s_1_1mem" ],
+    [ "product", "namespaceq_o_s_1_1product.html", [
+      [ "author", "namespaceq_o_s_1_1product.html#a322edbeb7f5e6ae867bd455ff8b203a5", null ],
+      [ "caption", "namespaceq_o_s_1_1product.html#af6923fa844d060d2ef2c4b3495cfb3b6", null ],
+      [ "category", "namespaceq_o_s_1_1product.html#af2107dc2d37709ca74d5f05b56fe5e02", null ],
+      [ "compliance", "namespaceq_o_s_1_1product.html#a8e1cedd37d479a59fc3f70e5bbe94962", null ],
+      [ "copyright", "namespaceq_o_s_1_1product.html#a479e2ebec2bf16c71644ea48bf716823", null ],
+      [ "license", "namespaceq_o_s_1_1product.html#ae04a95a13869b06c3e0e9c271d28f730", null ],
+      [ "name", "namespaceq_o_s_1_1product.html#a28e149c54cb5fc69e8ab1881b1bb120f", null ],
+      [ "scheme", "namespaceq_o_s_1_1product.html#a6bbeded0d0b0a7682e7de4ae7169fc83", null ]
+    ] ],
     [ "sm", "namespaceq_o_s_1_1sm.html", "namespaceq_o_s_1_1sm" ],
     [ "util", "namespaceq_o_s_1_1util.html", [
       [ "ioFcn_t", "group__qioutils.html#ga1be9c619286a659bec074263cf582f4d", null ],
@@ -41,6 +57,13 @@ var namespaceq_o_s =
       [ "strlen", "group__qioutils.html#gac830bc0765afa6da8423ceb0870ba64d", null ],
       [ "swapBytes", "group__qioutils.html#ga3347a994becbaffa432b2b56c9e48a58", null ],
       [ "unsignedToString", "group__qioutils.html#ga77c028b6148dbbba70ad707c6c4235c8", null ]
+    ] ],
+    [ "version", "namespaceq_o_s_1_1version.html", [
+      [ "mayor", "namespaceq_o_s_1_1version.html#acf737ab6fbc3b89c33fc951865bb6499", null ],
+      [ "minor", "namespaceq_o_s_1_1version.html#a41907d451c1b914dc9481b7689a014ba", null ],
+      [ "number", "namespaceq_o_s_1_1version.html#a81841f875420ba14303007ecbe8a87bf", null ],
+      [ "rev", "namespaceq_o_s_1_1version.html#a51bf5118933fd50edab7eae2519c9215", null ],
+      [ "str", "namespaceq_o_s_1_1version.html#a0c3dac69a6bf990b234b4d9e8506c2ff", null ]
     ] ],
     [ "byteBuffer", "classq_o_s_1_1byte_buffer.html", "classq_o_s_1_1byte_buffer" ],
     [ "clock", "classq_o_s_1_1clock.html", "classq_o_s_1_1clock" ],

@@ -12,7 +12,10 @@ var namespaceq_o_s_1_1input =
       [ "IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7", null ],
       [ "STEADY_IN_HIGH", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3", null ],
       [ "STEADY_IN_LOW", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107", null ],
-      [ "STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ]
+      [ "STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ],
+      [ "MULTI_PRESS_DOUBLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a3973ade7021fc566538da31063d8e813", null ],
+      [ "MULTI_PRESS_TRIPLE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ac32852cac951780b6f868ea97310191c", null ],
+      [ "MULTI_PRESS_MANY", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7adfe9b71802607e0031b86d81fb4103e8", null ]
     ] ],
     [ "type", "group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520", [
       [ "DIGITAL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2", null ],
