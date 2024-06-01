@@ -234,8 +234,8 @@ namespace qOS {
         {
             static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = { // skipcq: CXX-W2066
                 "EXCEPTION ", "FALLING_EDGE ", "RISING_EDGE ", "ON_CHANGE ", "IN_BAND ",
-                "STEADY_IN_HIGH ", "STEADY_IN_LOW ", "STEADY_IN_BAND ", "MULTI_PRESS_DOUBLE ",
-                "MULTI_PRESS_TRIPLE ", "MULTI_PRESS_MANY "
+                "STEADY_IN_HIGH ", "STEADY_IN_LOW ", "STEADY_IN_BAND ", "PULSATION_DOUBLE ",
+                "PULSATION_TRIPLE ", "PULSATION_MULTI "
             };
             (void)util::outputString( writeChar , str[ static_cast<int>( e ) + 1 ] ); // skipcq: CXX-C1000
             return *this;
