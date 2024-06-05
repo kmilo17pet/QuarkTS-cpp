@@ -326,7 +326,7 @@ bool input::watcher::add( channel& c ) noexcept
 bool input::watcher::remove( channel& c ) noexcept
 {
     list *channelContainer = c.getContainer();
-    bool retValue = channelContainer->remove( &c );
+    const bool retValue = channelContainer->remove( &c );
     c.ptrValue = &c.value;
 
     if ( ( input::type::ANALOG == c.channelType ) && !c.isShared() ) {

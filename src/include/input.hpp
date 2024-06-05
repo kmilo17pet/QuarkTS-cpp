@@ -70,7 +70,7 @@ namespace qOS {
         /*! @endcond  */
 
         /**
-        * @brief An digital input-channel object.
+        * @brief An input-channel object, could be either analog or digital.
         */
         class channel : protected node {
             private:
@@ -207,17 +207,18 @@ namespace qOS {
                     return ( &value != ptrValue );
                 }
                 /**
-                * @brief Set/Change the interval duration between multiple press
-                * for a digital input
+                * @brief Set/Change the interval duration between multiple
+                * pulsations for a digital input
                 * @param[in] interval The specified interval
                 * @return @c true on success. Otherwise @c false.
                 */
-                inline bool setMultiPressInterval( qOS::duration_t interval )
+                inline bool setPulsationInterval( qOS::duration_t interval )
                 {
                     bool retValue = false;
 
                     if ( ( input::type::DIGITAL == channelType ) && ( interval > 50 ) ) {
                         pulsationInterval = interval;
+                        retValue = true;
                     }
 
                     return retValue;
@@ -228,7 +229,7 @@ namespace qOS {
                 * the input event-callback.
                 * @return The pulsation count.
                 */
-                inline uint8_t getMultiPressCount( void ) const {
+                inline uint8_t getPulsationCount( void ) const {
                     return pulsationCount;
                 }
             friend class watcher;

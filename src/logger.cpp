@@ -118,7 +118,7 @@ namespace qOS {
         _logger& _logger::operator<<( const void * const p )
         {
             /*cstat -CERT-INT36-C*/
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( p ), buffer, 16U ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( p ), buffer, 16U ); // skipcq: CXX-C1000
             /*cstat +CERT-INT36-C*/
             (void)util::outputString( writeChar, "p@0x" );
             (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
@@ -200,10 +200,10 @@ namespace qOS {
         _logger& _logger::operator<<( const qOS::stateMachine& sm )
         {
             (void)util::outputString( writeChar , "SM{ T: 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &sm.getTop() ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &sm.getTop() ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ", C: 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( sm.getCurrent() ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( sm.getCurrent() ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
             return *this;
@@ -212,16 +212,27 @@ namespace qOS {
         _logger& _logger::operator<<( const qOS::sm::state& s )
         {
             (void)util::outputString( writeChar , "s{ 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &s ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &s ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
+            return *this;
+        }
+
+        _logger& _logger::operator<<( const qOS::trigger& t )
+        {
+            static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = { // skipcq: CXX-W2066
+                "None ", "byTimeElapsed ", "byNotificationQueued ", "byNotificationSimple ",
+                "byQueueReceiver ", "byQueueFull ", "byQueueCount ", "byQueueEmpty ",
+                "byEventFlags ", "bySchedulingRelease ", "byNoReadyTasks "
+            };
+            (void)util::outputString( writeChar , str[ static_cast<int>( t ) ] ); // skipcq: CXX-C1000
             return *this;
         }
 
         _logger& _logger::operator<<( const qOS::input::channel& in )
         {
             (void)util::outputString( writeChar , "in{ 0x" );
-            (void)util::unsignedToString( reinterpret_cast<unsigned_t>( &in ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &in ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ( qOS::input::type::ANALOG == in.getChannelType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
             (void)util::unsignedToString( static_cast<unsigned_t>( in.getChannel() ), buffer, 10 ); // skipcq: CXX-C1000
