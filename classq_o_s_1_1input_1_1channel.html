@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.5.8</span>
+   &#160;<span id="projectnumber">v1.5.9</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -146,7 +146,7 @@ $(function(){initNavTree('classq_o_s_1_1input_1_1channel.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>An digital input-channel object.  
+<p>An input-channel object, could be either analog or digital.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="input_8hpp_source.html">input.hpp</a>&gt;</code></p>
@@ -189,12 +189,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6b114e28bce381a3cb516eb5bf40d1ec" id="r_a6b114e28bce381a3cb516eb5bf40d1ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b114e28bce381a3cb516eb5bf40d1ec">isShared</a> (void) const</td></tr>
 <tr class="memdesc:a6b114e28bce381a3cb516eb5bf40d1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the channel value is shared with other channel with the same (pin) number.  <br /></td></tr>
 <tr class="separator:a6b114e28bce381a3cb516eb5bf40d1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5f070e1bdf18c7d5ac579727ce30d49" id="r_ac5f070e1bdf18c7d5ac579727ce30d49"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5f070e1bdf18c7d5ac579727ce30d49">setMultiPressInterval</a> (<a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> interval)</td></tr>
-<tr class="memdesc:ac5f070e1bdf18c7d5ac579727ce30d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the interval duration between multiple press for a digital input.  <br /></td></tr>
-<tr class="separator:ac5f070e1bdf18c7d5ac579727ce30d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0db667d1539e2c7ade6d58045a46edf" id="r_ad0db667d1539e2c7ade6d58045a46edf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0db667d1539e2c7ade6d58045a46edf">getMultiPressCount</a> (void) const</td></tr>
-<tr class="memdesc:ad0db667d1539e2c7ade6d58045a46edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pulsation count the digital input.  <br /></td></tr>
-<tr class="separator:ad0db667d1539e2c7ade6d58045a46edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5065ea5d2fbb49dd02e7d3605b88db0a" id="r_a5065ea5d2fbb49dd02e7d3605b88db0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5065ea5d2fbb49dd02e7d3605b88db0a">setPulsationInterval</a> (<a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> interval)</td></tr>
+<tr class="memdesc:a5065ea5d2fbb49dd02e7d3605b88db0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the interval duration between multiple pulsations for a digital input.  <br /></td></tr>
+<tr class="separator:a5065ea5d2fbb49dd02e7d3605b88db0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6974ca184f46a814b7cd96353a14a45" id="r_ae6974ca184f46a814b7cd96353a14a45"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6974ca184f46a814b7cd96353a14a45">getPulsationCount</a> (void) const</td></tr>
+<tr class="memdesc:ae6974ca184f46a814b7cd96353a14a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pulsation count the digital input.  <br /></td></tr>
+<tr class="separator:ae6974ca184f46a814b7cd96353a14a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -208,7 +208,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3b9b6d91c2aec2c10106fb39437c0150 inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An digital input-channel object. </p>
+<div class="textblock"><p>An input-channel object, could be either analog or digital. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4817b47d848db9dc53fd5405388006e7" name="a4817b47d848db9dc53fd5405388006e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4817b47d848db9dc53fd5405388006e7">&#9670;&#160;</a></span>~channel()</h2>
@@ -381,8 +381,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad0db667d1539e2c7ade6d58045a46edf" name="ad0db667d1539e2c7ade6d58045a46edf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0db667d1539e2c7ade6d58045a46edf">&#9670;&#160;</a></span>getMultiPressCount()</h2>
+<a id="ae6974ca184f46a814b7cd96353a14a45" name="ae6974ca184f46a814b7cd96353a14a45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6974ca184f46a814b7cd96353a14a45">&#9670;&#160;</a></span>getPulsationCount()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -391,7 +391,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t qOS::input::channel::getMultiPressCount </td>
+          <td class="memname">uint8_t qOS::input::channel::getPulsationCount </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -500,8 +500,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ac5f070e1bdf18c7d5ac579727ce30d49" name="ac5f070e1bdf18c7d5ac579727ce30d49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5f070e1bdf18c7d5ac579727ce30d49">&#9670;&#160;</a></span>setMultiPressInterval()</h2>
+<a id="a5065ea5d2fbb49dd02e7d3605b88db0a" name="a5065ea5d2fbb49dd02e7d3605b88db0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5065ea5d2fbb49dd02e7d3605b88db0a">&#9670;&#160;</a></span>setPulsationInterval()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -510,7 +510,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool qOS::input::channel::setMultiPressInterval </td>
+          <td class="memname">bool qOS::input::channel::setPulsationInterval </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>interval</em></span></td><td>)</td>
           <td></td>
@@ -523,7 +523,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set/Change the interval duration between multiple press for a digital input. </p>
+<p>Set/Change the interval duration between multiple pulsations for a digital input. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">interval</td><td>The specified interval </td></tr>

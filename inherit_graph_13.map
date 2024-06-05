@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000000" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="5,104,87,130"/>
 <area shape="rect" id="Node000001" href="$classq_o_s_1_1cli_1_1command.html" title="An AT&#45;Command object." alt="" coords="137,5,266,31"/>
 <area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="69,91,98,65,133,40,156,29,158,34,136,44,102,69,72,95"/>
-<area shape="rect" id="Node000002" href="$classq_o_s_1_1input_1_1channel.html" title="An digital input&#45;channel object." alt="" coords="135,55,268,80"/>
+<area shape="rect" id="Node000002" href="$classq_o_s_1_1input_1_1channel.html" title="An input&#45;channel object, could be either analog or digital." alt="" coords="135,55,268,80"/>
 <area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="101,97,158,78,159,83,102,102"/>
 <area shape="rect" id="Node000003" href="$classq_o_s_1_1input_1_1watcher.html" title="The digital input&#45;channel watcher class." alt="" coords="135,104,268,130"/>
 <area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="102,114,134,114,134,120,102,120"/>
