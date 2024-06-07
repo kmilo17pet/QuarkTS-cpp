@@ -6,7 +6,7 @@ using namespace qOS;
 This example uses a push button (tact switch) attached to digital pin 2 and GND,
 using an internal pull-up resistor so pin 2 is HIGH when the button is not pressed.
 */
-input::channel button( 2, true ); /* Pin D2 -> invert value = true (due internal pull-up)*/
+input::digitalChannel button( 2, true ); /* Pin D2 -> invert value = true (due internal pull-up)*/
 input::watcher inWatcher( digitalRead, nullptr, 50_ms ); /*inWatcher will use digitalRead to read the channel using a debounce time of 50_ms*/
 
 /*define the FSM application event-signals*/
@@ -91,16 +91,16 @@ void tracePutcWrapper( void *arg, const char c ) {
   (void)arg;
 }
 
-void idleTaskCallback( event_t e )
-{
+void idleTaskCallback( event_t e ) {
   if ( e.firstCall() ) {
     logger::out() << QUARKTS_CPP_CAPTION << logger::end;
   }
 }
 
-void buttonEvent( input::channel& chan , const input::event e )
-{
-  LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
+void buttonEvent( input::channel& c ) {
+  if ( input::event::RISING_EDGE == c.getEvent() ) {
+    LED_FSM.sendSignal( SIGNAL_BUTTON_PRESSED );
+  }
 }
 
 void setup() {

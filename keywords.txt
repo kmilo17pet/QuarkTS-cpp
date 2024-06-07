@@ -44,7 +44,10 @@ getPosition	KEYWORD1
 setPosition	KEYWORD1
 int_restorer_t	KEYWORD1
 int_disabler_t	KEYWORD1
-edgeCheck	KEYWORD1
+input	KEYWORD1
+channel	KEYWORD1
+digitalChannel	KEYWORD1
+analogChannel	KEYWORD1
 node	KEYWORD1
 pinState	KEYWORD1
 signalID	KEYWORD1

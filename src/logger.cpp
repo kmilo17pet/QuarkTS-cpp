@@ -231,24 +231,23 @@ namespace qOS {
 
         _logger& _logger::operator<<( const qOS::input::channel& in )
         {
+            static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) ] = { // skipcq: CXX-W2066
+                "NONE ", "EXCEPTION ", "ON_CHANGE ", "FALLING_EDGE ", "RISING_EDGE ",
+                "PULSATION_DOUBLE ", "PULSATION_TRIPLE ", "PULSATION_MULTI ",
+                "HIGH_THRESHOLD ", "LOW_THRESHOLD ", "IN_BAND ", "STEADY_IN_HIGH ",
+                "STEADY_IN_LOW ", "STEADY_IN_BAND "
+            };
+            auto e = in.getEvent();
             (void)util::outputString( writeChar , "in{ 0x" );
             (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &in ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( writeChar , ( qOS::input::type::ANALOG == in.getChannelType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
+            (void)util::outputString( writeChar , ( qOS::input::type::ANALOG == in.getType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
             (void)util::unsignedToString( static_cast<unsigned_t>( in.getChannel() ), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
-            return *this;
-        }
-
-        _logger& _logger::operator<<( const qOS::input::event& e )
-        {
-            static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = { // skipcq: CXX-W2066
-                "EXCEPTION ", "FALLING_EDGE ", "RISING_EDGE ", "ON_CHANGE ", "IN_BAND ",
-                "STEADY_IN_HIGH ", "STEADY_IN_LOW ", "STEADY_IN_BAND ", "PULSATION_DOUBLE ",
-                "PULSATION_TRIPLE ", "PULSATION_MULTI "
-            };
-            (void)util::outputString( writeChar , str[ static_cast<int>( e ) + 1 ] ); // skipcq: CXX-C1000
+            if ( qOS::input::event::NONE != e ) {
+                (void)util::outputString( writeChar , str[ static_cast<int>( e ) ] ); // skipcq: CXX-C1000
+            }
             return *this;
         }
 

@@ -362,7 +362,6 @@ namespace qOS {
                 _logger& operator<<( const qOS::sm::state& s );
                 _logger& operator<<( const qOS::trigger& t );
                 _logger& operator<<( const qOS::input::channel& in );
-                _logger& operator<<( const qOS::input::event& e );
 
                 #if defined( ARDUINO_PLATFORM )
                     _logger& operator<<( const String & s );

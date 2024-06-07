@@ -34,19 +34,22 @@ namespace qOS {
         * watcher class for a specified input-channel.
         */
         enum class event {
-            EXCEPTION = -1,         /**< Error due a bad reading or channel configuration .*/
-            FALLING_EDGE,           /**< Event on falling-edge of the input-channel (On analog when the reading is below the fall threshold)*/
-            RISING_EDGE,            /**< Event on rising-edge of the digital input-channel(On analog when the reading is above the rise threshold)*/
+            NONE = 0,
+            EXCEPTION,              /**< Error due a bad reading or channel configuration .*/
             ON_CHANGE,              /**< Event on any input-channel change when crossing the thresholds*/
-            IN_BAND,                /**< Event when the analog input-channel enters the band*/
-            STEADY_IN_HIGH,         /**< Event when the input-channel has been kept on high (or above the rise threshold) for the specified time .*/
-            STEADY_IN_LOW,          /**< Event when the input-channel has been kept on low (or below the fall threshold) for the specified time .*/
-            STEADY_IN_BAND,         /**< Event when the analog input-channel has remained within the band for the specified time .*/
+            FALLING_EDGE,           /**< Event on falling-edge( high to low ) of the digital input-channel*/
+            RISING_EDGE,            /**< Event on rising-edge( low to high ) of the digital input-channel*/
             PULSATION_DOUBLE,       /**< Event when the digital input is pulsated two times within the interval*/
             PULSATION_TRIPLE,       /**< Event when the digital input is pulsated three times within the interval*/
             PULSATION_MULTI,        /**< Event when the digital input is pulsated more than three times within the interval*/
+            HIGH_THRESHOLD,         /**< Event when the analog input-channel reading is above the high threshold*/
+            LOW_THRESHOLD,          /**< Event when the analog input-channel reading is below the low threshold*/
+            IN_BAND,                /**< Event when the analog input-channel reading enters the band defined by the low-high thresholds*/
+            STEADY_IN_HIGH,         /**< Event when the input-channel has been kept on high (or above the high threshold) for the specified time .*/
+            STEADY_IN_LOW,          /**< Event when the input-channel has been kept on low (or below the low threshold) for the specified time .*/
+            STEADY_IN_BAND,         /**< Event when the analog input-channel has remained within the band for the specified time .*/
             /*! @cond  */
-            MAX_EVENTS,
+            MAX_EVENTS
             /*! @endcond  */
         };
 
@@ -63,91 +66,54 @@ namespace qOS {
         /**
         * @brief A pointer to the input-channel event callback
         */
-        using eventCallback_t = void(*)( channel&, const event );
+        using eventCallback_t = void(*)( channel& );
 
-        /*! @cond  */
-        using channelStateFcn_t = void(*)( channel& );
-        /*! @endcond  */
-
-        /**
-        * @brief An input-channel object, could be either analog or digital.
-        */
         class channel : protected node {
-            private:
-                bool negate{ false };
+            protected:
                 int value;
                 int *ptrValue{ &value };
-
-                type channelType;
-                eventCallback_t cb[ static_cast<size_t>( input::event::MAX_EVENTS ) ] = { nullptr }; // skipcq: CXX-W2066
-                qOS::clock_t tChange{ 0U };
-                qOS::clock_t tSteadyOn{ 0xFFFFFFFFU };
-                qOS::clock_t tSteadyOff{ 0xFFFFFFFFU };
-                qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
-                qOS::clock_t pulsationInterval{ 250U };
+                event lastEvent{ event::NONE };
                 uint8_t number;
-                uint8_t pulsationCount{ 0 };
-                int riseThreshold{ 800 };
-                int fallThreshold{ 200 };
-                int hysteresis{ 20 };
                 void *userData{ nullptr };
-                channel( channel const& ) = delete;
-                void operator=( channel const& ) = delete;
-                bool registerEvent( const event e, const eventCallback_t &c, const qOS::duration_t t = 1_sec ) noexcept;
-                inline bool unregisterEvent( event e ) noexcept
+                eventCallback_t callback{ nullptr };
+                qOS::clock_t tChange{ 0U };
+                qOS::clock_t tSteadyHigh{ 0xFFFFFFFFU };
+                qOS::clock_t tSteadyLow{ 0xFFFFFFFFU };
+                virtual void updateReading( channelReaderFcn_t reader ) noexcept = 0;
+                virtual void evaluateState( void ) noexcept = 0;
+                virtual bool isValidConfig( void ) const noexcept = 0;
+                virtual void setInitalState( channelReaderFcn_t reader ) noexcept = 0;
+                inline void dispatchEvent( event e ) noexcept
                 {
-                    return registerEvent( e, nullptr );
+                    lastEvent = e;
+                    callback( *this );
                 }
-                inline void invokeEvent( input::event e )
-                {
-                    const auto eventIndex = static_cast<int>( e );
-                    if ( nullptr != cb[ eventIndex ] ) {
-                        cb[ eventIndex ]( *this, e );
-                    }
-                }
-                inline void cbInit( void )
-                {
-                    for ( int i = 0 ; i < static_cast<int>( input::event::MAX_EVENTS ) ; ++i ) {
-                        cb[ i ] = nullptr;
-                    }
-                }
-                channelStateFcn_t channelState{ nullptr };
-                static void digitalFallingEdgeState( channel& c );
-                static void digitalRisingEdgeState( channel& c );
-                static void digitalSteadyInHighState( channel& c );
-                static void digitalSteadyInLowState( channel& c );
-
-                static void analogFallingEdgeState( channel& c );
-                static void analogRisingEdgeState( channel& c );
-                static void analogInBandState( channel& c );
-                static void analogSteadyInHighState( channel& c );
-                static void analogSteadyInLowState( channel& c );
-                static void analogSteadyInBandState( channel& c );
             public:
                 virtual ~channel() {}
+                channel( uint8_t channelNumber ) : number( channelNumber ) {}
                 /**
-                * @brief Constructor for the analog input channel instance.
-                * @note Both lower and upper define the band
-                * @param[in] inputChannel The specified channel(pin) number to read.
-                * @param[in] lowerThreshold The lower threshold value.
-                * @param[in] upperThreshold The upper threshold value.
-                * @param[in] h Hysteresis for the in-band transition.
+                * @brief Get the channel type.
+                * @return The channel type.
                 */
-                channel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : number( inputChannel ), riseThreshold( upperThreshold ), fallThreshold( lowerThreshold )
+                virtual type getType( void ) const noexcept = 0;
+                /**
+                * @brief Retrieves the last event for the given input channel.
+                * @return @c The last input-channel event.
+                */
+                inline event getEvent( void ) const noexcept
                 {
-                    channelType = input::type::ANALOG;
-                    hysteresis = ( h < 0 ) ? -h : h;
-                    cbInit();
+                    return lastEvent;
                 }
                 /**
-                * @brief Constructor for the digital input channel instance.
+                * @brief Set the callback function when event are detected on the
+                * input input channel.
                 * @param[in] inputChannel The specified channel(pin) number to read.
                 * @param[in] invert To invert/negate the raw-reading.
                 */
-                channel( uint8_t inputChannel, bool invert = false ) : negate( invert), number( inputChannel )
+                inline bool setCallback( eventCallback_t cb ) noexcept
                 {
-                    channelType = input::type::DIGITAL;
-                    cbInit();
+                    callback = cb;
+                    return ( cb != callback );
                 }
                 /**
                 * @brief Set/Change the channel(pin) number.
@@ -169,23 +135,15 @@ namespace qOS {
                 * @brief Get the channel(pin) number.
                 * @return The channel(pin) number.
                 */
-                inline uint8_t getChannel( void ) const
+                inline uint8_t getChannel( void ) const noexcept
                 {
                     return number;
-                }
-                /**
-                * @brief Get the channel type.
-                * @return The channel type.
-                */
-                inline input::type getChannelType( void ) const
-                {
-                    return channelType;
                 }
                 /**
                 * @brief Set the channel user-data.
                 * @param[in] A pointer to the user-data
                 */
-                inline void setUserData( void* pUserData )
+                inline void setUserData( void* pUserData ) noexcept
                 {
                     userData = pUserData;
                 }
@@ -193,7 +151,7 @@ namespace qOS {
                 * @brief Get the channel user-data.
                 * @return A pointer to the user-data
                 */
-                inline void* getUserData( void )
+                inline void* getUserData( void ) noexcept
                 {
                     return userData;
                 }
@@ -202,9 +160,87 @@ namespace qOS {
                 * with the same (pin) number.
                 * @return @c true if shared. Otherwise @c false.
                 */
-                inline bool isShared( void ) const
+                inline bool isShared( void ) const noexcept
                 {
                     return ( &value != ptrValue );
+                }
+                /**
+                * @brief Set the timeout for the steady in high event.
+                * @param[in] t The value of the timeout.
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool setSteadyHighTime( const qOS::duration_t t ) noexcept
+                {
+                    bool retValue = false;
+
+                    if ( t > 0U ) {
+                        tSteadyHigh = static_cast<qOS::clock_t>( t );
+                        retValue = true;
+                    }
+
+                    return retValue;
+                }
+                /**
+                * @brief Set the timeout for the steady in low event.
+                * @param[in] t The value of the timeout.
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool setSteadyLowTime( const qOS::duration_t t ) noexcept
+                {
+                    bool retValue = false;
+
+                    if ( t > 0U ) {
+                        tSteadyLow = static_cast<qOS::clock_t>( t );
+                        retValue = true;
+                    }
+
+                    return retValue;
+                }
+                friend class watcher;
+        };
+
+
+        /**
+        * @brief A digital input-channel object.
+        */
+        class digitalChannel : public channel {
+            using channelStateFcn_t = void(*)( digitalChannel& );
+            private:
+                channelStateFcn_t channelState{ nullptr };
+                bool negate{ false };
+                qOS::clock_t pulsationInterval{ 250U };
+                uint8_t pulsationCount{ 0 };
+                void updateReading( channelReaderFcn_t reader ) noexcept override;
+                void setInitalState( channelReaderFcn_t reader ) noexcept override;
+                bool isValidConfig( void ) const noexcept override
+                {
+                    return true;
+                }
+                void evaluateState( void ) noexcept override
+                {
+                    channelState( *this );
+                }
+                static void fallingEdgeState( digitalChannel& c );
+                static void risingEdgeState( digitalChannel& c );
+                static void steadyInHighState( digitalChannel& c );
+                static void steadyInLowState( digitalChannel& c );
+                digitalChannel( digitalChannel const& ) = delete;
+                void operator=( digitalChannel const& ) = delete;
+            public:
+                virtual ~digitalChannel() {}
+                /**
+                * @brief Constructor for the digital input channel instance.
+                * @param[in] inputChannel The specified channel(pin) number to read.
+                * @param[in] invert To invert/negate the raw-reading.
+                */
+                digitalChannel( const uint8_t inputChannel, bool invert = false ) : channel( inputChannel ), negate( invert) {}
+                /**
+                * @brief Get the channel type.
+                * @return The channel type.
+                */
+                type getType( void ) const noexcept override
+                {
+                    return type::DIGITAL;
                 }
                 /**
                 * @brief Set/Change the interval duration between multiple
@@ -212,11 +248,11 @@ namespace qOS {
                 * @param[in] interval The specified interval
                 * @return @c true on success. Otherwise @c false.
                 */
-                inline bool setPulsationInterval( qOS::duration_t interval )
+                inline bool setPulsationInterval( qOS::duration_t interval ) noexcept
                 {
                     bool retValue = false;
 
-                    if ( ( input::type::DIGITAL == channelType ) && ( interval > 50 ) ) {
+                    if ( interval > 50 ) {
                         pulsationInterval = interval;
                         retValue = true;
                     }
@@ -229,11 +265,105 @@ namespace qOS {
                 * the input event-callback.
                 * @return The pulsation count.
                 */
-                inline uint8_t getPulsationCount( void ) const {
+                inline uint8_t getPulsationCount( void ) const noexcept {
                     return pulsationCount;
                 }
             friend class watcher;
         };
+
+        /**
+        * @brief An analog input-channel object.
+        */
+        class analogChannel : public channel {
+            using channelStateFcn_t = void(*)( analogChannel& );
+            private:
+                channelStateFcn_t channelState{ nullptr };
+                int high{ 800 };
+                int low{ 200 };
+                int hysteresis{ 20 };
+                qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
+
+                void updateReading( channelReaderFcn_t reader ) noexcept override;
+                void setInitalState( channelReaderFcn_t reader ) noexcept override;
+                bool isValidConfig( void ) const noexcept override
+                {
+                    return ( high - low ) > hysteresis;
+                }
+                void evaluateState( void ) noexcept override
+                {
+                    channelState( *this );
+                }
+                static void lowThresholdState( analogChannel& c );
+                static void highThresholdState( analogChannel& c );
+                static void inBandState( analogChannel& c );
+                static void steadyInHighState( analogChannel& c );
+                static void steadyInLowState( analogChannel& c );
+                static void steadyInBandState( analogChannel& c );
+                analogChannel( analogChannel const& ) = delete;
+                void operator=( analogChannel const& ) = delete;
+            public:
+                virtual ~analogChannel() {}
+                /**
+                * @brief Constructor for the analog input channel instance.
+                * @note Both lower and upper define the band
+                * @param[in] inputChannel The specified channel(pin) number to read.
+                * @param[in] lowerThreshold The lower threshold value.
+                * @param[in] upperThreshold The upper threshold value.
+                * @param[in] h Hysteresis for the in-band transition.
+                */
+                analogChannel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : channel( inputChannel ), high( upperThreshold ), low( lowerThreshold )
+                {
+                    hysteresis = ( h < 0 ) ? -h : h;
+                }
+                /**
+                * @brief Get the channel type.
+                * @return The channel type.
+                */
+
+                type getType( void ) const noexcept override
+                {
+                    return type::ANALOG;
+                }
+                /**
+                * @brief Set the timeout for the steady in band event.
+                * @param[in] t The value of the timeout.
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool setSteadyBandTime( const qOS::duration_t t ) noexcept
+                {
+                    bool retValue = false;
+
+                    if ( ( t > 0U ) ) {
+                        tSteadyBand = static_cast<qOS::clock_t>( t );
+                        retValue = true;
+                    }
+
+                    return retValue;
+                }
+                /**
+                * @brief Set the low threshold for the analog input channel
+                * @param[in] lowThreshold The lower threshold value.
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool setLowThreshold( const int lowThreshold ) noexcept
+                {
+                    low = lowThreshold;
+                    return true;
+                }
+                /**
+                * @brief Set the high threshold for the analog input channel
+                * @param[in] lowThreshold The lower threshold value.
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool setHighThreshold( const int highThreshold ) noexcept
+                {
+                    high = highThreshold;
+                    return true;
+                }
+
+            friend class watcher;
+        };
+
 
         /**
         * @brief The digital input-channel watcher class.
@@ -249,20 +379,12 @@ namespace qOS {
                 channelReaderFcn_t analogReader{ nullptr };
                 watcher( watcher const& ) = delete;
                 void operator=( watcher const& ) = delete;
-                void watchDigital( channel& c ) noexcept;
-                void watchAnalog( channel& c ) noexcept;
-                inline void exceptionEvent( channel& c )
-                {
-                    if ( nullptr != exception ) {
-                        exception( c, input::event::EXCEPTION );
-                    }
-                }
             public:
                 /**
                 * @brief Constructor for the input-watcher instance
                 * @param[in] rFcn A pointer to a function that reads the specific
                 * channel
-                * @param[in] timeDebounce The specified time  to bypass the
+                * @param[in] timeDebounce The specified time to bypass the
                 * bounce of the digital input channels
                 * @return @c true on success. Otherwise @c false.
                 */
@@ -287,59 +409,7 @@ namespace qOS {
                 * updated cycle. Otherwise @c false.
                 */
                 bool watch( void ) noexcept;
-                /**
-                * @brief Register an event-callback to be activated in the
-                * watcher instance where the input-channel is being added.
-                * @param[in] c The input-channel instance.
-                * @param[in] e The event to register.
-                * @param[in] f The callback to be invoked when the event is detected.
-                * @param[in] t The time associated to the event (only valid for
-                * certain events).
-                * @return @c true on success. Otherwise @c false.
-                */
-                bool registerEvent( channel& c, const event e, const eventCallback_t &f, const qOS::duration_t t = 1_sec ) noexcept
-                {
-                    return c.registerEvent( e, f, t );
-                }
-                /**
-                * @brief Un-Register an event-callback for the specified
-                * input-channel.
-                * @param[in] c The input-channel instance.
-                * @param[in] e The event to unregister.
-                * @return @c true on success. Otherwise @c false.
-                */
-                bool unregisterEvent( channel& c, const event e ) noexcept
-                {
-                    return c.unregisterEvent( e );
-                }
-                /**
-                * @brief Register an event-callback to be activated in the
-                * watcher instance for all the input-channels inside the watcher.
-                * @pre The input channel should already be added to the watcher
-                * for the registration to take effect
-                * @param[in] e The event to register.
-                * @param[in] f The callback to be invoked when the event is detected.
-                * @param[in] t The time associated to the event (only valid for
-                * certain events).
-                * @return @c true if operation succeeds in all input-channels.
-                * Otherwise @c false.
-                */
-                bool registerEvent( const event e, const eventCallback_t &f, const qOS::duration_t t = 1_sec ) noexcept;
-                /**
-                * @brief Un-Register an event-callback for all input-channels
-                * inside the watcher added.
-                * @pre The input channel should already be added to the watcher
-                * for the un-registration to take effect
-                * @param[in] e The event to unregister.
-                * @return @c true if operation succeeds in all input-channels.
-                * Otherwise @c false.
-                */
-                bool unregisterEvent( event e ) noexcept
-                {
-                    return registerEvent( e, nullptr );
-                }
         };
-
         /** @}*/
     }
 
