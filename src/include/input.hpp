@@ -180,7 +180,7 @@ namespace qOS {
                 virtual bool setTime( const event e, const qOS::duration_t t ) noexcept = 0;
                 /**
                 * @brief Set the parameter for the specified event.
-                * @param[in] e The event where the timeout will be set.
+                * @param[in] e The event where the parameter will be set.
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
@@ -248,7 +248,7 @@ namespace qOS {
                 bool setTime( const event e, const qOS::duration_t t ) noexcept override;
                 /**
                 * @brief Set the parameter for the specified event.
-                * @param[in] e The event where the timeout will be set.
+                * @param[in] e The event where the parameter will be set.
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
@@ -328,7 +328,7 @@ namespace qOS {
                 bool setTime( const event e, const qOS::duration_t t ) noexcept override;
                 /**
                 * @brief Set the parameter for the specified event.
-                * @param[in] e The event where the timeout will be set.
+                * @param[in] e The event where the parameter will be set.
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
