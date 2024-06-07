@@ -165,37 +165,25 @@ namespace qOS {
                     return ( &value != ptrValue );
                 }
                 /**
-                * @brief Set the timeout for the steady in high event.
+                * @brief Set the timeout for the specified event.
+                * @param[in] e The event where the timeout will be set.
                 * @param[in] t The value of the timeout.
                 * @return @c true on success. Otherwise @c false.
                 */
-                inline bool setSteadyHighTime( const qOS::duration_t t ) noexcept
-                {
-                    bool retValue = false;
-
-                    if ( t > 0U ) {
-                        tSteadyHigh = static_cast<qOS::clock_t>( t );
-                        retValue = true;
-                    }
-
-                    return retValue;
-                }
+                virtual bool setTime( const event e, const qOS::duration_t t ) noexcept = 0;
                 /**
-                * @brief Set the timeout for the steady in low event.
-                * @param[in] t The value of the timeout.
+                * @brief Set the parameter for the specified event.
+                * @param[in] e The event where the timeout will be set.
+                * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
-                inline bool setSteadyLowTime( const qOS::duration_t t ) noexcept
-                {
-                    bool retValue = false;
-
-                    if ( t > 0U ) {
-                        tSteadyLow = static_cast<qOS::clock_t>( t );
-                        retValue = true;
-                    }
-
-                    return retValue;
-                }
+                virtual bool setParameter( const event e, const int value ) noexcept = 0;
+                /**
+                * @brief Get pulsation count for the digital input.
+                * @note No valid on analog inputs
+                * @return The current pulsation count.
+                */
+                virtual uint8_t getCount( void ) const noexcept = 0;
                 friend class watcher;
         };
 
@@ -243,29 +231,26 @@ namespace qOS {
                     return type::DIGITAL;
                 }
                 /**
-                * @brief Set/Change the interval duration between multiple
-                * pulsations for a digital input
-                * @param[in] interval The specified interval
+                * @brief Set the timeout for the specified event.
+                * @param[in] e The event where the timeout will be set.
+                * @param[in] t The value of the timeout.
                 * @return @c true on success. Otherwise @c false.
                 */
-                inline bool setPulsationInterval( qOS::duration_t interval ) noexcept
-                {
-                    bool retValue = false;
-
-                    if ( interval > 50 ) {
-                        pulsationInterval = interval;
-                        retValue = true;
-                    }
-
-                    return retValue;
-                }
+                bool setTime( const event e, const qOS::duration_t t ) noexcept override;
                 /**
-                * @brief Get the pulsation count the digital input.
-                * @note Returned value should be only trusted if is read from
-                * the input event-callback.
-                * @return The pulsation count.
+                * @brief Set the parameter for the specified event.
+                * @param[in] e The event where the timeout will be set.
+                * @param[in] p The value of the parameter.
+                * @return @c true on success. Otherwise @c false.
                 */
-                inline uint8_t getPulsationCount( void ) const noexcept {
+                bool setParameter( const event e, const int value ) noexcept override;
+                /**
+                * @brief Get pulsation count for the digital input.
+                * @note No valid on analog inputs
+                * @return The current pulsation count.
+                */
+                uint8_t getCount( void ) const noexcept override
+                {
                     return pulsationCount;
                 }
             friend class watcher;
@@ -319,48 +304,33 @@ namespace qOS {
                 * @brief Get the channel type.
                 * @return The channel type.
                 */
-
                 type getType( void ) const noexcept override
                 {
                     return type::ANALOG;
                 }
                 /**
-                * @brief Set the timeout for the steady in band event.
+                * @brief Set the timeout for the specified event.
+                * @param[in] e The event where the timeout will be set.
                 * @param[in] t The value of the timeout.
                 * @return @c true on success. Otherwise @c false.
                 */
-                inline bool setSteadyBandTime( const qOS::duration_t t ) noexcept
-                {
-                    bool retValue = false;
-
-                    if ( ( t > 0U ) ) {
-                        tSteadyBand = static_cast<qOS::clock_t>( t );
-                        retValue = true;
-                    }
-
-                    return retValue;
-                }
+                bool setTime( const event e, const qOS::duration_t t ) noexcept = 0;
                 /**
-                * @brief Set the low threshold for the analog input channel
-                * @param[in] lowThreshold The lower threshold value.
+                * @brief Set the parameter for the specified event.
+                * @param[in] e The event where the timeout will be set.
+                * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
-                inline bool setLowThreshold( const int lowThreshold ) noexcept
-                {
-                    low = lowThreshold;
-                    return true;
-                }
+                bool setParameter( const event e, const int p ) noexcept override;
                 /**
-                * @brief Set the high threshold for the analog input channel
-                * @param[in] lowThreshold The lower threshold value.
-                * @return @c true on success. Otherwise @c false.
+                * @brief Get pulsation count for the digital input.
+                * @note No valid on analog inputs
+                * @return The current pulsation count.
                 */
-                inline bool setHighThreshold( const int highThreshold ) noexcept
+                uint8_t getCount( void ) const noexcept override
                 {
-                    high = highThreshold;
-                    return true;
+                    return 0;
                 }
-
             friend class watcher;
         };
 
@@ -380,6 +350,7 @@ namespace qOS {
                 watcher( watcher const& ) = delete;
                 void operator=( watcher const& ) = delete;
             public:
+                virtual ~watcher() {}
                 /**
                 * @brief Constructor for the input-watcher instance
                 * @param[in] rFcn A pointer to a function that reads the specific
@@ -388,7 +359,7 @@ namespace qOS {
                 * bounce of the digital input channels
                 * @return @c true on success. Otherwise @c false.
                 */
-                watcher( const channelReaderFcn_t& rDigital, const channelReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce ) :
+                watcher( const channelReaderFcn_t& rDigital, const channelReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce = 100_ms ) :
                     debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
                 /**
                 * @brief Add a channel to the watcher instance
@@ -409,6 +380,12 @@ namespace qOS {
                 * updated cycle. Otherwise @c false.
                 */
                 bool watch( void ) noexcept;
+                /*! @cond  */
+                inline void operator()( void )
+                {
+                    watch();
+                }
+                /*! @endcond  */
         };
         /** @}*/
     }

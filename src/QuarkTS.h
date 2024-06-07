@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.6.0"
-#define QUARKTS_CPP_VERNUM          ( 160u )
+#define QUARKTS_CPP_VERSION         "1.6.1"
+#define QUARKTS_CPP_VERNUM          ( 161u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -70,7 +70,7 @@ namespace qOS {
         constexpr const uint8_t number = QUARKTS_CPP_VERNUM;
         constexpr const uint8_t mayor = 1U;
         constexpr const uint8_t minor = 6U;
-        constexpr const uint8_t rev = 0U;
+        constexpr const uint8_t rev = 1U;
     }
     namespace product {
         constexpr const char* author = "J. Camilo Gomez C.";
@@ -84,7 +84,7 @@ namespace qOS {
     }
 
     namespace build {
-        constexpr const uint32_t number = 4123;
+        constexpr const uint32_t number = 4125;
         constexpr const char* date = __DATE__;
         constexpr const char* time = __TIME__;
         constexpr const char* std = "c++11";

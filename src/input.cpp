@@ -3,7 +3,7 @@
 using namespace qOS;
 
 /*============================================================================*/
-void input::digitalChannel::updateReading( channelReaderFcn_t reader ) noexcept
+void input::digitalChannel::updateReading( input::channelReaderFcn_t reader ) noexcept
 {
     int sample = reader( number );
 
@@ -13,12 +13,12 @@ void input::digitalChannel::updateReading( channelReaderFcn_t reader ) noexcept
     value = sample;
 }
 /*============================================================================*/
-void input::analogChannel::updateReading( channelReaderFcn_t reader ) noexcept
+void input::analogChannel::updateReading( input::channelReaderFcn_t reader ) noexcept
 {
     value = ( isShared() ) ? ptrValue[ 0 ] : reader( number );
 }
 /*============================================================================*/
-void input::digitalChannel::fallingEdgeState( digitalChannel& c )
+void input::digitalChannel::fallingEdgeState( input::digitalChannel& c )
 {
     const qOS::clock_t CURRENT_TIME = clock::getTick();
 
@@ -38,7 +38,7 @@ void input::digitalChannel::fallingEdgeState( digitalChannel& c )
     }
 }
 /*============================================================================*/
-void input::digitalChannel::steadyInLowState( digitalChannel& c )
+void input::digitalChannel::steadyInLowState( input::digitalChannel& c )
 {
     if ( 0 != c.value ) {
         c.channelState = &input::digitalChannel::risingEdgeState;
@@ -48,7 +48,7 @@ void input::digitalChannel::steadyInLowState( digitalChannel& c )
     }
 }
 /*============================================================================*/
-void input::digitalChannel::risingEdgeState( digitalChannel& c )
+void input::digitalChannel::risingEdgeState( input::digitalChannel& c )
 {
     const qOS::clock_t CURRENT_TIME = clock::getTick();
 
@@ -81,7 +81,7 @@ void input::digitalChannel::risingEdgeState( digitalChannel& c )
     }
 }
 /*============================================================================*/
-void input::digitalChannel::steadyInHighState( digitalChannel& c )
+void input::digitalChannel::steadyInHighState( input::digitalChannel& c )
 {
     if ( 0 == c.value ) {
         c.channelState = &input::digitalChannel::fallingEdgeState;
@@ -91,7 +91,7 @@ void input::digitalChannel::steadyInHighState( digitalChannel& c )
     }
 }
 /*============================================================================*/
-void input::analogChannel::lowThresholdState( analogChannel& c )
+void input::analogChannel::lowThresholdState( input::analogChannel& c )
 {
     const qOS::clock_t CURRENT_TIME = clock::getTick();
 
@@ -118,7 +118,7 @@ void input::analogChannel::lowThresholdState( analogChannel& c )
     }
 }
 /*============================================================================*/
-void input::analogChannel::highThresholdState( analogChannel& c )
+void input::analogChannel::highThresholdState( input::analogChannel& c )
 {
     const qOS::clock_t CURRENT_TIME = clock::getTick();
 
@@ -145,7 +145,7 @@ void input::analogChannel::highThresholdState( analogChannel& c )
     }
 }
 /*============================================================================*/
-void input::analogChannel::inBandState( analogChannel& c )
+void input::analogChannel::inBandState( input::analogChannel& c )
 {
     const qOS::clock_t CURRENT_TIME = clock::getTick();
 
@@ -172,7 +172,7 @@ void input::analogChannel::inBandState( analogChannel& c )
     }
 }
 /*============================================================================*/
-void input::analogChannel::steadyInHighState( analogChannel& c )
+void input::analogChannel::steadyInHighState( input::analogChannel& c )
 {
     if ( c.value < c.low ) {
         c.channelState = &input::analogChannel::lowThresholdState;
@@ -191,7 +191,7 @@ void input::analogChannel::steadyInHighState( analogChannel& c )
     }
 }
 /*============================================================================*/
-void input::analogChannel::steadyInLowState( analogChannel& c )
+void input::analogChannel::steadyInLowState( input::analogChannel& c )
 {
     if ( c.value > c.high ) {
         c.channelState = &input::analogChannel::highThresholdState;
@@ -210,7 +210,7 @@ void input::analogChannel::steadyInLowState( analogChannel& c )
     }
 }
 /*============================================================================*/
-void input::analogChannel::steadyInBandState( analogChannel& c )
+void input::analogChannel::steadyInBandState( input::analogChannel& c )
 {
     if ( c.value > c.high ) {
         c.channelState = &input::analogChannel::highThresholdState;
@@ -263,7 +263,7 @@ bool input::watcher::watch( void ) noexcept
     return true;
 }
 /*============================================================================*/
-void input::digitalChannel::setInitalState( channelReaderFcn_t reader ) noexcept
+void input::digitalChannel::setInitalState( input::channelReaderFcn_t reader ) noexcept
 {
     auto val = ( nullptr != reader ) ? reader( number ) : -1;
 
@@ -274,7 +274,7 @@ void input::digitalChannel::setInitalState( channelReaderFcn_t reader ) noexcept
                                 : &input::digitalChannel::risingEdgeState;
 }
 /*============================================================================*/
-void input::analogChannel::setInitalState( channelReaderFcn_t reader ) noexcept
+void input::analogChannel::setInitalState( input::channelReaderFcn_t reader ) noexcept
 {
     const auto val = ( nullptr != reader ) ? reader( number ) : -1;
 
@@ -289,7 +289,7 @@ void input::analogChannel::setInitalState( channelReaderFcn_t reader ) noexcept
     }
 }
 /*============================================================================*/
-bool input::watcher::add( channel& c ) noexcept
+bool input::watcher::add( input::channel& c ) noexcept
 {
     bool retValue;
 
@@ -315,7 +315,7 @@ bool input::watcher::add( channel& c ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool input::watcher::remove( channel& c ) noexcept
+bool input::watcher::remove( input::channel& c ) noexcept
 {
     list *channelContainer = c.getContainer();
     const bool retValue = channelContainer->remove( &c );
@@ -337,6 +337,91 @@ bool input::watcher::remove( channel& c ) noexcept
                 }
             }
         }
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+bool input::digitalChannel::setTime( const input::event e, const qOS::duration_t t ) noexcept
+{
+    bool retValue = true;
+
+    if ( t > 0U ) {
+        switch( e ) {
+            case input::event::PULSATION_DOUBLE:
+            case input::event::PULSATION_TRIPLE:
+            case input::event::PULSATION_MULTI:
+                pulsationInterval = static_cast<qOS::clock_t>( t );
+                break;
+            case input::event::STEADY_IN_HIGH:
+                tSteadyHigh = static_cast<qOS::clock_t>( t );
+                break;
+            case input::event::STEADY_IN_LOW:
+                tSteadyHigh = static_cast<qOS::clock_t>( t );
+                break;
+            default:
+                retValue = false;
+                break;
+        }
+    }
+    else {
+        retValue = false;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+bool input::analogChannel::setTime( const input::event e, const qOS::duration_t t ) noexcept
+{
+    bool retValue = true;
+
+    if ( t > 0U ) {
+        switch( e ) {
+            case input::event::STEADY_IN_BAND:
+                tSteadyBand = static_cast<qOS::clock_t>( t );
+                break;
+            case input::event::STEADY_IN_HIGH:
+                tSteadyHigh = static_cast<qOS::clock_t>( t );
+                break;
+            case input::event::STEADY_IN_LOW:
+                tSteadyHigh = static_cast<qOS::clock_t>( t );
+                break;
+            default:
+                retValue = false;
+                break;
+        }
+    }
+    else {
+        retValue = false;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+bool input::digitalChannel::setParameter( const input::event e, const int p ) noexcept
+{
+    (void)e;
+    (void)p;
+    return false;
+}
+/*============================================================================*/
+bool input::analogChannel::setParameter( const input::event e, const int p ) noexcept
+{
+    bool retValue = true;
+
+    switch( e ) {
+        case input::event::HIGH_THRESHOLD:
+            high = p;
+            break;
+        case input::event::LOW_THRESHOLD:
+            low = p;
+            break;
+        case input::event::IN_BAND:
+            hysteresis = p;
+            break;
+        default:
+            retValue = false;
+            break;
     }
 
     return retValue;
