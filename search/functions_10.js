@@ -16,7 +16,7 @@ var searchData=
   ['setname_13',['setName',['../classq_o_s_1_1task.html#ac52cce420afc21616880a98a4a38fadc',1,'qOS::task']]],
   ['setnameidletask_14',['setNameIdleTask',['../classq_o_s_1_1core.html#abf84d8d34d0dafcdd934daa6737fec78',1,'qOS::core']]],
   ['setoutputfcn_15',['setOutputFcn',['../group__qlogger.html#gaddfb8cc69a86f365870b6435f6607503',1,'qOS::logger']]],
-  ['setparameter_16',['setParameter',['../classq_o_s_1_1input_1_1channel.html#a7a604f6294aaf419741a05b24ad6be4e',1,'qOS::input::channel::setParameter()'],['../classq_o_s_1_1input_1_1digital_channel.html#a8209fa46f60cd1a15892a6325de0683e',1,'qOS::input::digitalChannel::setParameter()'],['../classq_o_s_1_1input_1_1analog_channel.html#aa989317618542c52e39685be38dfdf4e',1,'qOS::input::analogChannel::setParameter()']]],
+  ['setparameter_16',['setParameter',['../classq_o_s_1_1input_1_1channel.html#a25b32a745821c3a802984c1c72fa0e40',1,'qOS::input::channel::setParameter()'],['../classq_o_s_1_1input_1_1digital_channel.html#a872e579faad5e803d1b9b18f6e8ad46f',1,'qOS::input::digitalChannel::setParameter()'],['../classq_o_s_1_1input_1_1analog_channel.html#aa989317618542c52e39685be38dfdf4e',1,'qOS::input::analogChannel::setParameter()']]],
   ['setposition_17',['setPosition',['../group__qcoroutines.html#gacf586fa36242eee6bcb2aa4052eb56dc',1,'qOS::co']]],
   ['setpriority_18',['setPriority',['../classq_o_s_1_1task.html#a1c0590c3753eabe7effd647d7bd96cd9',1,'qOS::task']]],
   ['setschedulerreleasecallback_19',['setSchedulerReleaseCallback',['../classq_o_s_1_1core.html#a4d9ec6f77db0a44985f2793f2a47797b',1,'qOS::core']]],

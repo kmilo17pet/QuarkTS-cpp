@@ -187,9 +187,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1399280c16cffa5b4a657ca17580b771" id="r_a1399280c16cffa5b4a657ca17580b771"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1399280c16cffa5b4a657ca17580b771">setTime</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t) noexcept=0</td></tr>
 <tr class="memdesc:a1399280c16cffa5b4a657ca17580b771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the timeout for the specified event.  <br /></td></tr>
 <tr class="separator:a1399280c16cffa5b4a657ca17580b771"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a604f6294aaf419741a05b24ad6be4e" id="r_a7a604f6294aaf419741a05b24ad6be4e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a604f6294aaf419741a05b24ad6be4e">setParameter</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const int value) noexcept=0</td></tr>
-<tr class="memdesc:a7a604f6294aaf419741a05b24ad6be4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the parameter for the specified event.  <br /></td></tr>
-<tr class="separator:a7a604f6294aaf419741a05b24ad6be4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b32a745821c3a802984c1c72fa0e40" id="r_a25b32a745821c3a802984c1c72fa0e40"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25b32a745821c3a802984c1c72fa0e40">setParameter</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const int p) noexcept=0</td></tr>
+<tr class="memdesc:a25b32a745821c3a802984c1c72fa0e40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the parameter for the specified event.  <br /></td></tr>
+<tr class="separator:a25b32a745821c3a802984c1c72fa0e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c4115f5bb078947d3071d3800e296c" id="r_a10c4115f5bb078947d3071d3800e296c"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10c4115f5bb078947d3071d3800e296c">getCount</a> (void) const noexcept=0</td></tr>
 <tr class="memdesc:a10c4115f5bb078947d3071d3800e296c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pulsation count for the digital input.  <br /></td></tr>
 <tr class="separator:a10c4115f5bb078947d3071d3800e296c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -403,8 +403,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Set the callback function when event are detected on the input input channel. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">inputChannel</td><td>The specified channel(pin) number to read. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">invert</td><td>To invert/negate the raw-reading. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cb</td><td>The callback function </td></tr>
   </table>
   </dd>
 </dl>
@@ -445,8 +444,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a7a604f6294aaf419741a05b24ad6be4e" name="a7a604f6294aaf419741a05b24ad6be4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a604f6294aaf419741a05b24ad6be4e">&#9670;&#160;</a></span>setParameter()</h2>
+<a id="a25b32a745821c3a802984c1c72fa0e40" name="a25b32a745821c3a802984c1c72fa0e40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25b32a745821c3a802984c1c72fa0e40">&#9670;&#160;</a></span>setParameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -462,7 +461,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -482,7 +481,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
 
-<p>Implemented in <a class="el" href="classq_o_s_1_1input_1_1analog_channel.html#aa989317618542c52e39685be38dfdf4e">qOS::input::analogChannel</a>, and <a class="el" href="classq_o_s_1_1input_1_1digital_channel.html#a8209fa46f60cd1a15892a6325de0683e">qOS::input::digitalChannel</a>.</p>
+<p>Implemented in <a class="el" href="classq_o_s_1_1input_1_1analog_channel.html#aa989317618542c52e39685be38dfdf4e">qOS::input::analogChannel</a>, and <a class="el" href="classq_o_s_1_1input_1_1digital_channel.html#a872e579faad5e803d1b9b18f6e8ad46f">qOS::input::digitalChannel</a>.</p>
 
 </div>
 </div>
@@ -553,7 +552,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Set the channel user-data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">A</td><td>pointer to the user-data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pUserData</td><td>A pointer to the user-data </td></tr>
   </table>
   </dd>
 </dl>
