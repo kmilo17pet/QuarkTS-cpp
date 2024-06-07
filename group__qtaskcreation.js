@@ -16,7 +16,7 @@ var group__qtaskcreation =
       [ "getTaskByID", "classq_o_s_1_1core.html#a3b6ddd61cdf225cf2109feca14b26d0c", null ],
       [ "getTaskByName", "classq_o_s_1_1core.html#a608ac27a612a6df5123c1d5a2d9b6651", null ],
       [ "hasPendingNotifications", "group__qnot.html#ga8df76411fcbc5de558088699be227891", null ],
-      [ "init", "classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a", null ],
+      [ "init", "classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c", null ],
       [ "notify", "group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298", null ],
       [ "notify", "group__qnot.html#gab865aa8541244ae16444e52691823a41", null ],
       [ "removeInputWatcher", "classq_o_s_1_1core.html#a8372a4835103df04b8294dae6a947c65", null ],

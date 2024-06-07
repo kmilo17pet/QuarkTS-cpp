@@ -363,14 +363,14 @@ Sending notifications</h3>
 <div class="line">    HAL_Setup_MCU(); <span class="comment">/*hardware dependent code*/</span></div>
 <div class="line">    trace::setOutputFcn( HAL_OutPutChar );</div>
 <div class="line">    <span class="comment">/* setup the scheduler to handle up to 10 queued notifications*/</span></div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">init</a>( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( taskA, taskA_Callback, core::LOWEST_PRIORITY );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( taskB, taskB_Callback, core::LOWEST_PRIORITY );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a76bcdcfaba5020967caff19f69f4270a"><div class="ttname"><a href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">qOS::core::init</a></div><div class="ttdeci">void init(const getTickFcn_t tFcn=nullptr, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a8a1c57e7736a22fb8036bfa60b96915c"><div class="ttname"><a href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">qOS::core::init</a></div><div class="ttdeci">bool init(const getTickFcn_t tFcn=nullptr, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_ad37fb39c9ab1224e007be651e1dfc69b"><div class="ttname"><a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">qOS::core::addEventTask</a></div><div class="ttdeci">bool addEventTask(task &amp;Task, taskFcn_t callback, const priority_t p, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED_STATE state b...</div><div class="ttdef"><b>Definition</b> kernel.hpp:210</div></div>
 <div class="ttc" id="aclassq_o_s_1_1event__t_html"><div class="ttname"><a href="classq_o_s_1_1event__t.html">qOS::event_t</a></div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition</b> task.hpp:105</div></div>
 <div class="ttc" id="agroup__qnot_html_gaa6de5a8fa854b30d78de7540e21f4298"><div class="ttname"><a href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">qOS::core::notify</a></div><div class="ttdeci">bool notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept</div><div class="ttdoc">Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...</div></div>
@@ -472,7 +472,7 @@ A queue example</h3>
 <div class="line"><span class="comment">     * interrupts at 1ms - timer tick*/</span></div>
 <div class="line">    Configure_Periodic_Timer0_Interrupt_1ms();</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
 <div class="line">    <span class="comment">/*Setup the queue*/</span></div>
 <div class="line">    userQueue.<a class="code hl_function" href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6">setup</a>&lt;uint16_t&gt;( BufferMem, 16 );</div>
 <div class="line">                 </div>
@@ -577,7 +577,7 @@ Using the task Event-flags</h3>
 <div class="line">    <span class="comment">/* Idle task will be responsible to transmit the generate the data after </span></div>
 <div class="line"><span class="comment">     * all conditions are met</span></div>
 <div class="line"><span class="comment">    */</span></div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
 <div class="line">    <span class="comment">/* The task will wait until data is transmitted to generate another set of</span></div>
 <div class="line"><span class="comment">     * data */</span></div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( TaskDataProducer, TaskDataProducer_Callback, core::HIGHEST_PRIORITY, <span class="stringliteral">&quot;DATAPRODUCER&quot;</span> );</div>

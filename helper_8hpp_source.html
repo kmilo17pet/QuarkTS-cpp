@@ -195,150 +195,150 @@ $(function(){initNavTree('helper_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
 </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">/*cstat +CERT-INT34-C_a +MISRAC++2008-5-0-10*/</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">   93</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">singleWrite</a>( T &amp;dst, <span class="keyword">const</span> <span class="keywordtype">size_t</span> xBit, <span class="keyword">const</span> <span class="keywordtype">bool</span> value )</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            ( value ) ? <a class="code hl_function" href="group__qflm.html#gae371fc016f5298e25033dd3c70e5ce20">bits::singleSet</a>( dst, xBit ) : <a class="code hl_function" href="group__qflm.html#ga3886e484675d93e1cf1db88b4c0040f0">bits::singleClear</a>( dst, xBit );</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">   92</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">singleWrite</a>( T &amp;dst, <span class="keyword">const</span> <span class="keywordtype">size_t</span> xBit, <span class="keyword">const</span> <span class="keywordtype">bool</span> value )</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            ( value ) ? <a class="code hl_function" href="group__qflm.html#gae371fc016f5298e25033dd3c70e5ce20">bits::singleSet</a>( dst, xBit ) : <a class="code hl_function" href="group__qflm.html#ga3886e484675d93e1cf1db88b4c0040f0">bits::singleClear</a>( dst, xBit );</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        }</div>
 </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> W&gt;</div>
-<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="group__qflm.html#gacd3c021c74959669887fc42f2f193907">  105</a></span>        <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="group__qflm.html#gacd3c021c74959669887fc42f2f193907">multipleGet</a>( T reg, W xBits )</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">return</span> ( 0U != ( reg &amp; xBits) );</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> W&gt;</div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="group__qflm.html#gacd3c021c74959669887fc42f2f193907">  104</a></span>        <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="group__qflm.html#gacd3c021c74959669887fc42f2f193907">multipleGet</a>( T reg, W xBits )</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordflow">return</span> ( 0U != ( reg &amp; xBits) );</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
 </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    }</div>
 </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> DT, <span class="keyword">typename</span> ST&gt;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keyword">inline</span> DT aligned_cast( ST&amp; src )</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        DT dst;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        (void)memcpy( &amp;dst, &amp;src, <span class="keyword">sizeof</span>(ST) );</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span> dst;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    }</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>( <span class="keyword">const</span> T&amp; ) <span class="keyword">noexcept</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keywordtype">size_t</span> n&gt;</div>
-<div class="foldopen" id="foldopen00143" data-start="{" data-end="}">
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">  143</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>( <span class="keyword">const</span> T (&amp;arr)[n] ) <span class="keyword">noexcept</span> <span class="comment">// skipcq: CXX-W2066</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    {</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="keywordflow">return</span> n*<a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(*arr);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> DT, <span class="keyword">typename</span> ST&gt;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keyword">inline</span> DT aligned_cast( ST&amp; src )</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        DT dst;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        (void)memcpy( &amp;dst, &amp;src, <span class="keyword">sizeof</span>(ST) );</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">return</span> dst;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>( <span class="keyword">const</span> T&amp; ) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keywordtype">size_t</span> n&gt;</div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">  142</a></span>    <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>( <span class="keyword">const</span> T (&amp;arr)[n] ) <span class="keyword">noexcept</span> <span class="comment">// skipcq: CXX-W2066</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">return</span> n*<a class="code hl_function" href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">arraySize</a>(*arr);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    }</div>
 </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00156" data-start="{" data-end="}">
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9">  156</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9">clip</a>( T x, <span class="keyword">const</span> T Min, <span class="keyword">const</span> T Max )</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    {</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">return</span> ( x &lt; Min ) ? Min : ( ( x &gt; Max ) ? Max : x );</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="}">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9">  155</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9">clip</a>( T x, <span class="keyword">const</span> T Min, <span class="keyword">const</span> T Max )</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">return</span> ( x &lt; Min ) ? Min : ( ( x &gt; Max ) ? Max : x );</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
 </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="group__qflm.html#ga07b23f39da834cd0d0e91359342151ce">  167</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#ga07b23f39da834cd0d0e91359342151ce">clipUpper</a>( T x, <span class="keyword">const</span> T Max )</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">return</span> ( x &gt; Max ) ? Max : x ;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="group__qflm.html#ga07b23f39da834cd0d0e91359342151ce">  166</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#ga07b23f39da834cd0d0e91359342151ce">clipUpper</a>( T x, <span class="keyword">const</span> T Max )</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keywordflow">return</span> ( x &gt; Max ) ? Max : x ;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    }</div>
 </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="group__qflm.html#ga1038117ab7406f4221f93de775a06700">  178</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#ga1038117ab7406f4221f93de775a06700">clipLower</a>( T x, <span class="keyword">const</span> T Min )</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    {</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">return</span> ( x &lt; Min ) ? Min : x ;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00177" data-start="{" data-end="}">
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="group__qflm.html#ga1038117ab7406f4221f93de775a06700">  177</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#ga1038117ab7406f4221f93de775a06700">clipLower</a>( T x, <span class="keyword">const</span> T Min )</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">return</span> ( x &lt; Min ) ? Min : x ;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    }</div>
 </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00192" data-start="{" data-end="}">
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="group__qflm.html#gac3863848a03a8657a38b967be5746ef4">  192</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#gac3863848a03a8657a38b967be5746ef4">isBetween</a>( T x, <span class="keyword">const</span> T Low, <span class="keyword">const</span> T High )</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    {</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">return</span> ( x &gt;= Low ) &amp;&amp; ( x &lt;= High );</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00191" data-start="{" data-end="}">
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="group__qflm.html#gac3863848a03a8657a38b967be5746ef4">  191</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="group__qflm.html#gac3863848a03a8657a38b967be5746ef4">isBetween</a>( T x, <span class="keyword">const</span> T Low, <span class="keyword">const</span> T High )</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordflow">return</span> ( x &gt;= Low ) &amp;&amp; ( x &lt;= High );</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00201" data-start="{" data-end="}">
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75">  201</a></span>    <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75">byteNibbleHigh</a>( uint8_t x )</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    {</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>( x &gt;&gt; 4U );</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
+<div class="foldopen" id="foldopen00200" data-start="{" data-end="}">
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75">  200</a></span>    <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75">byteNibbleHigh</a>( uint8_t x )</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>( x &gt;&gt; 4U );</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00210" data-start="{" data-end="}">
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="group__qflm.html#gae29147e4da5fc8c5c73f8b1e180bdad7">  210</a></span>    <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="group__qflm.html#gae29147e4da5fc8c5c73f8b1e180bdad7">byteNibbleLow</a>( uint8_t x )</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    {</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>( x &amp; 0x0FU );</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    }</div>
+<div class="foldopen" id="foldopen00209" data-start="{" data-end="}">
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="group__qflm.html#gae29147e4da5fc8c5c73f8b1e180bdad7">  209</a></span>    <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="group__qflm.html#gae29147e4da5fc8c5c73f8b1e180bdad7">byteNibbleLow</a>( uint8_t x )</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    {</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>( x &amp; 0x0FU );</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00220" data-start="{" data-end="}">
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4">  220</a></span>    <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4">byteMergeNibbles</a>( uint8_t h, uint8_t l )</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    {</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>( ( h &lt;&lt; 4U ) | ( 0x0FU &amp; l ) );</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    }</div>
+<div class="foldopen" id="foldopen00219" data-start="{" data-end="}">
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4">  219</a></span>    <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4">byteMergeNibbles</a>( uint8_t h, uint8_t l )</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>( ( h &lt;&lt; 4U ) | ( 0x0FU &amp; l ) );</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00229" data-start="{" data-end="}">
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="group__qflm.html#gad147633b6ac2fb2033c6cd10c93ba1af">  229</a></span>    <span class="keyword">inline</span> uint16_t <a class="code hl_function" href="group__qflm.html#gad147633b6ac2fb2033c6cd10c93ba1af">wordByteHigh</a>( uint16_t x )</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    {</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>( x &gt;&gt; 8U );</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    }</div>
+<div class="foldopen" id="foldopen00228" data-start="{" data-end="}">
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="group__qflm.html#gad147633b6ac2fb2033c6cd10c93ba1af">  228</a></span>    <span class="keyword">inline</span> uint16_t <a class="code hl_function" href="group__qflm.html#gad147633b6ac2fb2033c6cd10c93ba1af">wordByteHigh</a>( uint16_t x )</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    {</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>( x &gt;&gt; 8U );</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00238" data-start="{" data-end="}">
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="group__qflm.html#ga5ba7e8ea3892eed319b02f8ede85ab5e">  238</a></span>    <span class="keyword">inline</span> uint16_t <a class="code hl_function" href="group__qflm.html#ga5ba7e8ea3892eed319b02f8ede85ab5e">wordByteLow</a>( uint16_t x )</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    {</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>( x &amp; 0x00FFU );</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    }</div>
+<div class="foldopen" id="foldopen00237" data-start="{" data-end="}">
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="group__qflm.html#ga5ba7e8ea3892eed319b02f8ede85ab5e">  237</a></span>    <span class="keyword">inline</span> uint16_t <a class="code hl_function" href="group__qflm.html#ga5ba7e8ea3892eed319b02f8ede85ab5e">wordByteLow</a>( uint16_t x )</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>( x &amp; 0x00FFU );</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00248" data-start="{" data-end="}">
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno"><a class="line" href="group__qflm.html#gaa737d4b64960bb0295dea34dfe7773cf">  248</a></span>    <span class="keyword">inline</span> uint16_t <a class="code hl_function" href="group__qflm.html#gaa737d4b64960bb0295dea34dfe7773cf">wordMergeBytes</a>( uint16_t h, uint16_t l )</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    {</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>( ( h &lt;&lt; 8U ) | ( 0x00FFU &amp; l ) );</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    }</div>
+<div class="foldopen" id="foldopen00247" data-start="{" data-end="}">
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="group__qflm.html#gaa737d4b64960bb0295dea34dfe7773cf">  247</a></span>    <span class="keyword">inline</span> uint16_t <a class="code hl_function" href="group__qflm.html#gaa737d4b64960bb0295dea34dfe7773cf">wordMergeBytes</a>( uint16_t h, uint16_t l )</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    {</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint16_t<span class="keyword">&gt;</span>( ( h &lt;&lt; 8U ) | ( 0x00FFU &amp; l ) );</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00257" data-start="{" data-end="}">
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="group__qflm.html#ga8c9dcdd3b7f565ff2794ae9ca5436c3b">  257</a></span>    <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="group__qflm.html#ga8c9dcdd3b7f565ff2794ae9ca5436c3b">dWordWordHigh</a>( uint32_t x )</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    {</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>( x &gt;&gt; 16U );</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    }</div>
+<div class="foldopen" id="foldopen00256" data-start="{" data-end="}">
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno"><a class="line" href="group__qflm.html#ga8c9dcdd3b7f565ff2794ae9ca5436c3b">  256</a></span>    <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="group__qflm.html#ga8c9dcdd3b7f565ff2794ae9ca5436c3b">dWordWordHigh</a>( uint32_t x )</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>( x &gt;&gt; 16U );</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00266" data-start="{" data-end="}">
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="group__qflm.html#ga5293cfc97dd00dfe85c9281e3b35db4c">  266</a></span>    <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="group__qflm.html#ga5293cfc97dd00dfe85c9281e3b35db4c">dWordWordLow</a>( uint32_t x )</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    {</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>( x &amp; 0xFFFFU );</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    }</div>
+<div class="foldopen" id="foldopen00265" data-start="{" data-end="}">
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno"><a class="line" href="group__qflm.html#ga5293cfc97dd00dfe85c9281e3b35db4c">  265</a></span>    <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="group__qflm.html#ga5293cfc97dd00dfe85c9281e3b35db4c">dWordWordLow</a>( uint32_t x )</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    {</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>( x &amp; 0xFFFFU );</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    }</div>
 </div>
-<div class="foldopen" id="foldopen00276" data-start="{" data-end="}">
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno"><a class="line" href="group__qflm.html#gaf3383fec42786ce57d66b957201b59d4">  276</a></span>    <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="group__qflm.html#gaf3383fec42786ce57d66b957201b59d4">dwordMergeWords</a>( uint32_t h, uint32_t l )</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    {</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>( ( h &lt;&lt; 16U ) | ( 0xFFFFU &amp; l ) );</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    }</div>
+<div class="foldopen" id="foldopen00275" data-start="{" data-end="}">
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno"><a class="line" href="group__qflm.html#gaf3383fec42786ce57d66b957201b59d4">  275</a></span>    <span class="keyword">inline</span> uint32_t <a class="code hl_function" href="group__qflm.html#gaf3383fec42786ce57d66b957201b59d4">dwordMergeWords</a>( uint32_t h, uint32_t l )</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    {</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>( ( h &lt;&lt; 16U ) | ( 0xFFFFU &amp; l ) );</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    }</div>
 </div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>}</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_CPP_HELPER*/</span><span class="preprocessor"></span></div>
-<div class="ttc" id="agroup__qflm_html_ga07b23f39da834cd0d0e91359342151ce"><div class="ttname"><a href="group__qflm.html#ga07b23f39da834cd0d0e91359342151ce">qOS::clipUpper</a></div><div class="ttdeci">T clipUpper(T x, const T Max)</div><div class="ttdoc">Ensures that x is bellow the limits set by Max.</div><div class="ttdef"><b>Definition</b> helper.hpp:167</div></div>
-<div class="ttc" id="agroup__qflm_html_ga0bdd9b7881d2ba2aebaaba48a10381c4"><div class="ttname"><a href="group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4">qOS::byteMergeNibbles</a></div><div class="ttdeci">uint8_t byteMergeNibbles(uint8_t h, uint8_t l)</div><div class="ttdoc">Merges two nibbles to form one byte.</div><div class="ttdef"><b>Definition</b> helper.hpp:220</div></div>
-<div class="ttc" id="agroup__qflm_html_ga1038117ab7406f4221f93de775a06700"><div class="ttname"><a href="group__qflm.html#ga1038117ab7406f4221f93de775a06700">qOS::clipLower</a></div><div class="ttdeci">T clipLower(T x, const T Min)</div><div class="ttdoc">Ensures that x is above the value set by Min.</div><div class="ttdef"><b>Definition</b> helper.hpp:178</div></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>}</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="preprocessor">#endif </span><span class="comment">/*QOS_CPP_HELPER*/</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agroup__qflm_html_ga07b23f39da834cd0d0e91359342151ce"><div class="ttname"><a href="group__qflm.html#ga07b23f39da834cd0d0e91359342151ce">qOS::clipUpper</a></div><div class="ttdeci">T clipUpper(T x, const T Max)</div><div class="ttdoc">Ensures that x is bellow the limits set by Max.</div><div class="ttdef"><b>Definition</b> helper.hpp:166</div></div>
+<div class="ttc" id="agroup__qflm_html_ga0bdd9b7881d2ba2aebaaba48a10381c4"><div class="ttname"><a href="group__qflm.html#ga0bdd9b7881d2ba2aebaaba48a10381c4">qOS::byteMergeNibbles</a></div><div class="ttdeci">uint8_t byteMergeNibbles(uint8_t h, uint8_t l)</div><div class="ttdoc">Merges two nibbles to form one byte.</div><div class="ttdef"><b>Definition</b> helper.hpp:219</div></div>
+<div class="ttc" id="agroup__qflm_html_ga1038117ab7406f4221f93de775a06700"><div class="ttname"><a href="group__qflm.html#ga1038117ab7406f4221f93de775a06700">qOS::clipLower</a></div><div class="ttdeci">T clipLower(T x, const T Min)</div><div class="ttdoc">Ensures that x is above the value set by Min.</div><div class="ttdef"><b>Definition</b> helper.hpp:177</div></div>
 <div class="ttc" id="agroup__qflm_html_ga2172a384a8f81c218f790ab61c454ac3"><div class="ttname"><a href="group__qflm.html#ga2172a384a8f81c218f790ab61c454ac3">qOS::bits::singleRead</a></div><div class="ttdeci">bool singleRead(T dst, const size_t xBit)</div><div class="ttdoc">Uses the bitwise AND operator to read the value of a single bit from dst.</div><div class="ttdef"><b>Definition</b> helper.hpp:69</div></div>
 <div class="ttc" id="agroup__qflm_html_ga3886e484675d93e1cf1db88b4c0040f0"><div class="ttname"><a href="group__qflm.html#ga3886e484675d93e1cf1db88b4c0040f0">qOS::bits::singleClear</a></div><div class="ttdeci">void singleClear(T &amp;dst, const size_t xBit)</div><div class="ttdoc">Uses the bitwise AND operator to clear a single bit into dst.</div><div class="ttdef"><b>Definition</b> helper.hpp:57</div></div>
-<div class="ttc" id="agroup__qflm_html_ga5293cfc97dd00dfe85c9281e3b35db4c"><div class="ttname"><a href="group__qflm.html#ga5293cfc97dd00dfe85c9281e3b35db4c">qOS::dWordWordLow</a></div><div class="ttdeci">uint32_t dWordWordLow(uint32_t x)</div><div class="ttdoc">Read the low-word from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:266</div></div>
-<div class="ttc" id="agroup__qflm_html_ga5ba7e8ea3892eed319b02f8ede85ab5e"><div class="ttname"><a href="group__qflm.html#ga5ba7e8ea3892eed319b02f8ede85ab5e">qOS::wordByteLow</a></div><div class="ttdeci">uint16_t wordByteLow(uint16_t x)</div><div class="ttdoc">Read the low-byte from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:238</div></div>
+<div class="ttc" id="agroup__qflm_html_ga5293cfc97dd00dfe85c9281e3b35db4c"><div class="ttname"><a href="group__qflm.html#ga5293cfc97dd00dfe85c9281e3b35db4c">qOS::dWordWordLow</a></div><div class="ttdeci">uint32_t dWordWordLow(uint32_t x)</div><div class="ttdoc">Read the low-word from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:265</div></div>
+<div class="ttc" id="agroup__qflm_html_ga5ba7e8ea3892eed319b02f8ede85ab5e"><div class="ttname"><a href="group__qflm.html#ga5ba7e8ea3892eed319b02f8ede85ab5e">qOS::wordByteLow</a></div><div class="ttdeci">uint16_t wordByteLow(uint16_t x)</div><div class="ttdoc">Read the low-byte from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:237</div></div>
 <div class="ttc" id="agroup__qflm_html_ga780ea4cb7bc1234784bca8fc01807560"><div class="ttname"><a href="group__qflm.html#ga780ea4cb7bc1234784bca8fc01807560">qOS::bits::multipleClear</a></div><div class="ttdeci">void multipleClear(T &amp;dst, W xBits)</div><div class="ttdoc">Uses the bitwise AND operator to clear bits into dst.</div><div class="ttdef"><b>Definition</b> helper.hpp:37</div></div>
-<div class="ttc" id="agroup__qflm_html_ga8c9dcdd3b7f565ff2794ae9ca5436c3b"><div class="ttname"><a href="group__qflm.html#ga8c9dcdd3b7f565ff2794ae9ca5436c3b">qOS::dWordWordHigh</a></div><div class="ttdeci">uint32_t dWordWordHigh(uint32_t x)</div><div class="ttdoc">Read the high-word from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:257</div></div>
-<div class="ttc" id="agroup__qflm_html_ga8d2b5e0e36e0c3fa4670728fe1d4eb75"><div class="ttname"><a href="group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75">qOS::byteNibbleHigh</a></div><div class="ttdeci">uint8_t byteNibbleHigh(uint8_t x)</div><div class="ttdoc">Read the high-nibble from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:201</div></div>
+<div class="ttc" id="agroup__qflm_html_ga8c9dcdd3b7f565ff2794ae9ca5436c3b"><div class="ttname"><a href="group__qflm.html#ga8c9dcdd3b7f565ff2794ae9ca5436c3b">qOS::dWordWordHigh</a></div><div class="ttdeci">uint32_t dWordWordHigh(uint32_t x)</div><div class="ttdoc">Read the high-word from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:256</div></div>
+<div class="ttc" id="agroup__qflm_html_ga8d2b5e0e36e0c3fa4670728fe1d4eb75"><div class="ttname"><a href="group__qflm.html#ga8d2b5e0e36e0c3fa4670728fe1d4eb75">qOS::byteNibbleHigh</a></div><div class="ttdeci">uint8_t byteNibbleHigh(uint8_t x)</div><div class="ttdoc">Read the high-nibble from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:200</div></div>
 <div class="ttc" id="agroup__qflm_html_ga91a66e9443d43c48a0472be74a31fa3a"><div class="ttname"><a href="group__qflm.html#ga91a66e9443d43c48a0472be74a31fa3a">qOS::bits::singleToggle</a></div><div class="ttdeci">void singleToggle(T &amp;dst, const size_t xBit)</div><div class="ttdoc">Uses the bitwise XOR operator to toggle the value of a single bit from dst.</div><div class="ttdef"><b>Definition</b> helper.hpp:80</div></div>
-<div class="ttc" id="agroup__qflm_html_gaa737d4b64960bb0295dea34dfe7773cf"><div class="ttname"><a href="group__qflm.html#gaa737d4b64960bb0295dea34dfe7773cf">qOS::wordMergeBytes</a></div><div class="ttdeci">uint16_t wordMergeBytes(uint16_t h, uint16_t l)</div><div class="ttdoc">Merges two bytes to form one Word.</div><div class="ttdef"><b>Definition</b> helper.hpp:248</div></div>
-<div class="ttc" id="agroup__qflm_html_gab5754d9611462696a65a030ff771f4bb"><div class="ttname"><a href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">qOS::arraySize</a></div><div class="ttdeci">constexpr size_t arraySize(const T(&amp;arr)[n]) noexcept</div><div class="ttdoc">Calculates the size of an array. This function takes a reference to an array and calculates its size....</div><div class="ttdef"><b>Definition</b> helper.hpp:143</div></div>
+<div class="ttc" id="agroup__qflm_html_gaa737d4b64960bb0295dea34dfe7773cf"><div class="ttname"><a href="group__qflm.html#gaa737d4b64960bb0295dea34dfe7773cf">qOS::wordMergeBytes</a></div><div class="ttdeci">uint16_t wordMergeBytes(uint16_t h, uint16_t l)</div><div class="ttdoc">Merges two bytes to form one Word.</div><div class="ttdef"><b>Definition</b> helper.hpp:247</div></div>
+<div class="ttc" id="agroup__qflm_html_gab5754d9611462696a65a030ff771f4bb"><div class="ttname"><a href="group__qflm.html#gab5754d9611462696a65a030ff771f4bb">qOS::arraySize</a></div><div class="ttdeci">constexpr size_t arraySize(const T(&amp;arr)[n]) noexcept</div><div class="ttdoc">Calculates the size of an array. This function takes a reference to an array and calculates its size....</div><div class="ttdef"><b>Definition</b> helper.hpp:142</div></div>
 <div class="ttc" id="agroup__qflm_html_gab8e15a186a9b8c4cc6b3b36671f7dc6b"><div class="ttname"><a href="group__qflm.html#gab8e15a186a9b8c4cc6b3b36671f7dc6b">qOS::bits::multipleSet</a></div><div class="ttdeci">void multipleSet(T &amp;dst, W xBits)</div><div class="ttdoc">Uses the bitwise OR operator to set bits into dst.</div><div class="ttdef"><b>Definition</b> helper.hpp:27</div></div>
-<div class="ttc" id="agroup__qflm_html_gac3863848a03a8657a38b967be5746ef4"><div class="ttname"><a href="group__qflm.html#gac3863848a03a8657a38b967be5746ef4">qOS::isBetween</a></div><div class="ttdeci">T isBetween(T x, const T Low, const T High)</div><div class="ttdoc">Check if the value of x is within the limits defined by Low and High.</div><div class="ttdef"><b>Definition</b> helper.hpp:192</div></div>
-<div class="ttc" id="agroup__qflm_html_gacd3c021c74959669887fc42f2f193907"><div class="ttname"><a href="group__qflm.html#gacd3c021c74959669887fc42f2f193907">qOS::bits::multipleGet</a></div><div class="ttdeci">bool multipleGet(T reg, W xBits)</div><div class="ttdoc">Read multiple bits by applying the mask given by xBits to the dst variable.</div><div class="ttdef"><b>Definition</b> helper.hpp:105</div></div>
-<div class="ttc" id="agroup__qflm_html_gad147633b6ac2fb2033c6cd10c93ba1af"><div class="ttname"><a href="group__qflm.html#gad147633b6ac2fb2033c6cd10c93ba1af">qOS::wordByteHigh</a></div><div class="ttdeci">uint16_t wordByteHigh(uint16_t x)</div><div class="ttdoc">Read the high-byte from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:229</div></div>
-<div class="ttc" id="agroup__qflm_html_gadf44d8010f8688287951ba6c0feecbb9"><div class="ttname"><a href="group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9">qOS::clip</a></div><div class="ttdeci">T clip(T x, const T Min, const T Max)</div><div class="ttdoc">Ensures that x is between the limits set by Min and Max.</div><div class="ttdef"><b>Definition</b> helper.hpp:156</div></div>
-<div class="ttc" id="agroup__qflm_html_gae29147e4da5fc8c5c73f8b1e180bdad7"><div class="ttname"><a href="group__qflm.html#gae29147e4da5fc8c5c73f8b1e180bdad7">qOS::byteNibbleLow</a></div><div class="ttdeci">uint8_t byteNibbleLow(uint8_t x)</div><div class="ttdoc">Read the low-nibble from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:210</div></div>
+<div class="ttc" id="agroup__qflm_html_gac3863848a03a8657a38b967be5746ef4"><div class="ttname"><a href="group__qflm.html#gac3863848a03a8657a38b967be5746ef4">qOS::isBetween</a></div><div class="ttdeci">T isBetween(T x, const T Low, const T High)</div><div class="ttdoc">Check if the value of x is within the limits defined by Low and High.</div><div class="ttdef"><b>Definition</b> helper.hpp:191</div></div>
+<div class="ttc" id="agroup__qflm_html_gacd3c021c74959669887fc42f2f193907"><div class="ttname"><a href="group__qflm.html#gacd3c021c74959669887fc42f2f193907">qOS::bits::multipleGet</a></div><div class="ttdeci">bool multipleGet(T reg, W xBits)</div><div class="ttdoc">Read multiple bits by applying the mask given by xBits to the dst variable.</div><div class="ttdef"><b>Definition</b> helper.hpp:104</div></div>
+<div class="ttc" id="agroup__qflm_html_gad147633b6ac2fb2033c6cd10c93ba1af"><div class="ttname"><a href="group__qflm.html#gad147633b6ac2fb2033c6cd10c93ba1af">qOS::wordByteHigh</a></div><div class="ttdeci">uint16_t wordByteHigh(uint16_t x)</div><div class="ttdoc">Read the high-byte from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:228</div></div>
+<div class="ttc" id="agroup__qflm_html_gadf44d8010f8688287951ba6c0feecbb9"><div class="ttname"><a href="group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9">qOS::clip</a></div><div class="ttdeci">T clip(T x, const T Min, const T Max)</div><div class="ttdoc">Ensures that x is between the limits set by Min and Max.</div><div class="ttdef"><b>Definition</b> helper.hpp:155</div></div>
+<div class="ttc" id="agroup__qflm_html_gae29147e4da5fc8c5c73f8b1e180bdad7"><div class="ttname"><a href="group__qflm.html#gae29147e4da5fc8c5c73f8b1e180bdad7">qOS::byteNibbleLow</a></div><div class="ttdeci">uint8_t byteNibbleLow(uint8_t x)</div><div class="ttdoc">Read the low-nibble from x.</div><div class="ttdef"><b>Definition</b> helper.hpp:209</div></div>
 <div class="ttc" id="agroup__qflm_html_gae371fc016f5298e25033dd3c70e5ce20"><div class="ttname"><a href="group__qflm.html#gae371fc016f5298e25033dd3c70e5ce20">qOS::bits::singleSet</a></div><div class="ttdeci">void singleSet(T &amp;dst, const size_t xBit)</div><div class="ttdoc">Uses the bitwise OR operator to set a single bit into dst.</div><div class="ttdef"><b>Definition</b> helper.hpp:47</div></div>
-<div class="ttc" id="agroup__qflm_html_gae74888689aace3cb5a85771082ed6438"><div class="ttname"><a href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">qOS::bits::singleWrite</a></div><div class="ttdeci">void singleWrite(T &amp;dst, const size_t xBit, const bool value)</div><div class="ttdoc">Write the boolean value in a single bit of the dst variable.</div><div class="ttdef"><b>Definition</b> helper.hpp:93</div></div>
-<div class="ttc" id="agroup__qflm_html_gaf3383fec42786ce57d66b957201b59d4"><div class="ttname"><a href="group__qflm.html#gaf3383fec42786ce57d66b957201b59d4">qOS::dwordMergeWords</a></div><div class="ttdeci">uint32_t dwordMergeWords(uint32_t h, uint32_t l)</div><div class="ttdoc">Merges two words to form one DWord.</div><div class="ttdef"><b>Definition</b> helper.hpp:276</div></div>
+<div class="ttc" id="agroup__qflm_html_gae74888689aace3cb5a85771082ed6438"><div class="ttname"><a href="group__qflm.html#gae74888689aace3cb5a85771082ed6438">qOS::bits::singleWrite</a></div><div class="ttdeci">void singleWrite(T &amp;dst, const size_t xBit, const bool value)</div><div class="ttdoc">Write the boolean value in a single bit of the dst variable.</div><div class="ttdef"><b>Definition</b> helper.hpp:92</div></div>
+<div class="ttc" id="agroup__qflm_html_gaf3383fec42786ce57d66b957201b59d4"><div class="ttname"><a href="group__qflm.html#gaf3383fec42786ce57d66b957201b59d4">qOS::dwordMergeWords</a></div><div class="ttdeci">uint32_t dwordMergeWords(uint32_t h, uint32_t l)</div><div class="ttdoc">Merges two words to form one DWord.</div><div class="ttdef"><b>Definition</b> helper.hpp:275</div></div>
 <div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel interfaces.</div><div class="ttdef"><b>Definition</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

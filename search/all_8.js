@@ -11,7 +11,7 @@ var searchData=
   ['indefinite_8',['INDEFINITE',['../classq_o_s_1_1task.html#a9405db8642daf9f6fa97e16628476fe7',1,'qOS::task']]],
   ['index_5ft_9',['index_t',['../group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76',1,'qOS']]],
   ['info_10',['info',['../group__qlogger.html#gga8d02cc4e3735026bc7ceb4cb70940bc1a5b07392609a69dcd9fb5cfd1c754df9b',1,'qOS::logger']]],
-  ['init_11',['init',['../classq_o_s_1_1core.html#a76bcdcfaba5020967caff19f69f4270a',1,'qOS::core']]],
+  ['init_11',['init',['../classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c',1,'qOS::core']]],
   ['input_12',['Handling the input',['../q_atcli.html#q_atcli_inputh',1,'']]],
   ['input_20channel_20utilities_13',['Input channel utilities',['../group__qinput.html',1,'']]],
   ['inputflush_14',['inputFlush',['../classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b',1,'qOS::commandLineInterface']]],
