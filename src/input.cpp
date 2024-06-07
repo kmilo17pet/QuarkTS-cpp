@@ -8,7 +8,7 @@ void input::digitalChannel::updateReading( channelReaderFcn_t reader ) noexcept
     int sample = reader( number );
 
     if ( negate ) {
-        sample = !sample;
+        sample = !sample; // skipcq: CXX-W2065
     }
     value = sample;
 }
