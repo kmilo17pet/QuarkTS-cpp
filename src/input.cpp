@@ -357,7 +357,7 @@ bool input::digitalChannel::setTime( const input::event e, const qOS::duration_t
                 tSteadyHigh = static_cast<qOS::clock_t>( t );
                 break;
             case input::event::STEADY_IN_LOW:
-                tSteadyHigh = static_cast<qOS::clock_t>( t );
+                tSteadyLow = static_cast<qOS::clock_t>( t );
                 break;
             default:
                 retValue = false;
@@ -384,7 +384,7 @@ bool input::analogChannel::setTime( const input::event e, const qOS::duration_t 
                 tSteadyHigh = static_cast<qOS::clock_t>( t );
                 break;
             case input::event::STEADY_IN_LOW:
-                tSteadyHigh = static_cast<qOS::clock_t>( t );
+                tSteadyLow = static_cast<qOS::clock_t>( t );
                 break;
             default:
                 retValue = false;
