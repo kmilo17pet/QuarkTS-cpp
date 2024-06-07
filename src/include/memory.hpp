@@ -60,7 +60,6 @@ namespace qOS {
                 * allocated to act as Heap of the memory pool. The size of this block should
                 * match the @a pSize argument.
                 * @param[in] pSize The size of the memory block pointed by @a pArea
-                * @return Returns @c true on success, otherwise, returns @c false.
                 */
                 inline pool( void *pArea, const size_t pSize ) noexcept {
                     (void)setup( pArea, pSize );
@@ -89,7 +88,6 @@ namespace qOS {
                 * returns, an access is made through the pointer @a ptr.
                 * @attention This method is NOT interrupt-safe.
                 * @param[in] ptr to the memory to deallocate
-                * @return none.
                 */
                 void free( void *ptr ) noexcept;
                 /**

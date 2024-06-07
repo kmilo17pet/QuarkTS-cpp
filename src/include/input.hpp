@@ -115,8 +115,7 @@ namespace qOS {
                 /**
                 * @brief Set the callback function when event are detected on the
                 * input input channel.
-                * @param[in] inputChannel The specified channel(pin) number to read.
-                * @param[in] invert To invert/negate the raw-reading.
+                * @param[in] cb The callback function
                 */
                 inline bool setCallback( eventCallback_t cb ) noexcept
                 {
@@ -149,7 +148,7 @@ namespace qOS {
                 }
                 /**
                 * @brief Set the channel user-data.
-                * @param[in] A pointer to the user-data
+                * @param[in] pUserData A pointer to the user-data
                 */
                 inline void setUserData( void* pUserData ) noexcept
                 {
@@ -185,7 +184,7 @@ namespace qOS {
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
-                virtual bool setParameter( const event e, const int value ) noexcept = 0;
+                virtual bool setParameter( const event e, const int p ) noexcept = 0;
                 /**
                 * @brief Get pulsation count for the digital input.
                 * @note No valid on analog inputs
@@ -253,7 +252,7 @@ namespace qOS {
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool setParameter( const event e, const int value ) noexcept override;
+                bool setParameter( const event e, const int p ) noexcept override;
                 /**
                 * @brief Get pulsation count for the digital input.
                 * @note No valid on analog inputs
@@ -367,11 +366,12 @@ namespace qOS {
                 /*! @endcond  */
                 /**
                 * @brief Constructor for the input-watcher instance
-                * @param[in] rFcn A pointer to a function that reads the specific
-                * channel
+                * @param[in] rDigital A pointer to a function that reads the specific
+                * digital input channel
+                * @param[in] rAnalog A pointer to a function that reads the specific
+                * analog input channel
                 * @param[in] timeDebounce The specified time to bypass the
                 * bounce of the digital input channels
-                * @return @c true on success. Otherwise @c false.
                 */
                 watcher( const channelReaderFcn_t& rDigital, const channelReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce = 100_ms ) :
                     debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
