@@ -288,7 +288,6 @@ namespace qOS {
         * will cause waiting Co-routines to continue executing.
         * @see co::semWait()
         * @param[in] sem The co::semaphore object in which the operation is executed
-        * @return none.
         */
         inline void semSignal( co::semaphore& sem ) noexcept { Q_UNUSED(sem); }
 
@@ -490,5 +489,3 @@ q_co_cond( ( c ) || co_ctx.timeout() )                                         \
 /*! @endcond  */
 
 #endif /*QOS_CPP_CO*/
-
-

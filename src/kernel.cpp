@@ -35,7 +35,7 @@ core& core::getInstance( void ) noexcept
 }
 /*============================================================================*/
 /*cstat -MISRAC++2008-7-1-2*/
-void core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
+bool core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
 {
     (void)clock::setTickProvider( tFcn );
     (void)setNameIdleTask( "idle" );
@@ -43,6 +43,7 @@ void core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
     (void)idle.setState( taskState::DISABLED_STATE );
     (void)idle.setCallback( callbackIdle );
     idle.entry = 0U;
+    return true;
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/

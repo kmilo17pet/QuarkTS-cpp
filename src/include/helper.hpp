@@ -87,7 +87,6 @@ namespace qOS {
         * @param[in] dst The variable where the operation will be applied
         * @param[in] xBit The bit-index
         * @param[in] value The boolean value to write
-        * @return none.
         */
         template <typename T>
         inline void singleWrite( T &dst, const size_t xBit, const bool value )

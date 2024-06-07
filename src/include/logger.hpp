@@ -377,7 +377,6 @@ namespace qOS {
         /**
         * @brief Set the output method for the logger stream.
         * @param[in] fcn The basic output byte function.
-        * @return none.
         */
         void setOutputFcn( util::putChar_t fcn );
 

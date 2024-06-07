@@ -72,7 +72,7 @@ namespace qOS {
             /**
             * @brief Configures a Queue. Here, the RAM used to hold the queue data
             * @a pData is statically allocated at compile time by the application writer.
-            * @tparam[in] T Type of one single item in the queue
+            * @tparam T Type of one single item in the queue
             * @param[in] pData Data block or array of data (Queue storage area).
             * @param[in] count The maximum number of items the queue can hold.
             * @return @c true on success, otherwise returns @c false.

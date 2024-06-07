@@ -191,14 +191,12 @@ namespace qOS {
                 * @brief Helper method for printing a character to the CLI output.
                 * It displays only one character at a time.
                 * @param[in] c The ASCII character.
-                * @return none.
                 */
                 void writeOut( const char c ) const;
                 /**
                 * @brief Writes a string to CLI output without the @c EOF string appended
                 * at the end.
                 * @param[in] s This is the C string to be written.
-                * @return none.
                 */
                 void writeOut( const char *s ) const;
                 /**
