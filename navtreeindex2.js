@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"group__qfsm.html#ga8c5a4670f1f82562bdac083546b13fa1":[6,1,0,11],
+"group__qfsm.html#ga8e4e70e06f74af5f016e5a4eba0e6967":[6,1,0,13],
+"group__qfsm.html#ga9a8c0296382e335616419ce163437b89":[6,1,0,27],
 "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c":[6,1,0,17],
 "group__qfsm.html#gab372ec86302ddefe79964993c3c56e15":[6,1,0,14],
 "group__qfsm.html#gabdfe37c3aca55f21b18d8ab66a1378a4":[6,1,0,28],
@@ -246,8 +249,5 @@ var NAVTREEINDEX2 =
 "q_foundations.html#q_critical":[2,5],
 "q_foundations.html#q_eventtasks":[2,2,2],
 "q_foundations.html#q_globalstates":[2,4],
-"q_foundations.html#q_idletask":[2,2,0],
-"q_foundations.html#q_os_evenprecedence":[2,4,0,0],
-"q_foundations.html#q_os_operational_states":[2,4,0,1],
-"q_foundations.html#q_osrules":[2,4,0]
+"q_foundations.html#q_idletask":[2,2,0]
 };

@@ -1,5 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"q_foundations.html#q_os_evenprecedence":[2,4,0,0],
+"q_foundations.html#q_os_operational_states":[2,4,0,1],
+"q_foundations.html#q_osrules":[2,4,0],
 "q_foundations.html#q_releasescheduler":[2,3,0],
 "q_foundations.html#q_removetask":[2,2,3],
 "q_foundations.html#q_runos":[2,3],

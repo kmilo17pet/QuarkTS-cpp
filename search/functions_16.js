@@ -14,5 +14,6 @@ var searchData=
   ['_7estate_11',['~state',['../classq_o_s_1_1sm_1_1state.html#aa68f13a440895ffef56d29161b70fbab',1,'qOS::sm::state']]],
   ['_7estatemachine_12',['~stateMachine',['../classq_o_s_1_1state_machine.html#a2293aeb56ddfd34a2fd0f7ef4f86b875',1,'qOS::stateMachine']]],
   ['_7etask_13',['~task',['../classq_o_s_1_1task.html#a9e9fc3d1c343b8dd216bacedf814bd4a',1,'qOS::task']]],
-  ['_7etimer_14',['~timer',['../classq_o_s_1_1timer.html#ac8e4480220b1b09b4ed3a2505da63895',1,'qOS::timer']]]
+  ['_7etimer_14',['~timer',['../classq_o_s_1_1timer.html#ac8e4480220b1b09b4ed3a2505da63895',1,'qOS::timer']]],
+  ['_7ewatcher_15',['~watcher',['../classq_o_s_1_1input_1_1watcher.html#a76e9893fcd952ebcb199c3814416f582',1,'qOS::input::watcher']]]
 ];
