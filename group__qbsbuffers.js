@@ -1,7 +1,6 @@
 var group__qbsbuffers =
 [
     [ "qOS::byteBuffer", "classq_o_s_1_1byte_buffer.html", [
-      [ "~byteBuffer", "classq_o_s_1_1byte_buffer.html#a5dc803bd1960de3ab81aeb24c3a9b26f", null ],
       [ "byteBuffer", "classq_o_s_1_1byte_buffer.html#a3c382b68fedbf6cbea3efeff7085fe2c", null ],
       [ "byteBuffer", "classq_o_s_1_1byte_buffer.html#afbdfbb32549b232757069460061946b1", null ],
       [ "count", "classq_o_s_1_1byte_buffer.html#afcc85e15c7179199fc99557826d55f63", null ],

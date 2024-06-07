@@ -6,7 +6,7 @@ var searchData=
   ['calls_20in_20a_20co_20routine_3',['Blocking calls in a Co-routine',['../q_qcoroutines.html#q_coroutine_blocking',1,'']]],
   ['caption_4',['caption',['../namespaceq_o_s_1_1product.html#af6923fa844d060d2ef2c4b3495cfb3b6',1,'qOS::product']]],
   ['category_5',['category',['../namespaceq_o_s_1_1product.html#af2107dc2d37709ca74d5f05b56fe5e02',1,'qOS::product']]],
-  ['channel_6',['channel',['../classq_o_s_1_1input_1_1channel.html',1,'qOS::input::channel'],['../classq_o_s_1_1input_1_1channel.html#a7d3b921984d9561913fac647e900d9d8',1,'qOS::input::channel::channel()']]],
+  ['channel_6',['channel',['../classq_o_s_1_1input_1_1channel.html',1,'qOS::input']]],
   ['channel_20utilities_7',['Input channel utilities',['../group__qinput.html',1,'']]],
   ['channelreaderfcn_5ft_8',['channelReaderFcn_t',['../group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a',1,'qOS::input']]],
   ['checkendianness_9',['checkEndianness',['../group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d',1,'qOS::util']]],

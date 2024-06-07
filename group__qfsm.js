@@ -36,7 +36,6 @@ var group__qfsm =
     ] ],
     [ "qOS::sm::state", "classq_o_s_1_1sm_1_1state.html", [
       [ "state", "classq_o_s_1_1sm_1_1state.html#ae368a34da51507d9497ca01816bf34ef", null ],
-      [ "~state", "classq_o_s_1_1sm_1_1state.html#aa68f13a440895ffef56d29161b70fbab", null ],
       [ "activities", "classq_o_s_1_1sm_1_1state.html#a0fae78b92703668ad67b43f03ec72226", null ],
       [ "add", "classq_o_s_1_1sm_1_1state.html#a850aa3a53d510c6f1d0ced3b4159467b", null ],
       [ "add", "classq_o_s_1_1sm_1_1state.html#a2a624b24d383df9772802c2c16a8cca0", null ],
@@ -55,7 +54,6 @@ var group__qfsm =
     ] ],
     [ "qOS::stateMachine", "classq_o_s_1_1state_machine.html", [
       [ "stateMachine", "classq_o_s_1_1state_machine.html#a872d3bc5f8c1c58d15169ff9321d5bd5", null ],
-      [ "~stateMachine", "classq_o_s_1_1state_machine.html#a2293aeb56ddfd34a2fd0f7ef4f86b875", null ],
       [ "add", "classq_o_s_1_1state_machine.html#a65ce3b66c7a6166b1cc91e6b4cee1ea6", null ],
       [ "add", "classq_o_s_1_1state_machine.html#a8b81cccc1dcd3f6c48cd5c46f4de49a6", null ],
       [ "getCurrent", "classq_o_s_1_1state_machine.html#a04778ea269ed32926df1e9d7f2d71cae", null ],
@@ -77,7 +75,6 @@ var group__qfsm =
     ] ],
     [ "qOS::sm::signalPublisher", "classq_o_s_1_1sm_1_1signal_publisher.html", [
       [ "signalPublisher", "classq_o_s_1_1sm_1_1signal_publisher.html#a4a60b3bfcf363cec26e7d51ef87c98e8", null ],
-      [ "~signalPublisher", "classq_o_s_1_1sm_1_1signal_publisher.html#a9294e484c4708b2b3e2cdd349093bb5d", null ],
       [ "sendSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#a93add601246df9037864c90cb2ca5225", null ],
       [ "sendSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#a23acb349cca8d496db720487cb362bfc", null ],
       [ "subscribeToSignal", "classq_o_s_1_1sm_1_1signal_publisher.html#ae72c8bca77a6562854ca6fa4dc05a70b", null ],

@@ -1,7 +1,6 @@
 var classq_o_s_1_1command_line_interface =
 [
     [ "commandLineInterface", "classq_o_s_1_1command_line_interface.html#a09065347eb890fe5b24b8c275ab7b33c", null ],
-    [ "~commandLineInterface", "classq_o_s_1_1command_line_interface.html#a1e575dd211dd12cf7a25ad011fbdb5e3", null ],
     [ "add", "classq_o_s_1_1command_line_interface.html#abee8123d61fa0982d3e913fc4851f0c7", null ],
     [ "exec", "classq_o_s_1_1command_line_interface.html#a1c3b2f43317b8b4fca1b4ae38ed0d755", null ],
     [ "getOwner", "classq_o_s_1_1command_line_interface.html#a841853e232f985105c3d3f9f75804ac7", null ],

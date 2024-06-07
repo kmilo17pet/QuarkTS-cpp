@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.2</span>
+   &#160;<span id="projectnumber">v1.6.3</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -168,7 +168,7 @@ $(function(){initNavTree('prioqueue_8hpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordtype">void</span> operator=( prioQueue <span class="keyword">const</span>&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            prioQueue() = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            ~prioQueue() {}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keyword">virtual</span> ~prioQueue() {}</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            prioQueue( pq::queueStack_t *area, <span class="keyword">const</span> <span class="keywordtype">size_t</span> pq_size ) <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keywordtype">size_t</span> count( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            task* get( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span>;</div>

@@ -1,7 +1,5 @@
 var classq_o_s_1_1input_1_1channel =
 [
-    [ "~channel", "classq_o_s_1_1input_1_1channel.html#a4817b47d848db9dc53fd5405388006e7", null ],
-    [ "channel", "classq_o_s_1_1input_1_1channel.html#a7d3b921984d9561913fac647e900d9d8", null ],
     [ "getChannel", "classq_o_s_1_1input_1_1channel.html#a756e87ebe795553757c97b92990053d2", null ],
     [ "getCount", "classq_o_s_1_1input_1_1channel.html#a10c4115f5bb078947d3071d3800e296c", null ],
     [ "getEvent", "classq_o_s_1_1input_1_1channel.html#a23115df27aad40840b25b50153567571", null ],

@@ -1,6 +1,5 @@
 var classq_o_s_1_1input_1_1digital_channel =
 [
-    [ "~digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html#af317b3946b6105905af76716340385ab", null ],
     [ "digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html#a87597389ada7339b80d76da1a8677d15", null ],
     [ "getCount", "classq_o_s_1_1input_1_1digital_channel.html#a1a1bd9edeef8e0fdffce779f8098ae71", null ],
     [ "getType", "classq_o_s_1_1input_1_1digital_channel.html#a0a87bc24fcdaaeca2634a182713b52df", null ],
