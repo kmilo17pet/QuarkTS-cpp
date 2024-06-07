@@ -12,7 +12,7 @@
     #include <string.h>
     #include <ctype.h>
     #include <limits.h>
-#else 
+#else
     #include <cstddef>
     #include <cstdint>
     #include <cstdlib>
@@ -92,13 +92,12 @@ namespace qOS {
     */
     using timeCount_t = unsigned long;
 
+    /** @}*/
 }
 
 /*! @cond */
 #define     Q_UNUSED(arg)     (void)(arg)
 #define     Q_NONE            /*EMPTY MACRO*/
 /*! @endcond */
-
-/** @}*/
 
 #endif /*QOS_CPP_TYPES*/
