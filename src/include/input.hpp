@@ -69,6 +69,7 @@ namespace qOS {
         using eventCallback_t = void(*)( channel& );
 
         class channel : protected node {
+            /*! @cond  */
             protected:
                 int value;
                 int *ptrValue{ &value };
@@ -88,6 +89,7 @@ namespace qOS {
                     lastEvent = e;
                     callback( *this );
                 }
+            /*! @endcond  */
             public:
                 virtual ~channel() {}
                 channel( uint8_t channelNumber ) : number( channelNumber ) {}
