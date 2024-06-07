@@ -8,8 +8,9 @@ var searchData=
   ['addstatemachinetask_5',['addStateMachineTask',['../group__qfsm.html#ga86639c0e76496b0a1577b634452f5811',1,'qOS::core']]],
   ['addtask_6',['addTask',['../classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b',1,'qOS::core']]],
   ['alloc_7',['alloc',['../classq_o_s_1_1mem_1_1pool.html#ad29a0b257c94bb4a0bed38654fa421bd',1,'qOS::mem::pool']]],
-  ['arraysize_8',['arraySize',['../group__qflm.html#gab5754d9611462696a65a030ff771f4bb',1,'qOS']]],
-  ['asleep_9',['asleep',['../classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d',1,'qOS::task']]],
-  ['attachqueue_10',['attachQueue',['../classq_o_s_1_1task.html#ad43545d022d9fc3d2232d37ccd26ea88',1,'qOS::task']]],
-  ['awake_11',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]]
+  ['analogchannel_8',['analogChannel',['../classq_o_s_1_1input_1_1analog_channel.html#a0804db33158bfb4cc9fab9c8b34ddb55',1,'qOS::input::analogChannel']]],
+  ['arraysize_9',['arraySize',['../group__qflm.html#gab5754d9611462696a65a030ff771f4bb',1,'qOS']]],
+  ['asleep_10',['asleep',['../classq_o_s_1_1task.html#aaf4d5af2b94b2eabcc82d31b0202561d',1,'qOS::task']]],
+  ['attachqueue_11',['attachQueue',['../classq_o_s_1_1task.html#ad43545d022d9fc3d2232d37ccd26ea88',1,'qOS::task']]],
+  ['awake_12',['awake',['../classq_o_s_1_1task.html#a002d22fb2cfcf829724e0f48f9caf292',1,'qOS::task']]]
 ];

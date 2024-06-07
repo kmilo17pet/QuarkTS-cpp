@@ -14,7 +14,10 @@ var hierarchy =
     [ "qOS::logger::mem", "classq_o_s_1_1logger_1_1mem.html", null ],
     [ "qOS::node", "classq_o_s_1_1node.html", [
       [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", null ],
-      [ "qOS::input::channel", "classq_o_s_1_1input_1_1channel.html", null ],
+      [ "qOS::input::channel", "classq_o_s_1_1input_1_1channel.html", [
+        [ "qOS::input::analogChannel", "classq_o_s_1_1input_1_1analog_channel.html", null ],
+        [ "qOS::input::digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html", null ]
+      ] ],
       [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", null ],
       [ "qOS::list", "classq_o_s_1_1list.html", null ],
       [ "qOS::task", "classq_o_s_1_1task.html", null ]

@@ -1,5 +1,9 @@
 <map id="qOS::input::channel" name="qOS::input::channel">
-<area shape="rect" id="Node000001" title="An input&#45;channel object, could be either analog or digital." alt="" coords="5,79,138,105"/>
-<area shape="rect" id="Node000002" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="31,5,112,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,46,74,79,69,79,69,46"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="123,79,255,105"/>
+<area shape="rect" id="Node000003" href="$classq_o_s_1_1input_1_1analog_channel.html" title="An analog input&#45;channel object." alt="" coords="5,153,178,178"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="162,116,109,154,106,150,159,112"/>
+<area shape="rect" id="Node000004" href="$classq_o_s_1_1input_1_1digital_channel.html" title="A digital input&#45;channel object." alt="" coords="202,153,370,178"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="219,112,271,150,268,154,216,116"/>
+<area shape="rect" id="Node000002" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="148,5,230,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,46,192,79,186,79,186,46"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yel_0',['yel',['../group__qlogger.html#ga2621bc6331e0d8bbf4279537a3e78728',1,'qOS::logger']]]
+  ['wht_0',['wht',['../group__qlogger.html#ga733b172d6537dc9028df93553ccfc069',1,'qOS::logger']]]
 ];

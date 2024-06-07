@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.5.9</span>
+   &#160;<span id="projectnumber">v1.6.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -152,8 +152,13 @@ $(function(){initNavTree('namespaceq_o_s_1_1input.html',''); initResizable(true)
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1analog_channel.html">analogChannel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An analog input-channel object.  <a href="classq_o_s_1_1input_1_1analog_channel.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An input-channel object, could be either analog or digital.  <a href="classq_o_s_1_1input_1_1channel.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1digital_channel.html">digitalChannel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A digital input-channel object.  <a href="classq_o_s_1_1input_1_1digital_channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1watcher.html">watcher</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The digital input-channel watcher class.  <a href="classq_o_s_1_1input_1_1watcher.html#details">More...</a><br /></td></tr>
@@ -164,26 +169,30 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga7d3b9fc08985bd00916b549b73ef1c6a" id="r_ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a">channelReaderFcn_t</a></td></tr>
 <tr class="memdesc:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the wrapper function that reads the specific input-channel.  <br /></td></tr>
 <tr class="separator:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a63c559082c8c8b51fdce40867f3e94" id="r_ga2a63c559082c8c8b51fdce40867f3e94"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a></td></tr>
-<tr class="memdesc:ga2a63c559082c8c8b51fdce40867f3e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the input-channel event callback.  <br /></td></tr>
-<tr class="separator:ga2a63c559082c8c8b51fdce40867f3e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15af6d73c8fcb850a4a7337eac7aafe9" id="r_ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qinput.html#ga15af6d73c8fcb850a4a7337eac7aafe9">eventCallback_t</a></td></tr>
+<tr class="memdesc:ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the input-channel event callback.  <br /></td></tr>
+<tr class="separator:ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ga72d9a973c87da11f11a8aeabbbb25aa7" id="r_ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> { <br />
-&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf">event::EXCEPTION</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">event::FALLING_EDGE</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98">event::RISING_EDGE</a>
+&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab50339a10e1de285ac99d4c3990b8693">event::NONE</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf">event::EXCEPTION</a>
 , <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ac9793ae986c35ff04f67759a6bff806b">event::ON_CHANGE</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">event::FALLING_EDGE</a>
 , <br />
-&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7">event::IN_BAND</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3">event::STEADY_IN_HIGH</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107">event::STEADY_IN_LOW</a>
-, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764">event::STEADY_IN_BAND</a>
-, <br />
-&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f">event::PULSATION_DOUBLE</a>
+&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98">event::RISING_EDGE</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f">event::PULSATION_DOUBLE</a>
 , <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e">event::PULSATION_TRIPLE</a>
 , <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa">event::PULSATION_MULTI</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a46d9252bd13b8c9fd89ea506a6cb13a8">event::HIGH_THRESHOLD</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a1e90896f18fbae5d0daa125409c648b4">event::LOW_THRESHOLD</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7">event::IN_BAND</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3">event::STEADY_IN_HIGH</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107">event::STEADY_IN_LOW</a>
+, <a class="el" href="group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764">event::STEADY_IN_BAND</a>
 <br />
  }</td></tr>
 <tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the watcher class for a specified input-channel.  <a href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>

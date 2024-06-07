@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.5.9</span>
+   &#160;<span id="projectnumber">v1.6.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -175,18 +175,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0703b4fef051351cd863d303dade48cb" id="r_a0703b4fef051351cd863d303dade48cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0703b4fef051351cd863d303dade48cb">watch</a> (void) noexcept</td></tr>
 <tr class="memdesc:a0703b4fef051351cd863d303dade48cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Watch for the state and events for all channels registered inside the watcher instance (Non-Blocking call).  <br /></td></tr>
 <tr class="separator:a0703b4fef051351cd863d303dade48cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85006145ebe24333c3a50c029146f88c" id="r_a85006145ebe24333c3a50c029146f88c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85006145ebe24333c3a50c029146f88c">registerEvent</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;c, const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;f, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=1_sec) noexcept</td></tr>
-<tr class="memdesc:a85006145ebe24333c3a50c029146f88c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance where the input-channel is being added.  <br /></td></tr>
-<tr class="separator:a85006145ebe24333c3a50c029146f88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fa091c5b692bf69136fafbef1dda99a" id="r_a8fa091c5b692bf69136fafbef1dda99a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fa091c5b692bf69136fafbef1dda99a">unregisterEvent</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;c, const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e) noexcept</td></tr>
-<tr class="memdesc:a8fa091c5b692bf69136fafbef1dda99a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for the specified input-channel.  <br /></td></tr>
-<tr class="separator:a8fa091c5b692bf69136fafbef1dda99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c23cdc7c5e7f250572c2c6db9edb31d" id="r_a9c23cdc7c5e7f250572c2c6db9edb31d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c23cdc7c5e7f250572c2c6db9edb31d">registerEvent</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;f, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t=1_sec) noexcept</td></tr>
-<tr class="memdesc:a9c23cdc7c5e7f250572c2c6db9edb31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register an event-callback to be activated in the watcher instance for all the input-channels inside the watcher.  <br /></td></tr>
-<tr class="separator:a9c23cdc7c5e7f250572c2c6db9edb31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfefe90d4d277f4a31b2b6edfd67e61d" id="r_adfefe90d4d277f4a31b2b6edfd67e61d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfefe90d4d277f4a31b2b6edfd67e61d">unregisterEvent</a> (<a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e) noexcept</td></tr>
-<tr class="memdesc:adfefe90d4d277f4a31b2b6edfd67e61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un-Register an event-callback for all input-channels inside the watcher added.  <br /></td></tr>
-<tr class="separator:adfefe90d4d277f4a31b2b6edfd67e61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -281,103 +269,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a85006145ebe24333c3a50c029146f88c" name="a85006145ebe24333c3a50c029146f88c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85006145ebe24333c3a50c029146f88c">&#9670;&#160;</a></span>registerEvent() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::input::watcher::registerEvent </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1_sec</span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Register an event-callback to be activated in the watcher instance where the input-channel is being added. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The input-channel instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>The event to register. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>The callback to be invoked when the event is detected. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The time associated to the event (only valid for certain events). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
-
-</div>
-</div>
-<a id="a9c23cdc7c5e7f250572c2c6db9edb31d" name="a9c23cdc7c5e7f250572c2c6db9edb31d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c23cdc7c5e7f250572c2c6db9edb31d">&#9670;&#160;</a></span>registerEvent() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::input::watcher::registerEvent </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qinput.html#ga2a63c559082c8c8b51fdce40867f3e94">eventCallback_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>t</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1_sec</span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Register an event-callback to be activated in the watcher instance for all the input-channels inside the watcher. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>The input channel should already be added to the watcher for the registration to take effect </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>The event to register. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>The callback to be invoked when the event is detected. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The time associated to the event (only valid for certain events). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if operation succeeds in all input-channels. Otherwise <code>false</code>. </dd></dl>
-
-</div>
-</div>
 <a id="a1edca438c66a4197a8e7296782dbfebb" name="a1edca438c66a4197a8e7296782dbfebb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1edca438c66a4197a8e7296782dbfebb">&#9670;&#160;</a></span>remove()</h2>
 
@@ -409,80 +300,6 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
-
-</div>
-</div>
-<a id="a8fa091c5b692bf69136fafbef1dda99a" name="a8fa091c5b692bf69136fafbef1dda99a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fa091c5b692bf69136fafbef1dda99a">&#9670;&#160;</a></span>unregisterEvent() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::input::watcher::unregisterEvent </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Un-Register an event-callback for the specified input-channel. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>The input-channel instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>The event to unregister. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
-
-</div>
-</div>
-<a id="adfefe90d4d277f4a31b2b6edfd67e61d" name="adfefe90d4d277f4a31b2b6edfd67e61d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfefe90d4d277f4a31b2b6edfd67e61d">&#9670;&#160;</a></span>unregisterEvent() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::input::watcher::unregisterEvent </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a></td>          <td class="paramname"><span class="paramname"><em>e</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Un-Register an event-callback for all input-channels inside the watcher added. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>The input channel should already be added to the watcher for the un-registration to take effect </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>The event to unregister. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if operation succeeds in all input-channels. Otherwise <code>false</code>. </dd></dl>
 
 </div>
 </div>

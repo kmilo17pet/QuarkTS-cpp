@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.5.9</span>
+   &#160;<span id="projectnumber">v1.6.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -165,7 +165,12 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An input-channel object, could be either analog or digital.  <a href="classq_o_s_1_1input_1_1channel.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1digital_channel.html">qOS::input::digitalChannel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A digital input-channel object.  <a href="classq_o_s_1_1input_1_1digital_channel.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1analog_channel.html">qOS::input::analogChannel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An analog input-channel object.  <a href="classq_o_s_1_1input_1_1analog_channel.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1watcher.html">qOS::input::watcher</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The digital input-channel watcher class.  <a href="classq_o_s_1_1input_1_1watcher.html#details">More...</a><br /></td></tr>
@@ -176,26 +181,30 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga7d3b9fc08985bd00916b549b73ef1c6a" id="r_ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7d3b9fc08985bd00916b549b73ef1c6a">qOS::input::channelReaderFcn_t</a></td></tr>
 <tr class="memdesc:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the wrapper function that reads the specific input-channel.  <br /></td></tr>
 <tr class="separator:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a63c559082c8c8b51fdce40867f3e94" id="r_ga2a63c559082c8c8b51fdce40867f3e94"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2a63c559082c8c8b51fdce40867f3e94">qOS::input::eventCallback_t</a></td></tr>
-<tr class="memdesc:ga2a63c559082c8c8b51fdce40867f3e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the input-channel event callback.  <br /></td></tr>
-<tr class="separator:ga2a63c559082c8c8b51fdce40867f3e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15af6d73c8fcb850a4a7337eac7aafe9" id="r_ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga15af6d73c8fcb850a4a7337eac7aafe9">qOS::input::eventCallback_t</a></td></tr>
+<tr class="memdesc:ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the input-channel event callback.  <br /></td></tr>
+<tr class="separator:ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ga72d9a973c87da11f11a8aeabbbb25aa7" id="r_ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga72d9a973c87da11f11a8aeabbbb25aa7">qOS::input::event</a> { <br />
-&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf">qOS::input::event::EXCEPTION</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">qOS::input::event::FALLING_EDGE</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98">qOS::input::event::RISING_EDGE</a>
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ab50339a10e1de285ac99d4c3990b8693">qOS::input::event::NONE</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf">qOS::input::event::EXCEPTION</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ac9793ae986c35ff04f67759a6bff806b">qOS::input::event::ON_CHANGE</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52">qOS::input::event::FALLING_EDGE</a>
 , <br />
-&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7">qOS::input::event::IN_BAND</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3">qOS::input::event::STEADY_IN_HIGH</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107">qOS::input::event::STEADY_IN_LOW</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764">qOS::input::event::STEADY_IN_BAND</a>
-, <br />
-&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f">qOS::input::event::PULSATION_DOUBLE</a>
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98">qOS::input::event::RISING_EDGE</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f">qOS::input::event::PULSATION_DOUBLE</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e">qOS::input::event::PULSATION_TRIPLE</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa">qOS::input::event::PULSATION_MULTI</a>
+, <br />
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a46d9252bd13b8c9fd89ea506a6cb13a8">qOS::input::event::HIGH_THRESHOLD</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a1e90896f18fbae5d0daa125409c648b4">qOS::input::event::LOW_THRESHOLD</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7">qOS::input::event::IN_BAND</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3">qOS::input::event::STEADY_IN_HIGH</a>
+, <br />
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107">qOS::input::event::STEADY_IN_LOW</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764">qOS::input::event::STEADY_IN_BAND</a>
 <br />
  }</td></tr>
 <tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the watcher class for a specified input-channel.  <a href="#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>
@@ -224,14 +233,14 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
-<a id="ga2a63c559082c8c8b51fdce40867f3e94" name="ga2a63c559082c8c8b51fdce40867f3e94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2a63c559082c8c8b51fdce40867f3e94">&#9670;&#160;</a></span>eventCallback_t</h2>
+<a id="ga15af6d73c8fcb850a4a7337eac7aafe9" name="ga15af6d73c8fcb850a4a7337eac7aafe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga15af6d73c8fcb850a4a7337eac7aafe9">&#9670;&#160;</a></span>eventCallback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#ga2a63c559082c8c8b51fdce40867f3e94">qOS::input::eventCallback_t</a></td>
+          <td class="memname">using <a class="el" href="#ga15af6d73c8fcb850a4a7337eac7aafe9">qOS::input::eventCallback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -263,27 +272,32 @@ Enumerations</h2></td></tr>
 
 <p>An enum with all the possible events that can be detected by the watcher class for a specified input-channel. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf" name="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf"></a>EXCEPTION&#160;</td><td class="fielddoc"><p>Error due a bad reading or channel configuration . </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52" name="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52"></a>FALLING_EDGE&#160;</td><td class="fielddoc"><p>Event on falling-edge of the input-channel (On analog when the reading is below the fall threshold) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98" name="gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98"></a>RISING_EDGE&#160;</td><td class="fielddoc"><p>Event on rising-edge of the digital input-channel(On analog when the reading is above the rise threshold) </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ab50339a10e1de285ac99d4c3990b8693" name="gga72d9a973c87da11f11a8aeabbbb25aa7ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf" name="gga72d9a973c87da11f11a8aeabbbb25aa7acccc265b14c17af799a1834f4fbbe7cf"></a>EXCEPTION&#160;</td><td class="fielddoc"><p>Error due a bad reading or channel configuration . </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ac9793ae986c35ff04f67759a6bff806b" name="gga72d9a973c87da11f11a8aeabbbb25aa7ac9793ae986c35ff04f67759a6bff806b"></a>ON_CHANGE&#160;</td><td class="fielddoc"><p>Event on any input-channel change when crossing the thresholds </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7" name="gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7"></a>IN_BAND&#160;</td><td class="fielddoc"><p>Event when the analog input-channel enters the band </p>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52" name="gga72d9a973c87da11f11a8aeabbbb25aa7a297f5ea19073f4b51715b029f48d5d52"></a>FALLING_EDGE&#160;</td><td class="fielddoc"><p>Event on falling-edge( high to low ) of the digital input-channel </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3" name="gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3"></a>STEADY_IN_HIGH&#160;</td><td class="fielddoc"><p>Event when the input-channel has been kept on high (or above the rise threshold) for the specified time . </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107" name="gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107"></a>STEADY_IN_LOW&#160;</td><td class="fielddoc"><p>Event when the input-channel has been kept on low (or below the fall threshold) for the specified time . </p>
-</td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764" name="gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764"></a>STEADY_IN_BAND&#160;</td><td class="fielddoc"><p>Event when the analog input-channel has remained within the band for the specified time . </p>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98" name="gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98"></a>RISING_EDGE&#160;</td><td class="fielddoc"><p>Event on rising-edge( low to high ) of the digital input-channel </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f" name="gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f"></a>PULSATION_DOUBLE&#160;</td><td class="fielddoc"><p>Event when the digital input is pulsated two times within the interval </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e" name="gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e"></a>PULSATION_TRIPLE&#160;</td><td class="fielddoc"><p>Event when the digital input is pulsated three times within the interval </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa" name="gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa"></a>PULSATION_MULTI&#160;</td><td class="fielddoc"><p>Event when the digital input is pulsated more than three times within the interval </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a46d9252bd13b8c9fd89ea506a6cb13a8" name="gga72d9a973c87da11f11a8aeabbbb25aa7a46d9252bd13b8c9fd89ea506a6cb13a8"></a>HIGH_THRESHOLD&#160;</td><td class="fielddoc"><p>Event when the analog input-channel reading is above the high threshold </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a1e90896f18fbae5d0daa125409c648b4" name="gga72d9a973c87da11f11a8aeabbbb25aa7a1e90896f18fbae5d0daa125409c648b4"></a>LOW_THRESHOLD&#160;</td><td class="fielddoc"><p>Event when the analog input-channel reading is below the low threshold </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7" name="gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7"></a>IN_BAND&#160;</td><td class="fielddoc"><p>Event when the analog input-channel reading enters the band defined by the low-high thresholds </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3" name="gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3"></a>STEADY_IN_HIGH&#160;</td><td class="fielddoc"><p>Event when the input-channel has been kept on high (or above the high threshold) for the specified time . </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107" name="gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107"></a>STEADY_IN_LOW&#160;</td><td class="fielddoc"><p>Event when the input-channel has been kept on low (or below the low threshold) for the specified time . </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764" name="gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764"></a>STEADY_IN_BAND&#160;</td><td class="fielddoc"><p>Event when the analog input-channel has remained within the band for the specified time . </p>
 </td></tr>
 </table>
 

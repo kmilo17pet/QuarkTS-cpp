@@ -11,7 +11,9 @@ var annotated_dup =
         [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html", "classq_o_s_1_1co_1_1semaphore" ]
       ] ],
       [ "input", "namespaceq_o_s_1_1input.html", [
+        [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html", "classq_o_s_1_1input_1_1analog_channel" ],
         [ "channel", "classq_o_s_1_1input_1_1channel.html", "classq_o_s_1_1input_1_1channel" ],
+        [ "digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html", "classq_o_s_1_1input_1_1digital_channel" ],
         [ "watcher", "classq_o_s_1_1input_1_1watcher.html", "classq_o_s_1_1input_1_1watcher" ]
       ] ],
       [ "logger", "namespaceq_o_s_1_1logger.html", [

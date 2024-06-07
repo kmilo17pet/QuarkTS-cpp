@@ -2,12 +2,16 @@
 <area shape="rect" id="Node000000" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="5,104,87,130"/>
 <area shape="rect" id="Node000001" href="$classq_o_s_1_1cli_1_1command.html" title="An AT&#45;Command object." alt="" coords="137,5,266,31"/>
 <area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="69,91,98,65,133,40,156,29,158,34,136,44,102,69,72,95"/>
-<area shape="rect" id="Node000002" href="$classq_o_s_1_1input_1_1channel.html" title="An input&#45;channel object, could be either analog or digital." alt="" coords="135,55,268,80"/>
+<area shape="rect" id="Node000002" href="$classq_o_s_1_1input_1_1channel.html" title=" " alt="" coords="135,55,268,80"/>
 <area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="101,97,158,78,159,83,102,102"/>
-<area shape="rect" id="Node000003" href="$classq_o_s_1_1input_1_1watcher.html" title="The digital input&#45;channel watcher class." alt="" coords="135,104,268,130"/>
-<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="102,114,134,114,134,120,102,120"/>
-<area shape="rect" id="Node000004" href="$classq_o_s_1_1list.html" title="A list object (Generic double&#45;linked)" alt="" coords="166,153,237,179"/>
-<area shape="poly" id="edge5_Node000000_Node000004" title=" " alt="" coords="102,132,166,153,165,158,101,137"/>
-<area shape="rect" id="Node000005" href="$classq_o_s_1_1task.html" title="A task node object." alt="" coords="162,203,241,228"/>
-<area shape="poly" id="edge6_Node000000_Node000005" title=" " alt="" coords="72,139,102,165,136,189,163,202,161,206,133,194,98,169,69,143"/>
+<area shape="rect" id="Node000005" href="$classq_o_s_1_1input_1_1watcher.html" title="The digital input&#45;channel watcher class." alt="" coords="135,104,268,130"/>
+<area shape="poly" id="edge6_Node000000_Node000005" title=" " alt="" coords="102,114,134,114,134,120,102,120"/>
+<area shape="rect" id="Node000006" href="$classq_o_s_1_1list.html" title="A list object (Generic double&#45;linked)" alt="" coords="166,153,237,179"/>
+<area shape="poly" id="edge7_Node000000_Node000006" title=" " alt="" coords="102,132,166,153,165,158,101,137"/>
+<area shape="rect" id="Node000007" href="$classq_o_s_1_1task.html" title="A task node object." alt="" coords="162,203,241,228"/>
+<area shape="poly" id="edge8_Node000000_Node000007" title=" " alt="" coords="72,139,102,165,136,189,163,202,161,206,133,194,98,169,69,143"/>
+<area shape="rect" id="Node000003" href="$classq_o_s_1_1input_1_1analog_channel.html" title="An analog input&#45;channel object." alt="" coords="316,31,488,56"/>
+<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="283,55,315,51,316,56,283,60"/>
+<area shape="rect" id="Node000004" href="$classq_o_s_1_1input_1_1digital_channel.html" title="A digital input&#45;channel object." alt="" coords="318,80,486,106"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="284,75,318,80,317,85,283,80"/>
 </map>

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['test_0',['TEST',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8124b96b79e735f0aa06399db5cbca06',1,'qOS::cli']]],
-  ['timeout_1',['TIMEOUT',['../group__qresponse.html#ggaf0b51c328a9dd6215f23a32c98fb5586a070a0fb40f6c308ab544b227660aadff',1,'qOS']]],
-  ['to_5fback_2',['TO_BACK',['../group__qqueues.html#ggaa2a592dbca5e6b54ae44c57f37d10e22a2e7ffa5560d8cdcc976ff1b0712ec889',1,'qOS']]],
-  ['to_5ffront_3',['TO_FRONT',['../group__qqueues.html#ggaa2a592dbca5e6b54ae44c57f37d10e22a3b803ce5ee3b91971a3ed1d0587956c7',1,'qOS']]]
+  ['read_0',['READ',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2a8b0d1d890397b13d3eaf6d131ad6aef4',1,'qOS::cli']]],
+  ['ready_1',['READY',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a2baa69eafc7204f3bd8648eba580c489',1,'qOS']]],
+  ['rising_5fedge_2',['RISING_EDGE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ad85243a747ac5537ef0b7adde99c3e98',1,'qOS::input']]],
+  ['running_3',['RUNNING',['../group__qtaskmanip.html#gga34268c083fc5881f4027b4100fb1f790a43491564ebcfd38568918efbd6e840fd',1,'qOS']]]
 ];

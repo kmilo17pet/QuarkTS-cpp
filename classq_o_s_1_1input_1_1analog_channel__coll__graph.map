@@ -1,0 +1,8 @@
+<map id="qOS::input::analogChannel" name="qOS::input::analogChannel">
+<area shape="rect" id="Node000001" title="An analog input&#45;channel object." alt="" coords="5,155,178,181"/>
+<area shape="rect" id="Node000002" href="$classq_o_s_1_1input_1_1channel.html" title=" " alt="" coords="25,80,158,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,121,94,155,89,155,89,121"/>
+<area shape="poly" id="edge3_Node000002_Node000002" title=" " alt="" coords="174,86,184,93,176,100,158,103,158,97,174,95,179,93,172,90"/>
+<area shape="rect" id="Node000003" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="51,5,132,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,46,94,80,89,80,89,46"/>
+</map>

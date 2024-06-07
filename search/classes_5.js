@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mem_0',['mem',['../classq_o_s_1_1logger_1_1mem.html',1,'qOS::logger']]]
+  ['handle_0',['handle',['../classq_o_s_1_1co_1_1handle.html',1,'qOS::co']]],
+  ['handler_5ft_1',['handler_t',['../classq_o_s_1_1cli_1_1handler__t.html',1,'qOS::cli::handler_t'],['../classq_o_s_1_1sm_1_1handler__t.html',1,'qOS::sm::handler_t']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['channel_0',['channel',['../classq_o_s_1_1input_1_1channel.html#a1bdfcd444f9ba21bb25026c5be77ca34',1,'qOS::input::channel::channel(const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h=20)'],['../classq_o_s_1_1input_1_1channel.html#ac394f68da414dfe8401700f25acd9058',1,'qOS::input::channel::channel(uint8_t inputChannel, bool invert=false)']]],
+  ['channel_0',['channel',['../classq_o_s_1_1input_1_1channel.html#a7d3b921984d9561913fac647e900d9d8',1,'qOS::input::channel']]],
   ['checkendianness_1',['checkEndianness',['../group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d',1,'qOS::util']]],
   ['clean_2',['clean',['../classq_o_s_1_1list.html#ad7069316196cd86a1fca8a517a6cdd75',1,'qOS::list']]],
   ['clip_3',['clip',['../group__qflm.html#gadf44d8010f8688287951ba6c0feecbb9',1,'qOS']]],
