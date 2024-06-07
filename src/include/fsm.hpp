@@ -356,6 +356,7 @@ namespace qOS {
                 void operator=( stateHandler const& ) = delete;  /* not assignable*/
             public:
                 stateHandler() = default;
+                virtual ~stateHandler() {}
                 void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
                 void *Data{ nullptr };          /**< The user storage pointer. If the FSM its running as a task, this will point to the event_t structure*/
                 void *StateData{ nullptr };     /**< The state user storage pointer*/
@@ -469,7 +470,7 @@ namespace qOS {
         * @brief This structure should be used to define an item for a state
         * transition table.
         */
-        struct transition {
+        struct transition final {
             /*! @cond  */
             signalID xSignal{ signalID::SIGNAL_NONE };
             signalAction_t guard{ nullptr };
@@ -547,7 +548,9 @@ namespace qOS {
                 virtual sm::status activities( sm::handler_t h );
             public:
                 state() = default;
+                /*! @cond  */
                 virtual ~state() {}
+                /*! @endcond  */
                 /**
                 * @brief Add the specified state as a child state
                 * @param[in] s The state object.
@@ -769,7 +772,9 @@ namespace qOS {
             static const sm::timeoutSpecOption_t OPT_INDEX_MASK;
         public:
             stateMachine() = default;
+            /*! @cond  */
             virtual ~stateMachine() {}
+            /*! @endcond  */
             /**
             * @brief Initializes a Finite State Machine (FSM).
             * @see core::addStateMachineTask()
@@ -969,7 +974,9 @@ namespace qOS {
                 void unsubscribeAll( void ) noexcept;
             public:
                 signalPublisher();
-                ~signalPublisher() {}
+                /*! @cond  */
+                virtual ~signalPublisher() {}
+                /*! @endcond  */
                 /**
                 * @brief Subscribe state machine to a particular signal
                 * @param[in] m State-machine to be subscribed

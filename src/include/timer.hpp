@@ -29,7 +29,9 @@ namespace qOS {
             qOS::clock_t tv{ 0U };
         public:
             timer();
+            /*! @cond  */
             virtual ~timer() {}
+            /*! @endcond  */
             /**
             * @brief Initializes the instance of the timer with the specified
             * expiration time. Timer will start armed.

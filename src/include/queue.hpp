@@ -11,7 +11,7 @@ namespace qOS {
     */
 
     /**
-    * @brief An enum that defines the modes in which a item should be inserted 
+    * @brief An enum that defines the modes in which a item should be inserted
     * in to a queue.
     */
     enum class queueSendMode {
@@ -52,12 +52,14 @@ namespace qOS {
             size_t itemSize = 0U;
             void moveReader( void ) noexcept;
             void copyDataFromQueue( void * const dst ) noexcept;
-            void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept; 
+            void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept;
             queue( queue const& ) = delete;
             void operator=( queue const& ) = delete;
         public:
             queue() = default;
+            /*! @cond  */
             virtual ~queue() {}
+            /*! @endcond  */
             /**
             * @brief Configures a Queue. Here, the RAM used to hold the queue data
             * @a pData is statically allocated at compile time by the application writer.
@@ -100,7 +102,7 @@ namespace qOS {
             */
             size_t count( void ) const noexcept;
             /**
-            * @brief Returns the number of available slots to hold items inside 
+            * @brief Returns the number of available slots to hold items inside
             * the queue.
             * @return The number of available slots in the queue.
             */
@@ -112,9 +114,9 @@ namespace qOS {
             */
             bool removeFront( void ) noexcept;
             /**
-            * @brief Receive an item from a queue (and removes it). The item is 
+            * @brief Receive an item from a queue (and removes it). The item is
             * received by copy so a buffer of adequate size must be provided.
-            * The number of bytes copied into the buffer was defined when the 
+            * The number of bytes copied into the buffer was defined when the
             * queue was created.
             * @param[out] dst Pointer to the buffer into which the received item
             * will be copied.

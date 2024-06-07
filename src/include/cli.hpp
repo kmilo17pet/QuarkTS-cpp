@@ -312,7 +312,9 @@ namespace qOS {
                 void operator=( command const& ) = delete;
             public:
                 command() = default;
+                /*! @cond  */
                 virtual ~command() {}
+                /*! @endcond  */
                 inline void* getParam( void ) noexcept
                 {
                     return param;
@@ -352,7 +354,9 @@ namespace qOS {
             void operator=( commandLineInterface const& ) = delete;
         public:
             commandLineInterface() = default;
+            /*! @cond  */
             virtual ~commandLineInterface() {}
+            /*! @endcond  */
             /**
             * @brief Setup an instance of the AT Command Line Interface.
             * @see core::addCommandLineInterfaceTask()

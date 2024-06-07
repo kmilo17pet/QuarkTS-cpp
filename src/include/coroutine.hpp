@@ -52,7 +52,7 @@ namespace qOS {
         };
 
         /** @brief A Co-Routine handle*/
-        class handle {
+        class handle final {
             private:
                 co::state prev = { co::UNDEFINED };
                 coContext *ctx{ nullptr };

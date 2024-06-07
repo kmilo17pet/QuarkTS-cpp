@@ -36,7 +36,9 @@ namespace qOS {
             void operator=( response const& ) = delete;
         public:
             response() = default;
+            /*! @cond  */
             virtual ~response() {}
+            /*! @endcond  */
             /**
             * @brief Initialize the instance of the response handler object
             * @param[in] xLocBuff A pointer to the memory block where the desired

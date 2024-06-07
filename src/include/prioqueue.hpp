@@ -26,7 +26,7 @@ namespace qOS {
             void operator=( prioQueue const& ) = delete;
         protected:
             prioQueue() = delete;
-            ~prioQueue() {}
+            virtual ~prioQueue() {}
             prioQueue( pq::queueStack_t *area, const size_t pq_size ) noexcept;
             size_t count( void ) const noexcept;
             task* get( void ) noexcept;

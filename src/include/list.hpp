@@ -77,7 +77,9 @@ namespace qOS {
                 return container;
             }
             node() : next(nullptr), prev(nullptr), container(nullptr) {}
+            /*! @cond  */
             virtual ~node() {}
+            /*! @endcond  */
 
         friend class list;
         friend class listIterator;
@@ -132,6 +134,9 @@ namespace qOS {
             void operator=( list const& ) = delete;
         public:
             list() noexcept;
+            /*! @cond  */
+            virtual ~list() {}
+            /*! @endcond  */
             /**
             * @brief Insert an item into the list.
             * @param[in] xNode A pointer to the node to be inserted
@@ -257,6 +262,9 @@ namespace qOS {
             void *current{ nullptr };
         public:
             listIterator() = delete;
+            /*! @cond  */
+            virtual ~listIterator() {}
+            /*! @endcond  */
             /**
             * @brief Instantiate a list iterator for the given list.
             * @param[in] xList The list

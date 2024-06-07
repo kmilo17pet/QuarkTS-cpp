@@ -51,9 +51,11 @@ namespace qOS {
                 pool( pool const& ) = delete;
                 void operator=( pool const& ) = delete;
             public:
+                /*! @cond  */
                 virtual ~pool() {}
+                /*! @endcond  */
                 /**
-                * @brief Initializes a memory pool instance. 
+                * @brief Initializes a memory pool instance.
                 * @param[in] pArea A pointer to a memory block @c uint8_t statically
                 * allocated to act as Heap of the memory pool. The size of this block should
                 * match the @a pSize argument.
@@ -91,8 +93,8 @@ namespace qOS {
                 */
                 void free( void *ptr ) noexcept;
                 /**
-                * @brief Allocate a block of memory that is @a pSize bytes large. 
-                * If the requested memory can be allocated, a pointer is 
+                * @brief Allocate a block of memory that is @a pSize bytes large.
+                * If the requested memory can be allocated, a pointer is
                 * returned to the beginning of the memory block.
                 * @attention This method is NOT interrupt-safe.
                 * @param[in] pSize Size of the memory block in bytes.

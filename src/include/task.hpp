@@ -199,6 +199,9 @@ namespace qOS {
             task* currentTask{ nullptr };
             taskEvent() = default;
         public:
+            /*! @cond  */
+            virtual ~taskEvent(){}
+            /*! @endcond  */
             void *TaskData{ nullptr };
             void *EventData{ nullptr };
             inline bool firstCall( void ) const noexcept

@@ -53,6 +53,9 @@ namespace qOS {
             /*! @endcond  */
         };
 
+        /**
+        * @brief An enum class to define the types of input channels
+        */
         enum class type {
             DIGITAL,            /**< Digital input channel.*/
             ANALOG,             /**< Analog input channel.*/
@@ -91,8 +94,11 @@ namespace qOS {
                 }
             /*! @endcond  */
             public:
+                /*! @cond  */
                 virtual ~channel() {}
                 channel( uint8_t channelNumber ) : number( channelNumber ) {}
+                /*! @endcond  */
+
                 /**
                 * @brief Get the channel type.
                 * @return The channel type.
@@ -217,7 +223,9 @@ namespace qOS {
                 digitalChannel( digitalChannel const& ) = delete;
                 void operator=( digitalChannel const& ) = delete;
             public:
+                /*! @cond  */
                 virtual ~digitalChannel() {}
+                /*! @endcond  */
                 /**
                 * @brief Constructor for the digital input channel instance.
                 * @param[in] inputChannel The specified channel(pin) number to read.
@@ -289,7 +297,9 @@ namespace qOS {
                 analogChannel( analogChannel const& ) = delete;
                 void operator=( analogChannel const& ) = delete;
             public:
+                /*! @cond  */
                 virtual ~analogChannel() {}
+                /*! @endcond  */
                 /**
                 * @brief Constructor for the analog input channel instance.
                 * @note Both lower and upper define the band
@@ -352,7 +362,9 @@ namespace qOS {
                 watcher( watcher const& ) = delete;
                 void operator=( watcher const& ) = delete;
             public:
+                /*! @cond  */
                 virtual ~watcher() {}
+                /*! @endcond  */
                 /**
                 * @brief Constructor for the input-watcher instance
                 * @param[in] rFcn A pointer to a function that reads the specific
