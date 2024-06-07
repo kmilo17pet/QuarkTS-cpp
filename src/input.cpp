@@ -348,9 +348,9 @@ bool input::digitalChannel::setTime( const input::event e, const qOS::duration_t
 
     if ( t > 0U ) {
         switch( e ) {
-            case input::event::PULSATION_DOUBLE:
-            case input::event::PULSATION_TRIPLE:
-            case input::event::PULSATION_MULTI:
+            case input::event::PULSATION_DOUBLE: // skipcq: CXX-C1001
+            case input::event::PULSATION_TRIPLE: // skipcq: CXX-C1001
+            case input::event::PULSATION_MULTI: // skipcq: CXX-C1001
                 pulsationInterval = static_cast<qOS::clock_t>( t );
                 break;
             case input::event::STEADY_IN_HIGH:
