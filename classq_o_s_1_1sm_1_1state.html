@@ -439,7 +439,6 @@ Protected Member Functions</h2></td></tr>
 <dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">def</td><td>The lookup table matching the requested timeout values with their respective options. <pre class="fragment">{ [Timeout value], [Options(Combined with a bitwise OR)] } </pre> </td></tr>
@@ -480,7 +479,6 @@ template&lt;size_t numberOfTimeoutDefs&gt; </div>
 <dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">numberOfTimeoutDefs</td><td>The number of elements in <em>def</em> </td></tr>
@@ -576,7 +574,6 @@ template&lt;size_t numberOfTimeoutDefs&gt; </div>
 <p>Install both, a table with the outgoing transitions for this state and fixed timeouts for the specified state using a lookup-table. </p>
 <dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">table</td><td>An array of entries of type <code>sm::transition_t</code> with the outgoing transitions. Each entry relates signals, actions and the target state using the following layout: <pre class="fragment">{ [Signal], [Action/Guard], [Target state], [History Mode] } </pre> </td></tr>
@@ -664,7 +661,6 @@ template&lt;size_t numberOfTransitions, size_t numberOfTimeoutDefs&gt; </div>
 <p>Install both, a table with the outgoing transitions for this state and fixed timeouts for the specified state using a lookup-table. </p>
 <dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">numberOfTransitions</td><td>The number of elements in <em>table</em> </td></tr>

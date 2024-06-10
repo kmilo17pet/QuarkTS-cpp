@@ -582,7 +582,6 @@ template&lt;size_t numberOfSignals&gt; </div>
 <dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>This feature depends on the <a class="el" href="group__qstimers.html">Timers</a> extension. Make sure the time base is functional. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>You can increase the number of available timeouts instances by changing the <code>Q_FSM_MAX_TIMEOUTS</code> configuration macro inside <code><a class="el" href="config_8h_source.html">config.h</a></code> </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue() </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ts</td><td>The timeout specification object. </td></tr>
@@ -825,9 +824,9 @@ template&lt;size_t numberOfSignals&gt; </div>
 </div><div class="memdoc">
 
 <p>Set the time for the selected built-in timeout inside the target FSM. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>Requires an installed timeout-specification. For this use stateMachine::installTimeoutSpec() </dd>
+<dl class="section pre"><dt>Precondition</dt><dd>Requires an installed timeout-specification. For this use <a class="el" href="#a31916edda1b7e3053c625f5c6839d929" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::install</a> </dd>
 <dd>
-Requires an installed signal-queue. For this use stateMachine::installSignalQueue() </dd></dl>
+Requires an installed signal-queue. For this use <a class="el" href="#a31916edda1b7e3053c625f5c6839d929" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::install</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">xTimeout</td><td>The index of the requested timeout (0, 1, 2 ... (<code>Q_FSM_MAX_TIMEOUTS-1</code>) ) </td></tr>
@@ -863,9 +862,9 @@ Requires an installed signal-queue. For this use stateMachine::installSignalQueu
 </div><div class="memdoc">
 
 <p>Stop the time count for the selected built-in timeout. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>Requires an installed timeout-specification. For this use stateMachine::installTimeoutSpec() </dd>
+<dl class="section pre"><dt>Precondition</dt><dd>Requires an installed timeout-specification. For this use <a class="el" href="#a31916edda1b7e3053c625f5c6839d929" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::install</a> </dd>
 <dd>
-Requires an installed signal-queue. For this use stateMachine::installSignalQueue() </dd></dl>
+Requires an installed signal-queue. For this use <a class="el" href="#a31916edda1b7e3053c625f5c6839d929" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::install</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">xTimeout</td><td>The index of the timeout (0, 1, 2 ... (<code>Q_FSM_MAX_TIMEOUTS-1</code>) ) </td></tr>
