@@ -70,7 +70,7 @@ bool queue::removeFront( void ) noexcept
     waiting = itemsWaiting;
     if ( waiting > 0U ) {
         moveReader();
-        --itemsWaiting;
+        itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting; */
         retValue = true;
     }
     critical::exit();
@@ -93,7 +93,7 @@ bool queue::receive( void *dst ) noexcept
     waiting = itemsWaiting;
     if ( waiting > 0U ) {
         copyDataFromQueue( dst );
-        --itemsWaiting;
+        itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting; */
         retValue = true;
     }
     critical::exit();
@@ -118,7 +118,7 @@ void queue::copyDataToQueue( const void *itemToQueue, const queueSendMode xPosit
             reader = ( tail - itemSize );
         }
     }
-    ++itemsWaiting;
+    itemsWaiting = itemsWaiting + 1U; /* ++itemsWaiting; */
 }
 /*============================================================================*/
 bool queue::send( void *itemToQueue, const queueSendMode pos ) noexcept

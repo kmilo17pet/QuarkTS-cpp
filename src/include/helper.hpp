@@ -26,7 +26,7 @@ namespace qOS {
         template <typename T, typename W>
         inline void multipleSet( T &dst, W xBits )
         {
-            dst |= static_cast<T>( xBits );
+            dst = dst | static_cast<T>( xBits );
         }
         /**
         * @brief Uses the bitwise AND operator to clear bits into @a dst
@@ -36,7 +36,7 @@ namespace qOS {
         template <typename T, typename W>
         inline void multipleClear( T &dst, W xBits )
         {
-            dst &= ~static_cast<T>( xBits );
+            dst = dst & ~static_cast<T>( xBits );
         }
         /**
         * @brief Uses the bitwise OR operator to set a single bit into @a dst
@@ -46,7 +46,7 @@ namespace qOS {
         template <typename T>
         inline void singleSet( T &dst, const size_t xBit )
         {
-            dst |= ( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
+            dst = dst | ( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
         }
         /**
         * @brief Uses the bitwise AND operator to clear a single bit into @a dst
@@ -56,7 +56,7 @@ namespace qOS {
         template <typename T>
         inline void singleClear( T &dst, const size_t xBit )
         {
-            dst &= ~( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
+            dst = dst & ~( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
         }
         /**
         * @brief Uses the bitwise AND operator to read the value of a single bit
@@ -79,7 +79,7 @@ namespace qOS {
         template <typename T>
         inline void singleToggle( T &dst, const size_t xBit )
         {
-            dst ^= ( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
+            dst = dst ^ ( static_cast<T>( 1U ) << static_cast<T>( xBit ) );
         }
         /*cstat +CERT-INT34-C_a +MISRAC++2008-5-0-10*/
         /**

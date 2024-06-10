@@ -193,7 +193,7 @@ namespace qOS {
             * and pass a pointer to that structure.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            bool add( task &Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. This API creates a task with
             * a taskState::DISABLED_STATE state by default, so this task will be executed only, when
@@ -207,9 +207,9 @@ namespace qOS {
             * by reference and cast to @c void*.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg = nullptr ) noexcept
+            inline bool add( task &Task, taskFcn_t callback, const priority_t p, void *arg = nullptr ) noexcept
             {
-                return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED_STATE, arg );
+                return add( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED_STATE, arg );
             }
             #if ( Q_FSM == 1 )
             /** @addtogroup  qfsm
@@ -222,8 +222,8 @@ namespace qOS {
             * task::PERIODIC mode. The event info will be available as a generic pointer
             * inside the sm::handler_t::Data field.
             * @pre The State-machine object should be previously configured with
-            * qStateMachine_Setup()
-            * @see qStateMachine_Setup()
+            * qOS::stateMachine::setup()
+            * @see qOS::stateMachine::setup()
             * @param[in] Task  A pointer to the task node.
             * @param[in] m  A pointer to the Finite State-Machine (FSM) object.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
@@ -236,7 +236,7 @@ namespace qOS {
             * passed by reference and cast to @c void*.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const duration_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            bool add( task &Task, stateMachine &m, const priority_t p, const duration_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /** @}*/
             #endif
             #if ( Q_CLI == 1 )
@@ -250,14 +250,14 @@ namespace qOS {
             * address will be stored in the event_t::TaskData storage-Pointer.
             * @pre The AT-CLI object should be previously configured with
             * qOS::commandLineInterface::setup().
-            * @see ommandLineInterface::setup()
+            * @see qOS::commandLineInterface::setup()
             * @param[in] Task The task node.
             * @param[in] cli The Command Line Inteface instance.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @param[in] arg The task arguments.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;
+            bool add( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;
             /** @}*/
             #endif
             /**
@@ -291,7 +291,7 @@ namespace qOS {
             * @param[in] Task The task node.
             * @return Returns @c true if success, otherwise returns @c false.
             */
-            bool removeTask( task &Task ) noexcept;
+            bool remove( task &Task ) noexcept;
             /**
             * @brief Executes the scheduling scheme. It must be called once after the
             * task pool has been defined.
@@ -435,7 +435,6 @@ namespace qOS {
             * current kernel transaction
             */
             globalState getGlobalState( task &Task ) const noexcept;
-
             /**
             * @brief Add an input-watcher so that its function is executed by
             * the kernel
@@ -443,14 +442,14 @@ namespace qOS {
             * @param[in] w The input watcher.
             * @return Returns @c true if success, otherwise returns @c false.
             */
-            bool addInputWatcher( input::watcher &w ) noexcept;
+            bool add( input::watcher &w ) noexcept;
             /**
             * @brief Remove an input-watcher so that the kernel stops executing
             * its function
             * @param[in] w The input-watcher.
             * @return Returns @c true if success, otherwise returns @c false.
             */
-            bool removeInputWatcher( input::watcher &w ) noexcept;
+            bool remove( input::watcher &w ) noexcept;
     };
     /** @brief The predefined instance of the OS kernel interface */
     extern core& os; // skipcq: CXX-W2011, CXX-W2009

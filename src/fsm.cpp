@@ -190,7 +190,7 @@ bool sm::state::subscribe( sm::state *s, const sm::stateCallback_t &sFcn, sm::st
     return retValue;
 }
 /*============================================================================*/
-bool sm::state::setTransitions( sm::transition *table, size_t n ) noexcept
+bool sm::state::install( sm::transition *table, size_t n ) noexcept
 {
     bool retValue = false;
 
@@ -203,7 +203,7 @@ bool sm::state::setTransitions( sm::transition *table, size_t n ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool stateMachine::installSignalQueue( queue& q ) noexcept
+bool stateMachine::install( queue& q ) noexcept
 {
     bool retValue = false;
     #if ( Q_QUEUES == 1 )
@@ -343,7 +343,7 @@ void stateMachine::timeoutPerformSpecifiedActions( sm::state * const s, sm::sign
     }
 }
 /*============================================================================*/
-bool stateMachine::installTimeoutSpec( sm::timeoutSpec &ts ) noexcept
+bool stateMachine::install( sm::timeoutSpec &ts ) noexcept
 {
     for ( size_t i = 0U ; i < static_cast<size_t>( Q_FSM_MAX_TIMEOUTS ) ; ++i ) {
         ts.timeout[ i ].disarm();
@@ -354,7 +354,7 @@ bool stateMachine::installTimeoutSpec( sm::timeoutSpec &ts ) noexcept
     return true;
 }
 /*============================================================================*/
-bool sm::state::setTimeouts( sm::timeoutStateDefinition *def, size_t n ) noexcept
+bool sm::state::install( sm::timeoutStateDefinition *def, size_t n ) noexcept
 {
     bool retValue = false;
 

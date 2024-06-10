@@ -9,7 +9,7 @@
 namespace qOS {
 
 
-    /** @addtogroup qinput Input channel utilities
+    /** @addtogroup qinput Input channels
     * @brief A comprehensive event class for efficient, maintainable working with
     * input channels.
     *  @{
@@ -57,25 +57,42 @@ namespace qOS {
         * @brief An enum class to define the types of input channels
         */
         enum class type {
-            DIGITAL,            /**< Digital input channel.*/
-            ANALOG,             /**< Analog input channel.*/
+            DIGITAL_CHANNEL,            /**< Digital input channel.*/
+            ANALOG_CHANNEL,             /**< Analog input channel.*/
         };
+
+
+        using digitalValue_t = int;
+        using analogValue_t = float;
 
         /**
         * @brief A pointer to the  wrapper function that reads the specific
-        * input-channel
+        * digital input-channel
+        *
+        * Prototype: @code digitalValue_t readerFcn( uint8_t channelNumber ) @endcode
         */
-        using channelReaderFcn_t = int (*)( uint8_t );
+        using digitalReaderFcn_t = digitalValue_t (*)( uint8_t );
+
+        /**
+        * @brief A pointer to the  wrapper function that reads the specific
+        * analog input-channel
+        *
+        * Prototype: @code analogValue_t readerFcn( uint8_t channelNumber ) @endcode
+        */
+        using analogReaderFcn_t = analogValue_t (*)( uint8_t );
+
+
+
         /**
         * @brief A pointer to the input-channel event callback
+        *
+        * Prototype: @code void xCallback( input::channel& c ) @endcode
         */
         using eventCallback_t = void(*)( channel& );
 
         class channel : protected node {
             /*! @cond  */
             protected:
-                int value;
-                int *ptrValue{ &value };
                 event lastEvent{ event::NONE };
                 uint8_t number;
                 void *userData{ nullptr };
@@ -83,10 +100,10 @@ namespace qOS {
                 qOS::clock_t tChange{ 0U };
                 qOS::clock_t tSteadyHigh{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyLow{ 0xFFFFFFFFU };
-                virtual void updateReading( channelReaderFcn_t reader ) noexcept = 0;
+                virtual void updateReading( void ) noexcept = 0;
                 virtual void evaluateState( void ) noexcept = 0;
                 virtual bool isValidConfig( void ) const noexcept = 0;
-                virtual void setInitalState( channelReaderFcn_t reader ) noexcept = 0;
+                virtual void setInitalState( void ) noexcept = 0;
                 inline void dispatchEvent( event e ) noexcept
                 {
                     lastEvent = e;
@@ -167,10 +184,7 @@ namespace qOS {
                 * with the same (pin) number.
                 * @return @c true if shared. Otherwise @c false.
                 */
-                inline bool isShared( void ) const noexcept
-                {
-                    return ( &value != ptrValue );
-                }
+                virtual bool isShared( void ) const noexcept = 0;
                 /**
                 * @brief Set the timeout for the specified event.
                 * @param[in] e The event where the timeout will be set.
@@ -184,13 +198,19 @@ namespace qOS {
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
-                virtual bool setParameter( const event e, const int p ) noexcept = 0;
+                virtual bool setParameter( const event e, const analogValue_t p ) noexcept = 0;
                 /**
                 * @brief Get pulsation count for the digital input.
                 * @note No valid on analog inputs
                 * @return The current pulsation count.
                 */
                 virtual uint8_t getCount( void ) const noexcept = 0;
+                /*! @cond  */
+                virtual bool setReader( digitalReaderFcn_t r ) noexcept = 0;
+                virtual bool setReader( analogReaderFcn_t r ) noexcept = 0;
+                /*! @endcond  */
+
+                virtual bool unShare( void ) noexcept = 0;
                 friend class watcher;
         };
 
@@ -201,12 +221,15 @@ namespace qOS {
         class digitalChannel : public channel {
             using channelStateFcn_t = void(*)( digitalChannel& );
             private:
+                digitalValue_t value;
+                digitalValue_t *ptrValue{ &value };
+                digitalReaderFcn_t reader{ nullptr };
                 channelStateFcn_t channelState{ nullptr };
                 bool negate{ false };
                 qOS::clock_t pulsationInterval{ 250U };
                 uint8_t pulsationCount{ 0 };
-                void updateReading( channelReaderFcn_t reader ) noexcept override;
-                void setInitalState( channelReaderFcn_t reader ) noexcept override;
+                void updateReading( void ) noexcept override;
+                void setInitalState( void ) noexcept override;
                 bool isValidConfig( void ) const noexcept override
                 {
                     return true;
@@ -237,7 +260,7 @@ namespace qOS {
                 */
                 type getType( void ) const noexcept override
                 {
-                    return type::DIGITAL;
+                    return type::DIGITAL_CHANNEL;
                 }
                 /**
                 * @brief Set the timeout for the specified event.
@@ -252,7 +275,7 @@ namespace qOS {
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool setParameter( const event e, const int p ) noexcept override;
+                bool setParameter( const event e, const analogValue_t p ) noexcept override;
                 /**
                 * @brief Get pulsation count for the digital input.
                 * @note No valid on analog inputs
@@ -262,6 +285,38 @@ namespace qOS {
                 {
                     return pulsationCount;
                 }
+                /**
+                * @brief Check if the channel value is shared with other channel
+                * with the same (pin) number.
+                * @return @c true if shared. Otherwise @c false.
+                */
+                bool isShared( void ) const noexcept override
+                {
+                    return ( &value != ptrValue );
+                }
+                /**
+                * @brief Assign the function that is in charge of reading the
+                * specific digital input.
+                * @param[in] r The channel reader function.
+                * @return @c true on success. Otherwise @c false.
+                */
+                bool setReader( digitalReaderFcn_t r ) noexcept override
+                {
+                    reader = r;
+                    return true;
+                }
+                /*! @cond  */
+                bool setReader( analogReaderFcn_t r ) noexcept override
+                {
+                    (void)r;
+                    return false;
+                }
+                bool unShare( void ) noexcept override
+                {
+                    ptrValue = &value;
+                    return true;
+                }
+                /*! @endcond  */
             friend class watcher;
         };
 
@@ -271,14 +326,17 @@ namespace qOS {
         class analogChannel : public channel {
             using channelStateFcn_t = void(*)( analogChannel& );
             private:
+                analogValue_t value;
+                analogValue_t *ptrValue{ &value };
+                analogReaderFcn_t reader{ nullptr };
                 channelStateFcn_t channelState{ nullptr };
-                int high{ 800 };
-                int low{ 200 };
-                int hysteresis{ 20 };
+                analogValue_t high{ 800 };
+                analogValue_t low{ 200 };
+                analogValue_t hysteresis{ 20 };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
 
-                void updateReading( channelReaderFcn_t reader ) noexcept override;
-                void setInitalState( channelReaderFcn_t reader ) noexcept override;
+                void updateReading( void ) noexcept override;
+                void setInitalState( void ) noexcept override;
                 bool isValidConfig( void ) const noexcept override
                 {
                     return ( high - low ) > hysteresis;
@@ -307,7 +365,7 @@ namespace qOS {
                 * @param[in] upperThreshold The upper threshold value.
                 * @param[in] h Hysteresis for the in-band transition.
                 */
-                analogChannel( const uint8_t inputChannel, const int lowerThreshold, const int upperThreshold, const int h = 20 ) : channel( inputChannel ), high( upperThreshold ), low( lowerThreshold )
+                analogChannel( const uint8_t inputChannel, const analogValue_t lowerThreshold, const analogValue_t upperThreshold, const analogValue_t h = 0.1F ) : channel( inputChannel ), high( upperThreshold ), low( lowerThreshold )
                 {
                     hysteresis = ( h < 0 ) ? -h : h;
                 }
@@ -317,7 +375,7 @@ namespace qOS {
                 */
                 type getType( void ) const noexcept override
                 {
-                    return type::ANALOG;
+                    return type::ANALOG_CHANNEL;
                 }
                 /**
                 * @brief Set the timeout for the specified event.
@@ -332,7 +390,7 @@ namespace qOS {
                 * @param[in] p The value of the parameter.
                 * @return @c true on success. Otherwise @c false.
                 */
-                bool setParameter( const event e, const int p ) noexcept override;
+                bool setParameter( const event e, const analogValue_t p ) noexcept override;
                 /**
                 * @brief Get pulsation count for the digital input.
                 * @note No valid on analog inputs
@@ -341,6 +399,38 @@ namespace qOS {
                 uint8_t getCount( void ) const noexcept override
                 {
                     return 0;
+                }
+                /**
+                * @brief Check if the channel value is shared with other channel
+                * with the same (pin) number.
+                * @return @c true if shared. Otherwise @c false.
+                */
+                bool isShared( void ) const noexcept override
+                {
+                    return ( &value != ptrValue );
+                }
+                /*! @cond  */
+                bool setReader( digitalReaderFcn_t r ) noexcept override
+                {
+                    (void)r;
+                    return false;
+                }
+                /*! @endcond  */
+                /**
+                * @brief Assign the function that is in charge of reading the
+                * specific analog input.
+                * @param[in] r The channel reader function.
+                * @return @c true on success. Otherwise @c false.
+                */
+                bool setReader( analogReaderFcn_t r ) noexcept override
+                {
+                    reader = r;
+                    return true;
+                }
+                bool unShare( void ) noexcept override
+                {
+                    ptrValue = &value;
+                    return true;
                 }
             friend class watcher;
         };
@@ -356,14 +446,20 @@ namespace qOS {
                 list analogChannels;
                 qOS::timer waitDebounce;
                 qOS::duration_t debounceTime{ 100_ms };
-                channelReaderFcn_t digitalReader{ nullptr };
-                channelReaderFcn_t analogReader{ nullptr };
+                digitalReaderFcn_t digitalReader{ nullptr };
+                analogReaderFcn_t analogReader{ nullptr };
                 watcher( watcher const& ) = delete;
                 void operator=( watcher const& ) = delete;
             public:
                 /*! @cond  */
                 virtual ~watcher() {}
                 /*! @endcond  */
+                /**
+                * @brief Constructor for the input-watcher instance
+                * @param[in] timeDebounce The specified time to bypass the
+                * bounce of the digital input channels
+                */
+                watcher( const qOS::duration_t timeDebounce = 100_ms ) : debounceTime( timeDebounce ) {}
                 /**
                 * @brief Constructor for the input-watcher instance
                 * @param[in] rDigital A pointer to a function that reads the specific
@@ -373,7 +469,7 @@ namespace qOS {
                 * @param[in] timeDebounce The specified time to bypass the
                 * bounce of the digital input channels
                 */
-                watcher( const channelReaderFcn_t& rDigital, const channelReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce = 100_ms ) :
+                watcher( const digitalReaderFcn_t& rDigital, const analogReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce = 100_ms ) :
                     debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
                 /**
                 * @brief Add a channel to the watcher instance
@@ -381,6 +477,47 @@ namespace qOS {
                 * @return @c true on success. Otherwise @c false.
                 */
                 bool add( channel& c ) noexcept;
+                /**
+                * @brief Add a channel to the watcher instance
+                * @param[in] c The input-Channel to watch
+                * @param[in] cb The callback function for the input-channel
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool add( channel& c, eventCallback_t cb ) noexcept
+                {
+                    (void)c.setCallback( cb );
+                    return add( c );
+                }
+                /**
+                * @brief Add a channel to the watcher instance
+                * @param[in] c The input-Channel to watch
+                * @param[in] fcn The reader function for the digital channel
+                * @param[in] cb The callback function for the input-channel
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool add( channel&c, digitalReaderFcn_t fcn, eventCallback_t cb ) noexcept
+                {
+                    bool retValue;
+                    (void)c.setCallback( cb );
+                    retValue = add( c );
+                    (void)c.setReader( fcn );
+                    return retValue;
+                }
+                /**
+                * @brief Add a channel to the watcher instance
+                * @param[in] c The input-Channel to watch
+                * @param[in] fcn The reader function for the analog channel
+                * @param[in] cb The callback function for the input-channel
+                * @return @c true on success. Otherwise @c false.
+                */
+                inline bool add( channel&c, analogReaderFcn_t fcn, eventCallback_t cb ) noexcept
+                {
+                    bool retValue;
+                    (void)c.setCallback( cb );
+                    retValue = add( c );
+                    (void)c.setReader( fcn );
+                    return retValue;
+                }
                 /**
                 * @brief Remove a channel to the watcher instance
                 * @param[in] c The input-Channel to watch
@@ -395,9 +532,9 @@ namespace qOS {
                 */
                 bool watch( void ) noexcept;
                 /*! @cond  */
-                inline void operator()( void )
+                inline bool operator()( void )
                 {
-                    watch();
+                    return watch();
                 }
                 /*! @endcond  */
         };

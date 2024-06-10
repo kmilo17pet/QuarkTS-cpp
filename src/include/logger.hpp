@@ -10,12 +10,6 @@
 #include "include/input.hpp"
 #include "config/config.h"
 
-#if defined( ARDUINO_PLATFORM )
-    #include <Arduino.h>
-#else
-    #include <string>
-#endif
-
 namespace qOS {
 
     /** @addtogroup qlogger Logger
@@ -362,12 +356,8 @@ namespace qOS {
                 _logger& operator<<( const qOS::sm::state& s );
                 _logger& operator<<( const qOS::trigger& t );
                 _logger& operator<<( const qOS::input::channel& in );
+                _logger& operator<<( const qOS::string & s );
 
-                #if defined( ARDUINO_PLATFORM )
-                    _logger& operator<<( const String & s );
-                #else
-                    _logger& operator<<( const string & s );
-                #endif
             friend _logger& out( const logSeverity s, const source_location &loc ) noexcept;
             friend void setOutputFcn( util::putChar_t fcn );
         };

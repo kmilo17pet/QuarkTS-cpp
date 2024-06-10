@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <QuarkTS.h>
 
-using namespace std;
 using namespace qOS;
 
 class customTask : public task {
@@ -192,8 +191,30 @@ void putCharFcn( void* stp, char c ) {
     putchar(c);
 }
 
+
+input::digitalValue_t digitalRead( uint8_t c );
+input::analogValue_t analogRead( uint8_t c );
+
+input::digitalValue_t digitalRead( uint8_t c ) {
+    (void)c;
+    return 0;
+}
+
+input::analogValue_t analogRead( uint8_t c ) {
+    (void)c;
+    return 0;
+}
+
+input::analogChannel pinA0( 0, 400, 600 );
+input::digitalChannel pinD2( 2, true );
+input::digitalChannel pinD3( 3, true );
+input::digitalChannel pinD4( 4, true );
+input::watcher pinWatcher( digitalRead, analogRead, 50_ms );
+
+
 int main()
 {
+
     uint32_t x = 0xFFAA2211;
     double y = -3.1416;
     logger::setOutputFcn( &putCharFcn );
@@ -206,18 +227,19 @@ int main()
 
     os.init( sysClock, idleTask_callback );
 
-    LED_FSM.installSignalQueue( LEDsigqueue );
-    LED_FSM.installTimeoutSpec( tm_spectimeout );
-    State_LEDOn.setTimeouts( LedOn_Timeouts );
-    State_LEDBlink.setTimeouts( LEDBlink_timeouts );
-    State_LEDOff.setTransitions( LEDOff_transitions );
-    State_LEDOn.setTransitions( LEDOn_transitions );
-    State_LEDBlink.setTransitions( LEDBlink_transitions );
 
-    os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
-    os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10U );
-    os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
-    os.addTask( t5, nullptr, core::MEDIUM_PRIORITY, 1_sec, task::PERIODIC );
+    LED_FSM.install( LEDsigqueue );
+    LED_FSM.install( tm_spectimeout );
+
+    logger::out(logger::debug) << logger::end;
+    State_LEDOff.install( LEDOff_transitions );
+    State_LEDOn.install( LEDOn_transitions, LedOn_Timeouts );
+    State_LEDBlink.install( LEDBlink_transitions, LEDBlink_timeouts );
+    logger::out(logger::debug) << logger::end;
+    os.add( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
+    os.add( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10U );
+    os.add( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
+    os.add( t5, nullptr, core::MEDIUM_PRIORITY, 1_sec, task::PERIODIC );
 
     t1.setName( "t1" );
     t2.setName( "t2" );
@@ -227,11 +249,11 @@ int main()
 
     sm::timeoutSpec tm_specTimeout;
     m.setup( nullptr, s1 );
-    m.installTimeoutSpec( tm_specTimeout );
+    m.install( tm_specTimeout );
     m.add( s1, s1_callback );
     m.add( s2, s2_callback );
-    m.installSignalQueue( signalQueue );
-    os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 100_ms );
+    m.install( signalQueue );
+    os.add( t4, m, qOS::core::MEDIUM_PRIORITY, 100_ms );
 
     os.run();
     for(;;) { }

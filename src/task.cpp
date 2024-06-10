@@ -258,8 +258,14 @@ bool task::attachQueue( queue &q, const queueLinkMode mode, const size_t arg ) n
     return retValue;
 }
 /*============================================================================*/
-void * const & task::getAttachedObject( void ) const noexcept
+void * const & task::getBindedObject( void ) const noexcept
 {
     return aObj;
 }
 /*============================================================================*/
+queue* task::getQueue( void ) noexcept
+{
+    return aQueue;
+}
+/*============================================================================*/
+

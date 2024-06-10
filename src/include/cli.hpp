@@ -357,7 +357,7 @@ namespace qOS {
             /*! @endcond  */
             /**
             * @brief Setup an instance of the AT Command Line Interface.
-            * @see core::addCommandLineInterfaceTask()
+            * @see core::add()
             * @note CLI Built-in strings will be written to their default values.
             * @param[in] outFcn The basic output-char wrapper function. All the CLI
             * responses will be printed-out through this function.
@@ -442,7 +442,7 @@ namespace qOS {
             cli::response exec( const char *cmd );
             /**
             * @brief Run the AT Command Line Interface when the input is ready.
-            * @see core::addCommandLineInterfaceTask()
+            * @see core::add()
             * @return @c true on success, otherwise return @c false
             */
             bool run( void );

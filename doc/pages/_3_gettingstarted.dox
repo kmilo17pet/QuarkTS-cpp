@@ -5,7 +5,7 @@
 * Download the latest release from the official repository :
 *
 * <a style="font-weight:bold" href="https://github.com/kmilo17pet/QuarkTS-cpp/releases">QuarkTS++ Releases</a>
-* 
+*
 * Unpack the release package and add the sources files to your project.
 *
 * @subsection q_cloneos Cloning QuarkTS++
@@ -35,19 +35,19 @@
 * @endcode
 *
 * @subsection q_getqconfig Get a copy of the OS configuration file
-* The file @c config.h provides specific @ref q_configmacros to customize 
-* several aspects of the OS. In order to build your solution with QuarkTS++, you 
+* The file @c config.h provides specific @ref q_configmacros to customize
+* several aspects of the OS. In order to build your solution with QuarkTS++, you
 * should provided your own copy of this configuration file. You can obtain a copy
 * with the default configuration by issuing the following command:
 *
 *
 * @section q_firststeps First steps
-* Include the source files to your project. Also, make sure you add a copy of 
-* the file @c config.h and modify it according to your needs. Setup your 
-* compiler including the path of the OS directory. Include the header file 
-* @c QuarkTS.h and setup the instance of the kernel using the qOS::core::init() 
-* inside the main thread to initialize te kernel, specify the reference clock and 
-* the idle-task ( see @ref q_timmingapproach). Additional configuration to the 
+* Include the source files to your project. Also, make sure you add a copy of
+* the file @c config.h and modify it according to your needs. Setup your
+* compiler including the path of the OS directory. Include the header file
+* @c QuarkTS.h and setup the instance of the kernel using the qOS::core::init()
+* inside the main thread to initialize te kernel, specify the reference clock and
+* the idle-task ( see @ref q_timmingapproach). Additional configuration to the
 * target compiler may be required to add the path to the directory of header files.
 * The code below shows a common initialization procedure  in the main source file.
 *
@@ -56,7 +56,7 @@
 *  #include "QuarkTS.h"
 *
 *  using namespace qOS;
-* 
+*
 *  void main( void ) {
 *      //device startup with hardware-specific code
 *      HardwareSetup();
@@ -70,24 +70,24 @@
 * In the above code, the following considerations should be taken:
 * - The function @c os.init() must be called before any interaction with the OS.
 * Here, the @c os its an instance of the qOS::core kernel interface.
-* - The procedure @c HardwareSetup() should be a function with all the hardware 
+* - The procedure @c HardwareSetup() should be a function with all the hardware
 * instructions needed to initialize the target system.
-* - The procedure @c Configure_Periodic_Timer_Interrupt_1ms() should be a 
-* function with all the hardware instructions needed to initialize and enable a 
+* - The procedure @c Configure_Periodic_Timer_Interrupt_1ms() should be a
+* function with all the hardware instructions needed to initialize and enable a
 * timer with an overflow tick of one millisecond.
 *
-* Tasks can be later added to the scheduling scheme by simply calling 
-* qOS::core::addTask() or any of the other available methods for specific purpose tasks.
+* Tasks can be later added to the scheduling scheme by simply calling
+* qOS::core::add() with any of its overloads for specific purpose tasks.
 *
 * @section q_os_demo Two simple demonstrative examples
 *
 * @subsection q_os_example1 A simple scheduling
-* This example demonstrates a simple environment setup for multiple tasks. 
-* Initially, only @c task1 and @c task2 are enabled. @c task1 runs every 2 
-* seconds 10 times and then stops. @c task2 runs every 3 seconds indefinitely. 
-* @c task1 enables @c task3 at its first run. @c task3 run every  5 seconds. 
-* @c task1 disables @c task3 on its last iteration and change @c task2 to run 
-* every 1/2 seconds. In the end, @c task2 is the only task running every 1/2 
+* This example demonstrates a simple environment setup for multiple tasks.
+* Initially, only @c task1 and @c task2 are enabled. @c task1 runs every 2
+* seconds 10 times and then stops. @c task2 runs every 3 seconds indefinitely.
+* @c task1 enables @c task3 at its first run. @c task3 run every  5 seconds.
+* @c task1 disables @c task3 on its last iteration and change @c task2 to run
+* every 1/2 seconds. In the end, @c task2 is the only task running every 1/2
 * seconds.
 *
 *  @code{.c}
@@ -95,7 +95,7 @@
 *  #include "QuarkTS.h"
 *
 *  using namespace qOS;
-*  
+*
 *  task task1, task2, task3; /*task nodes*/
 *  /*==================================================================*/
 *  void interrupt Timer0_ISR( void ) {
@@ -104,11 +104,11 @@
 *  /*==================================================================*/
 *  void Task1_Callback( event_t e ) {
 *      BSP_UART1_WriteString( e.thisTask().getName() );
-*  
+*
 *      if ( e.firstIteration() ) {
 *          task3.setState( taskState::ENABLED );
 *      }
-*      
+*
 *      if ( e.lastIteration() ) {
 *          e.thisTask().setState( taskState::SUSPENDED );
 *          e.thisTask().setTime( 500 );
@@ -127,11 +127,11 @@
 *      HardwareSetup();  /*hardware initialization function*/
 *      /*function to fire an interrupt at 1ms - timer tick*/
 *      Configure_Periodic_Timer0_Interrupt_1ms();
-*      
+*
 *      os.init( nullptr, nullptr );
-*      os.addTask( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );
-*      os.addTask( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );
-*      os.addTask( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );
+*      os.add( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );
+*      os.add( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );
+*      os.add( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );
 *      os.run();
 *
 *      return 0;
@@ -140,17 +140,17 @@
 *
 * @subsection q_os_example2 Using the task argument
 * When adding tasks, they can accept a parameter of type pointer to void @c void*
-* also called the storage pointer. This parameter could be used for multiple 
+* also called the storage pointer. This parameter could be used for multiple
 * applications, including storage, task identification, duplication removal and
-* others. The following example shows the usage of this argument to avoid 
+* others. The following example shows the usage of this argument to avoid
 * callback duplication among tasks with the same behavior.
 *
-* Consider a scenario where you have to build a digital controller for several 
+* Consider a scenario where you have to build a digital controller for several
 * physical variables, for example, a PID controller for temperature, humidity and
-* light. The PID algorithm will be the same for all variables. The only 
-* difference will be the variable input, the controlled output action and the 
-* PID gains. In this case, each of the PID tasks will utilize the same callback 
-* methods. The only difference will be the I/O parameters (specific for each 
+* light. The PID algorithm will be the same for all variables. The only
+* difference will be the variable input, the controlled output action and the
+* PID gains. In this case, each of the PID tasks will utilize the same callback
+* methods. The only difference will be the I/O parameters (specific for each
 * PID controller).
 *
 * Let’s define a PID data structure with the I/O variables and gains.
@@ -165,7 +165,7 @@
 *       float sp; /*Set-Point*/
 *       float Kc, Ki, Kd; /*PID Gains*/
 *   } PID_Params_t;
-*   
+*
 *   PID_Params_t TemperatureControl = {
 *      1.5_sec, /*time step*/
 *      0.0f, 0.0f, 0.0f, 0.0f, /*Initial IO state of yt and ut*/
@@ -186,7 +186,7 @@
 *   };
 *  @endcode
 *
-* A task will be added to the scheme to collect the sensor data and apply 
+* A task will be added to the scheme to collect the sensor data and apply
 * the respective control output.
 *
 *  @code{.c}
@@ -204,20 +204,20 @@
 *  }
 *  @endcode
 *
-* Then, three different tasks are created to apply the respective PID controller. 
-* Note that these tasks refer to the same callback method and we assign 
+* Then, three different tasks are created to apply the respective PID controller.
+* Note that these tasks refer to the same callback method and we assign
 * pointers to the respective variables.
 *
 *  @code{.c}
-*  os.addTask( TEMPERATURE_CONTROL_TASK, PIDControl_Callback,
-*              core::HIGHEST_PRIORITY, TemperatureControl.dt ,
-*              task::PERIODIC, taskState::ENABLED_STATE, &TemperatureControl );
-*  os.addTask( HUMIDITY_CONTROL_TASK, PIDControl_Callback,
-*              core::HIGHEST_PRIORITY, HumidityControl.dt,
-*              task::PERIODIC, taskState::ENABLED_STATE, &HumidityControl );
-*  os.addTask( LIGHT_CONTROL_TASK, PIDControl_Callback,
-*              core::HIGHEST_PRIORITY, LightControl.dt,
-*              task::PERIODIC, taskState::ENABLED_STATE, &LightControl );
+*  os.add( TEMPERATURE_CONTROL_TASK, PIDControl_Callback,
+*          core::HIGHEST_PRIORITY, TemperatureControl.dt ,
+*          task::PERIODIC, taskState::ENABLED_STATE, &TemperatureControl );
+*  os.add( HUMIDITY_CONTROL_TASK, PIDControl_Callback,
+*          core::HIGHEST_PRIORITY, HumidityControl.dt,
+*          task::PERIODIC, taskState::ENABLED_STATE, &HumidityControl );
+*  os.add( LIGHT_CONTROL_TASK, PIDControl_Callback,
+*          core::HIGHEST_PRIORITY, LightControl.dt,
+*          task::PERIODIC, taskState::ENABLED_STATE, &LightControl );
 *  @endcode
 *
 *  @code{.c}
@@ -244,12 +244,12 @@
 *
 * QuarkTS++ is widely compatible with most Arduino cores including 8bit architectures.
 * To install the QuarkTS++ OS into your Arduino IDE you can use the Library Manager
-* (available from IDE version 1.6.2). Open the IDE and click to the "Sketch" 
+* (available from IDE version 1.6.2). Open the IDE and click to the "Sketch"
 * menu and then Include Library > Manage Libraries.
 *
 * Then the Library Manager will open and you will find a list of libraries that
 * are already installed or ready for installation. Type in the search box "QuarkTS"
-* and when listed, click the install button. Once it has finished, an Installed 
+* and when listed, click the install button. Once it has finished, an Installed
 * tag should appear next to the library. You can close the library manager.
 *
 * You can now find the new library available in the Sketch > Include Library menu.
@@ -261,7 +261,7 @@
 *  #include "QuarkTS.h"
 *
 *  using namespace qOS;
-* 
+*
 *  void idleTask_Callback( event_t e ) {
 *       // TODO: add the idle activities
 *  }

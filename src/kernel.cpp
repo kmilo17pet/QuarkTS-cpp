@@ -47,7 +47,7 @@ bool core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qOS::duration_t t, const iteration_t n, const qOS::taskState s, void *arg ) noexcept
+bool core::add( task &Task, taskFcn_t callback, const priority_t p, const qOS::duration_t t, const iteration_t n, const qOS::taskState s, void *arg ) noexcept
 {
     (void)Task.setCallback( callback );
     (void)Task.time.set( t );
@@ -65,7 +65,7 @@ bool core::addTask( task &Task, taskFcn_t callback, const priority_t p, const qO
 static void fsmTaskCallback( event_t e )
 {
     /*cstat -CERT-EXP36-C_b*/
-    stateMachine * const sm = static_cast<stateMachine*>( e.thisTask().getAttachedObject() );
+    stateMachine * const sm = static_cast<stateMachine*>( e.thisTask().getBindedObject() );
     /*cstat +CERT-EXP36-C_b*/
     const sm::signal_t sig;
     (void)sm->run( sig );
@@ -73,9 +73,9 @@ static void fsmTaskCallback( event_t e )
 }
 /*cstat +MISRAC++2008-7-1-2*/
 /*============================================================================*/
-bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const qOS::duration_t t, const taskState s, void *arg ) noexcept
+bool core::add( task &Task, stateMachine &m, const priority_t p, const qOS::duration_t t, const taskState s, void *arg ) noexcept
 {
-    bool retValue = core::addTask( Task, fsmTaskCallback, p, t, task::PERIODIC, s, arg );
+    bool retValue = core::add( Task, fsmTaskCallback, p, t, task::PERIODIC, s, arg );
 
     if ( retValue ) {
         Task.aObj = &m;
@@ -94,7 +94,7 @@ bool core::addStateMachineTask( task &Task, stateMachine &m, const priority_t p,
 static void cliTaskCallback( event_t e )
 {
     /*cstat -CERT-EXP36-C_b*/
-    commandLineInterface * const c = static_cast<commandLineInterface*>( e.thisTask().getAttachedObject() );
+    commandLineInterface * const c = static_cast<commandLineInterface*>( e.thisTask().getBindedObject() );
     /*cstat +CERT-EXP36-C_b*/
     c->setData( &e );
     (void)c->run();
@@ -107,11 +107,11 @@ static void cliNotifyFcn( commandLineInterface *cli )
     /*cstat +CERT-EXP36-C_b*/
 }
 /*============================================================================*/
-bool core::addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg ) noexcept
+bool core::add( task &Task, commandLineInterface &cli, const priority_t p, void *arg ) noexcept
 {
     bool retValue = false;
 
-    if ( addEventTask( Task, cliTaskCallback, p, arg ) ) {
+    if ( add( Task, cliTaskCallback, p, arg ) ) {
         Task.aObj = &cli;
         cli.owner = &Task;
         cli.xNotifyFcn = &cliNotifyFcn;
@@ -162,7 +162,7 @@ bool core::setSchedulerReleaseCallback( taskFcn_t callback ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool core::removeTask( task &Task ) noexcept
+bool core::remove( task &Task ) noexcept
 {
     Task.setFlags( task::BIT_REMOVE_REQUEST, true );
     return true;
@@ -287,7 +287,7 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
             }
         case trigger::byNotificationSimple:
             taskEvent::EventData = Task->asyncData; /*Transfer async-data to the eventInfo structure*/
-            --Task->notifications;
+            Task->notifications = Task->notifications - 1; /* --Task->notifications; */
             break;
         #if ( Q_QUEUES == 1 )
             case trigger::byQueueReceiver:
@@ -426,7 +426,7 @@ bool core::notify( notifyMode mode, task &Task, void* eventData ) noexcept
     if ( &Task != &idle ) { /*idle task cannot be notified*/
         if ( notifyMode::SIMPLE == mode ) {
             if ( Task.notifications < MAX_NOTIFICATION_VALUE ) {
-                ++Task.notifications;
+                Task.notifications = Task.notifications + 1U; /*  ++Task.notifications;  */
                 Task.asyncData = eventData;
                 retValue = true;
             }
@@ -507,7 +507,7 @@ bool core::eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clea
     }
 
     if ( ( retValue ) && ( clearOnExit ) ) {
-        Task.flags &= ~flagsToCheck;
+        bits::multipleClear( Task.flags, flagsToCheck );
     }
 
     return retValue;
@@ -599,12 +599,12 @@ globalState core::getGlobalState( task &Task ) const noexcept
     return retValue;
 }
 /*============================================================================*/
-bool core::addInputWatcher( input::watcher &w ) noexcept
+bool core::add( input::watcher &w ) noexcept
 {
     return inputWatchers.insert( &w );
 }
 /*============================================================================*/
-bool core::removeInputWatcher( input::watcher &w ) noexcept
+bool core::remove( input::watcher &w ) noexcept
 {
     return inputWatchers.remove( &w );
 }

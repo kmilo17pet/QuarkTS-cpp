@@ -20,7 +20,7 @@ task LED_Task; /*The task node*/
 stateMachine LED_FSM; /*The state-machine handler*/
 sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
 sm::signalQueue<5> LEDsigqueue; /*The signal queue for the state machine*/
-sm::timeoutSpec tm_spectimeout; /*The timeout specification to handle timers within states*/
+sm::timeoutSpec TimeoutSpecs; /*The timeout specification to handle timers within states*/
 
 /*create the transition tables for every state*/
 sm::transition LEDOff_transitions[] = {
@@ -109,25 +109,21 @@ void setup() {
   Serial.begin(115200);
   logger::setOutputFcn( tracePutcWrapper );
   os.init( millis, idleTaskCallback );
-  inWatcher.add( button );
-  inWatcher.registerEvent( input::event::RISING_EDGE, buttonEvent );
-  os.addInputWatcher( inWatcher );
+  inWatcher.add( button, buttonEvent );
+  os.add( inWatcher ); //let the os handle the input-watcher
 
   LED_FSM.setup( nullptr, State_LEDOff );
   LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
   LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
   LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
 
-  LED_FSM.installSignalQueue( LEDsigqueue );
-  LED_FSM.installTimeoutSpec( tm_spectimeout );
-  State_LEDOn.setTimeouts( LedOn_Timeouts );
-  State_LEDBlink.setTimeouts( LEDBlink_timeouts );
+  LED_FSM.install( LEDsigqueue );
+  LED_FSM.install( TimeoutSpecs );
+  State_LEDOff.install( LEDOff_transitions );
+  State_LEDOn.install( LEDOn_transitions, LedOn_Timeouts );
+  State_LEDBlink.install( LEDBlink_transitions, LEDBlink_timeouts );
 
-  State_LEDOff.setTransitions( LEDOff_transitions );
-  State_LEDOn.setTransitions( LEDOn_transitions );
-  State_LEDBlink.setTransitions( LEDBlink_transitions );
-
-  os.addStateMachineTask( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
+  os.add( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
   LED_Task.setName("LEDFSM_Task1");
 }
 

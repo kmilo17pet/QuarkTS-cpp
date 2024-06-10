@@ -20,7 +20,7 @@ size_t byteBuffer::checkValidPowerOfTwo( size_t k ) noexcept
     return ( k < r ) ? ( k * 2U ) : k;
 }
 /*============================================================================*/
-bool byteBuffer::setup( volatile uint8_t *pBuffer, const size_t bLength ) noexcept
+bool byteBuffer::setup( volatile byte_t *pBuffer, const size_t bLength ) noexcept
 {
     bool retValue = false;
 
@@ -35,13 +35,13 @@ bool byteBuffer::setup( volatile uint8_t *pBuffer, const size_t bLength ) noexce
     return retValue;
 }
 /*============================================================================*/
-bool byteBuffer::put( const uint8_t bData ) noexcept
+bool byteBuffer::put( const byte_t bData ) noexcept
 {
     bool retValue = false;
 
     if ( !isFull() ) {
         buffer[ head % length ] = bData;
-        ++head;
+        head = head + 1U; /*  ++head; */
         retValue = true;
     }
 
@@ -54,7 +54,7 @@ bool byteBuffer::read( void *dst, const size_t n ) noexcept
 
     if ( n > 0U ) {
         /*cstat -CERT-EXP36-C_b*/
-        uint8_t * const pData = static_cast<uint8_t*>( dst );
+        byte_t * const pData = static_cast<byte_t*>( dst );
         /*cstat +CERT-EXP36-C_b*/
         for ( size_t i = 0U ; i < n ; ++i ) {
             (void)get( &pData[ i ] );
@@ -65,24 +65,24 @@ bool byteBuffer::read( void *dst, const size_t n ) noexcept
     return retValue;
 }
 /*============================================================================*/
-bool byteBuffer::get( uint8_t *dst ) noexcept
+bool byteBuffer::get( byte_t *dst ) noexcept
 {
     bool retValue = false;
 
     if ( !isEmpty() ) {
         const index_t vTail = static_cast<size_t>( tail );
         *dst = buffer[ vTail % length ];
-        ++tail;
+        tail = tail + 1U; /* ++tail; */
         retValue = true;
     }
 
     return retValue;
 }
 /*============================================================================*/
-uint8_t byteBuffer::peek( void ) const noexcept
+byte_t byteBuffer::peek( void ) const noexcept
 {
     const index_t vTail = static_cast<size_t>( tail );
-    return static_cast<uint8_t>( buffer[ vTail % length ] );
+    return static_cast<byte_t>( buffer[ vTail % length ] );
 }
 /*============================================================================*/
 bool byteBuffer::isEmpty( void ) const noexcept

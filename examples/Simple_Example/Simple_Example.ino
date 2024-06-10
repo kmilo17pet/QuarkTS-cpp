@@ -50,8 +50,8 @@ void setup() {
 
   logger::setOutputFcn( tracePutcWrapper );
   os.init( millis, idleTask_callback );
-  os.addTask( demoTask1, demoTask1_Callback, core::MEDIUM_PRIORITY, 250_ms, task::PERIODIC );
-  os.addTask( blinkTask, blinkTask_callback, core::LOWEST_PRIORITY, 10_ms, task::PERIODIC );
+  os.add( demoTask1, demoTask1_Callback, core::MEDIUM_PRIORITY, 250_ms, task::PERIODIC );
+  os.add( blinkTask, blinkTask_callback, core::LOWEST_PRIORITY, 10_ms, task::PERIODIC );
   demoTask1.setName("demoTask1");
   blinkTask.setName("blinkTask");
 }

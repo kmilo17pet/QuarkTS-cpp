@@ -241,7 +241,7 @@ namespace qOS {
             (void)util::outputString( writeChar , "in{ 0x" );
             (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &in ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( writeChar , ( qOS::input::type::ANALOG == in.getType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
+            (void)util::outputString( writeChar , ( qOS::input::type::ANALOG_CHANNEL == in.getType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
             (void)util::unsignedToString( static_cast<unsigned_t>( in.getChannel() ), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
@@ -252,11 +252,7 @@ namespace qOS {
         }
 
         /*cstat +CERT-INT36-C*/
-        #if defined( ARDUINO_PLATFORM )
-        _logger& _logger::operator<<( const String & s )
-        #else
-        _logger& _logger::operator<<( const string & s )
-        #endif
+        _logger& _logger::operator<<( const qOS::string & s )
         {
             (void)util::outputString( writeChar, s.c_str() );
             return *this;

@@ -58,6 +58,7 @@ namespace qOS {
             /*! @cond */
             TM_MAX = 0xFFFFFFFBUL,
             TM_MIN = TM_MAX - ( Q_FSM_MAX_TIMEOUTS - 1 ),
+            /*! @endcond */
             #if ( 0 == Q_FSM_MAX_TIMEOUTS )
                 #warning "FSM has no defined internal timeouts"
             #elif ( 1 == Q_FSM_MAX_TIMEOUTS )
@@ -66,8 +67,17 @@ namespace qOS {
                 SIGNAL_TIMEOUT0= 0xFFFFFFFBUL,
                 SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
             #elif ( 3 == Q_FSM_MAX_TIMEOUTS )
+                /**
+                * @brief Built-in signal to indicate that the timeout at index 0 expired
+                */
                 SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                /**
+                * @brief Built-in signal to indicate that the timeout at index 1 expired
+                */
                 SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                /**
+                * @brief Built-in signal to indicate that the timeout at index 2 expired
+                */
                 SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
             #elif ( 4 == Q_FSM_MAX_TIMEOUTS )
                 SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
@@ -128,8 +138,10 @@ namespace qOS {
             #elif ( Q_FSM_MAX_TIMEOUTS > 10 )
                 #error "Max FSM allowed timeout should not be greater that 10"
             #endif
+            /*! @cond */
             MIN_SIGNAL = 0x0UL,
-            MAX_SIGNAL = TM_MIN - 1            /*! @endcond */
+            MAX_SIGNAL = TM_MIN - 1
+            /*! @endcond */
         };
 
 
@@ -579,7 +591,7 @@ namespace qOS {
                     return subscribe( &s, sFcn, nullptr );
                 }
                 /**
-                * @brief Installs a table with the outgoing transitions for this
+                * @brief Install a table with the outgoing transitions for this
                 * state
                 * @param[in] table An array of entries of type @c sm::transition_t with the
                 * outgoing transitions. Each entry relates signals, actions and the target
@@ -588,14 +600,74 @@ namespace qOS {
                 * @param[in] n The number of elements inside @a table.
                 * @return @c true on success, otherwise return @c false.
                 */
-                bool setTransitions( transition *table, size_t n ) noexcept;
+                bool install( transition *table, size_t n ) noexcept;
+                /**
+                * @brief Install a table with the outgoing transitions for this
+                * state
+                * @tparam numberOfTransitions The array size
+                * @param[in] table An array of entries of type @c sm::transition_t with the
+                * outgoing transitions. Each entry relates signals, actions and the target
+                * state using the following layout:
+                * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
+                * @return @c true on success, otherwise return @c false.
+                */
                 template <size_t numberOfTransitions>
-                bool setTransitions( transition (&table)[ numberOfTransitions ] ) noexcept // skipcq : CXX-W2066
+                bool install( transition (&table)[ numberOfTransitions ] ) noexcept // skipcq : CXX-W2066
                 {
-                    return setTransitions( table, numberOfTransitions );
+                    return install( table, numberOfTransitions );
                 }
                 /**
-                * @brief Setup fixed timeouts for the specified state using a lookup-table.
+                * @brief Install both, a table with the outgoing transitions for this
+                * state and fixed timeouts for the specified state using a lookup-table.
+                * @pre The container state-machine must have a timeout-specification
+                * installed.
+                * @note The lookup table should be an array of type
+                * timeoutStateDefinition with @a n elements matching { time, options }.
+                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
+                * @param[in] table An array of entries of type @c sm::transition_t with the
+                * outgoing transitions. Each entry relates signals, actions and the target
+                * state using the following layout:
+                * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
+                * @param[in] nTable The number of elements inside @a table.
+                * @param[in] def The lookup table matching the requested timeout values
+                * with their respective options.
+                * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
+                * @param[in] nDef The number of elements inside @a def.
+                * @return @c true on success, otherwise return @c false.
+                */
+                inline bool install( transition *table, size_t nTable, timeoutStateDefinition *def, size_t nDef )
+                {
+                    bool ret = true;
+                    ret &= install( table, nTable );
+                    ret &= install( def, nDef );
+                    return ret;
+                }
+                /**
+                * @brief Install both, a table with the outgoing transitions for this
+                * state and fixed timeouts for the specified state using a lookup-table.
+                * @pre The container state-machine must have a timeout-specification
+                * installed.
+                * @note The lookup table should be an array of type
+                * timeoutStateDefinition with @a n elements matching { time, options }.
+                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
+                * @tparam numberOfTransitions The number of elements in @a table
+                * @tparam numberOfTimeoutDefs The number of elements in @a def
+                * @param[in] table An array of entries of type @c sm::transition_t with the
+                * outgoing transitions. Each entry relates signals, actions and the target
+                * state using the following layout:
+                * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
+                * @param[in] def The lookup table matching the requested timeout values
+                * with their respective options.
+                * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
+                * @return @c true on success, otherwise return @c false.
+                */
+                template <size_t numberOfTransitions, size_t numberOfTimeoutDefs>
+                bool install( transition (&table)[ numberOfTransitions ], timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept // skipcq : CXX-W2066
+                {
+                    return install( table, numberOfTransitions, def, numberOfTimeoutDefs );
+                }
+                /**
+                * @brief Install fixed timeouts for the specified state using a lookup-table.
                 * @attention This feature its only available if the FSM has a signal-queue
                 * installed.
                 * @pre The container state-machine must have a timeout-specification
@@ -609,11 +681,26 @@ namespace qOS {
                 * @param[in] n The number of elements inside @a def.
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
-                bool setTimeouts( timeoutStateDefinition *def, size_t n ) noexcept;
+                bool install( timeoutStateDefinition *def, size_t n ) noexcept;
+                /**
+                * @brief Install fixed timeouts for the specified state using a lookup-table.
+                * @attention This feature its only available if the FSM has a signal-queue
+                * installed.
+                * @pre The container state-machine must have a timeout-specification
+                * installed.
+                * @note The lookup table should be an array of type
+                * timeoutStateDefinition with @a n elements matching { time, options }.
+                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
+                * @tparam numberOfTimeoutDefs The number of elements in @a def
+                * @param[in] def The lookup table matching the requested timeout values
+                * with their respective options.
+                * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
+                * @return Returns @c true on success, otherwise returns @c false.
+                */
                 template <size_t numberOfTimeoutDefs>
-                bool setTimeouts( timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept // skipcq : CXX-W2066
+                bool install( timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept // skipcq : CXX-W2066
                 {
-                    return setTimeouts( def, numberOfTimeoutDefs );
+                    return install( def, numberOfTimeoutDefs );
                 }
                 /**
                 * @brief Retrieve the state data or storage-pointer
@@ -777,7 +864,7 @@ namespace qOS {
             /*! @endcond  */
             /**
             * @brief Initializes a Finite State Machine (FSM).
-            * @see core::addStateMachineTask()
+            * @see core::add()
             * @note This API also initializes the top state.
             * @param[in] topFcn The callback for the "Top" state.
             * @param[in] init The first state to be executed (init-state or default
@@ -821,16 +908,16 @@ namespace qOS {
             }
             /**
             * @brief Install a signal queue to the provided Finite State Machine (FSM).
-            * @note It is recommended to define the queue as an object of type
-            * sm::signalQueue o that the queue is configured automatically.
-            * Otherwise the user must configure it explicitly.
             * @pre Queue object should be previously initialized by using
             * queue::setup()
+            * @note It is recommended to define the queue as an object of type
+            * sm::signalQueue so that the queue is configured automatically.
+            * Otherwise the user must configure it explicitly.
             * @attention Queue item size = sizeof( @ref sm::signal_t )
             * @param[in] q The queue to be installed.
             * @return @c true on success, otherwise return @c false.
             */
-            bool installSignalQueue( queue& q ) noexcept;
+            bool install( queue& q ) noexcept;
 
             /**
             * @brief Install a signal queue to the provided Finite State Machine (FSM).
@@ -839,13 +926,11 @@ namespace qOS {
             * @return @c true on success, otherwise return @c false.
             */
             template <size_t numberOfSignals>
-            bool installSignalQueue( sm::signalQueue<numberOfSignals> &sq )
+            bool install( sm::signalQueue<numberOfSignals> &sq ) noexcept
             {
                 sq.q.setup( sq.qStack, sizeof(sm::signal_t), numberOfSignals );
-                return installSignalQueue( sq.q );
+                return install( sq.q );
             }
-
-
             /**
             * @brief Sends a signal to a state machine
             * @note If the signal queue is not available, an exclusion variable will be
@@ -870,9 +955,8 @@ namespace qOS {
             {
                 return sendSignal( static_cast<sm::signalID>( sig ), sData, isUrgent );
             }
-
             /**
-            * @brief Install the Timeout-specification object to target FSM to allow
+            * @brief Install the Timeout-specification object to target FSM and allow
             * timed signals within states.
             * @attention This feature its only available if the FSM has a signal-queue
             * installed.
@@ -884,7 +968,7 @@ namespace qOS {
             * @param[in] ts The timeout specification object.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool installTimeoutSpec( sm::timeoutSpec &ts ) noexcept;
+            bool install( sm::timeoutSpec &ts ) noexcept;
             /**
             * @brief Set the time for the selected built-in timeout inside the target FSM.
             * @pre Requires an installed timeout-specification.
@@ -942,7 +1026,7 @@ namespace qOS {
             void setSurrounding( const sm::surroundingCallback_t &sFcn ) noexcept;
             /**
             * @brief Execute the Finite State Machine (FSM).
-            * @see core::addStateMachineTask()
+            * @see core::add()
             * @param[in] sig User-defined signal (this value will be ignored if the
             * installed queue has items available)
             * @note A signal coming from the signal-queue has the higher precedence.

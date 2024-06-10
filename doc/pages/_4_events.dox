@@ -1,20 +1,20 @@
 /*! @page q_events Events
 * @tableofcontents
-* 
+*
 * @section eventdata Retrieving the event data
-* In the QuarkTS++ OS, tasks can be triggered from multiple event sources including 
+* In the QuarkTS++ OS, tasks can be triggered from multiple event sources including
 * time-elapsed, notifications, queues and event-flags. This can lead to several
-* situations that must be handled by the application writer from the task 
+* situations that must be handled by the application writer from the task
 * context, for example:
 *
 * - What is the event source that triggers the task execution?
 * - How to get the event-associated data?
 * - What is the task execution status?
 *
-* The OS provides a simple approach for this, a class with all the 
-* regarding information of the task execution. This class, that is already 
-* defined in the callback function as the @ref qOS::event_t argument, is filled by the 
-* kernel dispatcher, so the application writer only needs to read the fields 
+* The OS provides a simple approach for this, a class with all the
+* regarding information of the task execution. This class, that is already
+* defined in the callback function as the @ref qOS::event_t argument, is filled by the
+* kernel dispatcher, so the application writer only needs to read the fields
 * inside.
 *
 * This class has the following attributes and methods:
@@ -30,33 +30,33 @@
 *      task& self( void );
 *  };
 *  @endcode
-* 
+*
 * Please review the @ref qOS::event_t class reference for more details.
 *
-* @note  When tasks are defined using the object-oriented programming approach, 
-* this structure can be obtained within the @c activities method using the 
+* @note  When tasks are defined using the object-oriented programming approach,
+* this structure can be obtained within the @c activities method using the
 * qOS::task::eventData().
 *
 * @section q_event_timeelapsed The Time-Elapsed event
-* Running tasks at pre-determined rates is desirable in many situations, like 
+* Running tasks at pre-determined rates is desirable in many situations, like
 * sensory data acquisition, low-level servoing, control loops, action planning
 * and system monitoring.
-* As previously explained in @ref q_addtasks, you can schedule tasks at any interval 
-* your design demands, at least, if the time specification is lower than the 
+* As previously explained in @ref q_addtasks, you can schedule tasks at any interval
+* your design demands, at least, if the time specification is lower than the
 * scheduler tick. When an application consists of several periodic tasks with
 * individual timing constraints, a few points must  be taken:
 *
 * - When the time interval of a certain task has elapsed, the scheduler triggers
-* the @c byTimeElapsed event that put the task in a @c READY state (see 
+* the @c byTimeElapsed event that put the task in a @c READY state (see
 * figure below).
-* - If a task has a finite number of iterations, the scheduler will disable the 
+* - If a task has a finite number of iterations, the scheduler will disable the
 * task when the number of iterations reaches the programmed value.
-* - Tasks always have an inherent time lag that can be noticed even more, when 
-* the programmed time interval is too low (see figure below). In a real-time 
+* - Tasks always have an inherent time lag that can be noticed even more, when
+* the programmed time interval is too low (see figure below). In a real-time
 * context, it is important to reduce this time lag or jitter, to an acceptable
 * level for the application.
 *
-* @remark QuarkTS++ uses the TTA approach to trigger time-elapsed events as 
+* @remark QuarkTS++ uses the TTA approach to trigger time-elapsed events as
 * explained here @ref q_timmingapproach
 * @note QuarkTS++ can generally meet a time deadline if you use lightweight code
 * in the callbacks and there is a reduced pool of pending tasks, so it can be
@@ -79,11 +79,11 @@
 * <em>Inherent time lag</em>
 * </center>
 *
-* - The most significant delay times are produced inside the callbacks. As 
+* - The most significant delay times are produced inside the callbacks. As
 * mentioned before, use short efficient callback methods written for cooperative
 * scheduling.
 * - If two tasks have the same time interval, the scheduler executes first, the
-* task with the highest priority value (see figure below). 
+* task with the highest priority value (see figure below).
 *
 * <center>
 * @htmlonly
@@ -105,9 +105,9 @@
 * Applications existing in heavy environments require tasks and ISR interacting
 * with each other, forcing the application to implement some event model. Here,
 * we understand events, as any identifiable occurrence that has significance for
-* the embedded system. As such, events include changes in hardware, 
-* user-generated actions or messages coming from components of the application 
-* itself. 
+* the embedded system. As such, events include changes in hardware,
+* user-generated actions or messages coming from components of the application
+* itself.
 *
 * <center>
 * @htmlonly
@@ -125,29 +125,29 @@
 * <em>Heavy cooperative environment</em>
 * </center>
 *
-* As shown in the figure above, two main scenarios are presented, ISR-to-task and 
+* As shown in the figure above, two main scenarios are presented, ISR-to-task and
 * task-to-task interaction.
 *
 * When using interrupts to catch external events, it is expected to be handled
-* with fast and lightweight code to reduce the variable ISR overhead introduced 
-* by the code itself. If too much overhead is used inside an ISR, the system 
-* will tend to lose future events. In some specific situations, in the interest 
-* of stack usage predictability and to facilitate system behavioral analysis, 
+* with fast and lightweight code to reduce the variable ISR overhead introduced
+* by the code itself. If too much overhead is used inside an ISR, the system
+* will tend to lose future events. In some specific situations, in the interest
+* of stack usage predictability and to facilitate system behavioral analysis,
 * the best approach is to synchronize the ISR with a task to leave the heavy job
-* in the base level instead of the interrupt level, so the interrupt handler only 
-* collect event data and clear the interrupt source and therefore exit promptly 
-* by deferring the processing of the event data to a task, this is also called 
+* in the base level instead of the interrupt level, so the interrupt handler only
+* collect event data and clear the interrupt source and therefore exit promptly
+* by deferring the processing of the event data to a task, this is also called
 * <em>Deferred Interrupt Handling</em>.
 *
-* The other scenario is when a task is performing a specific job and another 
+* The other scenario is when a task is performing a specific job and another
 * task must be awakened to perform some activities when the other task finishes.
 **
-* Both scenarios require some ways in which tasks can communicate with each 
+* Both scenarios require some ways in which tasks can communicate with each
 * other. For this, the OS does not impose any specific event processing strategy
-* to the application designer but does provide features that allow the chosen 
-* strategy to be implemented in a simple and maintainable way. From the OS 
-* perspective, these features are just sources of asynchronous events with 
-* specific triggers and related data. 
+* to the application designer but does provide features that allow the chosen
+* strategy to be implemented in a simple and maintainable way. From the OS
+* perspective, these features are just sources of asynchronous events with
+* specific triggers and related data.
 *
 * The OS provides the following features for inter-task communication:
 *
@@ -155,7 +155,7 @@
 * The notifications allow tasks to interact with other tasks and to synchronize
 * with ISRs without the need of intermediate variables or separate communication
 * objects. By using notifications, a task or ISR can launch another task sending
-* an event and related data to the receiving task. This is depicted in the 
+* an event and related data to the receiving task. This is depicted in the
 * figure below.
 *
 * <center>
@@ -175,13 +175,13 @@
 * </center>
 *
 * @subsubsection q_simplenot Simple Notifications
-* Each task node has a 32-bit notification value which is initialized to zero 
-* when a task is added to the scheme. The method qOS::core::notify() with mode = 
-* qOS::notifyMode::SIMPLE with is used to send an event directly updating the 
-* receiving task's notification value increasing it by one. As long as the 
+* Each task node has a 32-bit notification value which is initialized to zero
+* when a task is added to the scheme. The method qOS::core::notify() with mode =
+* qOS::notifyMode::SIMPLE with is used to send an event directly updating the
+* receiving task's notification value increasing it by one. As long as the
 * scheduler sees a non-zero value, the task
-* will be changed to a @c READY state and eventually, the dispatcher will 
-* launch the task according to the execution chain. After being served, the 
+* will be changed to a @c READY state and eventually, the dispatcher will
+* launch the task according to the execution chain. After being served, the
 * notification value is later decreased.
 *
 * @note Sending simple notifications using qOS::core::notify() is
@@ -189,17 +189,17 @@
 * method overwrites the associated data.
 *
 * @subsubsection q_queuednot Queued Notifications
-* If the application notifies multiple events to the same task, queued 
+* If the application notifies multiple events to the same task, queued
 * notifications are the right solution instead of using simple notifications.
 *
-* Here, the qOS::core::notify() with mode = qOS::notifyMode::QUEUED take advantage of the 
-* scheduler FIFO priority-queue. This kind of queue, is somewhat similar to a 
+* Here, the qOS::core::notify() with mode = qOS::notifyMode::QUEUED take advantage of the
+* scheduler FIFO priority-queue. This kind of queue, is somewhat similar to a
 * standard queue, with an important distinction: when a notification is sent,
-* the task is added  to the queue with the corresponding priority level, and 
-* will be later removed from the queue with the highest priority task first. 
+* the task is added  to the queue with the corresponding priority level, and
+* will be later removed from the queue with the highest priority task first.
 * That is, the tasks are (conceptually) stored in the queue in priority order
-* instead of the insertion order. If two tasks with the same priority are 
-* notified, they are served in the FIFO form according to their order inside 
+* instead of the insertion order. If two tasks with the same priority are
+* notified, they are served in the FIFO form according to their order inside
 * the queue. The figure below illustrates this behavior.
 *
 * <center>
@@ -218,19 +218,19 @@
 * <em>Priority-queue behavior</em>
 * </center>
 *
-* The scheduler always checks the queue state first, being this event the one 
-* with more precedence among the others. If the queue has elements, the 
-* scheduler algorithm will extract the data and the corresponding task will be 
+* The scheduler always checks the queue state first, being this event the one
+* with more precedence among the others. If the queue has elements, the
+* scheduler algorithm will extract the data and the corresponding task will be
 * launched with the trigger flag set in @c byNotificationQueued.
 *
-* The next figure, shows a cooperative environment with five tasks. Initially, 
-* the scheduler activates @c Task-E, then, this task enqueues data to @c Task-A and 
-* @c Task-B respectively using the qOS::core::notify() using the qOS::notifyMode::QUEUED mode. 
+* The next figure, shows a cooperative environment with five tasks. Initially,
+* the scheduler activates @c Task-E, then, this task enqueues data to @c Task-A and
+* @c Task-B respectively using the qOS::core::notify() using the qOS::notifyMode::QUEUED mode.
 * In the next  scheduler cycle, the scheduler realizes that the priority-queue is not empty,
-* generating an activation over the task located at the beginning of the queue. 
-* In this case, @c Task-A will be launched and its respective data will be 
-* extracted from the queue. However, @c Task-A also enqueues data to @c Task-C and 
-* @c Task-D. Following the priority-queue behavior, the scheduler makes a new 
+* generating an activation over the task located at the beginning of the queue.
+* In this case, @c Task-A will be launched and its respective data will be
+* extracted from the queue. However, @c Task-A also enqueues data to @c Task-C and
+* @c Task-D. Following the priority-queue behavior, the scheduler makes a new
 * reordering, so the next queue extraction will be for @c Task-D, @c Task-C, and
 * @c Task-B sequentially.
 *
@@ -249,23 +249,23 @@
 * @endhtmlonly
 * <em>Priority-queue example</em>
 * </center>
-* 
 *
-* @note Any queue extraction involves an activation of the receiving task. The 
+*
+* @note Any queue extraction involves an activation of the receiving task. The
 * extracted data will be available inside the qOS::event_t class.
 * @remark Among all the provided events, queued notifications have the highest
 * precedence.
 *
 * @subsubsection q_notificationsend Sending notifications
 * The kernel handles all the notifications by itself (simple or queued), so
-* intermediate objects are not needed. Just calling qOS::core::notify() is enough to 
-* send notifications. After the task callback is invoked, the notification is 
+* intermediate objects are not needed. Just calling qOS::core::notify() is enough to
+* send notifications. After the task callback is invoked, the notification is
 * cleared by the dispatcher. Here the application writer must read the respective
-* fields of the event-data class to check the received notification. 
+* fields of the event-data class to check the received notification.
 *
-* The next example shows an ISR to task communication. Two interrupts send 
-* notifications to a single task with specific event data. The receiver task 
-* @c taskA after further processing, send an event to @c taskB to handle the 
+* The next example shows an ISR to task communication. Two interrupts send
+* notifications to a single task with specific event data. The receiver task
+* @c taskA after further processing, send an event to @c taskB to handle the
 * event generated by the transmitter @c taskA.
 *
 *  @code{.c}
@@ -277,14 +277,14 @@
 *  task_t taskA, taskB;
 *  void taskA_Callback( event_t e );
 *  void taskB_Callback( event_t e );
-*  
+*
 *  const char *app_events[] = {
 *                              "Timer1seg",
 *                              "ButtonRisingEdge",
 *                              "ButtonFallingEdge",
 *                              "3Count_ButtonPush"
 *                             };
-*  
+*
 *  /*==================================================================*/
 *  void interrupt Timer1Second_ISR( void) {
 *      os.notify( notifyMode::SIMPLE, taskA );
@@ -303,9 +303,9 @@
 *  /*==================================================================*/
 *  void taskA_Callback( event_t e ) {
 *      static int press_counter = 0;
-*      
+*
 *      switch ( e.getTrigger() ) { /*check the source of the event*/
-*          case trigger::byNotificationSimple: 
+*          case trigger::byNotificationSimple:
 *              /*
 *              * Do something here to process the timer event
 *              */
@@ -330,7 +330,7 @@
 *      if ( trigger::byNotificationSimple == e.getTrigger() ) {
 *          /*
 *           * we can do more here, but this is just an example,
-*           * so, this task will only print out the received 
+*           * so, this task will only print out the received
 *           * notification event.
 *           */
 *          trace::log << static_cast<char>( e->EventData ) << trace::endl;
@@ -342,30 +342,30 @@
 *      trace::setOutputFcn( HAL_OutPutChar );
 *      /* setup the scheduler to handle up to 10 queued notifications*/
 *      os.init( HAL_GetTick, nullptr );
-*      os.addEventTask( taskA, taskA_Callback, core::LOWEST_PRIORITY );
-*      os.addEventTask( taskB, taskB_Callback, core::LOWEST_PRIORITY );
+*      os.add( taskA, taskA_Callback, core::LOWEST_PRIORITY );
+*      os.add( taskB, taskB_Callback, core::LOWEST_PRIORITY );
 *      os.run();
 *      return 0;
 *  }
 *  @endcode
 *
 * @subsubsection qnotspread Spread a notification
-* In some systems, we need the ability to broadcast an event to all tasks. This 
-* is often referred to as a barrier. This means that a group of tasks should 
-* stop activities at some point and cannot proceed until another task or ISR 
+* In some systems, we need the ability to broadcast an event to all tasks. This
+* is often referred to as a barrier. This means that a group of tasks should
+* stop activities at some point and cannot proceed until another task or ISR
 * raise a specific event. For this kind of implementation, we can also use the
 * qOS::core::notify() method but in this case, without specifying a target task.
 *
 * @note In this mode, qOS::core::notify() spreads a notification event among all the
 * tasks in the scheduling scheme, so, for tasks that are not part of the barrier,
-* just discard the notification. This operation will be performed in the next 
+* just discard the notification. This operation will be performed in the next
 * scheduling cycle.
 *
 * @subsection q_queues Queues
-* A queue is a linear data structure with simple operations based on the FIFO 
-* (First In First Out) principle. It is capable to hold a finite number of 
-* fixed-size data items. The maximum number of items that a queue can hold is 
-* called its length. Both the length and the size of each data item are set 
+* A queue is a linear data structure with simple operations based on the FIFO
+* (First In First Out) principle. It is capable to hold a finite number of
+* fixed-size data items. The maximum number of items that a queue can hold is
+* called its length. Both the length and the size of each data item are set
 * when the queue is created.
 *
 * <center>
@@ -384,68 +384,68 @@
 * <em>Queues conceptual representation</em>
 * </center>
 *
-* As shown above, the last position is connected back to the first 
+* As shown above, the last position is connected back to the first
 * position to make a circle. It is also called ring-buffer or circular-queue.
-* 
-* In general, this kind of data structure is used to serialize data between 
+*
+* In general, this kind of data structure is used to serialize data between
 * tasks, allowing some elasticity in time. In many cases, the queue is used as
-* a data buffer in interrupt service routines. This buffer will collect the data 
-* so, at some later time, another task can fetch the data for further 
+* a data buffer in interrupt service routines. This buffer will collect the data
+* so, at some later time, another task can fetch the data for further
 * processing. This use case is the single "task to task" buffering case. There
 * are also other applications for queues as serializing many data streams
 * into one receiving stream (multiple tasks to a single task) or vice-versa
 * (single task to multiple tasks).
-* 
-* @note The OS uses the queue by copy method. Queuing by copy is considered to 
+*
+* @note The OS uses the queue by copy method. Queuing by copy is considered to
 * be simultaneously more powerful and simpler to use than queuing by reference.
 *
-* Queuing by copy does not prevent the queue from also being used to queue by 
-* reference. For example, when the size of the data being queued makes it 
+* Queuing by copy does not prevent the queue from also being used to queue by
+* reference. For example, when the size of the data being queued makes it
 * impractical to copy the data into the queue, then a pointer to the data can be
 * copied into the queue instead.
 *
 * @subsubsection  q_queuesetup Setting up a queue
-* A queue must be explicitly initialized before it can be used. These objects 
-* are referenced by the class qOS::queue. Both, the constructor or the qOS::queue::setup() 
+* A queue must be explicitly initialized before it can be used. These objects
+* are referenced by the class qOS::queue. Both, the constructor or the qOS::queue::setup()
 * method can be used to configure the queue and initialize the instance.
 *
-* The required RAM for the queue data should be provided by the application 
-* writer and could be statically allocated at compile time or in run-time using 
+* The required RAM for the queue data should be provided by the application
+* writer and could be statically allocated at compile time or in run-time using
 * the @ref q_memmang extension.
 *
 * @subsubsection q_attachqueue Attach a queue to a task
 *
-* Additional features are provided by the kernel when the queues are attached 
-* to tasks; this allows the scheduler to pass specific queue events to it, 
-* usually, states of the object itself that needs to be handled, in this case 
+* Additional features are provided by the kernel when the queues are attached
+* to tasks; this allows the scheduler to pass specific queue events to it,
+* usually, states of the object itself that needs to be handled, in this case
 * by a task. For this, use the qOS::task::attachQueue() method.
 *
 * The following attaching modes are provided:
-* - qOS::queueLinkMode::QUEUE_RECEIVER : The task will be triggered if there are elements 
+* - qOS::queueLinkMode::QUEUE_RECEIVER : The task will be triggered if there are elements
 * in the queue.
 * - qOS::queueLinkMode::QUEUE_FULL : The task will be triggered if the queue is full.
-* - qOS::queueLinkMode::QUEUE_COUNT : The task will be triggered if the count of elements in 
+* - qOS::queueLinkMode::QUEUE_COUNT : The task will be triggered if the count of elements in
 * the queue reaches the specified value.
 * - qOS::queueLinkMode::QUEUE_EMPTY : The task will be triggered if the queue is empty.
 *
-* @note For the qOS::queueLinkMode::QUEUE_RECEIVER mode, data from the front of the queue 
-* will be received automatically in every trigger, this involves a data removal 
-* after the task is served. During the respective task execution, the qOS::event_t::EventData 
-* field of the qOS::event_t class will be pointing to the extracted data. For 
-* the other modes, the qOS::event_t::EventData field will point to the queue that 
+* @note For the qOS::queueLinkMode::QUEUE_RECEIVER mode, data from the front of the queue
+* will be received automatically in every trigger, this involves a data removal
+* after the task is served. During the respective task execution, the qOS::event_t::EventData
+* field of the qOS::event_t class will be pointing to the extracted data. For
+* the other modes, the qOS::event_t::EventData field will point to the queue that
 * triggered the event.
-* 
+*
 * @subsubsection q_queueexample A queue example
 * This example shows the usage of QuarkTS++ queues. The application is the classic
-* producer/consumer example. The producer task puts data into the queue. When 
-* the queue reaches a specific item count, the consumer task is triggered to 
+* producer/consumer example. The producer task puts data into the queue. When
+* the queue reaches a specific item count, the consumer task is triggered to
 * start fetching data from the queue. Here, both tasks are attached to the queue.
-* 
+*
 *  @code{.c}
 *  #include "QuarkTS.h"
 *
 *  using namespace qOS;
-*  
+*
 *  /*-----------------------------------------------------------------------*/
 *  void interrupt Timer0_ISR( void ) {
 *      clock::sysTick();
@@ -454,9 +454,9 @@
 *  task tProducer, tConsumer; /*task nodes*/
 *  queue userQueue; /*Queue Handle*/
 *  /*-----------------------------------------------------------------------*/
-*  
-*  /* The producer task puts data into the buffer if there is enough free 
-*   * space in it, otherwise the task blocks itself and wait until the queue 
+*
+*  /* The producer task puts data into the buffer if there is enough free
+*   * space in it, otherwise the task blocks itself and wait until the queue
 *   * is empty to resume. */
 *  void tProducer_Callback( event_t e ) {
 *      static uint16_t unData = 0;
@@ -465,11 +465,11 @@
 *      if ( byQueueEmpty == e.getTrigger() ) {
 *          e.thisTask().resume();
 *      }
-*  
+*
 *      /*send data to the queue*/
 *      if ( false == UserQueue.send( &unData ) ) {
 *          /*
-*          * if the data insertion fails, the queue is full 
+*          * if the data insertion fails, the queue is full
 *          * and the task disables itself
 *          */
 *          e.thisTask().suspend();
@@ -480,7 +480,7 @@
 *  void tConsumer_Callback( event_t e ) {
 *      uint16_t unData;
 *      queue *ptrQueue; /*a pointer to the queue that triggers the event*/
-*      
+*
 *      if ( byQueueCount == e.getTrigger ) {
 *          ptrQueue = (queue_t *)e.EventData;
 *          ptrQueue->receive( &unData );
@@ -498,19 +498,19 @@
 *      /* next line is used to set up hardware with specific code to fire
 *       * interrupts at 1ms - timer tick*/
 *      Configure_Periodic_Timer0_Interrupt_1ms();
-* 
+*
 *      os.init( nullptr, IdleTask_Callback );
 *      /*Setup the queue*/
 *      userQueue.setup<uint16_t>( BufferMem, 16 );
-*                   
+*
 *      /*  Append the producer task with 100mS rate. */
-*      os.addTask( tProducer, tProducer_Callback, core::MEDIUM_PRIORITY,
-*                  100_ms, task::PERIODIC, taskState::ENABLED_STATE, "producer" );
+*      os.add( tProducer, tProducer_Callback, core::MEDIUM_PRIORITY,
+*              100_ms, task::PERIODIC, taskState::ENABLED_STATE, "producer" );
 *      /* Append the consumer as an event task. The consumer will
 *       * wait until an event trigger their execution
 *       */
-*      os.addEventTask( tConsumer, tConsumer_Callback, core::MEDIUM_PRIORITY, "consumer" );
-*      /* the queue will be attached to the consumer task 
+*      os.add( tConsumer, tConsumer_Callback, core::MEDIUM_PRIORITY, "consumer" );
+*      /* the queue will be attached to the consumer task
 *       * in Count mode. This mode sends an event to the consumer
 *       * task when the queue fills to a level of 4 elements
 *       */
@@ -519,7 +519,7 @@
 *       * queueLinkMode = QUEUE_EMPTY mode. This mode sends an event to the producer
 *       * task when the queue is empty
 *       */
-*       
+*
 *      tProducer.attachQueue( userQueue, queueLinkMode::QUEUE_EMPTY );
 *      os.run();
 *      return 0;
@@ -527,11 +527,11 @@
 *  @endcode
 *
 * @subsection qeventflags Event Flags
-* Every task node has a set of built-in event bits called Event-Flags, which can 
+* Every task node has a set of built-in event bits called Event-Flags, which can
 * be used to indicate if an event has occurred or not. They are somewhat similar
 * to signals, but with greater flexibility, providing a low-cost, but flexible
-* means of passing simple messages between tasks. One task can set or clear any 
-* combination of event flags. Another task may read the event flag group at any 
+* means of passing simple messages between tasks. One task can set or clear any
+* combination of event flags. Another task may read the event flag group at any
 * time or may wait for a specific pattern of flags.
 *
 * <center>
@@ -550,35 +550,35 @@
 * <em>Task event flags</em>
 * </center>
 *
-* Up to twenty(20) bit-flags are available per task and whenever the scheduler 
+* Up to twenty(20) bit-flags are available per task and whenever the scheduler
 * sees that one event-flag is set, the kernel will trigger the task execution.
 *
-* @note The scheduler will put the task into a @c READY state when any of 
+* @note The scheduler will put the task into a @c READY state when any of
 * the available event-flags is set. The flags should be cleared by the
 * application writer explicitly
-* 
+*
 * @subsubsection q_eventflagsexample Using the task Event-flags
-* This example demonstrates the usage of Event-flags. The idle task will 
+* This example demonstrates the usage of Event-flags. The idle task will
 * transmit data generated from another task, only when the required conditions
-* are met, including two events from an ISR (A timer expiration and the change 
-* of a digital input) and when a new set of data is generated. The task that 
-* generates the data should wait until the idle task transmission is done to 
+* are met, including two events from an ISR (A timer expiration and the change
+* of a digital input) and when a new set of data is generated. The task that
+* generates the data should wait until the idle task transmission is done to
 * generate a new data set.
 *
 *  @code{.c}
 *  #include "QuarkTS.h"
 *
 *  using namespace qOS;
-*  
+*
 *  /*event flags application definitions */
 *  #define SWITCH_CHANGED   EVENT_FLAG(1)
 *  #define TIMER_EXPIRED    EVENT_FLAG(2)
 *  #define DATA_READY       EVENT_FLAG(3)
 *  #define DATA_TXMIT       EVENT_FLAG(4)
-*  
-*  task TaskDataProducer; 
+*
+*  task TaskDataProducer;
 *  uint8_t dataToTransmit[ 10 ] = { 0 };
-*  
+*
 *  /*-----------------------------------------------------------------------*/
 *  void interrupt Timer0_ISR( void ) {
 *      clock::sysTick();
@@ -596,17 +596,17 @@
 *  /*-----------------------------------------------------------------------*/
 *  void TaskDataProducer_Callback( event_t e ) {
 *      bool condition;
-*       
+*
 *      condition = os.eventFlagsCheck( TaskDataProducer, DATA_TXMIT, true, true );
 *      if ( true == condition) {
 *          GenerateData( dataToTransmit );
-*          os.eventFlagsModify( TaskDataProducer, DATA_READY, true ); 
+*          os.eventFlagsModify( TaskDataProducer, DATA_READY, true );
 *      }
 *      os.eventFlagsCheck( TaskDataProducer, DATA_READY | SWITCH_CHANGED | TIMER_EXPIRED, true, true );
 *  }
 *  /*-----------------------------------------------------------------------*/
 *  void IdleTask_Callback( event_t e ) {
-*      
+*
 *      TransmitData( dataToTransmit );
 *      os.eventFlagsModify( &TaskDataProducer, DATA_TXMIT, true );
 *  }
@@ -618,17 +618,17 @@
 *      Configure_Periodic_Timer0_Interrupt_1ms();
 *      Configure_Periodic_Timer1_Interrupt_2s();
 *      Configure_External_Interrupt();
-*      /* Idle task will be responsible to transmit the generate the data after 
+*      /* Idle task will be responsible to transmit the generate the data after
 *       * all conditions are met
 *      */
 *      os.init( nullptr, IdleTask_Callback );
 *      /* The task will wait until data is transmitted to generate another set of
 *       * data */
-*      os.addEventTask( TaskDataProducer, TaskDataProducer_Callback, core::HIGHEST_PRIORITY, "DATAPRODUCER" );
-*      /* Set the flag DATA_TXMIT as the initial condition to allow the data 
+*      os.add( TaskDataProducer, TaskDataProducer_Callback, core::HIGHEST_PRIORITY, "DATAPRODUCER" );
+*      /* Set the flag DATA_TXMIT as the initial condition to allow the data
 *       * generation at startup
 *      */
-*      os.eventFlagsModify( TaskDataProducer, DATA_TXMIT, true ); 
+*      os.eventFlagsModify( TaskDataProducer, DATA_TXMIT, true );
 *      os.run();
 *      for ( ;; ) {}
 *      return 0;

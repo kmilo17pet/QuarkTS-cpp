@@ -11,8 +11,8 @@ namespace qOS {
     /** @addtogroup qtaskmanip
     * @brief API interface to manage tasks.
     * @pre In order to be able to manage a task, make sure the task has already
-    * been added to the scheduling scheme bt using core::addTask(),
-    * core::addEventTask(), core::addStateMachineTask() or core::addCommandLineInterfaceTask().
+    * been added to the scheduling scheme by using one of the core::addk()
+    * overloads
     *  @{
     */
 
@@ -576,10 +576,16 @@ namespace qOS {
             */
             bool attachQueue( queue &q, const queueLinkMode mode, const size_t arg = 1U ) noexcept;
             /**
-            * @brief Retrieves the Task attached object
+            * @brief Retrieves a pointer to the object binded to the task, could
+            * be either a state-machine or a command-line-interface
             * @return A @c void pointer to the attached object.
             */
-            void * const & getAttachedObject( void ) const noexcept;
+            void * const & getBindedObject( void ) const noexcept;
+            /**
+            * @brief Retrieves a pointer to the queue attached to the task.
+            * @return A @c void pointer to the attached object.
+            */
+            queue* getQueue( void ) noexcept;
             /** @brief A constant to indicate that the task will run every time
             * its timeout has expired.
             */

@@ -3,7 +3,7 @@
 using namespace qOS;
 
 /*============================================================================*/
-void input::digitalChannel::updateReading( input::channelReaderFcn_t reader ) noexcept
+void input::digitalChannel::updateReading( void ) noexcept
 {
     int sample = reader( number );
 
@@ -13,7 +13,7 @@ void input::digitalChannel::updateReading( input::channelReaderFcn_t reader ) no
     value = sample;
 }
 /*============================================================================*/
-void input::analogChannel::updateReading( input::channelReaderFcn_t reader ) noexcept
+void input::analogChannel::updateReading(void) noexcept
 {
     value = ( isShared() ) ? ptrValue[ 0 ] : reader( number );
 }
@@ -236,7 +236,7 @@ bool input::watcher::watch( void ) noexcept
             input::channel& c = *i.get<input::channel*>();
             if ( nullptr != c.callback ) {
                 if ( nullptr != digitalReader ) {
-                    c.updateReading( digitalReader );
+                    c.updateReading();
                     c.evaluateState();
                 }
                 else {
@@ -250,7 +250,7 @@ bool input::watcher::watch( void ) noexcept
             input::channel& c = *i.get<input::channel*>();
             if ( nullptr != c.callback ) {
                 if ( ( nullptr != analogReader ) && c.isValidConfig() ) {
-                    c.updateReading( analogReader );
+                    c.updateReading();
                     c.evaluateState();
                 }
                 else {
@@ -263,7 +263,7 @@ bool input::watcher::watch( void ) noexcept
     return true;
 }
 /*============================================================================*/
-void input::digitalChannel::setInitalState( input::channelReaderFcn_t reader ) noexcept
+void input::digitalChannel::setInitalState( void ) noexcept
 {
     auto val = ( nullptr != reader ) ? reader( number ) : -1;
 
@@ -274,7 +274,7 @@ void input::digitalChannel::setInitalState( input::channelReaderFcn_t reader ) n
                                 : &input::digitalChannel::risingEdgeState;
 }
 /*============================================================================*/
-void input::analogChannel::setInitalState( input::channelReaderFcn_t reader ) noexcept
+void input::analogChannel::setInitalState( void ) noexcept
 {
     const auto val = ( nullptr != reader ) ? reader( number ) : -1;
 
@@ -293,18 +293,21 @@ bool input::watcher::add( input::channel& c ) noexcept
 {
     bool retValue;
 
-    if ( input::type::DIGITAL == c.getType() ) {
-        c.setInitalState( digitalReader );
+    if ( input::type::DIGITAL_CHANNEL == c.getType() ) {
+        c.setReader( digitalReader );
+        c.setInitalState();
         retValue = digitalChannels.insert( &c );
     }
     else {
-        c.setInitalState( analogReader );
+        c.setReader( analogReader );
+        c.setInitalState();
+        input::analogChannel& chan = static_cast<analogChannel&>( c );
         /* check if channel is shared( same channel number)*/
         for ( auto i = analogChannels.begin(); i.untilEnd() ; i++ ) {
-            input::channel& channelInWatcher = *i.get<input::channel*>();
+            input::analogChannel& channelInWatcher = *i.get<input::analogChannel*>();
 
-            if ( c.number == channelInWatcher.number  ) {
-                c.ptrValue = &channelInWatcher.value;
+            if ( chan.number == channelInWatcher.number ) {
+                chan.ptrValue = &channelInWatcher.value;
                 break;
             }
         }
@@ -319,13 +322,13 @@ bool input::watcher::remove( input::channel& c ) noexcept
 {
     list *channelContainer = c.getContainer();
     const bool retValue = channelContainer->remove( &c );
-    c.ptrValue = &c.value;
+    c.unShare();
 
-    if ( ( input::type::ANALOG == c.getType() ) && !c.isShared() ) {
-        int *newPtrVal = nullptr;
+    if ( ( input::type::ANALOG_CHANNEL == c.getType() ) && !c.isShared() ) {
+        analogValue_t *newPtrVal = nullptr;
         /*find the next shared channel*/
         for ( auto i = analogChannels.begin(); i.untilEnd() ; i++ ) {
-            input::channel& channelInList = *i.get<input::channel*>();
+            input::analogChannel& channelInList = *i.get<input::analogChannel*>();
 
             if ( channelInList.number == c.number ) {
                 if ( nullptr == newPtrVal ) { /*first shared channel*/
@@ -398,14 +401,14 @@ bool input::analogChannel::setTime( const input::event e, const qOS::duration_t 
     return retValue;
 }
 /*============================================================================*/
-bool input::digitalChannel::setParameter( const input::event e, const int p ) noexcept
+bool input::digitalChannel::setParameter( const input::event e, const analogValue_t p ) noexcept
 {
     (void)e;
     (void)p;
     return false;
 }
 /*============================================================================*/
-bool input::analogChannel::setParameter( const input::event e, const int p ) noexcept
+bool input::analogChannel::setParameter( const input::event e, const analogValue_t p ) noexcept
 {
     bool retValue = true;
 

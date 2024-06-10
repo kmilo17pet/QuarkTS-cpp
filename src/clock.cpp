@@ -11,7 +11,7 @@ const qOS::duration_t clock::IMMEDIATE = 0_ms;
 /*============================================================================*/
 void clock::sysTick( void ) noexcept
 {
-    ++sysTick_Epochs;
+    sysTick_Epochs = sysTick_Epochs + 1U; /* ++sysTick_Epochs */
 }
 /*============================================================================*/
 bool clock::timeDeadLineCheck( const qOS::clock_t ti, const qOS::clock_t td ) noexcept

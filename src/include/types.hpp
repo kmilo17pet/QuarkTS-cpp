@@ -12,6 +12,14 @@
     #include <string.h>
     #include <ctype.h>
     #include <limits.h>
+    #define STD_TYPE_UINT8_T    uint8_t
+    #define STD_TYPE_UINT16_T   uint16_t
+    #define STD_TYPE_UINT32_T   uint32_t
+    #define STD_TYPE_INT8_T     int8_t
+    #define STD_TYPE_INT16_T    int16_t
+    #define STD_TYPE_INT32_T    int32_t
+    #define STD_TYPE_UINTPTR_T  uintptr_t
+    #define STD_TYPE_SIZE_T     size_t
 #else
     #include <cstddef>
     #include <cstdint>
@@ -19,7 +27,20 @@
     #include <cstring>
     #include <cctype>
     #include <climits>
-    using namespace std;
+    #define STD_TYPE_UINT8_T    std::uint8_t
+    #define STD_TYPE_UINT16_T   std::uint16_t
+    #define STD_TYPE_UINT32_T   std::uint32_t
+    #define STD_TYPE_INT8_T     std::int8_t
+    #define STD_TYPE_INT16_T    std::int16_t
+    #define STD_TYPE_INT32_T    std::int32_t
+    #define STD_TYPE_UINTPTR_T  std::uintptr_t
+    #define STD_TYPE_SIZE_T     std::size_t
+#endif
+
+#if defined( ARDUINO_PLATFORM )
+    #include <Arduino.h>
+#else
+    #include <string>
 #endif
 
 #ifndef SIZE_MAX
@@ -43,7 +64,7 @@ namespace qOS {
     /**
     * @brief A type to instantiate a byte variable
     */
-    using byte_t = uint8_t;
+    using byte_t = STD_TYPE_UINT8_T;
 
     /**
     * @brief A type to instantiate an unsigned variable
@@ -70,22 +91,38 @@ namespace qOS {
     * size of a theoretically possible object of any type (including array).
     * Should be used for array indexing and loop counting.
     */
-    using index_t = size_t;
+    using index_t = STD_TYPE_SIZE_T;
 
     /**
     * @brief A type to instantiate a variable that hold the number of task cycles.
     */
-    using cycles_t = uint32_t;
+    using cycles_t = STD_TYPE_UINT32_T;
 
     /**
     * @brief A type to instantiate a variable that hold the number of task iterations.
     */
-    using iteration_t = int32_t;
+    using iteration_t = STD_TYPE_INT32_T;
 
     /**
     * @brief A type to instantiate a variable to hold the priority value of a task.
     */
-    using priority_t = uint8_t;
+    using priority_t = STD_TYPE_UINT8_T;
+
+    /*! @cond */
+    using uint8_t = STD_TYPE_UINT8_T;
+    using uint16_t = STD_TYPE_UINT16_T;
+    using uint32_t = STD_TYPE_UINT32_T;
+    using int8_t = STD_TYPE_INT8_T;
+    using int16_t = STD_TYPE_INT16_T;
+    using int32_t = STD_TYPE_INT32_T;
+    using uintptr_t = STD_TYPE_UINTPTR_T;
+    using size_t = STD_TYPE_SIZE_T;
+    #if defined( ARDUINO_PLATFORM )
+        using string = String;
+    #else
+        using string = std::string;
+    #endif
+    /*! @endcond */
 
     /**
     * @brief A type to instantiate a variable to hold a time count.

@@ -269,12 +269,12 @@
 * verified through the FSM handle by reading the @c Status field.
 *
 * @section q_fsm_astask Adding a state machine as a task
-* The best strategy to run a FSM is delegating it to a task. For this, the
-* qOS::core::addStateMachineTask() method should be used. Here, the task does not have
-* a specific callback, instead, it will evaluate the active state of the FSM,
-* and later, all the other possible states in response to events that mark
-* their own transition. The task will be scheduled to run every @c t seconds in
-* qOS::task::PERIODIC mode.
+* The best strategy to run a FSM is delegating it to a task. For this, an overload
+* of qOS::core::add() that takes an state-machine object as argument is provided.
+* Here, the task does not have a specific callback, instead, it will evaluate
+* the active state of the FSM, and later, all the other possible states in response
+* to events that mark their own transition. The task will be scheduled to run
+* every @c t seconds in qOS::task::PERIODIC mode.
 *
 * By using this method, the kernel will take care of the FSM by itself, so the
 * usage of qOS::stateMachine::run()  can be omitted.
@@ -418,7 +418,7 @@
 *  LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
 *  LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
 *  LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
-*  os.addStateMachineTask( LED_Task , LED_FSM , core::MEDIUM_PRIORITY, 100_ms );
+*  os.add( LED_Task , LED_FSM , core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode
 *
 * @section q_fsmsendsignals Sending signals
@@ -457,7 +457,7 @@
 * constantly monitors the queue for available signals. The engine then
 * propagates the signal through the hierarchy until it is processed. To enable
 * this functionality in your state machine, the queue must be installed by using
-* the qOS::stateMachine::installSignalQueue() method.
+* the qOS::stateMachine::install() method.
 *
 * The install operation should be performed after both, the queue and the FSM
 * are correctly initialized by using qOS::queue::setup() and qOS::stateMachine::setup()
@@ -484,7 +484,7 @@
 * entries, an n-sized array of @c sm::transition elements following the layout
 * described below:
 *
-* The method qOS::sm::state::setTransitions(), should be used to perform the
+* The method qOS::sm::state::install(), should be used to perform the
 * transition table installation to a specific state.
 *
 * <center>
@@ -567,8 +567,8 @@
 * machine requires an installed signal queue.
 * A timeout specification is referenced by an object of type qOS::sm::timeoutSpec
 * and must be installed inside the state machine using the method
-* qOS::stateMachine::installTimeoutSpec(). Then, timeout operations can be defined
-* in a table for each state by using the qOS::sm::state::setTimeouts().
+* qOS::stateMachine::install(). Then, timeout operations can be defined
+* in a table for each state by using the qOS::sm::state::install().
 *
 * A timeout specification element is defined as a structure of type
 * @c sm::timeoutStateDefinition and should follow this layout:
@@ -702,16 +702,14 @@
 *  LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
 *  LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
 *
-*  LED_FSM.installSignalQueue( LEDsigqueue );
-*  LED_FSM.installTimeoutSpec( tm_spectimeout );
-*  State_LEDOn.setTimeouts( LedOn_Timeouts );
-*  State_LEDBlink.setTimeouts( LEDBlink_timeouts );
+*  LED_FSM.install( LEDsigqueue );
+*  LED_FSM.install( tm_spectimeout );
 *
-*  State_LEDOff.setTransitions( LEDOff_transitions );
-*  State_LEDOn.setTransitions( LEDOn_transitions );
-*  State_LEDBlink.setTransitions( LEDBlink_transitions );
+*  State_LEDOff.install( LEDOff_transitions );
+*  State_LEDOn.install( LEDOn_transitions, LedOn_Timeouts );
+*  State_LEDBlink.install( LEDBlink_transitions, LEDBlink_timeouts );
 *
-*  os.addStateMachineTask( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
+*  os.add( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode
 *
 * @section qfsm_happroach Using the hierarchical approach
@@ -908,17 +906,17 @@
 *  state_automatedcontrol.add( state_accelerating, state_accelerating_callback );
 *  state_automatedcontrol.add( state_resuming, state_resuming_callback );
 *  state_automatedcontrol.add( state_cruising, state_cruising_callback );
-*  Top_SM.installSignalQueue( top_sigqueue );
+*  Top_SM.install( top_sigqueue );
 *
-*  state_idle.setTransitions( idle_transitions );
-*  state_initial.setTransitions( initial_transitions );
-*  state_cruisingoff.setTransitions( cruisingoff_transitions );
-*  state_automatedcontrol.setTransitions( automated_transitions );
-*  state_accelerating.setTransitions( accel_transitions );
-*  state_resuming.setTransitions( resuming_transitions );
-*  state_cruising.setTransitions( cruising_transitions );
+*  state_idle.install( idle_transitions );
+*  state_initial.install( initial_transitions );
+*  state_cruisingoff.install( cruisingoff_transitions );
+*  state_automatedcontrol.install( automated_transitions );
+*  state_accelerating.install( accel_transitions );
+*  state_resuming.install( resuming_transitions );
+*  state_cruising.install( cruising_transitions );
 *
-*  os.addStateMachineTask( CruiseControlTask, Top_SM, core::MEDIUM_PRIORITY, 100_ms );
+*  os.add( CruiseControlTask, Top_SM, core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode
 *
 * @subsection q_fsm_example4 Example with history pseudo-states
@@ -1004,11 +1002,11 @@
 *  state4.add( state6, state6_callback );
 *
 *  super.installSignalQueue( sigqueue );
-*  state1.setTransitions( state1_transitions );
-*  state2.setTransitions( state2_transitions );
-*  state3.setTransitions( state3_transitions );
-*  state5.setTransitions( state5_transitions );
-*  os.addStateMachineTask( SMTask , super , core::MEDIUM_PRIORITY, 100_ms );
+*  state1.install( state1_transitions );
+*  state2.install( state2_transitions );
+*  state3.install( state3_transitions );
+*  state5.install( state5_transitions );
+*  os.add( SMTask , super , core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode
 *
 */
