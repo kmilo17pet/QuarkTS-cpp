@@ -296,9 +296,9 @@ namespace qOS {
                 /**
                 * @brief Set the time for the selected built-in timeout inside the target FSM.
                 * @pre Requires an installed timeout-specification.
-                * For this use stateMachine::installTimeoutSpec()
+                * For this use stateMachine::install()
                 * @pre Requires an installed signal-queue.
-                * For this use stateMachine::installSignalQueue()
+                * For this use stateMachine::install()
                 * @param[in] i The index of the requested timeout
                 * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
                 * @param[in] t The specified time given in milliseconds.
@@ -308,9 +308,9 @@ namespace qOS {
                 /**
                 * @brief Stop the time count for the selected built-in timeout.
                 * @pre Requires an installed timeout-specification.
-                * For this use stateMachine::installTimeoutSpec()
+                * For this use stateMachine::install()
                 * @pre Requires an installed signal-queue.
-                * For this use stateMachine::installSignalQueue()
+                * For this use stateMachine::install()
                 * @param[in] i The index of the timeout
                 * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
                 * @return Returns @c true on success, otherwise returns @c false.
@@ -623,7 +623,6 @@ namespace qOS {
                 * installed.
                 * @note The lookup table should be an array of type
                 * timeoutStateDefinition with @a n elements matching { time, options }.
-                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
                 * @param[in] table An array of entries of type @c sm::transition_t with the
                 * outgoing transitions. Each entry relates signals, actions and the target
                 * state using the following layout:
@@ -649,7 +648,6 @@ namespace qOS {
                 * installed.
                 * @note The lookup table should be an array of type
                 * timeoutStateDefinition with @a n elements matching { time, options }.
-                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
                 * @tparam numberOfTransitions The number of elements in @a table
                 * @tparam numberOfTimeoutDefs The number of elements in @a def
                 * @param[in] table An array of entries of type @c sm::transition_t with the
@@ -674,7 +672,6 @@ namespace qOS {
                 * installed.
                 * @note The lookup table should be an array of type
                 * timeoutStateDefinition with @a n elements matching { time, options }.
-                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
                 * @param[in] def The lookup table matching the requested timeout values
                 * with their respective options.
                 * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
@@ -690,7 +687,6 @@ namespace qOS {
                 * installed.
                 * @note The lookup table should be an array of type
                 * timeoutStateDefinition with @a n elements matching { time, options }.
-                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
                 * @tparam numberOfTimeoutDefs The number of elements in @a def
                 * @param[in] def The lookup table matching the requested timeout values
                 * with their respective options.
@@ -964,7 +960,6 @@ namespace qOS {
             * time base is functional.
             * @note You can increase the number of available timeouts instances by
             * changing the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c config.h
-            * @see stateMachine::installSignalQueue()
             * @param[in] ts The timeout specification object.
             * @return Returns @c true on success, otherwise returns @c false.
             */
@@ -972,9 +967,9 @@ namespace qOS {
             /**
             * @brief Set the time for the selected built-in timeout inside the target FSM.
             * @pre Requires an installed timeout-specification.
-            * For this use stateMachine::installTimeoutSpec()
+            * For this use stateMachine::install
             * @pre Requires an installed signal-queue.
-            * For this use stateMachine::installSignalQueue()
+            * For this use stateMachine::install
             * @param[in] xTimeout The index of the requested timeout
             * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
             * @param[in] t The specified time given in milliseconds.
@@ -984,9 +979,9 @@ namespace qOS {
             /**
             * @brief Stop the time count for the selected built-in timeout.
             * @pre Requires an installed timeout-specification.
-            * For this use stateMachine::installTimeoutSpec()
+            * For this use stateMachine::install
             * @pre Requires an installed signal-queue.
-            * For this use stateMachine::installSignalQueue()
+            * For this use stateMachine::install
             * @param[in] xTimeout The index of the timeout
             * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
             * @return Returns @c true on success, otherwise returns @c false.
