@@ -22,7 +22,10 @@ var namespaceq_o_s_1_1sm =
       [ "SIGNAL_START", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e", null ],
       [ "SIGNAL_EXIT", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453", null ],
       [ "SIGNAL_ENTRY", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6", null ],
-      [ "SIGNAL_NONE", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d", null ]
+      [ "SIGNAL_NONE", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d", null ],
+      [ "SIGNAL_TIMEOUT0", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0daab87be7e8a6145f2ae322798eb81b89d", null ],
+      [ "SIGNAL_TIMEOUT1", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0daceae7377eecbbf91a98be43210cde6d1", null ],
+      [ "SIGNAL_TIMEOUT2", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da84da8e45e5ef4f05527e3d194a8379f6", null ]
     ] ],
     [ "status", "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c", [
       [ "BEFORE_ANY", "group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4", null ],

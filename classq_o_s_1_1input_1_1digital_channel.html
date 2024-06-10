@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -172,12 +172,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a050366f8499383363d14624e9cc4b1b5" id="r_a050366f8499383363d14624e9cc4b1b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a050366f8499383363d14624e9cc4b1b5">setTime</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> t) noexcept override</td></tr>
 <tr class="memdesc:a050366f8499383363d14624e9cc4b1b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the timeout for the specified event.  <br /></td></tr>
 <tr class="separator:a050366f8499383363d14624e9cc4b1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a872e579faad5e803d1b9b18f6e8ad46f" id="r_a872e579faad5e803d1b9b18f6e8ad46f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a872e579faad5e803d1b9b18f6e8ad46f">setParameter</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const int p) noexcept override</td></tr>
-<tr class="memdesc:a872e579faad5e803d1b9b18f6e8ad46f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the parameter for the specified event.  <br /></td></tr>
-<tr class="separator:a872e579faad5e803d1b9b18f6e8ad46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacc7174afd152bd05b21a2d765b91ed9" id="r_aacc7174afd152bd05b21a2d765b91ed9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacc7174afd152bd05b21a2d765b91ed9">setParameter</a> (const <a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a> e, const <a class="el" href="group__qinput.html#gad26497442f914206b95de2ac8a6123f3">analogValue_t</a> p) noexcept override</td></tr>
+<tr class="memdesc:aacc7174afd152bd05b21a2d765b91ed9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the parameter for the specified event.  <br /></td></tr>
+<tr class="separator:aacc7174afd152bd05b21a2d765b91ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a1bd9edeef8e0fdffce779f8098ae71" id="r_a1a1bd9edeef8e0fdffce779f8098ae71"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a1bd9edeef8e0fdffce779f8098ae71">getCount</a> (void) const noexcept override</td></tr>
 <tr class="memdesc:a1a1bd9edeef8e0fdffce779f8098ae71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pulsation count for the digital input.  <br /></td></tr>
 <tr class="separator:a1a1bd9edeef8e0fdffce779f8098ae71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafec615d0f6e0cfeec628a2d18706b51" id="r_aafec615d0f6e0cfeec628a2d18706b51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafec615d0f6e0cfeec628a2d18706b51">isShared</a> (void) const noexcept override</td></tr>
+<tr class="memdesc:aafec615d0f6e0cfeec628a2d18706b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the channel value is shared with other channel with the same (pin) number.  <br /></td></tr>
+<tr class="separator:aafec615d0f6e0cfeec628a2d18706b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfcb76ff51aead1f95491317feb349f8" id="r_adfcb76ff51aead1f95491317feb349f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfcb76ff51aead1f95491317feb349f8">setReader</a> (<a class="el" href="group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a">digitalReaderFcn_t</a> r) noexcept override</td></tr>
+<tr class="memdesc:adfcb76ff51aead1f95491317feb349f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign the function that is in charge of reading the specific digital input.  <br /></td></tr>
+<tr class="separator:adfcb76ff51aead1f95491317feb349f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classq_o_s_1_1input_1_1channel"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classq_o_s_1_1input_1_1channel')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td></tr>
 <tr class="memitem:a23115df27aad40840b25b50153567571 inherit pub_methods_classq_o_s_1_1input_1_1channel" id="r_a23115df27aad40840b25b50153567571"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7">event</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1channel.html#a23115df27aad40840b25b50153567571">getEvent</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a23115df27aad40840b25b50153567571 inherit pub_methods_classq_o_s_1_1input_1_1channel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the last event for the given input channel.  <br /></td></tr>
@@ -197,9 +203,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a984bc87c8dddf22e7b15e3e0539559ba inherit pub_methods_classq_o_s_1_1input_1_1channel" id="r_a984bc87c8dddf22e7b15e3e0539559ba"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1channel.html#a984bc87c8dddf22e7b15e3e0539559ba">getUserData</a> (void) noexcept</td></tr>
 <tr class="memdesc:a984bc87c8dddf22e7b15e3e0539559ba inherit pub_methods_classq_o_s_1_1input_1_1channel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the channel user-data.  <br /></td></tr>
 <tr class="separator:a984bc87c8dddf22e7b15e3e0539559ba inherit pub_methods_classq_o_s_1_1input_1_1channel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9b209c486075512c9dbe788920afc1c inherit pub_methods_classq_o_s_1_1input_1_1channel" id="r_ae9b209c486075512c9dbe788920afc1c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ae9b209c486075512c9dbe788920afc1c">isShared</a> (void) const noexcept</td></tr>
-<tr class="memdesc:ae9b209c486075512c9dbe788920afc1c inherit pub_methods_classq_o_s_1_1input_1_1channel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the channel value is shared with other channel with the same (pin) number.  <br /></td></tr>
-<tr class="separator:ae9b209c486075512c9dbe788920afc1c inherit pub_methods_classq_o_s_1_1input_1_1channel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7e0acea16e40f43448a20225c68f44b inherit pub_methods_classq_o_s_1_1input_1_1channel" id="r_ac7e0acea16e40f43448a20225c68f44b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ac7e0acea16e40f43448a20225c68f44b">unShare</a> (void) noexcept=0</td></tr>
+<tr class="separator:ac7e0acea16e40f43448a20225c68f44b inherit pub_methods_classq_o_s_1_1input_1_1channel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -313,8 +318,38 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a872e579faad5e803d1b9b18f6e8ad46f" name="a872e579faad5e803d1b9b18f6e8ad46f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a872e579faad5e803d1b9b18f6e8ad46f">&#9670;&#160;</a></span>setParameter()</h2>
+<a id="aafec615d0f6e0cfeec628a2d18706b51" name="aafec615d0f6e0cfeec628a2d18706b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafec615d0f6e0cfeec628a2d18706b51">&#9670;&#160;</a></span>isShared()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::input::digitalChannel::isShared </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the channel value is shared with other channel with the same (pin) number. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if shared. Otherwise <code>false</code>. </dd></dl>
+
+<p>Implements <a class="el" href="classq_o_s_1_1input_1_1channel.html#ac04e64282e9335fa280c9c2479a566a5">qOS::input::channel</a>.</p>
+
+</div>
+</div>
+<a id="aacc7174afd152bd05b21a2d765b91ed9" name="aacc7174afd152bd05b21a2d765b91ed9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacc7174afd152bd05b21a2d765b91ed9">&#9670;&#160;</a></span>setParameter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -330,7 +365,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="group__qinput.html#gad26497442f914206b95de2ac8a6123f3">analogValue_t</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -350,7 +385,41 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
 
-<p>Implements <a class="el" href="classq_o_s_1_1input_1_1channel.html#a25b32a745821c3a802984c1c72fa0e40">qOS::input::channel</a>.</p>
+<p>Implements <a class="el" href="classq_o_s_1_1input_1_1channel.html#a5e417f5a15a5b266d1e6e8f2fe3e8caa">qOS::input::channel</a>.</p>
+
+</div>
+</div>
+<a id="adfcb76ff51aead1f95491317feb349f8" name="adfcb76ff51aead1f95491317feb349f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfcb76ff51aead1f95491317feb349f8">&#9670;&#160;</a></span>setReader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::input::digitalChannel::setReader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a">digitalReaderFcn_t</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assign the function that is in charge of reading the specific digital input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>The channel reader function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
 
 </div>
 </div>

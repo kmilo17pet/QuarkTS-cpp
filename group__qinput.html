@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -178,9 +178,16 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga7d3b9fc08985bd00916b549b73ef1c6a" id="r_ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7d3b9fc08985bd00916b549b73ef1c6a">qOS::input::channelReaderFcn_t</a></td></tr>
-<tr class="memdesc:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the wrapper function that reads the specific input-channel.  <br /></td></tr>
-<tr class="separator:ga7d3b9fc08985bd00916b549b73ef1c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0519732a168ad68b41a3913e06e46d45" id="r_ga0519732a168ad68b41a3913e06e46d45"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga0519732a168ad68b41a3913e06e46d45">qOS::input::digitalValue_t</a></td></tr>
+<tr class="separator:ga0519732a168ad68b41a3913e06e46d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad26497442f914206b95de2ac8a6123f3" id="r_gad26497442f914206b95de2ac8a6123f3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad26497442f914206b95de2ac8a6123f3">qOS::input::analogValue_t</a></td></tr>
+<tr class="separator:gad26497442f914206b95de2ac8a6123f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3b6e44648c5f6be1a0cc5c27138f771a" id="r_ga3b6e44648c5f6be1a0cc5c27138f771a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga3b6e44648c5f6be1a0cc5c27138f771a">qOS::input::digitalReaderFcn_t</a></td></tr>
+<tr class="memdesc:ga3b6e44648c5f6be1a0cc5c27138f771a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the wrapper function that reads the specific digital input-channel.  <br /></td></tr>
+<tr class="separator:ga3b6e44648c5f6be1a0cc5c27138f771a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d54566c9f0a347e22be79e1be218319" id="r_ga4d54566c9f0a347e22be79e1be218319"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4d54566c9f0a347e22be79e1be218319">qOS::input::analogReaderFcn_t</a></td></tr>
+<tr class="memdesc:ga4d54566c9f0a347e22be79e1be218319"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the wrapper function that reads the specific analog input-channel.  <br /></td></tr>
+<tr class="separator:ga4d54566c9f0a347e22be79e1be218319"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga15af6d73c8fcb850a4a7337eac7aafe9" id="r_ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga15af6d73c8fcb850a4a7337eac7aafe9">qOS::input::eventCallback_t</a></td></tr>
 <tr class="memdesc:ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the input-channel event callback.  <br /></td></tr>
 <tr class="separator:ga15af6d73c8fcb850a4a7337eac7aafe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,8 +216,8 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the watcher class for a specified input-channel.  <a href="#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>
 <tr class="separator:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1fa89c23afc36bdea1a290368c7ae520" id="r_ga1fa89c23afc36bdea1a290368c7ae520"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1fa89c23afc36bdea1a290368c7ae520">qOS::input::type</a> { <a class="el" href="#gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2">qOS::input::type::DIGITAL</a>
-, <a class="el" href="#gga1fa89c23afc36bdea1a290368c7ae520a8b7d08163aa92ed2a8aceb06b9488e60">qOS::input::type::ANALOG</a>
+<tr class="memitem:ga1fa89c23afc36bdea1a290368c7ae520" id="r_ga1fa89c23afc36bdea1a290368c7ae520"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1fa89c23afc36bdea1a290368c7ae520">qOS::input::type</a> { <a class="el" href="#gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb">qOS::input::type::DIGITAL_CHANNEL</a>
+, <a class="el" href="#gga1fa89c23afc36bdea1a290368c7ae520aa6b0092acb8146de14ffe20769e5c9ef">qOS::input::type::ANALOG_CHANNEL</a>
  }</td></tr>
 <tr class="memdesc:ga1fa89c23afc36bdea1a290368c7ae520"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum class to define the types of input channels.  <a href="#ga1fa89c23afc36bdea1a290368c7ae520">More...</a><br /></td></tr>
 <tr class="separator:ga1fa89c23afc36bdea1a290368c7ae520"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,19 +225,67 @@ Enumerations</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>A comprehensive event class for efficient, maintainable working with input channels. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga7d3b9fc08985bd00916b549b73ef1c6a" name="ga7d3b9fc08985bd00916b549b73ef1c6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7d3b9fc08985bd00916b549b73ef1c6a">&#9670;&#160;</a></span>channelReaderFcn_t</h2>
+<a id="ga4d54566c9f0a347e22be79e1be218319" name="ga4d54566c9f0a347e22be79e1be218319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4d54566c9f0a347e22be79e1be218319">&#9670;&#160;</a></span>analogReaderFcn_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#ga7d3b9fc08985bd00916b549b73ef1c6a">qOS::input::channelReaderFcn_t</a></td>
+          <td class="memname">using <a class="el" href="#ga4d54566c9f0a347e22be79e1be218319">qOS::input::analogReaderFcn_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>A pointer to the wrapper function that reads the specific input-channel. </p>
+<p>A pointer to the wrapper function that reads the specific analog input-channel. </p>
+<p>Prototype: </p><div class="fragment"><div class="line"><a class="code hl_typedef" href="#gad26497442f914206b95de2ac8a6123f3">analogValue_t</a> readerFcn( uint8_t channelNumber ) </div>
+<div class="ttc" id="agroup__qinput_html_gad26497442f914206b95de2ac8a6123f3"><div class="ttname"><a href="#gad26497442f914206b95de2ac8a6123f3">qOS::input::analogValue_t</a></div><div class="ttdeci">float analogValue_t</div><div class="ttdef"><b>Definition</b> input.hpp:66</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a id="gad26497442f914206b95de2ac8a6123f3" name="gad26497442f914206b95de2ac8a6123f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad26497442f914206b95de2ac8a6123f3">&#9670;&#160;</a></span>analogValue_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#gad26497442f914206b95de2ac8a6123f3">qOS::input::analogValue_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga3b6e44648c5f6be1a0cc5c27138f771a" name="ga3b6e44648c5f6be1a0cc5c27138f771a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3b6e44648c5f6be1a0cc5c27138f771a">&#9670;&#160;</a></span>digitalReaderFcn_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ga3b6e44648c5f6be1a0cc5c27138f771a">qOS::input::digitalReaderFcn_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A pointer to the wrapper function that reads the specific digital input-channel. </p>
+<p>Prototype: </p><div class="fragment"><div class="line"><a class="code hl_typedef" href="#ga0519732a168ad68b41a3913e06e46d45">digitalValue_t</a> readerFcn( uint8_t channelNumber ) </div>
+<div class="ttc" id="agroup__qinput_html_ga0519732a168ad68b41a3913e06e46d45"><div class="ttname"><a href="#ga0519732a168ad68b41a3913e06e46d45">qOS::input::digitalValue_t</a></div><div class="ttdeci">int digitalValue_t</div><div class="ttdef"><b>Definition</b> input.hpp:65</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a id="ga0519732a168ad68b41a3913e06e46d45" name="ga0519732a168ad68b41a3913e06e46d45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0519732a168ad68b41a3913e06e46d45">&#9670;&#160;</a></span>digitalValue_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#ga0519732a168ad68b41a3913e06e46d45">qOS::input::digitalValue_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -247,7 +302,9 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A pointer to the input-channel event callback. </p>
-
+<p>Prototype: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> xCallback( <a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">input::channel</a>&amp; c ) </div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></div><div class="ttdef"><b>Definition</b> input.hpp:93</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -326,9 +383,9 @@ Enumerations</h2></td></tr>
 
 <p>An enum class to define the types of input channels. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2" name="gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2"></a>DIGITAL&#160;</td><td class="fielddoc"><p>Digital input channel. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb" name="gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb"></a>DIGITAL_CHANNEL&#160;</td><td class="fielddoc"><p>Digital input channel. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga1fa89c23afc36bdea1a290368c7ae520a8b7d08163aa92ed2a8aceb06b9488e60" name="gga1fa89c23afc36bdea1a290368c7ae520a8b7d08163aa92ed2a8aceb06b9488e60"></a>ANALOG&#160;</td><td class="fielddoc"><p>Analog input channel. </p>
+<tr><td class="fieldname"><a id="gga1fa89c23afc36bdea1a290368c7ae520aa6b0092acb8146de14ffe20769e5c9ef" name="gga1fa89c23afc36bdea1a290368c7ae520aa6b0092acb8146de14ffe20769e5c9ef"></a>ANALOG_CHANNEL&#160;</td><td class="fielddoc"><p>Analog input channel. </p>
 </td></tr>
 </table>
 

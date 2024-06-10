@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -325,9 +325,9 @@ Sending notifications</h3>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">void</span> taskA_Callback( <a class="code hl_class" href="classq_o_s_1_1event__t.html">event_t</a> e ) {</div>
 <div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> press_counter = 0;</div>
-<div class="line">    </div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">switch</span> ( e.getTrigger() ) { <span class="comment">/*check the source of the event*/</span></div>
-<div class="line">        <span class="keywordflow">case</span> trigger::byNotificationSimple: </div>
+<div class="line">        <span class="keywordflow">case</span> trigger::byNotificationSimple:</div>
 <div class="line">            <span class="comment">/*</span></div>
 <div class="line"><span class="comment">            * Do something here to process the timer event</span></div>
 <div class="line"><span class="comment">            */</span></div>
@@ -352,7 +352,7 @@ Sending notifications</h3>
 <div class="line">    <span class="keywordflow">if</span> ( trigger::byNotificationSimple == e.getTrigger() ) {</div>
 <div class="line">        <span class="comment">/*</span></div>
 <div class="line"><span class="comment">         * we can do more here, but this is just an example,</span></div>
-<div class="line"><span class="comment">         * so, this task will only print out the received </span></div>
+<div class="line"><span class="comment">         * so, this task will only print out the received</span></div>
 <div class="line"><span class="comment">         * notification event.</span></div>
 <div class="line"><span class="comment">         */</span></div>
 <div class="line">        trace::log &lt;&lt; static_cast&lt;char&gt;( e-&gt;EventData ) &lt;&lt; trace::endl;</div>
@@ -364,14 +364,14 @@ Sending notifications</h3>
 <div class="line">    trace::setOutputFcn( HAL_OutPutChar );</div>
 <div class="line">    <span class="comment">/* setup the scheduler to handle up to 10 queued notifications*/</span></div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( taskA, taskA_Callback, core::LOWEST_PRIORITY );</div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( taskB, taskB_Callback, core::LOWEST_PRIORITY );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( taskA, taskA_Callback, core::LOWEST_PRIORITY );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( taskB, taskB_Callback, core::LOWEST_PRIORITY );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a882991afb9548674668aa51dbe694d6e"><div class="ttname"><a href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">qOS::core::add</a></div><div class="ttdeci">bool add(task &amp;Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a8a1c57e7736a22fb8036bfa60b96915c"><div class="ttname"><a href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">qOS::core::init</a></div><div class="ttdeci">bool init(const getTickFcn_t tFcn=nullptr, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_ad37fb39c9ab1224e007be651e1dfc69b"><div class="ttname"><a href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">qOS::core::addEventTask</a></div><div class="ttdeci">bool addEventTask(task &amp;Task, taskFcn_t callback, const priority_t p, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. This API creates a task with a taskState::DISABLED_STATE state b...</div><div class="ttdef"><b>Definition</b> kernel.hpp:210</div></div>
 <div class="ttc" id="aclassq_o_s_1_1event__t_html"><div class="ttname"><a href="classq_o_s_1_1event__t.html">qOS::event_t</a></div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition</b> task.hpp:105</div></div>
 <div class="ttc" id="agroup__qnot_html_gaa6de5a8fa854b30d78de7540e21f4298"><div class="ttname"><a href="group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298">qOS::core::notify</a></div><div class="ttdeci">bool notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept</div><div class="ttdoc">Sends a notification generating an asynchronous event. If mode = notifyMode::SIMPLE,...</div></div>
 <div class="ttc" id="agroup__qtaskcreation_html_gaefc7088d1435e64e433d09541fae505c"><div class="ttname"><a href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">qOS::os</a></div><div class="ttdeci">core &amp; os</div><div class="ttdoc">The predefined instance of the OS kernel interface.</div></div>
@@ -428,8 +428,8 @@ A queue example</h3>
 <div class="line"><a class="code hl_class" href="classq_o_s_1_1queue.html">queue</a> userQueue; <span class="comment">/*Queue Handle*/</span></div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/* The producer task puts data into the buffer if there is enough free </span></div>
-<div class="line"><span class="comment"> * space in it, otherwise the task blocks itself and wait until the queue </span></div>
+<div class="line"><span class="comment">/* The producer task puts data into the buffer if there is enough free</span></div>
+<div class="line"><span class="comment"> * space in it, otherwise the task blocks itself and wait until the queue</span></div>
 <div class="line"><span class="comment"> * is empty to resume. */</span></div>
 <div class="line"><span class="keywordtype">void</span> tProducer_Callback( <a class="code hl_class" href="classq_o_s_1_1event__t.html">event_t</a> e ) {</div>
 <div class="line">    <span class="keyword">static</span> uint16_t unData = 0;</div>
@@ -442,7 +442,7 @@ A queue example</h3>
 <div class="line">    <span class="comment">/*send data to the queue*/</span></div>
 <div class="line">    <span class="keywordflow">if</span> ( <span class="keyword">false</span> == UserQueue.send( &amp;unData ) ) {</div>
 <div class="line">        <span class="comment">/*</span></div>
-<div class="line"><span class="comment">        * if the data insertion fails, the queue is full </span></div>
+<div class="line"><span class="comment">        * if the data insertion fails, the queue is full</span></div>
 <div class="line"><span class="comment">        * and the task disables itself</span></div>
 <div class="line"><span class="comment">        */</span></div>
 <div class="line">        e.thisTask().suspend();</div>
@@ -453,7 +453,7 @@ A queue example</h3>
 <div class="line"><span class="keywordtype">void</span> tConsumer_Callback( <a class="code hl_class" href="classq_o_s_1_1event__t.html">event_t</a> e ) {</div>
 <div class="line">    uint16_t unData;</div>
 <div class="line">    <a class="code hl_class" href="classq_o_s_1_1queue.html">queue</a> *ptrQueue; <span class="comment">/*a pointer to the queue that triggers the event*/</span></div>
-<div class="line">    </div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> ( byQueueCount == e.getTrigger ) {</div>
 <div class="line">        ptrQueue = (queue_t *)e.EventData;</div>
 <div class="line">        ptrQueue-&gt;<a class="code hl_function" href="classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae">receive</a>( &amp;unData );</div>
@@ -475,15 +475,15 @@ A queue example</h3>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
 <div class="line">    <span class="comment">/*Setup the queue*/</span></div>
 <div class="line">    userQueue.<a class="code hl_function" href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6">setup</a>&lt;uint16_t&gt;( BufferMem, 16 );</div>
-<div class="line">                 </div>
+<div class="line"> </div>
 <div class="line">    <span class="comment">/*  Append the producer task with 100mS rate. */</span></div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">addTask</a>( tProducer, tProducer_Callback, core::MEDIUM_PRIORITY,</div>
-<div class="line">                100_ms, task::PERIODIC, taskState::ENABLED_STATE, <span class="stringliteral">&quot;producer&quot;</span> );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( tProducer, tProducer_Callback, core::MEDIUM_PRIORITY,</div>
+<div class="line">            100_ms, task::PERIODIC, taskState::ENABLED_STATE, <span class="stringliteral">&quot;producer&quot;</span> );</div>
 <div class="line">    <span class="comment">/* Append the consumer as an event task. The consumer will</span></div>
 <div class="line"><span class="comment">     * wait until an event trigger their execution</span></div>
 <div class="line"><span class="comment">     */</span></div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( tConsumer, tConsumer_Callback, core::MEDIUM_PRIORITY, <span class="stringliteral">&quot;consumer&quot;</span> );</div>
-<div class="line">    <span class="comment">/* the queue will be attached to the consumer task </span></div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( tConsumer, tConsumer_Callback, core::MEDIUM_PRIORITY, <span class="stringliteral">&quot;consumer&quot;</span> );</div>
+<div class="line">    <span class="comment">/* the queue will be attached to the consumer task</span></div>
 <div class="line"><span class="comment">     * in Count mode. This mode sends an event to the consumer</span></div>
 <div class="line"><span class="comment">     * task when the queue fills to a level of 4 elements</span></div>
 <div class="line"><span class="comment">     */</span></div>
@@ -492,12 +492,11 @@ A queue example</h3>
 <div class="line"><span class="comment">     * queueLinkMode = QUEUE_EMPTY mode. This mode sends an event to the producer</span></div>
 <div class="line"><span class="comment">     * task when the queue is empty</span></div>
 <div class="line"><span class="comment">     */</span></div>
-<div class="line">     </div>
+<div class="line"> </div>
 <div class="line">    tProducer.<a class="code hl_function" href="classq_o_s_1_1task.html#ad43545d022d9fc3d2232d37ccd26ea88">attachQueue</a>( userQueue, queueLinkMode::QUEUE_EMPTY );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a615f44cfc4f4b4963b2b4cbb044ab76b"><div class="ttname"><a href="classq_o_s_1_1core.html#a615f44cfc4f4b4963b2b4cbb044ab76b">qOS::core::addTask</a></div><div class="ttdeci">bool addTask(task &amp;Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1queue_html"><div class="ttname"><a href="classq_o_s_1_1queue.html">qOS::queue</a></div><div class="ttdoc">A Queue object.</div><div class="ttdef"><b>Definition</b> queue.hpp:44</div></div>
 <div class="ttc" id="aclassq_o_s_1_1queue_html_a12f8f0c55ea77ac700c440d79d753bae"><div class="ttname"><a href="classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae">qOS::queue::receive</a></div><div class="ttdeci">bool receive(void *dst) noexcept</div><div class="ttdoc">Receive an item from a queue (and removes it). The item is received by copy so a buffer of adequate s...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1queue_html_ae2aea7eb71321d3c399a11044be9e0e6"><div class="ttname"><a href="classq_o_s_1_1queue.html#ae2aea7eb71321d3c399a11044be9e0e6">qOS::queue::setup</a></div><div class="ttdeci">bool setup(void *pData, const size_t size, const size_t count) noexcept</div><div class="ttdoc">Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...</div></div>
@@ -532,7 +531,7 @@ Using the task Event-flags</h3>
 <div class="line"><span class="preprocessor">#define DATA_READY       EVENT_FLAG(3)</span></div>
 <div class="line"><span class="preprocessor">#define DATA_TXMIT       EVENT_FLAG(4)</span></div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="classq_o_s_1_1task.html">task</a> TaskDataProducer; </div>
+<div class="line"><a class="code hl_class" href="classq_o_s_1_1task.html">task</a> TaskDataProducer;</div>
 <div class="line">uint8_t dataToTransmit[ 10 ] = { 0 };</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
@@ -552,17 +551,17 @@ Using the task Event-flags</h3>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
 <div class="line"><span class="keywordtype">void</span> TaskDataProducer_Callback( <a class="code hl_class" href="classq_o_s_1_1event__t.html">event_t</a> e ) {</div>
 <div class="line">    <span class="keywordtype">bool</span> condition;</div>
-<div class="line">     </div>
+<div class="line"> </div>
 <div class="line">    condition = <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858">eventFlagsCheck</a>( TaskDataProducer, DATA_TXMIT, <span class="keyword">true</span>, <span class="keyword">true</span> );</div>
 <div class="line">    <span class="keywordflow">if</span> ( <span class="keyword">true</span> == condition) {</div>
 <div class="line">        GenerateData( dataToTransmit );</div>
-<div class="line">        <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937">eventFlagsModify</a>( TaskDataProducer, DATA_READY, <span class="keyword">true</span> ); </div>
+<div class="line">        <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937">eventFlagsModify</a>( TaskDataProducer, DATA_READY, <span class="keyword">true</span> );</div>
 <div class="line">    }</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qeventflags.html#ga56dc6d48d6f31ffb5cfe3b1d787af858">eventFlagsCheck</a>( TaskDataProducer, DATA_READY | SWITCH_CHANGED | TIMER_EXPIRED, <span class="keyword">true</span>, <span class="keyword">true</span> );</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*-----------------------------------------------------------------------*/</span></div>
 <div class="line"><span class="keywordtype">void</span> IdleTask_Callback( <a class="code hl_class" href="classq_o_s_1_1event__t.html">event_t</a> e ) {</div>
-<div class="line">    </div>
+<div class="line"> </div>
 <div class="line">    TransmitData( dataToTransmit );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937">eventFlagsModify</a>( &amp;TaskDataProducer, DATA_TXMIT, <span class="keyword">true</span> );</div>
 <div class="line">}</div>
@@ -574,17 +573,17 @@ Using the task Event-flags</h3>
 <div class="line">    Configure_Periodic_Timer0_Interrupt_1ms();</div>
 <div class="line">    Configure_Periodic_Timer1_Interrupt_2s();</div>
 <div class="line">    Configure_External_Interrupt();</div>
-<div class="line">    <span class="comment">/* Idle task will be responsible to transmit the generate the data after </span></div>
+<div class="line">    <span class="comment">/* Idle task will be responsible to transmit the generate the data after</span></div>
 <div class="line"><span class="comment">     * all conditions are met</span></div>
 <div class="line"><span class="comment">    */</span></div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( <span class="keyword">nullptr</span>, IdleTask_Callback );</div>
 <div class="line">    <span class="comment">/* The task will wait until data is transmitted to generate another set of</span></div>
 <div class="line"><span class="comment">     * data */</span></div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#ad37fb39c9ab1224e007be651e1dfc69b">addEventTask</a>( TaskDataProducer, TaskDataProducer_Callback, core::HIGHEST_PRIORITY, <span class="stringliteral">&quot;DATAPRODUCER&quot;</span> );</div>
-<div class="line">    <span class="comment">/* Set the flag DATA_TXMIT as the initial condition to allow the data </span></div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( TaskDataProducer, TaskDataProducer_Callback, core::HIGHEST_PRIORITY, <span class="stringliteral">&quot;DATAPRODUCER&quot;</span> );</div>
+<div class="line">    <span class="comment">/* Set the flag DATA_TXMIT as the initial condition to allow the data</span></div>
 <div class="line"><span class="comment">     * generation at startup</span></div>
 <div class="line"><span class="comment">    */</span></div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937">eventFlagsModify</a>( TaskDataProducer, DATA_TXMIT, <span class="keyword">true</span> ); </div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="group__qeventflags.html#ga70fa8e4787737b3280f8d54b9d3c1937">eventFlagsModify</a>( TaskDataProducer, DATA_TXMIT, <span class="keyword">true</span> );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line">    <span class="keywordflow">for</span> ( ;; ) {}</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>

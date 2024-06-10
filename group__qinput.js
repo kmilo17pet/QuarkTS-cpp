@@ -7,37 +7,50 @@ var group__qinput =
       [ "getEvent", "classq_o_s_1_1input_1_1channel.html#a23115df27aad40840b25b50153567571", null ],
       [ "getType", "classq_o_s_1_1input_1_1channel.html#ab77bd344b9bf0865cfc6f698e684ba14", null ],
       [ "getUserData", "classq_o_s_1_1input_1_1channel.html#a984bc87c8dddf22e7b15e3e0539559ba", null ],
-      [ "isShared", "classq_o_s_1_1input_1_1channel.html#ae9b209c486075512c9dbe788920afc1c", null ],
+      [ "isShared", "classq_o_s_1_1input_1_1channel.html#ac04e64282e9335fa280c9c2479a566a5", null ],
       [ "setCallback", "classq_o_s_1_1input_1_1channel.html#ae15c704e5377c1f5c3ffcee2f91b17c8", null ],
       [ "setChannel", "classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7", null ],
-      [ "setParameter", "classq_o_s_1_1input_1_1channel.html#a25b32a745821c3a802984c1c72fa0e40", null ],
+      [ "setParameter", "classq_o_s_1_1input_1_1channel.html#a5e417f5a15a5b266d1e6e8f2fe3e8caa", null ],
       [ "setTime", "classq_o_s_1_1input_1_1channel.html#a1399280c16cffa5b4a657ca17580b771", null ],
       [ "setUserData", "classq_o_s_1_1input_1_1channel.html#ae3964ce8af336b26704c8835c5ed834d", null ],
+      [ "unShare", "classq_o_s_1_1input_1_1channel.html#ac7e0acea16e40f43448a20225c68f44b", null ],
       [ "watcher", "classq_o_s_1_1input_1_1channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
     [ "qOS::input::digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html", [
       [ "digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html#a87597389ada7339b80d76da1a8677d15", null ],
       [ "getCount", "classq_o_s_1_1input_1_1digital_channel.html#a1a1bd9edeef8e0fdffce779f8098ae71", null ],
       [ "getType", "classq_o_s_1_1input_1_1digital_channel.html#a0a87bc24fcdaaeca2634a182713b52df", null ],
-      [ "setParameter", "classq_o_s_1_1input_1_1digital_channel.html#a872e579faad5e803d1b9b18f6e8ad46f", null ],
+      [ "isShared", "classq_o_s_1_1input_1_1digital_channel.html#aafec615d0f6e0cfeec628a2d18706b51", null ],
+      [ "setParameter", "classq_o_s_1_1input_1_1digital_channel.html#aacc7174afd152bd05b21a2d765b91ed9", null ],
+      [ "setReader", "classq_o_s_1_1input_1_1digital_channel.html#adfcb76ff51aead1f95491317feb349f8", null ],
       [ "setTime", "classq_o_s_1_1input_1_1digital_channel.html#a050366f8499383363d14624e9cc4b1b5", null ],
       [ "watcher", "classq_o_s_1_1input_1_1digital_channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
     [ "qOS::input::analogChannel", "classq_o_s_1_1input_1_1analog_channel.html", [
-      [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html#a0804db33158bfb4cc9fab9c8b34ddb55", null ],
+      [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html#a7c941593b707e68c98a0c137a6e5985a", null ],
       [ "getCount", "classq_o_s_1_1input_1_1analog_channel.html#a4042aadd219f59fab8b7eb518b0c949d", null ],
       [ "getType", "classq_o_s_1_1input_1_1analog_channel.html#a5a3dcc2a418d54cd7b12fae0b518f65a", null ],
-      [ "setParameter", "classq_o_s_1_1input_1_1analog_channel.html#aa989317618542c52e39685be38dfdf4e", null ],
+      [ "isShared", "classq_o_s_1_1input_1_1analog_channel.html#a892cacec8d6a89c4a6cd5fd471f3dde7", null ],
+      [ "setParameter", "classq_o_s_1_1input_1_1analog_channel.html#a0ec12f3410e84d949d82a741f66ff8b6", null ],
+      [ "setReader", "classq_o_s_1_1input_1_1analog_channel.html#a94fc2ca454e84a4a1888ebb755910961", null ],
       [ "setTime", "classq_o_s_1_1input_1_1analog_channel.html#a1d26f182308fcf2c985bbd5e585ca6e2", null ],
+      [ "unShare", "classq_o_s_1_1input_1_1analog_channel.html#a9694e89d1f34a8c7454d650960d4a76b", null ],
       [ "watcher", "classq_o_s_1_1input_1_1analog_channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
     [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", [
-      [ "watcher", "classq_o_s_1_1input_1_1watcher.html#a89bbe5948f27eb00fceabf7db2803a37", null ],
+      [ "watcher", "classq_o_s_1_1input_1_1watcher.html#ac769ff1ada66e1b1d537e6821bc1f375", null ],
+      [ "watcher", "classq_o_s_1_1input_1_1watcher.html#ac2a0a54239cfaee6503b1b0a9d22761c", null ],
       [ "add", "classq_o_s_1_1input_1_1watcher.html#a94e0fda2802a8a5cb07892d2e960ab1a", null ],
+      [ "add", "classq_o_s_1_1input_1_1watcher.html#a7603e2fc1c9afcb1e8dfec0875c73ee7", null ],
+      [ "add", "classq_o_s_1_1input_1_1watcher.html#ad25b4fc7a579e07d18701a9ac90d9199", null ],
+      [ "add", "classq_o_s_1_1input_1_1watcher.html#ad74b9fdd7335eb00f6b6f647135219d3", null ],
       [ "remove", "classq_o_s_1_1input_1_1watcher.html#a1edca438c66a4197a8e7296782dbfebb", null ],
       [ "watch", "classq_o_s_1_1input_1_1watcher.html#a0703b4fef051351cd863d303dade48cb", null ]
     ] ],
-    [ "qOS::input::channelReaderFcn_t", "group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a", null ],
+    [ "qOS::input::analogReaderFcn_t", "group__qinput.html#ga4d54566c9f0a347e22be79e1be218319", null ],
+    [ "qOS::input::analogValue_t", "group__qinput.html#gad26497442f914206b95de2ac8a6123f3", null ],
+    [ "qOS::input::digitalReaderFcn_t", "group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a", null ],
+    [ "qOS::input::digitalValue_t", "group__qinput.html#ga0519732a168ad68b41a3913e06e46d45", null ],
     [ "qOS::input::eventCallback_t", "group__qinput.html#ga15af6d73c8fcb850a4a7337eac7aafe9", null ],
     [ "qOS::input::event", "group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7", [
       [ "qOS::input::event::NONE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab50339a10e1de285ac99d4c3990b8693", null ],
@@ -56,7 +69,7 @@ var group__qinput =
       [ "qOS::input::event::STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ]
     ] ],
     [ "qOS::input::type", "group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520", [
-      [ "qOS::input::type::DIGITAL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2", null ],
-      [ "qOS::input::type::ANALOG", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520a8b7d08163aa92ed2a8aceb06b9488e60", null ]
+      [ "qOS::input::type::DIGITAL_CHANNEL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb", null ],
+      [ "qOS::input::type::ANALOG_CHANNEL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520aa6b0092acb8146de14ffe20769e5c9ef", null ]
     ] ]
 ];

@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -162,18 +162,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a850aa3a53d510c6f1d0ced3b4159467b" id="r_a850aa3a53d510c6f1d0ced3b4159467b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a850aa3a53d510c6f1d0ced3b4159467b">add</a> (<a class="el" href="classq_o_s_1_1sm_1_1state.html">sm::state</a> &amp;s, const <a class="el" href="group__qfsm.html#ga452ff125ce90025a087527f27d9abfb4">sm::stateCallback_t</a> &amp;sFcn) noexcept</td></tr>
 <tr class="memdesc:a850aa3a53d510c6f1d0ced3b4159467b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the specified state as a child state.  <br /></td></tr>
 <tr class="separator:a850aa3a53d510c6f1d0ced3b4159467b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f79aa9b88e6c2a75562c044b5f52aed" id="r_a7f79aa9b88e6c2a75562c044b5f52aed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f79aa9b88e6c2a75562c044b5f52aed">setTransitions</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a> *table, size_t n) noexcept</td></tr>
-<tr class="memdesc:a7f79aa9b88e6c2a75562c044b5f52aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Installs a table with the outgoing transitions for this state.  <br /></td></tr>
-<tr class="separator:a7f79aa9b88e6c2a75562c044b5f52aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cd86d5c426cfa906a48e54b7670a2d9" id="r_a0cd86d5c426cfa906a48e54b7670a2d9"><td class="memTemplParams" colspan="2">template&lt;size_t numberOfTransitions&gt; </td></tr>
-<tr class="memitem:a0cd86d5c426cfa906a48e54b7670a2d9"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0cd86d5c426cfa906a48e54b7670a2d9">setTransitions</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;table)[numberOfTransitions]) noexcept</td></tr>
-<tr class="separator:a0cd86d5c426cfa906a48e54b7670a2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00853be678975da84a3c56e8ef7377f0" id="r_a00853be678975da84a3c56e8ef7377f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00853be678975da84a3c56e8ef7377f0">setTimeouts</a> (<a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a> *def, size_t n) noexcept</td></tr>
-<tr class="memdesc:a00853be678975da84a3c56e8ef7377f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup fixed timeouts for the specified state using a lookup-table.  <br /></td></tr>
-<tr class="separator:a00853be678975da84a3c56e8ef7377f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a991b711185d980e4e8beb27388f7e290" id="r_a991b711185d980e4e8beb27388f7e290"><td class="memTemplParams" colspan="2">template&lt;size_t numberOfTimeoutDefs&gt; </td></tr>
-<tr class="memitem:a991b711185d980e4e8beb27388f7e290"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a991b711185d980e4e8beb27388f7e290">setTimeouts</a> (<a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;def)[numberOfTimeoutDefs]) noexcept</td></tr>
-<tr class="separator:a991b711185d980e4e8beb27388f7e290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a182fd0825bb951e517522493638584fc" id="r_a182fd0825bb951e517522493638584fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a182fd0825bb951e517522493638584fc">install</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a> *table, size_t n) noexcept</td></tr>
+<tr class="memdesc:a182fd0825bb951e517522493638584fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install a table with the outgoing transitions for this state.  <br /></td></tr>
+<tr class="separator:a182fd0825bb951e517522493638584fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84319c63c297f294bf226954c0907ae4" id="r_a84319c63c297f294bf226954c0907ae4"><td class="memTemplParams" colspan="2">template&lt;size_t numberOfTransitions&gt; </td></tr>
+<tr class="memitem:a84319c63c297f294bf226954c0907ae4"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a84319c63c297f294bf226954c0907ae4">install</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;table)[numberOfTransitions]) noexcept</td></tr>
+<tr class="memdesc:a84319c63c297f294bf226954c0907ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install a table with the outgoing transitions for this state.  <br /></td></tr>
+<tr class="separator:a84319c63c297f294bf226954c0907ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad36c88d6339e84fffebaf8a48a3f1fc9" id="r_ad36c88d6339e84fffebaf8a48a3f1fc9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad36c88d6339e84fffebaf8a48a3f1fc9">install</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a> *table, size_t nTable, <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a> *def, size_t nDef)</td></tr>
+<tr class="memdesc:ad36c88d6339e84fffebaf8a48a3f1fc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install both, a table with the outgoing transitions for this state and fixed timeouts for the specified state using a lookup-table.  <br /></td></tr>
+<tr class="separator:ad36c88d6339e84fffebaf8a48a3f1fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1f9aa5808779bb96644239c427396d" id="r_a2c1f9aa5808779bb96644239c427396d"><td class="memTemplParams" colspan="2">template&lt;size_t numberOfTransitions, size_t numberOfTimeoutDefs&gt; </td></tr>
+<tr class="memitem:a2c1f9aa5808779bb96644239c427396d"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2c1f9aa5808779bb96644239c427396d">install</a> (<a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;table)[numberOfTransitions], <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;def)[numberOfTimeoutDefs]) noexcept</td></tr>
+<tr class="memdesc:a2c1f9aa5808779bb96644239c427396d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install both, a table with the outgoing transitions for this state and fixed timeouts for the specified state using a lookup-table.  <br /></td></tr>
+<tr class="separator:a2c1f9aa5808779bb96644239c427396d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213f8a073f1c7b604934b90ae04efc03" id="r_a213f8a073f1c7b604934b90ae04efc03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a213f8a073f1c7b604934b90ae04efc03">install</a> (<a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a> *def, size_t n) noexcept</td></tr>
+<tr class="memdesc:a213f8a073f1c7b604934b90ae04efc03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install fixed timeouts for the specified state using a lookup-table.  <br /></td></tr>
+<tr class="separator:a213f8a073f1c7b604934b90ae04efc03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84cbcf655b62fd2383db0926dbd6dc4c" id="r_a84cbcf655b62fd2383db0926dbd6dc4c"><td class="memTemplParams" colspan="2">template&lt;size_t numberOfTimeoutDefs&gt; </td></tr>
+<tr class="memitem:a84cbcf655b62fd2383db0926dbd6dc4c"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a84cbcf655b62fd2383db0926dbd6dc4c">install</a> (<a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;def)[numberOfTimeoutDefs]) noexcept</td></tr>
+<tr class="memdesc:a84cbcf655b62fd2383db0926dbd6dc4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Install fixed timeouts for the specified state using a lookup-table.  <br /></td></tr>
+<tr class="separator:a84cbcf655b62fd2383db0926dbd6dc4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d777ae3e9a4a2248c8463016d61bc5b" id="r_a8d777ae3e9a4a2248c8463016d61bc5b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d777ae3e9a4a2248c8463016d61bc5b">getData</a> (void) noexcept</td></tr>
 <tr class="memdesc:a8d777ae3e9a4a2248c8463016d61bc5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the state data or storage-pointer.  <br /></td></tr>
 <tr class="separator:a8d777ae3e9a4a2248c8463016d61bc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -286,8 +295,8 @@ Protected Member Functions</h2></td></tr>
   </dd>
 </dl>
 <p>Prototype: </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">sm::status</a> xCallback( <a class="code hl_class" href="classq_o_s_1_1sm_1_1handler__t.html">sm::handler_t</a> h ) </div>
-<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html">qOS::sm::handler_t</a></div><div class="ttdoc">The state callback argument to handle the state-machine dynamics and provide execution information....</div><div class="ttdef"><b>Definition</b> fsm.hpp:240</div></div>
-<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition</b> fsm.hpp:181</div></div>
+<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html">qOS::sm::handler_t</a></div><div class="ttdoc">The state callback argument to handle the state-machine dynamics and provide execution information....</div><div class="ttdef"><b>Definition</b> fsm.hpp:252</div></div>
+<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition</b> fsm.hpp:193</div></div>
 </div><!-- fragment --> <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
 
 </div>
@@ -399,6 +408,281 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a213f8a073f1c7b604934b90ae04efc03" name="a213f8a073f1c7b604934b90ae04efc03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a213f8a073f1c7b604934b90ae04efc03">&#9670;&#160;</a></span>install() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::install </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a> *</td>          <td class="paramname"><span class="paramname"><em>def</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Install fixed timeouts for the specified state using a lookup-table. </p>
+<dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">def</td><td>The lookup table matching the requested timeout values with their respective options. <pre class="fragment">{ [Timeout value], [Options(Combined with a bitwise OR)] } </pre> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements inside <em>def</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a84cbcf655b62fd2383db0926dbd6dc4c" name="a84cbcf655b62fd2383db0926dbd6dc4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84cbcf655b62fd2383db0926dbd6dc4c">&#9670;&#160;</a></span>install() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t numberOfTimeoutDefs&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::install </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;)</td>          <td class="paramname"><span class="paramname"><em>def</em></span>[numberOfTimeoutDefs]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Install fixed timeouts for the specified state using a lookup-table. </p>
+<dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">numberOfTimeoutDefs</td><td>The number of elements in <em>def</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">def</td><td>The lookup table matching the requested timeout values with their respective options. <pre class="fragment">{ [Timeout value], [Options(Combined with a bitwise OR)] } </pre> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a182fd0825bb951e517522493638584fc" name="a182fd0825bb951e517522493638584fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182fd0825bb951e517522493638584fc">&#9670;&#160;</a></span>install() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::install </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a> *</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Install a table with the outgoing transitions for this state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">table</td><td>An array of entries of type <code>sm::transition_t</code> with the outgoing transitions. Each entry relates signals, actions and the target state using the following layout: <pre class="fragment">{ [Signal], [Action/Guard], [Target state], [History Mode] } </pre> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements inside <em>table</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ad36c88d6339e84fffebaf8a48a3f1fc9" name="ad36c88d6339e84fffebaf8a48a3f1fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad36c88d6339e84fffebaf8a48a3f1fc9">&#9670;&#160;</a></span>install() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::install </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a> *</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>nTable</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a> *</td>          <td class="paramname"><span class="paramname"><em>def</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>nDef</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Install both, a table with the outgoing transitions for this state and fixed timeouts for the specified state using a lookup-table. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">table</td><td>An array of entries of type <code>sm::transition_t</code> with the outgoing transitions. Each entry relates signals, actions and the target state using the following layout: <pre class="fragment">{ [Signal], [Action/Guard], [Target state], [History Mode] } </pre> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nTable</td><td>The number of elements inside <em>table</em>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">def</td><td>The lookup table matching the requested timeout values with their respective options. <pre class="fragment">{ [Timeout value], [Options(Combined with a bitwise OR)] } </pre> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nDef</td><td>The number of elements inside <em>def</em>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a84319c63c297f294bf226954c0907ae4" name="a84319c63c297f294bf226954c0907ae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84319c63c297f294bf226954c0907ae4">&#9670;&#160;</a></span>install() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t numberOfTransitions&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::install </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;)</td>          <td class="paramname"><span class="paramname"><em>table</em></span>[numberOfTransitions]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Install a table with the outgoing transitions for this state. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">numberOfTransitions</td><td>The array size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">table</td><td>An array of entries of type <code>sm::transition_t</code> with the outgoing transitions. Each entry relates signals, actions and the target state using the following layout: <pre class="fragment">{ [Signal], [Action/Guard], [Target state], [History Mode] } </pre> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a2c1f9aa5808779bb96644239c427396d" name="a2c1f9aa5808779bb96644239c427396d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c1f9aa5808779bb96644239c427396d">&#9670;&#160;</a></span>install() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t numberOfTransitions, size_t numberOfTimeoutDefs&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::sm::state::install </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;)</td>          <td class="paramname"><span class="paramname"><em>table</em></span>[numberOfTransitions], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;)</td>          <td class="paramname"><span class="paramname"><em>def</em></span>[numberOfTimeoutDefs]&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Install both, a table with the outgoing transitions for this state and fixed timeouts for the specified state using a lookup-table. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec() </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">numberOfTransitions</td><td>The number of elements in <em>table</em> </td></tr>
+    <tr><td class="paramname">numberOfTimeoutDefs</td><td>The number of elements in <em>def</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">table</td><td>An array of entries of type <code>sm::transition_t</code> with the outgoing transitions. Each entry relates signals, actions and the target state using the following layout: <pre class="fragment">{ [Signal], [Action/Guard], [Target state], [History Mode] } </pre> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">def</td><td>The lookup table matching the requested timeout values with their respective options. <pre class="fragment">{ [Timeout value], [Options(Combined with a bitwise OR)] } </pre> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
+
+</div>
+</div>
 <a id="ab04273bc570b210568b9b5491a58dced" name="ab04273bc570b210568b9b5491a58dced"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab04273bc570b210568b9b5491a58dced">&#9670;&#160;</a></span>setCallback()</h2>
 
@@ -462,142 +746,6 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a00853be678975da84a3c56e8ef7377f0" name="a00853be678975da84a3c56e8ef7377f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00853be678975da84a3c56e8ef7377f0">&#9670;&#160;</a></span>setTimeouts() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::sm::state::setTimeouts </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a> *</td>          <td class="paramname"><span class="paramname"><em>def</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Setup fixed timeouts for the specified state using a lookup-table. </p>
-<dl class="section attention"><dt>Attention</dt><dd>This feature its only available if the FSM has a signal-queue installed. </dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>The container state-machine must have a timeout-specification installed. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The lookup table should be an array of type <a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html" title="This type should be used to define an item for a timeout-specification table.">timeoutStateDefinition</a> with <em>n</em> elements matching { time, options }. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9" title="Install a signal queue to the provided Finite State Machine (FSM).">stateMachine::installSignalQueue()</a>, <a class="el" href="classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47" title="Install the Timeout-specification object to target FSM to allow timed signals within states.">stateMachine::installTimeoutSpec()</a> </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">def</td><td>The lookup table matching the requested timeout values with their respective options. <pre class="fragment">{ [Timeout value], [Options(Combined with a bitwise OR)] } </pre> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements inside <em>def</em>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
-
-</div>
-</div>
-<a id="a991b711185d980e4e8beb27388f7e290" name="a991b711185d980e4e8beb27388f7e290"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a991b711185d980e4e8beb27388f7e290">&#9670;&#160;</a></span>setTimeouts() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;size_t numberOfTimeoutDefs&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::sm::state::setTimeouts </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1timeout_state_definition.html">timeoutStateDefinition</a>(&amp;)</td>          <td class="paramname"><span class="paramname"><em>def</em></span>[numberOfTimeoutDefs]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7f79aa9b88e6c2a75562c044b5f52aed" name="a7f79aa9b88e6c2a75562c044b5f52aed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f79aa9b88e6c2a75562c044b5f52aed">&#9670;&#160;</a></span>setTransitions() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::sm::state::setTransitions </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a> *</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Installs a table with the outgoing transitions for this state. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">table</td><td>An array of entries of type <code>sm::transition_t</code> with the outgoing transitions. Each entry relates signals, actions and the target state using the following layout: <pre class="fragment">{ [Signal], [Action/Guard], [Target state], [History Mode] } </pre> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements inside <em>table</em>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, otherwise return <code>false</code>. </dd></dl>
-
-</div>
-</div>
-<a id="a0cd86d5c426cfa906a48e54b7670a2d9" name="a0cd86d5c426cfa906a48e54b7670a2d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cd86d5c426cfa906a48e54b7670a2d9">&#9670;&#160;</a></span>setTransitions() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;size_t numberOfTransitions&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::sm::state::setTransitions </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structq_o_s_1_1sm_1_1transition.html">transition</a>(&amp;)</td>          <td class="paramname"><span class="paramname"><em>table</em></span>[numberOfTransitions]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>

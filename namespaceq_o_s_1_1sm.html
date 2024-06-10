@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -198,10 +198,16 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gad8176fbeabf92face38e70a8436d8e0d" id="r_gad8176fbeabf92face38e70a8436d8e0d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">signalID</a> : signalIDType { <a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e">SIGNAL_START</a>
+<tr class="memitem:gad8176fbeabf92face38e70a8436d8e0d" id="r_gad8176fbeabf92face38e70a8436d8e0d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">signalID</a> : signalIDType { <br />
+&#160;&#160;<a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e">SIGNAL_START</a>
 , <a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453">SIGNAL_EXIT</a>
 , <a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6">SIGNAL_ENTRY</a>
 , <a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d">SIGNAL_NONE</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0daab87be7e8a6145f2ae322798eb81b89d">SIGNAL_TIMEOUT0</a>
+, <a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0daceae7377eecbbf91a98be43210cde6d1">SIGNAL_TIMEOUT1</a>
+, <a class="el" href="group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da84da8e45e5ef4f05527e3d194a8379f6">SIGNAL_TIMEOUT2</a>
+<br />
  }</td></tr>
 <tr class="memdesc:gad8176fbeabf92face38e70a8436d8e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type for signal ID.  <a href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">More...</a><br /></td></tr>
 <tr class="separator:gad8176fbeabf92face38e70a8436d8e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -225,16 +231,16 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gad5476e06fde92efddf507ec60e492be3" id="r_gad5476e06fde92efddf507ec60e492be3"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">signalID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#gad5476e06fde92efddf507ec60e492be3">SIGNAL_TIMEOUT</a> (<a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a> iTm)</td></tr>
+<tr class="memitem:gad5476e06fde92efddf507ec60e492be3" id="r_gad5476e06fde92efddf507ec60e492be3"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">signalID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#gad5476e06fde92efddf507ec60e492be3">SIGNAL_TIMEOUT</a> (<a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a> iTm)</td></tr>
 <tr class="memdesc:gad5476e06fde92efddf507ec60e492be3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Built-in signal to indicate that a timeout expiration event occurs.  <br /></td></tr>
 <tr class="separator:gad5476e06fde92efddf507ec60e492be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad36d499b2329aa049d98062b0f1c69a9" id="r_gad36d499b2329aa049d98062b0f1c69a9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#gad8176fbeabf92face38e70a8436d8e0d">signalID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#gad36d499b2329aa049d98062b0f1c69a9">SIGNAL_USER</a> (uint32_t s)</td></tr>
 <tr class="memdesc:gad36d499b2329aa049d98062b0f1c69a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to define a user-defined signal.  <br /></td></tr>
 <tr class="separator:gad36d499b2329aa049d98062b0f1c69a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga646289fa705250d5f8b950aee747becc" id="r_ga646289fa705250d5f8b950aee747becc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">TIMEOUT_INDEX</a> (<a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a> i)</td></tr>
+<tr class="memitem:ga646289fa705250d5f8b950aee747becc" id="r_ga646289fa705250d5f8b950aee747becc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga646289fa705250d5f8b950aee747becc">TIMEOUT_INDEX</a> (<a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a> i)</td></tr>
 <tr class="memdesc:ga646289fa705250d5f8b950aee747becc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used only to specify which timeout signal to use.  <br /></td></tr>
 <tr class="separator:ga646289fa705250d5f8b950aee747becc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c35035562f829904bfa2d89c5be7287" id="r_ga7c35035562f829904bfa2d89c5be7287"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga7c35035562f829904bfa2d89c5be7287">TIMEOUT_USE_SIGNAL</a> (<a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a> i)</td></tr>
+<tr class="memitem:ga7c35035562f829904bfa2d89c5be7287" id="r_ga7c35035562f829904bfa2d89c5be7287"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="group__qfsm.html#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfsm.html#ga7c35035562f829904bfa2d89c5be7287">TIMEOUT_USE_SIGNAL</a> (<a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a> i)</td></tr>
 <tr class="memdesc:ga7c35035562f829904bfa2d89c5be7287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used only to specify which timeout signal to use.  <br /></td></tr>
 <tr class="separator:ga7c35035562f829904bfa2d89c5be7287"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">

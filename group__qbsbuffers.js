@@ -1,16 +1,16 @@
 var group__qbsbuffers =
 [
     [ "qOS::byteBuffer", "classq_o_s_1_1byte_buffer.html", [
-      [ "byteBuffer", "classq_o_s_1_1byte_buffer.html#a3c382b68fedbf6cbea3efeff7085fe2c", null ],
-      [ "byteBuffer", "classq_o_s_1_1byte_buffer.html#afbdfbb32549b232757069460061946b1", null ],
+      [ "byteBuffer", "classq_o_s_1_1byte_buffer.html#ab27c611dac4ad313f16d55020cfec21a", null ],
+      [ "byteBuffer", "classq_o_s_1_1byte_buffer.html#ab2dc249690d6aa0c34c1ebe03eb4b3b7", null ],
       [ "count", "classq_o_s_1_1byte_buffer.html#afcc85e15c7179199fc99557826d55f63", null ],
-      [ "get", "classq_o_s_1_1byte_buffer.html#afc3feec61c7bb77c8bb9bccf98575c98", null ],
+      [ "get", "classq_o_s_1_1byte_buffer.html#a6950adb7dd9a398ddca523c9542a5ad9", null ],
       [ "isEmpty", "classq_o_s_1_1byte_buffer.html#a6e9a3f9369023029a15bd67dc170ce32", null ],
       [ "isFull", "classq_o_s_1_1byte_buffer.html#a51fd9989f0dc93b24adf4ac6710bbb45", null ],
-      [ "peek", "classq_o_s_1_1byte_buffer.html#aabb6ed057c77f3d7c1afff8f4077e9a3", null ],
-      [ "put", "classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22", null ],
+      [ "peek", "classq_o_s_1_1byte_buffer.html#ae2b5dbea17abd67583dd224922a60316", null ],
+      [ "put", "classq_o_s_1_1byte_buffer.html#aa0f78551140dee000951cff92eab831f", null ],
       [ "read", "classq_o_s_1_1byte_buffer.html#a5606af1fab73ee13728d33d306cc1d41", null ],
-      [ "setup", "classq_o_s_1_1byte_buffer.html#a668ffef4b07ee46638870b330d78e23c", null ],
-      [ "setup", "classq_o_s_1_1byte_buffer.html#ad43510236197c188968edacf2e8a93e7", null ]
+      [ "setup", "classq_o_s_1_1byte_buffer.html#a5dc6270012d89e5ba37052df073d7ee9", null ],
+      [ "setup", "classq_o_s_1_1byte_buffer.html#a528582b1fa4c0a60d27926617aa3e57e", null ]
     ] ]
 ];

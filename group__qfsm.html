@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -213,10 +213,16 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gad8176fbeabf92face38e70a8436d8e0d" id="r_gad8176fbeabf92face38e70a8436d8e0d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad8176fbeabf92face38e70a8436d8e0d">qOS::sm::signalID</a> : signalIDType { <a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e">qOS::sm::SIGNAL_START</a>
+<tr class="memitem:gad8176fbeabf92face38e70a8436d8e0d" id="r_gad8176fbeabf92face38e70a8436d8e0d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad8176fbeabf92face38e70a8436d8e0d">qOS::sm::signalID</a> : signalIDType { <br />
+&#160;&#160;<a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e">qOS::sm::SIGNAL_START</a>
 , <a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453">qOS::sm::SIGNAL_EXIT</a>
 , <a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6">qOS::sm::SIGNAL_ENTRY</a>
 , <a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d">qOS::sm::SIGNAL_NONE</a>
+, <br />
+&#160;&#160;<a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0daab87be7e8a6145f2ae322798eb81b89d">qOS::sm::SIGNAL_TIMEOUT0</a>
+, <a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0daceae7377eecbbf91a98be43210cde6d1">qOS::sm::SIGNAL_TIMEOUT1</a>
+, <a class="el" href="#ggad8176fbeabf92face38e70a8436d8e0da84da8e45e5ef4f05527e3d194a8379f6">qOS::sm::SIGNAL_TIMEOUT2</a>
+<br />
  }</td></tr>
 <tr class="memdesc:gad8176fbeabf92face38e70a8436d8e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type for signal ID.  <a href="#gad8176fbeabf92face38e70a8436d8e0d">More...</a><br /></td></tr>
 <tr class="separator:gad8176fbeabf92face38e70a8436d8e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -240,21 +246,21 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gad5476e06fde92efddf507ec60e492be3" id="r_gad5476e06fde92efddf507ec60e492be3"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#gad8176fbeabf92face38e70a8436d8e0d">signalID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad5476e06fde92efddf507ec60e492be3">qOS::sm::SIGNAL_TIMEOUT</a> (<a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a> iTm)</td></tr>
+<tr class="memitem:gad5476e06fde92efddf507ec60e492be3" id="r_gad5476e06fde92efddf507ec60e492be3"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#gad8176fbeabf92face38e70a8436d8e0d">signalID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad5476e06fde92efddf507ec60e492be3">qOS::sm::SIGNAL_TIMEOUT</a> (<a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a> iTm)</td></tr>
 <tr class="memdesc:gad5476e06fde92efddf507ec60e492be3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Built-in signal to indicate that a timeout expiration event occurs.  <br /></td></tr>
 <tr class="separator:gad5476e06fde92efddf507ec60e492be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad36d499b2329aa049d98062b0f1c69a9" id="r_gad36d499b2329aa049d98062b0f1c69a9"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#gad8176fbeabf92face38e70a8436d8e0d">signalID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad36d499b2329aa049d98062b0f1c69a9">qOS::sm::SIGNAL_USER</a> (uint32_t s)</td></tr>
 <tr class="memdesc:gad36d499b2329aa049d98062b0f1c69a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to define a user-defined signal.  <br /></td></tr>
 <tr class="separator:gad36d499b2329aa049d98062b0f1c69a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga646289fa705250d5f8b950aee747becc" id="r_ga646289fa705250d5f8b950aee747becc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a> (<a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a> i)</td></tr>
+<tr class="memitem:ga646289fa705250d5f8b950aee747becc" id="r_ga646289fa705250d5f8b950aee747becc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga646289fa705250d5f8b950aee747becc">qOS::sm::TIMEOUT_INDEX</a> (<a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a> i)</td></tr>
 <tr class="memdesc:ga646289fa705250d5f8b950aee747becc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used only to specify which timeout signal to use.  <br /></td></tr>
 <tr class="separator:ga646289fa705250d5f8b950aee747becc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7c35035562f829904bfa2d89c5be7287" id="r_ga7c35035562f829904bfa2d89c5be7287"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7c35035562f829904bfa2d89c5be7287">qOS::sm::TIMEOUT_USE_SIGNAL</a> (<a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a> i)</td></tr>
+<tr class="memitem:ga7c35035562f829904bfa2d89c5be7287" id="r_ga7c35035562f829904bfa2d89c5be7287"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7c35035562f829904bfa2d89c5be7287">qOS::sm::TIMEOUT_USE_SIGNAL</a> (<a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a> i)</td></tr>
 <tr class="memdesc:ga7c35035562f829904bfa2d89c5be7287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout-specification option. Should be used only to specify which timeout signal to use.  <br /></td></tr>
 <tr class="separator:ga7c35035562f829904bfa2d89c5be7287"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga86639c0e76496b0a1577b634452f5811" id="r_ga86639c0e76496b0a1577b634452f5811"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga86639c0e76496b0a1577b634452f5811">qOS::core::addStateMachineTask</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#gabf769a2519cf3a113a1bd291fa7fbeab">priority_t</a> p, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">duration_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
-<tr class="memdesc:ga86639c0e76496b0a1577b634452f5811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <br /></td></tr>
-<tr class="separator:ga86639c0e76496b0a1577b634452f5811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d42bf59d2d9950d9978a3d2179da51d" id="r_ga2d42bf59d2d9950d9978a3d2179da51d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2d42bf59d2d9950d9978a3d2179da51d">qOS::core::add</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1state_machine.html">stateMachine</a> &amp;m, const <a class="el" href="group__qtypes.html#gafa40141ce2de5f15a1d9b1558466311a">priority_t</a> p, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">duration_t</a> t, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
+<tr class="memdesc:ga2d42bf59d2d9950d9978a3d2179da51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field.  <br /></td></tr>
+<tr class="separator:ga2d42bf59d2d9950d9978a3d2179da51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -301,7 +307,7 @@ Variables</h2></td></tr>
 <div class="line">      }</div>
 <div class="line">      <span class="keywordflow">return</span> retVal;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html">qOS::sm::handler_t</a></div><div class="ttdoc">The state callback argument to handle the state-machine dynamics and provide execution information....</div><div class="ttdef"><b>Definition</b> fsm.hpp:240</div></div>
+<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html">qOS::sm::handler_t</a></div><div class="ttdoc">The state callback argument to handle the state-machine dynamics and provide execution information....</div><div class="ttdef"><b>Definition</b> fsm.hpp:252</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">h</td><td>The object that handles the state machine </td></tr>
@@ -353,10 +359,10 @@ Variables</h2></td></tr>
 <div class="line">              <span class="keywordflow">break</span>;</div>
 <div class="line">      <span class="keywordflow">return</span> retVal;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html_a1ba51742cd55143877aa4a5759b8557a"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html#a1ba51742cd55143877aa4a5759b8557a">qOS::sm::handler_t::signal</a></div><div class="ttdeci">signalID signal(void) const noexcept</div><div class="ttdoc">Get the Signal ID currently being evaluated for this state.</div><div class="ttdef"><b>Definition</b> fsm.hpp:328</div></div>
-<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition</b> fsm.hpp:181</div></div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">qOS::sm::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdoc">To indicate that the status was successful.</div><div class="ttdef"><b>Definition</b> fsm.hpp:201</div></div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee">qOS::sm::SIGNAL_HANDLED</a></div><div class="ttdeci">@ SIGNAL_HANDLED</div><div class="ttdoc">To indicate that the state handled the signal and therefore it is not necessary to continue propagati...</div><div class="ttdef"><b>Definition</b> fsm.hpp:207</div></div>
+<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html_a1ba51742cd55143877aa4a5759b8557a"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html#a1ba51742cd55143877aa4a5759b8557a">qOS::sm::handler_t::signal</a></div><div class="ttdeci">signalID signal(void) const noexcept</div><div class="ttdoc">Get the Signal ID currently being evaluated for this state.</div><div class="ttdef"><b>Definition</b> fsm.hpp:340</div></div>
+<div class="ttc" id="agroup__qfsm_html_gab2bc3399fbeae52404fe14571d960f0c"><div class="ttname"><a href="#gab2bc3399fbeae52404fe14571d960f0c">qOS::sm::status</a></div><div class="ttdeci">status</div><div class="ttdoc">This enumeration defines the built-in state-execution status values that can be used as return value ...</div><div class="ttdef"><b>Definition</b> fsm.hpp:193</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49">qOS::sm::SUCCESS</a></div><div class="ttdeci">@ SUCCESS</div><div class="ttdoc">To indicate that the status was successful.</div><div class="ttdef"><b>Definition</b> fsm.hpp:213</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee">qOS::sm::SIGNAL_HANDLED</a></div><div class="ttdeci">@ SIGNAL_HANDLED</div><div class="ttdoc">To indicate that the state handled the signal and therefore it is not necessary to continue propagati...</div><div class="ttdef"><b>Definition</b> fsm.hpp:219</div></div>
 <div class="ttc" id="agroup__qfsm_html_ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6"><div class="ttname"><a href="#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6">qOS::sm::SIGNAL_ENTRY</a></div><div class="ttdeci">@ SIGNAL_ENTRY</div><div class="ttdoc">Built-in signal to indicate if the current state has just entered from another state.</div><div class="ttdef"><b>Definition</b> fsm.hpp:53</div></div>
 <div class="ttc" id="agroup__qfsm_html_ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453"><div class="ttname"><a href="#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453">qOS::sm::SIGNAL_EXIT</a></div><div class="ttdeci">@ SIGNAL_EXIT</div><div class="ttdoc">Built-in signal to indicate if the current state has just exit to another state.</div><div class="ttdef"><b>Definition</b> fsm.hpp:47</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
@@ -393,9 +399,9 @@ Variables</h2></td></tr>
 <div class="line">          <span class="keywordflow">default</span>:</div>
 <div class="line">              <span class="keywordflow">break</span>;</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html_a6e5c6e1c15742bf3b6f16428adc33d80"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html#a6e5c6e1c15742bf3b6f16428adc33d80">qOS::sm::handler_t::lastStatus</a></div><div class="ttdeci">status lastStatus(void) const noexcept</div><div class="ttdoc">The last state return status.</div><div class="ttdef"><b>Definition</b> fsm.hpp:337</div></div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5">qOS::sm::FAILURE</a></div><div class="ttdeci">@ FAILURE</div><div class="ttdoc">To indicate that the state had a failure or abnormal execution. It can be used to handle exceptions.</div><div class="ttdef"><b>Definition</b> fsm.hpp:197</div></div>
-<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4">qOS::sm::BEFORE_ANY</a></div><div class="ttdeci">@ BEFORE_ANY</div><div class="ttdoc">(Only available in the surrounding callback) Indicates an execution of the surrounding callback befor...</div><div class="ttdef"><b>Definition</b> fsm.hpp:187</div></div>
+<div class="ttc" id="aclassq_o_s_1_1sm_1_1handler__t_html_a6e5c6e1c15742bf3b6f16428adc33d80"><div class="ttname"><a href="classq_o_s_1_1sm_1_1handler__t.html#a6e5c6e1c15742bf3b6f16428adc33d80">qOS::sm::handler_t::lastStatus</a></div><div class="ttdeci">status lastStatus(void) const noexcept</div><div class="ttdoc">The last state return status.</div><div class="ttdef"><b>Definition</b> fsm.hpp:349</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0ca45d64facee9c6dd3f0b238a893f35da5">qOS::sm::FAILURE</a></div><div class="ttdeci">@ FAILURE</div><div class="ttdoc">To indicate that the state had a failure or abnormal execution. It can be used to handle exceptions.</div><div class="ttdef"><b>Definition</b> fsm.hpp:209</div></div>
+<div class="ttc" id="agroup__qfsm_html_ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4"><div class="ttname"><a href="#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4">qOS::sm::BEFORE_ANY</a></div><div class="ttdeci">@ BEFORE_ANY</div><div class="ttdoc">(Only available in the surrounding callback) Indicates an execution of the surrounding callback befor...</div><div class="ttdef"><b>Definition</b> fsm.hpp:199</div></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">h</td><td>The object that handles the state machine </td></tr>
@@ -472,6 +478,12 @@ Variables</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d" name="ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d"></a>SIGNAL_NONE&#160;</td><td class="fielddoc"><p>Built-in signal to indicate that there is not signal available. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ggad8176fbeabf92face38e70a8436d8e0daab87be7e8a6145f2ae322798eb81b89d" name="ggad8176fbeabf92face38e70a8436d8e0daab87be7e8a6145f2ae322798eb81b89d"></a>SIGNAL_TIMEOUT0&#160;</td><td class="fielddoc"><p>Built-in signal to indicate that the timeout at index 0 expired. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggad8176fbeabf92face38e70a8436d8e0daceae7377eecbbf91a98be43210cde6d1" name="ggad8176fbeabf92face38e70a8436d8e0daceae7377eecbbf91a98be43210cde6d1"></a>SIGNAL_TIMEOUT1&#160;</td><td class="fielddoc"><p>Built-in signal to indicate that the timeout at index 1 expired. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggad8176fbeabf92face38e70a8436d8e0da84da8e45e5ef4f05527e3d194a8379f6" name="ggad8176fbeabf92face38e70a8436d8e0da84da8e45e5ef4f05527e3d194a8379f6"></a>SIGNAL_TIMEOUT2&#160;</td><td class="fielddoc"><p>Built-in signal to indicate that the timeout at index 2 expired. </p>
+</td></tr>
 </table>
 
 </div>
@@ -505,8 +517,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga86639c0e76496b0a1577b634452f5811" name="ga86639c0e76496b0a1577b634452f5811"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga86639c0e76496b0a1577b634452f5811">&#9670;&#160;</a></span>addStateMachineTask()</h2>
+<a id="ga2d42bf59d2d9950d9978a3d2179da51d" name="ga2d42bf59d2d9950d9978a3d2179da51d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2d42bf59d2d9950d9978a3d2179da51d">&#9670;&#160;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -515,7 +527,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool qOS::core::addStateMachineTask </td>
+          <td class="memname">bool qOS::core::add </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classq_o_s_1_1task.html">task</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>Task</em></span>, </td>
         </tr>
@@ -527,7 +539,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="group__qtypes.html#gabf769a2519cf3a113a1bd291fa7fbeab">priority_t</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="group__qtypes.html#gafa40141ce2de5f15a1d9b1558466311a">priority_t</a></td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -553,8 +565,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a task to the scheduling scheme running a dedicated state-machine. The task is scheduled to run every <em>t</em> time units in <a class="el" href="classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45" title="A constant to indicate that the task will run every time its timeout has expired.">task::PERIODIC</a> mode. The event info will be available as a generic pointer inside the <a class="el" href="classq_o_s_1_1sm_1_1handler__t.html#a5b3ba1e1abde3032dde5a980492ff72a">sm::handler_t::Data</a> field. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>The State-machine object should be previously configured with qStateMachine_Setup() </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>qStateMachine_Setup() </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The State-machine object should be previously configured with <a class="el" href="classq_o_s_1_1state_machine.html#ae39f6e563dc49640c1bf2dadbc4aa664" title="Initializes a Finite State Machine (FSM).">qOS::stateMachine::setup()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classq_o_s_1_1state_machine.html#ae39f6e563dc49640c1bf2dadbc4aa664" title="Initializes a Finite State Machine (FSM).">qOS::stateMachine::setup()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>A pointer to the task node. </td></tr>
@@ -582,7 +594,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="#gad8176fbeabf92face38e70a8436d8e0d">signalID</a> qOS::sm::SIGNAL_TIMEOUT </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a></td>          <td class="paramname"><span class="paramname"><em>iTm</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a></td>          <td class="paramname"><span class="paramname"><em>iTm</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -650,7 +662,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a> qOS::sm::TIMEOUT_INDEX </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -679,7 +691,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="#gab372ec86302ddefe79964993c3c56e15">timeoutSpecOption_t</a> qOS::sm::TIMEOUT_USE_SIGNAL </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="group__qtypes.html#ga1e8d21b7052d6d734e37584e06d9cb76">index_t</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620">index_t</a></td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

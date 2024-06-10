@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -156,28 +156,28 @@ $(function(){initNavTree('helper_8hpp_source.html',''); initResizable(true); });
 <div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="group__qflm.html#gab8e15a186a9b8c4cc6b3b36671f7dc6b">   27</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#gab8e15a186a9b8c4cc6b3b36671f7dc6b">multipleSet</a>( T &amp;dst, W xBits )</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            dst |= <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBits );</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            dst = dst | <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBits );</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
 </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> W&gt;</div>
 <div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="group__qflm.html#ga780ea4cb7bc1234784bca8fc01807560">   37</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#ga780ea4cb7bc1234784bca8fc01807560">multipleClear</a>( T &amp;dst, W xBits )</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            dst &amp;= ~static_cast&lt;T&gt;( xBits );</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            dst = dst &amp; ~static_cast&lt;T&gt;( xBits );</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
 </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="group__qflm.html#gae371fc016f5298e25033dd3c70e5ce20">   47</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#gae371fc016f5298e25033dd3c70e5ce20">singleSet</a>( T &amp;dst, <span class="keyword">const</span> <span class="keywordtype">size_t</span> xBit )</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            dst |= ( <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( 1U ) &lt;&lt; <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBit ) );</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            dst = dst | ( <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( 1U ) &lt;&lt; <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBit ) );</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
 </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="group__qflm.html#ga3886e484675d93e1cf1db88b4c0040f0">   57</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#ga3886e484675d93e1cf1db88b4c0040f0">singleClear</a>( T &amp;dst, <span class="keyword">const</span> <span class="keywordtype">size_t</span> xBit )</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            dst &amp;= ~( <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( 1U ) &lt;&lt; <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBit ) );</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            dst = dst &amp; ~( <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( 1U ) &lt;&lt; <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBit ) );</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
 </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
@@ -191,7 +191,7 @@ $(function(){initNavTree('helper_8hpp_source.html',''); initResizable(true); });
 <div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="group__qflm.html#ga91a66e9443d43c48a0472be74a31fa3a">   80</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group__qflm.html#ga91a66e9443d43c48a0472be74a31fa3a">singleToggle</a>( T &amp;dst, <span class="keyword">const</span> <span class="keywordtype">size_t</span> xBit )</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        {</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            dst ^= ( <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( 1U ) &lt;&lt; <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBit ) );</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            dst = dst ^ ( <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( 1U ) &lt;&lt; <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>( xBit ) );</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
 </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="comment">/*cstat +CERT-INT34-C_a +MISRAC++2008-5-0-10*/</span></div>

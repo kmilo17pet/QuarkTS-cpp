@@ -41,12 +41,14 @@ var group__qfsm =
       [ "add", "classq_o_s_1_1sm_1_1state.html#a2a624b24d383df9772802c2c16a8cca0", null ],
       [ "getData", "classq_o_s_1_1sm_1_1state.html#a8d777ae3e9a4a2248c8463016d61bc5b", null ],
       [ "getTransitionTable", "classq_o_s_1_1sm_1_1state.html#a1a6c2d0fd5898f6d06ffcd8759955aea", null ],
+      [ "install", "classq_o_s_1_1sm_1_1state.html#a213f8a073f1c7b604934b90ae04efc03", null ],
+      [ "install", "classq_o_s_1_1sm_1_1state.html#a84cbcf655b62fd2383db0926dbd6dc4c", null ],
+      [ "install", "classq_o_s_1_1sm_1_1state.html#a182fd0825bb951e517522493638584fc", null ],
+      [ "install", "classq_o_s_1_1sm_1_1state.html#ad36c88d6339e84fffebaf8a48a3f1fc9", null ],
+      [ "install", "classq_o_s_1_1sm_1_1state.html#a84319c63c297f294bf226954c0907ae4", null ],
+      [ "install", "classq_o_s_1_1sm_1_1state.html#a2c1f9aa5808779bb96644239c427396d", null ],
       [ "setCallback", "classq_o_s_1_1sm_1_1state.html#ab04273bc570b210568b9b5491a58dced", null ],
       [ "setData", "classq_o_s_1_1sm_1_1state.html#af9a1425838929a5145504668b7b5d2f4", null ],
-      [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a00853be678975da84a3c56e8ef7377f0", null ],
-      [ "setTimeouts", "classq_o_s_1_1sm_1_1state.html#a991b711185d980e4e8beb27388f7e290", null ],
-      [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a7f79aa9b88e6c2a75562c044b5f52aed", null ],
-      [ "setTransitions", "classq_o_s_1_1sm_1_1state.html#a0cd86d5c426cfa906a48e54b7670a2d9", null ],
       [ "qOS::stateMachine", "classq_o_s_1_1sm_1_1state.html#acd87719420916c47dafcb4865fb5cb2e", null ]
     ] ],
     [ "qOS::sm::timeoutSpec", "classq_o_s_1_1sm_1_1timeout_spec.html", [
@@ -61,9 +63,9 @@ var group__qfsm =
       [ "getQueue", "classq_o_s_1_1state_machine.html#a59016149f22fc3603ad8aebb3b243d23", null ],
       [ "getTimeSpec", "classq_o_s_1_1state_machine.html#a036acf3824bb2ec63019f370ce7a52ec", null ],
       [ "getTop", "classq_o_s_1_1state_machine.html#a2410b87db316be4721849ca0920bbb8a", null ],
-      [ "installSignalQueue", "classq_o_s_1_1state_machine.html#a2256badba7a7a9592c83c871c7a718b9", null ],
-      [ "installSignalQueue", "classq_o_s_1_1state_machine.html#afe15a2caee3e47bad83c17eec1f72f6c", null ],
-      [ "installTimeoutSpec", "classq_o_s_1_1state_machine.html#a594379711962e4a75ec8bb049d2aea47", null ],
+      [ "install", "classq_o_s_1_1state_machine.html#a31916edda1b7e3053c625f5c6839d929", null ],
+      [ "install", "classq_o_s_1_1state_machine.html#acabc335fa5a87a5c8a280c7d2e1e3f8a", null ],
+      [ "install", "classq_o_s_1_1state_machine.html#abec92f2c5cbfe4a72d9eed4177fa88ce", null ],
       [ "run", "classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f", null ],
       [ "sendSignal", "classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a", null ],
       [ "sendSignal", "classq_o_s_1_1state_machine.html#a300f2596901ad235750a3d5b5d3f3f79", null ],
@@ -96,7 +98,10 @@ var group__qfsm =
       [ "qOS::sm::SIGNAL_START", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da6b02384b04b60b27c36083cd2a1a486e", null ],
       [ "qOS::sm::SIGNAL_EXIT", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac3197c8c7ace138b4e0bf3889b0d9453", null ],
       [ "qOS::sm::SIGNAL_ENTRY", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da15174ef2df1cf13de02328bd8f6789c6", null ],
-      [ "qOS::sm::SIGNAL_NONE", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d", null ]
+      [ "qOS::sm::SIGNAL_NONE", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0dac21d96e512302f448d03ed1b4831cb7d", null ],
+      [ "qOS::sm::SIGNAL_TIMEOUT0", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0daab87be7e8a6145f2ae322798eb81b89d", null ],
+      [ "qOS::sm::SIGNAL_TIMEOUT1", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0daceae7377eecbbf91a98be43210cde6d1", null ],
+      [ "qOS::sm::SIGNAL_TIMEOUT2", "group__qfsm.html#ggad8176fbeabf92face38e70a8436d8e0da84da8e45e5ef4f05527e3d194a8379f6", null ]
     ] ],
     [ "qOS::sm::status", "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c", [
       [ "qOS::sm::BEFORE_ANY", "group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0cae5829bc35909bf71bc5f67ea992e16e4", null ],
@@ -105,7 +110,7 @@ var group__qfsm =
       [ "qOS::sm::SUCCESS", "group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0ca18f20f3ef1e898f3663fce730a6e7c49", null ],
       [ "qOS::sm::SIGNAL_HANDLED", "group__qfsm.html#ggab2bc3399fbeae52404fe14571d960f0caf8fe352e8f74585194f74d802b26e6ee", null ]
     ] ],
-    [ "qOS::core::addStateMachineTask", "group__qfsm.html#ga86639c0e76496b0a1577b634452f5811", null ],
+    [ "qOS::core::add", "group__qfsm.html#ga2d42bf59d2d9950d9978a3d2179da51d", null ],
     [ "qOS::sm::SIGNAL_TIMEOUT", "group__qfsm.html#gad5476e06fde92efddf507ec60e492be3", null ],
     [ "qOS::sm::SIGNAL_USER", "group__qfsm.html#gad36d499b2329aa049d98062b0f1c69a9", null ],
     [ "qOS::sm::TIMEOUT_INDEX", "group__qfsm.html#ga646289fa705250d5f8b950aee747becc", null ],

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['base_5ft_0',['base_t',['../group__qtypes.html#ga5e791667dd83b7c34634f0d913995494',1,'qOS']]],
-  ['byte_5ft_1',['byte_t',['../group__qtypes.html#gac78b06b607e48fb18bea6f0a9328ce6f',1,'qOS']]]
+  ['analogreaderfcn_5ft_0',['analogReaderFcn_t',['../group__qinput.html#ga4d54566c9f0a347e22be79e1be218319',1,'qOS::input']]],
+  ['analogvalue_5ft_1',['analogValue_t',['../group__qinput.html#gad26497442f914206b95de2ac8a6123f3',1,'qOS::input']]]
 ];

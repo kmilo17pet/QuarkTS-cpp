@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -151,13 +151,14 @@ $(function(){initNavTree('classq_o_s_1_1input_1_1channel.html',''); initResizabl
   <tr class="odd"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#a23115df27aad40840b25b50153567571">getEvent</a>(void) const noexcept</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ab77bd344b9bf0865cfc6f698e684ba14">getType</a>(void) const noexcept=0</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#a984bc87c8dddf22e7b15e3e0539559ba">getUserData</a>(void) noexcept</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ae9b209c486075512c9dbe788920afc1c">isShared</a>(void) const noexcept</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ac04e64282e9335fa280c9c2479a566a5">isShared</a>(void) const noexcept=0</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classq_o_s_1_1node.html#aa6eeb0dd0a2a256c315fe1966d44158f">node</a>()</td><td class="entry"><a class="el" href="classq_o_s_1_1node.html">qOS::node</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ae15c704e5377c1f5c3ffcee2f91b17c8">setCallback</a>(eventCallback_t cb) noexcept</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7">setChannel</a>(const uint8_t inputChannel) noexcept</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#a25b32a745821c3a802984c1c72fa0e40">setParameter</a>(const event e, const int p) noexcept=0</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#a5e417f5a15a5b266d1e6e8f2fe3e8caa">setParameter</a>(const event e, const analogValue_t p) noexcept=0</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#a1399280c16cffa5b4a657ca17580b771">setTime</a>(const event e, const qOS::duration_t t) noexcept=0</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ae3964ce8af336b26704c8835c5ed834d">setUserData</a>(void *pUserData) noexcept</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html#ac7e0acea16e40f43448a20225c68f44b">unShare</a>(void) noexcept=0</td><td class="entry"><a class="el" href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.6.4</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -284,7 +284,7 @@ Running the CLI parser</h1>
 <p>The parser can be invoked directly using the <a class="el" href="classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd" title="Run the AT Command Line Interface when the input is ready.">qOS::commandLineInterface::run()</a> method. Almost all the components that make up the CLI are performed by this method, except for the Input Handler, which should be managed by the application writer itself.</p>
 <p>In this way, the writer of the application must implement the logic that leads this function to be called when the input-ready condition is given.</p>
 <p>The simple approach for this is to check the return value of any of the input feeder APIs and set a notification variable when they report a ready input. Later in the base context, a polling job should be performed over this notification variable, running the parser when their value is true, then clearing the value after to avoid unnecessary overhead.</p>
-<p>The recommended implementation is to leave this job handled by a task instead of coding the logic to know when the CLI should run. For this, the <a class="el" href="group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f" title="Add a task to the scheduling scheme running an AT Command Line Interface. Task will be scheduled as e...">qOS::core::addCommandLineInterfaceTask()</a> is provided. This method adds a task to the scheduling scheme running an AT Command Line Interface and is treated as an event-triggered task. The address of the parser instance will be stored in the <code>TaskData</code> storage-Pointer.</p>
+<p>The recommended implementation is to leave this job handled by a task instead of coding the logic to know when the CLI should run. For this, an overload of <a class="el" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e" title="Add a task to the scheduling scheme. The task is scheduled to run every t time units,...">qOS::core::add()</a> is provided accepting an instance of the CLI. This overload adds a task to the scheduling scheme running an AT Command Line Interface and is treated as an event-triggered task. The address of the parser instance will be stored in the <code>TaskData</code> storage-Pointer.</p>
 <p>After invoked, both CLI and task are linked together in such a way that when an input-ready condition is given, a notification event is sent to the task launching the CLI components. As the task is event-triggered, there is no additional overhead and the writer of the application can assign a priority value to balance the application against other tasks in the scheduling scheme.</p>
 <h1><a class="anchor" id="q_atcli_example1"></a>
 A CLI example</h1>
@@ -315,26 +315,26 @@ A CLI example</h1>
 <div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Setup();</div>
 <div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
-<div class="line">    CLI_Object.setup( BSP_UART_PUTC, CLI_Input, <span class="keyword">sizeof</span>(CLI_Input), </div>
-<div class="line">                       CLI_Output, <span class="keyword">sizeof</span>(CLI_Output) );</div>
-<div class="line">    </div>
-<div class="line">    CLI_Object.add( AT_GPIO, <span class="stringliteral">&quot;at+gpio&quot;</span>, AT_GPIO_Callback, </div>
-<div class="line">                         QATCLI_CMDTYPE_ACT | QATCLI_CMDTYPE_READ | </div>
-<div class="line">                         QATCLI_CMDTYPE_TEST | QATCLI_CMDTYPE_PARA | 0x22 );</div>
-<div class="line">    CLI_Object.add( AT_INFO, <span class="stringliteral">&quot;at+info&quot;</span>, AT_INFO_Callback, </div>
-<div class="line">                         QATCLI_CMDTYPE_ACT );</div>
-<div class="line">    os.<a class="code hl_function" href="group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f">addCommandLineInterfaceTask</a>( CLI_Task, CLI_Object, core::LOWEST_PRIORITY );</div>
+<div class="line">    CLI_Object.setup( BSP_UART_PUTC, CLI_Input, <span class="keyword">sizeof</span>(CLI_Input),</div>
+<div class="line">                      CLI_Output, <span class="keyword">sizeof</span>(CLI_Output) );</div>
+<div class="line"> </div>
+<div class="line">    CLI_Object.add( AT_GPIO, <span class="stringliteral">&quot;at+gpio&quot;</span>, AT_GPIO_Callback,</div>
+<div class="line">                    QATCLI_CMDTYPE_ACT | QATCLI_CMDTYPE_READ |</div>
+<div class="line">                    QATCLI_CMDTYPE_TEST | QATCLI_CMDTYPE_PARA | 0x22 );</div>
+<div class="line">    CLI_Object.add( AT_INFO, <span class="stringliteral">&quot;at+info&quot;</span>, AT_INFO_Callback,</div>
+<div class="line">                    QATCLI_CMDTYPE_ACT );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( CLI_Task, CLI_Object, core::LOWEST_PRIORITY );</div>
 <div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">run</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_a882991afb9548674668aa51dbe694d6e"><div class="ttname"><a href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">qOS::core::add</a></div><div class="ttdeci">bool add(task &amp;Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a8a1c57e7736a22fb8036bfa60b96915c"><div class="ttname"><a href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">qOS::core::init</a></div><div class="ttdeci">bool init(const getTickFcn_t tFcn=nullptr, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
-<div class="ttc" id="agroup__qatcli_html_ga5c115ba5a042ccb9d8467d49a655fa3f"><div class="ttname"><a href="group__qatcli.html#ga5c115ba5a042ccb9d8467d49a655fa3f">qOS::core::addCommandLineInterfaceTask</a></div><div class="ttdeci">bool addCommandLineInterfaceTask(task &amp;Task, commandLineInterface &amp;cli, const priority_t p, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme running an AT Command Line Interface. Task will be scheduled as e...</div></div>
 </div><!-- fragment --><p>The CLI input is feeded from the interrupt context by using the UART receive ISR:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> interrupt HAL_UART_RxInterrupt( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    <span class="keywordtype">char</span> received;</div>
-<div class="line">    </div>
+<div class="line"> </div>
 <div class="line">    received = HAL_HUART_GetChar( UART1 );</div>
 <div class="line">    CLI_Object.isrHandler( received ); <span class="comment">/*Feed the CLI input*/</span></div>
 <div class="line">}</div>
@@ -342,7 +342,7 @@ A CLI example</h1>
 <div class="fragment"><div class="line">cli::response AT_GPIO_Callback( cli::handler_t h ) {</div>
 <div class="line">    cli::response RetValue = cli::response::ERROR;</div>
 <div class="line">    <span class="keywordtype">int</span> pin, value;</div>
-<div class="line">   </div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">switch</span> ( h.getType() ) {</div>
 <div class="line">        <span class="keywordflow">case</span> cli::commandType::ACT: <span class="comment">/*&lt; AT+gpio */</span></div>
 <div class="line">            RetValue = cli::response::OK;</div>
@@ -364,13 +364,13 @@ A CLI example</h1>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line">        default : <span class="keywordflow">break</span>;</div>
 <div class="line">    }</div>
-<div class="line">     </div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> RetValue;</div>
 <div class="line">}</div>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line">cli::response AT_INFO_Callback( cli::handler_t h ) {</div>
 <div class="line">    cli::response RetValue = cli::response::ERROR;</div>
-<div class="line">   </div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">switch</span> ( param.getType() ) {</div>
 <div class="line">        <span class="keywordflow">case</span> cli::commandType::ACT: <span class="comment">/*&lt; AT+info */</span></div>
 <div class="line">            util::strcpy( h.output, <span class="stringliteral">&quot;Compilation: &quot;</span> __DATE__ <span class="stringliteral">&quot; &quot;</span> __TIME__ );</div>

@@ -4,7 +4,10 @@ var namespaceq_o_s_1_1input =
     [ "channel", "classq_o_s_1_1input_1_1channel.html", "classq_o_s_1_1input_1_1channel" ],
     [ "digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html", "classq_o_s_1_1input_1_1digital_channel" ],
     [ "watcher", "classq_o_s_1_1input_1_1watcher.html", "classq_o_s_1_1input_1_1watcher" ],
-    [ "channelReaderFcn_t", "group__qinput.html#ga7d3b9fc08985bd00916b549b73ef1c6a", null ],
+    [ "analogReaderFcn_t", "group__qinput.html#ga4d54566c9f0a347e22be79e1be218319", null ],
+    [ "analogValue_t", "group__qinput.html#gad26497442f914206b95de2ac8a6123f3", null ],
+    [ "digitalReaderFcn_t", "group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a", null ],
+    [ "digitalValue_t", "group__qinput.html#ga0519732a168ad68b41a3913e06e46d45", null ],
     [ "eventCallback_t", "group__qinput.html#ga15af6d73c8fcb850a4a7337eac7aafe9", null ],
     [ "event", "group__qinput.html#ga72d9a973c87da11f11a8aeabbbb25aa7", [
       [ "NONE", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab50339a10e1de285ac99d4c3990b8693", null ],
@@ -23,7 +26,7 @@ var namespaceq_o_s_1_1input =
       [ "STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ]
     ] ],
     [ "type", "group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520", [
-      [ "DIGITAL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520a6d803302c669b84818dfd9d88534e1d2", null ],
-      [ "ANALOG", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520a8b7d08163aa92ed2a8aceb06b9488e60", null ]
+      [ "DIGITAL_CHANNEL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb", null ],
+      [ "ANALOG_CHANNEL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520aa6b0092acb8146de14ffe20769e5c9ef", null ]
     ] ]
 ];

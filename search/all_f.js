@@ -2,7 +2,7 @@ var searchData=
 [
   ['para_0',['PARA',['../group__qatcli.html#ggacd8a64c92cd0126e8e392a3d7a002db2aa74823aab5071fac8c20c06bc7dfa94e',1,'qOS::cli']]],
   ['parser_1',['parser',['../q_atcli.html#q_atcli_run',1,'Running the CLI parser'],['../q_atcli.html#q_atcli_sub_commands',1,'Subscribing commands to the parser']]],
-  ['peek_2',['peek',['../classq_o_s_1_1byte_buffer.html#aabb6ed057c77f3d7c1afff8f4077e9a3',1,'qOS::byteBuffer::peek()'],['../classq_o_s_1_1queue.html#a1fb79997438c19c5dcddb037c9e250a2',1,'qOS::queue::peek()']]],
+  ['peek_2',['peek',['../classq_o_s_1_1byte_buffer.html#ae2b5dbea17abd67583dd224922a60316',1,'qOS::byteBuffer::peek()'],['../classq_o_s_1_1queue.html#a1fb79997438c19c5dcddb037c9e250a2',1,'qOS::queue::peek()']]],
   ['perform_3',['perform',['../group__qcoroutines.html#ga8580564fbde2487440f6e1606a0750d4',1,'qOS::co::perform(void) noexcept'],['../group__qcoroutines.html#gacaa96ae282349c5f6aa679785d43ec8c',1,'qOS::co::perform(qOS::duration_t t) noexcept']]],
   ['performing_20transitions_20and_20retrieving_20data_4',['The state callback handler: performing transitions and retrieving data',['../q_fsm.html#q_fsmhandler',1,'']]],
   ['periodic_5',['PERIODIC',['../classq_o_s_1_1task.html#a5f261cdac045d45d401a2ca666803f45',1,'qOS::task']]],
@@ -14,13 +14,13 @@ var searchData=
   ['precedence_11',['Event precedence',['../q_foundations.html#q_os_evenprecedence',1,'']]],
   ['principle_20of_20operation_12',['Principle of operation',['../q_memmang.html#q_memmang_principle',1,'']]],
   ['printxdata_13',['printXData',['../group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67',1,'qOS::util']]],
-  ['priority_5ft_14',['priority_t',['../group__qtypes.html#gabf769a2519cf3a113a1bd291fa7fbeab',1,'qOS']]],
+  ['priority_5ft_14',['priority_t',['../group__qtypes.html#gafa40141ce2de5f15a1d9b1558466311a',1,'qOS']]],
   ['process_20and_20coding_20standard_15',['Development process and coding standard',['../q_background.html#q_codstandard',1,'']]],
   ['provided_20approach_16',['The provided approach',['../q_fsm.html#qfsm_approach',1,'']]],
   ['pseudo_20states_17',['Example with history pseudo-states',['../q_fsm.html#q_fsm_example4',1,'']]],
   ['pulsation_5fdouble_18',['PULSATION_DOUBLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f',1,'qOS::input']]],
   ['pulsation_5fmulti_19',['PULSATION_MULTI',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa',1,'qOS::input']]],
   ['pulsation_5ftriple_20',['PULSATION_TRIPLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e',1,'qOS::input']]],
-  ['put_21',['put',['../classq_o_s_1_1byte_buffer.html#a8202833521e7a636c7d27b8cd981ce22',1,'qOS::byteBuffer']]],
+  ['put_21',['put',['../classq_o_s_1_1byte_buffer.html#aa0f78551140dee000951cff92eab831f',1,'qOS::byteBuffer']]],
   ['putchar_5ft_22',['putChar_t',['../group__qioutils.html#ga2d1dc078cfeaafc3e3723662a9eff629',1,'qOS::util']]]
 ];
