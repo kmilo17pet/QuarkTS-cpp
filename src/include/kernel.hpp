@@ -321,10 +321,10 @@ namespace qOS {
             * the scheduler will set @c trigger flag to trigger::byNotificationQueued.
             * Specific user-data can be passed through, and will be available inside the
             * event_t::EventData field, only in corresponding launch. If the task is in
-            * a @c qSleep operation state, the scheduler will change the operational state
+            * a @c SLEEP operation state, the scheduler will change the operational state
             * to @c AWAKEN setting the @c SHUTDOWN bit.
             * Specific user-data can be passed through, and will
-            * be available in the respective callback inside the qEvent_t::EventData
+            * be available in the respective callback inside the qOS::event_t::EventData
             * field.
             * @param[in] mode the method used to send the event: notifyMode::SIMPLE
             * or notifyMode::QUEUED.

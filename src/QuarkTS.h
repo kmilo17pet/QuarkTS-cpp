@@ -213,11 +213,6 @@ namespace qOS {
 */
 
 /**
-*  @defgroup qtrace Trace
-*  @ingroup qutility
-*/
-
-/**
 *  @defgroup qflm Helper functions
 *  @ingroup qutility
 */
