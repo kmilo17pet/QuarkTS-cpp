@@ -145,7 +145,6 @@ var NAVTREEINDEX2 =
 "group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8aea79bba500e73e6a959181a878bbf064":[6,0,1,7,3],
 "group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1":[6,0,1,7,2],
 "group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0":[6,0,1,7,1],
-"group__qtrace.html":[6,2,5],
 "group__qtypes.html":[6,0,6],
 "group__qtypes.html#ga1eb40079e6f6727ef1497fcfede55007":[6,0,6,9],
 "group__qtypes.html#ga48c5a581072593753ba3ce0d00c38620":[6,0,6,5],
@@ -169,7 +168,7 @@ var NAVTREEINDEX2 =
 "namespacemembers_type.html":[7,1,3],
 "namespacemembers_vars.html":[7,1,2],
 "namespaceq_o_s.html":[7,0,0],
-"namespaceq_o_s_1_1bits.html":[6,2,6,0],
+"namespaceq_o_s_1_1bits.html":[6,2,5,0],
 "namespaceq_o_s_1_1build.html":[7,0,0,1],
 "namespaceq_o_s_1_1build.html#a1da253a113b51b9dbade069624efebae":[7,0,0,1,3],
 "namespaceq_o_s_1_1build.html#a27c970683652208708f6459448654fdc":[7,0,0,1,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "q_foundations.html#q_timmingapproach":[2,1],
 "q_foundations.html#rtcmodel":[2,0],
 "q_fsm.html":[5,0],
-"q_fsm.html#q_fsm_astask":[5,0,6]
+"q_fsm.html#q_fsm_astask":[5,0,6],
+"q_fsm.html#q_fsm_example1":[5,0,7]
 };

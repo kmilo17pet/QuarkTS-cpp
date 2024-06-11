@@ -5,6 +5,5 @@ var group__qutility =
     [ "Input channel utilities", "group__qinput.html", "group__qinput" ],
     [ "I/O Utils", "group__qioutils.html", "group__qioutils" ],
     [ "Response handler", "group__qresponse.html", "group__qresponse" ],
-    [ "Trace", "group__qtrace.html", null ],
     [ "Helper functions", "group__qflm.html", "group__qflm" ]
 ];
