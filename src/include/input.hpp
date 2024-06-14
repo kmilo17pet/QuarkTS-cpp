@@ -9,7 +9,7 @@
 namespace qOS {
 
 
-    /** @addtogroup qinput Input channels
+    /** @addtogroup qinput Input channel events
     * @brief A comprehensive event class for efficient, maintainable working with
     * input channels.
     *  @{
