@@ -172,7 +172,8 @@ namespace qOS {
             * every pass.
             * @param[in] Task The task node.
             * @param[in] callback A pointer to a void callback method with a qOS::event_t
-            * parameter as input argument.
+            * parameter as input argument. If user uses the OOP approach for defining
+            * a task, you can pass @c nullptr as argument.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS(max)]
             * @param[in] t Execution interval (time) given in milliseconds.
             * For immediate execution use t = clock::IMMEDIATE.
@@ -201,7 +202,8 @@ namespace qOS {
             * execution time using task::setTime() or task::setIterations().
             * @param[in] Task The task node.
             * @param[in] callback A pointer to a the task callback method with a
-            * event_t parameter as input argument.
+            * event_t parameter as input argument. If user uses the OOP approach
+            * for defining a task, you can pass @c nullptr as argument.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @param[in] arg Represents the task arguments. All arguments must be passed
             * by reference and cast to @c void*.

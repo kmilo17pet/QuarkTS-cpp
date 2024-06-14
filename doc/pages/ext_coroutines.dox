@@ -46,7 +46,7 @@
 *
 * @section q_coroutine_code Coding a Co-Routine
 * The application writer just needs to create the body of the Co-Routine . This
-* means starting a Co-Routine segment with co::reenter() statement . From now on,
+* means starting a Co-Routine segment with qOS::co::reenter() statement . From now on,
 * yields and blocking calls from the Co-Routine scope are allowed.
 *
 *  @code{.c}
@@ -64,13 +64,13 @@
 *  }
 *  @endcode
 *
-* The co::reenter() statement should be placed at the start of the task function
+* The qOS::co::reenter() statement should be placed at the start of the task function
 * in which the Co-routine runs.
 *
-* A co::yield() statement return the CPU control back to the scheduler but saving
+* A qOS::co::yield() statement return the CPU control back to the scheduler but saving
 * the  execution progress, thereby allowing other processing tasks to take place
 * in the system. With the next task activation, the Co-Routine will resume the
-* execution after the last co::yield() statement.
+* execution after the last qOS::co::yield() statement.
 *
 * @note Co-Routine statements can only be invoked from the scope of the
 * Co-Routine.
@@ -82,21 +82,21 @@
 * statements, all of them with a common feature: an implicit yield.
 *
 * A widely used procedure is to wait for a fixed period of time. For this, the
-* co::delay() should be used. This statement makes an apparent blocking over the
+* qOS::co::delay() should be used. This statement makes an apparent blocking over the
 * application flow, but to be precise, a yield is performed until the requested
 * time expires, this allows other tasks to be executed until the blocking call
 * finish. This "yielding until condition meet" behavior its the common pattern
 * among the other blocking statements.
 *
-* Another common blocking call is co::waitUntil(). This statement takes a
+* Another common blocking call is qOS::co::waitUntil(). This statement takes a
 * condition argument, a logical expression that will be performed when the
 * Co-Routine resumes their execution. As mentioned before, this type of
 * statement exposes the expected behavior, yielding until the condition is met.
 *
-* An additional overload of this co::waitUntil() is also provided. This one
+* An additional overload of this qOS::co::waitUntil() is also provided. This one
 * sets a timeout for the logical condition to be met.
 *
-* Optionally, the perform-until structure gives to application writer the ability
+* Optionally, the qOS::co::performUntil structure gives to application writer the ability
 * to perform a multi-line job before the yield, allowing more complex actions
 * to being performed after the Co-Routine resumes:
 *
@@ -137,14 +137,14 @@
 * This feature provides positional local jumps, control flow that deviates from
 * the usual Co-Routine call.
 *
-* The complementary statements co::getPosition() and co::setPosition() provide
+* The complementary statements qOS::co::getPosition() and qOS::co::setPosition() provide
 * this
 * functionality. The first one saves the Co-Routine state at some point of their
 * execution into @c CRPos, a variable of type qOS::co::position , that can be used
-* at some later point of program execution by co::setPosition() to restore
-* the Co-Routine state to the one saved by co::getPosition() into CRPos. This
+* at some later point of program execution by qOS::co::setPosition() to restore
+* the Co-Routine state to the one saved by qOS::co::getPosition() into CRPos. This
 * process can be imagined to be a "jump" back to the point of program execution
-* where co::getPosition() saved the Co-Routine environment.
+* where qOS::co::getPosition() saved the Co-Routine environment.
 *
 * @section q_coroutine_semaphores Semaphores
 * This extension implements counting semaphores on top of Co-Routines.
@@ -155,18 +155,18 @@
 * waiting for the semaphore that is signaled, the blocked Co-Routines will
 * become runnable again.
 *
-* Semaphores are referenced by handles, a variable of type co::semaphore and
+* Semaphores are referenced by handles, a variable of type qOS::co::semaphore and
 * must be initialized at time of creating with its own constructor. Here, a value for the
 * counter is required. Internally, semaphores use an @c size_t to represent
 * the counter, therefore the value argument should be within range of this
 * data-type.
 *
-* To perform the |a wait operation, the co::semWait() statement should be used.
+* To perform the wait operation, the qOS::co::semWait() statement should be used.
 * The wait operation causes the Co-routine to block while the counter is zero.
 * When the counter reaches a value larger than zero, the Co-Routine will
 * continue.
 *
-* Finally, co::semSignal() carries out the @a signal operation on the semaphore.
+* Finally, qOS::co::semSignal() carries out the @a signal operation on the semaphore.
 * This signaling increments the counter inside the semaphore, which eventually
 * will cause waiting Coroutines to continue executing.
 *
@@ -178,7 +178,7 @@
 * Note that there is no need for a mutex to guard the @c add_to_buffer() and
 * @c get_from_buffer() functions because of the implicit locking semantics of
 * Co-Routines, so it will never be preempted and will never block except in an
-* explicit co::semWait() statement.
+* explicit qOS::co::semWait() statement.
 *
 *  @code{.c}
 *  #include "HAL.h"
@@ -251,7 +251,7 @@
 *
 * To address these specific scenarios, a handler for the Co-routine must be
 * defined, which is a variable of type qOS::co::handle. Additionally, to
-* initiate the scope of the target Co-routine, the statement co::reenter()
+* initiate the scope of the target Co-routine, the statement qOS::co::reenter()
 * should be used taking this handler as argument.
 *
 *  @code{.c}

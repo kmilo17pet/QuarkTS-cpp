@@ -478,7 +478,7 @@
 *      uint16_t unData;
 *      queue *ptrQueue; /*a pointer to the queue that triggers the event*/
 *
-*      if ( byQueueCount == e.getTrigger ) {
+*      if ( byQueueCount == e.getTrigger() ) {
 *          ptrQueue = (queue_t *)e.EventData;
 *          ptrQueue->receive( &unData );
 *          return;

@@ -129,7 +129,7 @@
 *       qOS::sm::handler_t::startState() method.
 *     - @c signalID::SIGNAL_EXIT if the current state has just exited to another state.
 *     - Any other user-defined signal will reside here, including the
-*       sm::SIGNAL_TIMEOUT() signals.
+*       qOS::sm::SIGNAL_TIMEOUT() signals.
 * - @ref qOS::sm::handler_t::SignalData (read-only) : Pointer to the data associated with
 * the signal. For internal signals, including timeout signals, its value will
 * be @c nullptr.
@@ -461,8 +461,9 @@
 * respectively.
 *
 * @note  Make sure that queues are enabled in the @c config.h header file
-* @attention When configuring a signal queue with qOS::queue::setup(), remember to size
-* it based on the type @ref qOS::sm::signal_t.
+* @attention Use the qOS::sm::signalQueue struct to instantiate a signal queue for
+* FSM. If not, user should setup explicitly the signal queue with
+* qOS::queue::setup(), and size it based on the type @ref qOS::sm::signal_t.
 * @note If the state machines its delegated to a task, make sure to install the
 * queue prior to setting up the task. In this way, a kernel connection can be
 * performed between the FSM signal queue and the FSM-task, allowing the OS to
@@ -568,7 +569,7 @@
 * in a table for each state by using the qOS::sm::state::install().
 *
 * A timeout specification element is defined as a structure of type
-* @c sm::timeoutStateDefinition and should follow this layout:
+* qOS::sm::timeoutStateDefinition and should follow this layout:
 *
 * <center>
 * <table>

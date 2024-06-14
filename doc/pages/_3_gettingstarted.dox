@@ -128,7 +128,7 @@
 *      /*function to fire an interrupt at 1ms - timer tick*/
 *      Configure_Periodic_Timer0_Interrupt_1ms();
 *
-*      os.init( nullptr, nullptr );
+*      os.init();
 *      os.add( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );
 *      os.add( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );
 *      os.add( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );
