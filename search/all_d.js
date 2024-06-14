@@ -17,5 +17,5 @@ var searchData=
   ['notify_14',['notify',['../group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298',1,'qOS::core::notify(notifyMode mode, task &amp;Task, void *eventData=nullptr) noexcept'],['../group__qnot.html#gab865aa8541244ae16444e52691823a41',1,'qOS::core::notify(notifyMode mode, void *eventData=nullptr) noexcept']]],
   ['notifymode_15',['notifyMode',['../group__qnot.html#ga5af9c877b9d556d828c72c01702aa193',1,'qOS']]],
   ['nrm_16',['nrm',['../group__qlogger.html#gade95d6a0e0964758c9435eaca000bae6',1,'qOS::logger']]],
-  ['number_17',['number',['../namespaceq_o_s_1_1version.html#a81841f875420ba14303007ecbe8a87bf',1,'qOS::version::number'],['../namespaceq_o_s_1_1build.html#a27c970683652208708f6459448654fdc',1,'qOS::build::number']]]
+  ['number_17',['number',['../namespaceq_o_s_1_1build.html#a27c970683652208708f6459448654fdc',1,'qOS::build::number'],['../namespaceq_o_s_1_1version.html#a81841f875420ba14303007ecbe8a87bf',1,'qOS::version::number']]]
 ];
