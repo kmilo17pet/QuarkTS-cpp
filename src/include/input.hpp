@@ -48,6 +48,8 @@ namespace qOS {
             STEADY_IN_HIGH,         /**< Event when the input-channel has been kept on high (or above the high threshold) for the specified time .*/
             STEADY_IN_LOW,          /**< Event when the input-channel has been kept on low (or below the low threshold) for the specified time .*/
             STEADY_IN_BAND,         /**< Event when the analog input-channel has remained within the band for the specified time .*/
+            DELTA,                  /**< Event when the difference of the last and latest reading of an analog input channel is greater than the defined delta*/
+            STEP,                   /**< Event on step reading of the analog-input channel*/
             /*! @cond  */
             MAX_EVENTS
             /*! @endcond  */
@@ -332,6 +334,9 @@ namespace qOS {
                 channelStateFcn_t channelState{ nullptr };
                 analogValue_t high{ 800 };
                 analogValue_t low{ 200 };
+                analogValue_t last{ 0.0F };
+                analogValue_t delta{ 1.0e+20F };
+                analogValue_t step{ 1.0e+20F };
                 analogValue_t hysteresis{ 20 };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
 
@@ -367,7 +372,7 @@ namespace qOS {
                 */
                 analogChannel( const uint8_t inputChannel, const analogValue_t lowerThreshold, const analogValue_t upperThreshold, const analogValue_t h = 0.1F ) : channel( inputChannel ), high( upperThreshold ), low( lowerThreshold )
                 {
-                    hysteresis = ( h < 0 ) ? -h : h;
+                    hysteresis = ( h < 0.0F ) ? -h : h;
                 }
                 /**
                 * @brief Get the channel type.
@@ -427,6 +432,11 @@ namespace qOS {
                     reader = r;
                     return true;
                 }
+                /**
+                * @brief Unshares the specified input channel if was marked as
+                * shared.
+                * @return @c true on success. Otherwise @c false.
+                */
                 bool unShare( void ) noexcept override
                 {
                     ptrValue = &value;

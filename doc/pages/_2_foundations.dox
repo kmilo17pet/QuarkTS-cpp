@@ -213,7 +213,7 @@
 * by their priority value dictate when a task can change to the @c RUNNING state.
 *
 * @subsection q_removetask Removing a task
-* The qOS::core::removeTask() function removes the task from the scheduling scheme.
+* The qOS::core::remove() function removes the task from the scheduling scheme.
 * This means the task node will be disconnected from the kernel chain,
 * preventing additional overhead provided by the scheduler when it does checks
 * over it and course, preventing it from running.
@@ -434,7 +434,7 @@
 * Considering that the kernel is hardware-independent, the application writer
 * should provide the necessary piece of code to enable and disable interrupts.
 *
-* For this, the critical::setInterruptsED() method should be used. In this way,
+* For this, the qOS::critical::setInterruptsED() method should be used. In this way,
 * communication between ISR and tasks using queued notifications or data queues
 * is performed safely.
 *

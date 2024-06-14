@@ -15,7 +15,19 @@ void input::digitalChannel::updateReading( void ) noexcept
 /*============================================================================*/
 void input::analogChannel::updateReading(void) noexcept
 {
+    analogValue_t diff;
     value = ( isShared() ) ? ptrValue[ 0 ] : reader( number );
+    diff = value - last;
+    if ( diff >= delta ) {
+        dispatchEvent( input::event::DELTA );
+    }
+    if ( diff >= step ) {
+        auto mult = static_cast<int>( diff/step );
+        for ( int i = 0 ; i < mult; ++i ) {
+            dispatchEvent( input::event::STEP );
+        }
+    }
+    last = value;
 }
 /*============================================================================*/
 void input::digitalChannel::fallingEdgeState( input::digitalChannel& c )
@@ -421,6 +433,12 @@ bool input::analogChannel::setParameter( const input::event e, const analogValue
             break;
         case input::event::IN_BAND:
             hysteresis = p;
+            break;
+        case input::event::DELTA:
+            delta = p;
+            break;
+        case input::event::STEP:
+            step = p;
             break;
         default:
             retValue = false;

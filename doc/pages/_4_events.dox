@@ -33,9 +33,6 @@
 *
 * Please review the @ref qOS::event_t class reference for more details.
 *
-* @note  When tasks are defined using the object-oriented programming approach,
-* this structure can be obtained within the @c activities method using the
-* qOS::task::eventData().
 *
 * @section q_event_timeelapsed The Time-Elapsed event
 * Running tasks at pre-determined rates is desirable in many situations, like

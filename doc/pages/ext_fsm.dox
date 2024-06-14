@@ -145,9 +145,6 @@
 * field. (here, a cast to qOS::event_t is mandatory).
 * - @ref qOS::sm::handler_t::StateData (read-only) : State associated data. Storage-pointer.
 *
-* @note  When states are defined using the object-oriented programming approach,
-* this structure can be obtained within the @c activities method using the
-* qOS::sm::state::getHandler().
 *
 * Within the callback function of every state or the @c activities method, only one
 * level of dispatching (based on the signal) is necessary. Typically this is
