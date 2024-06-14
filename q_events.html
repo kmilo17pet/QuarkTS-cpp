@@ -183,7 +183,6 @@ Retrieving the event data</h1>
 <div class="line">    task&amp; self( <span class="keywordtype">void</span> );</div>
 <div class="line">};</div>
 </div><!-- fragment --><p>Please review the <a class="el" href="classq_o_s_1_1event__t.html">qOS::event_t</a> class reference for more details.</p>
-<dl class="section note"><dt>Note</dt><dd>When tasks are defined using the object-oriented programming approach, this structure can be obtained within the <code>activities</code> method using the qOS::task::eventData().</dd></dl>
 <h1><a class="anchor" id="q_event_timeelapsed"></a>
 The Time-Elapsed event</h1>
 <p>Running tasks at pre-determined rates is desirable in many situations, like sensory data acquisition, low-level servoing, control loops, action planning and system monitoring. As previously explained in <a class="el" href="q_foundations.html#q_addtasks">Adding tasks to the scheme</a>, you can schedule tasks at any interval your design demands, at least, if the time specification is lower than the scheduler tick. When an application consists of several periodic tasks with individual timing constraints, a few points must be taken:</p>

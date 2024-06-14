@@ -182,7 +182,7 @@ Development process and coding standard</h1>
 <ul>
 <li>All the QuarkTS++ implementation follows the <b>C++11</b> standard strictly.</li>
 <li>Dynamic memory allocation is banned to conform the industry standards for safety-critical software: <b>MISRA-C++</b>, <b>DO178B</b>, <b>IEC-61508</b>, <b>ISO-26262</b> and so on.</li>
-<li>Because errors in string manipulation have long been recognized as a leading source of buffer overflows in C, several mitigation strategies have been devised. These include mitigation strategies designed to prevent buffer overflows from occurring and strategies designed to detect buffer overflows and securely recover without allowing the failure to be exploited.</li>
+<li>Because errors in raw-string manipulation have long been recognized as a leading source of buffer overflows in C/C++, several mitigation strategies have been devised. These include mitigation strategies designed to prevent buffer overflows from occurring and strategies designed to detect buffer overflows and securely recover without allowing the failure to be exploited.</li>
 <li>In line with MISRA guides and for portability between platforms, we use the <code>stdint.h</code> with typedefs that indicate size and signedness in place of the basic types.</li>
 <li>In line with <b>MISRA</b> guides, unqualified standard <code>char</code> and <code>char*</code> types are only permitted to hold ASCII characters and strings respectively.</li>
 <li>The <code>_t</code> suffix is used to denote a type definition (i.e <code>base_t</code> , <code>signal_t</code> , <code>cycles_t</code>, ...).</li>

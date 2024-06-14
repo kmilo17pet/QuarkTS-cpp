@@ -23,7 +23,9 @@ var namespaceq_o_s_1_1input =
       [ "IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7afb9f56c268737e0b2096e6017626cdd7", null ],
       [ "STEADY_IN_HIGH", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7ab1551c8d3c10ae776a2e92a1761adaf3", null ],
       [ "STEADY_IN_LOW", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107", null ],
-      [ "STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ]
+      [ "STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ],
+      [ "DELTA", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aa789408ec4ddae81bd2f72ad5ec6bf3b", null ],
+      [ "STEP", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a522f694f92e679d874a1cc2b2616c3d7", null ]
     ] ],
     [ "type", "group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520", [
       [ "DIGITAL_CHANNEL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb", null ],
