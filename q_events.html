@@ -453,7 +453,7 @@ A queue example</h3>
 <div class="line">    uint16_t unData;</div>
 <div class="line">    <a class="code hl_class" href="classq_o_s_1_1queue.html">queue</a> *ptrQueue; <span class="comment">/*a pointer to the queue that triggers the event*/</span></div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> ( byQueueCount == e.getTrigger ) {</div>
+<div class="line">    <span class="keywordflow">if</span> ( byQueueCount == e.getTrigger() ) {</div>
 <div class="line">        ptrQueue = (queue_t *)e.EventData;</div>
 <div class="line">        ptrQueue-&gt;<a class="code hl_function" href="classq_o_s_1_1queue.html#a12f8f0c55ea77ac700c440d79d753bae">receive</a>( &amp;unData );</div>
 <div class="line">        <span class="keywordflow">return</span>;</div>

@@ -241,7 +241,7 @@ A simple scheduling</h2>
 <div class="line">    <span class="comment">/*function to fire an interrupt at 1ms - timer tick*/</span></div>
 <div class="line">    Configure_Periodic_Timer0_Interrupt_1ms();</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( <span class="keyword">nullptr</span>, <span class="keyword">nullptr</span> );</div>
+<div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>();</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( Task1, Task1_Callback, core::MEDIUM_PRIORITY, 2_sec, 10, taskState::ENABLED );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( Task2, Task2_Callback, core::MEDIUM_PRIORITY, 3_sec, task::PERIODIC, taskState::ENABLED );</div>
 <div class="line">    <a class="code hl_variable" href="group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c">os</a>.<a class="code hl_function" href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">add</a>( Task2, Task3_Callback, core::MEDIUM_PRIORITY, 5_sec, task::PERIODIC, taskState::DISABLED );</div>
