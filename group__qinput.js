@@ -27,7 +27,7 @@ var group__qinput =
       [ "watcher", "classq_o_s_1_1input_1_1digital_channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
     [ "qOS::input::analogChannel", "classq_o_s_1_1input_1_1analog_channel.html", [
-      [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html#a7c941593b707e68c98a0c137a6e5985a", null ],
+      [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html#a2d9a1b6499f4882bac6f7608c0197b76", null ],
       [ "getCount", "classq_o_s_1_1input_1_1analog_channel.html#a4042aadd219f59fab8b7eb518b0c949d", null ],
       [ "getType", "classq_o_s_1_1input_1_1analog_channel.html#a5a3dcc2a418d54cd7b12fae0b518f65a", null ],
       [ "isShared", "classq_o_s_1_1input_1_1analog_channel.html#a892cacec8d6a89c4a6cd5fd471f3dde7", null ],
@@ -48,7 +48,7 @@ var group__qinput =
       [ "watch", "classq_o_s_1_1input_1_1watcher.html#a0703b4fef051351cd863d303dade48cb", null ]
     ] ],
     [ "qOS::input::analogReaderFcn_t", "group__qinput.html#ga4d54566c9f0a347e22be79e1be218319", null ],
-    [ "qOS::input::analogValue_t", "group__qinput.html#gad26497442f914206b95de2ac8a6123f3", null ],
+    [ "qOS::input::analogValue_t", "group__qinput.html#gaba6519c4e42541e0bdd32c19a53b9439", null ],
     [ "qOS::input::digitalReaderFcn_t", "group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a", null ],
     [ "qOS::input::digitalValue_t", "group__qinput.html#ga0519732a168ad68b41a3913e06e46d45", null ],
     [ "qOS::input::eventCallback_t", "group__qinput.html#ga15af6d73c8fcb850a4a7337eac7aafe9", null ],

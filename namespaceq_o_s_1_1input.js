@@ -5,7 +5,7 @@ var namespaceq_o_s_1_1input =
     [ "digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html", "classq_o_s_1_1input_1_1digital_channel" ],
     [ "watcher", "classq_o_s_1_1input_1_1watcher.html", "classq_o_s_1_1input_1_1watcher" ],
     [ "analogReaderFcn_t", "group__qinput.html#ga4d54566c9f0a347e22be79e1be218319", null ],
-    [ "analogValue_t", "group__qinput.html#gad26497442f914206b95de2ac8a6123f3", null ],
+    [ "analogValue_t", "group__qinput.html#gaba6519c4e42541e0bdd32c19a53b9439", null ],
     [ "digitalReaderFcn_t", "group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a", null ],
     [ "digitalValue_t", "group__qinput.html#ga0519732a168ad68b41a3913e06e46d45", null ],
     [ "eventCallback_t", "group__qinput.html#ga15af6d73c8fcb850a4a7337eac7aafe9", null ],
