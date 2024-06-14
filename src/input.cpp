@@ -3,9 +3,10 @@
 using namespace qOS;
 
 /*============================================================================*/
-void input::digitalChannel::updateReading( void ) noexcept
+void input::digitalChannel::updateReading( bool act ) noexcept
 {
     int sample = reader( number );
+    (void)act;
 
     if ( negate ) {
         sample = !sample; // skipcq: CXX-W2065
@@ -13,21 +14,23 @@ void input::digitalChannel::updateReading( void ) noexcept
     value = sample;
 }
 /*============================================================================*/
-void input::analogChannel::updateReading(void) noexcept
+void input::analogChannel::updateReading( bool act ) noexcept
 {
-    analogValue_t diff;
     value = ( isShared() ) ? ptrValue[ 0 ] : reader( number );
-    diff = value - last;
-    if ( diff >= delta ) {
-        dispatchEvent( input::event::DELTA );
-    }
-    if ( diff >= step ) {
-        auto mult = static_cast<int>( diff/step );
-        for ( int i = 0 ; i < mult; ++i ) {
-            dispatchEvent( input::event::STEP );
+    if ( act ) {
+        const analogValue_t diff = value - last;
+
+        if ( diff >= delta ) {
+            dispatchEvent( input::event::DELTA );
         }
+        if ( diff >= step ) {
+            auto mult = static_cast<int>( diff/step );
+            for ( int i = 0 ; i < mult; ++i ) {
+                dispatchEvent( input::event::STEP );
+            }
+        }
+        last = value;
     }
-    last = value;
 }
 /*============================================================================*/
 void input::digitalChannel::fallingEdgeState( input::digitalChannel& c )
@@ -243,12 +246,13 @@ void input::analogChannel::steadyInBandState( input::analogChannel& c )
 /*============================================================================*/
 bool input::watcher::watch( void ) noexcept
 {
-    if ( ( digitalChannels.length() > 0U ) && waitDebounce.freeRun( debounceTime ) ) {
+    const bool act = waitDebounce.freeRun( debounceTime );
+    if ( ( digitalChannels.length() > 0U ) && act ) {
         for ( auto i = digitalChannels.begin(); i.untilEnd() ; i++ ) {
             input::channel& c = *i.get<input::channel*>();
             if ( nullptr != c.callback ) {
                 if ( nullptr != digitalReader ) {
-                    c.updateReading();
+                    c.updateReading( true );
                     c.evaluateState();
                 }
                 else {
@@ -262,7 +266,7 @@ bool input::watcher::watch( void ) noexcept
             input::channel& c = *i.get<input::channel*>();
             if ( nullptr != c.callback ) {
                 if ( ( nullptr != analogReader ) && c.isValidConfig() ) {
-                    c.updateReading();
+                    c.updateReading( act );
                     c.evaluateState();
                 }
                 else {

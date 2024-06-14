@@ -102,7 +102,7 @@ namespace qOS {
                 qOS::clock_t tChange{ 0U };
                 qOS::clock_t tSteadyHigh{ 0xFFFFFFFFU };
                 qOS::clock_t tSteadyLow{ 0xFFFFFFFFU };
-                virtual void updateReading( void ) noexcept = 0;
+                virtual void updateReading( bool act ) noexcept = 0;
                 virtual void evaluateState( void ) noexcept = 0;
                 virtual bool isValidConfig( void ) const noexcept = 0;
                 virtual void setInitalState( void ) noexcept = 0;
@@ -230,7 +230,7 @@ namespace qOS {
                 bool negate{ false };
                 qOS::clock_t pulsationInterval{ 250U };
                 uint8_t pulsationCount{ 0 };
-                void updateReading( void ) noexcept override;
+                void updateReading( bool act ) noexcept override;
                 void setInitalState( void ) noexcept override;
                 bool isValidConfig( void ) const noexcept override
                 {
@@ -340,7 +340,7 @@ namespace qOS {
                 analogValue_t hysteresis{ 20 };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
 
-                void updateReading( void ) noexcept override;
+                void updateReading( bool act ) noexcept override;
                 void setInitalState( void ) noexcept override;
                 bool isValidConfig( void ) const noexcept override
                 {

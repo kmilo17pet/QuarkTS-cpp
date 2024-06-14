@@ -235,7 +235,7 @@ namespace qOS {
                 "NONE ", "EXCEPTION ", "ON_CHANGE ", "FALLING_EDGE ", "RISING_EDGE ",
                 "PULSATION_DOUBLE ", "PULSATION_TRIPLE ", "PULSATION_MULTI ",
                 "HIGH_THRESHOLD ", "LOW_THRESHOLD ", "IN_BAND ", "STEADY_IN_HIGH ",
-                "STEADY_IN_LOW ", "STEADY_IN_BAND "
+                "STEADY_IN_LOW ", "STEADY_IN_BAND ", "DELTA ", "STEP "
             };
             auto e = in.getEvent();
             (void)util::outputString( writeChar , "in{ 0x" );
