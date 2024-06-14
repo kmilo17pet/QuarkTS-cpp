@@ -469,15 +469,17 @@ namespace qOS {
                 * @param[in] timeDebounce The specified time to bypass the
                 * bounce of the digital input channels
                 */
-                watcher( const qOS::duration_t timeDebounce = 100_ms ) : debounceTime( timeDebounce ) {}
+                watcher( const qOS::duration_t dt = 100_ms ) : debounceTime( dt ) {}
                 /**
                 * @brief Constructor for the input-watcher instance
                 * @param[in] rDigital A pointer to a function that reads the specific
                 * digital input channel
                 * @param[in] rAnalog A pointer to a function that reads the specific
                 * analog input channel
-                * @param[in] timeDebounce The specified time to bypass the
-                * bounce of the digital input channels
+                * @param[in] dt The specified time to bypass the bounce of the
+                * digital input channels. Is also used as sample time
+                * on analog input channels to trigger input::event::STEP and
+                * input::event::DELTA events.
                 */
                 watcher( const digitalReaderFcn_t& rDigital, const analogReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce = 100_ms ) :
                     debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
