@@ -65,7 +65,7 @@ namespace qOS {
 
 
         using digitalValue_t = int;
-        using analogValue_t = float;
+        using analogValue_t = uint32_t;
 
         /**
         * @brief A pointer to the  wrapper function that reads the specific
@@ -332,12 +332,13 @@ namespace qOS {
                 analogValue_t *ptrValue{ &value };
                 analogReaderFcn_t reader{ nullptr };
                 channelStateFcn_t channelState{ nullptr };
-                analogValue_t high{ 800 };
-                analogValue_t low{ 200 };
-                analogValue_t last{ 0.0F };
-                analogValue_t delta{ 1.0e+20F };
-                analogValue_t step{ 1.0e+20F };
-                analogValue_t hysteresis{ 20 };
+                analogValue_t high{ 800U };
+                analogValue_t low{ 200U };
+                analogValue_t lastStep{ 0U };
+                analogValue_t lastSampled{ 0U };
+                analogValue_t delta{ 0xFFFFFFFFU };
+                analogValue_t step{ 0xFFFFFFFFU };
+                analogValue_t hysteresis{ 20U };
                 qOS::clock_t tSteadyBand{ 0xFFFFFFFFU };
 
                 void updateReading( bool act ) noexcept override;
@@ -370,10 +371,11 @@ namespace qOS {
                 * @param[in] upperThreshold The upper threshold value.
                 * @param[in] h Hysteresis for the in-band transition.
                 */
-                analogChannel( const uint8_t inputChannel, const analogValue_t lowerThreshold, const analogValue_t upperThreshold, const analogValue_t h = 0.1F ) : channel( inputChannel ), high( upperThreshold ), low( lowerThreshold )
-                {
-                    hysteresis = ( h < 0.0F ) ? -h : h;
-                }
+                analogChannel( const uint8_t inputChannel, const analogValue_t lowerThreshold, const analogValue_t upperThreshold, const analogValue_t h = 20 )
+                : channel( inputChannel ),
+                  high( upperThreshold ),
+                  low( lowerThreshold ),
+                  hysteresis( h ) {}
                 /**
                 * @brief Get the channel type.
                 * @return The channel type.

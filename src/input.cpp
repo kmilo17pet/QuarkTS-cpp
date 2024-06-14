@@ -17,20 +17,24 @@ void input::digitalChannel::updateReading( bool act ) noexcept
 void input::analogChannel::updateReading( bool act ) noexcept
 {
     value = ( isShared() ) ? ptrValue[ 0 ] : reader( number );
-    if ( act ) {
-        analogValue_t diff = value - last;
-        diff = ( diff < 0.0F ) ? -diff : diff;
 
+    const analogValue_t currentStep = value/step;
+    if ( currentStep != lastStep ) {
+        const analogValue_t diff = ( currentStep > lastStep ) ? currentStep - lastStep
+                                                     : lastStep - currentStep;
+        for ( analogValue_t i = 0; i < diff; ++i ) {
+            dispatchEvent( input::event::STEP );
+        }
+        lastStep = currentStep;
+    }
+
+    if ( act ) {
+        analogValue_t diff = ( value > lastSampled ) ? value - lastSampled
+                                                     : lastSampled - value;
         if ( diff >= delta ) {
             dispatchEvent( input::event::DELTA );
         }
-        if ( diff >= step ) {
-            auto mult = static_cast<int>( diff/step );
-            for ( int i = 0 ; i < mult; ++i ) {
-                dispatchEvent( input::event::STEP );
-            }
-        }
-        last = value;
+        lastSampled = value;
     }
 }
 /*============================================================================*/
@@ -293,7 +297,7 @@ void input::digitalChannel::setInitalState( void ) noexcept
 /*============================================================================*/
 void input::analogChannel::setInitalState( void ) noexcept
 {
-    const auto val = ( nullptr != reader ) ? reader( number ) : -1;
+    const auto val = ( nullptr != reader ) ? reader( number ) : 0U;
 
     if ( val > high ) {
         channelState = &input::analogChannel::highThresholdState;
@@ -304,7 +308,8 @@ void input::analogChannel::setInitalState( void ) noexcept
     else {
         channelState = &input::analogChannel::inBandState;
     }
-    last = val;
+    lastStep = val/step;
+    lastSampled = val;
 }
 /*============================================================================*/
 bool input::watcher::add( input::channel& c ) noexcept
@@ -438,13 +443,13 @@ bool input::analogChannel::setParameter( const input::event e, const analogValue
             low = p;
             break;
         case input::event::IN_BAND:
-            hysteresis = ( p < 0.0F ) ? -p : p;
+            hysteresis = p;
             break;
         case input::event::DELTA:
-            delta = ( p < 0.0F ) ? -p : p;
+            delta = p;
             break;
         case input::event::STEP:
-            step = ( p < 0.0F ) ? -p : p;
+            step = p;
             break;
         default:
             retValue = false;

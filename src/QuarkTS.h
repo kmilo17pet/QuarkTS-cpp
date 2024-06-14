@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.7.3
+ * @version 1.7.4
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/
@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.7.3"
-#define QUARKTS_CPP_VERNUM          ( 173u )
+#define QUARKTS_CPP_VERSION         "1.7.4"
+#define QUARKTS_CPP_VERNUM          ( 174u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -66,7 +66,7 @@ This file is part of the QuarkTS++ OS distribution.
 
 namespace qOS {
     namespace build {
-        constexpr const uint32_t number = 4140;
+        constexpr const uint32_t number = 4143;
         constexpr const char* date = __DATE__;
         constexpr const char* time = __TIME__;
         constexpr const char* std = "c++11";
@@ -76,7 +76,7 @@ namespace qOS {
         constexpr const uint8_t number = QUARKTS_CPP_VERNUM;
         constexpr const uint8_t mayor = 1U;
         constexpr const uint8_t minor = 7U;
-        constexpr const uint8_t rev = 3U;
+        constexpr const uint8_t rev = 4U;
     }
     namespace product {
         constexpr const char* author = "J. Camilo Gomez C.";
