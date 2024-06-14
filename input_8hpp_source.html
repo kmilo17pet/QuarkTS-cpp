@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.7.0</span>
+   &#160;<span id="projectnumber">v1.7.1</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -209,7 +209,7 @@ $(function(){initNavTree('input_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> tChange{ 0U };</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> tSteadyHigh{ 0xFFFFFFFFU };</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> tSteadyLow{ 0xFFFFFFFFU };</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                <span class="keyword">virtual</span> <span class="keywordtype">void</span> updateReading( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span> = 0;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                <span class="keyword">virtual</span> <span class="keywordtype">void</span> updateReading( <span class="keywordtype">bool</span> act ) <span class="keyword">noexcept</span> = 0;</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                <span class="keyword">virtual</span> <span class="keywordtype">void</span> evaluateState( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span> = 0;</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isValidConfig( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span> = 0;</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                <span class="keyword">virtual</span> <span class="keywordtype">void</span> setInitalState( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span> = 0;</div>
@@ -289,7 +289,7 @@ $(function(){initNavTree('input_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                <span class="keywordtype">bool</span> negate{ <span class="keyword">false</span> };</div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> pulsationInterval{ 250U };</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                uint8_t pulsationCount{ 0 };</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                <span class="keywordtype">void</span> updateReading( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span> <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                <span class="keywordtype">void</span> updateReading( <span class="keywordtype">bool</span> act ) <span class="keyword">noexcept</span> <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                <span class="keywordtype">void</span> setInitalState( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span> <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                <span class="keywordtype">bool</span> isValidConfig( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span> <span class="keyword">override</span></div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                {</div>
@@ -365,7 +365,7 @@ $(function(){initNavTree('input_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>                <a class="code hl_typedef" href="group__qinput.html#gad26497442f914206b95de2ac8a6123f3">analogValue_t</a> hysteresis{ 20 };</div>
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>                <a class="code hl_typedef" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a> tSteadyBand{ 0xFFFFFFFFU };</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>                <span class="keywordtype">void</span> updateReading( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span> <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>                <span class="keywordtype">void</span> updateReading( <span class="keywordtype">bool</span> act ) <span class="keyword">noexcept</span> <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>                <span class="keywordtype">void</span> setInitalState( <span class="keywordtype">void</span> ) <span class="keyword">noexcept</span> <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>                <span class="keywordtype">bool</span> isValidConfig( <span class="keywordtype">void</span> ) <span class="keyword">const</span> <span class="keyword">noexcept</span> <span class="keyword">override</span></div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>                {</div>

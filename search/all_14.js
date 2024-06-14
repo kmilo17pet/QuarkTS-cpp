@@ -25,6 +25,5 @@ var searchData=
   ['using_20the_20task_20event_20flags_22',['Using the task Event-flags',['../q_events.html#q_eventflagsexample',1,'']]],
   ['using_20transition_20tables_23',['Demonstrative example using transition tables',['../q_fsm.html#q_fsm_example2',1,'']]],
   ['utilities_24',['Utilities',['../group__qutility.html',1,'']]],
-  ['utilities_25',['Input channel utilities',['../group__qinput.html',1,'']]],
-  ['utils_26',['I/O Utils',['../group__qioutils.html',1,'']]]
+  ['utils_25',['I/O Utils',['../group__qioutils.html',1,'']]]
 ];

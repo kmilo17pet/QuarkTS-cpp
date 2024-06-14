@@ -30,8 +30,8 @@
 <g id="Node000004" class="node">
 <title>Node4</title>
 <g id="a_Node000004"><a xlink:href="group__qinput.html" target="_top" xlink:title="A comprehensive event class for efficient, maintainable working with input channels.">
-<polygon fill="white" stroke="#666666" points="192.88,-142.25 86.12,-142.25 86.12,-123 192.88,-123 192.88,-142.25"/>
-<text text-anchor="middle" x="139.5" y="-128.75" font-family="Helvetica,sans-Serif" font-size="10.00">Input channel utilities</text>
+<polygon fill="white" stroke="#666666" points="192.12,-142.25 86.88,-142.25 86.88,-123 192.12,-123 192.12,-142.25"/>
+<text text-anchor="middle" x="139.5" y="-128.75" font-family="Helvetica,sans-Serif" font-size="10.00">Input channel events</text>
 </a>
 </g>
 </g>
@@ -87,7 +87,7 @@
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="black" d="M60.58,-119.52C68.56,-120.87 77.21,-122.32 85.74,-123.75"/>
+<path fill="none" stroke="black" d="M60.58,-119.52C68.85,-120.91 77.84,-122.43 86.67,-123.91"/>
 <polygon fill="black" stroke="black" points="61.4,-116.11 50.96,-117.91 60.24,-123.02 61.4,-116.11"/>
 </g>
 <!-- Node1&#45;&gt;Node5 -->

@@ -7,7 +7,7 @@ var searchData=
   ['caption_4',['caption',['../namespaceq_o_s_1_1product.html#af6923fa844d060d2ef2c4b3495cfb3b6',1,'qOS::product']]],
   ['category_5',['category',['../namespaceq_o_s_1_1product.html#af2107dc2d37709ca74d5f05b56fe5e02',1,'qOS::product']]],
   ['channel_6',['channel',['../classq_o_s_1_1input_1_1channel.html',1,'qOS::input']]],
-  ['channel_20utilities_7',['Input channel utilities',['../group__qinput.html',1,'']]],
+  ['channel_20events_7',['Input channel events',['../group__qinput.html',1,'']]],
   ['checkendianness_8',['checkEndianness',['../group__qioutils.html#ga3bb292da10a661f16f625bc914bf9f9d',1,'qOS::util']]],
   ['clean_9',['clean',['../classq_o_s_1_1list.html#ad7069316196cd86a1fca8a517a6cdd75',1,'qOS::list']]],
   ['cli_10',['CLI',['../q_atcli.html',1,'AT Command Line Interface (CLI)'],['../q_atcli.html#q_atcli_components',1,'The components of the CLI']]],
