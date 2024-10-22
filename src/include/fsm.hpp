@@ -638,8 +638,8 @@ namespace qOS {
                 {
                     int ret = 1;
                     /*cstat -MISRAC++2008-5-0-21  -CERT-EXP46-C */
-                    ret &= install( table, nTable );
-                    ret &= install( def, nDef );
+                    ret &= install( table, nTable ); // skipcq: CXX-W2065
+                    ret &= install( def, nDef );    // skipcq: CXX-W2065
                     /*cstat +MISRAC++2008-5-0-21  +CERT-EXP46-C */
                     return ( 0 != ret );
                 }

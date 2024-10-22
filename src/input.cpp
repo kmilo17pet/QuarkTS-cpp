@@ -466,8 +466,6 @@ bool input::analogChannel::setParameter( const input::event e, const analogValue
             delta = p;
             break;
         case input::event::STEP_UP:
-            step = p;
-            break;
         case input::event::STEP_DOWN:
             step = p;
             break;
