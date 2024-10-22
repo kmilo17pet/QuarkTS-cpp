@@ -511,8 +511,8 @@ $(function(){initNavTree('fsm_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span>                {</div>
 <div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>                    <span class="keywordtype">int</span> ret = 1;</div>
 <div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span>                    <span class="comment">/*cstat -MISRAC++2008-5-0-21  -CERT-EXP46-C */</span></div>
-<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>                    ret &amp;= <a class="code hl_function" href="classq_o_s_1_1sm_1_1state.html#a182fd0825bb951e517522493638584fc">install</a>( table, nTable );</div>
-<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>                    ret &amp;= <a class="code hl_function" href="classq_o_s_1_1sm_1_1state.html#a182fd0825bb951e517522493638584fc">install</a>( def, nDef );</div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>                    ret &amp;= <a class="code hl_function" href="classq_o_s_1_1sm_1_1state.html#a182fd0825bb951e517522493638584fc">install</a>( table, nTable ); <span class="comment">// skipcq: CXX-W2065</span></div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>                    ret &amp;= <a class="code hl_function" href="classq_o_s_1_1sm_1_1state.html#a182fd0825bb951e517522493638584fc">install</a>( def, nDef );    <span class="comment">// skipcq: CXX-W2065</span></div>
 <div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>                    <span class="comment">/*cstat +MISRAC++2008-5-0-21  +CERT-EXP46-C */</span></div>
 <div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>                    <span class="keywordflow">return</span> ( 0 != ret );</div>
 <div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>                }</div>
