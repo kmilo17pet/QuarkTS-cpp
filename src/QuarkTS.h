@@ -1,7 +1,7 @@
 /*!
  * @file QuarkTS.h
  * @author J. Camilo Gomez C.
- * @version 1.7.4
+ * @version 1.7.5
  * @note This file is part of the QuarkTS++ distribution.
  * @brief Global inclusion header
  **/
@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.7.4"
-#define QUARKTS_CPP_VERNUM          ( 174u )
+#define QUARKTS_CPP_VERSION         "1.7.5"
+#define QUARKTS_CPP_VERNUM          ( 175u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -66,7 +66,7 @@ This file is part of the QuarkTS++ OS distribution.
 
 namespace qOS {
     namespace build {
-        constexpr const uint32_t number = 4143;
+        constexpr const uint32_t number = 4144;
         constexpr const char* date = __DATE__;
         constexpr const char* time = __TIME__;
         constexpr const char* std = "c++11";
@@ -76,17 +76,19 @@ namespace qOS {
         constexpr const uint8_t number = QUARKTS_CPP_VERNUM;
         constexpr const uint8_t mayor = 1U;
         constexpr const uint8_t minor = 7U;
-        constexpr const uint8_t rev = 4U;
+        constexpr const uint8_t rev = 5U;
     }
     namespace product {
         constexpr const char* author = "J. Camilo Gomez C.";
         constexpr const char* copyright = "Copyright (C) 2012 J. Camilo Gomez C. All Rights Reserved.";
         constexpr const char* name = "QuarkTS++";
         constexpr const char* category = "OS";
-        constexpr const char* scheme = "cooperative";
+        constexpr const char* scheme = "Cooperative";
         constexpr const char* caption = QUARKTS_CPP_CAPTION;
         constexpr const char* compliance = "MISRAC++2008,SEI-CERT";
         constexpr const char* license = "MIT";
+        constexpr const char* source_model = "Open Source";
+        constexpr const char* kernel_type = "Cooperative Real-Time Microkernel";
     }
 }
 

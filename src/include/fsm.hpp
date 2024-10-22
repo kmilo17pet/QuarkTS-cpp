@@ -636,10 +636,12 @@ namespace qOS {
                 */
                 inline bool install( transition *table, size_t nTable, timeoutStateDefinition *def, size_t nDef )
                 {
-                    bool ret = true;
+                    int ret = 1;
+                    /*cstat -MISRAC++2008-5-0-21  -CERT-EXP46-C */
                     ret &= install( table, nTable );
                     ret &= install( def, nDef );
-                    return ret;
+                    /*cstat +MISRAC++2008-5-0-21  +CERT-EXP46-C */
+                    return ( 0 != ret );
                 }
                 /**
                 * @brief Install both, a table with the outgoing transitions for this

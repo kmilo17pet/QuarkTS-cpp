@@ -61,7 +61,7 @@ bool response::isrHandler( const char rxChar ) noexcept
 
     if ( ( !responseReceived ) && ( patternLength > 0U ) ) {
         if ( pattern2Match[ matchedCount ] == rxChar ) {
-            matchedCount = matchedCount + 1U; /* ++matchedCount; */
+            matchedCount = matchedCount + 1U; /* ++matchedCount */
             if ( matchedCount == patternLength ) {
                 responseReceived = true;
                 retValue = responseReceived;

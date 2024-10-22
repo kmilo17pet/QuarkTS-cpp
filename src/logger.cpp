@@ -235,14 +235,16 @@ namespace qOS {
                 "NONE ", "EXCEPTION ", "ON_CHANGE ", "FALLING_EDGE ", "RISING_EDGE ",
                 "PULSATION_DOUBLE ", "PULSATION_TRIPLE ", "PULSATION_MULTI ",
                 "HIGH_THRESHOLD ", "LOW_THRESHOLD ", "IN_BAND ", "STEADY_IN_HIGH ",
-                "STEADY_IN_LOW ", "STEADY_IN_BAND ", "DELTA ", "STEP "
+                "STEADY_IN_LOW ", "STEADY_IN_BAND ", "DELTA ", "STEP_UP ", "STEP_DOWN "
             };
-            auto e = in.getEvent();
+            const auto e = in.getEvent();
             (void)util::outputString( writeChar , "in{ 0x" );
             (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &in ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ( qOS::input::type::ANALOG_CHANNEL == in.getType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
+            /*cstat -MISRAC++2008-5-0-8*/
             (void)util::unsignedToString( static_cast<unsigned_t>( in.getChannel() ), buffer, 10 ); // skipcq: CXX-C1000
+            /*cstat +MISRAC++2008-5-0-8*/
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
             if ( qOS::input::event::NONE != e ) {

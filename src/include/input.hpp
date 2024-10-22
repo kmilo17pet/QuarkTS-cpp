@@ -49,9 +49,11 @@ namespace qOS {
             STEADY_IN_LOW,          /**< Event when the input-channel has been kept on low (or below the low threshold) for the specified time .*/
             STEADY_IN_BAND,         /**< Event when the analog input-channel has remained within the band for the specified time .*/
             DELTA,                  /**< Event when the difference of the last and latest reading of an analog input channel is greater than the defined delta*/
-            STEP,                   /**< Event on step reading of the analog-input channel*/
+            STEP_UP,                /**< Event on step reading of the analog-input channel*/
+            STEP_DOWN,              /**< Event on step reading of the analog-input channel*/
             /*! @cond  */
-            MAX_EVENTS
+            MAX_EVENTS,
+            STEP = STEP_UP
             /*! @endcond  */
         };
 
@@ -136,7 +138,7 @@ namespace qOS {
                 * input input channel.
                 * @param[in] cb The callback function
                 */
-                inline bool setCallback( eventCallback_t cb ) noexcept
+                inline bool setCallback( const eventCallback_t cb ) noexcept
                 {
                     callback = cb;
                     return ( cb != callback );
@@ -223,7 +225,7 @@ namespace qOS {
         class digitalChannel : public channel {
             using channelStateFcn_t = void(*)( digitalChannel& );
             private:
-                digitalValue_t value;
+                digitalValue_t value{ 0 };
                 digitalValue_t *ptrValue{ &value };
                 digitalReaderFcn_t reader{ nullptr };
                 channelStateFcn_t channelState{ nullptr };
@@ -328,7 +330,7 @@ namespace qOS {
         class analogChannel : public channel {
             using channelStateFcn_t = void(*)( analogChannel& );
             private:
-                analogValue_t value;
+                analogValue_t value{ 0 };
                 analogValue_t *ptrValue{ &value };
                 analogReaderFcn_t reader{ nullptr };
                 channelStateFcn_t channelState{ nullptr };

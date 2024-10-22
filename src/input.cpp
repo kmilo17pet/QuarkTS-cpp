@@ -5,11 +5,13 @@ using namespace qOS;
 /*============================================================================*/
 void input::digitalChannel::updateReading( bool act ) noexcept
 {
-    int sample = reader( number );
+    auto sample = reader( number );
     (void)act;
 
     if ( negate ) {
+        /*cstat -MISRAC++2008-5-0-3 -MISRAC++2008-5-3-1 -MISRAC++2008-5-0-6 */
         sample = !sample; // skipcq: CXX-W2065
+        /*cstat +MISRAC++2008-5-0-3 +MISRAC++2008-5-3-1 +MISRAC++2008-5-0-6 */
     }
     value = sample;
 }
@@ -20,17 +22,26 @@ void input::analogChannel::updateReading( bool act ) noexcept
 
     const analogValue_t currentStep = value/step;
     if ( currentStep != lastStep ) {
-        const analogValue_t diff = ( currentStep > lastStep ) ? currentStep - lastStep
-                                                     : lastStep - currentStep;
+        analogValue_t diff;
+        input::event dir;
+
+        if ( currentStep > lastStep ) {
+            diff = currentStep - lastStep;
+            dir = input::event::STEP_UP;
+        }
+        else {
+            diff = lastStep - currentStep;
+            dir = input::event::STEP_DOWN;
+        }
         for ( analogValue_t i = 0; i < diff; ++i ) {
-            dispatchEvent( input::event::STEP );
+            dispatchEvent( dir );
         }
         lastStep = currentStep;
     }
 
     if ( act ) {
-        analogValue_t diff = ( value > lastSampled ) ? value - lastSampled
-                                                     : lastSampled - value;
+        const analogValue_t diff = ( value > lastSampled ) ? value - lastSampled
+                                                           : lastSampled - value;
         if ( diff >= delta ) {
             dispatchEvent( input::event::DELTA );
         }
@@ -270,13 +281,15 @@ bool input::watcher::watch( void ) noexcept
         for ( auto i = analogChannels.begin(); i.untilEnd() ; i++ ) {
             input::channel& c = *i.get<input::channel*>();
             if ( nullptr != c.callback ) {
-                if ( ( nullptr != analogReader ) && c.isValidConfig() ) {
+                /*cstat -MISRAC++2008-5-14-1*/
+                if ( ( nullptr != analogReader ) && c.isValidConfig() ) { // no side-effects here
                     c.updateReading( act );
                     c.evaluateState();
                 }
                 else {
                     c.dispatchEvent( input::event::EXCEPTION );
                 }
+                /*cstat +MISRAC++2008-5-14-1*/
             }
         }
     }
@@ -289,7 +302,9 @@ void input::digitalChannel::setInitalState( void ) noexcept
     auto val = ( nullptr != reader ) ? reader( number ) : -1;
 
     if ( negate ) {
+        /*cstat -MISRAC++2008-5-0-3 -MISRAC++2008-5-3-1 -MISRAC++2008-5-0-6 */
         val = !val; // skipcq: CXX-W2065
+        /*cstat +MISRAC++2008-5-0-3 +MISRAC++2008-5-3-1 +MISRAC++2008-5-0-6 */
     }
     channelState = ( 0 == val ) ? &input::digitalChannel::fallingEdgeState
                                 : &input::digitalChannel::risingEdgeState;
@@ -317,13 +332,13 @@ bool input::watcher::add( input::channel& c ) noexcept
     bool retValue;
 
     if ( input::type::DIGITAL_CHANNEL == c.getType() ) {
-        c.setReader( digitalReader );
+        (void)c.setReader( digitalReader );
         c.setInitalState();
         retValue = digitalChannels.insert( &c );
     }
     else {
-        c.setReader( analogReader );
-        c.setInitalState();
+        (void)c.setReader( analogReader );
+        (void)c.setInitalState();
         input::analogChannel& chan = static_cast<analogChannel&>( c );
         /* check if channel is shared( same channel number)*/
         for ( auto i = analogChannels.begin(); i.untilEnd() ; i++ ) {
@@ -343,11 +358,13 @@ bool input::watcher::add( input::channel& c ) noexcept
 /*============================================================================*/
 bool input::watcher::remove( input::channel& c ) noexcept
 {
-    list *channelContainer = c.getContainer();
+    list* const channelContainer = c.getContainer();
     const bool retValue = channelContainer->remove( &c );
-    c.unShare();
+    (void)c.unShare();
 
-    if ( ( input::type::ANALOG_CHANNEL == c.getType() ) && !c.isShared() ) {
+    /*cstat -MISRAC++2008-5-14-1*/
+    if ( ( input::type::ANALOG_CHANNEL == c.getType() ) && !c.isShared() ) { // no side-effects here
+    /*cstat +MISRAC++2008-5-14-1*/
         analogValue_t *newPtrVal = nullptr;
         /*find the next shared channel*/
         for ( auto i = analogChannels.begin(); i.untilEnd() ; i++ ) {
@@ -448,7 +465,10 @@ bool input::analogChannel::setParameter( const input::event e, const analogValue
         case input::event::DELTA:
             delta = p;
             break;
-        case input::event::STEP:
+        case input::event::STEP_UP:
+            step = p;
+            break;
+        case input::event::STEP_DOWN:
             step = p;
             break;
         default:

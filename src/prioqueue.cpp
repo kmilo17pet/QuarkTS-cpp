@@ -84,7 +84,7 @@ bool prioQueue::insert( task &Task, void *pData ) noexcept
         tmp.pTask = &Task;
         tmp.qData = pData;
         index = index + 1; /* ++index  */
-        stack[ index ] = tmp; /*stack[ ++index ] = tmp;*/
+        stack[ index ] = tmp; /*stack[ ++index ] = tmp*/
         retValue = true;
     }
     return retValue;
@@ -99,7 +99,7 @@ void prioQueue::clearIndex( const index_t indexToClear ) noexcept
     for ( index_t j = indexToClear ; static_cast<base_t>( j ) < queueIndex ; ++j ) {
         stack[ j ] = stack[ j + 1U ];
     }
-    index = index - 1;  /* --index; */
+    index = index - 1;  /* --index */
 }
 /*============================================================================*/
 void prioQueue::cleanUp( const task &Task ) noexcept

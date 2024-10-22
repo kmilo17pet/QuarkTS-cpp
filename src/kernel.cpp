@@ -287,7 +287,7 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
             }
         case trigger::byNotificationSimple:
             taskEvent::EventData = Task->asyncData; /*Transfer async-data to the eventInfo structure*/
-            Task->notifications = Task->notifications - 1; /* --Task->notifications; */
+            Task->notifications = Task->notifications - 1; /* --Task->notifications */
             break;
         #if ( Q_QUEUES == 1 )
             case trigger::byQueueReceiver:
@@ -426,7 +426,7 @@ bool core::notify( notifyMode mode, task &Task, void* eventData ) noexcept
     if ( &Task != &idle ) { /*idle task cannot be notified*/
         if ( notifyMode::SIMPLE == mode ) {
             if ( Task.notifications < MAX_NOTIFICATION_VALUE ) {
-                Task.notifications = Task.notifications + 1U; /*  ++Task.notifications;  */
+                Task.notifications = Task.notifications + 1U; /*  ++Task.notifications  */
                 Task.asyncData = eventData;
                 retValue = true;
             }

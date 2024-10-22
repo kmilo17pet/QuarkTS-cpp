@@ -41,7 +41,7 @@ bool byteBuffer::put( const byte_t bData ) noexcept
 
     if ( !isFull() ) {
         buffer[ head % length ] = bData;
-        head = head + 1U; /*  ++head; */
+        head = head + 1U; /*  ++head */
         retValue = true;
     }
 
@@ -72,7 +72,7 @@ bool byteBuffer::get( byte_t *dst ) noexcept
     if ( !isEmpty() ) {
         const index_t vTail = static_cast<size_t>( tail );
         *dst = buffer[ vTail % length ];
-        tail = tail + 1U; /* ++tail; */
+        tail = tail + 1U; /* ++tail */
         retValue = true;
     }
 
