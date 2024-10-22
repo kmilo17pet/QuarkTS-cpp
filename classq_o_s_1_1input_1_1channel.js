@@ -6,7 +6,7 @@ var classq_o_s_1_1input_1_1channel =
     [ "getType", "classq_o_s_1_1input_1_1channel.html#ab77bd344b9bf0865cfc6f698e684ba14", null ],
     [ "getUserData", "classq_o_s_1_1input_1_1channel.html#a984bc87c8dddf22e7b15e3e0539559ba", null ],
     [ "isShared", "classq_o_s_1_1input_1_1channel.html#ac04e64282e9335fa280c9c2479a566a5", null ],
-    [ "setCallback", "classq_o_s_1_1input_1_1channel.html#ae15c704e5377c1f5c3ffcee2f91b17c8", null ],
+    [ "setCallback", "classq_o_s_1_1input_1_1channel.html#a4d569959f15fa79002249ad5f43ed25d", null ],
     [ "setChannel", "classq_o_s_1_1input_1_1channel.html#afe9029d08ecd265b09bb44546dd384e7", null ],
     [ "setParameter", "classq_o_s_1_1input_1_1channel.html#a5e417f5a15a5b266d1e6e8f2fe3e8caa", null ],
     [ "setTime", "classq_o_s_1_1input_1_1channel.html#a1399280c16cffa5b4a657ca17580b771", null ],

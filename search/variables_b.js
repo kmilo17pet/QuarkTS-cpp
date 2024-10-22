@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['oct_0',['oct',['../group__qlogger.html#gaaa3b17505e16e241c7ce360742d10ab7',1,'qOS::logger']]],
-  ['options_1',['options',['../structq_o_s_1_1sm_1_1timeout_state_definition.html#a3a3bd17b93a4630ee097ac7ffb28bba3',1,'qOS::sm::timeoutStateDefinition']]],
-  ['os_2',['os',['../group__qtaskcreation.html#gaefc7088d1435e64e433d09541fae505c',1,'qOS']]],
-  ['output_3',['output',['../classq_o_s_1_1cli_1_1handler__t.html#aec3c265e088c0e14ab79c81d7c816ff0',1,'qOS::cli::handler_t']]]
+  ['name_0',['name',['../namespaceq_o_s_1_1product.html#a28e149c54cb5fc69e8ab1881b1bb120f',1,'qOS::product']]],
+  ['none_1',['NONE',['../classq_o_s_1_1clock.html#a23a6cb5f0d851dfbf0c4cef0dcddf616',1,'qOS::clock']]],
+  ['nrm_2',['nrm',['../group__qlogger.html#gade95d6a0e0964758c9435eaca000bae6',1,'qOS::logger']]],
+  ['number_3',['number',['../namespaceq_o_s_1_1build.html#a27c970683652208708f6459448654fdc',1,'qOS::build::number'],['../namespaceq_o_s_1_1version.html#a81841f875420ba14303007ecbe8a87bf',1,'qOS::version::number']]]
 ];

@@ -32,9 +32,11 @@ var namespaceq_o_s =
       [ "category", "namespaceq_o_s_1_1product.html#af2107dc2d37709ca74d5f05b56fe5e02", null ],
       [ "compliance", "namespaceq_o_s_1_1product.html#a8e1cedd37d479a59fc3f70e5bbe94962", null ],
       [ "copyright", "namespaceq_o_s_1_1product.html#a479e2ebec2bf16c71644ea48bf716823", null ],
+      [ "kernel_type", "namespaceq_o_s_1_1product.html#af1de0d009985283ee25d29ebcc454a09", null ],
       [ "license", "namespaceq_o_s_1_1product.html#ae04a95a13869b06c3e0e9c271d28f730", null ],
       [ "name", "namespaceq_o_s_1_1product.html#a28e149c54cb5fc69e8ab1881b1bb120f", null ],
-      [ "scheme", "namespaceq_o_s_1_1product.html#a6bbeded0d0b0a7682e7de4ae7169fc83", null ]
+      [ "scheme", "namespaceq_o_s_1_1product.html#a6bbeded0d0b0a7682e7de4ae7169fc83", null ],
+      [ "source_model", "namespaceq_o_s_1_1product.html#a51e069419a164d41d08fec3cb60cb12c", null ]
     ] ],
     [ "sm", "namespaceq_o_s_1_1sm.html", "namespaceq_o_s_1_1sm" ],
     [ "util", "namespaceq_o_s_1_1util.html", [

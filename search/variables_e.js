@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['red_0',['red',['../group__qlogger.html#ga0c15c4a4ece05ecc0d0f2e821fa665ba',1,'qOS::logger']]],
-  ['remaining_5fin_5fdisarmed_5fstate_1',['REMAINING_IN_DISARMED_STATE',['../classq_o_s_1_1timer.html#abb6009553a9ffb3b390bb90b5da2977f',1,'qOS::timer']]],
-  ['rev_2',['rev',['../namespaceq_o_s_1_1version.html#a51bf5118933fd50edab7eae2519c9215',1,'qOS::version']]]
+  ['q_0',['q',['../structq_o_s_1_1sm_1_1signal_queue.html#aea3d22f7514b96b3919cad1bf99a3cd0',1,'qOS::sm::signalQueue']]],
+  ['qstack_1',['qStack',['../structq_o_s_1_1sm_1_1signal_queue.html#ad7aeb9fe0bb54acdb5ae91c101793dac',1,'qOS::sm::signalQueue']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['name_0',['name',['../namespaceq_o_s_1_1product.html#a28e149c54cb5fc69e8ab1881b1bb120f',1,'qOS::product']]],
-  ['none_1',['NONE',['../classq_o_s_1_1clock.html#a23a6cb5f0d851dfbf0c4cef0dcddf616',1,'qOS::clock']]],
-  ['nrm_2',['nrm',['../group__qlogger.html#gade95d6a0e0964758c9435eaca000bae6',1,'qOS::logger']]],
-  ['number_3',['number',['../namespaceq_o_s_1_1build.html#a27c970683652208708f6459448654fdc',1,'qOS::build::number'],['../namespaceq_o_s_1_1version.html#a81841f875420ba14303007ecbe8a87bf',1,'qOS::version::number']]]
+  ['mag_0',['mag',['../group__qlogger.html#gaad4d18badb863d05d76c5b0e4161b49e',1,'qOS::logger']]],
+  ['mayor_1',['mayor',['../namespaceq_o_s_1_1version.html#acf737ab6fbc3b89c33fc951865bb6499',1,'qOS::version']]],
+  ['medium_5fpriority_2',['MEDIUM_PRIORITY',['../classq_o_s_1_1core.html#ae87ddeec1ee7ccf9e4792882dae07f76',1,'qOS::core']]],
+  ['minor_3',['minor',['../namespaceq_o_s_1_1version.html#a41907d451c1b914dc9481b7689a014ba',1,'qOS::version']]]
 ];

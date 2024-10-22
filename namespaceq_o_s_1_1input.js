@@ -25,7 +25,8 @@ var namespaceq_o_s_1_1input =
       [ "STEADY_IN_LOW", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107", null ],
       [ "STEADY_IN_BAND", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764", null ],
       [ "DELTA", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7aa789408ec4ddae81bd2f72ad5ec6bf3b", null ],
-      [ "STEP", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a522f694f92e679d874a1cc2b2616c3d7", null ]
+      [ "STEP_UP", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a06fb2775ee1c7667a924e617c216efca", null ],
+      [ "STEP_DOWN", "group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a47f518d69b15443f1b518a0ee42a8de4", null ]
     ] ],
     [ "type", "group__qinput.html#ga1fa89c23afc36bdea1a290368c7ae520", [
       [ "DIGITAL_CHANNEL", "group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb", null ],

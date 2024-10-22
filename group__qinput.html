@@ -69,7 +69,7 @@ MathJax.Hub.Config({
   <td id="projectlogo"><img alt="Logo" src="quarktslogo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OS
-   &#160;<span id="projectnumber">v1.7.3</span>
+   &#160;<span id="projectnumber">v1.7.5</span>
    </div>
    <div id="projectbrief">Documentation</div>
   </td>
@@ -213,7 +213,9 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a338e2bdee4c65b8b7b526ec325465107">qOS::input::event::STEADY_IN_LOW</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7aaa41cbfee9bd327b853a9ca88e666764">qOS::input::event::STEADY_IN_BAND</a>
 , <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7aa789408ec4ddae81bd2f72ad5ec6bf3b">qOS::input::event::DELTA</a>
-, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a522f694f92e679d874a1cc2b2616c3d7">qOS::input::event::STEP</a>
+, <a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a06fb2775ee1c7667a924e617c216efca">qOS::input::event::STEP_UP</a>
+, <br />
+&#160;&#160;<a class="el" href="#gga72d9a973c87da11f11a8aeabbbb25aa7a47f518d69b15443f1b518a0ee42a8de4">qOS::input::event::STEP_DOWN</a>
 <br />
  }</td></tr>
 <tr class="memdesc:ga72d9a973c87da11f11a8aeabbbb25aa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible events that can be detected by the watcher class for a specified input-channel.  <a href="#ga72d9a973c87da11f11a8aeabbbb25aa7">More...</a><br /></td></tr>
@@ -241,7 +243,7 @@ Enumerations</h2></td></tr>
 
 <p>A pointer to the wrapper function that reads the specific analog input-channel. </p>
 <p>Prototype: </p><div class="fragment"><div class="line"><a class="code hl_typedef" href="#gaba6519c4e42541e0bdd32c19a53b9439">analogValue_t</a> readerFcn( uint8_t channelNumber ) </div>
-<div class="ttc" id="agroup__qinput_html_gaba6519c4e42541e0bdd32c19a53b9439"><div class="ttname"><a href="#gaba6519c4e42541e0bdd32c19a53b9439">qOS::input::analogValue_t</a></div><div class="ttdeci">uint32_t analogValue_t</div><div class="ttdef"><b>Definition</b> input.hpp:68</div></div>
+<div class="ttc" id="agroup__qinput_html_gaba6519c4e42541e0bdd32c19a53b9439"><div class="ttname"><a href="#gaba6519c4e42541e0bdd32c19a53b9439">qOS::input::analogValue_t</a></div><div class="ttdeci">uint32_t analogValue_t</div><div class="ttdef"><b>Definition</b> input.hpp:70</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -273,7 +275,7 @@ Enumerations</h2></td></tr>
 
 <p>A pointer to the wrapper function that reads the specific digital input-channel. </p>
 <p>Prototype: </p><div class="fragment"><div class="line"><a class="code hl_typedef" href="#ga0519732a168ad68b41a3913e06e46d45">digitalValue_t</a> readerFcn( uint8_t channelNumber ) </div>
-<div class="ttc" id="agroup__qinput_html_ga0519732a168ad68b41a3913e06e46d45"><div class="ttname"><a href="#ga0519732a168ad68b41a3913e06e46d45">qOS::input::digitalValue_t</a></div><div class="ttdeci">int digitalValue_t</div><div class="ttdef"><b>Definition</b> input.hpp:67</div></div>
+<div class="ttc" id="agroup__qinput_html_ga0519732a168ad68b41a3913e06e46d45"><div class="ttname"><a href="#ga0519732a168ad68b41a3913e06e46d45">qOS::input::digitalValue_t</a></div><div class="ttdeci">int digitalValue_t</div><div class="ttdef"><b>Definition</b> input.hpp:69</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -305,7 +307,7 @@ Enumerations</h2></td></tr>
 
 <p>A pointer to the input-channel event callback. </p>
 <p>Prototype: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> xCallback( <a class="code hl_class" href="classq_o_s_1_1input_1_1channel.html">input::channel</a>&amp; c ) </div>
-<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></div><div class="ttdef"><b>Definition</b> input.hpp:95</div></div>
+<div class="ttc" id="aclassq_o_s_1_1input_1_1channel_html"><div class="ttname"><a href="classq_o_s_1_1input_1_1channel.html">qOS::input::channel</a></div><div class="ttdef"><b>Definition</b> input.hpp:97</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -361,7 +363,9 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7aa789408ec4ddae81bd2f72ad5ec6bf3b" name="gga72d9a973c87da11f11a8aeabbbb25aa7aa789408ec4ddae81bd2f72ad5ec6bf3b"></a>DELTA&#160;</td><td class="fielddoc"><p>Event when the difference of the last and latest reading of an analog input channel is greater than the defined delta </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a522f694f92e679d874a1cc2b2616c3d7" name="gga72d9a973c87da11f11a8aeabbbb25aa7a522f694f92e679d874a1cc2b2616c3d7"></a>STEP&#160;</td><td class="fielddoc"><p>Event on step reading of the analog-input channel </p>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a06fb2775ee1c7667a924e617c216efca" name="gga72d9a973c87da11f11a8aeabbbb25aa7a06fb2775ee1c7667a924e617c216efca"></a>STEP_UP&#160;</td><td class="fielddoc"><p>Event on step reading of the analog-input channel </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga72d9a973c87da11f11a8aeabbbb25aa7a47f518d69b15443f1b518a0ee42a8de4" name="gga72d9a973c87da11f11a8aeabbbb25aa7a47f518d69b15443f1b518a0ee42a8de4"></a>STEP_DOWN&#160;</td><td class="fielddoc"><p>Event on step reading of the analog-input channel </p>
 </td></tr>
 </table>
 
