@@ -7,19 +7,19 @@ on:
       - 'doc/**'
       - 'examples/**'
       - '.vscode/**'
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository and submodules
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: recursive
-    
+
     - name: cmake preparation
       run: mkdir build && cd build && cmake ..
-   
+
     - name: build
       working-directory: ./build
       run: make VERBOSE=1

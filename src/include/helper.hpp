@@ -112,9 +112,11 @@ namespace qOS {
     template <typename DT, typename ST>
     inline DT aligned_cast( ST& src )
     {
+        /*cstat -CERT-EXP33-C_a*/
         DT dst;
         (void)memcpy( &dst, &src, sizeof(ST) );
         return dst;
+        /*cstat +CERT-EXP33-C_a*/
     }
     /*! @endcond  */
 
