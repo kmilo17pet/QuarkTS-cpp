@@ -5,6 +5,10 @@
 
 
 namespace qOS {
+
+    /**
+    * @brief Utilities.
+    */
     namespace util {
 
         /** @addtogroup qioutils I/O Utils
@@ -199,7 +203,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* floatToString( float64_t num, char *str, uint8_t precision = 10u ) noexcept;
+        char* floatToString( float64_t num, char *str, uint8_t precision = 10U ) noexcept;
         /**
         * @brief Parses the C-string @a s interpreting its content as an integral
         * number, which is returned as a value of type int. The function first
@@ -236,7 +240,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* unsignedToString( unsigned_t num, char* str, uint8_t base = 10u ) noexcept;
+        char* unsignedToString( unsigned_t num, char* str, uint8_t base = 10U ) noexcept;
         /**
         * @brief Converts an integer value to a null-terminated string using the
         * specified base and stores the result in the array given by @a str
@@ -256,7 +260,7 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* integerToString( int32_t num, char* str, uint8_t base = 10u ) noexcept;
+        char* integerToString( signed_t num, char* str, uint8_t base = 10U ) noexcept;
         /**
         * @brief Converts a boolean value to a null-terminated string. Input is
         * considered true with any value different to zero (0).

@@ -52,13 +52,21 @@
         "util": "cpp",
         "ctime": "cpp",
         "ratio": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "bit": "cpp",
+        "cstdarg": "cpp",
+        "algorithm": "cpp",
+        "memory": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "tuple": "cpp"
     },
     "cSpell.words": [
         "endcond",
         "endverbatim",
         "QUARKTS",
         "skipcq",
-        "stackless"
+        "stackless",
+        "tparam"
     ]
 }

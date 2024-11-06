@@ -10,9 +10,9 @@ namespace qOS {
 
     /** @addtogroup qtaskmanip
     * @brief API interface to manage tasks.
-    * @pre In order to be able to manage a task, make sure the task has already 
-    * been added to the scheduling scheme bt using core::addTask(), 
-    * core::addEventTask(), core::addStateMachineTask() or core::addCommandLineInterfaceTask().
+    * @pre In order to be able to manage a task, make sure the task has already
+    * been added to the scheduling scheme by using one of the core::addk()
+    * overloads
     *  @{
     */
 
@@ -122,7 +122,7 @@ namespace qOS {
             /**
             * @brief Associated data of the event. Specific data will reside here
             * according to the event source. This field will have a @c nullptr value when
-            * the trigger gets one of this values: trigger::byTimeElapsed, 
+            * the trigger gets one of this values: trigger::byTimeElapsed,
             * trigger::byEventFlags and trigger::byNoReadyTasks.
             */
             void *EventData{ nullptr };
@@ -130,30 +130,30 @@ namespace qOS {
             * @brief Checks whether the task is running for the first time.
             * Can be used for data initialization purposes.
             */
-            bool firstCall( void ) const noexcept
+            inline bool firstCall( void ) const noexcept
             {
                 return FirstCall;
             }
             /**
             * @brief Checks whether the current pass is the first iteration of the
-            * task.  The value returned by this method will be only @c true when 
-            * time-elapsed events occurs and the Iteration counter has been 
-            * parameterized. Asynchronous events never change the task iteration 
+            * task.  The value returned by this method will be only @c true when
+            * time-elapsed events occurs and the Iteration counter has been
+            * parameterized. Asynchronous events never change the task iteration
             * counter, consequently doesn't have effect in this flag
             */
-            bool firstIteration( void ) const noexcept
+            inline bool firstIteration( void ) const noexcept
             {
                 return FirstIteration;
             }
             /**
             * @brief Checks whether the current pass is the last iteration of the
-            * task. The value returned by this method will be only @c true when 
-            * time-elapsed events occurs and the Iteration counter has been 
+            * task. The value returned by this method will be only @c true when
+            * time-elapsed events occurs and the Iteration counter has been
             * parameterized. Asynchronous events never change the task iteration
             *  counter, consequently doesn't have effect in the value returned by
             * this method.
             */
-            bool lastIteration( void ) const noexcept
+            inline bool lastIteration( void ) const noexcept
             {
                 return LastIteration;
             }
@@ -161,7 +161,7 @@ namespace qOS {
             * @brief Get the event source that triggers the task execution.
             * Possible values are described in the qOS::trigger enum.
             */
-            trigger getTrigger( void ) const noexcept
+            inline trigger getTrigger( void ) const noexcept
             {
                 return Trigger;
             }
@@ -174,14 +174,14 @@ namespace qOS {
             * schedule.This parameter will be only available on timed tasks. when
             * @c qOS::trigger == trigger::byTimeElapsed
             */
-            clock_t startDelay( void ) const noexcept
+            inline clock_t startDelay( void ) const noexcept
             {
                 return StartDelay;
             }
             /**
             * @brief return the current task node being evaluated
             */
-            task& self( void ) noexcept
+            inline task& thisTask( void ) noexcept
             {
                 return *currentTask;
             }
@@ -189,77 +189,84 @@ namespace qOS {
     #endif
 
     /*! @cond  */
-    class _Event {
+    class taskEvent {
         protected:
             trigger Trigger{ trigger::None };
             bool FirstCall{ false };
             bool FirstIteration{ false };
             bool LastIteration{ false };
-            clock_t StartDelay{ 0u };
+            clock_t StartDelay{ 0U };
             task* currentTask{ nullptr };
-            _Event() = default;
+            taskEvent() = default;
         public:
+            /*! @cond  */
+            virtual ~taskEvent(){}
+            /*! @endcond  */
             void *TaskData{ nullptr };
             void *EventData{ nullptr };
-            bool firstCall( void ) const noexcept
+            inline bool firstCall( void ) const noexcept
             {
                 return FirstCall;
             }
-            bool firstIteration( void ) const noexcept
+            inline bool firstIteration( void ) const noexcept
             {
                 return FirstIteration;
             }
-            bool lastIteration( void ) const noexcept
+            inline bool lastIteration( void ) const noexcept
             {
                 return LastIteration;
             }
-            trigger getTrigger( void ) const noexcept
+            inline trigger getTrigger( void ) const noexcept
             {
                 return Trigger;
             }
-            clock_t startDelay( void ) const noexcept
+            inline clock_t startDelay( void ) const noexcept
             {
                 return StartDelay;
             }
-            task& self( void ) noexcept
+            inline task& self( void ) noexcept
+            {
+                return *currentTask;
+            }
+            inline task& thisTask( void ) noexcept
             {
                 return *currentTask;
             }
     };
-    using event_t = _Event&;
+    using event_t = taskEvent&;
     /*! @endcond  */
 
 
     /**
     * @brief An enum that defines the possible task operational states
-    * @details Each task has independent operating states from those globally 
+    * @details Each task has independent operating states from those globally
     * controlled by the scheduler. These states can be handled by the application
-    * writer to modify the event flow to the task and consequently, affect the 
+    * writer to modify the event flow to the task and consequently, affect the
     * transition to the globalState::READY global state
     */
     enum class taskState {
         /**
-        * @brief In this state, the time events will be discarded. This 
+        * @brief In this state, the time events will be discarded. This
         * operational state is available when the @c ENABLE bit is cleared.
         */
         DISABLED_STATE = 0,
         /**
-        * @brief The task can catch all the events. This operational state is 
+        * @brief The task can catch all the events. This operational state is
         * available when the @c ENABLE bit is set.
         */
         ENABLED_STATE = 1,
         /**
-        * @brief In this state, the task is conceptually in an alert mode, 
-        * handling most of the available events. This operational state is 
-        * available when the @c SHUTDOWN bit is set, allowing the next operational 
+        * @brief In this state, the task is conceptually in an alert mode,
+        * handling most of the available events. This operational state is
+        * available when the @c SHUTDOWN bit is set, allowing the next operational
         * states to be available:
         */
         AWAKE_STATE = 2,
         /**
-        * @brief Task operability is put into a deep doze mode, so the task 
-        * can not be triggered by the lower precedence events. This operational 
+        * @brief Task operability is put into a deep doze mode, so the task
+        * can not be triggered by the lower precedence events. This operational
         * state is available when the @c SHUTDOWN bit is cleared. The task can exit
-        * from this operational state when it receives a high precedence event 
+        * from this operational state when it receives a high precedence event
         * (a queued notification) or using the task::setState() method.
         */
         ASLEEP_STATE = 3,
@@ -270,10 +277,10 @@ namespace qOS {
     * to a task
     */
     enum class queueLinkMode : uint32_t {
-        QUEUE_RECEIVER = 4u,    /**< This mode will trigger the task if there are elements in the queue. Data will be extracted automatically in every trigger and will be available in the qEvent_t::EventData field.*/
-        QUEUE_FULL = 8u,        /**< This mode will trigger the task if the queue is full. A pointer to the queue will be available in the qEvent_t::EventData field.*/
-        QUEUE_COUNT = 16u,      /**< This mode will trigger the task if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the qEvent_t::EventData field.*/
-        QUEUE_EMPTY = 32u,      /**< This mode will trigger the task if the queue is empty. A pointer to the queue will be available in the qEvent_t::EventData field.*/
+        QUEUE_RECEIVER = 4U,    /**< This mode will trigger the task if there are elements in the queue. Data will be extracted automatically in every trigger and will be available in the event_t::EventData field.*/
+        QUEUE_FULL = 8U,        /**< This mode will trigger the task if the queue is full. A pointer to the queue will be available in the event_t::EventData field.*/
+        QUEUE_COUNT = 16U,      /**< This mode will trigger the task if the count of elements in the queue reach the specified value. A pointer to the queue will be available in the event_t::EventData field.*/
+        QUEUE_EMPTY = 32U,      /**< This mode will trigger the task if the queue is empty. A pointer to the queue will be available in the event_t::EventData field.*/
     };
 
     /**
@@ -317,7 +324,7 @@ namespace qOS {
     * “good neighbors”, i.e., running their callback methods quickly in a
     * non-blocking way and releasing control back to the scheduler as soon as
     * possible (returning).
-    * Every task node, must be defined using the qTask_t data-type and the
+    * Every task node, must be defined using the qOS::task class and the
     * callback is defined as a function that returns void and takes a event_t
     * data structure as its only parameter (This input argument can be used
     * later to get event information.
@@ -325,7 +332,7 @@ namespace qOS {
     * Example :
     * @code{.c}
     * using namespace qOS;
-    * 
+    *
     * task UserTask;
     *
     * void UserTask_Callback( event_t e ) {
@@ -346,21 +353,20 @@ namespace qOS {
             taskFcn_t callback{ nullptr };
             void *aObj{ nullptr };
             queue *aQueue{ nullptr };
-            size_t aQueueCount{ 0uL };
-            const char *name{ nullptr };
+            size_t aQueueCount{ 0UL };
+            char name[ 11 ] = ""; // skipcq: CXX-W2066, CXX-W2066
             timer time;
-            cycles_t cycles{ 0uL };
-            size_t entry{ static_cast<size_t>( 0xFFFFFFFFu ) };
+            cycles_t cycles{ 0UL };
+            size_t entry{ SIZE_MAX };
             iteration_t iterations{ 0 };
-            volatile notifier_t notifications{ 0uL };
-            volatile taskFlag_t flags{ 0uL };
-            priority_t priority{ 0u };
+            volatile notifier_t notifications{ 0UL };
+            volatile taskFlag_t flags{ 0UL };
+            priority_t priority{ 0U };
             trigger Trigger{ trigger::None };
             void setFlags( const uint32_t xFlags, const bool value ) noexcept;
             bool getFlag( const uint32_t flag ) const noexcept;
             bool deadLineReached( void ) const noexcept;
             trigger queueCheckEvents( void ) noexcept;
-            _Event *pEventInfo{ nullptr };
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_ENABLED;
             static const uint32_t BIT_QUEUE_RECEIVER;
@@ -373,8 +379,11 @@ namespace qOS {
             static const uint32_t QUEUE_FLAGS_MASK;
             task( task const& ) = delete;
             void operator=( task const& ) = delete;
+        protected:
+            virtual void activities( event_t e );
         public:
             task() = default;
+            virtual ~task(){}
             /**
             * @brief Retrieve the current task priority.
             * @return The task priority value.
@@ -385,7 +394,7 @@ namespace qOS {
             * @param[in] pValue Priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @return @c true on success. Otherwise return @c false.
             */
-            bool setPriority( priority_t pValue ) noexcept;
+            bool setPriority( const priority_t pValue ) noexcept;
             /**
             * @brief Retrieve the number of task activations.
             * @return An unsigned long value containing the number of task
@@ -394,8 +403,8 @@ namespace qOS {
             cycles_t getCycles( void ) const noexcept;
             /**
             * @brief Retrieve the task operational state.
-            * @return taskState::ENABLED or taskState::DISABLED if the task is 
-            * taskState::AWAKEN. taskState::ASLEEP if the task is in a Sleep 
+            * @return taskState::ENABLED_STATE or taskState::DISABLED_STATE if the task is
+            * taskState::AWAKE_STATE. taskState::ASLEEP_STATE if the task is in a Sleep
             * operational state.
             */
             taskState getState( void ) const noexcept;
@@ -403,21 +412,21 @@ namespace qOS {
             * @brief Set the task operational state
             * @param[in] s Use one of the following values:
             *
-            * taskState::ENABLED : Task will be able to catch all the events. 
+            * taskState::ENABLED_STATE : Task will be able to catch all the events.
             * ( @c ENABLE_Bit=1 )
             *
-            * taskState::DISABLED : Time events will be discarded. The task 
+            * taskState::DISABLED_STATE : Time events will be discarded. The task
             * catch asynchronous events. ( @c ENABLE_Bit=0)
             *
-            * taskState::ASLEEP : Put the task into a sleep operability state. 
-            * The task can't be triggered by the lower precedence events. 
+            * taskState::ASLEEP_STATE : Put the task into a sleep operability state.
+            * The task can't be triggered by the lower precedence events.
             * ( @c SHUTDOWN_Bit=0)
             *
-            * taskState::AWAKE : Put the task into the previous state before it 
+            * taskState::AWAKE_STATE : Put the task into the previous state before it
             * was put in the sleep state.( @c SHUTDOWN_Bit=1 )
             * @return @c true on success. Otherwise return @c false.
             */
-            bool setState( taskState s ) noexcept;
+            bool setState( const taskState s ) noexcept;
             /**
             * @brief Put the task into a disabled state.
             * @see task::setState()
@@ -488,24 +497,24 @@ namespace qOS {
             /**
             * @brief Set/Change the number of task iterations
             * @param[in] iValue Number of task executions (Integer value). For
-            * indefinite execution (@a iValue = os.PERIODIC or os.INDEFINITE).
+            * indefinite execution (@a iValue = task::PERIODIC or task::INDEFINITE).
             * Tasks do not remember the number of iteration set initially. After
-            * the iterations are done, internal iteration counter is 0. If you 
-            * need to perform another set of iterations, you need to set the 
+            * the iterations are done, internal iteration counter is 0. If you
+            * need to perform another set of iterations, you need to set the
             * number of iterations again and resume.
             */
-            void setIterations( iteration_t iValue ) noexcept;
+            void setIterations( const iteration_t iValue ) noexcept;
             /**
             * @brief Set/Change the Task execution interval
-            * @param[in] tValue Execution interval given in milliseconds. For 
+            * @param[in] tValue Execution interval given in milliseconds. For
             * immediate execution (@a tValue = clock::IMMEDIATE).
             * @return @c true on success, otherwise returns @c false.
             */
-            bool setTime( const qOS::time_t tValue ) noexcept;
+            bool setTime( const qOS::duration_t tValue ) noexcept;
             /**
             * @brief Set/Change the task callback function.
             * @note This function can be used to detach a state-machine from a task
-            * @param[in] tCallback A pointer to a void callback method with a 
+            * @param[in] tCallback A pointer to a void callback method with a
             * event_t parameter as input argument.
             * @return @c true on success. Otherwise return @c false.
             */
@@ -518,14 +527,18 @@ namespace qOS {
             bool setData( void *arg ) noexcept;
             /**
             * @brief Set the task name
+            * @pre The task must already be added to the scheduling scheme
             * @note Name should be unique.
+            * @note The name @c idle is reserved for the Idle task
+            * @remark The size of the string must be less than 11
             * @param[in] tName A raw-string with the task name
             * @return @c true on success. Otherwise return @c false.
             */
             bool setName( const char *tName ) noexcept;
             /**
             * @brief Retrieves the task name
-            * @return A pointer to the string containing the task name.
+            * @return A pointer to the string containing the task name. If the
+            * task is unnamed an empty string will be returned.
             */
             const char* getName( void ) const noexcept;
             /**
@@ -561,26 +574,27 @@ namespace qOS {
             * will act as a detach action.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool attachQueue( queue &q, const queueLinkMode mode, const size_t arg = 1u ) noexcept;
+            bool attachQueue( queue &q, const queueLinkMode mode, const size_t arg = 1U ) noexcept;
             /**
-            * @brief Retrieves the Task attached object
+            * @brief Retrieves a pointer to the object binded to the task, could
+            * be either a state-machine or a command-line-interface
             * @return A @c void pointer to the attached object.
             */
-            void * const & getAttachedObject( void ) const noexcept;
+            void * const & getBindedObject( void ) const noexcept;
             /**
-            * @brief Retrieves the last task event data
-            * @return The event data at its last execution status.
+            * @brief Retrieves a pointer to the queue attached to the task.
+            * @return A @c void pointer to the attached object.
             */
-            event_t eventData( void ) const noexcept;
-            /** @brief A constant to indicate that the task will run every time 
+            queue* getQueue( void ) noexcept;
+            /** @brief A constant to indicate that the task will run every time
             * its timeout has expired.
             */
             static const iteration_t PERIODIC;
-            /** @brief Same as PERIODIC. A constant to indicate that the task 
+            /** @brief Same as PERIODIC. A constant to indicate that the task
             * will run every time its timeout has expired.
             */
             static const iteration_t INDEFINITE;
-            /** @brief A constant to indicate that the task will be executed 
+            /** @brief A constant to indicate that the task will be executed
             * only once after its time has expired.
             */
             static const iteration_t SINGLE_SHOT;

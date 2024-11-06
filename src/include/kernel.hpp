@@ -7,6 +7,7 @@
 #include "include/types.hpp"
 #include "include/task.hpp"
 #include "include/prioqueue.hpp"
+#include "include/input.hpp"
 
 #if ( Q_FSM == 1 )
     #include "include/fsm.hpp"
@@ -15,12 +16,15 @@
     #include "include/cli.hpp"
 #endif
 
+/**
+* @brief OS/Kernel interfaces.
+*/
 namespace qOS {
 
     /** @addtogroup qtaskcreation
      * @brief Kernel API interface to create/remove tasks and perform special
      * OS operations.
-     * @pre Before using any scheduler interface, you must first configure and 
+     * @pre Before using any scheduler interface, you must first configure and
      * initialize the operating system using core::init()
      *  @{
      */
@@ -39,19 +43,18 @@ namespace qOS {
     * delivered
     */
     enum class notifyMode : uint8_t {
-        SIMPLE = 0u,    /**< To notify a task using the simple approach. */
-        QUEUED = 1u,    /**< To notify a task using the FIFO priority queue. */
+        SIMPLE = 0U,    /**< To notify a task using the simple approach. */
+        QUEUED = 1U,    /**< To notify a task using the FIFO priority queue. */
         /*! @cond  */
-        _NONE_ = 3u,    /**< Do not use this value. Used only internally.*/
+        NOTIFY_NONE = 3U,    /**< Do not use this value. Used only internally.*/
         /*! @endcond  */
     };
 
     /*! @cond  */
-    struct _notificationSpreader_s {
+    struct notificationSpreader_t {
         notifyMode mode;
         void *eventData;
     };
-    using notificationSpreader_t = struct _notificationSpreader_s;
     /*! @endcond  */
 
     /** @}*/
@@ -68,7 +71,7 @@ namespace qOS {
     */
     constexpr taskFlag_t EVENT_FLAG( index_t i )
     {
-        return ( ( i >= 1u ) && ( i <= 20u ) ) ?  0x00001000uL << ( i - 1u ) : 0x00001000uL;
+        return ( ( i >= 1U ) && ( i <= 20U ) ) ?  0x00001000UL << ( i - 1U ) : 0x00001000UL;
     }
 
     /** @}*/
@@ -77,19 +80,20 @@ namespace qOS {
     * @brief The class to interface the OS
     * @note Use the predefined os instance
     */
-    class core final : protected _Event {
+    class core final : protected taskEvent {
         private:
             task idle;
             taskFcn_t releaseSchedCallback{ nullptr };
             task *yieldTask{ nullptr };
-            pq::queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ];
+            pq::queueStack_t pq_stack[ Q_PRIO_QUEUE_SIZE ]; // skipcq: CXX-W2066
             prioQueue priorityQueue{ pq_stack, sizeof(pq_stack)/sizeof(pq::queueStack_t) }; // skipcq: CXX-C1000
-            volatile coreFlags_t flag{ 0uL };
-            notificationSpreader_t nSpreader{ notifyMode::_NONE_, nullptr };
-            size_t taskEntries{ 0uL };
-            list coreLists[ Q_PRIORITY_LEVELS + 2 ];
-            list& waitingList;  // skipcq: CXX-W2012
-            list& suspendedList;  // skipcq: CXX-W2012
+            volatile coreFlags_t flag{ 0UL };
+            notificationSpreader_t nSpreader{ notifyMode::NOTIFY_NONE, nullptr };
+            size_t taskEntries{ 0UL };
+            list coreLists[ Q_PRIORITY_LEVELS + 2 ]; // skipcq: CXX-W2066
+            list& waitingList;  // skipcq: CXX-W2012, CXX-W2010
+            list& suspendedList;  // skipcq: CXX-W2012, CXX-W2010
+            list inputWatchers;
             static const priority_t MAX_PRIORITY_VALUE;
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_FCALL_IDLE;
@@ -100,6 +104,7 @@ namespace qOS {
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
             void dispatch( list * const xList ) noexcept;
             void dispatchIdle( void ) noexcept;
+            void handleInputWatchers( void ) noexcept;
             core() : waitingList( coreLists[ Q_PRIORITY_LEVELS ] ), suspendedList( coreLists[ Q_PRIORITY_LEVELS + 1 ] ) {}
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
@@ -117,14 +122,14 @@ namespace qOS {
             static core& getInstance( void ) noexcept;
             /**
             * @brief Task Scheduler initialization. This core method is required
-            * and must be called once in the application main thread before any 
+            * and must be called once in the application main thread before any
             * task is being added to the OS.
             * @param[in] tFcn The function that provides the tick value. If the user
-            * application uses the qOS::clock::sysTick() from the ISR, this 
+            * application uses the qOS::clock::sysTick() from the ISR, this
             * parameter can be @c nullptr.
             * @note Function should take void and return a 32bit value.
             * @param[in] callbackIdle  Callback function to the Idle Task. To
-            * disable the Idle-Task activities, ignore this parameter of pass 
+            * disable the Idle-Task activities, ignore this parameter of pass
             * @c nullptr as argument.
             * @return @c true on success. Otherwise return @c false.
             *
@@ -160,14 +165,15 @@ namespace qOS {
             * }
             * @endcode
             */
-            void init( const getTickFcn_t tFcn, taskFcn_t callbackIdle = nullptr ) noexcept;
+            bool init( const getTickFcn_t tFcn = nullptr, taskFcn_t callbackIdle = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. The task is scheduled to run
             * every @a t time units, @a n times and executing @a callback method on
             * every pass.
             * @param[in] Task The task node.
             * @param[in] callback A pointer to a void callback method with a qOS::event_t
-            * parameter as input argument.
+            * parameter as input argument. If user uses the OOP approach for defining
+            * a task, you can pass @c nullptr as argument.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS(max)]
             * @param[in] t Execution interval (time) given in milliseconds.
             * For immediate execution use t = clock::IMMEDIATE.
@@ -180,7 +186,7 @@ namespace qOS {
             * taskState::DISABLED_STATE.
             * @note Asynchronous triggers do not affect the iteration counter.
             * @param[in] s Specifies the initial operational state of the task
-            * (taskState::ENABLED_STATE, taskState::DISABLED_STATE, 
+            * (taskState::ENABLED_STATE, taskState::DISABLED_STATE,
             * taskState::AWAKE_STATE or taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)).
             * @param[in] arg Represents the task arguments. All arguments must be passed
             * by reference and cast to @c void* . Only one argument is allowed, so, for
@@ -188,49 +194,73 @@ namespace qOS {
             * and pass a pointer to that structure.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool addTask( task &Task, taskFcn_t callback, const priority_t p, const time_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            bool add( task &Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. This API creates a task with
-            * a taskState::DISABLED state by default, so this task will be executed only, when
+            * a taskState::DISABLED_STATE state by default, so this task will be executed only, when
             * asynchronous events occurs. However, this behavior can be changed in
             * execution time using task::setTime() or task::setIterations().
             * @param[in] Task The task node.
             * @param[in] callback A pointer to a the task callback method with a
-            * event_t parameter as input argument.
+            * event_t parameter as input argument. If user uses the OOP approach
+            * for defining a task, you can pass @c nullptr as argument.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
             * @param[in] arg Represents the task arguments. All arguments must be passed
-            * by reference and cast to @c void*. 
+            * by reference and cast to @c void*.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            inline bool addEventTask( task &Task, taskFcn_t callback, const priority_t p, void *arg = nullptr ) noexcept
+            inline bool add( task &Task, taskFcn_t callback, const priority_t p, void *arg = nullptr ) noexcept
             {
-                return addTask( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED_STATE, arg );
+                return add( Task, callback, p, clock::IMMEDIATE, task::SINGLE_SHOT, taskState::DISABLED_STATE, arg );
             }
             #if ( Q_FSM == 1 )
+            /** @addtogroup  qfsm
+            *  @{
+            */
+
             /**
             * @brief Add a task to the scheduling scheme running a dedicated
             * state-machine. The task is scheduled to run every @a t time units in
             * task::PERIODIC mode. The event info will be available as a generic pointer
             * inside the sm::handler_t::Data field.
-            * @pre The State-machine object should be previously configured with 
-            * qStateMachine_Setup()
-            * @see qStateMachine_Setup()
+            * @pre The State-machine object should be previously configured with
+            * qOS::stateMachine::setup()
+            * @see qOS::stateMachine::setup()
             * @param[in] Task  A pointer to the task node.
             * @param[in] m  A pointer to the Finite State-Machine (FSM) object.
             * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
-            * @param[in] t Execution time interval given in milliseconds. For 
+            * @param[in] t Execution time interval given in milliseconds. For
             * immediate execution ( t = clock::IMMEDIATE ).
             * @param[in] s Specifies the initial operational state of the task
-            * (taskState::ENABLED_STATE, taskState::DISABLED_STATE, 
+            * (taskState::ENABLED_STATE, taskState::DISABLED_STATE,
             * taskState::AWAKE_STATE or taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)).
             * @param[in] arg Represents the task arguments. All arguments must be
             * passed by reference and cast to @c void*.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool addStateMachineTask( task &Task, stateMachine &m, const priority_t p, const time_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            bool add( task &Task, stateMachine &m, const priority_t p, const duration_t t, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
+            /** @}*/
             #endif
             #if ( Q_CLI == 1 )
-            bool addCommandLineInterfaceTask( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;
+            /** @addtogroup  qatcli
+            *  @{
+            */
+
+            /**
+            * @brief Add a task to the scheduling scheme running an AT Command Line
+            * Interface. Task will be scheduled as event-triggered task. The parser
+            * address will be stored in the event_t::TaskData storage-Pointer.
+            * @pre The AT-CLI object should be previously configured with
+            * qOS::commandLineInterface::setup().
+            * @see qOS::commandLineInterface::setup()
+            * @param[in] Task The task node.
+            * @param[in] cli The Command Line Inteface instance.
+            * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
+            * @param[in] arg The task arguments.
+            * @return Returns @c true on success, otherwise returns @c false.
+            */
+            bool add( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;
+            /** @}*/
             #endif
             /**
             * @brief Set/Change the callback for the Idle-task
@@ -239,6 +269,13 @@ namespace qOS {
             * @return @c true on success. Otherwise return @c false.
             */
             bool setIdleTask( taskFcn_t callback ) noexcept;
+            /**
+            * @brief Set the name for the idle task
+            * @remark The size of the string must be less than 11
+            * @param[in] tName A raw-string with the task name
+            * @return @c true on success. Otherwise return @c false.
+            */
+            bool setNameIdleTask( const char *tName ) noexcept;
             /**
             * @brief Disables the kernel scheduling. The main thread will continue
             * after the core::run() call.
@@ -256,7 +293,7 @@ namespace qOS {
             * @param[in] Task The task node.
             * @return Returns @c true if success, otherwise returns @c false.
             */
-            bool removeTask( task &Task ) noexcept;
+            bool remove( task &Task ) noexcept;
             /**
             * @brief Executes the scheduling scheme. It must be called once after the
             * task pool has been defined.
@@ -273,23 +310,23 @@ namespace qOS {
 
             /**
             * @brief Sends a notification generating an asynchronous event.
-            * If mode = notifyMode::SIMPLE, the method marks the task as 
+            * If mode = notifyMode::SIMPLE, the method marks the task as
             * ready for execution and the scheduler planner will launch the task
             * immediately according to the scheduling rules (even
-            * if task is disabled) and setting the event_t::trigger flag to
-            * trigger::byNotificationSimple. 
-            * If mode = notifyMode::QUEUED, the notification will insert the 
-            * notification in the FIFO priority queue. The scheduler get this 
-            * notification as an asynchronous event and the task will be ready 
+            * if task is disabled) and setting the @c trigger flag to
+            * trigger::byNotificationSimple.
+            * If mode = notifyMode::QUEUED, the notification will insert the
+            * notification in the FIFO priority queue. The scheduler get this
+            * notification as an asynchronous event and the task will be ready
             * for execution according to the queue order (determined by priority),
             * even if task is in a disabled or sleep operational state. When extracted,
-            * the scheduler will set event_t::Trigger flag to  trigger::byNotificationQueued.
+            * the scheduler will set @c trigger flag to trigger::byNotificationQueued.
             * Specific user-data can be passed through, and will be available inside the
             * event_t::EventData field, only in corresponding launch. If the task is in
-            * a @c qSleep operation state, the scheduler will change the operational state
-            * to qAwaken setting the @c SHUTDOWN bit.
+            * a @c SLEEP operation state, the scheduler will change the operational state
+            * to @c AWAKEN setting the @c SHUTDOWN bit.
             * Specific user-data can be passed through, and will
-            * be available in the respective callback inside the qEvent_t::EventData
+            * be available in the respective callback inside the qOS::event_t::EventData
             * field.
             * @param[in] mode the method used to send the event: notifyMode::SIMPLE
             * or notifyMode::QUEUED.
@@ -310,12 +347,12 @@ namespace qOS {
             */
             bool notify( notifyMode mode, void* eventData = nullptr ) noexcept;
             /**
-            * @brief Check if the supplied task has pending notifications 
+            * @brief Check if the supplied task has pending notifications
             * @note Operation will be performed in the next scheduling cycle.
             * @param[in] Task The task node
             * @return @c true if the task has pending notifications, @c false if not.
             */
-            bool hasPendingNotifications( task &Task ) noexcept;
+            bool hasPendingNotifications( const task &Task ) const noexcept;
 
             /** @}*/
 
@@ -365,15 +402,22 @@ namespace qOS {
             * @return @c true if the condition is meet, otherwise return @c false.
             */
             bool eventFlagsCheck( task &Task, taskFlag_t flagsToCheck, const bool clearOnExit = true, const bool checkForAll = false ) noexcept;
+            /** @}*/
+
             /**
-            * @brief Tries to find the first task that matches the name provided.
+            * @brief Tries to find the task that matches the name provided.
+            * @note Task @a idle with name = @c idle cannot be obtained
             * @param[in] name The string with the name to find.
             * @return A pointer to the task node if found, otherwise returns @c nullptr.
             */
-
-            /** @}*/
-
-            task* findTaskByName( const char *name ) noexcept;
+            task* getTaskByName( const char *name ) noexcept;
+            /**
+            * @brief Tries to find the task that matches the ID provided.
+            * @note Task @a idle with ID = @c 0 cannot be obtained
+            * @param[in] id The value of the task-ID to find.
+            * @return A pointer to the task node if found, otherwise returns @c nullptr.
+            */
+            task* getTaskByID( size_t id ) noexcept;
             /**
             * @brief Yield the control of the current running task to another task.
             * @note This API can only be invoked from the context of a task.
@@ -393,9 +437,24 @@ namespace qOS {
             * current kernel transaction
             */
             globalState getGlobalState( task &Task ) const noexcept;
+            /**
+            * @brief Add an input-watcher so that its function is executed by
+            * the kernel
+            * @note The input-watcher is considered as an always-active task
+            * @param[in] w The input watcher.
+            * @return Returns @c true if success, otherwise returns @c false.
+            */
+            bool add( input::watcher &w ) noexcept;
+            /**
+            * @brief Remove an input-watcher so that the kernel stops executing
+            * its function
+            * @param[in] w The input-watcher.
+            * @return Returns @c true if success, otherwise returns @c false.
+            */
+            bool remove( input::watcher &w ) noexcept;
     };
     /** @brief The predefined instance of the OS kernel interface */
-    extern core& os; // skipcq: CXX-W2011
+    extern core& os; // skipcq: CXX-W2011, CXX-W2009
 
     /** @}*/
 }

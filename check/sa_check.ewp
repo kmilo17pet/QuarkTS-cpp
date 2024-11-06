@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-    <fileVersion>3</fileVersion>
+    <fileVersion>4</fileVersion>
     <configuration>
         <name>Debug</name>
         <toolchain>
@@ -11,7 +11,7 @@
             <name>General</name>
             <archiveVersion>3</archiveVersion>
             <data>
-                <version>35</version>
+                <version>36</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -70,7 +70,7 @@
                 </option>
                 <option>
                     <name>OGLastSavedByProductVersion</name>
-                    <state>9.32.1.54977</state>
+                    <state>9.50.1.69462</state>
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
@@ -98,7 +98,7 @@
                 </option>
                 <option>
                     <name>GBECoreSlave</name>
-                    <version>32</version>
+                    <version>33</version>
                     <state>39</state>
                 </option>
                 <option>
@@ -115,7 +115,7 @@
                 </option>
                 <option>
                     <name>CoreVariant</name>
-                    <version>32</version>
+                    <version>33</version>
                     <state>39</state>
                 </option>
                 <option>
@@ -138,7 +138,7 @@
                 </option>
                 <option>
                     <name>GFPUCoreSlave2</name>
-                    <version>32</version>
+                    <version>33</version>
                     <state>39</state>
                 </option>
                 <option>
@@ -211,13 +211,18 @@
                     <name>FPU64</name>
                     <state>1</state>
                 </option>
+                <option>
+                    <name>OG_32_64DeviceCoreSlave</name>
+                    <version>33</version>
+                    <state>39</state>
+                </option>
             </data>
         </settings>
         <settings>
             <name>ICCARM</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>37</version>
+                <version>38</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -459,13 +464,21 @@
                     <name>CCStackProtection</name>
                     <state>0</state>
                 </option>
+                <option>
+                    <name>CCPointerAutentiction</name>
+                    <state>0</state>
+                </option>
+                <option>
+                    <name>CCBranchTargetIdentification</name>
+                    <state>0</state>
+                </option>
             </data>
         </settings>
         <settings>
             <name>AARM</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>11</version>
+                <version>12</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>1</debug>
                 <option>
@@ -625,6 +638,10 @@
                     <name>PreInclude</name>
                     <state></state>
                 </option>
+                <option>
+                    <name>A_32_64Device</name>
+                    <state>1</state>
+                </option>
             </data>
         </settings>
         <settings>
@@ -665,14 +682,6 @@
                 <cmdline></cmdline>
                 <hasPrio>1</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
-            </data>
-        </settings>
-        <settings>
-            <name>BUILDACTION</name>
-            <archiveVersion>1</archiveVersion>
-            <data>
-                <prebuild></prebuild>
-                <postbuild></postbuild>
             </data>
         </settings>
         <settings>
@@ -1070,6 +1079,11 @@
                 </option>
             </data>
         </settings>
+        <settings>
+            <name>BUILDACTION</name>
+            <archiveVersion>2</archiveVersion>
+            <data />
+        </settings>
     </configuration>
     <configuration>
         <name>Release</name>
@@ -1081,7 +1095,7 @@
             <name>General</name>
             <archiveVersion>3</archiveVersion>
             <data>
-                <version>35</version>
+                <version>36</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -1140,7 +1154,7 @@
                 </option>
                 <option>
                     <name>OGLastSavedByProductVersion</name>
-                    <state>7.50.2.0</state>
+                    <state>9.50.1.69462</state>
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
@@ -1168,7 +1182,7 @@
                 </option>
                 <option>
                     <name>GBECoreSlave</name>
-                    <version>32</version>
+                    <version>33</version>
                     <state>38</state>
                 </option>
                 <option>
@@ -1185,7 +1199,7 @@
                 </option>
                 <option>
                     <name>CoreVariant</name>
-                    <version>32</version>
+                    <version>33</version>
                     <state>38</state>
                 </option>
                 <option>
@@ -1208,7 +1222,7 @@
                 </option>
                 <option>
                     <name>GFPUCoreSlave2</name>
-                    <version>32</version>
+                    <version>33</version>
                     <state>38</state>
                 </option>
                 <option>
@@ -1281,13 +1295,18 @@
                     <name>FPU64</name>
                     <state>1</state>
                 </option>
+                <option>
+                    <name>OG_32_64DeviceCoreSlave</name>
+                    <version>33</version>
+                    <state>38</state>
+                </option>
             </data>
         </settings>
         <settings>
             <name>ICCARM</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>37</version>
+                <version>38</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -1529,13 +1548,21 @@
                     <name>CCStackProtection</name>
                     <state>0</state>
                 </option>
+                <option>
+                    <name>CCPointerAutentiction</name>
+                    <state>0</state>
+                </option>
+                <option>
+                    <name>CCBranchTargetIdentification</name>
+                    <state>0</state>
+                </option>
             </data>
         </settings>
         <settings>
             <name>AARM</name>
             <archiveVersion>2</archiveVersion>
             <data>
-                <version>11</version>
+                <version>12</version>
                 <wantNonLocal>1</wantNonLocal>
                 <debug>0</debug>
                 <option>
@@ -1695,6 +1722,10 @@
                     <name>PreInclude</name>
                     <state></state>
                 </option>
+                <option>
+                    <name>A_32_64Device</name>
+                    <state>1</state>
+                </option>
             </data>
         </settings>
         <settings>
@@ -1735,14 +1766,6 @@
                 <cmdline></cmdline>
                 <hasPrio>0</hasPrio>
                 <buildSequence>inputOutputBased</buildSequence>
-            </data>
-        </settings>
-        <settings>
-            <name>BUILDACTION</name>
-            <archiveVersion>1</archiveVersion>
-            <data>
-                <prebuild></prebuild>
-                <postbuild></postbuild>
             </data>
         </settings>
         <settings>
@@ -2140,6 +2163,11 @@
                 </option>
             </data>
         </settings>
+        <settings>
+            <name>BUILDACTION</name>
+            <archiveVersion>2</archiveVersion>
+            <data />
+        </settings>
     </configuration>
     <group>
         <name>config</name>
@@ -2165,19 +2193,22 @@
             <name>$PROJ_DIR$\..\src\include\critical.hpp</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\src\include\edgecheck.hpp</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\..\src\include\fsm.hpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\include\helper.hpp</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\src\include\input.hpp</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\src\include\kernel.hpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\include\list.hpp</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\src\include\logger.hpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\include\memory.hpp</name>
@@ -2196,9 +2227,6 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\include\timer.hpp</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\src\include\trace.hpp</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\src\include\types.hpp</name>
@@ -2223,16 +2251,19 @@
         <name>$PROJ_DIR$\..\src\critical.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\edgecheck.cpp</name>
+        <name>$PROJ_DIR$\..\src\fsm.cpp</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\..\src\fsm.cpp</name>
+        <name>$PROJ_DIR$\..\src\input.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\kernel.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\list.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\..\src\logger.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\main.cpp</name>
@@ -2257,9 +2288,6 @@
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\timer.cpp</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\..\src\trace.cpp</name>
     </file>
     <file>
         <name>$PROJ_DIR$\..\src\util.cpp</name>

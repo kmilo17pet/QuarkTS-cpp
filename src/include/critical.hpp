@@ -50,6 +50,9 @@ namespace qOS {
     */
     using int_disabler_t = uint32_t (*)( void );
 
+    /**
+    * @brief OS Critical interfaces.
+    */
     namespace critical {
 
         /** @addtogroup qcritical

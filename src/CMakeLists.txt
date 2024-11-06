@@ -1,7 +1,7 @@
 cmake_minimum_required( VERSION 3.2 )
-project( quarkts-cpp 
-         VERSION 0.0.1 
-         DESCRIPTION "An open-source OS for small embedded applications" 
+project( quarkts-cpp
+         VERSION 1.7.5
+         DESCRIPTION "An open-source OS for small embedded applications"
          LANGUAGES CXX )
 
 add_library( ${PROJECT_NAME} INTERFACE )
@@ -22,8 +22,8 @@ target_sources( ${PROJECT_NAME} INTERFACE
              "${CMAKE_CURRENT_LIST_DIR}/memory.cpp"
              "${CMAKE_CURRENT_LIST_DIR}/bytebuffer.cpp"
              "${CMAKE_CURRENT_LIST_DIR}/response.cpp"
-             "${CMAKE_CURRENT_LIST_DIR}/edgecheck.cpp"
-             "${CMAKE_CURRENT_LIST_DIR}/trace.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/input.cpp"
+             "${CMAKE_CURRENT_LIST_DIR}/logger.cpp"
            )
 
 target_compile_options( ${PROJECT_NAME} INTERFACE
@@ -31,12 +31,12 @@ target_compile_options( ${PROJECT_NAME} INTERFACE
                -std=c++11 -Wall -Wextra -Wpedantic -Wconversion
                -flto -Wimplicit-fallthrough=0 -Wformat-security
                -Wduplicated-cond -Wfloat-equal -Wshadow -Wsign-conversion
-               -Wlogical-not-parentheses -Wnull-dereference  -Wstringop-overflow 
-               -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing 
+               -Wlogical-not-parentheses -Wnull-dereference  -Wstringop-overflow
+               -fdump-rtl-expand -fstrict-aliasing  -Wstrict-aliasing
                -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs
-               -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wshadow 
-               -Wwrite-strings -Wsign-compare  -Wmissing-declarations -Wformat 
-               -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked 
+               -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wshadow
+               -Wwrite-strings -Wsign-compare  -Wmissing-declarations -Wformat
+               -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked
                -Wredundant-decls -Wunreachable-code
             >
 )

@@ -14,57 +14,208 @@ namespace qOS {
      */
 
     class stateMachine;
-    
+
+    /**
+    * @brief Finite State Machine interfaces.
+    */
     namespace sm {
 
-        /** @addtogroup  qfsm 
+        /** @addtogroup  qfsm
          *  @{
          */
 
         class state;
 
+        using signalIDType = uint32_t;
+
         /**
         * @brief The type for signal ID.
         */
-        enum signalID : uint32_t {
-            SIGNAL_START = 0xFFFFFFFFuL,
-            SIGNAL_EXIT = 0xFFFFFFFEuL,
-            SIGNAL_ENTRY = 0xFFFFFFFDuL,
-            SIGNAL_NONE = 0xFFFFFFFCuL,
-            MAX_SIGNAL = 0xFFFFFFFBuL,
-            MIN_SIGNAL = 0x0uL,
-            TM_MAX = 0xFFFFFFFBuL,
+        enum signalID : signalIDType {
+            /**
+            * @brief Built-in signal that can be used to set a nested initial-transition
+            *  (aka default transition) by using the sm::handler_t::startState() method.
+            * @note Transitions by setting the sm::handler_t::nextState() member are not
+            * allowed here
+            */
+            SIGNAL_START = 0xFFFFFFFFUL,
+            /**
+            * @brief Built-in signal to indicate if the current state has just exit to
+            * another state.
+            * @note Transitions are not allowed here
+            */
+            SIGNAL_EXIT = 0xFFFFFFFEUL,
+            /**
+            * @brief Built-in signal to indicate if the current state has just entered
+            * from another state.
+            * @note Transitions are not allowed here
+            */
+            SIGNAL_ENTRY = 0xFFFFFFFDUL,
+            /**
+            * @brief Built-in signal to indicate that there is not signal available.
+            */
+            SIGNAL_NONE = 0xFFFFFFFCUL,
+            /*! @cond */
+            TM_MAX = 0xFFFFFFFBUL,
             TM_MIN = TM_MAX - ( Q_FSM_MAX_TIMEOUTS - 1 ),
+            /*! @endcond */
+            #if ( 0 == Q_FSM_MAX_TIMEOUTS )
+                #warning "FSM has no defined internal timeouts"
+            #elif ( 1 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+            #elif ( 2 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0= 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+            #elif ( 3 == Q_FSM_MAX_TIMEOUTS )
+                /**
+                * @brief Built-in signal to indicate that the timeout at index 0 expired
+                */
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                /**
+                * @brief Built-in signal to indicate that the timeout at index 1 expired
+                */
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                /**
+                * @brief Built-in signal to indicate that the timeout at index 2 expired
+                */
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+            #elif ( 4 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+            #elif ( 5 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+            #elif ( 6 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+            #elif ( 7 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+            #elif ( 8 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+                SIGNAL_TIMEOUT7 = 0xFFFFFFF4UL,
+            #elif ( 9 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+                SIGNAL_TIMEOUT7 = 0xFFFFFFF4UL,
+                SIGNAL_TIMEOUT8 = 0xFFFFFFF3UL,
+            #elif ( 10 == Q_FSM_MAX_TIMEOUTS )
+                SIGNAL_TIMEOUT0 = 0xFFFFFFFBUL,
+                SIGNAL_TIMEOUT1 = 0xFFFFFFFAUL,
+                SIGNAL_TIMEOUT2 = 0xFFFFFFF9UL,
+                SIGNAL_TIMEOUT3 = 0xFFFFFFF8UL,
+                SIGNAL_TIMEOUT4 = 0xFFFFFFF7UL,
+                SIGNAL_TIMEOUT5 = 0xFFFFFFF6UL,
+                SIGNAL_TIMEOUT6 = 0xFFFFFFF5UL,
+                SIGNAL_TIMEOUT7 = 0xFFFFFFF4UL,
+                SIGNAL_TIMEOUT8 = 0xFFFFFFF3UL,
+                SIGNAL_TIMEOUT9 = 0xFFFFFFF2UL,
+            #elif ( Q_FSM_MAX_TIMEOUTS > 10 )
+                #error "Max FSM allowed timeout should not be greater that 10"
+            #endif
+            /*! @cond */
+            MIN_SIGNAL = 0x0UL,
+            MAX_SIGNAL = TM_MIN - 1
+            /*! @endcond */
         };
+
+
 
         /**
         * @brief Built-in signal to indicate that a timeout expiration event occurs.
         * @param iTm The index of the timeout (0, 1, 2... ( @c Q_FSM_MAX_TIMEOUTS-1 ) )
         * @return The built-int timeout signal at index @a iTm.
         */
-        constexpr signalID SIGNAL_TIMEOUT( index_t iTm ) 
+        constexpr signalID SIGNAL_TIMEOUT( index_t iTm )
         {
-            return static_cast<signalID>( signalID::TM_MAX - static_cast<sm::signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<sm::signalID>( iTm ) );
+            return static_cast<signalID>( signalID::TM_MAX - static_cast<signalID>( Q_FSM_MAX_TIMEOUTS - 1 ) + static_cast<signalID>( iTm ) );
+        }
+
+        /**
+        * @brief Function to define a user-defined signal.
+        * @param s The value for the user-defined signal.
+        * @return The user defined signal as a signalID type
+        */
+        constexpr signalID SIGNAL_USER( uint32_t s )
+        {
+            /*cstat -MISRAC++2008-5-0-3*/
+            return ( s < signalID::MAX_SIGNAL ) ? static_cast<signalID>( s ) : signalID::MAX_SIGNAL;
+            /*cstat +MISRAC++2008-5-0-3*/
         }
 
         /**
          * @brief The type to be used as a container variable for a signal.
          */
-        class signal_t {
-            public:
-                signalID id{ signalID::SIGNAL_NONE };  /**< The signal ID*/
-                void *data{ nullptr };                 /**< The signal data*/
+        struct signal_t {
+            signalID id{ signalID::SIGNAL_NONE };  /**< The signal ID*/
+            void *data{ nullptr };                 /**< The signal data*/
         };
+
+        /**
+        * @brief The type of a FSM signal-queue
+        */
+        template <size_t numberOfSignals>
+        struct signalQueue {
+            queue q;
+            signal_t qStack[ numberOfSignals ]; // skipcq: CXX-W2066
+        };
+
 
         /**
         * @brief This enumeration defines the built-in state-execution status values
         * that can be used as return value in a state callback.
         */
         enum status : int16_t {
+            /**
+            * @brief (Only available in the surrounding callback) Indicates an
+            * execution of the surrounding callback before launching the state
+            * callback
+            */
             BEFORE_ANY = -32767,
+            /**
+            * @brief Not to be used at the application level. This value is
+            * reserved for use.
+            */
             ABSENT = -32766,
+            /**
+            * @brief To indicate that the state had a failure or abnormal
+            * execution. It can be used to handle exceptions.
+            */
             FAILURE = -32765,
+            /**
+            * @brief To indicate that the status was successful.
+            */
             SUCCESS = -32764,
+            /**
+            * @brief To indicate that the state handled the signal and therefore
+            * it is not necessary to continue propagating the signal through the
+            * rest of the hierarchy
+            */
             SIGNAL_HANDLED = -32763,
         };
 
@@ -72,9 +223,22 @@ namespace qOS {
         * @brief This enumeration defines the possible modes to perform a
         * transition to history
         */
-        enum class historyMode : uint8_t {
-            NO_HISTORY = 0u,
+        enum historyMode : uint8_t {
+            /**
+            * @brief History is not preserved. Composite states will start
+            * according to their default transition.
+            */
+            NO_HISTORY = 0U,
+            /**
+            * @brief History will be kept to allow the return to only the
+            * top-most sub-state of the most recent state configuration, which
+            * is entered using the default entry rule.
+            */
             SHALLOW_HISTORY,
+            /**
+            * @brief History will be kept to allow full state configuration of
+            * the most recent visit to the containing region..
+            */
             DEEP_HISTORY,
         };
 
@@ -85,7 +249,7 @@ namespace qOS {
         * state-transitions.
         * @note Should be used only in state-callbacks as the only input argument.
         */
-        class handler_t {
+        class handler_t final {
             protected:
                 /*! @cond */
                 state *StartState{ nullptr };
@@ -109,44 +273,44 @@ namespace qOS {
                 * @brief Produce a transition to the desired state.
                 * @param[in] s The state object.
                 * @param[in] m The transition to history mode. This argument
-                * can be ignored ( default = historyMode::NO_HISTORY ).
+                * can be ignored ( default = @c sm::historyMode::NO_HISTORY ).
                 */
-                void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
+                inline void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
                 {
                     NextState = &s;
                     TransitionHistory = m;
                 }
                 /**
                 * @brief Set the nested initial state ( sub-state ). This
-                * The application writer should change this field to set the 
-                * initial transition if the current state is a 
-                * parent(or composite state). Using this method only takes 
-                * effect when the state is executed under the 
+                * The application writer should change this field to set the
+                * initial transition if the current state is a
+                * parent(or composite state). Using this method only takes
+                * effect when the state is executed under the
                 * @c signalID::SIGNAL_START signal.
                 * @param[in] s The state object.
                 */
-                void startState( state &s ) noexcept
+                inline void startState( state &s ) noexcept
                 {
                     StartState = &s;
                 }
                 /**
                 * @brief Set the time for the selected built-in timeout inside the target FSM.
                 * @pre Requires an installed timeout-specification.
-                * For this use stateMachine::installTimeoutSpec()
+                * For this use stateMachine::install()
                 * @pre Requires an installed signal-queue.
-                * For this use stateMachine::installSignalQueue()
+                * For this use stateMachine::install()
                 * @param[in] i The index of the requested timeout
                 * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
                 * @param[in] t The specified time given in milliseconds.
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
-                bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
+                bool timeoutSet( const index_t i, const qOS::duration_t t ) noexcept;
                 /**
                 * @brief Stop the time count for the selected built-in timeout.
                 * @pre Requires an installed timeout-specification.
-                * For this use stateMachine::installTimeoutSpec()
+                * For this use stateMachine::install()
                 * @pre Requires an installed signal-queue.
-                * For this use stateMachine::installSignalQueue()
+                * For this use stateMachine::install()
                 * @param[in] i The index of the timeout
                 * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
                 * @return Returns @c true on success, otherwise returns @c false.
@@ -156,24 +320,24 @@ namespace qOS {
                 * @brief Get a reference to state being evaluated.
                 * @return A reference to the state being evaluated..
                 */
-                state& thisState( void ) noexcept
+                inline state& thisState( void ) noexcept
                 {
                     return *State;
                 }
                 /**
-                * @brief Gets a reference to the state machine in which this 
+                * @brief Gets a reference to the state machine in which this
                 * state is contained.
                 * @return a reference to the state machine.
                 */
-                stateMachine& thisMachine( void ) noexcept
-                { 
+                inline stateMachine& thisMachine( void ) noexcept
+                {
                     return *Machine;
                 }
                 /**
                 * @brief Get the Signal ID currently being evaluated for this state
                 * @return The signal ID.
                 */
-                signalID signal( void ) const noexcept
+                inline signalID signal( void ) const noexcept
                 {
                     return Signal;
                 }
@@ -182,7 +346,7 @@ namespace qOS {
                 * @note Only available in the surrounding callback.
                 * @return The las state return status.
                 */
-                status lastStatus( void ) const noexcept
+                inline status lastStatus( void ) const noexcept
                 {
                     return Status;
                 }
@@ -191,7 +355,7 @@ namespace qOS {
         #endif
 
         /*! @cond  */
-        class _Handler {
+        class stateHandler {
             protected:
                 state *StartState{ nullptr };
                 state *NextState{ nullptr };
@@ -200,43 +364,42 @@ namespace qOS {
                 historyMode TransitionHistory{ historyMode::NO_HISTORY };
                 status Status{ SUCCESS };
                 signalID Signal{ signalID::SIGNAL_NONE };
-                _Handler( _Handler const& ) = delete;      /* not copyable*/
-                void operator=( _Handler const& ) = delete;  /* not assignable*/
+                stateHandler( stateHandler const& ) = delete;      /* not copyable*/
+                void operator=( stateHandler const& ) = delete;  /* not assignable*/
             public:
-                _Handler() = default;
+                stateHandler() = default;
+                virtual ~stateHandler() {}
                 void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
                 void *Data{ nullptr };          /**< The user storage pointer. If the FSM its running as a task, this will point to the event_t structure*/
                 void *StateData{ nullptr };     /**< The state user storage pointer*/
-                void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
+                inline void nextState( state &s, historyMode m = historyMode::NO_HISTORY ) noexcept
                 {
                     NextState = &s;
                     TransitionHistory = m;
                 }
-                void startState( state &s ) noexcept
+                inline void startState( state &s ) noexcept
                 {
                     StartState = &s;
                 }
-                bool timeoutSet( const index_t i, const qOS::time_t t ) noexcept;
-                bool timeoutStop( const index_t i ) noexcept;
-                state& thisState( void ) noexcept
+                inline state& thisState( void ) noexcept
                 {
                     return *State;
                 }
-                stateMachine& thisMachine( void ) noexcept
-                { 
+                inline stateMachine& thisMachine( void ) noexcept
+                {
                     return *Machine;
                 }
-                signalID signal( void ) const noexcept
+                inline signalID signal( void ) const noexcept
                 {
                     return Signal;
                 }
-                status lastStatus( void ) const noexcept
+                inline status lastStatus( void ) const noexcept
                 {
                     return Status;
                 }
             friend class qOS::sm::state;
         };
-        using handler_t = _Handler&;
+        using handler_t = stateHandler&;
         /*! @endcond  */
 
         /**
@@ -306,33 +469,55 @@ namespace qOS {
         */
         using timeoutSpecOption_t = uint32_t;
 
-        /*! @cond  */
-        struct _timeoutStateDefinition_s{
-            qOS::time_t xTimeout;
-            timeoutSpecOption_t options;
-        };
-        /*! @endcond  */
-
         /**
-        * @brief This type should be used to define an item for a 
+        * @brief This type should be used to define an item for a
         * timeout-specification table.
         */
-        using timeoutStateDefinition_t = struct _timeoutStateDefinition_s;
+        struct timeoutStateDefinition {
+            qOS::duration_t xTimeout;
+            timeoutSpecOption_t options;
+        };
 
-        /*! @cond  */
-        struct _transition_s {
+        /**
+        * @brief This structure should be used to define an item for a state
+        * transition table.
+        */
+        struct transition final {
+            /*! @cond  */
             signalID xSignal{ signalID::SIGNAL_NONE };
             signalAction_t guard{ nullptr };
             state *nextState{ nullptr };
             historyMode history{ historyMode::NO_HISTORY };
             void *signalData{ nullptr };
+            /*! @endcond  */
+            transition() = default;
+            /*cstat -MISRAC++2008-7-1-2*/
+            transition( signalID iSignal, signalAction_t sGuard, state &next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
+                        xSignal(iSignal),
+                        guard(sGuard),
+                        nextState(&next),
+                        history(mHistory),
+                        signalData(sigData) {}
+            transition( signalID iSignal, state &next, historyMode mHistory = historyMode::NO_HISTORY, void *sigData = nullptr ) :
+                        xSignal(iSignal),
+                        guard(nullptr),
+                        nextState(&next),
+                        history(mHistory),
+                        signalData(sigData) {}
+            transition( signalIDType iSignal, signalAction_t sGuard, state &next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
+                        xSignal( static_cast<signalID>( iSignal ) ),
+                        guard(sGuard),
+                        nextState(&next),
+                        history( static_cast<historyMode>(mHistory) ),
+                        signalData(sigData) {}
+            /*cstat +MISRAC++2008-7-1-2*/
+            transition( signalIDType iSignal, state &next, uint8_t mHistory = 0U, void *sigData = nullptr ) :
+                        xSignal( static_cast<signalID>( iSignal ) ),
+                        guard(nullptr),
+                        nextState(&next),
+                        history( static_cast<historyMode>(mHistory) ),
+                        signalData(sigData) {}
         };
-        /*! @endcond  */
-        /**
-        * @brief This structure should be used to define an item for a state
-        * transition table.
-        */
-        using transition_t = struct _transition_s;
 
         /**
         * @brief A state object
@@ -351,7 +536,7 @@ namespace qOS {
         * containing sub-states) and leaf states. All states are potentially
         * composite.
         *
-        * The APIs stateMachine::add() and state::add()  should be used to 
+        * The APIs stateMachine::add() and state::add()  should be used to
         * initialize the state and define its position in the topology.
         */
         class state {
@@ -360,18 +545,24 @@ namespace qOS {
                 state *lastRunningChild{ nullptr };
                 state *initState{ nullptr };
                 stateCallback_t sCallback{ nullptr};
-                timeoutStateDefinition_t *tdef{ nullptr };
-                transition_t *tTable{ nullptr };
+                timeoutStateDefinition *tdef{ nullptr };
+                transition *tTable{ nullptr };
                 void *sData{ nullptr };
-                size_t tEntries{ 0u };
-                size_t nTm{ 0u };
-                void sweepTransitionTable( _Handler &h ) noexcept;
+                size_t tEntries{ 0U };
+                size_t nTm{ 0U };
+                stateHandler *pHandler{ nullptr };
+                void sweepTransitionTable( stateHandler &h ) const noexcept;
                 state( state const& ) = delete;
                 void operator=( state const& ) = delete;
-                bool subscribe( sm::state *s, const sm::stateCallback_t sFcn, sm::state *init ) noexcept;
-                void topSelf( const sm::stateCallback_t topFcn, sm::state *init ) noexcept;
+                bool subscribe( sm::state *s, const sm::stateCallback_t &sFcn, sm::state *init ) noexcept;
+                void topSelf( const sm::stateCallback_t &topFcn, sm::state *init ) noexcept;
+            protected:
+                virtual sm::status activities( sm::handler_t h );
             public:
                 state() = default;
+                /*! @cond  */
+                virtual ~state() {}
+                /*! @endcond  */
                 /**
                 * @brief Add the specified state as a child state
                 * @param[in] s The state object.
@@ -383,7 +574,7 @@ namespace qOS {
                 * You can ignore this argument.
                 * @return @c true on success, otherwise return @c false.
                 */
-                bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
+                inline bool add( sm::state &s, const sm::stateCallback_t &sFcn, sm::state &init ) noexcept
                 {
                     return subscribe( &s, sFcn, &init );
                 }
@@ -395,37 +586,120 @@ namespace qOS {
                 * Prototype: @code sm::status xCallback( sm::handler_t h ) @endcode
                 * @return @c true on success, otherwise return @c false.
                 */
-                bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
+                inline bool add( sm::state &s, const sm::stateCallback_t &sFcn ) noexcept
                 {
                     return subscribe( &s, sFcn, nullptr );
                 }
                 /**
-                * @brief Installs a table with the outgoing transitions for this
+                * @brief Install a table with the outgoing transitions for this
                 * state
-                * @param[in] table An array of entries of type qSM_Transition_t with the
+                * @param[in] table An array of entries of type @c sm::transition_t with the
                 * outgoing transitions. Each entry relates signals, actions and the target
                 * state using the following layout:
                 * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
                 * @param[in] n The number of elements inside @a table.
                 * @return @c true on success, otherwise return @c false.
                 */
-                bool setTransitions( transition_t *table, size_t n ) noexcept;
+                bool install( transition *table, size_t n ) noexcept;
                 /**
-                * @brief Setup fixed timeouts for the specified state using a lookup-table.
+                * @brief Install a table with the outgoing transitions for this
+                * state
+                * @tparam numberOfTransitions The array size
+                * @param[in] table An array of entries of type @c sm::transition_t with the
+                * outgoing transitions. Each entry relates signals, actions and the target
+                * state using the following layout:
+                * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
+                * @return @c true on success, otherwise return @c false.
+                */
+                template <size_t numberOfTransitions>
+                bool install( transition (&table)[ numberOfTransitions ] ) noexcept // skipcq : CXX-W2066
+                {
+                    return install( table, numberOfTransitions );
+                }
+                /**
+                * @brief Install both, a table with the outgoing transitions for this
+                * state and fixed timeouts for the specified state using a lookup-table.
+                * @pre The container state-machine must have a timeout-specification
+                * installed.
+                * @note The lookup table should be an array of type
+                * timeoutStateDefinition with @a n elements matching { time, options }.
+                * @param[in] table An array of entries of type @c sm::transition_t with the
+                * outgoing transitions. Each entry relates signals, actions and the target
+                * state using the following layout:
+                * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
+                * @param[in] nTable The number of elements inside @a table.
+                * @param[in] def The lookup table matching the requested timeout values
+                * with their respective options.
+                * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
+                * @param[in] nDef The number of elements inside @a def.
+                * @return @c true on success, otherwise return @c false.
+                */
+                inline bool install( transition *table, size_t nTable, timeoutStateDefinition *def, size_t nDef )
+                {
+                    int ret = 1;
+                    /*cstat -MISRAC++2008-5-0-21  -CERT-EXP46-C */
+                    ret &= install( table, nTable ); // skipcq: CXX-W2065
+                    ret &= install( def, nDef );    // skipcq: CXX-W2065
+                    /*cstat +MISRAC++2008-5-0-21  +CERT-EXP46-C */
+                    return ( 0 != ret );
+                }
+                /**
+                * @brief Install both, a table with the outgoing transitions for this
+                * state and fixed timeouts for the specified state using a lookup-table.
+                * @pre The container state-machine must have a timeout-specification
+                * installed.
+                * @note The lookup table should be an array of type
+                * timeoutStateDefinition with @a n elements matching { time, options }.
+                * @tparam numberOfTransitions The number of elements in @a table
+                * @tparam numberOfTimeoutDefs The number of elements in @a def
+                * @param[in] table An array of entries of type @c sm::transition_t with the
+                * outgoing transitions. Each entry relates signals, actions and the target
+                * state using the following layout:
+                * @verbatim { [Signal], [Action/Guard], [Target state], [History Mode] } @endverbatim
+                * @param[in] def The lookup table matching the requested timeout values
+                * with their respective options.
+                * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
+                * @return @c true on success, otherwise return @c false.
+                */
+                template <size_t numberOfTransitions, size_t numberOfTimeoutDefs>
+                bool install( transition (&table)[ numberOfTransitions ], timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept // skipcq : CXX-W2066
+                {
+                    return install( table, numberOfTransitions, def, numberOfTimeoutDefs );
+                }
+                /**
+                * @brief Install fixed timeouts for the specified state using a lookup-table.
                 * @attention This feature its only available if the FSM has a signal-queue
                 * installed.
                 * @pre The container state-machine must have a timeout-specification
                 * installed.
                 * @note The lookup table should be an array of type
-                * timeoutStateDefinition_t with @a n elements matching { time, options }.
-                * @see stateMachine::installSignalQueue(), stateMachine::installTimeoutSpec()
+                * timeoutStateDefinition with @a n elements matching { time, options }.
                 * @param[in] def The lookup table matching the requested timeout values
                 * with their respective options.
                 * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
                 * @param[in] n The number of elements inside @a def.
                 * @return Returns @c true on success, otherwise returns @c false.
                 */
-                bool setTimeouts( timeoutStateDefinition_t *def, size_t n ) noexcept;
+                bool install( timeoutStateDefinition *def, size_t n ) noexcept;
+                /**
+                * @brief Install fixed timeouts for the specified state using a lookup-table.
+                * @attention This feature its only available if the FSM has a signal-queue
+                * installed.
+                * @pre The container state-machine must have a timeout-specification
+                * installed.
+                * @note The lookup table should be an array of type
+                * timeoutStateDefinition with @a n elements matching { time, options }.
+                * @tparam numberOfTimeoutDefs The number of elements in @a def
+                * @param[in] def The lookup table matching the requested timeout values
+                * with their respective options.
+                * @verbatim { [Timeout value], [Options(Combined with a bitwise OR)] } @endverbatim
+                * @return Returns @c true on success, otherwise returns @c false.
+                */
+                template <size_t numberOfTimeoutDefs>
+                bool install( timeoutStateDefinition (&def)[ numberOfTimeoutDefs ] ) noexcept // skipcq : CXX-W2066
+                {
+                    return install( def, numberOfTimeoutDefs );
+                }
                 /**
                 * @brief Retrieve the state data or storage-pointer
                 * @return The state data or storage-pointer.
@@ -438,10 +712,10 @@ namespace qOS {
                 void setData( void *pData ) noexcept;
                 /**
                 * @brief Retrieve a pointer to the state transition table
-                * @return A pointer to the state transition table if available, 
+                * @return A pointer to the state transition table if available,
                 * otherwise return @c nullptr.
                 */
-                transition_t* getTransitionTable( void ) noexcept;
+                transition* getTransitionTable( void ) noexcept;
                 /**
                 * @brief Set/Change the state callback
                 * @param[in] sFcn The state callback function.
@@ -455,8 +729,8 @@ namespace qOS {
         * @note Do not access any member of this structure directly.
         */
         class timeoutSpec {
-            uint32_t isPeriodic{ 0u };
-            timer timeout[ Q_FSM_MAX_TIMEOUTS ];
+            uint32_t isPeriodic{ 0U };
+            timer timeout[ Q_FSM_MAX_TIMEOUTS ]; // skipcq: CXX-W2066
             friend class qOS::stateMachine;
         };
 
@@ -469,12 +743,11 @@ namespace qOS {
             PS_SUBSCRIBER_SLOTS_FULL
         };
 
-        struct _psIndex_s {
+        struct psIndex_t {
             psReqStatus status;
             size_t sig_slot;
             size_t sub_slot;
         };
-        using psIndex_t = _psIndex_s;
         /*! @endcond  */
 
         /**
@@ -514,15 +787,25 @@ namespace qOS {
         */
         extern const timeoutSpecOption_t TIMEOUT_PERIODIC;
         /**
-        * @brief Timeout-specification option. Should be used to specify the timeout
-        * index.
+        * @brief Timeout-specification option. Should be used only to specify
+        * which timeout signal to use
+        * @see TIMEOUT_USE_SIGNAL()
         * @note Can be combined with a bitwise OR
         */
         constexpr timeoutSpecOption_t TIMEOUT_INDEX( index_t i )
         {
-            return ( 0x00FFFFFFuL & static_cast<timeoutSpecOption_t>( i ) );
+            return ( 0x00FFFFFFUL & static_cast<timeoutSpecOption_t>( i ) );
         }
-
+        /**
+        * @brief Timeout-specification option. Should be used only to specify
+        * which timeout signal to use
+        * @see TIMEOUT_INDEX()
+        * @note Can be combined with a bitwise OR
+        */
+        constexpr timeoutSpecOption_t TIMEOUT_USE_SIGNAL( index_t i )
+        {
+            return ( 0x00FFFFFFUL & static_cast<timeoutSpecOption_t>( i ) );
+        }
         /** @}*/
     }
 
@@ -536,7 +819,7 @@ namespace qOS {
     * the instance, sets the callback for the top state, sets the initial state
     * and the surrounding callback function.
     */
-    class stateMachine : protected sm::_Handler {
+    class stateMachine : protected sm::stateHandler {
         private:
             sm::state *current{ nullptr };
             sm::state *next{ nullptr };
@@ -548,16 +831,14 @@ namespace qOS {
             sm::signal_t signalNot;
             void *owner{ nullptr };
             void *mData{ nullptr };
-            void unsubscribeAll( void ) noexcept;
             bool internalSignalSend( sm::signalID sig, void *sData, bool isUrgent ) noexcept;
             void timeoutCheckSignals( void ) noexcept;
             void timeoutPerformSpecifiedActions( sm::state * const s, sm::signalID sig ) noexcept;
-            sm::psIndex_t getSubscriptionStatus( sm::signalID s ) noexcept;
             void transition( sm::state *target, sm::historyMode mHistory ) noexcept;
-            uint8_t levelsToLCA( sm::state *target ) noexcept;
+            uint8_t levelsToLCA( sm::state *target ) const noexcept;
             void exitUpToLCA( uint8_t lca ) noexcept;
             void prepareHandler( sm::signal_t sig, sm::state *s ) noexcept;
-            sm::status invokeStateCallback( sm::state * const s ) noexcept;
+            sm::status invokeStateActivities( sm::state * const s ) noexcept;
             sm::state* stateOnExit( sm::state *s ) noexcept;
             void stateOnEntry( sm::state *s ) noexcept;
             sm::state* stateOnStart( sm::state *s ) noexcept;
@@ -570,15 +851,18 @@ namespace qOS {
             bool smSetup( sm::stateCallback_t topFcn, sm::state *init, const sm::surroundingCallback_t sFcn, void* pData ) noexcept;
 
             /*cstat -MISRAC++2008-8-5-2*/
-            static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ]; // skipcq: CXX-W2009
+            static sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ]; // skipcq: CXX-W2009, CXX-W2066
             /*cstat +MISRAC++2008-8-5-2*/
-            static stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009
+            static stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009, CXX-W2066
             static const sm::timeoutSpecOption_t OPT_INDEX_MASK;
         public:
             stateMachine() = default;
+            /*! @cond  */
+            virtual ~stateMachine() {}
+            /*! @endcond  */
             /**
             * @brief Initializes a Finite State Machine (FSM).
-            * @see core::addStateMachineTask()
+            * @see core::add()
             * @note This API also initializes the top state.
             * @param[in] topFcn The callback for the "Top" state.
             * @param[in] init The first state to be executed (init-state or default
@@ -588,7 +872,7 @@ namespace qOS {
             * ignore pass @c nullptr.
             * @return @c Returns true on Success, otherwise returns @c false.
             */
-            inline bool setup( sm::stateCallback_t topFcn, sm::state &init, sm::surroundingCallback_t sFcn = nullptr, void* pData = nullptr)  noexcept
+            inline bool setup( const sm::stateCallback_t &topFcn, sm::state &init, sm::surroundingCallback_t sFcn = nullptr, void* pData = nullptr)  noexcept
             {
                 return smSetup( topFcn, &init, sFcn, pData );
             }
@@ -603,7 +887,7 @@ namespace qOS {
             * You can ignore this argument.
             * @return @c true on success, otherwise return @c false.
             */
-            inline bool add( sm::state &s, sm::stateCallback_t sFcn, sm::state &init ) noexcept
+            inline bool add( sm::state &s, const sm::stateCallback_t &sFcn, sm::state &init ) noexcept
             {
                 return top.subscribe( &s, sFcn, &init );
             }
@@ -616,7 +900,7 @@ namespace qOS {
             * Prototype: @code sm::status xCallback( sm::handler_t h ) @endcode
             * @return @c true on success, otherwise return @c false.
             */
-            inline bool add( sm::state &s, sm::stateCallback_t sFcn ) noexcept
+            inline bool add( sm::state &s, const sm::stateCallback_t &sFcn ) noexcept
             {
                 return top.subscribe( &s, sFcn, nullptr );
             }
@@ -624,20 +908,36 @@ namespace qOS {
             * @brief Install a signal queue to the provided Finite State Machine (FSM).
             * @pre Queue object should be previously initialized by using
             * queue::setup()
+            * @note It is recommended to define the queue as an object of type
+            * sm::signalQueue so that the queue is configured automatically.
+            * Otherwise the user must configure it explicitly.
             * @attention Queue item size = sizeof( @ref sm::signal_t )
             * @param[in] q The queue to be installed.
             * @return @c true on success, otherwise return @c false.
             */
-            bool installSignalQueue( queue& q ) noexcept;
+            bool install( queue& q ) noexcept;
+
             /**
-            * @brief Sends a signal to a state machine 
+            * @brief Install a signal queue to the provided Finite State Machine (FSM).
+            * @note This function will setup the queue automatically
+            * @param[in] sq The signal queue to be installed.
+            * @return @c true on success, otherwise return @c false.
+            */
+            template <size_t numberOfSignals>
+            bool install( sm::signalQueue<numberOfSignals> &sq ) noexcept
+            {
+                sq.q.setup( sq.qStack, sizeof(sm::signal_t), numberOfSignals );
+                return install( sq.q );
+            }
+            /**
+            * @brief Sends a signal to a state machine
             * @note If the signal queue is not available, an exclusion variable will be
             * used.This means that the signal cannot be sent until the variable is empty.
             * (the signal was handled by the state-machine engine).
-            * @warning Data associated to the signal is not deep-copied to a queue or any 
+            * @warning Data associated to the signal is not deep-copied to a queue or any
             * buffer. It's only data pointer (address in memory) that is shallow-copied
-            * to a signal queue so it has to point to a globally accessible memory. 
-            * If it pointed to a sender's local variable (from the stack) it would be 
+            * to a signal queue so it has to point to a globally accessible memory.
+            * If it pointed to a sender's local variable (from the stack) it would be
             * invalid after sender returns from the function that sends the signal.
             * @note The signal-queue event has the highest precedence.
             * @param[in] sig The user-defined signal.
@@ -649,61 +949,41 @@ namespace qOS {
             * and the signal cannot be inserted because it is full.
             */
             bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
+            bool sendSignal( sm::signalIDType sig, void *sData = nullptr, bool isUrgent = false ) noexcept
+            {
+                return sendSignal( static_cast<sm::signalID>( sig ), sData, isUrgent );
+            }
             /**
-            * @brief Sends a signal to all its subscribers (if available).
-            * @note If the signal queue is not available, an exclusion variable will be
-            * used.This means that the signal cannot be sent until the variable is empty.
-            * (the signal was handled by the state-machine engine).
-            * @remark To enable the functionality of sending signals to subscribers, you
-            * must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX
-            * in the configuration file @c qconfig.h
-            * @warning Data associated to the signal is not deep-copied to a queue or any 
-            * buffer. It's only data pointer (address in memory) that is shallow-copied
-            * to a signal queue so it has to point to a globally accessible memory. 
-            * If it pointed to a sender's local variable (from the stack) it would be 
-            * invalid after sender returns from the function that sends the signal.
-            * @note The signal-queue event has the highest precedence.
-            * @param[in] sig The user-defined signal.
-            * @param[in] sData The data associated to the signal.
-            * @param[in] isUrgent If true, the signal will be sent to the front of the
-            * queue. (only if the there is a signal-queue available)
-            * @return @c true if the provided signal was successfully delivered to the
-            * subscribers (if available), otherwise return @c false. @c false if there
-            * is a queue, and the signal cannot be inserted because it is full.
-            */
-            bool sendSignalToSubscribers( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
-            /**
-            * @brief Install the Timeout-specification object to target FSM to allow
+            * @brief Install the Timeout-specification object to target FSM and allow
             * timed signals within states.
             * @attention This feature its only available if the FSM has a signal-queue
             * installed.
             * @pre This feature depends on the @ref qstimers extension. Make sure the
             * time base is functional.
             * @note You can increase the number of available timeouts instances by
-            * changing the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c qconfig.h
-            * @see stateMachine::installSignalQueue()
+            * changing the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c config.h
             * @param[in] ts The timeout specification object.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool installTimeoutSpec( sm::timeoutSpec &ts ) noexcept;
+            bool install( sm::timeoutSpec &ts ) noexcept;
             /**
             * @brief Set the time for the selected built-in timeout inside the target FSM.
             * @pre Requires an installed timeout-specification.
-            * For this use stateMachine::installTimeoutSpec()
+            * For this use stateMachine::install
             * @pre Requires an installed signal-queue.
-            * For this use stateMachine::installSignalQueue()
+            * For this use stateMachine::install
             * @param[in] xTimeout The index of the requested timeout
             * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
             * @param[in] t The specified time given in milliseconds.
             * @return Returns @c true on success, otherwise returns @c false.
             */
-            bool timeoutSet( const index_t xTimeout, const qOS::time_t t ) noexcept;
+            bool timeoutSet( const index_t xTimeout, const qOS::duration_t t ) noexcept;
             /**
             * @brief Stop the time count for the selected built-in timeout.
             * @pre Requires an installed timeout-specification.
-            * For this use stateMachine::installTimeoutSpec()
+            * For this use stateMachine::install
             * @pre Requires an installed signal-queue.
-            * For this use stateMachine::installSignalQueue()
+            * For this use stateMachine::install
             * @param[in] xTimeout The index of the timeout
             * (0, 1, 2 ... (@c Q_FSM_MAX_TIMEOUTS-1) )
             * @return Returns @c true on success, otherwise returns @c false.
@@ -721,13 +1001,13 @@ namespace qOS {
             sm::state * const & getCurrent( void ) const noexcept;
             /**
             * @brief Get a pointer to the installed queue if available
-            * @return A pointer to the installed queue if available, 
+            * @return A pointer to the installed queue if available,
             * otherwise returns @c nullptr.
             */
             queue * const & getQueue( void ) const noexcept;
             /**
             * @brief Get a pointer to the installed timeout specification if available
-            * @return A pointer to the installed timeout specification if available, 
+            * @return A pointer to the installed timeout specification if available,
             * otherwise returns @c nullptr.
             */
             sm::timeoutSpec * const & getTimeSpec( void ) const noexcept;
@@ -740,26 +1020,10 @@ namespace qOS {
             * @brief Set the state-machine surrounding callback
             * @param[in] sFcn The surrounding callback function.
             */
-            void setSurrounding( const sm::surroundingCallback_t sFcn ) noexcept;
-            /**
-            * @brief Subscribe state machine to a particular signal
-            * @pre Subscriber FSM should be previously initalized with
-            * stateMachine::setup()
-            * @param[in] s Signal ID to which the subscriber FSM wants to subscribe.
-            * @return Returns @c true on success, otherwise returns @c false.
-            */
-            bool subscribeToSignal( sm::signalID s ) noexcept;
-            /**
-            * @brief Unsubscribe state machine from a particular signal
-            * @pre Subscriber FSM should be previously initalized with
-            * stateMachine::setup()
-            * @param[in] s Signal ID to which the subscriber FSM wants to unsubscribe.
-            * @return Returns @c true on success, otherwise returns @c false.
-            */
-            bool unsubscribeFromSignal( sm::signalID s ) noexcept;
+            void setSurrounding( const sm::surroundingCallback_t &sFcn ) noexcept;
             /**
             * @brief Execute the Finite State Machine (FSM).
-            * @see core::addStateMachineTask()
+            * @see core::add()
             * @param[in] sig User-defined signal (this value will be ignored if the
             * installed queue has items available)
             * @note A signal coming from the signal-queue has the higher precedence.
@@ -771,6 +1035,81 @@ namespace qOS {
         friend class core;
     };
     /** @}*/
+    namespace sm {
+         /** @addtogroup  qfsm
+         *  @{
+         */
+
+    /**
+        * @brief An object to subscribe FSM(Finite State Machine) objects to
+        * specific user-defined signals
+        * @details This object provides a mechanism to decouple signal producers
+        * from the signal consumers, so state-machine objects interested in
+        * certain signals subscribe to one or more Signals".
+        */
+        class signalPublisher {
+            private:
+                sm::signalID psSignals[ Q_FSM_PS_SIGNALS_MAX ] = { sm::signalID::SIGNAL_START }; // skipcq: CXX-W2009, CXX-W2066
+                stateMachine* psSubs[ Q_FSM_PS_SIGNALS_MAX ][ Q_FSM_PS_SUB_PER_SIGNAL_MAX ]; // skipcq: CXX-W2009, CXX-W2066
+                sm::psIndex_t getSubscriptionStatus( stateMachine &m, sm::signalID s ) const noexcept;
+                void unsubscribeAll( void ) noexcept;
+            public:
+                signalPublisher();
+                /*! @cond  */
+                virtual ~signalPublisher() {}
+                /*! @endcond  */
+                /**
+                * @brief Subscribe state machine to a particular signal
+                * @param[in] m State-machine to be subscribed
+                * @param[in] s Signal ID to which the subscriber FSM wants to subscribe.
+                * @return Returns @c true on success, otherwise returns @c false.
+                */
+                bool subscribeToSignal( stateMachine &m, sm::signalID s ) noexcept;
+                bool subscribeToSignal( stateMachine &m, sm::signalIDType s ) noexcept
+                {
+                    return subscribeToSignal( m, static_cast<sm::signalID>( s ) );
+                }
+                /**
+                * @brief Unsubscribe state machine from a particular signal
+                * @param[in] m State-machine to be subscribed
+                * @param[in] s Signal ID to which the subscriber FSM wants to unsubscribe.
+                * @return Returns @c true on success, otherwise returns @c false.
+                */
+                bool unsubscribeFromSignal( stateMachine &m, sm::signalID s ) noexcept;
+                bool unsubscribeFromSignal( stateMachine &m, sm::signalIDType s ) noexcept
+                {
+                    return unsubscribeFromSignal( m, static_cast<sm::signalID>( s ) );
+                }
+                /**
+                * @brief Sends a signal to all its subscribers.
+                * @note If the signal queue is not available, an exclusion variable will be
+                * used.This means that the signal cannot be sent until the variable is empty.
+                * (the signal was handled by the state-machine engine).
+                * @remark To enable the functionality of sending signals to subscribers, you
+                * must set the macros #Q_FSM_PS_SIGNALS_MAX and #Q_FSM_PS_SUB_PER_SIGNAL_MAX
+                * in the configuration file @c config.h
+                * @warning Data associated to the signal is not deep-copied to a queue or any
+                * buffer. It's only data pointer (address in memory) that is shallow-copied
+                * to a signal queue so it has to point to a globally accessible memory.
+                * If it pointed to a sender's local variable (from the stack) it would be
+                * invalid after sender returns from the function that sends the signal.
+                * @note The signal-queue event has the highest precedence.
+                * @param[in] sig The user-defined signal.
+                * @param[in] sData The data associated to the signal.
+                * @param[in] isUrgent If true, the signal will be sent to the front of the
+                * queue. (only if the there is a signal-queue available)
+                * @return @c true if the provided signal was successfully delivered to the
+                * subscribers (if available), otherwise return @c false. @c false if there
+                * is a queue, and the signal cannot be inserted because it is full.
+                */
+                bool sendSignal( sm::signalID sig, void *sData = nullptr, bool isUrgent = false ) noexcept;
+                bool sendSignal( sm::signalIDType sig, void *sData = nullptr, bool isUrgent = false ) noexcept
+                {
+                    return sendSignal( static_cast<sm::signalID>( sig ), sData, isUrgent );
+                }
+        };
+        /** @}*/
+    }
 }
 
 

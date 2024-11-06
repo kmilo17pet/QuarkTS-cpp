@@ -2,30 +2,30 @@
 * @tableofcontents
 *
 * @section q_fsm_overview Overview
-* The state machine is one of the fundamental programming patterns that are 
-* most commonly used. This approach breaks down the design into a series of 
-* finite steps called "states" that perform some narrowly defined actions. 
-* Every state can change to another as a consequence of incoming stimuli also 
-* called events or signals. This elemental mechanism allows designers to solve 
-* complex engineering problems in a very straightforward way. Knowing the 
-* importance of this approach in the development of embedded applications, 
+* The state machine is one of the fundamental programming patterns that are
+* most commonly used. This approach breaks down the design into a series of
+* finite steps called "states" that perform some narrowly defined actions.
+* Every state can change to another as a consequence of incoming stimuli also
+* called events or signals. This elemental mechanism allows designers to solve
+* complex engineering problems in a very straightforward way. Knowing the
+* importance of this approach in the development of embedded applications,
 * the OS adopts this design pattern as a kernel extension.
 *
-* In an effort to maximize efficiency and minimize complexity, the extension 
+* In an effort to maximize efficiency and minimize complexity, the extension
 * implements the basic features of the Harel statecharts to represent
-* hierarchical state machines. These features form a proper subset that 
-* approaches in a very minimalist way, some of the specifications of the 
+* hierarchical state machines. These features form a proper subset that
+* approaches in a very minimalist way, some of the specifications of the
 * UML statecharts, including:
 *
 * - Nested states with proper handling of group transitions and group reactions.
 * - Guaranteed execution of entry/exit actions upon entering/exiting states.
 * - Straightforward transitions and guards.
 *
-* In addition to this, the provided implementation also features a powerful 
-* coding abstraction including transition tables and timeout signals, allowing 
-* to build scalable solutions from simple flat state-machines to complex 
+* In addition to this, the provided implementation also features a powerful
+* coding abstraction including transition tables and timeout signals, allowing
+* to build scalable solutions from simple flat state-machines to complex
 * statecharts.
-* 
+*
 * @section qfsm_approach The provided approach
 * In QuarkTS++, a state machine must be instantiated with an object of type qOS::stateMachine.
 * States are represented as instances of the qOS::sm::state object.
@@ -38,7 +38,7 @@
 * <title>fsmarch++</title>
 * <meta charset="utf-8"/>
 * </head>
-* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-04-21T05:26:00.192Z\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\&quot; etag=\&quot;2kR0i4V1xqM2amiRx-S4\&quot; version=\&quot;21.2.1\&quot; type=\&quot;google\&quot;&gt;\n  &lt;diagram name=\&quot;Página-1\&quot; id=\&quot;G2x3a1t9-ksZxGX4sUb1\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;615\&quot; dy=\&quot;-344\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;1169\&quot; pageHeight=\&quot;827\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-1\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: center;&amp;quot;&amp;gt;&amp;amp;nbsp; (sm::state*)current*&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: center;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: center;&amp;quot;&amp;gt;&amp;amp;nbsp; (sm::handler_t)handler&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.57\&quot; y=\&quot;1172.75\&quot; width=\&quot;250\&quot; height=\&quot;130\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-2\&quot; value=\&quot;(stateMachine)FSM\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.57\&quot; y=\&quot;1153.5\&quot; width=\&quot;250\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-3\&quot; value=\&quot;(sm::state)Top\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;711.32\&quot; y=\&quot;1228.75\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-4\&quot; value=\&quot;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;711.32\&quot; y=\&quot;1248.75\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-5\&quot; value=\&quot;xCallbackFcn&amp;lt;br&amp;gt;parent*\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillStyle=solid;fontSize=10;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;717.8900000000001\&quot; y=\&quot;1252.75\&quot; width=\&quot;109.68\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-6\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: left;&amp;quot;&amp;gt;sm::status OnSignal( sm::handler_t )&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.57\&quot; y=\&quot;1302.75\&quot; width=\&quot;250\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-7\&quot; value=\&quot;(sm::state)StateC\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;892.94\&quot; y=\&quot;1343.37\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-8\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; xCallbackFcn&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; parent*&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;892.94\&quot; y=\&quot;1363.37\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-9\&quot; value=\&quot;(sm::state)StateA\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1331.9899999999998\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-10\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; xCallbackFcn&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; parent*&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1351.9899999999998\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-11\&quot; value=\&quot;(sm::state)StateB\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1406.37\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-12\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; xCallbackFcn&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; parent*&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1426.37\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-13\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;dashed=1;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;847.9300000000001\&quot; y=\&quot;1193.99\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;1013.9399999999999\&quot; y=\&quot;1343.99\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;956.94\&quot; y=\&quot;1193.99\&quot; /&gt;\n              &lt;mxPoint x=\&quot;1013.9399999999999\&quot; y=\&quot;1193.99\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-14\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;892.57\&quot; y=\&quot;1392.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;822.57\&quot; y=\&quot;1342.75\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;842.57\&quot; y=\&quot;1392.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;842.57\&quot; y=\&quot;1342.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-15\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;entryX=0;entryY=0.396;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; target=\&quot;dN6sw1qnDhJNe45-whcC-8\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;872.94\&quot; y=\&quot;1323.37\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;962.94\&quot; y=\&quot;1403.37\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;872.94\&quot; y=\&quot;1323.37\&quot; /&gt;\n              &lt;mxPoint x=\&quot;872.57\&quot; y=\&quot;1380.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-16\&quot; value=\&quot;\&quot; style=\&quot;endArrow=open;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=box;startFill=0;endFill=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;977.07\&quot; y=\&quot;1232.5\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;942.57\&quot; y=\&quot;1272.75\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;962.57\&quot; y=\&quot;1232.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;962.57\&quot; y=\&quot;1272.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-17\&quot; value=\&quot;childs of Top\&quot; style=\&quot;text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;shadow=1;fontColor=#808080;fontFamily=Helvetica;rounded=0;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;721.08\&quot; y=\&quot;1470.37\&quot; width=\&quot;76.25\&quot; height=\&quot;20.25\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-18\&quot; value=\&quot;childs of StateA\&quot; style=\&quot;text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;shadow=1;fontColor=#808080;fontFamily=Helvetica;rounded=0;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;908.07\&quot; y=\&quot;1407.37\&quot; width=\&quot;95.99\&quot; height=\&quot;20.25\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-19\&quot; value=\&quot;on &amp;#xa;signal\&quot; style=\&quot;text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;shadow=1;fontColor=#808080;fontFamily=Helvetica;rounded=0;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;967.9499999999999\&quot; y=\&quot;1222.25\&quot; width=\&quot;43.38\&quot; height=\&quot;30.25\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-20\&quot; value=\&quot;\&quot; style=\&quot;endArrow=open;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=none;startFill=0;endFill=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;942.57\&quot; y=\&quot;1272.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;884.4399999999999\&quot; y=\&quot;1302.7500000000002\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;902.57\&quot; y=\&quot;1272.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;884.57\&quot; y=\&quot;1272.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-21\&quot; value=\&quot;\&quot; style=\&quot;endArrow=open;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=none;startFill=0;endFill=0;entryX=0.711;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; target=\&quot;dN6sw1qnDhJNe45-whcC-6\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;850.33\&quot; y=\&quot;1212.5\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;870.33\&quot; y=\&quot;1292.5\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;870.33\&quot; y=\&quot;1212.5\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-22\&quot; value=\&quot;\&quot; style=\&quot;endArrow=oval;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;endFill=1;entryX=0.007;entryY=0.614;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;692.95\&quot; y=\&quot;1275.58\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;711.20375\&quot; y=\&quot;1275.7659999999998\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-23\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;692.57\&quot; y=\&quot;1382.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;712.57\&quot; y=\&quot;1242.75\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;662.57\&quot; y=\&quot;1382.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;662.57\&quot; y=\&quot;1242.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-24\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;692.57\&quot; y=\&quot;1455.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;712.19\&quot; y=\&quot;1231.12\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;642.57\&quot; y=\&quot;1455.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;642.57\&quot; y=\&quot;1230.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.5,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-04-21T05:26:00.192Z\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\&quot; etag=\&quot;2kR0i4V1xqM2amiRx-S4\&quot; version=\&quot;21.2.1\&quot; type=\&quot;google\&quot;&gt;\n  &lt;diagram name=\&quot;Página-1\&quot; id=\&quot;G2x3a1t9-ksZxGX4sUb1\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;615\&quot; dy=\&quot;-344\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;1169\&quot; pageHeight=\&quot;827\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-1\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: center;&amp;quot;&amp;gt;&amp;amp;nbsp; (sm::state*)current*&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: center;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: center;&amp;quot;&amp;gt;&amp;amp;nbsp; (sm::handler_t)handler&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.57\&quot; y=\&quot;1172.75\&quot; width=\&quot;250\&quot; height=\&quot;130\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-2\&quot; value=\&quot;(stateMachine)FSM\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.57\&quot; y=\&quot;1153.5\&quot; width=\&quot;250\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-3\&quot; value=\&quot;(sm::state)Top\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;711.32\&quot; y=\&quot;1228.75\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-4\&quot; value=\&quot;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;711.32\&quot; y=\&quot;1248.75\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-5\&quot; value=\&quot;xCallbackFcn&amp;lt;br&amp;gt;parent*\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillStyle=solid;fontSize=10;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;717.8900000000001\&quot; y=\&quot;1252.75\&quot; width=\&quot;109.68\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-6\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px; text-align: left;&amp;quot;&amp;gt;sm::status OnSignal( sm::handler_t )&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.57\&quot; y=\&quot;1302.75\&quot; width=\&quot;250\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-7\&quot; value=\&quot;(sm::state)StateC\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;892.94\&quot; y=\&quot;1343.37\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-8\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; xCallbackFcn&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; parent*&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;892.94\&quot; y=\&quot;1363.37\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-9\&quot; value=\&quot;(sm::state)StateA\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1331.9899999999998\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-10\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; xCallbackFcn&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; parent*&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1351.9899999999998\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-11\&quot; value=\&quot;(sm::state)StateB\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontColor=#808080;fontStyle=0;fontFamily=Lucida Console;strokeWidth=2;fontSize=10;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1406.37\&quot; width=\&quot;126.25\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-12\&quot; value=\&quot;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; xCallbackFcn&amp;lt;/span&amp;gt;&amp;lt;br style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;lt;span style=&amp;quot;color: rgb(128, 128, 128); font-family: &amp;amp;quot;Lucida Console&amp;amp;quot;; font-size: 10px;&amp;quot;&amp;gt;&amp;amp;nbsp; parent*&amp;lt;/span&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Helvetica;strokeWidth=2;align=left;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;692.82\&quot; y=\&quot;1426.37\&quot; width=\&quot;126.25\&quot; height=\&quot;44\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-13\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;dashed=1;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;847.9300000000001\&quot; y=\&quot;1193.99\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;1013.9399999999999\&quot; y=\&quot;1343.99\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;956.94\&quot; y=\&quot;1193.99\&quot; /&gt;\n              &lt;mxPoint x=\&quot;1013.9399999999999\&quot; y=\&quot;1193.99\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-14\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;892.57\&quot; y=\&quot;1392.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;822.57\&quot; y=\&quot;1342.75\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;842.57\&quot; y=\&quot;1392.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;842.57\&quot; y=\&quot;1342.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-15\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;entryX=0;entryY=0.396;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; target=\&quot;dN6sw1qnDhJNe45-whcC-8\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;872.94\&quot; y=\&quot;1323.37\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;962.94\&quot; y=\&quot;1403.37\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;872.94\&quot; y=\&quot;1323.37\&quot; /&gt;\n              &lt;mxPoint x=\&quot;872.57\&quot; y=\&quot;1380.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-16\&quot; value=\&quot;\&quot; style=\&quot;endArrow=open;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=box;startFill=0;endFill=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;977.07\&quot; y=\&quot;1232.5\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;942.57\&quot; y=\&quot;1272.75\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;962.57\&quot; y=\&quot;1232.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;962.57\&quot; y=\&quot;1272.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-17\&quot; value=\&quot;childs of Top\&quot; style=\&quot;text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;shadow=1;fontColor=#808080;fontFamily=Helvetica;rounded=0;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;721.08\&quot; y=\&quot;1470.37\&quot; width=\&quot;76.25\&quot; height=\&quot;20.25\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-18\&quot; value=\&quot;childs of StateA\&quot; style=\&quot;text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;shadow=1;fontColor=#808080;fontFamily=Helvetica;rounded=0;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;908.07\&quot; y=\&quot;1407.37\&quot; width=\&quot;95.99\&quot; height=\&quot;20.25\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-19\&quot; value=\&quot;on &amp;#xa;signal\&quot; style=\&quot;text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;shadow=1;fontColor=#808080;fontFamily=Helvetica;rounded=0;strokeWidth=2;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;967.9499999999999\&quot; y=\&quot;1222.25\&quot; width=\&quot;43.38\&quot; height=\&quot;30.25\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-20\&quot; value=\&quot;\&quot; style=\&quot;endArrow=open;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=none;startFill=0;endFill=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;942.57\&quot; y=\&quot;1272.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;884.4399999999999\&quot; y=\&quot;1302.7500000000002\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;902.57\&quot; y=\&quot;1272.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;884.57\&quot; y=\&quot;1272.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-21\&quot; value=\&quot;\&quot; style=\&quot;endArrow=open;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=none;startFill=0;endFill=0;entryX=0.711;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; target=\&quot;dN6sw1qnDhJNe45-whcC-6\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;850.33\&quot; y=\&quot;1212.5\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;870.33\&quot; y=\&quot;1292.5\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;870.33\&quot; y=\&quot;1212.5\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-22\&quot; value=\&quot;\&quot; style=\&quot;endArrow=oval;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;endFill=1;entryX=0.007;entryY=0.614;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;692.95\&quot; y=\&quot;1275.58\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;711.20375\&quot; y=\&quot;1275.7659999999998\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-23\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;692.57\&quot; y=\&quot;1382.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;712.57\&quot; y=\&quot;1242.75\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;662.57\&quot; y=\&quot;1382.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;662.57\&quot; y=\&quot;1242.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;dN6sw1qnDhJNe45-whcC-24\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#B3B3B3;strokeColor=#007FFF;strokeWidth=2;startArrow=oval;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;692.57\&quot; y=\&quot;1455.75\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;712.19\&quot; y=\&quot;1231.12\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;642.57\&quot; y=\&quot;1455.75\&quot; /&gt;\n              &lt;mxPoint x=\&quot;642.57\&quot; y=\&quot;1230.75\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
 * <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 * </body>
 * </html>
@@ -46,31 +46,31 @@
 * <em>FSM module design</em>
 * </center>
 *
-* One important attribute of the @ref qOS::sm::state object is the callback function, 
-* which is used to describe the behavior specific to the state. Also, there is a 
-* pointer to the parent state to define the nesting of the state and its place in 
-* the hierarchical topology. As shown in figure above, a state machine consists 
-* of a least one state, the "top-level" state. So concrete state machine are 
+* One important attribute of the @ref qOS::sm::state object is the callback function,
+* which is used to describe the behavior specific to the state. Also, there is a
+* pointer to the parent state to define the nesting of the state and its place in
+* the hierarchical topology. As shown in figure above, a state machine consists
+* of a least one state, the "top-level" state. So concrete state machine are
 * built by adding an arbitrary number of states and defining callback functions.
-* The only purpose of the top state is to provide the root of the hierarchy, so 
+* The only purpose of the top state is to provide the root of the hierarchy, so
 * that the highest level can return to the top as their parent state.
 *
 * @section q_fsmsetup Setting up a state machine
-* Like any other OS object, a Finite State Machine (FSM) must be explicitly 
-* initialized before it can be used. The @ref qOS::stateMachine::setup() method initializes 
-* the instance, sets the callback for the top state, sets the initial state and 
+* Like any other OS object, a Finite State Machine (FSM) must be explicitly
+* initialized before it can be used. The @ref qOS::stateMachine::setup() method initializes
+* the instance, sets the callback for the top state, sets the initial state and
 * the surrounding callback function.
 *
 * @section q_fsm_subscribe_states Subscribing states and defining callbacks
-* State machines are constructed by composition, therefore, the topology of a 
-* state machine is determined upon construction. In this FSM implementation, 
-* there is no distinction between composite states(states containing substates) 
-* and leaf states. All states are potentially composite. The method 
-* @ref qOS::stateMachine::add() should be used to initialize the state and 
-* define its position in the topology. 
+* State machines are constructed by composition, therefore, the topology of a
+* state machine is determined upon construction. In this FSM implementation,
+* there is no distinction between composite states(states containing substates)
+* and leaf states. All states are potentially composite. The method
+* @ref qOS::stateMachine::add() should be used to initialize the state and
+* define its position in the topology.
 *
 * A state callback-functions takes a qOS::sm::handler_t object as input argument and
-* returns a qOS::sm::status value. An example is shown in the following code snippet:
+* returns a @c sm::status value. An example is shown in the following code snippet:
 *
 *  @code{.c}
 *  sm::status ExampleState_Callback( sm::handler_t h ) {
@@ -79,85 +79,100 @@
 *  }
 *  @endcode
 *
+* States can also be defined using the object-oriented programming approach. In
+* this particular case, a class must be defined that inherits from qOS::sm::state and
+* the @c activities method, where the behavior of the state resides, must be
+* overridden.
+*
+*  @code{.c}
+*  class myCustomState : public sm::state {
+*      sm::status activities( sm::handler_t h ) override {
+*          // TODO : State code
+*          return sm::status::SUCCESS;
+*      }
+*  };
+*  @endcode
+*
 * @section q_fsmhandler The state callback handler: performing transitions and retrieving data
-* Because callback functions are methods derived from the state-machine object, 
-* they have direct access to some attributes via the @ref qOS::sm::handler_t argument. 
-* The usage of this object it's required to make the FSM moves between states 
+* Because callback functions are methods derived from the state-machine object,
+* they have direct access to some attributes via the @ref qOS::sm::handler_t argument.
+* The usage of this object it's required to make the FSM moves between states
 * and additionally get extra data. The provided attributes are:
 *
-* - @ref qOS::sm::handler_t::nextState() : Method to set the desired next state. 
+* - @ref qOS::sm::handler_t::nextState() : Method to set the desired next state.
 * The application writer should use this method passing another state to produce
-*  a state transition in the next FSM's cycle. Changing this field will only 
+*  a state transition in the next FSM's cycle. Changing this field will only
 * take effect when the state is executed under user custom-defined signals or in
 * the absence of signals @c signalID::QSM_SIGNAL_NONE.
 * In additon the user can specify as second argument the history mode. Use this
-* argument option if the transition is to a composite state. This argument 
-* defines how the story should be handled. 
-* If this argument is ignored, @c sm::historyMode::NO_HISTORY is assumed. 
+* argument option if the transition is to a composite state. This argument
+* defines how the story should be handled.
+* If this argument is ignored, @c sm::historyMode::NO_HISTORY is assumed.
 * The possible values for this attribute are:
-*     - @c sm::historyMode::NO_HISTORY : History is not preserved. Composite states 
+*     - @c sm::historyMode::NO_HISTORY : History is not preserved. Composite states
 *       will start according to their default transition.
-*     - @c sm::historyMode::SHALLOW_HISTORY : History will be kept to allow the 
-*       return to only the top-most sub-state of the most recent state 
+*     - @c sm::historyMode::SHALLOW_HISTORY : History will be kept to allow the
+*       return to only the top-most sub-state of the most recent state
 *       configuration, which is entered using the default entry rule.
 *     - @c sm::historyMode::DEEP_HISTORY : History will be kept to allow full state
 *       configuration of the most recent visit to the containing region.
-* - @ref qOS::sm::handler_t::startState() : Desired nested initial state (substate). The 
+* - @ref qOS::sm::handler_t::startState() : Desired nested initial state (substate). The
 * application writer should change this field to set the initial transition if
-* the current state is a parent(or composite state). Changing this field 
-* attribute only takes effect when the state is executed under the 
-* @c signalID::SIGNAL_START signal. 
-* - @ref qOS::sm::handler_t::signal() : Method to read the received signal. Can return any of the 
+* the current state is a parent(or composite state). Changing this field
+* attribute only takes effect when the state is executed under the
+* @c signalID::SIGNAL_START signal.
+* - @ref qOS::sm::handler_t::signal() : Method to read the received signal. Can return any of the
 * following values:
 *     - @c signalID::SIGNAL_NONE if no signal is available.
 *     - @c signalID::SIGNAL_ENTRY if the current state has just entered from another state.
-*     - @c signalID::SIGNAL_START to set nested initial transitions by using the 
+*     - @c signalID::SIGNAL_START to set nested initial transitions by using the
 *       qOS::sm::handler_t::startState() method.
 *     - @c signalID::SIGNAL_EXIT if the current state has just exited to another state.
-*     - Any other user-defined signal will reside here, including the 
-*       sm::SIGNAL_TIMEOUT() signals.
+*     - Any other user-defined signal will reside here, including the
+*       qOS::sm::SIGNAL_TIMEOUT() signals.
 * - @ref qOS::sm::handler_t::SignalData (read-only) : Pointer to the data associated with
-* the signal. For internal signals, including timeout signals, its value will 
+* the signal. For internal signals, including timeout signals, its value will
 * be @c nullptr.
-* - @ref qOS::sm::handler_t::lastStatus() :  Retrieve the exit(or return) status of the last 
+* - @ref qOS::sm::handler_t::lastStatus() :  Retrieve the exit(or return) status of the last
 * state. Should be used in the Surrounding callback to perform the corresponding
 * actions for every value. On states callback will take the value @c sm::status::ABSENT
-* - @ref qOS::sm::handler_t::thisMachine() : Method to get a reference to the container 
+* - @ref qOS::sm::handler_t::thisMachine() : Method to get a reference to the container
 * state machine.
-* - @ref qOS::sm::handler_t::thisState() : Method to get a reference to the state 
+* - @ref qOS::sm::handler_t::thisState() : Method to get a reference to the state
 * being evaluated.
 * - @ref qOS::sm::handler_t::Data (read-only) : State-machine associated data. If the FSM
-* is running as a task, the associated event data can be queried through this 
+* is running as a task, the associated event data can be queried through this
 * field. (here, a cast to qOS::event_t is mandatory).
 * - @ref qOS::sm::handler_t::StateData (read-only) : State associated data. Storage-pointer.
 *
-* Within the callback function of every state, only one level of dispatching 
-* (based on the signal) is necessary. Typically this is archived using a 
-* single-level switch statement. Callback functions communicate with the state 
-* machine engine through the sm::handler_t and the return value of type 
-* @c sm::status.
 *
-* The semantic is simple, if a signal is processed, the callback functions 
+* Within the callback function of every state or the @c activities method, only one
+* level of dispatching (based on the signal) is necessary. Typically this is
+* archived using a single-level switch statement. Callback functions communicate
+* with the state machine engine through the qOS::sm::handler_t and the return
+* value of type @c sm::status.
+*
+* The semantic is simple, if a signal is processed, the callback functions
 * returns the status value @c sm::status::SIGNAL_HANDLED. Otherwise, it throws the
 * signal for further processing by higher-level states. Also, this returning
 * mechanism can be used to handle exceptions by using the surrounding callback.
 *
 * @a Entry/Exit actions and default transitions are also implemented inside the
-* callback function in the response to pre-defined signals. @c sm::signalID::SIGNAL_ENTRY, 
-* @c sm::signalID::SIGNAL_EXIT and @c sm::signalID::SIGNAL_START. The state machine generates and 
+* callback function in the response to pre-defined signals. @c sm::signalID::SIGNAL_ENTRY,
+* @c sm::signalID::SIGNAL_EXIT and @c sm::signalID::SIGNAL_START. The state machine generates and
 * dispatches these signals to appropriate handlers upon state transitions.
 *
-* The example below shows what a status callback should look like including the 
+* The example below shows what a status callback should look like including the
 * use of the handler.
 *
 *  @code{.c}
 *  sm::status ExampleState_Callback ( sm::handler_t h ) {
 *      switch ( h.signal() ) {
-*          case signalID::SIGNAL_START:
+*          case sm::signalID::SIGNAL_START:
 *              break;
-*          case signalID::SIGNAL_ENTRY:
+*          case sm::signalID::SIGNAL_ENTRY:
 *              break;
-*          case signalID::SIGNAL_EXIT:
+*          case sm::signalID::SIGNAL_EXIT:
 *              break;
 *          case USER_DEFINED_SIGNAL :
 *              h.nextState( OtherState ); /*transition*/
@@ -167,10 +182,10 @@
 *      }
 *      return sm::status::SUCCESS;
 *  }
-*  @endcode 
+*  @endcode
 *
-* As shown above, the return value represents the exit status of the state, and 
-* it can be handled with an additional surrounding callback function \f$ S_u \f$ 
+* As shown above, the return value represents the exit status of the state, and
+* it can be handled with an additional surrounding callback function \f$ S_u \f$
 * established at the moment of the FSM setup. The values allowed to return are
 * listed below.
 *
@@ -179,24 +194,24 @@
 * - @c sm::status::SIGNAL_HANDLED
 * - Any other integer value between @c -32762 and @c 32767
 *
-* To code initial transitions, the application writer should catch the 
-* @c sm::signalID::SIGNAL_START, perform the required actions and then designate the target 
-* sub-state by using the @c startState method of the qOS::sm::handler_t 
-* argument. Regular transitions are coded in a very similar way, except that 
-* here, you catch the custom-defined signal and then use the @c nextState
-* method of the qOS::sm::handler_t argument. The developer is free to write and 
-* control state transitions. Transitions are only allowed under the availability
-* of user custom-defined signals. Regular transitions are not allowed at an 
-* entry point (@c signalID::SIGNAL_ENTRY), exit point (@c signalID::SIGNAL_EXIT), or a start 
+* To code initial transitions, the application writer should catch the
+* @c sm::signalID::SIGNAL_START, perform the required actions and then designate the target
+* sub-state by using the qOS::sm::handler_t::startState() method. Regular
+* transitions are coded in a very similar way, except that
+* here, you catch the custom-defined signal and then use the qOS::sm::handler_t::nextState()
+* method. The developer is free to write and control state transitions.
+* Transitions are only allowed under the availability of user custom-defined
+* signals. Regular transitions are not allowed at an entry point
+* (@c signalID::SIGNAL_ENTRY), exit point (@c signalID::SIGNAL_EXIT), or a start
 * point (@c signalID::SIGNAL_START).
 *
-* @note User should not target the top state in a transition and use it as 
-* transition source either. The only customizable aspect of the top state is 
+* @note User should not target the top state in a transition and use it as
+* transition source either. The only customizable aspect of the top state is
 * the initial transition.
 *
 * @section q_fsm_surrounding The surrounding callback
-* It is a checkpoint before and after each state executes its activities 
-* through its state callback. The behavior of this surrounding callback must be 
+* It is a checkpoint before and after each state executes its activities
+* through its state callback. The behavior of this surrounding callback must be
 * defined by the programmer.
 *
 * <center>
@@ -207,7 +222,7 @@
 * <title>surrounding</title>
 * <meta charset="utf-8"/>
 * </head>
-* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-19T05:34:37.293Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;poDBqKg0qx6tawrUZqnR\&quot; version=\&quot;20.2.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;4V9vBTZxQXj7jBstcZzX\&quot; name=\&quot;Página-1\&quot;&gt;7Zpdb6M4FIZ/TS7HMgaDuWzSdEejdlRttZqdq5ULboLGwZEx+dhfvzYxgWDSyc6kKbuTpFLx8fd5H7CPycifLDa/SbqcP4iU8RGC6Wbk344Q8iCO9D9j2VpLDHeGmcxSa2oMT9nfrK5prWWWsuKgoBKCq2x5aExEnrNEHdiolGJ9WOxF8MNel3TGHMNTQrlr/ZKlam6tXhg3GR9ZNpvbrgmyE17QurCdSTGnqVi3TP505E+kEGp3tdhMGDfOq/2yq3d3JHc/MMlydUqFh+jz/GG6Wtze/5X+8eUTI58W+INtZUV5aSdsB6u2tQekKPOUmUbgyB+v55liT0uamNy11lzb5mrBdcrTl4WS4hubCC5kVduPq4/Oeck4r+25yJkxiVzd0UXGDRsfGV8xlSV030rtb+2pcUqLeTUG04kdM5OKbY46w9u7WLPJxIIpudVFbIUwhICQXa2aTIz8nWHdCK15BZ71ybwlc00xtXjN9j00CugLK8K/EAQ5gjw6iuhmNP7s+2pw+sz4mCbfZpWIXfdrRZ5sq4XgZliHktyXSZZS3fdE5LpALZm9ST1s0y21CTTfPg4gjO7u7nq1bZOhS04mU1yVrPqy4/POoHmEESCoo7nvA0Qc2QMMfM9VPfABjN5IeN8R/mmEQq6My8pnfTkzl2Vt0320zP8LRDo5ryAyDc33DRAhKNwrPDxEgisi749IGBG9csD9xxsqLbhvJXFoGaGxdwWmtSFpWDn/riOGROvdsDPYxSg8iZ0PV3IuRU4IIYDwP0BO5JAzKWU1yy4U2hnKcXxL6Y6J8myW62Si22LaPjb+1OECv7EZiyxNK8kLjVeWz+7Zi5lv0Fh+ty4wJqGrv/AqHpvriky3MF6KLFeVQ/BY/+kt/gQCPMJ6tBOd9pq0/jPFpTKgKUmzSkVGC7VmhZmVFIoq+lzNtYKoDv68Vxg8Gg8dhmAukGfZHMMOUgQ6PGFvHzS1eUIQIPxGPBGHpzF7EZLd5NsrUYMmKozM1L7LVBhcnKm4b3WDkqlS5iNziqKXP98zjtkVuXI2ZM6IFwEUnABaDLzIBc1/q5Oc+gSzhdlnA86VpkHTRHyAg+PhXQ9YcQzCCz/BPPfc9lGyVSbK4srXoPnCelV0DiEHApV79uxGcnl6Y96qGEA4LYosOQzg+jzYewpc62SKJaVc7YMl1+vas3L7py1bJb6aBMB18nbTzrzd2tRu8Cx1XvB0tEJQUTlj6hXXBP2atrfG0BWrtknGqcpWh8Pok8/28Gjuj9ZGKghA90wSBwCTw4YKUcqE2brt90Dd5kLS11zsxftPp+Wde5yWK8j23vgJ7tyj70Fwdyo/78UFjsIeKqJGRvyDgMBuKGjwQJdlwj3rHgQTA3gWofdkLkI+6K5e56EuwhHwm2bCbuioeyEeviyE7hH6LwHhu8EVE4De5plGUARI0wzqYfjidLmH7L8EXSc84vB7UkjMDj0+HgGeB0jdAcCwAXIAPLpH9wAAB8lrOHm2cLL1bgqd6T0RDrrr5pE3Qz33DwpBhI7fLUdiS51sfsO2Y7H5JaA//Qc=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;zoom&quot;:1.5,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-19T05:34:37.293Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;poDBqKg0qx6tawrUZqnR\&quot; version=\&quot;20.2.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;4V9vBTZxQXj7jBstcZzX\&quot; name=\&quot;Página-1\&quot;&gt;7Zpdb6M4FIZ/TS7HMgaDuWzSdEejdlRttZqdq5ULboLGwZEx+dhfvzYxgWDSyc6kKbuTpFLx8fd5H7CPycifLDa/SbqcP4iU8RGC6Wbk344Q8iCO9D9j2VpLDHeGmcxSa2oMT9nfrK5prWWWsuKgoBKCq2x5aExEnrNEHdiolGJ9WOxF8MNel3TGHMNTQrlr/ZKlam6tXhg3GR9ZNpvbrgmyE17QurCdSTGnqVi3TP505E+kEGp3tdhMGDfOq/2yq3d3JHc/MMlydUqFh+jz/GG6Wtze/5X+8eUTI58W+INtZUV5aSdsB6u2tQekKPOUmUbgyB+v55liT0uamNy11lzb5mrBdcrTl4WS4hubCC5kVduPq4/Oeck4r+25yJkxiVzd0UXGDRsfGV8xlSV030rtb+2pcUqLeTUG04kdM5OKbY46w9u7WLPJxIIpudVFbIUwhICQXa2aTIz8nWHdCK15BZ71ybwlc00xtXjN9j00CugLK8K/EAQ5gjw6iuhmNP7s+2pw+sz4mCbfZpWIXfdrRZ5sq4XgZliHktyXSZZS3fdE5LpALZm9ST1s0y21CTTfPg4gjO7u7nq1bZOhS04mU1yVrPqy4/POoHmEESCoo7nvA0Qc2QMMfM9VPfABjN5IeN8R/mmEQq6My8pnfTkzl2Vt0320zP8LRDo5ryAyDc33DRAhKNwrPDxEgisi749IGBG9csD9xxsqLbhvJXFoGaGxdwWmtSFpWDn/riOGROvdsDPYxSg8iZ0PV3IuRU4IIYDwP0BO5JAzKWU1yy4U2hnKcXxL6Y6J8myW62Si22LaPjb+1OECv7EZiyxNK8kLjVeWz+7Zi5lv0Fh+ty4wJqGrv/AqHpvriky3MF6KLFeVQ/BY/+kt/gQCPMJ6tBOd9pq0/jPFpTKgKUmzSkVGC7VmhZmVFIoq+lzNtYKoDv68Vxg8Gg8dhmAukGfZHMMOUgQ6PGFvHzS1eUIQIPxGPBGHpzF7EZLd5NsrUYMmKozM1L7LVBhcnKm4b3WDkqlS5iNziqKXP98zjtkVuXI2ZM6IFwEUnABaDLzIBc1/q5Oc+gSzhdlnA86VpkHTRHyAg+PhXQ9YcQzCCz/BPPfc9lGyVSbK4srXoPnCelV0DiEHApV79uxGcnl6Y96qGEA4LYosOQzg+jzYewpc62SKJaVc7YMl1+vas3L7py1bJb6aBMB18nbTzrzd2tRu8Cx1XvB0tEJQUTlj6hXXBP2atrfG0BWrtknGqcpWh8Pok8/28Gjuj9ZGKghA90wSBwCTw4YKUcqE2brt90Dd5kLS11zsxftPp+Wde5yWK8j23vgJ7tyj70Fwdyo/78UFjsIeKqJGRvyDgMBuKGjwQJdlwj3rHgQTA3gWofdkLkI+6K5e56EuwhHwm2bCbuioeyEeviyE7hH6LwHhu8EVE4De5plGUARI0wzqYfjidLmH7L8EXSc84vB7UkjMDj0+HgGeB0jdAcCwAXIAPLpH9wAAB8lrOHm2cLL1bgqd6T0RDrrr5pE3Qz33DwpBhI7fLUdiS51sfsO2Y7H5JaA//Qc=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 * <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 * </body>
 * </html>
@@ -216,10 +231,10 @@
 * </center>
 *
 * The surrounding callback \f$ S_u \f$ invocation occurs after and before the
-* current state \f$ P \f$. When the surrounding callback is executed, indicates 
-* its own checkpoint through the @c Status attribute of the sm::handler_t 
+* current state \f$ P \f$. When the surrounding callback is executed, indicates
+* its own checkpoint through the @c Status attribute of the sm::handler_t
 * argument.
-* Unlike a state callback, the surrounding callback should not return anything, 
+* Unlike a state callback, the surrounding callback should not return anything,
 * thus, the callback should be written as:
 *
 *  @code{.c}
@@ -245,25 +260,25 @@
 *              break
 *      }
 *  }
-*  @endcode 
+*  @endcode
 *
-* As you can see in the example below, the surrounding execution case its 
+* As you can see in the example below, the surrounding execution case its
 * verified through the FSM handle by reading the @c Status field.
 *
 * @section q_fsm_astask Adding a state machine as a task
-* The best strategy to run a FSM is delegating it to a task. For this, the 
-* os.addStateMachineTask() API should be used. Here, the task does not have 
-* a specific callback, instead, it will evaluate the active state of the FSM, 
-* and later, all the other possible states in response to events that mark 
-* their own transition. The task will be scheduled to run every @c t seconds in
-* qOS::task::PERIODIC mode.
+* The best strategy to run a FSM is delegating it to a task. For this, an overload
+* of qOS::core::add() that takes an state-machine object as argument is provided.
+* Here, the task does not have a specific callback, instead, it will evaluate
+* the active state of the FSM, and later, all the other possible states in response
+* to events that mark their own transition. The task will be scheduled to run
+* every @c t seconds in qOS::task::PERIODIC mode.
 *
-* By using this API, the kernel will take care of the FSM by itself, so the
+* By using this method, the kernel will take care of the FSM by itself, so the
 * usage of qOS::stateMachine::run()  can be omitted.
-* 
-* Now that a task is running a dedicated state machine, the specific task 
+*
+* Now that a task is running a dedicated state machine, the specific task
 * event-information can be obtained in every state callback through the @c Data
-* field of the sm::handler_t argument.
+* field of the qOS::sm::handler_t argument.
 *
 * Check the example below:
 *
@@ -294,15 +309,15 @@
 *      }
 *      return sm::status::SUCCESS;
 *  }
-*  @endcode 
+*  @endcode
 *
-* @section q_fsm_example1 A demonstrative example for a FSM 
-* In this example, one press of the button turns on the LED, a second push of 
-* the button will make the LED blink and if the button is pressed again, the 
-* LED will turn off. Also, our system must turn off the LED after a period of 
-* inactivity. If the button hasn't been pressed in the last 10 seconds, the 
+* @section q_fsm_example1 A demonstrative example for a FSM
+* In this example, one press of the button turns on the LED, a second push of
+* the button will make the LED blink and if the button is pressed again, the
+* LED will turn off. Also, our system must turn off the LED after a period of
+* inactivity. If the button hasn't been pressed in the last 10 seconds, the
 * LED will turn off.
-* 
+*
 * <center>
 * @htmlonly
 * <!DOCTYPE html>
@@ -311,14 +326,14 @@
 * <title>ledfsm++</title>
 * <meta charset="utf-8"/>
 * </head>
-* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-04-21T05:17:05.218Z\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\&quot; etag=\&quot;dTvBWuwFqzki2O0pOYuZ\&quot; version=\&quot;21.2.1\&quot; type=\&quot;google\&quot;&gt;\n  &lt;diagram name=\&quot;Página-1\&quot; id=\&quot;PPq_TbZygOE9Y1frLE7i\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;743\&quot; dy=\&quot;-244\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;1169\&quot; pageHeight=\&quot;827\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-1\&quot; value=\&quot;&amp;lt;font&amp;gt;&amp;lt;b&amp;gt;Off&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontFamily=Helvetica;strokeWidth=2;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;124.99999999999994\&quot; y=\&quot;1285.9999999999998\&quot; width=\&quot;100\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-2\&quot; value=\&quot;&amp;amp;nbsp;&amp;lt;b&amp;gt;entry&amp;lt;/b&amp;gt;:&amp;lt;br&amp;gt;&amp;amp;nbsp;BSP_LED_OFF();\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Lucida Console;strokeWidth=2;align=left;fontSize=10;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;124.99999999999994\&quot; y=\&quot;1305.9999999999998\&quot; width=\&quot;100\&quot; height=\&quot;40\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-3\&quot; value=\&quot;&amp;lt;font&amp;gt;&amp;lt;b&amp;gt;On&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontFamily=Helvetica;strokeWidth=2;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;294.99999999999994\&quot; y=\&quot;1229.9999999999998\&quot; width=\&quot;200\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-4\&quot; value=\&quot;&amp;amp;nbsp;&amp;lt;b&amp;gt;entry&amp;lt;/b&amp;gt;:&amp;lt;br&amp;gt;&amp;amp;nbsp;BSP_LED_ON();&amp;lt;br&amp;gt;&amp;amp;nbsp;timeout.set( 10000 );\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Lucida Console;strokeWidth=2;align=left;fontSize=10;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;294.99999999999994\&quot; y=\&quot;1249.9999999999998\&quot; width=\&quot;200\&quot; height=\&quot;40\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-5\&quot; value=\&quot;&amp;lt;font&amp;gt;&amp;lt;b&amp;gt;Blink&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontFamily=Helvetica;strokeWidth=2;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;238.99999999999994\&quot; y=\&quot;1347.9999999999998\&quot; width=\&quot;270\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-6\&quot; value=\&quot;&amp;amp;nbsp;&amp;lt;b&amp;gt;entry&amp;lt;/b&amp;gt;:&amp;lt;br&amp;gt;&amp;amp;nbsp;timeout.set( 10000 );&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;&amp;amp;nbsp;default:&amp;lt;br&amp;gt;&amp;lt;/b&amp;gt;&amp;amp;nbsp;if( blinktime.freeRun( 500) ) {&amp;lt;br&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp;BSP_LED_TOGGLE();&amp;lt;br&amp;gt;&amp;amp;nbsp;}\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Lucida Console;strokeWidth=2;align=left;fontSize=10;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;238.99999999999994\&quot; y=\&quot;1367.9999999999998\&quot; width=\&quot;270\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-7\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;BJD9Ttu0zg7xfjPafxcG-1\&quot; target=\&quot;BJD9Ttu0zg7xfjPafxcG-4\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;314.99999999999994\&quot; y=\&quot;1153.4999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;444.99999999999994\&quot; y=\&quot;1033.4999999999998\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;254.99999999999994\&quot; y=\&quot;1237.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-8\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;entryX=0.469;entryY=1.064;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;BJD9Ttu0zg7xfjPafxcG-6\&quot; target=\&quot;BJD9Ttu0zg7xfjPafxcG-2\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;214.99999999999994\&quot; y=\&quot;1427.9999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;433.24999999999994\&quot; y=\&quot;1358.5799999999997\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;234.99999999999994\&quot; y=\&quot;1407.9999999999998\&quot; /&gt;\n              &lt;mxPoint x=\&quot;174.99999999999994\&quot; y=\&quot;1397.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-10\&quot; value=\&quot;BUTTON_PRESSED || &amp;lt;br style=&amp;quot;font-size: 8px;&amp;quot;&amp;gt;timeout.expired()\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;119.99999999999994\&quot; y=\&quot;1409.64\&quot; width=\&quot;110\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-11\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;exitX=0.684;exitY=1.007;exitDx=0;exitDy=0;exitPerimeter=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; source=\&quot;BJD9Ttu0zg7xfjPafxcG-4\&quot; target=\&quot;BJD9Ttu0zg7xfjPafxcG-2\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;258.87999999999994\&quot; y=\&quot;1261.9999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;231.12999999999994\&quot; y=\&quot;1320.5799999999997\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;404.99999999999994\&quot; y=\&quot;1325.9999999999998\&quot; /&gt;\n              &lt;mxPoint x=\&quot;264.99999999999994\&quot; y=\&quot;1337.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-12\&quot; value=\&quot;qSTimer_Expired( &amp;amp;amp;timeout )\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;221.99999999999994\&quot; y=\&quot;1307.9999999999998\&quot; width=\&quot;160\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-13\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;entryX=0.475;entryY=0.029;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;473.2763157894735\&quot; y=\&quot;1288.7099999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;434.99999999999994\&quot; y=\&quot;1347.2899999999997\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;482.74999999999994\&quot; y=\&quot;1306.7099999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-14\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;entryX=0.475;entryY=0.029;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=oval;startFill=1;\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;94.99999999999994\&quot; y=\&quot;1267.9999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;124.99999999999994\&quot; y=\&quot;1285.9999999999998\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;94.99999999999994\&quot; y=\&quot;1277.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-15\&quot; value=\&quot;BUTTON_PRESSED\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;154.99999999999994\&quot; y=\&quot;1237.9999999999998\&quot; width=\&quot;90\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-16\&quot; value=\&quot;BUTTON_PRESSED\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;459.99999999999994\&quot; y=\&quot;1315.9999999999998\&quot; width=\&quot;90\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;lightbox&quot;:false,&quot;nav&quot;:true,&quot;zoom&quot;:1.5,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2023-07-17T21:19:21.646Z\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36\&quot; etag=\&quot;5-bU9w446gBWmJucko_s\&quot; version=\&quot;21.2.9\&quot; type=\&quot;google\&quot;&gt;\n  &lt;diagram name=\&quot;Página-1\&quot; id=\&quot;PPq_TbZygOE9Y1frLE7i\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;1108\&quot; dy=\&quot;453\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;1169\&quot; pageHeight=\&quot;827\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-1\&quot; value=\&quot;&amp;lt;font&amp;gt;&amp;lt;b&amp;gt;Off&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontFamily=Helvetica;strokeWidth=2;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;124.99999999999994\&quot; y=\&quot;1285.9999999999998\&quot; width=\&quot;100\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-2\&quot; value=\&quot;&amp;amp;nbsp;&amp;lt;b&amp;gt;entry&amp;lt;/b&amp;gt;:&amp;lt;br&amp;gt;&amp;amp;nbsp;BSP_LED_OFF();\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Lucida Console;strokeWidth=2;align=left;fontSize=10;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;124.99999999999994\&quot; y=\&quot;1305.9999999999998\&quot; width=\&quot;100\&quot; height=\&quot;40\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-3\&quot; value=\&quot;&amp;lt;font&amp;gt;&amp;lt;b&amp;gt;On&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontFamily=Helvetica;strokeWidth=2;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;294.99999999999994\&quot; y=\&quot;1229.9999999999998\&quot; width=\&quot;200\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-4\&quot; value=\&quot;&amp;amp;nbsp;&amp;lt;b&amp;gt;entry&amp;lt;/b&amp;gt;:&amp;lt;br&amp;gt;&amp;amp;nbsp;BSP_LED_ON();&amp;lt;br&amp;gt;&amp;amp;nbsp;timeout.set( 10000 );\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Lucida Console;strokeWidth=2;align=left;fontSize=10;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;294.99999999999994\&quot; y=\&quot;1249.9999999999998\&quot; width=\&quot;200\&quot; height=\&quot;40\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-5\&quot; value=\&quot;&amp;lt;font&amp;gt;&amp;lt;b&amp;gt;Blink&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=#E6E6E6;fontFamily=Helvetica;strokeWidth=2;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;238.99999999999994\&quot; y=\&quot;1347.9999999999998\&quot; width=\&quot;270\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-6\&quot; value=\&quot;&amp;amp;nbsp;&amp;lt;b&amp;gt;entry&amp;lt;/b&amp;gt;:&amp;lt;br&amp;gt;&amp;amp;nbsp;timeout.set( 10000 );&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;&amp;amp;nbsp;default:&amp;lt;br&amp;gt;&amp;lt;/b&amp;gt;&amp;amp;nbsp;if( blinktime.freeRun( 500) ) {&amp;lt;br&amp;gt;&amp;amp;nbsp; &amp;amp;nbsp; &amp;amp;nbsp;BSP_LED_TOGGLE();&amp;lt;br&amp;gt;&amp;amp;nbsp;}\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;strokeColor=#808080;fillColor=none;fontFamily=Lucida Console;strokeWidth=2;align=left;fontSize=10;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;238.99999999999994\&quot; y=\&quot;1367.9999999999998\&quot; width=\&quot;270\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-7\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;BJD9Ttu0zg7xfjPafxcG-1\&quot; target=\&quot;BJD9Ttu0zg7xfjPafxcG-4\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;314.99999999999994\&quot; y=\&quot;1153.4999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;444.99999999999994\&quot; y=\&quot;1033.4999999999998\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;254.99999999999994\&quot; y=\&quot;1237.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-8\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;entryX=0.469;entryY=1.064;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;BJD9Ttu0zg7xfjPafxcG-6\&quot; target=\&quot;BJD9Ttu0zg7xfjPafxcG-2\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;214.99999999999994\&quot; y=\&quot;1427.9999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;433.24999999999994\&quot; y=\&quot;1358.5799999999997\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;234.99999999999994\&quot; y=\&quot;1407.9999999999998\&quot; /&gt;\n              &lt;mxPoint x=\&quot;174.99999999999994\&quot; y=\&quot;1397.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-10\&quot; value=\&quot;BUTTON_PRESSED || &amp;lt;br style=&amp;quot;font-size: 8px;&amp;quot;&amp;gt;timeout.expired()\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;119.99999999999994\&quot; y=\&quot;1409.64\&quot; width=\&quot;110\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-11\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;exitX=0.684;exitY=1.007;exitDx=0;exitDy=0;exitPerimeter=0;\&quot; parent=\&quot;1\&quot; source=\&quot;BJD9Ttu0zg7xfjPafxcG-4\&quot; target=\&quot;BJD9Ttu0zg7xfjPafxcG-2\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;258.87999999999994\&quot; y=\&quot;1261.9999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;231.12999999999994\&quot; y=\&quot;1320.5799999999997\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;404.99999999999994\&quot; y=\&quot;1325.9999999999998\&quot; /&gt;\n              &lt;mxPoint x=\&quot;264.99999999999994\&quot; y=\&quot;1337.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-12\&quot; value=\&quot;timeout.expired()\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;271.99999999999994\&quot; y=\&quot;1307.9999999999998\&quot; width=\&quot;110\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-13\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;entryX=0.475;entryY=0.029;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; parent=\&quot;1\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;473.2763157894735\&quot; y=\&quot;1288.7099999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;434.99999999999994\&quot; y=\&quot;1347.2899999999997\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;482.74999999999994\&quot; y=\&quot;1306.7099999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-14\&quot; value=\&quot;\&quot; style=\&quot;curved=1;endArrow=classic;html=1;rounded=0;shadow=0;fontFamily=Lucida Console;fontSize=10;fontColor=#808080;strokeColor=#007FFF;strokeWidth=2;entryX=0.475;entryY=0.029;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=oval;startFill=1;\&quot; parent=\&quot;1\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;94.99999999999994\&quot; y=\&quot;1267.9999999999998\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;124.99999999999994\&quot; y=\&quot;1285.9999999999998\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;94.99999999999994\&quot; y=\&quot;1277.9999999999998\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-15\&quot; value=\&quot;BUTTON_PRESSED\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;154.99999999999994\&quot; y=\&quot;1237.9999999999998\&quot; width=\&quot;90\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;BJD9Ttu0zg7xfjPafxcG-16\&quot; value=\&quot;BUTTON_PRESSED\&quot; style=\&quot;text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;fontFamily=Lucida Console;fontColor=#808080;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;459.99999999999994\&quot; y=\&quot;1315.9999999999998\&quot; width=\&quot;90\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
 * <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 * </body>
 * </html>
 * @endhtmlonly
 * <em>Flat FSM example with three states</em>
 * </center>
-* 
+*
 *
 * To start the implementation, let's define the necessary global variables...
 *
@@ -326,7 +341,7 @@
 *  task LED_Task; /*The task node*/
 *  stateMachine LED_FSM; /*The state -machine handle*/
 *  sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
-*  @endcode 
+*  @endcode
 *
 * Then, we define our states as the flow diagram shown in the figure above.
 *
@@ -369,9 +384,9 @@
 *  }
 *  /*---------------------------------------------------------------------*/
 *  sm::status State_LEDBlink_Callback( sm::handler_t h ) {
-*      static timer timeout; 
+*      static timer timeout;
 *      static timer blinktime;
-*      
+*
 *      switch ( h.signal() ) {
 *          case sm::signalID::SIGNAL_ENTRY:
 *              timeout.set( 10_sec );
@@ -389,9 +404,9 @@
 *      }
 *      return sm::status::SUCCESS;
 *  }
-*  @endcode 
+*  @endcode
 *
-* Finally, we add the task to the scheduling scheme running the dedicated state 
+* Finally, we add the task to the scheduling scheme running the dedicated state
 * machine. Remember that you must set up the scheduler before adding a task to
 * the scheduling scheme.
 *
@@ -400,79 +415,81 @@
 *  LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
 *  LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
 *  LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
-*  os.addStateMachineTask( LED_Task , LED_FSM , core::MEDIUM_PRIORITY, 100_ms );
-*  @endcode 
+*  os.add( LED_Task , LED_FSM , core::MEDIUM_PRIORITY, 100_ms );
+*  @endcode
 *
 * @section q_fsmsendsignals Sending signals
-* To communicate within and between state machines or even other contexts, use 
-* signals. A signal is a simple value that can be used to abstract an incoming 
-* event. In the receiving state machine, a queue or an exclusion variable 
+* To communicate within and between state machines or even other contexts, use
+* signals. A signal is a simple value that can be used to abstract an incoming
+* event. In the receiving state machine, a queue or an exclusion variable
 * receives the signal and holds it until the state machine can evaluate it.
 *
-* When coding state machines, the application writer can benefit from this 
-* simple event-abstraction mechanism. On the one hand, there would be a more 
-* uniform programming when writing state callbacks and on the other hand, the 
+* When coding state machines, the application writer can benefit from this
+* simple event-abstraction mechanism. On the one hand, there would be a more
+* uniform programming when writing state callbacks and on the other hand, the
 * communication of the state machine from other contexts becomes easier.
 *
 * To send a signal to a state machine, use the qOS::stateMachine::sendSignal() method.
-* This API can manage their delivery to one of these possible destinations: 
+* This method can manage their delivery to one of these possible destinations:
 * an <em>exclusion variable</em> or a <em>signal queue</em>:
 * - An <em>exclusion variable</em> its a variable with an important distinction,
-* it can only be written if it is empty. The empty situation only happens, if 
-* the engine has already propagated the signal within the state machine. If the 
+* it can only be written if it is empty. The empty situation only happens, if
+* the engine has already propagated the signal within the state machine. If the
 * signal has not yet propagated, the signal sending cannot be carried out.
 * - When a <em>signal queue</em> is used, the signal is put into a FIFO structure
-* and the engine takes care of dispatching the signal in an orderly manner. The 
-* only situation where the signal cannot be delivered is if the queue is full. 
-* This is the preferred destination, as long as there is a previously 
+* and the engine takes care of dispatching the signal in an orderly manner. The
+* only situation where the signal cannot be delivered is if the queue is full.
+* This is the preferred destination, as long as there is a previously
 * installed signal queue.
 *
 * @note If the signal-queue its available, the qOS::stateMachine.sendSignal() method will
 * always select it as the default destination.
-* @warning If a state machine, a task, or another context sends a signal to a 
+* @warning If a state machine, a task, or another context sends a signal to a
 * full queue, a queue overflow occurs. The result of the queue overflow it that
 * the state machine drops the new signal.
-* 
+*
 * @section q_fsminstallsignalqueue Installing a signal queue
-* A state machine can have a FIFO queue to allow the delivery of signals from 
-* another contexts. If the signal queue is installed, the state-machine engine 
-* constantly monitors the queue for available signals. The engine then 
-* propagates the signal through the hierarchy until it is processed. To enable 
+* A state machine can have a FIFO queue to allow the delivery of signals from
+* another contexts. If the signal queue is installed, the state-machine engine
+* constantly monitors the queue for available signals. The engine then
+* propagates the signal through the hierarchy until it is processed. To enable
 * this functionality in your state machine, the queue must be installed by using
-* the qOS::stateMachine::installSignalQueue() API.
+* the qOS::stateMachine::install() method.
 *
 * The install operation should be performed after both, the queue and the FSM
-* are correctly initialized by using qOS::queue::setup() and qOS::stateMachine::setup() 
+* are correctly initialized by using qOS::queue::setup() and qOS::stateMachine::setup()
 * respectively.
 *
 * @note  Make sure that queues are enabled in the @c config.h header file
-* @attention When configuring a signal queue with queue::setup(), remember to size
-* it based on the type @ref qOS::sm::signal_t.
-* @note If the state machines its delegated to a task, make sure to install the 
-* queue prior to setting up the task. In this way, a kernel connection can be 
-* performed between the FSM signal queue and the FSM-task, allowing the OS to 
-* catch signals to produce a task event, this prevents the wait of the task for 
+* @attention Use the qOS::sm::signalQueue struct to instantiate a signal queue for
+* FSM. If not, user should setup explicitly the signal queue with
+* qOS::queue::setup(), and size it based on the type @ref qOS::sm::signal_t.
+* @note If the state machines its delegated to a task, make sure to install the
+* queue prior to setting up the task. In this way, a kernel connection can be
+* performed between the FSM signal queue and the FSM-task, allowing the OS to
+* catch signals to produce a task event, this prevents the wait of the task for
 * the specified period, resulting in faster handling of incoming signals.
 *
 * @section q_fsm_ttable Using a transition table
-* In this approach, the FSM is coded in tables with the outgoing transitions of 
-* every state, where each entry relates signals, actions and the target state. 
-* This is an elegant method to translate the FSM to actual implementation as the 
+* In this approach, the FSM is coded in tables with the outgoing transitions of
+* every state, where each entry relates signals, actions and the target state.
+* This is an elegant method to translate the FSM to actual implementation as the
 * handling for every state and event combination is encapsulated in the table.
 *
-* Here, the application writer gets a quick picture of the FSM and the embedded 
-* software maintenance is also much more under control. A transition table 
-* should be  explicitly installed in the target state with the corresponding 
-* entries, an n-sized array of qSM_Transition_t elements following the layout
+* Here, the application writer gets a quick picture of the FSM and the embedded
+* software maintenance is also much more under control. A transition table
+* should be  explicitly installed in the target state with the corresponding
+* entries, an n-sized array of @c sm::transition elements following the layout
 * described below:
 *
-* The method sm::state::setTransitions(), should be used to perform the 
+* The method qOS::sm::state::install(), should be used to perform the
 * transition table installation to a specific state.
 *
 * <center>
 * <table>
-* <caption id="multi_row">Transition table layout for a state</caption>
+* <caption id="multi_row">General transition table layout for a state</caption>
 * <tr><th>Signal Id <th>Signal action/guard <th>Target state  <th>History mode  <th>Signal data
+* <tr><th>@c sm::signalID <th>@c signalAction_t <th>@c sm::state& <th>@c historyMode <th> @c void*
 * <tr><td> @c Signal1 <td>@c nullptr <td>@c StateB <td>@c 0 <td>@c nullptr
 * <tr><td> @c Signal3 <td>@c DoOnSignal3 <td>@c StateD <td>@c 0 <td>@c &sig3data
 * <tr><td> ... <td>... <td> ... <td> ... <td> ...
@@ -480,27 +497,38 @@
 * </table>
 * </center>
 *
+* <center>
+* <table>
+* <caption id="multi_row">reduced transition table layout for a state</caption>
+* <tr><th>Signal Id <th>Target state
+* <tr><th>@c sm::signalID <th>@c sm::state*
+* <tr><td> @c Signal1 <td>@c StateB
+* <tr><td> ... <td>...
+* <tr><td> @c Signal6 <td>@c StateA
+* </table>
+* </center>
+*
 * <b> Caveats: </b>
 *
-* - State transitions are not limited to the specification of the transition 
-* table. A state callback owns the higher precedence to change a state. The 
-* application writer can use both, a transition table and direct @c NextState 
-* field manipulation in state callbacks to perform a transition to the FSM.
-* - Special care is required when the table grows very large, that is, when 
-* there are many invalid state/event combinations, leading to a waste of memory. 
-* There is also a memory penalty as the number of states and events grows. The 
-* application writer needs to accurately account for this during the initial design. 
-* A statechart pattern can be used to improve the design and reduce the number 
+* - State transitions are not limited to the specification of the transition
+* table. A state callback owns the higher precedence to change a state. The
+* application writer can use both, a transition table and the qOS::sm::handler_t::nextState()
+* method in state callbacks to perform a transition to the FSM.
+* - Special care is required when the table grows very large, that is, when
+* there are many invalid state/event combinations, leading to a waste of memory.
+* There is also a memory penalty as the number of states and events grows. The
+* application writer needs to accurately account for this during the initial design.
+* A statechart pattern can be used to improve the design and reduce the number
 * of transition entries.
-* - The user is responsible for defining the transitions according to the 
-* topology of the state machine. Undefined behaviors can occur if the topology 
+* - The user is responsible for defining the transitions according to the
+* topology of the state machine. Undefined behaviors can occur if the topology
 * is broken with poorly defined transitions.
 *
 * @subsection q_fsm_sigactions Signal actions and guards
-* Transition tables allow the usage of this feature. When an event-signal is 
-* received from the queue, the signal-action, if available, is evaluated before 
-* the transition is triggered. This action is user-defined and should be coded 
-* as a function that takes a qOS::sm::handler_t object and returns a value of type 
+* Transition tables allow the usage of this feature. When an event-signal is
+* received from the queue, the signal-action, if available, is evaluated before
+* the transition is triggered. This action is user-defined and should be coded
+* as a function that takes a qOS::sm::handler_t object and returns a value of type
 * @c bool.
 *
 *  @code{.c}
@@ -508,13 +536,13 @@
 *      /* TODO : Event -signal action*/
 *      return true; /*allow the state transition*/
 *  }
-*  @endcode 
+*  @endcode
 *
 * The return value is checked after to allow or reject the state transition. The
-* application writer can code a boolean expression to implement 
+* application writer can code a boolean expression to implement
 * <em>statechart guards</em> or perform some pre-transition procedure.
-* 
-* @remark If a signal-action returns @c false, the event-signal is rejected, 
+*
+* @remark If a signal-action returns @c false, the event-signal is rejected,
 * preventing the state transition to be performed in the calling FSM.
 * @note When a transition entry is defined. the signal-action should be located
 * as the third parameter of the entry. Please see the transition layout. A
@@ -525,23 +553,23 @@
 * inside states. The basic usage model of the timeout signals is as follows:
 *
 * A timeout specification allocates one or more timer objects. The user relates
-* in a table each specific timeout operation within the state where are they 
-* going to operate. So, according to the table, when a state needs to arrange 
-* for a timeout, the engine can set or reset the given timer. When the FSM 
-* engine detects that the appropriate moment has arrived (a timer expiration 
-* occurs), it inserts the timeout signal directly into the recipient's event 
-* queue. The recipient then processes the timeout signal just like any other 
+* in a table each specific timeout operation within the state where are they
+* going to operate. So, according to the table, when a state needs to arrange
+* for a timeout, the engine can set or reset the given timer. When the FSM
+* engine detects that the appropriate moment has arrived (a timer expiration
+* occurs), it inserts the timeout signal directly into the recipient's event
+* queue. The recipient then processes the timeout signal just like any other
 * signal.
 *
-* Given the above explanation, it is evident that for its operation, the state 
+* Given the above explanation, it is evident that for its operation, the state
 * machine requires an installed signal queue.
-* A timeout specification is referenced by an object of type sm::timeoutSpec 
-* and must be installed inside the state machine using the API 
-* qOS::stateMachine::installTimeoutSpec(). Then, timeout operations can be defined 
-* in a table for each state by using the qOS::sm::state::setTimeouts().
+* A timeout specification is referenced by an object of type qOS::sm::timeoutSpec
+* and must be installed inside the state machine using the method
+* qOS::stateMachine::install(). Then, timeout operations can be defined
+* in a table for each state by using the qOS::sm::state::install().
 *
-* A timeout specification element is defined as a structure of type 
-* qOS::sm::timeoutStateDefinition_t and should follow this layout:
+* A timeout specification element is defined as a structure of type
+* qOS::sm::timeoutStateDefinition and should follow this layout:
 *
 * <center>
 * <table>
@@ -551,79 +579,80 @@
 * </center>
 *
 * The options for every timeout its a bitwise value that indicates which timeout
-* should be used and the operations than should be performed internally by the 
-* state-machine engine. These options can be combined with a bitwise OR and are 
+* should be used and the operations than should be performed internally by the
+* state-machine engine. These options can be combined with a bitwise OR and are
 * detailed as follows:
 *
-* - @c sm::TIMEOUT_INDEX(index) : To select the timeout to be used in the 
-* specification. Should be a value between @c 0 and @c Q_FSM_MAX_TIMEOUTS-1 
-* - @c sm::TIMEOUT_SET_ENTRY : To set the timeout when the specified state its 
+* - @c sm::TIMEOUT_USE_SIGNAL(index) : To select the timeout signal to be used
+* in the specification. Should be a value between @c 0 and @c Q_FSM_MAX_TIMEOUTS-1
+* - @c sm::TIMEOUT_SET_ENTRY : To set the timeout when the specified state its
 * entering.
-* - @c sm::TIMEOUT_RST_ENTRY : To reset the timeout when the specified state its 
+* - @c sm::TIMEOUT_RST_ENTRY : To reset the timeout when the specified state its
 * entering.
 * - @c sm::TIMEOUT_SET_EXIT : To set the timeout when the specified state its exiting.
-* - @c sm::TIMEOUT__RST_EXIT : To reset the timeout when the specified state its 
+* - @c sm::TIMEOUT__RST_EXIT : To reset the timeout when the specified state its
 * exiting.
-* - @c sm::TIMEOUT_KEEP_IF_SET : To apply the Set operation only if the timeout its 
+* - @c sm::TIMEOUT_KEEP_IF_SET : To apply the Set operation only if the timeout its
 * in a reset state.
 * - @c sm::TIMEOUT_PERIODIC : To put the timeout in periodic mode.
-* 
+*
 * @note Data associated with timeout signals should be set to @c nullptr. Any other
 * value will be ignored and will be passed as @c nullptr to the FSM handler.
-* @attention The user is responsible for writing timeout specifications 
-* correctly. Care must be taken that the specifications do not collide between 
+* @attention The user is responsible for writing timeout specifications
+* correctly. Care must be taken that the specifications do not collide between
 * hierarchical states to avoid overwriting operations.
-* @note You can increase the number of available timeouts instances by changing 
+* @note You can increase the number of available timeouts instances by changing
 * the @c Q_FSM_MAX_TIMEOUTS configuration macro inside @c config.h.
-* 
-* @subsection q_fsm_example2 Demonstrative example using transition tables 
+*
+* @subsection q_fsm_example2 Demonstrative example using transition tables
 * The following example shows the implementation of the led-button FSM presented
-* above by using the transition table approach with signal-queue and a timeout 
+* above by using the transition table approach with signal-queue and a timeout
 * specification.
-* 
+*
 * Before getting started, the required variables should be defined:
 *
 *  @code{.c}
 *  /*define the FSM application event-signals*/
-*  #define SIGNAL_BUTTON_PRESSED   ( static_cast<sm::signalID>( 1 ) )
-*  #define SIGNAL_TIMEOUT          ( sm::SIGNAL_TIMEOUT( 0 ) )
-*  #define SIGNAL_BLINK            ( sm::SIGNAL_TIMEOUT( 1 ) )
-*  
+*  enum : sm::signalIDType {
+*      SIGNAL_BUTTON_PRESSED = sm::SIGNAL_USER( 1 ),
+*      SIGNAL_DELAY          = sm::SIGNAL_TIMEOUT( 0 ),
+*      SIGNAL_BLINK          = sm::SIGNAL_TIMEOUT( 1 ),
+*  };
+*
 *  task LED_Task; /*The task node*/
 *  stateMachine LED_FSM; /*The state-machine handler*/
 *  sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
-*  queue LEDsigqueue; /*the signal-queue*/ 
-*  sm::Signal_t led_sig_stack[ 5 ];  /*the signal-queue storage area*/
+*  sm::signalQueue<5> LEDsigqueue;
 *  sm::timeoutSpec tm_spectimeout;
-*  
+*
 *  /*create the transition tables for every state*/
-*  sm::transition_t LEDOff_transitions[] = {
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOn , 0, nullptr }
+*  sm::transition LEDOff_transitions[] = {
+*      { SIGNAL_BUTTON_PRESSED, State_LEDOn}
 *  };
-*  
-*  qSM_Transition_t LEDOn_transitions[] = {
-*      { SIGNAL_TIMEOUT,        nullptr, &State_LEDOff   , 0, nullptr},
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDBlink , 0, nullptr}
+*
+*  sm::transition LEDOn_transitions[] = {
+*      { SIGNAL_DELAY,          State_LEDOff   },
+*      { SIGNAL_BUTTON_PRESSED, State_LEDBlink }
 *  };
-*  
-*  qSM_Transition_t LEDBlink_transitions[] = {
-*      { SIGNAL_TIMEOUT,        nullptr, &State_LEDOff   , 0, nullptr},
-*      { SIGNAL_BUTTON_PRESSED, nullptr, &State_LEDOff   , 0, nullptr}
+*
+*  sm::transition LEDBlink_transitions[] = {
+*      { SIGNAL_DELAY,          State_LEDOff },
+*      { SIGNAL_BUTTON_PRESSED, State_LEDOff }
 *  };
-*  
+*
 *  /*define the timeout specifications */
-*  sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
-*      { 10_sec,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+*  sm::timeoutStateDefinition LedOn_Timeouts[] = {
+*      { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
 *  };
-*  
-*  qSM_TimeoutStateDefinition_t LEDBlink_timeouts[] = {
-*      { 10_sec,  TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
-*      { 0.5_sec, TIMEOUT_INDEX( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
+*
+*  sm::timeoutStateDefinition LEDBlink_timeouts[] = {
+*      { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT },
+*      { 0.5_sec, sm::TIMEOUT_USE_SIGNAL( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
 *  };
-*  @endcode 
+*  @endcode
 *
 * Then, we define the callback for the states.
-* 
+*
 *  @code{.c}
 *  sm::status State_LEDOff_Callback( sm::handler_t h ) {
 *      switch ( h.signal() ) {
@@ -657,12 +686,12 @@
 *      }
 *      return sm::status::SUCCESS;
 *  }
-*  @endcode 
-* 
+*  @endcode
+*
 * In the previous code snippet, we assumed that @c SIGNAL_BUTTON_PRESSED can be
 * delivered from either the interrupt context or another task.
 *
-* To finish the setup, a task is added to handle the FSM and then, the 
+* To finish the setup, a task is added to handle the FSM and then, the
 * transition table can be installed with the other required objects.
 *
 *  @code{.c}
@@ -670,42 +699,38 @@
 *  LED_FSM.add( State_LEDOff, State_LEDOff_Callback );
 *  LED_FSM.add( State_LEDOn, State_LEDOn_Callback );
 *  LED_FSM.add( State_LEDBlink, State_LEDBlink_Callback );
-*  
-*  LEDsigqueue.setup( led_sig_stack, sizeof(sm::signal_t), 5 );
-*  LED_FSM.installSignalQueue( LEDsigqueue );
-*  
-*  LED_FSM.installTimeoutSpec( tm_spectimeout );
-*  State_LEDOn.setTimeouts( LedOn_Timeouts, 1);
-*  State_LEDBlink.setTimeouts( LEDBlink_timeouts, 2 );
-*  
-*  State_LEDOff.setTransitions( LEDOff_transitions, 1 );
-*  State_LEDOn.setTransitions( LEDOn_transitions, 2 );
-*  State_LEDBlink.setTransitions( LEDBlink_transitions, 2 );
-*  
-*  os.addStateMachineTask( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
-*  @endcode 
+*
+*  LED_FSM.install( LEDsigqueue );
+*  LED_FSM.install( tm_spectimeout );
+*
+*  State_LEDOff.install( LEDOff_transitions );
+*  State_LEDOn.install( LEDOn_transitions, LedOn_Timeouts );
+*  State_LEDBlink.install( LEDBlink_transitions, LEDBlink_timeouts );
+*
+*  os.add( LED_Task, LED_FSM, core::MEDIUM_PRIORITY, 100_ms );
+*  @endcode
 *
 * @section qfsm_happroach Using the hierarchical approach
-* In conventional state machine designs, all states are considered at the same 
-* level. The design does not capture the commonality that exists among states. 
-* In real life, many states handle most transitions in similar fashion and 
-* differ only in a few key components. Even when the actual handling differs, 
-* there is still some commonality. It is in these situations where the 
+* In conventional state machine designs, all states are considered at the same
+* level. The design does not capture the commonality that exists among states.
+* In real life, many states handle most transitions in similar fashion and
+* differ only in a few key components. Even when the actual handling differs,
+* there is still some commonality. It is in these situations where the
 * hierarchical designs make the most sense.
-* 
-* A hierarchical state-machine is characterized by having compound states. A 
+*
+* A hierarchical state-machine is characterized by having compound states. A
 * composite state is defined as state that has inner states and can be used as a
-* decomposition mechanism that allows factoring of common behaviors and their 
+* decomposition mechanism that allows factoring of common behaviors and their
 * reuse. And this is the biggest advantage of this design, because it captures
-* the commonality by organizing the states as a hierarchy. The states at the 
-* higher level in the hierarchy perform the common handling, while the lower level 
-* states inherit the commonality from higher level ones and perform the state 
+* the commonality by organizing the states as a hierarchy. The states at the
+* higher level in the hierarchy perform the common handling, while the lower level
+* states inherit the commonality from higher level ones and perform the state
 * specific functions.
-* 
+*
 * @subsection q_fsm_example3 Example using a hierarchical FSM
 * This example takes the "Cruise Control" study case, a real-time system that
 * manages the speed of an automobile based on inputs from the driver.
-* 
+*
 * <center>
 * @htmlonly
 * <!DOCTYPE html>
@@ -714,7 +739,7 @@
 * <title>hsm</title>
 * <meta charset="utf-8"/>
 * </head>
-* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.2,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-19T16:51:35.501Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;QdIZd3r2DwtN3vC1hyVB\&quot; version=\&quot;20.2.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;Ucjj-E1xw4AO6E8yxrXi\&quot; name=\&quot;Página-1\&quot;&gt;7Vxbc5s6EP41njnnoYwuSMCjb7lMmjQTT3rapwwxisMUmxRwk/TXH4GFASFiTIzjJMTTKQi8IH37rVa7K/fwcP50HNgP9+e+w7weAs5TD496CEGDQP5f3PK8akEYrxpmgeuIm7KGifuXiUYgWpeuw8LCjZHve5H7UGyc+osFm0aFNjsI/MfibXe+V3zqgz1jpYbJ1PbKrf+5TnQvWiG1sgsnzJ3di0ebyFhdmNvpzaIn4b3t+I+5Jjzu4WHg+9HqaP40ZF48eOm4rL53VHF1/WIBW0R1vhDdhPb8r3cUeSdnQ+f76W/v+PaLkPLH9paiw+Jlo+d0BAJ/uXBYLAT08ODx3o3Y5MGexlcfOea87T6ae/wM8sMwCvxfbOh7fpB8G5sg/vArd67npe0Lf8HiJn8RHdlz14t14+ty6jo2f/TQX4R+/HAhLB12PmAD23NnC37ssbtICBAqA4E4Vz27PFRpv1kQsadckxi6Y+bPWRQ881vEVWoJGIUeQwzoquExUwsdiJvucxoBTV2oo1DF2Vp4hhY/EIBtAR5SgEe9eGBu+cEsPjh1+EiKRv6Mdfs+UObtYxp/ZKhPmPeHRe7UVmLcIoiWiYogQgrKIJplDFMO7xxC3PGvKXRmPehgW9DpNdi3cCPX9joCpigaFtYMUgRyLeatOEg6Dr4CPb0eeq3RkG6m4TBYuqG7mN18u7vruLi2qFjyaBAsezQQKzya1phodExsih2uiV1rPDQ38/CKhcs552HHwUocMaIaKiOpA43skYeWCkt7Hg/64jZ8yJvUBFP2z797gvAjcBXrW2GsGaglmFNbUGfu7Dib4mkSqElOkM6xo9jK/lS2eK8MhqrAjgRtfzplHgvsqIM37+TCEl2xZin4SvbpGUFlrKdgkkv4sic3UuKK++t7gwzsorTJA2POzYQryDQasdANmCOMvOKbxefKohx2Zy/jW9SPVeid6lVOF9OA2WE31WyluxRrpg7Wf+W1mlKNiaEBsy1NrhHyYgunH8fu+dnUs8PQnRYBzNBO4EwD66AGXBvQGCQflY4AYBwdHSkBDyM7iNIXFmqTtB258dgk78W7JM6goOaP9Ao//hkf8wlidTZ6yl0aPa8l8OH/kd0Yn/7MX8u+lpyl36vUq9BfBlP2AlQCGN6TGYteuE9EwphTSKWUtTSndkqtE20B8/ic9KeYgFHpoXjCpe/ynmX+FjI1yypNxuu4oSHZ6NUwCCGZcpfl6taLcokkdzVsJblcT+zn3G0P8Q1hdXdMaKo7kJFwJTKj5HrIX8HSGtHN8gQE+svIn9sRczjhOE0+SuRTsug7sNSldBIya6aT2nMxasRBP75hTo0sLJjYzOJua2Q3Gs/UszsU61mKLCHazF6aVJKkA6pR0oqRtGTHJ33rSmNe8pSEi9+uVVUFqxtTDLxzigGND3uRZoBYG4iWnF2ywOVYsGAT+w6GVHoa8cnyJkZDNwTz5ahFpQgERkTDksu+K25Vv3y7ZKmRDfj4ZEkXCpoFcG6x8IVzhQ/Qi+sFfvLeiAIBIRrM+diS74tMwqeQkg++LYfix8gaLc1yW5On4HvtQv1VCZXPq/4E64W1MkD4A2o/t+LUNGTTzt0mmsVwcFOdTx25nM6Xcgtvr/aq3NOnXYVws89NYMFFwmDTWuRdukgQ6KXYpdlM0y0TFgI10hyiE6Qh3VpHRV/LgLr94c9t32lCqpTeZ501YicJpQ0r9lBjw7SRMU+3rDzzoAZWU9C2zNtqJnpv4QKTAM0gFpESDJnO65oksy6LDc5iLElDUDMM2g5hDVNO6hJ9D3ytUYD/8ae7tZeHAcrRlVNON+vRNVkP6b3CTKkD3DpfD4SGBl82KcjCl0rr7F9Dt9HUrcRoFmVTymdYAElxht01I+VFmk73EHZICfipGXno+s5dPEk1mmb1IKCSKITbSeRBqFe8dOW7lb6Rvlu7DNhphv7wfEifd0xiAKxegu0tEXRYjh3nhbR+aZw4h8AAGqSVCzJIpA1ybx6EQIrsNxmML45PL8Y33y56ZKSoZDIGE3fWn0Y3Q4/ZgaiZSmqXesaoRKCIPUVFykhJ5jiX7E5try+a567jJPwIuOS/9m0iKNY4MQxcKhnEb8YlLSM/FAwqESUta1JXOgnimTV52laJJTIqdG9T5ZJsu3e311KRHSeD/nA4/rpBHQaB/YvFO0+20oJg1adPrQaGJakB4svJDXW2cK9KocjnksHw6vp0Mk60oiP9K4oXN1dVUwXYrdXHIEU+Mm8BOqy3MPBAxhobb4yuIt3WodsQXUuuTrCQlg7wmwHcJZbewbpeXnQ0TgIpqs9aKo+pelCra/TUpSmaq6txf3gyHt0kHsjpxXFnuba0XJYu5ch1aKksl9LNbO9HQhRJAjL4xq1Ch+92+EJQqrtOK903GLj2wFXFm1UboM5tDgf/122A2m5vJm28N7O9nbdYEWLNAkwdsRsQW149Qqu8ocLcK7GVQcQO3CbglkrXKNLoWxvuLiK4d00wgKwIaY74zWKAuNvTUSibMop7OuLCDIv2GtRhVKrL5hqpw1rUmtDQDDNzQEpBbajJNU21V7lcNDGpXiEat5TKTnpkVXaj3ZWvMgx7NZ5cn49bsbvdBIwsLG+XIEhVYvt2RrjbLFHYLNHL1bz2Xiqgq1SOA7GdEACqlSwmbLglNZFmouo9/NZr7eUrKhGu8fntbHL5++wbuD67dPuDy+9I9fvMZDC46p+Nby65zZuMR59xNVGyXAoVfmE1QWR9Uq8m4I623/PT7Fe+V4qR/VY6Hv8P&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.5,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-19T16:51:35.501Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;QdIZd3r2DwtN3vC1hyVB\&quot; version=\&quot;20.2.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;Ucjj-E1xw4AO6E8yxrXi\&quot; name=\&quot;Página-1\&quot;&gt;7Vxbc5s6EP41njnnoYwuSMCjb7lMmjQTT3rapwwxisMUmxRwk/TXH4GFASFiTIzjJMTTKQi8IH37rVa7K/fwcP50HNgP9+e+w7weAs5TD496CEGDQP5f3PK8akEYrxpmgeuIm7KGifuXiUYgWpeuw8LCjZHve5H7UGyc+osFm0aFNjsI/MfibXe+V3zqgz1jpYbJ1PbKrf+5TnQvWiG1sgsnzJ3di0ebyFhdmNvpzaIn4b3t+I+5Jjzu4WHg+9HqaP40ZF48eOm4rL53VHF1/WIBW0R1vhDdhPb8r3cUeSdnQ+f76W/v+PaLkPLH9paiw+Jlo+d0BAJ/uXBYLAT08ODx3o3Y5MGexlcfOea87T6ae/wM8sMwCvxfbOh7fpB8G5sg/vArd67npe0Lf8HiJn8RHdlz14t14+ty6jo2f/TQX4R+/HAhLB12PmAD23NnC37ssbtICBAqA4E4Vz27PFRpv1kQsadckxi6Y+bPWRQ881vEVWoJGIUeQwzoquExUwsdiJvucxoBTV2oo1DF2Vp4hhY/EIBtAR5SgEe9eGBu+cEsPjh1+EiKRv6Mdfs+UObtYxp/ZKhPmPeHRe7UVmLcIoiWiYogQgrKIJplDFMO7xxC3PGvKXRmPehgW9DpNdi3cCPX9joCpigaFtYMUgRyLeatOEg6Dr4CPb0eeq3RkG6m4TBYuqG7mN18u7vruLi2qFjyaBAsezQQKzya1phodExsih2uiV1rPDQ38/CKhcs552HHwUocMaIaKiOpA43skYeWCkt7Hg/64jZ8yJvUBFP2z797gvAjcBXrW2GsGaglmFNbUGfu7Dib4mkSqElOkM6xo9jK/lS2eK8MhqrAjgRtfzplHgvsqIM37+TCEl2xZin4SvbpGUFlrKdgkkv4sic3UuKK++t7gwzsorTJA2POzYQryDQasdANmCOMvOKbxefKohx2Zy/jW9SPVeid6lVOF9OA2WE31WyluxRrpg7Wf+W1mlKNiaEBsy1NrhHyYgunH8fu+dnUs8PQnRYBzNBO4EwD66AGXBvQGCQflY4AYBwdHSkBDyM7iNIXFmqTtB258dgk78W7JM6goOaP9Ao//hkf8wlidTZ6yl0aPa8l8OH/kd0Yn/7MX8u+lpyl36vUq9BfBlP2AlQCGN6TGYteuE9EwphTSKWUtTSndkqtE20B8/ic9KeYgFHpoXjCpe/ynmX+FjI1yypNxuu4oSHZ6NUwCCGZcpfl6taLcokkdzVsJblcT+zn3G0P8Q1hdXdMaKo7kJFwJTKj5HrIX8HSGtHN8gQE+svIn9sRczjhOE0+SuRTsug7sNSldBIya6aT2nMxasRBP75hTo0sLJjYzOJua2Q3Gs/UszsU61mKLCHazF6aVJKkA6pR0oqRtGTHJ33rSmNe8pSEi9+uVVUFqxtTDLxzigGND3uRZoBYG4iWnF2ywOVYsGAT+w6GVHoa8cnyJkZDNwTz5ahFpQgERkTDksu+K25Vv3y7ZKmRDfj4ZEkXCpoFcG6x8IVzhQ/Qi+sFfvLeiAIBIRrM+diS74tMwqeQkg++LYfix8gaLc1yW5On4HvtQv1VCZXPq/4E64W1MkD4A2o/t+LUNGTTzt0mmsVwcFOdTx25nM6Xcgtvr/aq3NOnXYVws89NYMFFwmDTWuRdukgQ6KXYpdlM0y0TFgI10hyiE6Qh3VpHRV/LgLr94c9t32lCqpTeZ501YicJpQ0r9lBjw7SRMU+3rDzzoAZWU9C2zNtqJnpv4QKTAM0gFpESDJnO65oksy6LDc5iLElDUDMM2g5hDVNO6hJ9D3ytUYD/8ae7tZeHAcrRlVNON+vRNVkP6b3CTKkD3DpfD4SGBl82KcjCl0rr7F9Dt9HUrcRoFmVTymdYAElxht01I+VFmk73EHZICfipGXno+s5dPEk1mmb1IKCSKITbSeRBqFe8dOW7lb6Rvlu7DNhphv7wfEifd0xiAKxegu0tEXRYjh3nhbR+aZw4h8AAGqSVCzJIpA1ybx6EQIrsNxmML45PL8Y33y56ZKSoZDIGE3fWn0Y3Q4/ZgaiZSmqXesaoRKCIPUVFykhJ5jiX7E5try+a567jJPwIuOS/9m0iKNY4MQxcKhnEb8YlLSM/FAwqESUta1JXOgnimTV52laJJTIqdG9T5ZJsu3e311KRHSeD/nA4/rpBHQaB/YvFO0+20oJg1adPrQaGJakB4svJDXW2cK9KocjnksHw6vp0Mk60oiP9K4oXN1dVUwXYrdXHIEU+Mm8BOqy3MPBAxhobb4yuIt3WodsQXUuuTrCQlg7wmwHcJZbewbpeXnQ0TgIpqs9aKo+pelCra/TUpSmaq6txf3gyHt0kHsjpxXFnuba0XJYu5ch1aKksl9LNbO9HQhRJAjL4xq1Ch+92+EJQqrtOK903GLj2wFXFm1UboM5tDgf/122A2m5vJm28N7O9nbdYEWLNAkwdsRsQW149Qqu8ocLcK7GVQcQO3CbglkrXKNLoWxvuLiK4d00wgKwIaY74zWKAuNvTUSibMop7OuLCDIv2GtRhVKrL5hqpw1rUmtDQDDNzQEpBbajJNU21V7lcNDGpXiEat5TKTnpkVXaj3ZWvMgx7NZ5cn49bsbvdBIwsLG+XIEhVYvt2RrjbLFHYLNHL1bz2Xiqgq1SOA7GdEACqlSwmbLglNZFmouo9/NZr7eUrKhGu8fntbHL5++wbuD67dPuDy+9I9fvMZDC46p+Nby65zZuMR59xNVGyXAoVfmE1QWR9Uq8m4I623/PT7Fe+V4qR/VY6Hv8P&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 * <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 * </body>
 * </html>
@@ -723,77 +748,70 @@
 * </center>
 *
 * The behavior of this system is state-dependent in that the executed actions
-* correspond not only to the driver input, but also to the current state of the 
+* correspond not only to the driver input, but also to the current state of the
 * system and with the status of the engine and the brake.
-* The figure above illustrates the modeling of this system with the 
+* The figure above illustrates the modeling of this system with the
 * "Automated Control" state acting as composite.
 *
-* Before getting started, the required user-defined signals, variables, and 
+* Before getting started, the required user-defined signals, variables, and
 * entries of the transition table should be defined:
-* 
+*
 *  @code{.c}
-*  #define  SIGNAL_ENGINE_ON           ( static_cast<signalID>(1) )
-*  #define  SIGNAL_ACCEL               ( static_cast<signalID>(2) )
-*  #define  SIGNAL_RESUME              ( static_cast<signalID>(3) )
-*  #define  SIGNAL_OFF                 ( static_cast<signalID>(4) )
-*  #define  SIGNAL_BRAKE_PRESSED       ( static_cast<signalID>(5) )
-*  #define  SIGNAL_CRUISE              ( static_cast<signalID>(6) )
-*  #define  SIGNAL_REACHED_CRUISING    ( static_cast<signalID>(7) )
-*  #define  SIGNAL_ENGINE_OFF          ( static_cast<signalID>(8) )
-*  
+*  enum : sm::signalIDType {
+*      SIGNAL_ENGINE_ON         = sm::SIGNAL_USER( 1 ),
+*      SIGNAL_ACCEL             = sm::SIGNAL_USER( 2 ),
+*      SIGNAL_RESUME            = sm::SIGNAL_USER( 3 ),
+*      SIGNAL_OFF               = sm::SIGNAL_USER( 4 ),
+*      SIGNAL_BRAKE_PRESSED     = sm::SIGNAL_USER( 5 ),
+*      SIGNAL_CRUISE            = sm::SIGNAL_USER( 6 ),
+*      SIGNAL_REACHED_CRUISING  = sm::SIGNAL_USER( 7 ),
+*      SIGNAL_ENGINE_OFF        = sm::SIGNAL_USER( 8 ),
+*  };
+*
 *  task CruiseControlTask;
 *  stateMachine Top_SM;
-*  
+*
 *  /*highest level states*/
 *  sm::state state_idle, state_initial, state_cruisingoff, state_automatedcontrol;
 *  /*states inside the state_automatedcontrol*/
-*  sm::state_t state_accelerating, state_cruising, state_resuming;
-*  
-*  queue top_sigqueue;
-*  sm::signal_t topsm_sig_stack[ 10 ];
-*  
+*  sm::state state_accelerating, state_cruising, state_resuming;
+*  sm::signalQueue<10> top_sigqueue;
+*
 *  /*=======================================================================*/
 *  /*                             TRANSITION TABLES                         */
 *  /*=======================================================================*/
-*  sm::transition_t idle_transitions[] =
-*  {
-*  { SIGNAL_ENGINE_ON, SigAct_ClearDesiredSpeed, &state_initial , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition idle_transitions[] = {
+*       { SIGNAL_ENGINE_ON, SigAct_ClearDesiredSpeed, state_initial }
 *  };
-*  
-*  sm::transition_t initial_transitions[] =
-*  {
-*  { SIGNAL_ACCEL, SigAct_BrakeOff, &state_accelerating , sm::historyMode::NO_HISTORY, nullptr }
+*
+*  sm::transition initial_transitions[] = {
+*       { SIGNAL_ACCEL, SigAct_BrakeOff, state_accelerating }
 *  };
-*  
-*  sm::transition_t accel_transitions[] =
-*  {
-*  { SIGNAL_CRUISE,  nullptr, &state_cruising , sm::historyMode::NO_HISTORY, nullptr }
+*
+*  sm::transition accel_transitions[] = {
+*       { SIGNAL_CRUISE, state_cruising }
 *  };
-*  
-*  sm::transition_t cruising_transitions[] =
-*  {
-*  { SIGNAL_OFF,   nullptr, &state_cruisingoff  , sm::historyMode::NO_HISTORY, nullptr },
-*  { SIGNAL_ACCEL, nullptr, &state_accelerating , sm::historyMode::NO_HISTORY, nullptr }
+*
+*  sm::transition cruising_transitions[] = {
+*       { SIGNAL_OFF, state_cruisingoff },
+*       { SIGNAL_ACCEL, state_accelerating }
 *  };
-*  
-*  sm::transition_t resuming_transitions[] =
-*  {
-*  { SIGNAL_ACCEL, nullptr,  &state_accelerating , sm::historyMode::NO_HISTORY, nullptr }
+*
+*  sm::transition resuming_transitions[] = {
+*       { SIGNAL_ACCEL, state_accelerating }
 *  };
-*  
-*  sm::transition_t cruisingoff_transitions[] =
-*  {
-*  { SIGNAL_ACCEL,      SigAct_BrakeOff, &state_accelerating , sm::historyMode::NO_HISTORY, nullptr },
-*  { SIGNAL_RESUME,     SigAct_BrakeOff, &state_resuming     , sm::historyMode::NO_HISTORY, nullptr },
-*  { SIGNAL_ENGINE_OFF, nullptr,         &state_idle         , sm::historyMode::NO_HISTORY, nullptr }
+*
+*  sm::transition cruisingoff_transitions[] = {
+*       { SIGNAL_ACCEL,      SigAct_BrakeOff, state_accelerating },
+*       { SIGNAL_RESUME,     SigAct_BrakeOff, state_resuming },
+*       { SIGNAL_ENGINE_OFF, state_idle  }
 *  };
-*  
-*  sm::transition_t automated_transitions[] =
-*  {
-*  { SIGNAL_BRAKE_PRESSED,   nullptr,  &state_cruisingoff  , 0, nullptr }
+*
+*  sm::transition automated_transitions[] = {
+*       { SIGNAL_BRAKE_PRESSED, state_cruisingoff }
 *  };
 *  /*---------------------------------------------------------------------*/
-*  @endcode 
+*  @endcode
 *
 * Then, signal-actions and state callbacks are later defined
 *
@@ -821,7 +839,7 @@
 *              break;
 *          case sm::signalID::SIGNAL_EXIT:
 *              break;
-*      } 
+*      }
 *      return RetVal;
 *  }
 *  /*=======================================================================*/
@@ -850,7 +868,7 @@
 *  /*          STATE CALLBACKS FOR THE AUTOMATED CONTROL FSM                */
 *  /*=======================================================================*/
 *  sm::status state_accelerating_callback( sm::handler_t h ) {
-*      switch ( h->Signal ) {
+*      switch ( h.signal() ) {
 *          case sm::signalID::SIGNAL_EXIT:
 *              Speed_SelectDesired();
 *              break;
@@ -870,7 +888,7 @@
 *      Speed_Maintain();
 *      return sm::status::SUCCESS;
 *  }
-*  
+*
 *  @endcode
 *
 * Finally, the dedicated task for the FSM and related objects are configured.
@@ -883,30 +901,28 @@
 *  Top_SM.add( state_cruisingoff, state_cruisingoff_callback );
 *  Top_SM.add( state_automatedcontrol, state_automatedcontrol_callback );
 *  /*subscribe to the states within the state_automatedcontrol*/
-*  state_automatedcontrol.add( &state_accelerating, state_accelerating_callback );
-*  state_automatedcontrol.add( &state_resuming, state_resuming_callback );
-*  state_automatedcontrol.add( &state_cruising, state_cruising_callback );
-*  
-*  top_sigqueue.setup( topsm_sig_stack, sizeof(sm::signal_t), 10 );
-*  Top_SM.installSignalQueue( top_sigqueue );
-*  
-*  state_idle.setTransitions( idle_transitions, qFLM_ArraySize(idle_transitions) );
-*  state_initial.setTransitions( initial_transitions, qFLM_ArraySize(initial_transitions) );
-*  state_cruisingoff.setTransitions( cruisingoff_transitions, qFLM_ArraySize(cruisingoff_transitions) );
-*  state_automatedcontrol.setTransitions( automated_transitions, qFLM_ArraySize(automated_transitions) );
-*  state_accelerating.setTransitions( accel_transitions, qFLM_ArraySize(accel_transitions) );
-*  state_resuming.setTransitions( resuming_transitions, qFLM_ArraySize(resuming_transitions) );
-*  state_cruising.setTransitions( cruising_transitions, qFLM_ArraySize(cruising_transitions) );
-*  
-*  os.addStateMachineTask( CruiseControlTask, Top_SM, core::MEDIUM_PRIORITY, 100_ms );
+*  state_automatedcontrol.add( state_accelerating, state_accelerating_callback );
+*  state_automatedcontrol.add( state_resuming, state_resuming_callback );
+*  state_automatedcontrol.add( state_cruising, state_cruising_callback );
+*  Top_SM.install( top_sigqueue );
+*
+*  state_idle.install( idle_transitions );
+*  state_initial.install( initial_transitions );
+*  state_cruisingoff.install( cruisingoff_transitions );
+*  state_automatedcontrol.install( automated_transitions );
+*  state_accelerating.install( accel_transitions );
+*  state_resuming.install( resuming_transitions );
+*  state_cruising.install( cruising_transitions );
+*
+*  os.add( CruiseControlTask, Top_SM, core::MEDIUM_PRIORITY, 100_ms );
 *  @endcode
-* 
+*
 * @subsection q_fsm_example4 Example with history pseudo-states
-* State transitions defined in high-level composite states often deal with 
-* events that require immediate attention; however, after handling them, the 
+* State transitions defined in high-level composite states often deal with
+* events that require immediate attention; however, after handling them, the
 * system should return to the most recent substate of the given composite state.
 * UML statecharts address this situation with two kinds of history pseudostates:
-* @a "shallow history" and @a "deep history"( denoted as the circled @c H and 
+* @a "shallow history" and @a "deep history"( denoted as the circled @c H and
 * @c H* icon respectively in the figure).
 *
 * <center>
@@ -917,55 +933,56 @@
 * <title>fsmhist</title>
 * <meta charset="utf-8"/>
 * </head>
-* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.2,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-19T18:43:21.516Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;Ch7yXC-GbSBqROWlSNdq\&quot; version=\&quot;20.4.1\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;sgRdDsJHhmN2pV4VL9Bt\&quot; name=\&quot;Página-1\&quot;&gt;7Vtbb+o4EP41vKzUKLbjXB4bWrYr7UpH6sOe87TKIS5YJ8QoMS3tr18bbHKxUQM9AUoDEoonyRjP92VmPHZGaLxY/1kky/k/LCXZCLrpeoTuRhBi6ItfKXjdCm5QEG4ls4KmWxmoBI/0jSihq6QrmpKycSFnLON02RROWZ6TKW/IkqJgL83LnljW7HWZzIgheJwmmSn9l6Z8rqTAj6oTD4TO5qrrEAbbE4tEX6xGUs6TlL3UROh+hMYFY3x7tFiPSSaNp+2yvW+y5+zujxUk511u8P5b+GGcv/21uP1RrPO3+/U4vlFanpNspQas/ix/1RYo2CpPiVTijlD8MqecPC6TqTz7IjAXsjlfZKIFxGHJC/aLjFnGis3dKHTlV5x5olmm5TnLiRSxnE+SBc0kOf5eTWmaiK7HLC+Z7Fwp02YXBouTjM5ycZyRJ64UKMoAV7VtfatBkoKT9V7rgR0mgsyELQgvXsUl6gYUKRgVkQF0PQcqLr/UmKHhntdIAYDneJ4ipSLkbNdFhZk4ULAdACG0QOhn0jw/xcFMHjzyhBOsxaKX3ZlToC3k9778tiF/INkz4XSaWLHuEUwPBC0wgRVMLzSx1Pj+dhxRRxz9Acf9OAb+eUH0Bn96LHRRN+hAX9Dh96EjeXorcwrRmmZJWdJpE60mtLuA73bA5h3Tx5uvjRCuG0wmEyu6JU8Krv+w4shGNqHSNJv/JYakWnIAZE35d3nGiVyk2j9E+8Z1XAHYVnC31vfKxmut8Y0UVIBBCiXbGpCkRor1LktqJMCWgKplBckSTp+b6m3MUD18Y1R0XJHQEwMF7u4DWpT0oBOhaPcJm/pLtiqmRKmsJ16WXoJaLzonNpyWViwgmhFuKBZIJq+1y5bygtLg/c6Kxz8K/uDFjvViqHMi0ZsjC0z0cDwZ4TsDRDFw3kSqZUppHBHXs1slXtA03YBQkJK+JT83iqQtFReFVhzLnoSmFWelQsGggIbajr4CL+zoNvvC1sNtdxBZsbX4p97yi/C6gxQTA2sFKWAGqVxY8nu98WMTsrBuVgFq09IR6uKjUdQmHEROFB0ZdPwOys4eaCILnW1zHm+Y8+wtRICweyGiN7+kg9m7SKIByR2S7gVWIcBQETwavgvI/YCtGnhFCUKnWeylB3qEjdgcOQE8LtCjCDhu7QPbpGxR7ewxH9gKnVdE0S+dwyLQKm6AMDye2m1lECAnAJfGZ1vN15b6wCH1qWJnO4nF0AicMDhpBmvWfx9Mv5RldFmSPoCx2/9R9Q36xQNDIxVFju+ZkNgWN6O+EDHLkA9/fGFIPMsjclI8LIXFYWrQzb0FHd0bwL4RLn8fgLbqoS1SgSFSaSj9NpTQtVeBTzpJt9XNhiexE3ywM3xR1OOmHVu97IomQd1Wm690EmSSDoOjJ0HYa+cBGDog2rsqffb5EOxQQfzM1P7S83sfeo29DKiV58i1iCNXrN5RXY+7l8P1odx6PNf1ZiO5uQh7o2q3kev4eHRte42wTCfcoPLbLXqHwPGA3y7jHhwtdHmsrlcvVFzOY2MpAeP4ftiicug8028nGsA9+xYV2GEP7OATP2v8N/ZIQviB1DZsK0OXndpa9gjj+HbwW4fWNoP2Aqj9ZZrT+i3LrlccxwO4HwZ3z76Ik4Jr3RQ7HsD9MLg4dPCZsT1sU6yy6SfJNqr0aH/BYZdGDJOwj03CEIC9TMKk3subhFkWEXB8N7jEg12i8SYb6Mshimb1wviWCNVr9+j+fw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.5,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-19T18:43:21.516Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;Ch7yXC-GbSBqROWlSNdq\&quot; version=\&quot;20.4.1\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;sgRdDsJHhmN2pV4VL9Bt\&quot; name=\&quot;Página-1\&quot;&gt;7Vtbb+o4EP41vKzUKLbjXB4bWrYr7UpH6sOe87TKIS5YJ8QoMS3tr18bbHKxUQM9AUoDEoonyRjP92VmPHZGaLxY/1kky/k/LCXZCLrpeoTuRhBi6ItfKXjdCm5QEG4ls4KmWxmoBI/0jSihq6QrmpKycSFnLON02RROWZ6TKW/IkqJgL83LnljW7HWZzIgheJwmmSn9l6Z8rqTAj6oTD4TO5qrrEAbbE4tEX6xGUs6TlL3UROh+hMYFY3x7tFiPSSaNp+2yvW+y5+zujxUk511u8P5b+GGcv/21uP1RrPO3+/U4vlFanpNspQas/ix/1RYo2CpPiVTijlD8MqecPC6TqTz7IjAXsjlfZKIFxGHJC/aLjFnGis3dKHTlV5x5olmm5TnLiRSxnE+SBc0kOf5eTWmaiK7HLC+Z7Fwp02YXBouTjM5ycZyRJ64UKMoAV7VtfatBkoKT9V7rgR0mgsyELQgvXsUl6gYUKRgVkQF0PQcqLr/UmKHhntdIAYDneJ4ipSLkbNdFhZk4ULAdACG0QOhn0jw/xcFMHjzyhBOsxaKX3ZlToC3k9778tiF/INkz4XSaWLHuEUwPBC0wgRVMLzSx1Pj+dhxRRxz9Acf9OAb+eUH0Bn96LHRRN+hAX9Dh96EjeXorcwrRmmZJWdJpE60mtLuA73bA5h3Tx5uvjRCuG0wmEyu6JU8Krv+w4shGNqHSNJv/JYakWnIAZE35d3nGiVyk2j9E+8Z1XAHYVnC31vfKxmut8Y0UVIBBCiXbGpCkRor1LktqJMCWgKplBckSTp+b6m3MUD18Y1R0XJHQEwMF7u4DWpT0oBOhaPcJm/pLtiqmRKmsJ16WXoJaLzonNpyWViwgmhFuKBZIJq+1y5bygtLg/c6Kxz8K/uDFjvViqHMi0ZsjC0z0cDwZ4TsDRDFw3kSqZUppHBHXs1slXtA03YBQkJK+JT83iqQtFReFVhzLnoSmFWelQsGggIbajr4CL+zoNvvC1sNtdxBZsbX4p97yi/C6gxQTA2sFKWAGqVxY8nu98WMTsrBuVgFq09IR6uKjUdQmHEROFB0ZdPwOys4eaCILnW1zHm+Y8+wtRICweyGiN7+kg9m7SKIByR2S7gVWIcBQETwavgvI/YCtGnhFCUKnWeylB3qEjdgcOQE8LtCjCDhu7QPbpGxR7ewxH9gKnVdE0S+dwyLQKm6AMDye2m1lECAnAJfGZ1vN15b6wCH1qWJnO4nF0AicMDhpBmvWfx9Mv5RldFmSPoCx2/9R9Q36xQNDIxVFju+ZkNgWN6O+EDHLkA9/fGFIPMsjclI8LIXFYWrQzb0FHd0bwL4RLn8fgLbqoS1SgSFSaSj9NpTQtVeBTzpJt9XNhiexE3ywM3xR1OOmHVu97IomQd1Wm690EmSSDoOjJ0HYa+cBGDog2rsqffb5EOxQQfzM1P7S83sfeo29DKiV58i1iCNXrN5RXY+7l8P1odx6PNf1ZiO5uQh7o2q3kev4eHRte42wTCfcoPLbLXqHwPGA3y7jHhwtdHmsrlcvVFzOY2MpAeP4ftiicug8028nGsA9+xYV2GEP7OATP2v8N/ZIQviB1DZsK0OXndpa9gjj+HbwW4fWNoP2Aqj9ZZrT+i3LrlccxwO4HwZ3z76Ik4Jr3RQ7HsD9MLg4dPCZsT1sU6yy6SfJNqr0aH/BYZdGDJOwj03CEIC9TMKk3subhFkWEXB8N7jEg12i8SYb6Mshimb1wviWCNVr9+j+fw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 * <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 * </body>
 * </html>
 * @endhtmlonly
 * <em>Example with history pseudo-states</em>
 * </center>
-* 
-* - @a Shallow @a history :  A transition to the shallow history state in a 
-* composite state invokes the last state that was active, at the same depth as 
+*
+* - @a Shallow @a history : A transition to the shallow history state in a
+* composite state invokes the last state that was active, at the same depth as
 * the history state itself, prior to the most recent exit of the composite state.
-* - @a Deep @a history :  A transition to the deep history state within a 
+* - @a Deep @a history : A transition to the deep history state within a
 * composite state invokes the state that was active, immediately before the most
 * recent exit of the composite state. The last active state can be nested at any
 * depth.
-* 
-* Here, the way to specify this type of transition in QuarkTS++ is very 
-* straightforward, you only need to assign the history-mode in the last entry 
+*
+* Here, the way to specify this type of transition in QuarkTS++ is very
+* straightforward, you only need to assign the history-mode in the last entry
 * of the transition as shown below:
 *
 *  @code{.c}
-*  #define SIGNAL_A ( static_cast<sm::signalID>(1) )
-*  #define SIGNAL_B ( static_cast<sm::signalID>(2) )
-*  #define SIGNAL_C ( static_cast<sm::signalID>(3) )
-*  #define SIGNAL_D ( static_cast<sm::signalID>(4) )
-*  #define SIGNAL_E ( static_cast<sm::signalID>(5) )
-*  #define SIGNAL_F ( static_cast<sm::signalID>(6) )
+*  enum : sm::signalIDType {
+*      SIGNAL_A  = sm::SIGNAL_USER( 1 ),
+*      SIGNAL_B  = sm::SIGNAL_USER( 2 ),
+*      SIGNAL_C  = sm::SIGNAL_USER( 3 ),
+*      SIGNAL_D  = sm::SIGNAL_USER( 4 ),
+*      SIGNAL_E  = sm::SIGNAL_USER( 5 ),
+*      SIGNAL_F  = sm::SIGNAL_USER( 6 ),
+*  };
 *
-*  queue_t sigqueue;
-*  sm::signal_t topsm_sig_stack[ 10 ];
+*  sm::signalQueue<10> sigqueue;
 *  stateMachine super;
 *  sm::state state1 , state2 , state3 , state4 , state5 , state6;
 *
-*  sm::transition_t state1_transitions [] = {
-*      { SIGNAL_A , nullptr , &state2 , sm::historyMode::SHALLOW_HISTORY, nullptr },
-*      { SIGNAL_B , nullptr , &state2 , sm::historyMode::DEEP_HISTORY, nullptr },
-*      { SIGNAL_C , nullptr , &state2 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state1_transitions [] = {
+*      { SIGNAL_A , state2 , sm::historyMode::SHALLOW_HISTORY },
+*      { SIGNAL_B , state2 , sm::historyMode::DEEP_HISTORY },
+*      { SIGNAL_C , state2 }
 *  };
 *
-*  sm::transition_t state2_transitions [] = {
-*      { SIGNAL_D , nullptr , &state1 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state2_transitions [] = {
+*      { SIGNAL_D , state1  }
 *  };
 *
-*  sm::transition_t state3_transitions [] = {
-*      { SIGNAL_E , nullptr , &state4 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state3_transitions [] = {
+*      { SIGNAL_E , state4 }
 *  };
 *
-*  sm::transition_t state5_transitions [] = {
-*      { SIGNAL_F , nullptr , &state6 , sm::historyMode::NO_HISTORY, nullptr }
+*  sm::transition state5_transitions [] = {
+*      { SIGNAL_F , state6 }
 *  };
 *  @endcode
 *
@@ -982,13 +999,12 @@
 *  state4.add( state5, state5_callback );
 *  state4.add( state6, state6_callback );
 *
-*  sigqueue.setup( topsm_sig_stack , sizeof(sm::signal_t), 10 );
 *  super.installSignalQueue( sigqueue );
-*  state1.setTransitions( state1_transitions , 3 );
-*  state2.setTransitions( state2_transitions , 1 );
-*  state3.setTransitions( state3_transitions , 1 );
-*  state5.setTransitions( state5_transitions , 1 );
-*  os.addStateMachineTask( SMTask , super , core::MEDIUM_PRIORITY, 100_ms );
-*  @endcode 
-* 
+*  state1.install( state1_transitions );
+*  state2.install( state2_transitions );
+*  state3.install( state3_transitions );
+*  state5.install( state5_transitions );
+*  os.add( SMTask , super , core::MEDIUM_PRIORITY, 100_ms );
+*  @endcode
+*
 */

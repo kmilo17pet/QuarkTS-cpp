@@ -1,5 +1,7 @@
 #include "include/task.hpp"
+#include "include/kernel.hpp"
 #include "include/helper.hpp"
+#include "include/util.hpp"
 
 using namespace qOS;
 
@@ -7,21 +9,28 @@ const iteration_t task::PERIODIC = INT32_MIN;
 const iteration_t task::INDEFINITE = task::PERIODIC;
 const iteration_t task::SINGLE_SHOT = 1;
 
-const uint32_t task::BIT_INIT = 0x00000001uL;
-const uint32_t task::BIT_ENABLED = 0x00000002uL;
-const uint32_t task::BIT_QUEUE_RECEIVER = 0x00000004uL;
-const uint32_t task::BIT_QUEUE_FULL = 0x00000008uL;
-const uint32_t task::BIT_QUEUE_COUNT = 0x00000010uL;
-const uint32_t task::BIT_QUEUE_EMPTY = 0x00000020uL;
-const uint32_t task::BIT_SHUTDOWN = 0x00000040uL;
-const uint32_t task::BIT_REMOVE_REQUEST = 0x00000080uL;
+const uint32_t task::BIT_INIT = 0x00000001UL;
+const uint32_t task::BIT_ENABLED = 0x00000002UL;
+const uint32_t task::BIT_QUEUE_RECEIVER = 0x00000004UL;
+const uint32_t task::BIT_QUEUE_FULL = 0x00000008UL;
+const uint32_t task::BIT_QUEUE_COUNT = 0x00000010UL;
+const uint32_t task::BIT_QUEUE_EMPTY = 0x00000020UL;
+const uint32_t task::BIT_SHUTDOWN = 0x00000040UL;
+const uint32_t task::BIT_REMOVE_REQUEST = 0x00000080UL;
+const uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000UL;
+const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CUL;
 
-const uint32_t task::EVENT_FLAGS_MASK = 0xFFFFF000uL;
-const uint32_t task::QUEUE_FLAGS_MASK = 0x0000003CuL;
-
+/*============================================================================*/
 constexpr iteration_t TASK_ITER_VALUE( iteration_t x )
 {
-    return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x; 
+    return ( ( x < 0 ) && ( x != task::PERIODIC ) ) ? -x : x;
+}
+/*============================================================================*/
+void task::activities( event_t e )
+{
+    if ( nullptr != callback ) {
+        callback( e );
+    }
 }
 /*============================================================================*/
 void task::setFlags( const uint32_t xFlags, const bool value ) noexcept
@@ -37,7 +46,7 @@ void task::setFlags( const uint32_t xFlags, const bool value ) noexcept
 bool task::getFlag( const uint32_t flag ) const noexcept
 {
     const uint32_t xBit = this->flags & flag;
-    return ( 0uL != xBit );
+    return ( 0UL != xBit );
 }
 /*============================================================================*/
 priority_t task::getPriority( void ) const noexcept
@@ -45,7 +54,7 @@ priority_t task::getPriority( void ) const noexcept
     return priority;
 }
 /*============================================================================*/
-bool task::setPriority( priority_t pValue ) noexcept
+bool task::setPriority( const priority_t pValue ) noexcept
 {
     bool retValue = false;
 
@@ -86,7 +95,7 @@ bool task::deadLineReached( void ) const noexcept
             const clock_t interval = time.getInterval();
             const bool expired = time.expired();
 
-            if ( ( 0uL == interval ) || expired ) {
+            if ( ( 0UL == interval ) || expired ) {
                 retValue = true;
             }
         }
@@ -95,7 +104,7 @@ bool task::deadLineReached( void ) const noexcept
     return retValue;
 }
 /*============================================================================*/
-bool task::setState( taskState s ) noexcept
+bool task::setState( const taskState s ) noexcept
 {
     bool retValue = false;
 
@@ -122,7 +131,7 @@ bool task::setState( taskState s ) noexcept
     return retValue;
 }
 /*============================================================================*/
-void task::setIterations( iteration_t iValue ) noexcept
+void task::setIterations( const iteration_t iValue ) noexcept
 {
     if ( iValue > 0 ) {
         iterations = -iValue;
@@ -135,7 +144,7 @@ void task::setIterations( iteration_t iValue ) noexcept
     }
 }
 /*============================================================================*/
-bool task::setTime( const qOS::time_t tValue ) noexcept
+bool task::setTime( const qOS::duration_t tValue ) noexcept
 {
     return time.set( tValue );
 }
@@ -170,17 +179,21 @@ bool task::setData( void *arg ) noexcept
 bool task::setName( const char *tName ) noexcept
 {
     bool retValue = false;
-
-    if ( nullptr != tName ) {
-        name = tName;
-        retValue = true;
+    const size_t nl = util::strlen( tName , sizeof(name) );
+    /*cstat -MISRAC++2008-5-14-1*/
+    if ( ( nullptr != getContainer() ) && ( nl > 0U ) && ( nl < sizeof(name) ) ) {
+        if ( nullptr == os.getTaskByName( tName ) ) {
+            (void)util::strcpy( name, tName , sizeof( name ) ); // skipcq: CXX-C1000
+            retValue = true;
+        }
     }
+    /*cstat +MISRAC++2008-5-14-1*/
     return retValue;
 }
 /*============================================================================*/
 const char* task::getName( void ) const noexcept
 {
-    return ( nullptr != name ) ? name : "nullptr";
+    return name; // skipcq: CXX-C1000
 }
 /*============================================================================*/
 trigger task::queueCheckEvents( void ) noexcept
@@ -188,7 +201,10 @@ trigger task::queueCheckEvents( void ) noexcept
     trigger retValue = trigger::None;
 
     if ( nullptr != aQueue ) {
-        bool fullFlag, countFlag, receiverFlag, emptyFlag;
+        bool fullFlag;
+        bool countFlag;
+        bool receiverFlag;
+        bool emptyFlag;
         size_t qCount; /*current queue count*/
 
         fullFlag = getFlag( BIT_QUEUE_FULL );
@@ -205,7 +221,7 @@ trigger task::queueCheckEvents( void ) noexcept
         else if ( ( countFlag ) && ( qCount >= aQueueCount ) ) {
             retValue = trigger::byQueueCount;
         }
-        else if ( receiverFlag && ( qCount > 0u ) ) {
+        else if ( receiverFlag && ( qCount > 0U ) ) {
             retValue = trigger::byQueueReceiver;
         }
         else if ( emptyFlag && aQueue->isEmpty() ) {  /*isEmpty() is known to not have side effects*/
@@ -231,24 +247,25 @@ bool task::attachQueue( queue &q, const queueLinkMode mode, const size_t arg ) n
     bool retValue = false;
 
     if ( q.isInitialized() ) {
-        setFlags( static_cast<uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0u != arg );
+        setFlags( static_cast<uint32_t>( mode ) & QUEUE_FLAGS_MASK, 0U != arg );
         if ( queueLinkMode::QUEUE_COUNT == mode ) {
             aQueueCount = arg;
         }
-        aQueue = ( arg > 0u ) ? &q : nullptr;
+        aQueue = ( arg > 0U ) ? &q : nullptr;
         retValue = true;
     }
 
     return retValue;
 }
 /*============================================================================*/
-void * const & task::getAttachedObject( void ) const noexcept
+void * const & task::getBindedObject( void ) const noexcept
 {
     return aObj;
 }
 /*============================================================================*/
-event_t task::eventData( void ) const noexcept
+queue* task::getQueue( void ) noexcept
 {
-    return *pEventInfo;
+    return aQueue;
 }
 /*============================================================================*/
+

@@ -44,7 +44,7 @@
 * the delay to expire, allowing other tasks to run. Timers are also a dependency 
 * for coroutines and FSMs in order to manage timed operations efficiently.
 * 
-* Always consider using STimers for operations that require elapsed time
+* Always consider using Timers for operations that require elapsed time
 * measurement or intra-task delays to efficiently preserve the cooperative 
 * multitasking scheme.
 *

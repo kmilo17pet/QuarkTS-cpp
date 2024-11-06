@@ -11,7 +11,7 @@ namespace qOS {
     */
 
     /**
-    * @brief An enum that defines the modes in which a item should be inserted 
+    * @brief An enum that defines the modes in which a item should be inserted
     * in to a queue.
     */
     enum class queueSendMode {
@@ -47,25 +47,41 @@ namespace qOS {
             uint8_t *tail{ nullptr };
             uint8_t *writer{ nullptr };
             uint8_t *reader{ nullptr };
-            volatile size_t itemsWaiting = 0u;
-            size_t itemsCount = 0u;
-            size_t itemSize = 0u;
+            volatile size_t itemsWaiting = 0U;
+            size_t itemsCount = 0U;
+            size_t itemSize = 0U;
             void moveReader( void ) noexcept;
             void copyDataFromQueue( void * const dst ) noexcept;
-            void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept; 
+            void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept;
             queue( queue const& ) = delete;
             void operator=( queue const& ) = delete;
         public:
             queue() = default;
+            /*! @cond  */
+            virtual ~queue() {}
+            /*! @endcond  */
             /**
             * @brief Configures a Queue. Here, the RAM used to hold the queue data
             * @a pData is statically allocated at compile time by the application writer.
-            * @param[in] pData Data block or array of data.
+            * @param[in] pData Data block or array of data (Queue storage area).
             * @param[in] size The size, in bytes, of one single item in the queue.
             * @param[in] count The maximum number of items the queue can hold.
             * @return @c true on success, otherwise returns @c false.
             */
             bool setup( void *pData, const size_t size, const size_t count ) noexcept;
+            /**
+            * @brief Configures a Queue. Here, the RAM used to hold the queue data
+            * @a pData is statically allocated at compile time by the application writer.
+            * @tparam T Type of one single item in the queue
+            * @param[in] pData Data block or array of data (Queue storage area).
+            * @param[in] count The maximum number of items the queue can hold.
+            * @return @c true on success, otherwise returns @c false.
+            */
+            template <typename T>
+            bool setup( void *pData, const size_t count ) noexcept
+            {
+                return setup( pData, sizeof(T), count );
+            }
             /**
             * @brief Resets a queue to its original empty state.
             */
@@ -86,7 +102,7 @@ namespace qOS {
             */
             size_t count( void ) const noexcept;
             /**
-            * @brief Returns the number of available slots to hold items inside 
+            * @brief Returns the number of available slots to hold items inside
             * the queue.
             * @return The number of available slots in the queue.
             */
@@ -98,9 +114,9 @@ namespace qOS {
             */
             bool removeFront( void ) noexcept;
             /**
-            * @brief Receive an item from a queue (and removes it). The item is 
+            * @brief Receive an item from a queue (and removes it). The item is
             * received by copy so a buffer of adequate size must be provided.
-            * The number of bytes copied into the buffer was defined when the 
+            * The number of bytes copied into the buffer was defined when the
             * queue was created.
             * @param[out] dst Pointer to the buffer into which the received item
             * will be copied.
@@ -115,8 +131,8 @@ namespace qOS {
             * queue. The size of the items the queue will hold was defined when the
             * queue was created, so this many bytes will be copied from @a itemToQueue
             * into the queue storage area.
-            * @param[in] pos Can take the value queueSendMode::TO_BACK (default)
-            * to place the item at the back of the queue, or queueSendMode::TO_FRONT
+            * @param[in] pos Can take the value @c queueSendMode::TO_BACK (default)
+            * to place the item at the back of the queue, or @c queueSendMode::TO_FRONT
             * to place the item at the front of the queue (for high priority messages).
             * @return @c true on successful add, @c false if not added
             */

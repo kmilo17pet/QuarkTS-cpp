@@ -3,20 +3,20 @@
 #include "config/config.h"
 
 #ifndef  Q_MAX_FTOA_PRECISION
-    #define Q_MAX_FTOA_PRECISION    ( 10u )
+    #define Q_MAX_FTOA_PRECISION    ( 10U )
 #endif
 #ifndef Q_ATOF_FULL
     #define Q_ATOF_FULL             ( 0 )
 #endif
 
-#define Q_IO_UTIL_MAX_STRLEN        ( static_cast<size_t>( 512u ) )
+#define Q_IO_UTIL_MAX_STRLEN        ( static_cast<size_t>( 512U ) )
 
 using namespace qOS;
 using namespace qOS::util;
 
 static const char * discardWhitespaces( const char *s, size_t maxlen ) noexcept;
 static const char * checkStrSign( const char *s, int *sgn ) noexcept;
-static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept;
+static size_t xBaseUtoA( unsigned_t num, char* str, uint8_t base ) noexcept;
 static char nibbleToX( uint8_t value ) noexcept;
 static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const size_t n, bool aip, bool operation ) noexcept;
 static uint8_t hexCharToUnsigned( const char c ) noexcept;
@@ -26,8 +26,8 @@ static const char * discardWhitespaces( const char *s, size_t maxlen ) noexcept
 {
     /*cstat -MISRAC++2008-5-14-1*/
     /*isspace is known to not have side effects*/
-    while ( ( maxlen > 0u ) && ( 0 != isspace( static_cast<int>( *s ) ) ) ) {
-        s++; /*discard whitespaces*/
+    while ( ( maxlen > 0U ) && ( 0 != isspace( static_cast<int>( *s ) ) ) ) {
+        s++;
         --maxlen;
     }
     /*cstat +MISRAC++2008-5-14-1*/
@@ -36,12 +36,11 @@ static const char * discardWhitespaces( const char *s, size_t maxlen ) noexcept
 /*============================================================================*/
 static const char * checkStrSign( const char *s, int *sgn ) noexcept
 {
-    if ( '-' == *s ) { /*if negative found*/
-        *sgn = -1; /*set the sign*/
-        ++s; /*move to next*/
+    if ( '-' == *s ) {
+        *sgn = -1;
+        ++s;
     }
     else if ( '+' == *s ) {
-        /*plus sign ignored, move to next*/
         ++s;
     }
     else {
@@ -60,7 +59,7 @@ char* util::strchr( const char *s, int c, size_t maxlen ) noexcept
             break;
         }
         --maxlen;
-    } while ( ( '\0' != ( *s++ ) ) && ( maxlen > 0u ) );
+    } while ( ( '\0' != ( *s++ ) ) && ( maxlen > 0U ) );
 
     return retValue;
 }
@@ -69,12 +68,12 @@ size_t util::strlen( const char* s, size_t maxlen ) noexcept
 {
     size_t count;
 
-    if ( ( nullptr == s ) || ( 0u == maxlen ) ) {
-        count = 0u;
+    if ( ( nullptr == s ) || ( 0U == maxlen ) ) {
+        count = 0U;
     }
     else {
-        count = 0u;
-        while ( ( '\0' != *s ) && ( maxlen > 0u ) ) {
+        count = 0U;
+        while ( ( '\0' != *s ) && ( maxlen > 0U ) ) {
             ++count;
             --maxlen;
             ++s;
@@ -88,12 +87,12 @@ size_t util::strcpy( char * dst, const char * src, size_t maxlen ) noexcept
 {
     const size_t srclen = util::strlen( src, Q_IO_UTIL_MAX_STRLEN );
 
-    if ( ( srclen + 1u ) < maxlen ) {
-        (void)memcpy( dst, src, srclen + 1u );
+    if ( ( srclen + 1U ) < maxlen ) {
+        (void)memcpy( dst, src, srclen + 1U );
     }
-    else if ( 0u != maxlen ) {
-        (void)memcpy( dst, src, maxlen - 1u );
-        dst[ maxlen - 1u ] = '\0';
+    else if ( 0U != maxlen ) {
+        (void)memcpy( dst, src, maxlen - 1U );
+        dst[ maxlen - 1U ] = '\0';
     }
     else {
         /*nothing to do here*/
@@ -113,11 +112,11 @@ size_t util::strcat( char *dst, const char *src, size_t maxlen ) noexcept
     }
     else {
         if ( srclen < ( maxlen - dstlen ) ) {
-            (void)memcpy( &dst[ dstlen ], src, srclen + 1u ) ;
+            (void)memcpy( &dst[ dstlen ], src, srclen + 1U ) ;
         } 
         else {
-            (void)memcpy( &dst[ dstlen ], src, maxlen - 1u );
-            dst[ dstlen + maxlen - 1u ] = '\0';
+            (void)memcpy( &dst[ dstlen ], src, maxlen - 1U );
+            dst[ dstlen + maxlen - 1U ] = '\0';
         }
         retVal = dstlen + srclen;
     }
@@ -126,25 +125,24 @@ size_t util::strcat( char *dst, const char *src, size_t maxlen ) noexcept
 }
 /*============================================================================*/
 /*perform conversion of unsigned integer to ASCII. NULL Terminator not included*/
-static size_t xBaseU32toA( unsigned_t num, char* str, uint8_t base ) noexcept
+static size_t xBaseUtoA( unsigned_t num, char* str, uint8_t base ) noexcept
 {
-    size_t i = 0u;
+    size_t i = 0U;
 
-    /* Handle 0 explicitly, otherwise empty string is printed for 0 */
-    if ( ( 0uL == num ) || ( 0u == base ) ) {
+    if ( ( 0UL == num ) || ( 0U == base ) ) {
         str[ i++ ] = '0';
     }
     else {
-        while ( 0uL != num ) { /*Process individual digits*/
+        while ( 0UL != num ) {
             const unsigned long r = num % static_cast<unsigned long>( base );
             /*cstat -CERT-INT30-C_a*/
-            str[ i++ ] = ( r > 9uL ) ? /*i++ never wraps*/
-                static_cast<char>( static_cast<uint8_t>( r - 10uL ) + static_cast<uint8_t>( 'A' ) ) :
+            str[ i++ ] = ( r > 9UL ) ? /*i++ never wraps*/
+                static_cast<char>( static_cast<uint8_t>( r - 10UL ) + static_cast<uint8_t>( 'A' ) ) :
                 static_cast<char>( static_cast<uint8_t>( r ) + static_cast<uint8_t>( '0' ) );
             /*cstat +CERT-INT30-C_a*/
             num = num/base;
         }
-        (void)util::swapBytes( str, i );/*Reverse the string*/
+        (void)util::swapBytes( str, i );
     }
 
     return i;
@@ -154,24 +152,24 @@ static char nibbleToX( uint8_t value ) noexcept
 {
     char ch;
 
-    ch = static_cast<char>( ( value & 0x0Fu ) + 48u );
+    ch = static_cast<char>( ( value & 0x0FU ) + 48U );
 
-    return ( ch <= '9' ) ? ch : static_cast<char>( static_cast<uint8_t>( ch ) + 7u );
+    return ( ch <= '9' ) ? ch : static_cast<char>( static_cast<uint8_t>( ch ) + 7U );
 }
 /*============================================================================*/
 bool util::swapBytes( void *pData, const size_t n ) noexcept
 {
     bool retValue = false;
 
-    if ( ( nullptr != pData ) && ( n > 0u ) ) {
+    if ( ( nullptr != pData ) && ( n > 0U ) ) {
         /*cstat -CERT-EXP36-C_b -MISRAC++2008-7-1-1*/
         uint8_t *p = static_cast<uint8_t*>( pData );
         /*cstat +CERT-EXP36-C_b +MISRAC++2008-7-1-1*/
         size_t lo;
         size_t hi;
 
-        hi = n - 1u;
-        for ( lo = 0u ; hi > lo ; ++lo ) {
+        hi = n - 1U;
+        for ( lo = 0U ; hi > lo ; ++lo ) {
             const uint8_t tmp = p[ lo ];
             p[ lo ] = p[ hi ];
             p[ hi ] = tmp;
@@ -185,9 +183,9 @@ bool util::swapBytes( void *pData, const size_t n ) noexcept
 /*============================================================================*/
 bool util::checkEndianness( void ) noexcept
 {
-    const uint16_t i = 1u;
+    const uint16_t i = 1U;
     /*cstat -CERT-INT36-C*/
-    return ( reinterpret_cast<const uint8_t*>( &i )[ 0 ] == 1u );
+    return ( reinterpret_cast<const uint8_t*>( &i )[ 0 ] == 1U );
     /*cstat +CERT-INT36-C*/
 }
 /*============================================================================*/
@@ -199,8 +197,8 @@ bool util::outputString( util::putChar_t fcn, const char *s, void* pStorage, boo
         /*cstat -MISRAC++2008-7-1-1 -CERT-EXP36-C_b*/
         char *xPtr = static_cast<char*>( pStorage );
         /*cstat +MISRAC++2008-7-1-1 +CERT-EXP36-C_b*/
-        if ( ( true == aip ) && ( nullptr != xPtr ) ) {
-            size_t i = 0u;
+        if ( ( aip ) && ( nullptr != xPtr ) ) {
+            size_t i = 0U;
 
             while ( '\0' != *s ) {
                 fcn( &xPtr[ i ] , *s++ );
@@ -223,13 +221,13 @@ bool util::printXData( util::putChar_t fcn, void *pData, size_t n, bool eol, voi
 {
     bool retValue = false;
 
-    if ( ( nullptr != fcn ) && ( n > 0u ) ) {
+    if ( ( nullptr != fcn ) && ( n > 0U ) ) {
         /*cstat -MISRAC++2008-7-1-1 -CERT-EXP36-C_b*/
         uint8_t *pdat = static_cast<uint8_t*>( pData );
         /*cstat +MISRAC++2008-7-1-1 +CERT-EXP36-C_b*/
-        for ( size_t i = 0u ; i < n ; ++i ) {
-            fcn( pStorage, nibbleToX( pdat[ i ] >> 4u ) );
-            fcn( pStorage, nibbleToX( pdat[ i ] & 0x0Fu ) );
+        for ( size_t i = 0U ; i < n ; ++i ) {
+            fcn( pStorage, nibbleToX( pdat[ i ] >> 4U ) );
+            fcn( pStorage, nibbleToX( pdat[ i ] & 0x0FU ) );
             fcn( pStorage, ' ' );
         }
         if ( eol ) {
@@ -246,7 +244,7 @@ static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const s
 {
     bool retValue = false;
 
-    if ( ( nullptr != fcn ) && ( pData != nullptr ) && ( n > 0u ) ) {
+    if ( ( nullptr != fcn ) && ( pData != nullptr ) && ( n > 0U ) ) {
         /*cstat -CERT-EXP36-C_b*/
         char *cdata = static_cast<char*>( pData );
         char *iStg = static_cast<char*>( pStorage );
@@ -254,13 +252,12 @@ static bool operationIO( const ioFcn_t fcn, void* pStorage, void *pData, const s
         /*cstat +CERT-EXP36-C_b*/
         char tmp;
         char *ptmp = &tmp;
-        char **dstDat, **dstStg;
+        char **dstDat;
+        char **dstStg;
 
-        /* Operation -> Output=qFalse : Input=qTrue */
-        dstDat = ( false == operation ) ? &ptmp : &cdata;
-        dstStg = ( ( true == aip ) && ( nullptr != pStorage ) ) ? &iStg : &nStg;
-
-        for ( size_t i = 0u ; i < n ; ++i ) {
+        dstDat = ( !operation ) ? &ptmp : &cdata;
+        dstStg = ( ( aip ) && ( nullptr != pStorage ) ) ? &iStg : &nStg;
+        for ( size_t i = 0U ; i < n ; ++i ) {
             dstDat[ 0 ][ 0 ] = fcn( dstStg[ 0 ] , dstDat[ 0 ][ 0 ] );
             cdata++;
             iStg++;
@@ -283,23 +280,20 @@ bool util::inputRAW( const ioFcn_t fcn, void *pData, const size_t n, void* pStor
 static uint8_t hexCharToUnsigned( const char c ) noexcept /* <c> should only contain a valid hex character*/
 {
     const uint8_t b = static_cast<uint8_t>( c );
-    return static_cast<uint8_t>( ( ( b & 0xFu ) + ( b >> 6u ) ) | ( ( b >> 3u ) & 0x8u ) );
+    return static_cast<uint8_t>( ( ( b & 0xFU ) + ( b >> 6U ) ) | ( ( b >> 3U ) & 0x8U ) );
 }
 /*============================================================================*/
 uint32_t util::hexStringToUnsigned( const char *s ) noexcept
 {
-    uint32_t val = 0uL;
+    uint32_t val = 0UL;
 
     if ( nullptr != s ) {
-        uint8_t nParsed = 0u;
-        /*
-        loop until the end of the string or the number of parsed chars exceeds
-        the 32bit notation
-        */
-        while ( ( '\0' != *s ) && ( nParsed < 8u ) ) {
+        uint8_t nParsed = 0U;
+
+        while ( ( '\0' != *s ) && ( nParsed < 8U ) ) {
             const char c = *s++;
             if ( 0 != isxdigit( static_cast<int>( c ) ) ) {
-                val = ( val << 4uL ) | static_cast<uint32_t>( hexCharToUnsigned( c ) );
+                val = ( val << 4UL ) | static_cast<uint32_t>( hexCharToUnsigned( c ) );
                 ++nParsed;
             }
             else if ( 0 != isspace( static_cast<int>( c ) ) ) {
@@ -316,7 +310,8 @@ uint32_t util::hexStringToUnsigned( const char *s ) noexcept
 /*============================================================================*/
 float64_t util::stringToFloat( const char *s ) noexcept
 {
-    float64_t rez = 0.0, fact;
+    float64_t rez = 0.0;
+    float64_t fact;
     bool point_seen = false;
     int sgn = 1;
     char c;
@@ -336,8 +331,8 @@ float64_t util::stringToFloat( const char *s ) noexcept
             point_seen = true;
         }
         else if ( 0 != isdigit( static_cast<int>( c ) ) ) {
-            if ( true == point_seen ) {
-                fact *= 0.1f;
+            if ( point_seen ) {
+                fact *= 0.1;
             }
             rez = ( rez * 10.0 ) + ( static_cast<float64_t>( c ) ) - 48.0; /*CERT-FLP36-C deviation allowed*/
         }
@@ -378,20 +373,20 @@ float64_t util::stringToFloat( const char *s ) noexcept
 char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcept
 {
     if ( nullptr != str ) {
-        uint32_t u = 0u;
+        uint32_t u = 0U;
 
         (void)memcpy( &u, &num, sizeof(uint32_t) );
-        u &= 0x7FFFFFFFu;
+        u &= 0x7FFFFFFFU;
 
-        if ( 0u == u ) {
+        if ( 0U == u ) {
             (void)util::strcpy( str, "0.0", 4 );
         }
-        else if ( u < 0x7F800000u ) {
+        else if ( u < 0x7F800000U ) {
             uint32_t intPart;
-            size_t i = 0u;
+            size_t i = 0U;
 
             precision = clipUpper( precision, static_cast<uint8_t>( Q_MAX_FTOA_PRECISION ) );
-            if ( num < 0.0f ) {
+            if ( num < 0.0F ) {
                 num = -num;
                 str[ i++ ] = '-';
             }
@@ -399,12 +394,12 @@ char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcep
             intPart = static_cast<uint32_t>( num );
             /*cstat -CERT-FLP36-C*/
             num -= static_cast<float64_t>( intPart );
-            i += xBaseU32toA( intPart, &str[ i ], 10u );
-            if ( precision > 0u ) {
+            i += xBaseUtoA( intPart, &str[ i ], 10U );
+            if ( precision > 0U ) {
                 str[ i++ ] = '.';
-                while ( 0u != precision-- ) {
+                while ( 0U != precision-- ) {
                     char c;
-                    num *= 10.0f;
+                    num *= 10.0F;
                     c = static_cast<char>( num );
                     str[ i++ ] = static_cast<char>( static_cast<uint8_t>( c ) + '0' );
                     num -= static_cast<float64_t>( c );
@@ -413,8 +408,8 @@ char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcep
             /*cstat +CERT-FLP36-C*/
             str[ i ] = '\0';
         }
-        else if ( 0x7F800000u == u ) {
-            str[ 0 ] = ( num > 0.0f ) ? '+' : '-';
+        else if ( 0x7F800000U == u ) {
+            str[ 0 ] = ( num > 0.0F ) ? '+' : '-';
             (void)util::strcpy( &str[ 1 ] , "inf", 4 );
         }
         else {
@@ -430,14 +425,13 @@ int util::stringToInt( const char *s ) noexcept
     int retValue = 0;
 
     if ( nullptr != s ) {
-        int res = 0; /*holds the resulting integer*/
-        int sgn = 1; /*only to hold the sign*/
+        int res = 0;
+        int sgn = 1;
 
         s = discardWhitespaces( s, Q_IO_UTIL_MAX_STRLEN );
         s = checkStrSign( s, &sgn );
-        while ( '\0' != *s ) { /*iterate until null char is found*/
-            if ( ( *s >= '0' ) || ( *s <= '9' ) ) {
-                /*if the char is digit, compute the resulting integer*/
+        while ( '\0' != *s ) {
+            if ( ( *s >= '0' ) && ( *s <= '9' ) ) {
                 res = ( res * 10 ) + ( static_cast<int>( *s ) ) - ( static_cast<int>( '0' ) );
                 ++s;
             }
@@ -445,7 +439,7 @@ int util::stringToInt( const char *s ) noexcept
                 break;
             }
         }
-        retValue = sgn * res; /*return the computed integer with sign*/
+        retValue = sgn * res;
     }
 
     return retValue;
@@ -456,31 +450,27 @@ char* util::unsignedToString( unsigned_t num, char* str, uint8_t base ) noexcept
     if ( nullptr != str ) {
         size_t i;
 
-        /*make the unsigned conversion without the null terminator*/
-        i = xBaseU32toA( num, str, base );
+        i = xBaseUtoA( num, str, base );
         str[ i ] = '\0';
     }
 
     return str;
 }
 /*============================================================================*/
-char* util::integerToString( int32_t num, char* str, uint8_t base ) noexcept
+char* util::integerToString( signed_t num, char* str, uint8_t base ) noexcept
 {
     if ( nullptr != str ) {
-        size_t i = 0u;
+        size_t i = 0U;
 
         if ( num < 0 ) {
-            if ( 10u == base ) { /*handle negative numbers only with 10-base*/
-                /*put the sign at the beginning*/
+            if ( 10U == base ) {
                 str[ i++ ] = '-';
             }
             num = -num;
         }
-        /*make the unsigned conversion without the null terminator*/
         /*cstat -MISRAC++2008-5-0-9*/
-        i += xBaseU32toA( static_cast<uint32_t>( num ), &str[ i ], base );
+        i += xBaseUtoA( static_cast<unsigned_t>( num ), &str[ i ], base );
         /*cstat +MISRAC++2008-5-0-9*/
-        /*Append string terminator*/
         str[ i ] = '\0';
     }
 

@@ -14,6 +14,9 @@ namespace qOS {
     *  @{
     */
 
+    /**
+    * @brief AT command line interfaces.
+    */
     namespace cli {
 
         /** @addtogroup  qatcli
@@ -40,7 +43,7 @@ namespace qOS {
         * This code is defined by the application writer and should be a value
         * between @c 1 and @c 32766.
         *
-        * For example, a return value of cli::ERROR_CODE(15), will print out the
+        * For example, a return value of @c cli::ERROR_CODE(15), will print out the
         * string @c ERROR:15.
         */
         constexpr response ERROR_CODE( int16_t code )
@@ -61,11 +64,13 @@ namespace qOS {
 
         /*! @cond */
         class input {
+            public:
+                virtual ~input() {}
             protected:
                 char *storage{ nullptr };
-                volatile index_t index{ 0u };
-                index_t maxIndex{ 0u };
-                size_t size{ 0u };
+                volatile index_t index{ 0U };
+                index_t maxIndex{ 0U };
+                size_t size{ 0U };
                 volatile bool ready{ false };
                 void flush( void );
                 void operator=( input const& ) = delete;
@@ -78,21 +83,21 @@ namespace qOS {
         /**
         * @brief The command argument with all the regarding information of the
         * incoming AT command.
-        * @details From the callback context, can be used to print out extra 
-        * information as a command response, parse the command parameters, and 
+        * @details From the callback context, can be used to print out extra
+        * information as a command response, parse the command parameters, and
         * query properties with crucial information about the
         * detected command, like the type, the number of arguments, and the
         * subsequent string after the command text.
         * @note Should be used only in command-callbacks as the only input argument.
         */
-        class handler_t {
+        class handler_t final {
             private:
                 commandLineInterface *instance{ nullptr };
                 void *Command{ nullptr };
                 char *StrData{ nullptr };
                 void *Data{ nullptr };
-                size_t StrLen{ 0u };
-                size_t NumArgs{ 0u };
+                size_t StrLen{ 0U };
+                size_t NumArgs{ 0U };
                 commandType Type{ UNDEF };
                 _Handler( _Handler const& ) = delete;
                 void operator=( _Handler const& ) = delete;
@@ -186,37 +191,41 @@ namespace qOS {
                 * @brief Helper method for printing a character to the CLI output.
                 * It displays only one character at a time.
                 * @param[in] c The ASCII character.
-                * @return none.
                 */
                 void writeOut( const char c ) const;
                 /**
                 * @brief Writes a string to CLI output without the @c EOF string appended
                 * at the end.
                 * @param[in] s This is the C string to be written.
-                * @return none.
                 */
                 void writeOut( const char *s ) const;
                 /**
                 * @brief The CLI output buffer. Can be written by the user.
                 */
                 char *output{ nullptr };
+                /**
+                * @brief return the instance of command being evaluated
+                * @return The command instance.
+                */
+                inline command& thisCommand( void ) noexcept;
             friend class qOS::commandLineInterface;
         };
         #endif
 
+        class command;
         /*! @cond  */
-        class _Handler {
+        class commandHandler final {
             private:
                 commandLineInterface *instance{ nullptr };
-                void *Command{ nullptr };
+                command *Command{ nullptr };
                 char *StrData{ nullptr };
                 void *Data{ nullptr };
-                size_t StrLen{ 0u };
-                size_t NumArgs{ 0u };
+                size_t StrLen{ 0U };
+                size_t NumArgs{ 0U };
                 commandType Type{ UNDEF };
-                _Handler( _Handler const& ) = delete;
-                void operator=( _Handler const& ) = delete;
-                _Handler() = default;
+                commandHandler( commandHandler const& ) = delete;
+                void operator=( commandHandler const& ) = delete;
+                commandHandler() = default;
             public:
                 inline commandType getType( void ) const
                 {
@@ -238,6 +247,14 @@ namespace qOS {
                 {
                     return NumArgs;
                 }
+                inline command& self( void ) noexcept
+                {
+                    return *Command;
+                }
+                inline command& thisCommand( void ) noexcept
+                {
+                    return *Command;
+                }
                 char* getArgPtr( index_t n ) const;
                 int getArgInt( index_t n ) const;
                 float32_t getArgFloat( index_t n ) const;
@@ -248,7 +265,7 @@ namespace qOS {
                 char *output{ nullptr };
             friend class qOS::commandLineInterface;
         };
-        using handler_t = _Handler&;
+        using handler_t = commandHandler&;
         /*! @endcond  */
 
         /**
@@ -285,12 +302,21 @@ namespace qOS {
         class command : protected node {
             private:
                 commandCallback_t cmdCallback{ nullptr };
-                options_t cmdOpt{ 0u };
-                size_t cmdLen{ 0u };
+                options_t cmdOpt{ 0U };
+                size_t cmdLen{ 0U };
                 void *param{ nullptr };
                 char *Text{ nullptr };
                 command( command const& ) = delete;
                 void operator=( command const& ) = delete;
+            public:
+                command() = default;
+                /*! @cond  */
+                virtual ~command() {}
+                /*! @endcond  */
+                inline void* getParam( void ) noexcept
+                {
+                    return param;
+                }
             friend class qOS::commandLineInterface;
         };
         /** @}*/
@@ -307,7 +333,7 @@ namespace qOS {
     class commandLineInterface : protected cli::input {
         private:
             list subscribed;
-            cli::_Handler handler;
+            cli::commandHandler handler;
             const char *ok_rsp{ "OK" };
             const char *er_rsp{ "ERROR" };
             const char *nf_rsp{ "UNKNOWN" };
@@ -315,20 +341,23 @@ namespace qOS {
             const char *eol{ "\r\n" };
             char delim{ ',' };
             util::putChar_t outputFcn{ nullptr };
-            size_t sizeOutput{ 0u };
+            size_t sizeOutput{ 0U };
             void *owner{ nullptr };
             bool notify( void );
             bool preProcessing( cli::command *cmd, char *inputBuffer );
-            size_t numOfArgs( const char *str );
+            size_t numOfArgs( const char *str ) const;
             void handleResponse( cli::response retval );
             void (*xNotifyFcn)( commandLineInterface *arg) = { nullptr };
             commandLineInterface( commandLineInterface const& ) = delete;
             void operator=( commandLineInterface const& ) = delete;
         public:
             commandLineInterface() = default;
+            /*! @cond  */
+            virtual ~commandLineInterface() {}
+            /*! @endcond  */
             /**
             * @brief Setup an instance of the AT Command Line Interface.
-            * @see core::addCommandLineInterfaceTask()
+            * @see core::add()
             * @note CLI Built-in strings will be written to their default values.
             * @param[in] outFcn The basic output-char wrapper function. All the CLI
             * responses will be printed-out through this function.
@@ -339,6 +368,11 @@ namespace qOS {
             * @return @c true on success, otherwise return @c false.
             */
             bool setup( util::putChar_t outFcn, char *pInput, const size_t sizeIn, char *pOutput, const size_t sizeOut );
+            template <size_t inBufferSize, size_t outBufferSize>
+            bool setup( util::putChar_t outFcn, char (&pInput)[ inBufferSize ], char (&pOutput)[ outBufferSize ] ) // skipcq : CXX-W2066
+            {
+                return setup( outFcn, pInput, inBufferSize, pOutput, outBufferSize );
+            }
             /**
             * @brief This function subscribes the CLI instance to a specific command
             * with an associated @a Callback function, so that next time the required
@@ -371,7 +405,7 @@ namespace qOS {
             * @param[in] param User storage pointer.
             * @return @c true on success, otherwise return @c false.
             */
-            bool add( cli::command &cmd, char *textCommand, cli::commandCallback_t cFcn, cli::options_t cmdOpt, void *param = nullptr );
+            bool add( cli::command &cmd, char *textCommand, const cli::commandCallback_t &cFcn, cli::options_t cmdOpt, void *param = nullptr );
             /**
             * @brief Feed the CLI input with a single character. This call is mandatory
             * from an interrupt context. Put it inside the desired peripheral's ISR.
@@ -408,7 +442,7 @@ namespace qOS {
             cli::response exec( const char *cmd );
             /**
             * @brief Run the AT Command Line Interface when the input is ready.
-            * @see core::addCommandLineInterfaceTask()
+            * @see core::add()
             * @return @c true on success, otherwise return @c false
             */
             bool run( void );
@@ -428,7 +462,7 @@ namespace qOS {
             {
                 handler.Data = pData;
             }
-        friend class cli::_Handler;
+        friend class cli::commandHandler;
         friend class core;
     };
     /** @}*/

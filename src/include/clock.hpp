@@ -15,45 +15,45 @@ namespace qOS {
     using clock_t = timeCount_t;
 
     /** @brief The typedef that specified an time quantity, usually expressed in milliseconds.*/
-    using time_t = timeCount_t;
+    using duration_t = timeCount_t;
 
     /*! @cond  */
     /*cstat -CERT-FLP34-C -MISRAC++2008-5-0-5 -MISRAC++2008-5-0-7*/
-    constexpr qOS::time_t operator "" _ms( unsigned long long int x )
+    constexpr qOS::duration_t operator "" _ms( unsigned long long int x )
     {
-        return static_cast<qOS::time_t>( x );
+        return static_cast<qOS::duration_t>( x );
     }
-    constexpr qOS::time_t operator "" _sec( unsigned long long int x )
+    constexpr qOS::duration_t operator "" _sec( unsigned long long int x )
     {
-        return static_cast<qOS::time_t>( 1000u*x );
+        return static_cast<qOS::duration_t>( 1000U*x );
     }
-    constexpr qOS::time_t operator "" _sec( long double x )
+    constexpr qOS::duration_t operator "" _sec( long double x )
     {
-        return static_cast<qOS::time_t>( 1000u*x );
+        return static_cast<qOS::duration_t>( 1000U*x );
     }
-    constexpr qOS::time_t operator "" _minutes( unsigned long long int x )
+    constexpr qOS::duration_t operator "" _minutes( unsigned long long int x )
     {
-        return static_cast<qOS::time_t>( 60000u*x );
+        return static_cast<qOS::duration_t>( 60000U*x );
     }
-    constexpr qOS::time_t operator "" _minutes( long double x )
+    constexpr qOS::duration_t operator "" _minutes( long double x )
     {
-        return static_cast<qOS::time_t>( 60000u*x );
+        return static_cast<qOS::duration_t>( 60000U*x );
     }
-    constexpr qOS::time_t operator "" _hours( unsigned long long int x )
+    constexpr qOS::duration_t operator "" _hours( unsigned long long int x )
     {
-        return static_cast<qOS::time_t>( 3600000u*x );
+        return static_cast<qOS::duration_t>( 3600000U*x );
     }
-    constexpr qOS::time_t operator "" _hours( long double x )
+    constexpr qOS::duration_t operator "" _hours( long double x )
     {
-        return static_cast<qOS::time_t>( 3600000u*x );
+        return static_cast<qOS::duration_t>( 3600000U*x );
     }
-    constexpr qOS::time_t operator "" _days( unsigned long long int x )
+    constexpr qOS::duration_t operator "" _days( unsigned long long int x )
     {
-        return static_cast<qOS::time_t>( 86400000u*x );
+        return static_cast<qOS::duration_t>( 86400000U*x );
     }
-    constexpr qOS::time_t operator "" _days( long double x )
+    constexpr qOS::duration_t operator "" _days( long double x )
     {
-        return static_cast<qOS::time_t>( 86400000*x );
+        return static_cast<qOS::duration_t>( 86400000*x );
     }
     /*cstat +CERT-FLP34-C +MISRAC++2008-5-0-5 +MISRAC++2008-5-0-7*/
     /*! @endcond  */
@@ -119,9 +119,9 @@ namespace qOS {
             */
             static bool setTickProvider( const getTickFcn_t provider ) noexcept;
             /** @brief To specify a null time value.*/
-            static const qOS::time_t NONE;
+            static const qOS::duration_t NONE;
             /** @brief To specify a non-wait time value.*/
-            static const qOS::time_t IMMEDIATE;
+            static const qOS::duration_t IMMEDIATE;
     };
 
     /** @}*/

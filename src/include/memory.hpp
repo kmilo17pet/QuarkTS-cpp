@@ -12,6 +12,10 @@
 #endif
 
 namespace qOS {
+
+    /**
+    * @brief Memory management interfaces.
+    */
     namespace mem {
 
         /** @addtogroup qmemmang
@@ -21,11 +25,10 @@ namespace qOS {
 
         /*! @cond */
         using address_t = size_t;
-        struct _blockConnect_s {
-            struct _blockConnect_s *next{ nullptr };
-            size_t blockSize{ 0u };
+        struct blockConnect_t {
+            blockConnect_t *next{ nullptr };
+            size_t blockSize{ 0U };
         };
-        using blockConnect_t = struct _blockConnect_s;
         /*! @endcond */
 
         /**
@@ -41,20 +44,22 @@ namespace qOS {
                 blockConnect_t *end{ nullptr };
                 blockConnect_t start;
                 uint8_t *poolMemory{ nullptr };
-                size_t poolMemSize{ 0u };
-                size_t freeBytesRemaining{ 0u };
+                size_t poolMemSize{ 0U };
+                size_t freeBytesRemaining{ 0U };
                 void insertBlockIntoFreeList( blockConnect_t *xBlock ) noexcept;
                 void init( void ) noexcept;
                 pool( pool const& ) = delete;
                 void operator=( pool const& ) = delete;
             public:
+                /*! @cond  */
+                virtual ~pool() {}
+                /*! @endcond  */
                 /**
-                * @brief Initializes a memory pool instance. 
+                * @brief Initializes a memory pool instance.
                 * @param[in] pArea A pointer to a memory block @c uint8_t statically
                 * allocated to act as Heap of the memory pool. The size of this block should
                 * match the @a pSize argument.
                 * @param[in] pSize The size of the memory block pointed by @a pArea
-                * @return Returns @c true on success, otherwise, returns @c false.
                 */
                 inline pool( void *pArea, const size_t pSize ) noexcept {
                     (void)setup( pArea, pSize );
@@ -83,12 +88,11 @@ namespace qOS {
                 * returns, an access is made through the pointer @a ptr.
                 * @attention This method is NOT interrupt-safe.
                 * @param[in] ptr to the memory to deallocate
-                * @return none.
                 */
                 void free( void *ptr ) noexcept;
                 /**
-                * @brief Allocate a block of memory that is @a pSize bytes large. 
-                * If the requested memory can be allocated, a pointer is 
+                * @brief Allocate a block of memory that is @a pSize bytes large.
+                * If the requested memory can be allocated, a pointer is
                 * returned to the beginning of the memory block.
                 * @attention This method is NOT interrupt-safe.
                 * @param[in] pSize Size of the memory block in bytes.

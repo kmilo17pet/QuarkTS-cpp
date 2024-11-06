@@ -16,28 +16,31 @@ namespace qOS {
     /**
     * @brief A non-blocking Timer object
     * @details Timers are an essential extension as they allow for accurate and
-    * efficient timekeeping without blocking tasks. Using timers enables the 
-    * embedded application to perform other critical tasks while the timer is 
+    * efficient timekeeping without blocking tasks. Using timers enables the
+    * embedded application to perform other critical tasks while the timer is
     * running in the background. Timers also provide flexibility in the event
     * that the timer needs to be paused, restarted, or adjusted on the fly.
-    * This can be particularly useful in applications that require dynamic 
+    * This can be particularly useful in applications that require dynamic
     * timing or have unpredictable event intervals.
     */
     class timer {
         private:
-            qOS::clock_t tStart{ 0u };
-            qOS::clock_t tv{ 0u };
+            qOS::clock_t tStart{ 0U };
+            qOS::clock_t tv{ 0U };
         public:
             timer();
+            /*! @cond  */
+            virtual ~timer() {}
+            /*! @endcond  */
             /**
             * @brief Initializes the instance of the timer with the specified
             * expiration time. Timer will start armed.
             * @note The OS must be running before using timers.
-            * @note The expiration time should be at least, two times greater 
+            * @note The expiration time should be at least, two times greater
             * than the clock-Tick.
             * @param[in] tTime The expiration time given in milliseconds.
             */
-            timer( qOS::time_t tTime )
+            explicit timer( const qOS::duration_t tTime )
             {
                 (void)set( tTime );
             }
@@ -50,7 +53,7 @@ namespace qOS {
             * @param[in] tTime The expiration time given in milliseconds.
             * @return Returns @c true on success, otherwise, returns @c false.
             */
-            bool set( qOS::time_t tTime ) noexcept;
+            bool set( const qOS::duration_t tTime ) noexcept;
             /**
             * @brief Disarms the timer object
             */
@@ -72,7 +75,7 @@ namespace qOS {
             * If disarmed, it gets armed immediately with the specified time.
             *
             * If armed, the time argument is ignored and the API only checks for
-            * expiration. When the time expires, the STimer gets armed immediately
+            * expiration. When the time expires, the timer gets armed immediately
             * taking the specified time.
             * @note After the timer expiration, this method re-arms the timer
             * @note The OS must be running before using a timer.
@@ -82,7 +85,7 @@ namespace qOS {
             * @return Returns @c true on success, otherwise, returns @c false.
             * @note A disarmed timer also returns @c false.
             */
-            bool freeRun( qOS::time_t tTime ) noexcept;
+            bool freeRun( const qOS::duration_t tTime ) noexcept;
             /**
             * @brief Retrieve the remaining time in epochs
             * @return The remaining time specified in epochs.
@@ -116,7 +119,7 @@ namespace qOS {
             * the clock-Tick.
             * @param[in] tTime The expiration time given in milliseconds.
             */
-            timer& operator=( qOS::time_t tTime );
+            timer& operator=( const qOS::duration_t tTime );
             /**
             * @brief Disarm or reload the timer
             * @note The OS must be running before using timers.
@@ -124,13 +127,13 @@ namespace qOS {
             * the clock-Tick.
             * @param[in] en @c true for reload of @c false to disarm.
             */
-            timer& operator=( bool en );
+            timer& operator=( const bool en );
             /**
             * @brief Non-Blocking timer check
             * @return Returns @c true when timer expires, otherwise, returns @c false.
             * @note A disarmed timer also returns @c false.
             */
-            bool operator()( void );
+            bool operator()( void ) const;
             /**
             * @brief Set the expiration time for a timer and gets armed immediately
             * @note The OS must be running before using timers.
@@ -138,7 +141,7 @@ namespace qOS {
             * the clock-Tick.
             * @param[in] tTime The expiration time given in milliseconds.
             */
-            bool operator()( qOS::time_t tTime );
+            bool operator()( const qOS::duration_t tTime );
             /**
             * @brief Disarm or reload the timer
             * @note The OS must be running before using timers.
@@ -146,14 +149,14 @@ namespace qOS {
             * the clock-Tick.
             * @param[in] en @c true for reload of @c false to disarm.
             */
-            void operator()( bool en );
+            void operator()( const bool en );
             /** @brief Constant that defines the status of an armed timer*/
             static const bool ARMED;
             /** @brief Constant that defines the status of a disarmed timer*/
             static const bool DISARMED;
             /** @brief Constant that defines the value of a disarmed timer*/
             static const qOS::clock_t DISARM_VALUE;
-            /** @brief Constant that defines the value that a disarmed timer 
+            /** @brief Constant that defines the value that a disarmed timer
             * returns when the remaining time is requested.
             */
             static const qOS::clock_t REMAINING_IN_DISARMED_STATE;

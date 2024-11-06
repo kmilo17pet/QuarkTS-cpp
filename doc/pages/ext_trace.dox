@@ -1,11 +1,15 @@
-/*! @page q_trace Trace/Debugging
+/*! @page q_trace Logging
 * @tableofcontents
 *
 * @section q_trace_overview Overview
-* QuarkTS++ include some basic macros to print out debugging messages. Messages 
-* can be simple text or the value of variables in specific base formats. 
-* To use the trace macros, a single-char output function must be defined using
-* the trace::setOutputFcn() function.
+* QuarkTS++ includes the qOS::logger class that implements application-level 
+* logging. This provides logging APIs based on C++-style streams and various 
+* helper macros. You can log a message by simply streaming things to 
+* @c logger::out(<a particular severity level>), e.g.. 
+* Messages can be simple text or the value of variables in specific base formats. 
+*
+* To use the qOS::logger class, a single-char output function must be defined using
+* the logger::setOutputFcn() function.
 *
 * A single-char output function should follow this prototype:
 *
@@ -20,19 +24,18 @@
 * The body of this user-defined function should have a hardware-dependent code 
 * to print out the @c c variable through a specific peripheral.
 *
-* @section q_trace_viewvars Viewing variables
-* For viewing or tracing a variable (up to 32-bit data) through debug, one of 
-* the following statements are available: qOS::trace::log() or qOS::trace::msg().
+* @section q_trace_viewvars Logging text and variables
+* qOS::logger::out() is the api that should be called every time the end user
+* needs to write an entry to the log
 *
-* The only difference between qOS::trace::log() and qOS::trace::msg(), is that trace starting
-* with @c log , print out additional information provided by the @c __FILE__ , 
-* @c __LINE__ and @c __func__ built-in preprocessing macros, mostly available 
-* in common C++ compilers.
+* We can configure the output with whatever severity levels we deem appropriate,
+* including : @c info, @c warning, @c error and @c fatal. And also the @c debug and 
+* @c verbose can be used to provide additional source-location information.
 *
 * @section q_trace_mblock Viewing a memory block
-* For tracing memory from a specified target address, you should use the qOS::trace::mem()
+* For tracing memory from a specified target address, you should use the qOS::logger::mem()
 * specifier to define the number of bytes to be visualized of the memory block 
-* that shuold be given after as a pointer.
+* that should be given after as a pointer.
 *
 * @section q_trace_usage Usage
 * In the example below, an UART output function is coded to act as the printer.
@@ -44,9 +47,9 @@
 *      uint16_t block[ 4 ] = { 451, 477, 1025, 354 };
 *      float other = 4.5f;
 *
-*      trace::setOutputFcn( putUART1 );
-*      trace::log << mem( sizeof(block) ) << block << trace::endl;
-*      trace::log << mem( sizeof(float) ) << &other << trace::endl;
+*      logger::setOutputFcn( putUART1 );
+*      logger::out() << logger::mem( sizeof(block) ) << block << logger::endl;
+*      logger::out() << logger::mem( sizeof(float) ) << &other << logger::endl;
 *  }
 *  @endcode
 *
@@ -64,7 +67,7 @@
 *
 *  @code{.c}
 *  int main( void ) {
-*      trace::setOutputFcn( putUART1 );
+*      logger::setOutputFcn( putUART1 );
 *      ...
 *      ...
 *  }
@@ -78,11 +81,11 @@
 *      float Sample;
 *      ...
 *      ...
-*      trace::log << "IO TASK running..." << trace::endl;
+*      logger::out() << "IO TASK running..." << logger::endl;
 *      Counter++;
-*      trace::log << Counter << trace::endl;
+*      logger::out() << Counter << logger::endl;
 *      Sample = SensorGetSample ();
-*      trace::log << Sample << trace::endl;
+*      logger::out() << Sample << logger::endl;
 *      ...
 *      ...
 *  }

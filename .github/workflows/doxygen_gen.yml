@@ -8,24 +8,32 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - name: Checkout repository and submodules
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: create dirs
       run: mkdir docout
-    - name: set repo url on corner
-      run: sed -i 's,https://github.com/jothepro/doxygen-awesome-css,https://github.com/kmilo17pet/QuarkTScpp,g' doc/stylesheet/doxygen-custom/header.html
+    - name: set repo url and metadata
+      run: |
+        sed -i 's,https://github.com/jothepro/doxygen-awesome-css,https://github.com/kmilo17pet/QuarkTS-cpp,g' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:title" content="\)[^"]*\(" \/>$\)#\1QuarkTS++ OS\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:image" content="\)[^"]*\(" \/>$\)#\1https://user-images.githubusercontent.com/11412210/235049017-242f1c64-52ef-46db-8008-2c3d8a578320.png\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:description" content="\)[^"]*\(" \/>$\)#\1An open-source OS for small embedded applications\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="og:url" content="\)[^"]*\(" \/>$\)#\1https://github.com/kmilo17pet/QuarkTS-cpp\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="twitter:image:src" content="\)[^"]*\(" \/>$\)#\1https://user-images.githubusercontent.com/11412210/235049017-242f1c64-52ef-46db-8008-2c3d8a578320.png\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="twitter:title" content="\)[^"]*\(" \/>$\)#\1QuarkTS++ OS\2#' doc/stylesheet/doxygen-custom/header.html
+        sed -i 's#\(<meta property="twitter:description" content="\)[^"]*\(" \/>$\)#\1An open-source OS for small embedded applications\2#' doc/stylesheet/doxygen-custom/header.html
     - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.9.2
+      uses: mattnotmitt/doxygen-action@edge
       with:
         doxyfile-path: './doc/Doxygen'
     - name: rm gitignore
-      run: rm .gitignore  
+      run: rm .gitignore
     - name: Deploy doc
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./doxyout/html

@@ -11,7 +11,7 @@ void idleTask_Callback( event_t e ) {
 
   co::reenter() {
     co::delay( 500 );
-    co::restart;
+    co::restart();
   }
 }
 

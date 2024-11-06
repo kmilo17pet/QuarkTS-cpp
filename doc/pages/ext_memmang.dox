@@ -1,23 +1,23 @@
 /*! @page q_memmang Memory Management
 * @tableofcontents
-* 
+*
 * @section q_memmang_overview Overview
-* The QuarkTS++ OS is designed to support the development of safe-critical 
-* embedded applications. Dynamic memory allocation is not permitted for kernel 
-* design, as it may result in out-of-storage run-time failures that are 
+* The QuarkTS++ OS is designed to support the development of safe-critical
+* embedded applications. Dynamic memory allocation is not permitted for kernel
+* design, as it may result in out-of-storage run-time failures that are
 * undesirable. However, some applications can be easily deployed using this
 * allocation scheme, making a safe and portable implementation crucial for user
 * code.
-* 
-* In a typical C++ environment, memory allocation can be achieved using standard 
-* @c new and @c delete operators as well as the C library functions like 
-* @c malloc() and @c free(). However, they may not be appropriate for most 
-* embedded applications, as they may not be available on 
-* small microcontrollers or could consume a substantial amount of code space. 
-* Furthermore, dynamic memory allocation has several implementation-defined 
+*
+* In a typical C++ environment, memory allocation can be achieved using standard
+* @c new and @c delete operators as well as the C library functions like
+* @c malloc() and @c free(). However, they may not be appropriate for most
+* embedded applications, as they may not be available on
+* small microcontrollers or could consume a substantial amount of code space.
+* Furthermore, dynamic memory allocation has several implementation-defined
 * behaviors and potential issues such as fragmentation.
 *
-* To address these concerns, the OS offers its own memory management interface 
+* To address these concerns, the OS offers its own memory management interface
 * for dynamic allocation as a fully kernel-independent extension.
 *
 * @section q_memmang_principle Principle of operation
@@ -39,46 +39,46 @@
 * @endhtmlonly
 * <em>First-fit allocation policy</em>
 * </center>
-* 
 *
-* If adjacent free blocks are available, the implementation combines them into 
-* a single larger block, minimizing the risk of fragmentation, making it 
-* suitable for applications that repeatedly allocate and free different sized 
+*
+* If adjacent free blocks are available, the implementation combines them into
+* a single larger block, minimizing the risk of fragmentation, making it
+* suitable for applications that repeatedly allocate and free different sized
 * blocks of RAM.
 *
 * @note Because memory is statically declared, it will make the application
 * appear to consume a lot of RAM, even before any memory has been allocated
 * from it.
-* 
-* @warning All the memory management APIs are NOT interrupt-safe. Use these APIs
+*
+* @warning All the memory pool methods are NOT interrupt-safe. Use these class
 * only from the base context.
 *
 * @attention The application is not exempt from memory leaks if the user does
 * not perform adequate memory management. Here, the worst-case scenario can
 * occur in the absence of free memory.
-* 
-* @section q_memmang_pools Memory pools
-* A memory pool is a special resource that allows memory blocks to be dynamically
-* allocated from a user-designated memory region. Instead of typical pools with
-* fixed size block allocation, the pools in QuarkTS++ can be of any size, thereby
-* the user is responsible for selecting the appropriate memory pool to allocate 
-* data with the same size.
 *
-* The default memory management unit resides in a memory pool object. Also 
-* called the @a "default pool". The total amount of available heap space in the 
-* default memory pool is set by @c Q_DEFAULT_HEAP_SIZE, which is defined in 
+* @section q_memmang_pools Memory pools
+* A memory pool ( qOS::mem::pool ) is a special resource that allows memory blocks
+* to be dynamically allocated from a user-designated memory region. Instead of
+* typical pools with fixed size block allocation, the pools in QuarkTS++ can be
+* of any size, thereby the user is responsible for selecting the appropriate
+* memory pool to allocate data with the same size.
+*
+* The default memory management unit resides in a memory pool object. Also
+* called the @a "default pool". The total amount of available heap space in the
+* default memory pool is set by @c Q_DEFAULT_HEAP_SIZE, which is defined in
 * @c config.h.
 *
-* Besides the default pool, any number of additional memory pools can be defined. 
-* Like any other object in QuarkTS++, memory pools are referenced by handles, a 
+* Besides the default pool, any number of additional memory pools can be defined.
+* Like any other object in QuarkTS++, memory pools are referenced by handles, a
 * variable of class qOS::mem::pool and should be initialized before using its own
 * constructor or the qOS::mem::pool::setup() method.
 *
-* From now on, user can allocate and free memory in the pool by calling 
+* From now on, user can allocate and free memory in the pool by calling
 * qOS::mem::pool::alloc(), or qOS::mem::pool::free().
-* 
-* To keep track of the memory usage, the qOS::mem::pool::getFreeSize() API function 
-* returns the number of free bytes in the memory pool at the time the function 
+*
+* To keep track of the memory usage, the qOS::mem::pool::getFreeSize() method function
+* returns the number of free bytes in the memory pool at the time the function
 * is called.
 *
 * @section q_memmang_usage Usage example
@@ -87,25 +87,25 @@
 *  #include "QuarkTS.h"
 *  #include "HAL.h"
 *  #include "Core.h"
-*  
+*
 *  using namespace qOS;
 *
 *  task_t taskA;
 *  mem::pool heap1, heap2;
 *  void taskA_Callback( event_t e );
-*  
+*
 *  void taskA_Callback( event_t e ) {
 *      int *xdata = nullptr;
 *      int *ydata = nullptr;
 *      int *xyoper = nullptr;
 *      int n = 20;
 *      int i;
-*      
+*
 *      xyoper = (int*)heap1.alloc( n*sizeof(int) );
 *      xdata = (int*)heap1.alloc( n*sizeof(int) );
 *      /*ydata will point to a segment allocated in another pool*/
-*      ydata = (int*)heap2.alloc( n*sizeof(int) ); 
-*      
+*      ydata = (int*)heap2.alloc( n*sizeof(int) );
+*
 *      /*use the memory if could be allocated*/
 *      if ( xdata && ydata && xyoper ) {
 *          for ( i = 0 ; i < n ; i++ ) {
@@ -118,12 +118,12 @@
 *      else {
 *          trace::log << "ERROR:ALLOCATION_FAIL" << trace::endl;
 *      }
-*  
+*
 *      heap1.free( ydata );
 *      heap1.free( xdata );
 *      heap2.free( xyoper );
 *  }
-*  
+*
 *  int main(void) {
 *      char area_heap1[ 512 ] = { 0 };
 *      char area_heap2[ 512 ] = { 0 };
@@ -133,7 +133,7 @@
 *      heap1.setup( area_another_heap, sizeof( area_heap1 ) );
 *      heap2.setup( area_another_heap, sizeof( area_heap2 ) );
 *      os.init( HAL_GetTick, IdleTaskCallback );
-*      os.addTask( taskA, taskA_Callback, core::LOWEST_PRIORITY, 100, task::PERIODIC, taskState::ENABLED_STATE );
+*      os.add( taskA, taskA_Callback, core::LOWEST_PRIORITY, 100, task::PERIODIC, taskState::ENABLED_STATE );
 *      os.run();
 *      return 0;
 *  }

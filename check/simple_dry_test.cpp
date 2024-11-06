@@ -2,18 +2,59 @@
 #include <stdio.h>
 #include <QuarkTS.h>
 
-using namespace std;
 using namespace qOS;
 
+class customTask : public task {
+    void activities( event_t e ) override
+    {
+        if ( e.firstCall() ) {
+            logger::out() << e.thisTask() << logger::endl;
+        }
+        logger::out() << logger::mag << "im a custom task" << logger::end;
+    }
+};
 
 task t1, t2, t3, t4;
+customTask t5;
 stateMachine m;
 sm::state s1, s2;
+sm::signalQueue<10> signalQueue;
 co::position pos1;
 
-sm::timeoutStateDefinition_t LedOn_Timeouts[] = {
-    { 10000,  sm::TIMEOUT_INDEX( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+enum : sm::signalIDType {
+    SIGNAL_BUTTON_PRESSED = sm::SIGNAL_USER( 1 ),
+    SIGNAL_DELAY          = sm::SIGNAL_TIMEOUT( 0 ),
+    SIGNAL_BLINK          = sm::SIGNAL_TIMEOUT( 1 ),
 };
+
+stateMachine LED_FSM; /*The state-machine handler*/
+sm::state State_LEDOff, State_LEDOn, State_LEDBlink;
+sm::signalQueue<5> LEDsigqueue;
+sm::timeoutSpec tm_spectimeout;
+
+sm::transition LEDOff_transitions[] = {
+    { SIGNAL_BUTTON_PRESSED, State_LEDOn }
+};
+
+sm::transition LEDOn_transitions[] = {
+    { SIGNAL_DELAY,          State_LEDOff   },
+    { SIGNAL_BUTTON_PRESSED, State_LEDBlink }
+};
+
+sm::transition LEDBlink_transitions[] = {
+    { SIGNAL_DELAY,          State_LEDOff  },
+    { SIGNAL_BUTTON_PRESSED, State_LEDOff  }
+};
+
+sm::timeoutStateDefinition LedOn_Timeouts[] = {
+    { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY | sm::TIMEOUT_RST_EXIT },
+};
+
+sm::timeoutStateDefinition LEDBlink_timeouts[] = {
+    { 10_sec,  sm::TIMEOUT_USE_SIGNAL( 0 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT  },
+    { 0.5_sec, sm::TIMEOUT_USE_SIGNAL( 1 ) | sm::TIMEOUT_SET_ENTRY  | sm::TIMEOUT_RST_EXIT | sm::TIMEOUT_PERIODIC }
+};
+
 
 void idleTask_callback( event_t e );
 void otherTask( event_t e );
@@ -25,29 +66,36 @@ void putCharFcn( void* stp, char c );
 
 unsigned long sysClock( void );
 
+
 void idleTask_callback( event_t e )
 {
+    unsigned int a;
+
     if ( e.firstCall() ) {
-        trace::log << "idle task" << trace::end;
+        logger::out() << "idle task" << a << logger::end;
+        logger::out() << e.thisTask() << logger::end;
     }
     co::reenter() {
         for(;;) {
             co::getPosition( pos1 );
-            trace::log << e.self() << trace::end;
-            trace::log << "sec 1"<< trace::end;
+            logger::out() << e.thisTask() << logger::end;
+            logger::out() << "sec 1"<< logger::end;
             co::delay( 0.5_sec );
-            trace::log <<"sec 2"<< trace::end;
+            logger::out() <<"sec 2"<< logger::end;
             co::delay( 0.5_sec );
-            trace::log <<"sec 3"<< trace::end;
+            logger::out() <<"sec 3"<< logger::end;
             co::delay( 0.5_sec );
-            co::waitUntil( true == true );
-            co::waitUntil( true == true , 500 );
-            co::yield;
-            co::restart;
+            co::waitUntil( true );
+            co::waitUntil( true , 500 );
+            co::yield();
+            co::restart();
             co::setPosition( pos1 );
             if ( co::timeoutExpired() ) {
 
             }
+            co::perform() {
+
+            }co::until(false);
         }
     }
 }
@@ -58,10 +106,10 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        trace::log << e.self() << trace::end;
+        logger::out() << e.thisTask() << logger::end;
     }
     co::reenter( otherTaskCrHandle ) {
-        co::restart;
+        co::restart();
         co::semWait( sem );
         co::semSignal( sem );
     }
@@ -71,8 +119,8 @@ sm::status s1_callback( sm::handler_t h )
 {
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<< trace::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< trace::end;
-            h.timeoutSet( 0, 5_sec );
+            logger::out() << logger::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< logger::end;
+            h.thisMachine().timeoutSet( 0, 5_sec );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
             h.nextState( s2 );
@@ -87,11 +135,11 @@ sm::status s2_callback( sm::handler_t h )
 {
     static timer tmr;
 
-    trace::log << trace::var(tmr) << trace::end;
+    logger::out() << logger::var(tmr) << logger::end;
 
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            trace::log<< trace::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< trace::end;
+            logger::out() << logger::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< logger::end;
             tmr( 5_sec );
             break;
         default:
@@ -105,31 +153,31 @@ sm::status s2_callback( sm::handler_t h )
 
 void task_callback( event_t e )
 {
-    trace::log << e.self() << trace::end;
+    logger::out() << e.self() << logger::end;
 
     if ( e.firstCall() ) {
-        trace::log << trace::grn << "first call "<< e.self() << trace::end;
+        logger::out() << logger::grn << "first call "<< e.thisTask() << logger::end;
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        trace::log << "notified(SIMPLE)! " << e.self() << trace::end;
+        logger::out() << "notified(SIMPLE)! " << e.thisTask() << logger::end;
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
-        trace::log << "notified(QUEUED)! " << e.self() << trace::end;
+        logger::out() << "notified(QUEUED)! " << e.thisTask() << logger::end;
     }
-   
+
     if ( e.lastIteration() ) {
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t2, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
-        trace::log << "last iteration "<< e.self() << trace::end;
+        logger::out() << "last iteration "<< e.thisTask() << logger::end;
     }
 
     int someValue = 457;
     int *ptr = &someValue;
-    trace::log << trace::red <<"test trace "<< trace::dec << trace::var(someValue)<< "  " << ptr << trace::end;
+    logger::out() << logger::red <<"test trace "<< logger::dec << logger::var(someValue)<< "  " << ptr << logger::end;
 
 }
 
@@ -144,28 +192,68 @@ void putCharFcn( void* stp, char c ) {
 }
 
 
+input::digitalValue_t digitalRead( uint8_t c );
+input::analogValue_t analogRead( uint8_t c );
+
+input::digitalValue_t digitalRead( uint8_t c ) {
+    (void)c;
+    return 0;
+}
+
+input::analogValue_t analogRead( uint8_t c ) {
+    (void)c;
+    return 0;
+}
+
+input::analogChannel pinA0( 0, 400, 600 );
+input::digitalChannel pinD2( 2, true );
+input::digitalChannel pinD3( 3, true );
+input::digitalChannel pinD4( 4, true );
+input::watcher pinWatcher( digitalRead, analogRead, 50_ms );
+
+
 int main()
 {
+
     uint32_t x = 0xFFAA2211;
     double y = -3.1416;
-    trace::setOutputFcn( &putCharFcn );
-    trace::log << trace::pre(8) <<trace::var(y) << trace::end; 
-    trace::log<< trace::var(x) << trace::mem( sizeof(x) ) << &x << trace::end;
-    t1.setName( "t1");
-    t2.setName( "t2");
-    t3.setName( "t3");
+    logger::setOutputFcn( &putCharFcn );
+    logger::out() << logger::pre(8) << logger::var(y) << logger::end;
+    logger::out() << logger::var(x) << logger::mem( sizeof(x) ) << &x << logger::end;
+    logger::out(logger::info) << "info message"<< logger::end;
+    logger::out(logger::error) << "error message"<< logger::end;
+    logger::out(logger::debug) << "debug message"<< logger::end;
+    logger::out(logger::verbose) << "verbose message"<< logger::end;
+
     os.init( sysClock, idleTask_callback );
-    
-    os.addTask( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
-    os.addTask( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10u );
-    os.addTask( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
+
+
+    LED_FSM.install( LEDsigqueue );
+    LED_FSM.install( tm_spectimeout );
+
+    logger::out(logger::debug) << logger::end;
+    State_LEDOff.install( LEDOff_transitions );
+    State_LEDOn.install( LEDOn_transitions, LedOn_Timeouts );
+    State_LEDBlink.install( LEDBlink_transitions, LEDBlink_timeouts );
+    logger::out(logger::debug) << logger::end;
+    os.add( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
+    os.add( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10U );
+    os.add( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );
+    os.add( t5, nullptr, core::MEDIUM_PRIORITY, 1_sec, task::PERIODIC );
+
+    t1.setName( "t1" );
+    t2.setName( "t2" );
+    t3.setName( "t3" );
+    t4.setName( "t4" );
+    t5.setName( "t5" );
 
     sm::timeoutSpec tm_specTimeout;
     m.setup( nullptr, s1 );
-    m.installTimeoutSpec( tm_specTimeout );
+    m.install( tm_specTimeout );
     m.add( s1, s1_callback );
     m.add( s2, s2_callback );
-    os.addStateMachineTask( t4, m, qOS::core::MEDIUM_PRIORITY, 100_ms );
+    m.install( signalQueue );
+    os.add( t4, m, qOS::core::MEDIUM_PRIORITY, 100_ms );
 
     os.run();
     for(;;) { }

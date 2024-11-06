@@ -8,8 +8,8 @@ bool queue::setup( void *pData, const size_t size, const size_t count ) noexcept
 {
     bool retValue = false;
 
-    if ( ( nullptr != pData ) && ( size > 0u ) && ( count > 0u ) ) {
-        itemsCount = count; /* Initialise the queue members*/
+    if ( ( nullptr != pData ) && ( size > 0U ) && ( count > 0U ) ) {
+        itemsCount = count;
         itemSize = size;
         /*cstat -CERT-EXP36-C_b*/
         head = static_cast<uint8_t*>( pData );
@@ -26,21 +26,21 @@ void queue::reset( void ) noexcept
     critical::enter();
     /*cstat -CERT-INT30-C_a*/
     tail = head + ( itemsCount*itemSize );
-    itemsWaiting = 0u;
+    itemsWaiting = 0U;
     writer = head;
-    reader = head + ( ( itemsCount - 1u )*itemSize );
+    reader = head + ( ( itemsCount - 1U )*itemSize );
     /*cstat +CERT-INT30-C_a*/
     critical::exit();
 }
 /*============================================================================*/
 bool queue::isEmpty( void ) const noexcept
 {
-    return ( 0u == itemsWaiting ) ? true : false;
+    return ( 0U == itemsWaiting );
 }
 /*============================================================================*/
 bool queue::isFull( void ) const noexcept
 {
-    return ( itemsWaiting == itemsCount ) ? true : false;
+    return ( itemsWaiting == itemsCount );
 }
 /*============================================================================*/
 size_t queue::count( void ) const noexcept
@@ -67,10 +67,10 @@ bool queue::removeFront( void ) noexcept
     size_t waiting;
 
     critical::enter();
-    waiting = itemsWaiting; /*to avoid side effects*/
-    if ( waiting > 0u ) {
+    waiting = itemsWaiting;
+    if ( waiting > 0U ) {
         moveReader();
-        --itemsWaiting; /* remove the data. */
+        itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting */
         retValue = true;
     }
     critical::exit();
@@ -90,11 +90,10 @@ bool queue::receive( void *dst ) noexcept
     size_t waiting;
 
     critical::enter();
-    waiting = itemsWaiting; /*to avoid side effects*/
-    if ( waiting > 0u ) {
-        /* items available, remove one of them. */
+    waiting = itemsWaiting;
+    if ( waiting > 0U ) {
         copyDataFromQueue( dst );
-        --itemsWaiting;
+        itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting */
         retValue = true;
     }
     critical::exit();
@@ -119,7 +118,7 @@ void queue::copyDataToQueue( const void *itemToQueue, const queueSendMode xPosit
             reader = ( tail - itemSize );
         }
     }
-    ++itemsWaiting;
+    itemsWaiting = itemsWaiting + 1U; /* ++itemsWaiting */
 }
 /*============================================================================*/
 bool queue::send( void *itemToQueue, const queueSendMode pos ) noexcept
@@ -144,8 +143,8 @@ void* queue::peek( void ) const noexcept
     size_t waiting;
 
     critical::enter();
-    waiting = itemsWaiting; /*to avoid side effects*/
-    if ( waiting > 0u ) {
+    waiting = itemsWaiting;
+    if ( waiting > 0U ) {
         retValue = static_cast<uint8_t *>( reader + itemSize );
         if ( retValue >= tail ) {
             retValue = head;
