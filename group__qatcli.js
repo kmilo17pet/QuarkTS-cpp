@@ -21,6 +21,7 @@ var group__qatcli =
     [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", [
       [ "command", "classq_o_s_1_1cli_1_1command.html#a4c799b5a884573be85204cea15828764", null ],
       [ "getParam", "classq_o_s_1_1cli_1_1command.html#abfa855dfa65d9d6938fafbc43d1efdb1", null ],
+      [ "operator bool", "classq_o_s_1_1cli_1_1command.html#a15ef3c1ab7db65d17b3631edcf25eaf9", null ],
       [ "qOS::commandLineInterface", "classq_o_s_1_1cli_1_1command.html#aba6d9d0160c6476dd20d0f7dea7f14c6", null ]
     ] ],
     [ "qOS::commandLineInterface", "classq_o_s_1_1command_line_interface.html", [
@@ -29,8 +30,10 @@ var group__qatcli =
       [ "exec", "classq_o_s_1_1command_line_interface.html#a1c3b2f43317b8b4fca1b4ae38ed0d755", null ],
       [ "getOwner", "classq_o_s_1_1command_line_interface.html#a841853e232f985105c3d3f9f75804ac7", null ],
       [ "inputFlush", "classq_o_s_1_1command_line_interface.html#a932c286cb9abd852dfb3111de9f0a12b", null ],
+      [ "isInitialized", "classq_o_s_1_1command_line_interface.html#af5dd85fa7807699b7c2b0956681060dc", null ],
       [ "isrHandler", "classq_o_s_1_1command_line_interface.html#ada75a69d25806c5aa86fe9cd52666ee1", null ],
       [ "isrHandler", "classq_o_s_1_1command_line_interface.html#a8c70e232920a3b771b064a9ded969a5a", null ],
+      [ "operator bool", "classq_o_s_1_1command_line_interface.html#ab4f3a5f502b0d5ea6d68a495577f3afc", null ],
       [ "raise", "classq_o_s_1_1command_line_interface.html#a0dc01a8f99c2d0b67448fbf926667491", null ],
       [ "run", "classq_o_s_1_1command_line_interface.html#a6791acfb53adfa6b1002d6e293ed3efd", null ],
       [ "setData", "classq_o_s_1_1command_line_interface.html#a8742a937930c771c28e4fe811e3d1eb6", null ],

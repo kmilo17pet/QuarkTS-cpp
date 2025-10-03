@@ -19,6 +19,7 @@ var group__qtaskcreation =
       [ "init", "classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c", null ],
       [ "notify", "group__qnot.html#gaa6de5a8fa854b30d78de7540e21f4298", null ],
       [ "notify", "group__qnot.html#gab865aa8541244ae16444e52691823a41", null ],
+      [ "operator bool", "classq_o_s_1_1core.html#a15fbd3870f3299ce1a886b43949d21e4", null ],
       [ "remove", "classq_o_s_1_1core.html#a13dab2973d53e4e1f2fef534749da18e", null ],
       [ "remove", "classq_o_s_1_1core.html#a05b9936de74a72f1f0b63ae61356d166", null ],
       [ "run", "classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c", null ],

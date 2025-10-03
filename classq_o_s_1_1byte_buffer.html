@@ -150,6 +150,16 @@ $(function(){initNavTree('classq_o_s_1_1byte_buffer.html',''); initResizable(tru
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="bytebuffer_8hpp_source.html">bytebuffer.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for qOS::byteBuffer:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1byte_buffer__inherit__graph.svg" width="123" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for qOS::byteBuffer:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1byte_buffer__coll__graph.svg" width="123" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -186,6 +196,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afcc85e15c7179199fc99557826d55f63" id="r_afcc85e15c7179199fc99557826d55f63"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcc85e15c7179199fc99557826d55f63">count</a> (void) const noexcept</td></tr>
 <tr class="memdesc:afcc85e15c7179199fc99557826d55f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the number of elements in the Byte-sized buffer.  <br /></td></tr>
 <tr class="separator:afcc85e15c7179199fc99557826d55f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90f405eeb7ed3e929f1e124fa9f27007" id="r_a90f405eeb7ed3e929f1e124fa9f27007"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90f405eeb7ed3e929f1e124fa9f27007">isInitialized</a> (void) const</td></tr>
+<tr class="memdesc:a90f405eeb7ed3e929f1e124fa9f27007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the <a class="el" href="classq_o_s_1_1byte_buffer.html" title="A Byte-sized buffer object.">byteBuffer</a> instance has been initialized.  <br /></td></tr>
+<tr class="separator:a90f405eeb7ed3e929f1e124fa9f27007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80d45ba57c2852d3474da1574ec0151c" id="r_a80d45ba57c2852d3474da1574ec0151c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80d45ba57c2852d3474da1574ec0151c">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a80d45ba57c2852d3474da1574ec0151c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the <a class="el" href="classq_o_s_1_1byte_buffer.html" title="A Byte-sized buffer object.">byteBuffer</a> instance has been initialized.  <br /></td></tr>
+<tr class="separator:a80d45ba57c2852d3474da1574ec0151c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Byte-sized buffer object. </p>
@@ -371,6 +387,62 @@ template&lt;size_t numberOfBytes&gt; </div>
 
 <p>Query the full status of the Byte-sized buffer. </p>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the Byte-sized buffer is empty, <code>false</code> if it is not. </dd></dl>
+
+</div>
+</div>
+<a id="a90f405eeb7ed3e929f1e124fa9f27007" name="a90f405eeb7ed3e929f1e124fa9f27007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90f405eeb7ed3e929f1e124fa9f27007">&#9670;&#160;</a></span>isInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::byteBuffer::isInitialized </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the <a class="el" href="classq_o_s_1_1byte_buffer.html" title="A Byte-sized buffer object.">byteBuffer</a> instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
+
+</div>
+</div>
+<a id="a80d45ba57c2852d3474da1574ec0151c" name="a80d45ba57c2852d3474da1574ec0151c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80d45ba57c2852d3474da1574ec0151c">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::byteBuffer::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the <a class="el" href="classq_o_s_1_1byte_buffer.html" title="A Byte-sized buffer object.">byteBuffer</a> instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
 
 </div>
 </div>

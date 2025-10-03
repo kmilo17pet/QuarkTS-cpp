@@ -11,6 +11,8 @@ var classq_o_s_1_1state_machine =
     [ "install", "classq_o_s_1_1state_machine.html#a31916edda1b7e3053c625f5c6839d929", null ],
     [ "install", "classq_o_s_1_1state_machine.html#acabc335fa5a87a5c8a280c7d2e1e3f8a", null ],
     [ "install", "classq_o_s_1_1state_machine.html#abec92f2c5cbfe4a72d9eed4177fa88ce", null ],
+    [ "isInitialized", "classq_o_s_1_1state_machine.html#a34c1852e5e0d2573710460c971893e89", null ],
+    [ "operator bool", "classq_o_s_1_1state_machine.html#a0bb380207c51e52ebd45f467bbf0f24f", null ],
     [ "run", "classq_o_s_1_1state_machine.html#ae8e02923f78f1d309e45e3b648675c4f", null ],
     [ "sendSignal", "classq_o_s_1_1state_machine.html#aa1b0366a82122518fd23e138ca41666a", null ],
     [ "sendSignal", "classq_o_s_1_1state_machine.html#a300f2596901ad235750a3d5b5d3f3f79", null ],

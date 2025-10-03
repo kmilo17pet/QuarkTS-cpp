@@ -1,5 +1,7 @@
 <map id="qOS::core" name="qOS::core">
-<area shape="rect" id="Node000001" title="The class to interface the OS." alt="" coords="6,79,84,105"/>
+<area shape="rect" id="Node000001" title="The class to interface the OS." alt="" coords="62,79,140,105"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,85,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="48,46,48,79,42,79,42,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,41,94,77,89,80,61,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="109,5,205,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,45,113,80,108,77,136,41"/>
 </map>

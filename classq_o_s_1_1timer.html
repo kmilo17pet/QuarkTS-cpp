@@ -204,6 +204,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a65739451562d42418b3ac34560ffdfae" id="r_a65739451562d42418b3ac34560ffdfae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65739451562d42418b3ac34560ffdfae">operator()</a> (const bool en)</td></tr>
 <tr class="memdesc:a65739451562d42418b3ac34560ffdfae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disarm or reload the timer.  <br /></td></tr>
 <tr class="separator:a65739451562d42418b3ac34560ffdfae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6069fefcf19b632b34293aaae4a24e4" id="r_ab6069fefcf19b632b34293aaae4a24e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6069fefcf19b632b34293aaae4a24e4">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:ab6069fefcf19b632b34293aaae4a24e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking timer check.  <br /></td></tr>
+<tr class="separator:ab6069fefcf19b632b34293aaae4a24e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -456,6 +459,35 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 <p>Retrieve the timer interval value. </p>
 <dl class="section return"><dt>Returns</dt><dd>The interval value in epochs. </dd></dl>
+
+</div>
+</div>
+<a id="ab6069fefcf19b632b34293aaae4a24e4" name="ab6069fefcf19b632b34293aaae4a24e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6069fefcf19b632b34293aaae4a24e4">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::timer::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Non-Blocking timer check. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> when timer expires, otherwise, returns <code>false</code>. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>A disarmed timer also returns <code>false</code>. </dd></dl>
 
 </div>
 </div>

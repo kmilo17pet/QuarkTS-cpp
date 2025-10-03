@@ -150,6 +150,16 @@ $(function(){initNavTree('classq_o_s_1_1queue.html',''); initResizable(true); })
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="queue_8hpp_source.html">queue.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for qOS::queue:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1queue__inherit__graph.svg" width="107" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for qOS::queue:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1queue__coll__graph.svg" width="107" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -192,6 +202,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab89e03ac145a43b19121bac6a1a6c07d" id="r_ab89e03ac145a43b19121bac6a1a6c07d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab89e03ac145a43b19121bac6a1a6c07d">isInitialized</a> (void) const noexcept</td></tr>
 <tr class="memdesc:ab89e03ac145a43b19121bac6a1a6c07d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the queue is already initialized by using <a class="el" href="#ae2aea7eb71321d3c399a11044be9e0e6" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">queue::setup()</a>  <br /></td></tr>
 <tr class="separator:ab89e03ac145a43b19121bac6a1a6c07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe711b9ee1ab3ad48e83ddad241f09c6" id="r_abe711b9ee1ab3ad48e83ddad241f09c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe711b9ee1ab3ad48e83ddad241f09c6">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:abe711b9ee1ab3ad48e83ddad241f09c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the queue is already initialized by using <a class="el" href="#ae2aea7eb71321d3c399a11044be9e0e6" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">queue::setup()</a>  <br /></td></tr>
+<tr class="separator:abe711b9ee1ab3ad48e83ddad241f09c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dae87025604f7485a4eaa65f21fc0de" id="r_a5dae87025604f7485a4eaa65f21fc0de"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dae87025604f7485a4eaa65f21fc0de">getItemSize</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a5dae87025604f7485a4eaa65f21fc0de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size(in bytes) used for every item in the queue.  <br /></td></tr>
 <tr class="separator:a5dae87025604f7485a4eaa65f21fc0de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -393,6 +406,34 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the number of available slots to hold items inside the queue. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of available slots in the queue. </dd></dl>
+
+</div>
+</div>
+<a id="abe711b9ee1ab3ad48e83ddad241f09c6" name="abe711b9ee1ab3ad48e83ddad241f09c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe711b9ee1ab3ad48e83ddad241f09c6">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::queue::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the queue is already initialized by using <a class="el" href="#ae2aea7eb71321d3c399a11044be9e0e6" title="Configures a Queue. Here, the RAM used to hold the queue data pData is statically allocated at compil...">queue::setup()</a> </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the queue is initialized, <code>false</code> if not. </dd></dl>
 
 </div>
 </div>

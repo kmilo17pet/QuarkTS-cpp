@@ -4,5 +4,7 @@ var classq_o_s_1_1mem_1_1pool =
     [ "alloc", "classq_o_s_1_1mem_1_1pool.html#ad29a0b257c94bb4a0bed38654fa421bd", null ],
     [ "free", "classq_o_s_1_1mem_1_1pool.html#ade2d995f0dd8520624a7573d12ed17b1", null ],
     [ "getFreeSize", "classq_o_s_1_1mem_1_1pool.html#ae794604d6b2206cf47f21d324c7a6d55", null ],
+    [ "isInitialized", "classq_o_s_1_1mem_1_1pool.html#a2ff03a72f07418e390e776b6a410286d", null ],
+    [ "operator bool", "classq_o_s_1_1mem_1_1pool.html#a73efae4318acaf344023b0cf0a80e4f9", null ],
     [ "setup", "classq_o_s_1_1mem_1_1pool.html#a4713d0599300d2f58bbc1680ad000c51", null ]
 ];

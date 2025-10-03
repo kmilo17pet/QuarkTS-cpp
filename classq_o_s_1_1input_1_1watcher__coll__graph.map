@@ -1,5 +1,7 @@
 <map id="qOS::input::watcher" name="qOS::input::watcher">
-<area shape="rect" id="Node000001" title="The digital input&#45;channel watcher class." alt="" coords="5,79,139,105"/>
-<area shape="rect" id="Node000002" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="31,5,113,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,46,75,79,69,79,69,46"/>
+<area shape="rect" id="Node000001" title="The digital input&#45;channel watcher class." alt="" coords="35,79,169,105"/>
+<area shape="rect" id="Node000002" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="5,5,87,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,41,95,77,90,80,62,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,5,206,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,45,114,80,109,77,137,41"/>
 </map>

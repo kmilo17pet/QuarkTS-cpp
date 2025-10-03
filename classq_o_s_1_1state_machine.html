@@ -216,6 +216,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8e02923f78f1d309e45e3b648675c4f" id="r_ae8e02923f78f1d309e45e3b648675c4f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8e02923f78f1d309e45e3b648675c4f">run</a> (<a class="el" href="structq_o_s_1_1sm_1_1signal__t.html">sm::signal_t</a> sig) noexcept</td></tr>
 <tr class="memdesc:ae8e02923f78f1d309e45e3b648675c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute the Finite State Machine (FSM).  <br /></td></tr>
 <tr class="separator:ae8e02923f78f1d309e45e3b648675c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34c1852e5e0d2573710460c971893e89" id="r_a34c1852e5e0d2573710460c971893e89"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34c1852e5e0d2573710460c971893e89">isInitialized</a> (void) const</td></tr>
+<tr class="memdesc:a34c1852e5e0d2573710460c971893e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the state machine instance has been initialized.  <br /></td></tr>
+<tr class="separator:a34c1852e5e0d2573710460c971893e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bb380207c51e52ebd45f467bbf0f24f" id="r_a0bb380207c51e52ebd45f467bbf0f24f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bb380207c51e52ebd45f467bbf0f24f">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a0bb380207c51e52ebd45f467bbf0f24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the state machine instance has been initialized.  <br /></td></tr>
+<tr class="separator:a0bb380207c51e52ebd45f467bbf0f24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A FSM(Finite State Machine) object. </p>
@@ -589,6 +595,62 @@ template&lt;size_t numberOfSignals&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a34c1852e5e0d2573710460c971893e89" name="a34c1852e5e0d2573710460c971893e89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34c1852e5e0d2573710460c971893e89">&#9670;&#160;</a></span>isInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::stateMachine::isInitialized </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the state machine instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
+
+</div>
+</div>
+<a id="a0bb380207c51e52ebd45f467bbf0f24f" name="a0bb380207c51e52ebd45f467bbf0f24f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bb380207c51e52ebd45f467bbf0f24f">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::stateMachine::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the state machine instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
 
 </div>
 </div>

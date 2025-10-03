@@ -155,12 +155,12 @@ $(function(){initNavTree('classq_o_s_1_1task.html',''); initResizable(true); });
 <div class="dynheader">
 Inheritance diagram for qOS::task:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1task__inherit__graph.svg" width="92" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1task__inherit__graph.svg" width="211" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for qOS::task:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1task__coll__graph.svg" width="92" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1task__coll__graph.svg" width="211" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -235,6 +235,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8336704f45acbdeba7650ad611b21d5e" id="r_a8336704f45acbdeba7650ad611b21d5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1queue.html">queue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8336704f45acbdeba7650ad611b21d5e">getQueue</a> (void) noexcept</td></tr>
 <tr class="memdesc:a8336704f45acbdeba7650ad611b21d5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a pointer to the queue attached to the task.  <br /></td></tr>
 <tr class="separator:a8336704f45acbdeba7650ad611b21d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695cda12bf46ee1da3d80d0f38fcf5b0" id="r_a695cda12bf46ee1da3d80d0f38fcf5b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a695cda12bf46ee1da3d80d0f38fcf5b0">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a695cda12bf46ee1da3d80d0f38fcf5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the task has been added to the OS scheduler.  <br /></td></tr>
+<tr class="separator:a695cda12bf46ee1da3d80d0f38fcf5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -253,9 +256,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:abac6aa8b476e503836b38bde0dffdf45" id="r_abac6aa8b476e503836b38bde0dffdf45"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abac6aa8b476e503836b38bde0dffdf45">activities</a> (<a class="el" href="classq_o_s_1_1event__t.html">event_t</a> e)</td></tr>
 <tr class="separator:abac6aa8b476e503836b38bde0dffdf45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classq_o_s_1_1node"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classq_o_s_1_1node')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classq_o_s_1_1node.html">qOS::node</a></td></tr>
-<tr class="memitem:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node" id="r_a14ad556d2634b1faf3ce9767efbb9136"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list.html">list</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1node.html#a14ad556d2634b1faf3ce9767efbb9136">getContainer</a> (void) noexcept</td></tr>
-<tr class="memdesc:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the list in which this node is contained.  <br /></td></tr>
-<tr class="separator:a14ad556d2634b1faf3ce9767efbb9136 inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ed9935ce1a4ba51a34deca8c760436 inherit pro_methods_classq_o_s_1_1node" id="r_a28ed9935ce1a4ba51a34deca8c760436"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classq_o_s_1_1list.html">list</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1node.html#a28ed9935ce1a4ba51a34deca8c760436">getContainer</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a28ed9935ce1a4ba51a34deca8c760436 inherit pro_methods_classq_o_s_1_1node"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the list in which this node is contained.  <br /></td></tr>
+<tr class="separator:a28ed9935ce1a4ba51a34deca8c760436 inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6eeb0dd0a2a256c315fe1966d44158f inherit pro_methods_classq_o_s_1_1node" id="r_aa6eeb0dd0a2a256c315fe1966d44158f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1node.html#aa6eeb0dd0a2a256c315fe1966d44158f">node</a> ()</td></tr>
 <tr class="separator:aa6eeb0dd0a2a256c315fe1966d44158f inherit pro_methods_classq_o_s_1_1node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -272,12 +275,13 @@ Protected Member Functions</h2></td></tr>
 <p>Each task performs its activities via a callback function and each of them is responsible for supporting cooperative multitasking by being “good neighbors”, i.e., running their callback methods quickly in a non-blocking way and releasing control back to the scheduler as soon as possible (returning). Every task node, must be defined using the <a class="el" href="classq_o_s_1_1task.html" title="A task node object.">qOS::task</a> class and the callback is defined as a function that returns void and takes a <a class="el" href="classq_o_s_1_1event__t.html" title="The task argument with all the regarding information of the task execution.">event_t</a> data structure as its only parameter (This input argument can be used later to get event information.</p>
 <p>Example : </p><div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
 <div class="line"> </div>
-<div class="line">task UserTask;</div>
+<div class="line"><a class="code hl_function" href="#a22f349f2dc4f57fb4815e44a357a29c5">task</a> UserTask;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> UserTask_Callback( <a class="code hl_class" href="classq_o_s_1_1event__t.html">event_t</a> e ) {</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1event__t_html"><div class="ttname"><a href="classq_o_s_1_1event__t.html">qOS::event_t</a></div><div class="ttdoc">The task argument with all the regarding information of the task execution.</div><div class="ttdef"><b>Definition</b> task.hpp:105</div></div>
+<div class="ttc" id="aclassq_o_s_1_1task_html_a22f349f2dc4f57fb4815e44a357a29c5"><div class="ttname"><a href="#a22f349f2dc4f57fb4815e44a357a29c5">qOS::task::task</a></div><div class="ttdeci">task()=default</div></div>
 <div class="ttc" id="anamespaceq_o_s_html"><div class="ttname"><a href="namespaceq_o_s.html">qOS</a></div><div class="ttdoc">OS/Kernel interfaces.</div><div class="ttdef"><b>Definition</b> bytebuffer.hpp:7</div></div>
 </div><!-- fragment --><dl class="section attention"><dt>Attention</dt><dd>All tasks in QuarkTS must ensure their completion to return the CPU control back to the scheduler, otherwise, the scheduler will hold the execution-state for that task, preventing the activation of other tasks. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Do not access any member of this structure directly. </dd></dl>
@@ -750,6 +754,34 @@ Protected Member Functions</h2></td></tr>
 <p>Retrieve the enabled/disabled state. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#aa8a716dcd545daff5cd0003513b6e6ac" title="Retrieve the task operational state.">task::getState()</a> </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the task in on Enabled state, otherwise returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a695cda12bf46ee1da3d80d0f38fcf5b0" name="a695cda12bf46ee1da3d80d0f38fcf5b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a695cda12bf46ee1da3d80d0f38fcf5b0">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::task::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the task has been added to the OS scheduler. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if task is already added to the scheduler </dd></dl>
 
 </div>
 </div>

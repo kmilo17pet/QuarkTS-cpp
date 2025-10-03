@@ -28,6 +28,7 @@ var group__qtaskmanip =
       [ "getQueue", "classq_o_s_1_1task.html#a8336704f45acbdeba7650ad611b21d5e", null ],
       [ "getState", "classq_o_s_1_1task.html#aa8a716dcd545daff5cd0003513b6e6ac", null ],
       [ "isEnabled", "classq_o_s_1_1task.html#ad50d2873186a55f5db82b14a4dd14879", null ],
+      [ "operator bool", "classq_o_s_1_1task.html#a695cda12bf46ee1da3d80d0f38fcf5b0", null ],
       [ "resume", "classq_o_s_1_1task.html#aeeb29d20256efc116b5a7027ce2ed9c0", null ],
       [ "setCallback", "classq_o_s_1_1task.html#aeaf85d54ed66a881754ababe1d5c628c", null ],
       [ "setData", "classq_o_s_1_1task.html#a42019f98c45a4bd96592c158ac11d1e3", null ],

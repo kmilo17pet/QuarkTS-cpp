@@ -150,6 +150,16 @@ $(function(){initNavTree('classq_o_s_1_1response.html',''); initResizable(true);
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="response_8hpp_source.html">response.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for qOS::response:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1response__inherit__graph.svg" width="118" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for qOS::response:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1response__coll__graph.svg" width="118" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -170,6 +180,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abd22e5157cb6f45cdc6710220f574c6d" id="r_abd22e5157cb6f45cdc6710220f574c6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd22e5157cb6f45cdc6710220f574c6d">isInitialized</a> (void) const noexcept</td></tr>
 <tr class="memdesc:abd22e5157cb6f45cdc6710220f574c6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the response object is already initialized by using <a class="el" href="#a5ab319aff8dbd8f8fbf4c8b1914c5d54" title="Initialize the instance of the response handler object.">response::setup()</a>  <br /></td></tr>
 <tr class="separator:abd22e5157cb6f45cdc6710220f574c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d60b321af4be49691945269f1925b38" id="r_a1d60b321af4be49691945269f1925b38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d60b321af4be49691945269f1925b38">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a1d60b321af4be49691945269f1925b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the response object is already initialized by using <a class="el" href="#a5ab319aff8dbd8f8fbf4c8b1914c5d54" title="Initialize the instance of the response handler object.">response::setup()</a>  <br /></td></tr>
+<tr class="separator:a1d60b321af4be49691945269f1925b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Response Handler object. </p>
@@ -259,6 +272,34 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when the Response handler match the request from <a class="el" href="#a8795c0cf673c33047774b71dcd4c9576" title="Non-Blocking response check.">response::received()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a1d60b321af4be49691945269f1925b38" name="a1d60b321af4be49691945269f1925b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d60b321af4be49691945269f1925b38">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::response::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the response object is already initialized by using <a class="el" href="#a5ab319aff8dbd8f8fbf4c8b1914c5d54" title="Initialize the instance of the response handler object.">response::setup()</a> </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the response object is initialized, <code>false</code> if not. </dd></dl>
 
 </div>
 </div>

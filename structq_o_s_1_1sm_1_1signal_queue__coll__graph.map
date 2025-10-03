@@ -1,7 +1,9 @@
 <map id="qOS::sm::signalQueue&lt; numberOfSignals &gt;" name="qOS::sm::signalQueue&lt; numberOfSignals &gt;">
-<area shape="rect" id="Node000001" title="The type of a FSM signal&#45;queue." alt="" coords="39,94,188,135"/>
-<area shape="rect" id="Node000002" href="$classq_o_s_1_1queue.html" title="A Queue object." alt="" coords="5,5,94,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,42,102,92,98,95,64,45"/>
-<area shape="rect" id="Node000003" href="$structq_o_s_1_1sm_1_1signal__t.html" title="The type to be used as a container variable for a signal." alt="" coords="118,5,240,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,45,129,95,125,92,160,42"/>
+<area shape="rect" id="Node000001" title="The type of a FSM signal&#45;queue." alt="" coords="42,169,192,210"/>
+<area shape="rect" id="Node000002" href="$classq_o_s_1_1queue.html" title="A Queue object." alt="" coords="9,80,97,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,117,106,167,101,170,67,120"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,101,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="56,46,56,80,50,80,50,46"/>
+<area shape="rect" id="Node000004" href="$structq_o_s_1_1sm_1_1signal__t.html" title="The type to be used as a container variable for a signal." alt="" coords="121,80,244,106"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="168,120,133,170,128,167,163,117"/>
 </map>

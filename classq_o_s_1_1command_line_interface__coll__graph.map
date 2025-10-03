@@ -1,5 +1,7 @@
 <map id="qOS::commandLineInterface" name="qOS::commandLineInterface">
 <area shape="rect" id="Node000001" title="An AT Command Line Interface (CLI) object." alt="" coords="5,79,192,105"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="64,5,133,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,46,101,79,96,79,96,46"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="12,5,81,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,42,92,77,88,80,62,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="104,5,200,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,45,110,80,105,77,132,42"/>
 </map>

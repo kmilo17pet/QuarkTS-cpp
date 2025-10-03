@@ -153,12 +153,12 @@ $(function(){initNavTree('classq_o_s_1_1command_line_interface.html',''); initRe
 <div class="dynheader">
 Inheritance diagram for qOS::commandLineInterface:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1command_line_interface__inherit__graph.svg" width="198" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1command_line_interface__inherit__graph.svg" width="206" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for qOS::commandLineInterface:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1command_line_interface__coll__graph.svg" width="198" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classq_o_s_1_1command_line_interface__coll__graph.svg" width="206" height="111"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -198,6 +198,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8742a937930c771c28e4fe811e3d1eb6" id="r_a8742a937930c771c28e4fe811e3d1eb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8742a937930c771c28e4fe811e3d1eb6">setData</a> (void *pData)</td></tr>
 <tr class="memdesc:a8742a937930c771c28e4fe811e3d1eb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the cli data or storage-pointer.  <br /></td></tr>
 <tr class="separator:a8742a937930c771c28e4fe811e3d1eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5dd85fa7807699b7c2b0956681060dc" id="r_af5dd85fa7807699b7c2b0956681060dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5dd85fa7807699b7c2b0956681060dc">isInitialized</a> (void) const</td></tr>
+<tr class="memdesc:af5dd85fa7807699b7c2b0956681060dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the CLI instance has been initialized.  <br /></td></tr>
+<tr class="separator:af5dd85fa7807699b7c2b0956681060dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4f3a5f502b0d5ea6d68a495577f3afc" id="r_ab4f3a5f502b0d5ea6d68a495577f3afc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4f3a5f502b0d5ea6d68a495577f3afc">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:ab4f3a5f502b0d5ea6d68a495577f3afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the CLI instance has been initialized.  <br /></td></tr>
+<tr class="separator:ab4f3a5f502b0d5ea6d68a495577f3afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An AT Command Line Interface (CLI) object. </p>
@@ -365,6 +371,34 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="af5dd85fa7807699b7c2b0956681060dc" name="af5dd85fa7807699b7c2b0956681060dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5dd85fa7807699b7c2b0956681060dc">&#9670;&#160;</a></span>isInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::commandLineInterface::isInitialized </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the CLI instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
+
+</div>
+</div>
 <a id="ada75a69d25806c5aa86fe9cd52666ee1" name="ada75a69d25806c5aa86fe9cd52666ee1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada75a69d25806c5aa86fe9cd52666ee1">&#9670;&#160;</a></span>isrHandler() <span class="overload">[1/2]</span></h2>
 
@@ -419,6 +453,34 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> when the CLI is ready to process the input, otherwise return <code>false</code> </dd></dl>
+
+</div>
+</div>
+<a id="ab4f3a5f502b0d5ea6d68a495577f3afc" name="ab4f3a5f502b0d5ea6d68a495577f3afc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4f3a5f502b0d5ea6d68a495577f3afc">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::commandLineInterface::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the CLI instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
 
 </div>
 </div>

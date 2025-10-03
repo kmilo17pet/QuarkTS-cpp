@@ -2,7 +2,7 @@ var group__qlists =
 [
     [ "qOS::node", "classq_o_s_1_1node.html", [
       [ "node", "classq_o_s_1_1node.html#aa6eeb0dd0a2a256c315fe1966d44158f", null ],
-      [ "getContainer", "classq_o_s_1_1node.html#a14ad556d2634b1faf3ce9767efbb9136", null ],
+      [ "getContainer", "classq_o_s_1_1node.html#a28ed9935ce1a4ba51a34deca8c760436", null ],
       [ "list", "classq_o_s_1_1node.html#a39e8296e3b93358d0af90000b5d9113c", null ],
       [ "listIterator", "classq_o_s_1_1node.html#afbe88b0c492cef8bcfe3180effd933b3", null ]
     ] ],
@@ -18,6 +18,7 @@ var group__qlists =
       [ "isEmpty", "classq_o_s_1_1list.html#a261730dd47a69f3edfb8bbd4f5559d0d", null ],
       [ "length", "classq_o_s_1_1list.html#a4d23a51c562b7dff95727a8625a4a1a5", null ],
       [ "move", "classq_o_s_1_1list.html#ae07617ca533526784159b1d164018a6c", null ],
+      [ "operator bool", "classq_o_s_1_1list.html#aa381340a7558f62880917c02f317749d", null ],
       [ "remove", "classq_o_s_1_1list.html#a4bf2c322bb22a04c26a05ccecbd11e9a", null ],
       [ "remove", "classq_o_s_1_1list.html#a7e334f51fcfbf277b71e1085bc8993e7", null ],
       [ "sort", "classq_o_s_1_1list.html#aabf6cf1d0db7b5c8e3c818ecc6eb916e", null ],

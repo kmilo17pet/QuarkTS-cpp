@@ -8,6 +8,7 @@ var classq_o_s_1_1timer =
     [ "expired", "classq_o_s_1_1timer.html#aaef5ff5b14bb68c184b70420110424de", null ],
     [ "freeRun", "classq_o_s_1_1timer.html#acd1dfb38ba34a7a021c28a61795b6f98", null ],
     [ "getInterval", "classq_o_s_1_1timer.html#a851424288eb8b90246e3f434abb614eb", null ],
+    [ "operator bool", "classq_o_s_1_1timer.html#ab6069fefcf19b632b34293aaae4a24e4", null ],
     [ "operator()", "classq_o_s_1_1timer.html#a65739451562d42418b3ac34560ffdfae", null ],
     [ "operator()", "classq_o_s_1_1timer.html#a1ec65bc8675a9cf865014cc374b9da38", null ],
     [ "operator()", "classq_o_s_1_1timer.html#aafad4ddc74a56df3783ee26909906659", null ],

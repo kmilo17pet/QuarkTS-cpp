@@ -168,6 +168,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae794604d6b2206cf47f21d324c7a6d55" id="r_ae794604d6b2206cf47f21d324c7a6d55"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae794604d6b2206cf47f21d324c7a6d55">getFreeSize</a> (void) const noexcept</td></tr>
 <tr class="memdesc:ae794604d6b2206cf47f21d324c7a6d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total amount of heap space that remains unallocated for the memory pool.  <br /></td></tr>
 <tr class="separator:ae794604d6b2206cf47f21d324c7a6d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ff03a72f07418e390e776b6a410286d" id="r_a2ff03a72f07418e390e776b6a410286d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ff03a72f07418e390e776b6a410286d">isInitialized</a> (void) const</td></tr>
+<tr class="memdesc:a2ff03a72f07418e390e776b6a410286d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the memory pool instance has been initialized.  <br /></td></tr>
+<tr class="separator:a2ff03a72f07418e390e776b6a410286d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73efae4318acaf344023b0cf0a80e4f9" id="r_a73efae4318acaf344023b0cf0a80e4f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73efae4318acaf344023b0cf0a80e4f9">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a73efae4318acaf344023b0cf0a80e4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the memory pool instance has been initialized.  <br /></td></tr>
+<tr class="separator:a73efae4318acaf344023b0cf0a80e4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A Memory Pool object. </p>
@@ -306,6 +312,62 @@ Public Member Functions</h2></td></tr>
 
 <p>Returns the total amount of heap space that remains unallocated for the memory pool. </p>
 <dl class="section return"><dt>Returns</dt><dd>The size of the unallocated heap. </dd></dl>
+
+</div>
+</div>
+<a id="a2ff03a72f07418e390e776b6a410286d" name="a2ff03a72f07418e390e776b6a410286d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ff03a72f07418e390e776b6a410286d">&#9670;&#160;</a></span>isInitialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::mem::pool::isInitialized </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the memory pool instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
+
+</div>
+</div>
+<a id="a73efae4318acaf344023b0cf0a80e4f9" name="a73efae4318acaf344023b0cf0a80e4f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73efae4318acaf344023b0cf0a80e4f9">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">qOS::mem::pool::operator bool </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel explicit">explicit</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the memory pool instance has been initialized. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if instance has been initialized </dd></dl>
 
 </div>
 </div>

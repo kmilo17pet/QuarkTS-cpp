@@ -1,5 +1,7 @@
 <map id="qOS::task" name="qOS::task">
-<area shape="rect" id="Node000001" title="A task node object." alt="" coords="7,79,85,105"/>
+<area shape="rect" id="Node000001" title="A task node object." alt="" coords="63,79,141,105"/>
 <area shape="rect" id="Node000002" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="5,5,87,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="49,46,49,79,43,79,43,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,41,95,77,90,80,62,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,5,206,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,45,114,80,109,77,137,41"/>
 </map>
