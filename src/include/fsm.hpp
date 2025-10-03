@@ -355,7 +355,7 @@ namespace qOS {
         #endif
 
         /*! @cond  */
-        class stateHandler {
+        class stateHandler : private nonCopyable {
             protected:
                 state *StartState{ nullptr };
                 state *NextState{ nullptr };
@@ -364,10 +364,8 @@ namespace qOS {
                 historyMode TransitionHistory{ historyMode::NO_HISTORY };
                 status Status{ SUCCESS };
                 signalID Signal{ signalID::SIGNAL_NONE };
-                stateHandler( stateHandler const& ) = delete;      /* not copyable*/
-                void operator=( stateHandler const& ) = delete;  /* not assignable*/
-            public:
                 stateHandler() = default;
+            public:
                 virtual ~stateHandler() {}
                 void *SignalData{ nullptr };    /**< The data with which the signal is associated*/
                 void *Data{ nullptr };          /**< The user storage pointer. If the FSM its running as a task, this will point to the event_t structure*/
@@ -1032,6 +1030,20 @@ namespace qOS {
             * @c false.
             */
             bool run( sm::signal_t sig ) noexcept;
+            /**
+            * @brief Check if the state machine instance has been initialized.
+            * @return @c true if instance has been initialized
+            */
+            bool isInitialized( void ) const {
+                return ( nullptr != top.initState );
+            }
+            /**
+            * @brief Check if the state machine instance has been initialized.
+            * @return @c true if instance has been initialized
+            */
+            explicit operator bool() const noexcept {
+                return isInitialized();
+            }
         friend class core;
     };
     /** @}*/

@@ -41,7 +41,7 @@ namespace qOS {
     * writer and could be statically allocated at compile time or in run-time
     * using the memory management extension.
     */
-    class queue {
+    class queue : private nonCopyable {
         private:
             uint8_t *head{ nullptr };
             uint8_t *tail{ nullptr };
@@ -53,8 +53,6 @@ namespace qOS {
             void moveReader( void ) noexcept;
             void copyDataFromQueue( void * const dst ) noexcept;
             void copyDataToQueue( const void *itemToQueue, const queueSendMode xPosition ) noexcept;
-            queue( queue const& ) = delete;
-            void operator=( queue const& ) = delete;
         public:
             queue() = default;
             /*! @cond  */
@@ -147,6 +145,13 @@ namespace qOS {
             * @return @c true if the queue is initialized, @c false if not.
             */
             bool isInitialized( void ) const noexcept;
+            /**
+            * @brief Check if the queue is already initialized by using queue::setup()
+            * @return @c true if the queue is initialized, @c false if not.
+            */
+            explicit operator bool() const noexcept {
+                return isInitialized();
+            }
             /**
             * @brief Get the size(in bytes) used for every item in the queue.
             * @return The item-size in bytes.

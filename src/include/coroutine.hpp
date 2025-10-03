@@ -77,6 +77,13 @@ namespace qOS {
                 * @brief Try to execute co::setPosition() statement externally.
                 */
                 void try_set( co::state p ) noexcept;
+                /**
+                * @brief Check if the Co-Routine handle is valid.
+                * @return @c true if handle is valid
+                */
+                explicit operator bool() const noexcept {
+                    return ( nullptr != ctx );
+                }
             friend class co::coContext;
         };
 

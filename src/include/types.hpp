@@ -122,6 +122,16 @@ namespace qOS {
     #else
         using string = std::string;
     #endif
+
+    class nonCopyable {
+        protected:
+            nonCopyable() {}
+            ~nonCopyable() {}
+        private:
+            nonCopyable( const nonCopyable & );
+            nonCopyable& operator=( const nonCopyable & );
+    };
+
     /*! @endcond */
 
     /**

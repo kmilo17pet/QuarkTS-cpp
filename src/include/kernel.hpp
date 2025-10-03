@@ -80,7 +80,7 @@ namespace qOS {
     * @brief The class to interface the OS
     * @note Use the predefined os instance
     */
-    class core final : protected taskEvent {
+    class core final : protected taskEvent, private nonCopyable {
         private:
             task idle;
             taskFcn_t releaseSchedCallback{ nullptr };
@@ -452,6 +452,13 @@ namespace qOS {
             * @return Returns @c true if success, otherwise returns @c false.
             */
             bool remove( input::watcher &w ) noexcept;
+            /**
+            * @brief Check if the OS instance has been initialized.
+            * @return @c true if OS instance has been initialized
+            */
+            explicit operator bool() const noexcept {
+                return ( 0U == idle.entry );
+            }
     };
     /** @brief The predefined instance of the OS kernel interface */
     extern core& os; // skipcq: CXX-W2011, CXX-W2009

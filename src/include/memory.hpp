@@ -107,6 +107,20 @@ namespace qOS {
                 * @return The size of the unallocated heap.
                 */
                 size_t getFreeSize( void ) const noexcept;
+                /**
+                * @brief Check if the memory pool instance has been initialized.
+                * @return @c true if instance has been initialized
+                */
+                bool isInitialized( void ) const {
+                    return ( nullptr != poolMemory ) && ( poolMemSize > 0U );
+                }
+                /**
+                * @brief Check if the memory pool instance has been initialized.
+                * @return @c true if instance has been initialized
+                */
+                explicit operator bool() const noexcept {
+                    return isInitialized();
+                }
         };
 
         /** @}*/

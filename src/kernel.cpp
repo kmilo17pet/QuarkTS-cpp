@@ -253,6 +253,8 @@ bool core::checkIfReady( void ) noexcept
                 critical::exit();
             #endif
             xTask->setFlags( task::BIT_REMOVE_REQUEST, false );
+            --core::taskEntries;
+            xTask->entry = SIZE_MAX;
         }
         else {
             list * const xList = ( trigger::None != xTask->Trigger ) ? &coreLists[ xTask->priority ] : &suspendedList;

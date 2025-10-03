@@ -24,7 +24,7 @@ namespace qOS {
     /**
     * @brief A Response Handler object.
     */
-    class response {
+    class response : private nonCopyable {
         private:
             char *pattern2Match{ nullptr };
             timer timeout;
@@ -32,8 +32,6 @@ namespace qOS {
             size_t patternLength{ 0U };
             volatile size_t matchedCount{ 0U };
             volatile bool responseReceived{ false };
-            response( response const& ) = delete;
-            void operator=( response const& ) = delete;
         public:
             response() = default;
             /*! @cond  */
@@ -75,6 +73,14 @@ namespace qOS {
             * @return @c true if the response object is initialized, @c false if not.
             */
             bool isInitialized( void ) const noexcept;
+            /**
+            * @brief Check if the response object is already initialized by
+            * using response::setup()
+            * @return @c true if the response object is initialized, @c false if not.
+            */
+            explicit operator bool() const noexcept {
+                return isInitialized();
+            }
     };
 
     /** @}*/

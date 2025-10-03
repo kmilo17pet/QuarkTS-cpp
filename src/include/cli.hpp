@@ -299,7 +299,7 @@ namespace qOS {
         /**
         * @brief An AT-Command object
         */
-        class command : protected node {
+        class command : protected node, private nonCopyable {
             private:
                 commandCallback_t cmdCallback{ nullptr };
                 options_t cmdOpt{ 0U };
@@ -313,9 +313,20 @@ namespace qOS {
                 /*! @cond  */
                 virtual ~command() {}
                 /*! @endcond  */
+                /**
+                * @brief Retrieve the command user-defined parameter.
+                * @return @c A generic pointer to the user-defined parameter
+                */
                 inline void* getParam( void ) noexcept
                 {
                     return param;
+                }
+                /**
+                * @brief Check if the byteBuffer instance has been initialized.
+                * @return @c true if instance has been initialized
+                */
+                explicit operator bool() const noexcept {
+                    return ( nullptr != Text ) && ( nullptr != cmdCallback );
                 }
             friend class qOS::commandLineInterface;
         };
@@ -330,7 +341,7 @@ namespace qOS {
     * The instance should be initialized using the commandLineInterface::setup()
     * method.
     */
-    class commandLineInterface : protected cli::input {
+    class commandLineInterface : protected cli::input, private nonCopyable {
         private:
             list subscribed;
             cli::commandHandler handler;
@@ -461,6 +472,20 @@ namespace qOS {
             inline void setData( void *pData )
             {
                 handler.Data = pData;
+            }
+            /**
+            * @brief Check if the CLI instance has been initialized.
+            * @return @c true if instance has been initialized
+            */
+            bool isInitialized( void ) const {
+                return ( nullptr != cli::input::storage );
+            }
+            /**
+            * @brief Check if the CLI instance has been initialized.
+            * @return @c true if instance has been initialized
+            */
+            explicit operator bool() const noexcept {
+                return isInitialized();
             }
         friend class cli::commandHandler;
         friend class core;
