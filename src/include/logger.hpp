@@ -304,7 +304,7 @@ namespace qOS {
         extern const char * const wht;
 
         /*! @cond */
-        class _logger final {
+        class _logger final : private nonCopyable {
             private:
                 _logger() = default;
                 _logger( _logger &other ) = delete;

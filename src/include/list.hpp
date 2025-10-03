@@ -72,7 +72,7 @@ namespace qOS {
             * @brief Get a pointer to the list in which this node is contained.
             * @return A pointer to the list container.
             */
-            inline list* getContainer( void ) noexcept
+            inline list* getContainer( void ) const noexcept
             {
                 return container;
             }
@@ -249,6 +249,13 @@ namespace qOS {
             * @return An iterator to the @a offset of the sequence container.
             */
             listIterator from( void *offset ) noexcept;
+            /**
+            * @brief Check if the list has items (is non-empty).
+            * @return @c true if instance has items
+            */
+            explicit operator bool() const noexcept {
+                return ( nullptr != head );
+            }
         friend class listIterator;
     };
 

@@ -257,7 +257,7 @@ namespace qOS {
                 * @param[in] inputChannel The specified channel(pin) number to read.
                 * @param[in] invert To invert/negate the raw-reading.
                 */
-                digitalChannel( const uint8_t inputChannel, bool invert = false ) : channel( inputChannel ), negate( invert) {}
+                explicit digitalChannel( const uint8_t inputChannel, bool invert = false ) : channel( inputChannel ), negate( invert) {}
                 /**
                 * @brief Get the channel type.
                 * @return The channel type.
@@ -453,7 +453,7 @@ namespace qOS {
         /**
         * @brief The digital input-channel watcher class.
         */
-        class watcher : protected node {
+        class watcher : protected node, private nonCopyable {
             private:
                 eventCallback_t exception{ nullptr };
                 list digitalChannels;
@@ -462,8 +462,6 @@ namespace qOS {
                 qOS::duration_t debounceTime{ 100_ms };
                 digitalReaderFcn_t digitalReader{ nullptr };
                 analogReaderFcn_t analogReader{ nullptr };
-                watcher( watcher const& ) = delete;
-                void operator=( watcher const& ) = delete;
             public:
                 /*! @cond  */
                 virtual ~watcher() {}
@@ -473,7 +471,7 @@ namespace qOS {
                 * @param[in] timeDebounce The specified time to bypass the
                 * bounce of the digital input channels
                 */
-                watcher( const qOS::duration_t dt = 100_ms ) : debounceTime( dt ) {}
+                explicit watcher( const qOS::duration_t dt = 100_ms ) : debounceTime( dt ) {}
                 /**
                 * @brief Constructor for the input-watcher instance
                 * @param[in] rDigital A pointer to a function that reads the specific

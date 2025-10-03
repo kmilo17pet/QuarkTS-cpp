@@ -345,7 +345,7 @@ namespace qOS {
     * execution-state for that task, preventing the activation of other tasks.
     * @note Do not access any member of this structure directly.
     */
-    class task : protected node {
+    class task : protected node, private nonCopyable {
         friend class core;
         private:
             void *taskData{ nullptr };
@@ -377,8 +377,6 @@ namespace qOS {
             static const uint32_t BIT_REMOVE_REQUEST;
             static const uint32_t EVENT_FLAGS_MASK;
             static const uint32_t QUEUE_FLAGS_MASK;
-            task( task const& ) = delete;
-            void operator=( task const& ) = delete;
         protected:
             virtual void activities( event_t e );
         public:
@@ -586,6 +584,13 @@ namespace qOS {
             * @return A @c void pointer to the attached object.
             */
             queue* getQueue( void ) noexcept;
+            /**
+            * @brief Check if the task has been added to the OS scheduler.
+            * @return @c true if task is already added to the scheduler
+            */
+            explicit operator bool() const noexcept {
+                return ( SIZE_MAX != entry ) && ( nullptr == getContainer() );
+            }
             /** @brief A constant to indicate that the task will run every time
             * its timeout has expired.
             */

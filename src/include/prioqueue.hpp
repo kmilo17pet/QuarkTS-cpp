@@ -15,7 +15,7 @@ namespace qOS {
         };
     }
 
-    class prioQueue {
+    class prioQueue : private nonCopyable {
         private:
             volatile base_t index{ -1 };
             void *data{ nullptr };

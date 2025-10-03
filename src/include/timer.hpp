@@ -150,6 +150,14 @@ namespace qOS {
             * @param[in] en @c true for reload of @c false to disarm.
             */
             void operator()( const bool en );
+            /**
+            * @brief Non-Blocking timer check
+            * @return Returns @c true when timer expires, otherwise, returns @c false.
+            * @note A disarmed timer also returns @c false.
+            */
+            explicit operator bool() const noexcept {
+                return expired();
+            }
             /** @brief Constant that defines the status of an armed timer*/
             static const bool ARMED;
             /** @brief Constant that defines the status of a disarmed timer*/

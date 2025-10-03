@@ -14,7 +14,7 @@ namespace qOS {
     /**
     * @brief A Byte-sized buffer object
     */
-    class byteBuffer {
+    class byteBuffer : private nonCopyable {
         private:
             volatile byte_t *buffer{ nullptr };
             volatile index_t tail{ 0U };
@@ -96,6 +96,20 @@ namespace qOS {
             * @return Number of elements in the byte-sized Buffer.
             */
             size_t count( void ) const noexcept;
+            /**
+            * @brief Check if the byteBuffer instance has been initialized.
+            * @return @c true if instance has been initialized
+            */
+            bool isInitialized( void ) const {
+                return ( nullptr != buffer );
+            }
+            /**
+            * @brief Check if the byteBuffer instance has been initialized.
+            * @return @c true if instance has been initialized
+            */
+            explicit operator bool() const noexcept {
+                return isInitialized();
+            }
     };
 
     /** @}*/
