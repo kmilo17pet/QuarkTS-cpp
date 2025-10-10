@@ -59,7 +59,7 @@ var searchData=
   ['timeoutstatedefinition_56',['timeoutStateDefinition',['../structq_o_s_1_1sm_1_1timeout_state_definition.html',1,'qOS::sm']]],
   ['timeoutstop_57',['timeoutStop',['../classq_o_s_1_1sm_1_1handler__t.html#aa39dc4568f361edc3c2ad5032270b224',1,'qOS::sm::handler_t::timeoutStop()'],['../classq_o_s_1_1state_machine.html#a7c7c4087c79da2cac0e37111dea70195',1,'qOS::stateMachine::timeoutStop()']]],
   ['timer_58',['Using a Timer',['../q_stimers.html#q_stimerusage',1,'']]],
-  ['timer_59',['timer',['../classq_o_s_1_1timer.html',1,'qOS::timer'],['../classq_o_s_1_1timer.html#a5e34eecac429e202d1703d3f1ed387d0',1,'qOS::timer::timer()'],['../classq_o_s_1_1timer.html#a4c956ba729d96cbbdd9620d4cc1c9b4d',1,'qOS::timer::timer(const qOS::duration_t tTime)']]],
+  ['timer_59',['timer',['../classq_o_s_1_1timer.html',1,'qOS::timer'],['../classq_o_s_1_1timer.html#a41173a88f09494583f92136d95e5bfcc',1,'qOS::timer::timer() noexcept'],['../classq_o_s_1_1timer.html#a4c956ba729d96cbbdd9620d4cc1c9b4d',1,'qOS::timer::timer(const qOS::duration_t tTime)']]],
   ['timer_20example_60',['Timer example',['../q_stimers.html#q_stimerexample',1,'']]],
   ['timers_61',['Timers',['../group__qstimers.html',1,'Timers'],['../q_stimers.html',1,'Timers']]],
   ['timing_20approach_62',['Timing Approach',['../q_foundations.html#q_timmingapproach',1,'']]],

@@ -17,10 +17,9 @@ var searchData=
   ['for_20a_20fsm_14',['A demonstrative example for a FSM',['../q_fsm.html#q_fsm_example1',1,'']]],
   ['forward_15',['FORWARD',['../group__qlists.html#gga032e23f2e0cb931b9bc0189b479c8381abfec72bb37910c61f36b6c29a1f7ec31',1,'qOS']]],
   ['free_16',['free',['../classq_o_s_1_1mem_1_1pool.html#ade2d995f0dd8520624a7573d12ed17b1',1,'qOS::mem::pool']]],
-  ['freerun_17',['freeRun',['../classq_o_s_1_1timer.html#acd1dfb38ba34a7a021c28a61795b6f98',1,'qOS::timer']]],
-  ['from_18',['from',['../classq_o_s_1_1list.html#a7366927f488f5bec69bd903a9285060a',1,'qOS::list']]],
-  ['fsm_19',['FSM',['../q_fsm.html#q_fsm_example1',1,'A demonstrative example for a FSM'],['../q_fsm.html#q_fsm_example3',1,'Example using a hierarchical FSM'],['../q_fsm.html',1,'Finite State Machines (FSM)']]],
-  ['fsm_20timeout_20specification_20',['FSM Timeout specification',['../q_fsm.html#q_fsm_timeout',1,'']]],
-  ['functions_21',['Helper functions',['../group__qflm.html',1,'']]],
-  ['fundamentals_22',['Fundamentals',['../q_foundations.html',1,'']]]
+  ['from_17',['from',['../classq_o_s_1_1list.html#a7366927f488f5bec69bd903a9285060a',1,'qOS::list']]],
+  ['fsm_18',['FSM',['../q_fsm.html#q_fsm_example1',1,'A demonstrative example for a FSM'],['../q_fsm.html#q_fsm_example3',1,'Example using a hierarchical FSM'],['../q_fsm.html',1,'Finite State Machines (FSM)']]],
+  ['fsm_20timeout_20specification_19',['FSM Timeout specification',['../q_fsm.html#q_fsm_timeout',1,'']]],
+  ['functions_20',['Helper functions',['../group__qflm.html',1,'']]],
+  ['fundamentals_21',['Fundamentals',['../q_foundations.html',1,'']]]
 ];

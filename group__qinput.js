@@ -17,7 +17,7 @@ var group__qinput =
       [ "watcher", "classq_o_s_1_1input_1_1channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
     [ "qOS::input::digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html", [
-      [ "digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html#a87597389ada7339b80d76da1a8677d15", null ],
+      [ "digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html#a0c99ba5528818858a3e957393c7b8e18", null ],
       [ "getCount", "classq_o_s_1_1input_1_1digital_channel.html#a1a1bd9edeef8e0fdffce779f8098ae71", null ],
       [ "getType", "classq_o_s_1_1input_1_1digital_channel.html#a0a87bc24fcdaaeca2634a182713b52df", null ],
       [ "isShared", "classq_o_s_1_1input_1_1digital_channel.html#aafec615d0f6e0cfeec628a2d18706b51", null ],
@@ -27,7 +27,7 @@ var group__qinput =
       [ "watcher", "classq_o_s_1_1input_1_1digital_channel.html#ab1ffdab9f4319520dcf8416846fe276b", null ]
     ] ],
     [ "qOS::input::analogChannel", "classq_o_s_1_1input_1_1analog_channel.html", [
-      [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html#a2d9a1b6499f4882bac6f7608c0197b76", null ],
+      [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html#add931b2e70e5595b402a55b84dd6623d", null ],
       [ "getCount", "classq_o_s_1_1input_1_1analog_channel.html#a4042aadd219f59fab8b7eb518b0c949d", null ],
       [ "getType", "classq_o_s_1_1input_1_1analog_channel.html#a5a3dcc2a418d54cd7b12fae0b518f65a", null ],
       [ "isShared", "classq_o_s_1_1input_1_1analog_channel.html#a892cacec8d6a89c4a6cd5fd471f3dde7", null ],

@@ -16,7 +16,7 @@ var searchData=
   ['development_20process_20and_20coding_20standard_13',['Development process and coding standard',['../q_background.html#q_codstandard',1,'']]],
   ['devid_14',['DEVID',['../group__qatcli.html#ggaa827a463743265d6ebe6bb3618f63bf2a1161a40f8f1e75a594df968163f97443',1,'qOS::cli']]],
   ['digital_5fchannel_15',['DIGITAL_CHANNEL',['../group__qinput.html#gga1fa89c23afc36bdea1a290368c7ae520adf6bc1e3bf6387a221f7a882836d6cbb',1,'qOS::input']]],
-  ['digitalchannel_16',['digitalChannel',['../classq_o_s_1_1input_1_1digital_channel.html',1,'qOS::input::digitalChannel'],['../classq_o_s_1_1input_1_1digital_channel.html#a87597389ada7339b80d76da1a8677d15',1,'qOS::input::digitalChannel::digitalChannel()']]],
+  ['digitalchannel_16',['digitalChannel',['../classq_o_s_1_1input_1_1digital_channel.html',1,'qOS::input::digitalChannel'],['../classq_o_s_1_1input_1_1digital_channel.html#a0c99ba5528818858a3e957393c7b8e18',1,'qOS::input::digitalChannel::digitalChannel()']]],
   ['digitalreaderfcn_5ft_17',['digitalReaderFcn_t',['../group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a',1,'qOS::input']]],
   ['digitalvalue_5ft_18',['digitalValue_t',['../group__qinput.html#ga0519732a168ad68b41a3913e06e46d45',1,'qOS::input']]],
   ['disable_19',['disable',['../classq_o_s_1_1task.html#a4b6aeaa5fc154554b70f8c8f0b4984d0',1,'qOS::task']]],

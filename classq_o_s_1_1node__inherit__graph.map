@@ -1,15 +1,13 @@
 <map id="qOS::node" name="qOS::node">
-<area shape="rect" id="Node000001" title="A list&#45;node object (Used internally)" alt="" coords="341,5,423,31"/>
+<area shape="rect" id="Node000001" title="A list&#45;node object (Used internally)" alt="" coords="247,5,328,31"/>
 <area shape="rect" id="Node000002" href="$classq_o_s_1_1cli_1_1command.html" title="An AT&#45;Command object." alt="" coords="5,79,135,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="327,35,124,81,123,76,326,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,39,108,81,106,76,235,34"/>
 <area shape="rect" id="Node000003" href="$classq_o_s_1_1input_1_1channel.html" title=" " alt="" coords="158,79,291,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="343,40,253,81,250,76,340,35"/>
-<area shape="rect" id="Node000006" href="$classq_o_s_1_1input_1_1watcher.html" title="The digital input&#45;channel watcher class." alt="" coords="315,79,449,105"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="385,46,385,79,379,79,379,46"/>
-<area shape="rect" id="Node000007" href="$classq_o_s_1_1list.html" title="A list object (Generic double&#45;linked)" alt="" coords="472,79,542,105"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="418,37,487,76,485,81,415,41"/>
-<area shape="rect" id="Node000008" href="$classq_o_s_1_1task.html" title="A task node object." alt="" coords="567,79,645,105"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="435,34,569,76,567,81,434,39"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,44,237,80,233,77,265,41"/>
+<area shape="rect" id="Node000006" href="$classq_o_s_1_1list.html" title="A list object (Generic double&#45;linked)" alt="" coords="315,79,385,105"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="310,41,341,77,337,80,306,44"/>
+<area shape="rect" id="Node000007" href="$classq_o_s_1_1task.html" title="A task node object." alt="" coords="410,79,488,105"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="330,35,422,76,420,81,327,40"/>
 <area shape="rect" id="Node000004" href="$classq_o_s_1_1input_1_1analog_channel.html" title="An analog input&#45;channel object." alt="" coords="41,153,214,178"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="198,116,145,154,142,150,194,112"/>
 <area shape="rect" id="Node000005" href="$classq_o_s_1_1input_1_1digital_channel.html" title="A digital input&#45;channel object." alt="" coords="238,153,406,178"/>

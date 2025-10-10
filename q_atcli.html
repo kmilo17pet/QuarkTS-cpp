@@ -333,7 +333,7 @@ A CLI example</h1>
 <div class="line"><span class="comment">/*==================================================================*/</span></div>
 <div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    HAL_Setup();</div>
-<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">init</a>( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
+<div class="line">    os.<a class="code hl_function" href="classq_o_s_1_1core.html#ad76b1e8b0280526522cc2d906541d1c4">init</a>( HAL_GetTick, <span class="keyword">nullptr</span> );</div>
 <div class="line">    CLI_Object.setup( BSP_UART_PUTC, CLI_Input, <span class="keyword">sizeof</span>(CLI_Input),</div>
 <div class="line">                      CLI_Output, <span class="keyword">sizeof</span>(CLI_Output) );</div>
 <div class="line"> </div>
@@ -349,7 +349,7 @@ A CLI example</h1>
 <div class="line">}</div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a30b4c1ac78976e2d289a710647300d5c"><div class="ttname"><a href="classq_o_s_1_1core.html#a30b4c1ac78976e2d289a710647300d5c">qOS::core::run</a></div><div class="ttdeci">bool run(void) noexcept</div><div class="ttdoc">Executes the scheduling scheme. It must be called once after the task pool has been defined.</div></div>
 <div class="ttc" id="aclassq_o_s_1_1core_html_a882991afb9548674668aa51dbe694d6e"><div class="ttname"><a href="classq_o_s_1_1core.html#a882991afb9548674668aa51dbe694d6e">qOS::core::add</a></div><div class="ttdeci">bool add(task &amp;Task, taskFcn_t callback, const priority_t p, const duration_t t, const iteration_t n, const taskState s=taskState::ENABLED_STATE, void *arg=nullptr) noexcept</div><div class="ttdoc">Add a task to the scheduling scheme. The task is scheduled to run every t time units,...</div></div>
-<div class="ttc" id="aclassq_o_s_1_1core_html_a8a1c57e7736a22fb8036bfa60b96915c"><div class="ttname"><a href="classq_o_s_1_1core.html#a8a1c57e7736a22fb8036bfa60b96915c">qOS::core::init</a></div><div class="ttdeci">bool init(const getTickFcn_t tFcn=nullptr, taskFcn_t callbackIdle=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
+<div class="ttc" id="aclassq_o_s_1_1core_html_ad76b1e8b0280526522cc2d906541d1c4"><div class="ttname"><a href="classq_o_s_1_1core.html#ad76b1e8b0280526522cc2d906541d1c4">qOS::core::init</a></div><div class="ttdeci">bool init(const getTickFcn_t tFcn=nullptr, taskFcn_t callbackIdle=nullptr, void(*coreIdleFcn)(void)=nullptr) noexcept</div><div class="ttdoc">Task Scheduler initialization. This core method is required and must be called once in the applicatio...</div></div>
 </div><!-- fragment --><p>The CLI input is feeded from the interrupt context by using the UART receive ISR:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> interrupt HAL_UART_RxInterrupt( <span class="keywordtype">void</span> ) {</div>
 <div class="line">    <span class="keywordtype">char</span> received;</div>

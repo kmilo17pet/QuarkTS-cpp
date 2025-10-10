@@ -17,7 +17,6 @@ var hierarchy =
         [ "qOS::input::analogChannel", "classq_o_s_1_1input_1_1analog_channel.html", null ],
         [ "qOS::input::digitalChannel", "classq_o_s_1_1input_1_1digital_channel.html", null ]
       ] ],
-      [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", null ],
       [ "qOS::list", "classq_o_s_1_1list.html", null ],
       [ "qOS::task", "classq_o_s_1_1task.html", null ]
     ] ],

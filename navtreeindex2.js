@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"group__qfsm.html#ga8c5a4670f1f82562bdac083546b13fa1":[6,1,0,11],
 "group__qfsm.html#ga8e4e70e06f74af5f016e5a4eba0e6967":[6,1,0,13],
 "group__qfsm.html#ga9a8c0296382e335616419ce163437b89":[6,1,0,27],
 "group__qfsm.html#gab2bc3399fbeae52404fe14571d960f0c":[6,1,0,17],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "q_events.html#q_queueexample":[4,2,1,2],
 "q_events.html#q_queues":[4,2,1],
 "q_events.html#q_queuesetup":[4,2,1,0],
-"q_events.html#q_simplenot":[4,2,0,0],
-"q_events.html#qeventflags":[4,2,2]
+"q_events.html#q_simplenot":[4,2,0,0]
 };

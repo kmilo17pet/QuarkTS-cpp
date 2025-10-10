@@ -154,8 +154,8 @@ $(function(){initNavTree('classq_o_s_1_1timer.html',''); initResizable(true); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5e34eecac429e202d1703d3f1ed387d0" id="r_a5e34eecac429e202d1703d3f1ed387d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e34eecac429e202d1703d3f1ed387d0">timer</a> ()</td></tr>
-<tr class="separator:a5e34eecac429e202d1703d3f1ed387d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41173a88f09494583f92136d95e5bfcc" id="r_a41173a88f09494583f92136d95e5bfcc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41173a88f09494583f92136d95e5bfcc">timer</a> () noexcept</td></tr>
+<tr class="separator:a41173a88f09494583f92136d95e5bfcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c956ba729d96cbbdd9620d4cc1c9b4d" id="r_a4c956ba729d96cbbdd9620d4cc1c9b4d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c956ba729d96cbbdd9620d4cc1c9b4d">timer</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime)</td></tr>
 <tr class="memdesc:a4c956ba729d96cbbdd9620d4cc1c9b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the instance of the timer with the specified expiration time. Timer will start armed.  <br /></td></tr>
 <tr class="separator:a4c956ba729d96cbbdd9620d4cc1c9b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,9 +171,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a758dbbec1aeca8c8398403e349555f3b" id="r_a758dbbec1aeca8c8398403e349555f3b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a758dbbec1aeca8c8398403e349555f3b">status</a> (void) const noexcept</td></tr>
 <tr class="memdesc:a758dbbec1aeca8c8398403e349555f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current status of the Timer (Armed or Disarmed)  <br /></td></tr>
 <tr class="separator:a758dbbec1aeca8c8398403e349555f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd1dfb38ba34a7a021c28a61795b6f98" id="r_acd1dfb38ba34a7a021c28a61795b6f98"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd1dfb38ba34a7a021c28a61795b6f98">freeRun</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime) noexcept</td></tr>
-<tr class="memdesc:acd1dfb38ba34a7a021c28a61795b6f98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking timer check with automatic arming.  <br /></td></tr>
-<tr class="separator:acd1dfb38ba34a7a021c28a61795b6f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f871e3850dfeed495869c8be72126b" id="r_ad7f871e3850dfeed495869c8be72126b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7f871e3850dfeed495869c8be72126b">reloadIfExpired</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> tTime) noexcept</td></tr>
+<tr class="memdesc:ad7f871e3850dfeed495869c8be72126b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking timer check with automatic arming.  <br /></td></tr>
+<tr class="separator:ad7f871e3850dfeed495869c8be72126b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18416bad9cbc3b4a529ddac25631dab" id="r_ae18416bad9cbc3b4a529ddac25631dab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae18416bad9cbc3b4a529ddac25631dab">reloadIfExpired</a> (void) noexcept</td></tr>
+<tr class="memdesc:ae18416bad9cbc3b4a529ddac25631dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Blocking timer check with automatic arming.  <br /></td></tr>
+<tr class="separator:ae18416bad9cbc3b4a529ddac25631dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff79958773cab990688fcccc7d155e5a" id="r_aff79958773cab990688fcccc7d155e5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qclock.html#gad964cc2538515fbb14dba55fa65dee5f">qOS::clock_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff79958773cab990688fcccc7d155e5a">remaining</a> (void) const noexcept</td></tr>
 <tr class="memdesc:aff79958773cab990688fcccc7d155e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the remaining time in epochs.  <br /></td></tr>
 <tr class="separator:aff79958773cab990688fcccc7d155e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,11 +230,14 @@ Static Public Attributes</h2></td></tr>
 <div class="textblock"><p>A non-blocking Timer object. </p>
 <p>Timers are an essential extension as they allow for accurate and efficient timekeeping without blocking tasks. Using timers enables the embedded application to perform other critical tasks while the timer is running in the background. Timers also provide flexibility in the event that the timer needs to be paused, restarted, or adjusted on the fly. This can be particularly useful in applications that require dynamic timing or have unpredictable event intervals. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5e34eecac429e202d1703d3f1ed387d0" name="a5e34eecac429e202d1703d3f1ed387d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e34eecac429e202d1703d3f1ed387d0">&#9670;&#160;</a></span>timer() <span class="overload">[1/2]</span></h2>
+<a id="a41173a88f09494583f92136d95e5bfcc" name="a41173a88f09494583f92136d95e5bfcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41173a88f09494583f92136d95e5bfcc">&#9670;&#160;</a></span>timer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">qOS::timer::timer </td>
@@ -240,6 +246,11 @@ Static Public Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -389,47 +400,6 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 <p>Non-Blocking timer check. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> when timer expires, otherwise, returns <code>false</code>. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>A disarmed timer also returns <code>false</code>. </dd></dl>
-
-</div>
-</div>
-<a id="acd1dfb38ba34a7a021c28a61795b6f98" name="acd1dfb38ba34a7a021c28a61795b6f98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd1dfb38ba34a7a021c28a61795b6f98">&#9670;&#160;</a></span>freeRun()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool qOS::timer::freeRun </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Non-Blocking timer check with automatic arming. </p>
-<p>Behavior: If disarmed, it gets armed immediately with the specified time.</p>
-<p>If armed, the time argument is ignored and the API only checks for expiration. When the time expires, the timer gets armed immediately taking the specified time. </p><dl class="section note"><dt>Note</dt><dd>After the timer expiration, this method re-arms the timer </dd>
-<dd>
-The OS must be running before using a timer. </dd>
-<dd>
-The expiration time should be at least, two times greater than the clock-Tick. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tTime</td><td>The expiration time given in milliseconds. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise, returns <code>false</code>. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>A disarmed timer also returns <code>false</code>. </dd></dl>
 
 </div>
@@ -649,6 +619,80 @@ The expiration time should be at least, two times greater than the clock-Tick. <
 
 <p>Reload the timer with the previous specified time. </p>
 <dl class="section note"><dt>Note</dt><dd>Timer should be armed before this operation </dd></dl>
+
+</div>
+</div>
+<a id="ad7f871e3850dfeed495869c8be72126b" name="ad7f871e3850dfeed495869c8be72126b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f871e3850dfeed495869c8be72126b">&#9670;&#160;</a></span>reloadIfExpired() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::timer::reloadIfExpired </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>tTime</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Non-Blocking timer check with automatic arming. </p>
+<p>Behavior: If disarmed, it gets armed immediately with the specified time.</p>
+<p>If armed, the time argument is ignored and the API only checks for expiration. When the time expires, the timer gets armed immediately taking the specified time. </p><dl class="section note"><dt>Note</dt><dd>After the timer expiration, this method re-arms the timer </dd>
+<dd>
+The OS must be running before using a timer. </dd>
+<dd>
+The expiration time should be at least, two times greater than the clock-Tick. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tTime</td><td>The expiration time given in milliseconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise, returns <code>false</code>. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>A disarmed timer also returns <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ae18416bad9cbc3b4a529ddac25631dab" name="ae18416bad9cbc3b4a529ddac25631dab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18416bad9cbc3b4a529ddac25631dab">&#9670;&#160;</a></span>reloadIfExpired() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::timer::reloadIfExpired </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Non-Blocking timer check with automatic arming. </p>
+<p>Behavior: If disarmed, it gets armed immediately with the previous specified time.</p>
+<p>If armed, the API only checks for expiration. When the time expires, the timer gets armed immediately using the previously assigned time. </p><dl class="section note"><dt>Note</dt><dd>After the timer expiration, this method re-arms the timer </dd>
+<dd>
+The OS must be running before using a timer. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns <code>true</code> on success, otherwise, returns <code>false</code>. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>A disarmed timer also returns <code>false</code>. </dd></dl>
 
 </div>
 </div>
