@@ -74,7 +74,7 @@ namespace qOS {
                 volatile bool ready{ false };
                 void flush( void );
                 void operator=( input const& ) = delete;
-                input() {}
+                input() noexcept {}
         };
         /*! @endcond */
 

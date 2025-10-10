@@ -76,7 +76,7 @@ namespace qOS {
             {
                 return container;
             }
-            node() : next(nullptr), prev(nullptr), container(nullptr) {}
+            node() noexcept : next(nullptr), prev(nullptr), container(nullptr) {}
             /*! @cond  */
             virtual ~node() {}
             /*! @endcond  */

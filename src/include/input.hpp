@@ -117,7 +117,7 @@ namespace qOS {
             public:
                 /*! @cond  */
                 virtual ~channel() {}
-                channel( uint8_t channelNumber ) : number( channelNumber ) {}
+                channel( uint8_t channelNumber ) noexcept : number( channelNumber ) {}
                 /*! @endcond  */
 
                 /**
@@ -257,7 +257,7 @@ namespace qOS {
                 * @param[in] inputChannel The specified channel(pin) number to read.
                 * @param[in] invert To invert/negate the raw-reading.
                 */
-                explicit digitalChannel( const uint8_t inputChannel, bool invert = false ) : channel( inputChannel ), negate( invert) {}
+                explicit digitalChannel( const uint8_t inputChannel, bool invert = false ) noexcept : channel( inputChannel ), negate( invert) {}
                 /**
                 * @brief Get the channel type.
                 * @return The channel type.
@@ -373,7 +373,7 @@ namespace qOS {
                 * @param[in] upperThreshold The upper threshold value.
                 * @param[in] h Hysteresis for the in-band transition.
                 */
-                analogChannel( const uint8_t inputChannel, const analogValue_t lowerThreshold, const analogValue_t upperThreshold, const analogValue_t h = 20 )
+                analogChannel( const uint8_t inputChannel, const analogValue_t lowerThreshold, const analogValue_t upperThreshold, const analogValue_t h = 20 ) noexcept
                 : channel( inputChannel ),
                   high( upperThreshold ),
                   low( lowerThreshold ),
@@ -453,7 +453,7 @@ namespace qOS {
         /**
         * @brief The digital input-channel watcher class.
         */
-        class watcher : protected node, private nonCopyable {
+        class watcher : private nonCopyable {
             private:
                 eventCallback_t exception{ nullptr };
                 list digitalChannels;

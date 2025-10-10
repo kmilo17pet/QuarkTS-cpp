@@ -262,7 +262,7 @@ void input::analogChannel::steadyInBandState( input::analogChannel& c )
 /*============================================================================*/
 bool input::watcher::watch( void ) noexcept
 {
-    const bool act = waitDebounce.freeRun( debounceTime );
+    const bool act = waitDebounce.reloadIfExpired( debounceTime );
     if ( ( digitalChannels.length() > 0U ) && act ) {
         for ( auto i = digitalChannels.begin(); i.untilEnd() ; i++ ) {
             input::channel& c = *i.get<input::channel*>();

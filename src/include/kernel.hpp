@@ -93,7 +93,8 @@ namespace qOS {
             list coreLists[ Q_PRIORITY_LEVELS + 2 ]; // skipcq: CXX-W2066
             list& waitingList;  // skipcq: CXX-W2012, CXX-W2010
             list& suspendedList;  // skipcq: CXX-W2012, CXX-W2010
-            list inputWatchers;
+            //list inputWatchers;
+            void(*cpuIdle)(void){ nullptr };
             static const priority_t MAX_PRIORITY_VALUE;
             static const uint32_t BIT_INIT;
             static const uint32_t BIT_FCALL_IDLE;
@@ -104,8 +105,7 @@ namespace qOS {
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
             void dispatch( list * const xList ) noexcept;
             void dispatchIdle( void ) noexcept;
-            void handleInputWatchers( void ) noexcept;
-            core() : waitingList( coreLists[ Q_PRIORITY_LEVELS ] ), suspendedList( coreLists[ Q_PRIORITY_LEVELS + 1 ] ) {}
+            core() noexcept : waitingList( coreLists[ Q_PRIORITY_LEVELS ] ), suspendedList( coreLists[ Q_PRIORITY_LEVELS + 1 ] ) {}
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
         public:
@@ -131,6 +131,8 @@ namespace qOS {
             * @param[in] callbackIdle  Callback function to the Idle Task. To
             * disable the Idle-Task activities, ignore this parameter of pass
             * @c nullptr as argument.
+            * @param[in] coreIdleFcn The function that sets the CPU into
+            * low-power or idle state
             * @return @c true on success. Otherwise return @c false.
             *
             * Example : When tick is already provided
@@ -165,7 +167,7 @@ namespace qOS {
             * }
             * @endcode
             */
-            bool init( const getTickFcn_t tFcn = nullptr, taskFcn_t callbackIdle = nullptr ) noexcept;
+            bool init( const getTickFcn_t tFcn = nullptr, taskFcn_t callbackIdle = nullptr, void(*coreIdleFcn)(void) = nullptr ) noexcept;
             /**
             * @brief Add a task to the scheduling scheme. The task is scheduled to run
             * every @a t time units, @a n times and executing @a callback method on
@@ -262,6 +264,15 @@ namespace qOS {
             bool add( task &Task, commandLineInterface &cli, const priority_t p, void *arg = nullptr ) noexcept;
             /** @}*/
             #endif
+
+            /**
+            * @brief Add an input-watcher so that its function is executed by
+            * the kernel
+            * @note The input-watcher is considered as an always-active task
+            * @param[in] w The input watcher.
+            * @return Returns @c true if success, otherwise returns @c false.
+            */
+            bool add( task &Task, input::watcher &w, const priority_t p = HIGHEST_PRIORITY, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;
             /**
             * @brief Set/Change the callback for the Idle-task
             * @param[in] callback A pointer to a void callback method with a qOS::event_t
@@ -276,6 +287,13 @@ namespace qOS {
             * @return @c true on success. Otherwise return @c false.
             */
             bool setNameIdleTask( const char *tName ) noexcept;
+            /**
+            * @brief Set the function that puts the CPU into a low-power or
+            * idle state until an interrupt occurs.
+            * @param[in] pFcn The function to put the CPU into low-power or idle-state
+            * @return @c true on success. Otherwise return @c false.
+            */
+            bool setCoreIdleFcn( void(*pFcn)(void) ) noexcept;
             /**
             * @brief Disables the kernel scheduling. The main thread will continue
             * after the core::run() call.
@@ -437,21 +455,6 @@ namespace qOS {
             * current kernel transaction
             */
             globalState getGlobalState( task &Task ) const noexcept;
-            /**
-            * @brief Add an input-watcher so that its function is executed by
-            * the kernel
-            * @note The input-watcher is considered as an always-active task
-            * @param[in] w The input watcher.
-            * @return Returns @c true if success, otherwise returns @c false.
-            */
-            bool add( input::watcher &w ) noexcept;
-            /**
-            * @brief Remove an input-watcher so that the kernel stops executing
-            * its function
-            * @param[in] w The input-watcher.
-            * @return Returns @c true if success, otherwise returns @c false.
-            */
-            bool remove( input::watcher &w ) noexcept;
             /**
             * @brief Check if the OS instance has been initialized.
             * @return @c true if OS instance has been initialized
