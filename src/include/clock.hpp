@@ -81,7 +81,7 @@ namespace qOS {
             /*! @cond  */
             static volatile qOS::clock_t sysTick_Epochs; // skipcq: CXX-W2009
             static qOS::clock_t internalTick( void ) noexcept;
-            clock();
+            clock() = default;
             /*! @endcond  */
         public:
             clock( clock &other ) = delete;

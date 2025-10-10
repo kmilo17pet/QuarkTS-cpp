@@ -28,7 +28,7 @@ namespace qOS {
             qOS::clock_t tStart{ 0U };
             qOS::clock_t tv{ 0U };
         public:
-            timer();
+            timer() noexcept;
             /*! @cond  */
             virtual ~timer() {}
             /*! @endcond  */
@@ -85,7 +85,23 @@ namespace qOS {
             * @return Returns @c true on success, otherwise, returns @c false.
             * @note A disarmed timer also returns @c false.
             */
-            bool freeRun( const qOS::duration_t tTime ) noexcept;
+            bool reloadIfExpired( const qOS::duration_t tTime ) noexcept;
+            /**
+            * @brief Non-Blocking timer check with automatic arming.
+            *
+            * Behavior:
+            * If disarmed, it gets armed immediately with the previous
+            * specified time.
+            *
+            * If armed, the API only checks for expiration. When the time
+            * expires, the timer gets armed immediately using the previously
+            * assigned time.
+            * @note After the timer expiration, this method re-arms the timer
+            * @note The OS must be running before using a timer.
+            * @return Returns @c true on success, otherwise, returns @c false.
+            * @note A disarmed timer also returns @c false.
+            */
+            bool reloadIfExpired( void ) noexcept;
             /**
             * @brief Retrieve the remaining time in epochs
             * @return The remaining time specified in epochs.

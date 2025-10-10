@@ -8,7 +8,7 @@ const qOS::clock_t timer::DISARM_VALUE = 0UL ;
 const qOS::clock_t timer::REMAINING_IN_DISARMED_STATE = 0xFFFFFFFFUL;
 
 /*============================================================================*/
-timer::timer()
+timer::timer() noexcept
 {
     disarm();
 }
@@ -61,7 +61,7 @@ void timer::disarm( void ) noexcept
     tStart = timer::DISARM_VALUE;
 }
 /*============================================================================*/
-bool timer::freeRun( const qOS::duration_t tTime ) noexcept
+bool timer::reloadIfExpired( const qOS::duration_t tTime ) noexcept
 {
     bool retValue = false;
 
@@ -73,6 +73,20 @@ bool timer::freeRun( const qOS::duration_t tTime ) noexcept
     }
     else {
         (void)set( tTime );
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+bool timer::reloadIfExpired( void ) noexcept
+{
+    bool retValue = false;
+
+    if ( timer::ARMED == status() ) {
+        if ( expired() ) {
+            reload();
+            retValue = true;
+        }
     }
 
     return retValue;

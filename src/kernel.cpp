@@ -21,12 +21,14 @@ const priority_t core::MEDIUM_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEV
 const priority_t core::HIGHEST_PRIORITY = static_cast<priority_t>( Q_PRIORITY_LEVELS ) - 1U;
 const notifier_t MAX_NOTIFICATION_VALUE = UINT32_MAX - 1UL;
 
-#if ( Q_CLI == 1 )
+#if ( Q_FSM == 1 )
     static void fsmTaskCallback( event_t e );
+#endif
+#if ( Q_CLI == 1 )
     static void cliTaskCallback( event_t e );
     static void cliNotifyFcn( commandLineInterface *cli );
 #endif
-
+static void inputWatcherTaskCallback( event_t e );
 /*============================================================================*/
 core& core::getInstance( void ) noexcept
 {
@@ -35,13 +37,14 @@ core& core::getInstance( void ) noexcept
 }
 /*============================================================================*/
 /*cstat -MISRAC++2008-7-1-2*/
-bool core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle ) noexcept
+bool core::init( const getTickFcn_t tFcn, taskFcn_t callbackIdle, void(*coreIdleFcn)(void) ) noexcept
 {
     (void)clock::setTickProvider( tFcn );
     (void)setNameIdleTask( "idle" );
     (void)idle.setPriority( core::LOWEST_PRIORITY );
     (void)idle.setState( taskState::DISABLED_STATE );
     (void)idle.setCallback( callbackIdle );
+    (void)setCoreIdleFcn( coreIdleFcn );
     idle.entry = 0U;
     return true;
 }
@@ -122,6 +125,26 @@ bool core::add( task &Task, commandLineInterface &cli, const priority_t p, void 
 }
 #endif /*Q_CLI*/
 /*============================================================================*/
+static void inputWatcherTaskCallback( event_t e )
+{
+    /*cstat -CERT-EXP36-C_b*/
+    input::watcher * const w = static_cast<input::watcher*>( e.thisTask().getBindedObject() );
+    /*cstat +CERT-EXP36-C_b*/
+    (void)w->watch();
+}
+/*============================================================================*/
+bool core::add( task &Task, input::watcher &w, const priority_t p, const taskState s, void *arg ) noexcept
+{
+    bool retValue = core::add( Task, inputWatcherTaskCallback, p, 10_ms, task::PERIODIC, s, arg );
+
+    if ( retValue ) {
+        Task.aObj = &w;
+        retValue = true;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
 /*cstat -MISRAC++2008-7-1-2*/
 bool core::setIdleTask( taskFcn_t callback ) noexcept
 {
@@ -140,6 +163,18 @@ bool core::setNameIdleTask( const char *tName ) noexcept
 
     }
     /*cstat +MISRAC++2008-5-14-1*/
+    return retValue;
+}
+/*============================================================================*/
+bool core::setCoreIdleFcn( void(*pFcn)(void) ) noexcept
+{
+    bool retValue = false;
+
+    if ( pFcn != cpuIdle ) {
+        cpuIdle = pFcn;
+        retValue = true;
+    }
+
     return retValue;
 }
 /*============================================================================*/
@@ -373,7 +408,9 @@ bool core::run( void ) noexcept
     /*cstat +MISRAC++2008-0-1-6*/
 
     do {
-        if ( checkIfReady() ) {
+        const bool anyActiveTask = checkIfReady();
+
+        if ( anyActiveTask) {
             priority_t xPriorityListIndex = MAX_PRIORITY_VALUE;
 
             do {
@@ -383,20 +420,19 @@ bool core::run( void ) noexcept
                 }
             } while( 0U != xPriorityListIndex-- );
         }
-        else {
-            if ( nullptr != idle.callback ) {
-                dispatchIdle();
-            }
-        }
-        if ( inputWatchers.length() > 0U ) {
-            handleInputWatchers();
-        }
         if ( suspendedList.length() > 0U ) {
             (void)waitingList.move( suspendedList, listPosition::AT_BACK );
             #if ( Q_PRESERVE_TASK_ENTRY_ORDER == 1 )
                 /*preseve the entry order by sorting the new waiting-list*/
                 (void)waitingList.sort( taskEntryOrderPreserver );
             #endif
+        }
+
+        if  ( !anyActiveTask ) {
+            dispatchIdle();
+            if ( nullptr != cpuIdle ) {
+                cpuIdle();
+            }
         }
     }
     #if ( Q_ALLOW_SCHEDULER_RELEASE == 1 )
@@ -601,20 +637,3 @@ globalState core::getGlobalState( task &Task ) const noexcept
     return retValue;
 }
 /*============================================================================*/
-bool core::add( input::watcher &w ) noexcept
-{
-    return inputWatchers.insert( &w );
-}
-/*============================================================================*/
-bool core::remove( input::watcher &w ) noexcept
-{
-    return inputWatchers.remove( &w );
-}
-/*============================================================================*/
-void core::handleInputWatchers( void ) noexcept
-{
-    for ( auto i = inputWatchers.begin(); i.untilEnd() ; i++ ) {
-        input::watcher * const w = i.get<input::watcher*>();
-        (void)w->watch();
-    }
-}
