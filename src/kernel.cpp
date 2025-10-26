@@ -282,10 +282,10 @@ bool core::checkIfReady( void ) noexcept
         (void)waitingList.remove( listPosition::AT_FRONT );
         if ( xTask->getFlag( task::BIT_REMOVE_REQUEST ) ) {
             #if ( Q_PRIO_QUEUE_SIZE > 0 )
-                critical::enter();
-                /*clean any entry of this task from the priority queue */
-                priorityQueue.cleanUp( *xTask );
-                critical::exit();
+                critical::scope {
+                    /*clean any entry of this task from the priority queue */
+                    priorityQueue.cleanUp( *xTask );
+                }
             #endif
             xTask->setFlags( task::BIT_REMOVE_REQUEST, false );
             --core::taskEntries;

@@ -8,9 +8,9 @@ class customTask : public task {
     void activities( event_t e ) override
     {
         if ( e.firstCall() ) {
-            logger::out() << e.thisTask() << logger::endl;
+            logger::out() << e.thisTask();
         }
-        logger::out() << logger::mag << "im a custom task" << logger::end;
+        logger::out() << logger::mag << "im a custom task";
     }
 };
 
@@ -72,18 +72,18 @@ void idleTask_callback( event_t e )
     unsigned int a;
 
     if ( e.firstCall() ) {
-        logger::out() << "idle task" << a << logger::end;
-        logger::out() << e.thisTask() << logger::end;
+        logger::out() << "idle task" << a;;
+        logger::out() << e.thisTask();
     }
     co::reenter() {
         for(;;) {
             co::getPosition( pos1 );
-            logger::out() << e.thisTask() << logger::end;
-            logger::out() << "sec 1"<< logger::end;
+            logger::out() << e.thisTask();
+            logger::out() << "sec 1";
             co::delay( 0.5_sec );
-            logger::out() <<"sec 2"<< logger::end;
+            logger::out() <<"sec 2";
             co::delay( 0.5_sec );
-            logger::out() <<"sec 3"<< logger::end;
+            logger::out() <<"sec 3";
             co::delay( 0.5_sec );
             co::waitUntil( true );
             co::waitUntil( true , 500 );
@@ -106,7 +106,7 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        logger::out() << e.thisTask() << logger::end;
+        logger::out() << e.thisTask();
     }
     co::reenter( otherTaskCrHandle ) {
         co::restart();
@@ -119,7 +119,7 @@ sm::status s1_callback( sm::handler_t h )
 {
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            logger::out() << logger::cyn << h.thisMachine() << h.thisState() << "s1_callback"<< logger::end;
+            logger::out() << logger::cyn << h.thisMachine() << h.thisState() << "s1_callback";
             h.thisMachine().timeoutSet( 0, 5_sec );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
@@ -135,11 +135,11 @@ sm::status s2_callback( sm::handler_t h )
 {
     static timer tmr;
 
-    logger::out() << logger::var(tmr) << logger::end;
+    logger::out() << logger::var(tmr);
 
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
-            logger::out() << logger::cyn  << h.thisMachine() << h.thisState() << "s2_callback"<< logger::end;
+            logger::out() << logger::cyn  << h.thisMachine() << h.thisState() << "s2_callback";
             tmr( 5_sec );
             break;
         default:
@@ -153,18 +153,18 @@ sm::status s2_callback( sm::handler_t h )
 
 void task_callback( event_t e )
 {
-    logger::out() << e.self() << logger::end;
+    logger::out() << e.self();
 
     if ( e.firstCall() ) {
-        logger::out() << logger::grn << "first call "<< e.thisTask() << logger::end;
+        logger::out() << logger::grn << "first call "<< e.thisTask();
     }
 
     if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        logger::out() << "notified(SIMPLE)! " << e.thisTask() << logger::end;
+        logger::out() << "notified(SIMPLE)! " << e.thisTask();
     }
 
     if( trigger::byNotificationQueued ==  e.getTrigger() ) {
-        logger::out() << "notified(QUEUED)! " << e.thisTask() << logger::end;
+        logger::out() << "notified(QUEUED)! " << e.thisTask();
     }
 
     if ( e.lastIteration() ) {
@@ -172,12 +172,12 @@ void task_callback( event_t e )
         os.notify( notifyMode::QUEUED, t1, nullptr );
         os.notify( notifyMode::QUEUED, t2, nullptr );
         os.notify( notifyMode::QUEUED, t1, nullptr );
-        logger::out() << "last iteration "<< e.thisTask() << logger::end;
+        logger::out() << "last iteration "<< e.thisTask();
     }
 
     int someValue = 457;
     int *ptr = &someValue;
-    logger::out() << logger::red <<"test trace "<< logger::dec << logger::var(someValue)<< "  " << ptr << logger::end;
+    logger::out() << logger::red <<"test trace "<< logger::dec << logger::var(someValue)<< "  " << ptr;
 
 }
 
@@ -218,12 +218,15 @@ int main()
     uint32_t x = 0xFFAA2211;
     double y = -3.1416;
     logger::setOutputFcn( &putCharFcn );
-    logger::out() << logger::pre(8) << logger::var(y) << logger::end;
-    logger::out() << logger::var(x) << logger::mem( sizeof(x) ) << &x << logger::end;
-    logger::out(logger::info) << "info message"<< logger::end;
-    logger::out(logger::error) << "error message"<< logger::end;
-    logger::out(logger::debug) << "debug message"<< logger::end;
-    logger::out(logger::verbose) << "verbose message"<< logger::end;
+    logger::out() << logger::pre(8) << logger::var(y);
+    logger::out() << logger::var(x) << logger::mem( sizeof(x) ) << &x;
+    logger::out(logger::info) << "info message";
+    logger::out(logger::error) << "error message";
+    logger::out(logger::debug) << "debug message";
+    logger::out(logger::verbose) << "verbose message";
+
+
+    //return 0;
 
     os.init( sysClock, idleTask_callback );
 
@@ -231,11 +234,11 @@ int main()
     LED_FSM.install( LEDsigqueue );
     LED_FSM.install( tm_spectimeout );
 
-    logger::out(logger::debug) << logger::end;
+    logger::out(logger::debug);
     State_LEDOff.install( LEDOff_transitions );
     State_LEDOn.install( LEDOn_transitions, LedOn_Timeouts );
     State_LEDBlink.install( LEDBlink_transitions, LEDBlink_timeouts );
-    logger::out(logger::debug) << logger::end;
+    logger::out(logger::debug);
     os.add( t1, task_callback, core::LOWEST_PRIORITY, 0.5_sec, task::PERIODIC );
     os.add( t2, task_callback, core::HIGHEST_PRIORITY, 0.5_sec, 10U );
     os.add( t3, task_callback, core::MEDIUM_PRIORITY, 2_sec, task::PERIODIC );

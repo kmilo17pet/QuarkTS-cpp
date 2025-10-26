@@ -74,7 +74,9 @@ namespace qOS {
             */
             inline list* getContainer( void ) const noexcept
             {
+                /*cstat -CONST-member-ret -MISRAC++2008-9-3-1*/
                 return container;
+                /*cstat +CONST-member-ret +MISRAC++2008-9-3-1*/
             }
             node() noexcept : next(nullptr), prev(nullptr), container(nullptr) {}
             /*! @cond  */

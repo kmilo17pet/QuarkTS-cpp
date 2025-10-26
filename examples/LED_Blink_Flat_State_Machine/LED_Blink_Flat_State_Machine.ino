@@ -50,7 +50,7 @@ sm::timeoutStateDefinition LEDBlink_timeouts[] = {
 sm::status State_LEDOff_Callback( sm::handler_t h ) {
     switch ( h.signal() ) {
         case sm::signalID::SIGNAL_ENTRY:
-            logger::out() << "LED Off state" << logger::end;
+            logger::out() << "LED Off state";
             digitalWrite( LED_BUILTIN, LOW );
             break;
         default:
@@ -62,7 +62,7 @@ sm::status State_LEDOff_Callback( sm::handler_t h ) {
 sm::status State_LEDOn_Callback( sm::handler_t h ) {
     switch ( h.signal() ) {
         case sm::signalID::SIGNAL_ENTRY:
-            logger::out() << "LED On state" << logger::end;
+            logger::out() << "LED On state";
             digitalWrite( LED_BUILTIN, HIGH );
             break;
         default:
@@ -74,7 +74,7 @@ sm::status State_LEDOn_Callback( sm::handler_t h ) {
 sm::status State_LEDBlink_Callback( sm::handler_t h ) {
     switch ( h.signal() ) {
         case sm::signalID::SIGNAL_ENTRY:
-            logger::out() << "LED blink state" << logger::end;
+            logger::out() << "LED blink state";
             break;
         case SIGNAL_BLINK:
             digitalWrite( LED_BUILTIN, !digitalRead(LED_BUILTIN) );
@@ -93,7 +93,7 @@ void tracePutcWrapper( void *arg, const char c ) {
 
 void idleTaskCallback( event_t e ) {
   if ( e.firstCall() ) {
-    logger::out() << QUARKTS_CPP_CAPTION << logger::end;
+    logger::out() << QUARKTS_CPP_CAPTION;
   }
 }
 

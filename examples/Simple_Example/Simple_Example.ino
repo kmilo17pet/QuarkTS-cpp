@@ -5,15 +5,15 @@ task demoTask1, blinkTask;
 
 void blinkTask_callback( event_t e ) {
   if ( e.firstCall() ) {
-     logger::out() << e.thisTask() << " Launched!" << logger::endl;
+     logger::out() << e.thisTask() << " Launched!";
   }
   co::reenter() {
     for(;;) {
       digitalWrite( LED_BUILTIN, HIGH );
-      logger::out() << e.thisTask() << logger::endl;
+      logger::out() << e.thisTask();
       co::delay( 500_ms );
       digitalWrite( LED_BUILTIN, LOW );
-      logger::out() << e.thisTask() << logger::endl;
+      logger::out() << e.thisTask();
       co::delay( 500_ms );
     }
   }
@@ -21,19 +21,19 @@ void blinkTask_callback( event_t e ) {
 
 void demoTask1_Callback( event_t e ) {
   if ( e.firstCall() ) {
-     logger::out() << e.thisTask() << " Launched!" << logger::endl;
+     logger::out() << e.thisTask() << " Launched!";
   }
-  logger::out() << e.thisTask() << logger::endl;
+  logger::out() << e.thisTask();
 }
 
 void idleTask_callback( event_t e ) {
   if ( e.firstCall() ) {
-     logger::out() << e.thisTask() << " Launched!" << logger::endl;
+     logger::out() << e.thisTask() << " Launched!";
   }
   co::reenter() {
     for(;;) {
       co::delay( 500_ms );
-      logger::out() << e.thisTask() << logger::endl;
+      logger::out() << e.thisTask();
     }
   }
 }

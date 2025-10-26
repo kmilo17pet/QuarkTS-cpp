@@ -61,20 +61,53 @@ namespace qOS {
         */
 
         /**
-        * @brief Enter a critical section. This function invokes the @b Disabler
-        * function if available.
-        * @note  Please see critical::setInterruptsED()
+        * @brief Enables a scoped critical section with minimal syntax overhead.
+        *
+        * @code{.cpp}
+        * void example() {
+        *     critical::scope {
+        *         // Code here runs in a critical section
+        *     }
+        * }
+        * @endcode
         */
-        void enter( void ) noexcept;
+        inline void scope( void ) noexcept {}
+
         /**
-        * @brief Exit a critical section. This function invokes the @b Enabler
-        * function if available.
-        * @note  Please see critical::setInterruptsED()
+        * @brief Scoped critical section lock.
+        *
+        * @details
+        * The `lock` class provides a simple RAII-based mechanism for managing critical
+        * sections. When an object of this class is created, it automatically enters a
+        * critical section (disabling interrupts). When the object is destroyed, it exits
+        * the critical section (restoring interrupts).
+        *
+        * @code{.cpp}
+        * void example() {
+        *     critical::lock l
+        *     // Code that runs in a critical section
+        * }
+        * @endcode
         */
-        void exit( void ) noexcept;
+        class lock final : private nonCopyable {
+            private:
+                static void enter( void ) noexcept;
+                static void exit( void ) noexcept;
+                static int_disabler_t disable;
+                static int_restorer_t restore;
+                static volatile uint32_t flags;
+                static volatile int nestingLevel;
+                bool entered{ true };
+                friend bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept;
+            public:
+                lock() noexcept;
+                ~lock() noexcept;
+                explicit operator bool() noexcept;
+        };
+
         /**
         * @brief Set the hardware-specific code for global interrupt enable/disable.
-        * Setting this allows you to communicate safely from Interrupts using 
+        * Setting this allows you to communicate safely from Interrupts using
         * queued-notifications or queues.
         * @param[in] rFcn The function with hardware specific code that enables or
         * restores interrupts.
@@ -86,8 +119,15 @@ namespace qOS {
 
         /** @}*/
     }
-
     /** @}*/
 }
+
+/*! @cond  */
+/*============================================================================*/
+#define scope                                                                  \
+scope();                                                                       \
+for ( critical::lock critical_lock; critical_lock; )                           \
+/*============================================================================*/
+/*! @endcond  */
 
 #endif /*QOS_CPP_CRITICAL*/
