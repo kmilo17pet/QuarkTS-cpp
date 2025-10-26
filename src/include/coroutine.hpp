@@ -145,7 +145,7 @@ namespace qOS {
                     label = l;
                     return *this;
                 }
-                inline co::state operator()( void ) const
+                inline operator co::state() const
                 {
                     return label;
                 }
@@ -394,7 +394,7 @@ for ( ; co_ctx != qOS::co::SUSPENDED ; co_ctx = qOS::co::SUSPENDED )           \
         break;                                                                 \
     }                                                                          \
     else                                                                       \
-        switch ( co_ctx() )                                                    \
+        switch ( co_ctx )                                                      \
             case 0 :                                                           \
 
 /*============================================================================*/
