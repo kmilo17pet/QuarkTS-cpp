@@ -1,5 +1,10 @@
 var NAVTREEINDEX3 =
 {
+"q_events.html#q_queuednot":[4,2,0,1],
+"q_events.html#q_queueexample":[4,2,1,2],
+"q_events.html#q_queues":[4,2,1],
+"q_events.html#q_queuesetup":[4,2,1,0],
+"q_events.html#q_simplenot":[4,2,0,0],
 "q_events.html#qeventflags":[4,2,2],
 "q_events.html#qnotspread":[4,2,0,3],
 "q_extensions.html":[5],

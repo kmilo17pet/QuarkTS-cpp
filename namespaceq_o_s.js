@@ -18,11 +18,7 @@ var namespaceq_o_s =
     ] ],
     [ "cli", "namespaceq_o_s_1_1cli.html", "namespaceq_o_s_1_1cli" ],
     [ "co", "namespaceq_o_s_1_1co.html", "namespaceq_o_s_1_1co" ],
-    [ "critical", "namespaceq_o_s_1_1critical.html", [
-      [ "enter", "group__qcritical.html#ga1355881dd15a03e4b7a7aadf4a2a8252", null ],
-      [ "exit", "group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d", null ],
-      [ "setInterruptsED", "group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3", null ]
-    ] ],
+    [ "critical", "namespaceq_o_s_1_1critical.html", "namespaceq_o_s_1_1critical" ],
     [ "input", "namespaceq_o_s_1_1input.html", "namespaceq_o_s_1_1input" ],
     [ "logger", "namespaceq_o_s_1_1logger.html", "namespaceq_o_s_1_1logger" ],
     [ "mem", "namespaceq_o_s_1_1mem.html", "namespaceq_o_s_1_1mem" ],

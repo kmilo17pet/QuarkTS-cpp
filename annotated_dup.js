@@ -10,6 +10,9 @@ var annotated_dup =
         [ "position", "classq_o_s_1_1co_1_1position.html", null ],
         [ "semaphore", "classq_o_s_1_1co_1_1semaphore.html", "classq_o_s_1_1co_1_1semaphore" ]
       ] ],
+      [ "critical", "namespaceq_o_s_1_1critical.html", [
+        [ "lock", "classq_o_s_1_1critical_1_1lock.html", "classq_o_s_1_1critical_1_1lock" ]
+      ] ],
       [ "input", "namespaceq_o_s_1_1input.html", [
         [ "analogChannel", "classq_o_s_1_1input_1_1analog_channel.html", "classq_o_s_1_1input_1_1analog_channel" ],
         [ "channel", "classq_o_s_1_1input_1_1channel.html", "classq_o_s_1_1input_1_1channel" ],

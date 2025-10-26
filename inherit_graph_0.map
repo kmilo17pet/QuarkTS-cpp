@@ -1,34 +1,36 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="19,203,87,228"/>
-<area shape="rect" id="Node000001" href="$classq_o_s_1_1command_line_interface.html" title="An AT Command Line Interface (CLI) object." alt="" coords="149,203,335,228"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="103,213,148,213,148,218,103,218"/>
-<area shape="rect" id="Node000005" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="12,80,94,106"/>
-<area shape="rect" id="Node000004" href="$classq_o_s_1_1cli_1_1command.html" title="An AT&#45;Command object." alt="" coords="177,104,306,130"/>
-<area shape="poly" id="edge2_Node000005_Node000004" title=" " alt="" coords="109,97,177,106,176,111,109,103"/>
-<area shape="rect" id="Node000006" href="$classq_o_s_1_1input_1_1channel.html" title=" " alt="" coords="176,55,308,80"/>
-<area shape="poly" id="edge3_Node000005_Node000006" title=" " alt="" coords="109,83,175,74,176,79,110,88"/>
-<area shape="rect" id="Node000009" href="$classq_o_s_1_1list.html" title="A list object (Generic double&#45;linked)" alt="" coords="207,5,277,31"/>
-<area shape="poly" id="edge6_Node000005_Node000009" title=" " alt="" coords="88,69,148,40,206,23,207,28,150,45,90,74"/>
-<area shape="rect" id="Node000010" href="$classq_o_s_1_1task.html" title="A task node object." alt="" coords="203,153,281,179"/>
-<area shape="poly" id="edge7_Node000005_Node000010" title=" " alt="" coords="91,111,150,140,203,156,202,161,148,145,88,116"/>
-<area shape="rect" id="Node000007" href="$classq_o_s_1_1input_1_1analog_channel.html" title="An analog input&#45;channel object." alt="" coords="383,31,555,56"/>
-<area shape="poly" id="edge4_Node000006_Node000007" title=" " alt="" coords="323,56,382,50,383,55,324,62"/>
-<area shape="rect" id="Node000008" href="$classq_o_s_1_1input_1_1digital_channel.html" title="A digital input&#45;channel object." alt="" coords="385,80,553,106"/>
-<area shape="poly" id="edge5_Node000006_Node000008" title=" " alt="" coords="323,74,385,81,384,86,323,79"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,276,101,302"/>
-<area shape="poly" id="edge10_Node000002_Node000001" title=" " alt="" coords="88,266,148,237,180,226,182,231,150,242,91,270"/>
-<area shape="poly" id="edge9_Node000002_Node000004" title=" " alt="" coords="78,263,98,239,112,212,118,187,127,163,147,139,175,123,178,128,150,143,131,165,124,188,117,213,103,242,82,267"/>
-<area shape="poly" id="edge15_Node000002_Node000010" title=" " alt="" coords="76,263,99,239,121,211,131,200,147,188,174,176,201,169,203,174,176,181,150,192,135,204,125,215,103,243,80,266"/>
-<area shape="rect" id="Node000003" href="$classq_o_s_1_1byte_buffer.html" title="A Byte&#45;sized buffer object." alt="" coords="186,351,298,376"/>
-<area shape="poly" id="edge8_Node000002_Node000003" title=" " alt="" coords="90,307,150,337,187,349,185,354,148,342,88,312"/>
-<area shape="rect" id="Node000011" href="$classq_o_s_1_1core.html" title="The class to interface the OS." alt="" coords="203,449,281,475"/>
-<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="67,315,98,377,121,409,150,436,176,449,203,456,202,461,174,454,147,440,117,412,93,379,62,317"/>
-<area shape="rect" id="Node000013" href="$classq_o_s_1_1input_1_1watcher.html" title="The digital input&#45;channel watcher class." alt="" coords="175,400,308,426"/>
-<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="74,313,107,351,127,370,150,387,176,398,174,403,147,391,124,374,103,355,70,316"/>
-<area shape="rect" id="Node000014" href="$classq_o_s_1_1queue.html" title="A Queue object." alt="" coords="198,252,286,278"/>
-<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="116,278,197,268,198,273,117,283"/>
-<area shape="rect" id="Node000015" href="$classq_o_s_1_1response.html" title="A Response Handler object." alt="" coords="189,301,295,327"/>
-<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="117,295,189,304,188,310,116,300"/>
-<area shape="rect" id="Node000012" title=" " alt="" coords="13,449,93,475"/>
-<area shape="poly" id="edge16_Node000012_Node000011" title=" " alt="" coords="108,460,203,460,203,465,108,465"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="19,227,87,252"/>
+<area shape="rect" id="Node000001" href="$classq_o_s_1_1command_line_interface.html" title="An AT Command Line Interface (CLI) object." alt="" coords="149,227,335,252"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="103,237,148,237,148,242,103,242"/>
+<area shape="rect" id="Node000005" href="$classq_o_s_1_1node.html" title="A list&#45;node object (Used internally)" alt="" coords="12,104,94,130"/>
+<area shape="rect" id="Node000004" href="$classq_o_s_1_1cli_1_1command.html" title="An AT&#45;Command object." alt="" coords="177,177,306,203"/>
+<area shape="poly" id="edge2_Node000005_Node000004" title=" " alt="" coords="91,135,150,164,182,174,180,179,148,169,88,140"/>
+<area shape="rect" id="Node000006" href="$classq_o_s_1_1input_1_1channel.html" title=" " alt="" coords="176,29,308,55"/>
+<area shape="poly" id="edge3_Node000005_Node000006" title=" " alt="" coords="88,93,148,64,180,53,181,58,150,69,90,98"/>
+<area shape="rect" id="Node000009" href="$classq_o_s_1_1list.html" title="A list object (Generic double&#45;linked)" alt="" coords="207,79,277,104"/>
+<area shape="poly" id="edge6_Node000005_Node000009" title=" " alt="" coords="109,107,206,94,207,99,109,112"/>
+<area shape="rect" id="Node000010" href="$classq_o_s_1_1task.html" title="A task node object." alt="" coords="203,128,281,154"/>
+<area shape="poly" id="edge7_Node000005_Node000010" title=" " alt="" coords="110,121,203,133,202,139,109,127"/>
+<area shape="rect" id="Node000007" href="$classq_o_s_1_1input_1_1analog_channel.html" title="An analog input&#45;channel object." alt="" coords="383,5,555,31"/>
+<area shape="poly" id="edge4_Node000006_Node000007" title=" " alt="" coords="323,31,382,25,383,30,324,36"/>
+<area shape="rect" id="Node000008" href="$classq_o_s_1_1input_1_1digital_channel.html" title="A digital input&#45;channel object." alt="" coords="385,55,553,80"/>
+<area shape="poly" id="edge5_Node000006_Node000008" title=" " alt="" coords="323,49,385,55,384,61,323,54"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,325,101,351"/>
+<area shape="poly" id="edge10_Node000002_Node000001" title=" " alt="" coords="77,313,109,286,147,261,175,250,177,255,150,266,112,290,80,317"/>
+<area shape="poly" id="edge9_Node000002_Node000004" title=" " alt="" coords="69,311,108,254,129,229,147,212,176,198,178,203,150,216,133,232,113,258,73,314"/>
+<area shape="poly" id="edge16_Node000002_Node000010" title=" " alt="" coords="69,311,98,264,110,235,117,210,126,186,147,163,173,148,202,141,203,146,175,153,150,167,131,189,122,211,115,236,103,266,74,314"/>
+<area shape="rect" id="Node000003" href="$classq_o_s_1_1byte_buffer.html" title="A Byte&#45;sized buffer object." alt="" coords="186,424,298,450"/>
+<area shape="poly" id="edge8_Node000002_Node000003" title=" " alt="" coords="80,360,112,386,150,410,187,424,185,429,147,415,109,391,77,364"/>
+<area shape="rect" id="Node000011" href="$classq_o_s_1_1core.html" title="The class to interface the OS." alt="" coords="203,523,281,548"/>
+<area shape="poly" id="edge11_Node000002_Node000011" title=" " alt="" coords="64,365,76,399,94,438,119,477,150,509,175,523,203,530,201,535,173,528,147,514,114,480,89,440,71,401,59,367"/>
+<area shape="rect" id="Node000013" href="$classq_o_s_1_1critical_1_1lock.html" title="Scoped critical section lock." alt="" coords="181,473,302,499"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="70,363,102,413,124,439,150,460,182,474,180,479,147,464,121,442,98,417,65,366"/>
+<area shape="rect" id="Node000014" href="$classq_o_s_1_1input_1_1watcher.html" title="The digital input&#45;channel watcher class." alt="" coords="175,276,308,302"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="115,319,148,310,188,300,190,305,149,315,116,324"/>
+<area shape="rect" id="Node000015" href="$classq_o_s_1_1queue.html" title="A Queue object." alt="" coords="198,325,286,351"/>
+<area shape="poly" id="edge14_Node000002_Node000015" title=" " alt="" coords="116,336,197,336,197,341,116,341"/>
+<area shape="rect" id="Node000016" href="$classq_o_s_1_1response.html" title="A Response Handler object." alt="" coords="189,375,295,400"/>
+<area shape="poly" id="edge15_Node000002_Node000016" title=" " alt="" coords="116,352,149,361,190,372,188,377,148,366,115,357"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="13,523,93,548"/>
+<area shape="poly" id="edge17_Node000012_Node000011" title=" " alt="" coords="108,533,203,533,203,538,108,538"/>
 </map>

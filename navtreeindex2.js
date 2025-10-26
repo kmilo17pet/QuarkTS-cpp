@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"group__qfsm.html#ga452ff125ce90025a087527f27d9abfb4":[6,1,0,12],
+"group__qfsm.html#ga5f5c7078fc1b8137559aaa2297d6890d":[6,1,0,23],
+"group__qfsm.html#ga646289fa705250d5f8b950aee747becc":[6,1,0,21],
+"group__qfsm.html#ga775c5e5a879c8cf6b798fc8d46540a81":[6,1,0,10],
+"group__qfsm.html#ga7c35035562f829904bfa2d89c5be7287":[6,1,0,22],
 "group__qfsm.html#ga8c5a4670f1f82562bdac083546b13fa1":[6,1,0,11],
 "group__qfsm.html#ga8e4e70e06f74af5f016e5a4eba0e6967":[6,1,0,13],
 "group__qfsm.html#ga9a8c0296382e335616419ce163437b89":[6,1,0,27],
@@ -244,10 +249,5 @@ var NAVTREEINDEX2 =
 "q_events.html#q_event_timeelapsed":[4,1],
 "q_events.html#q_eventflagsexample":[4,2,2,0],
 "q_events.html#q_notifications":[4,2,0],
-"q_events.html#q_notificationsend":[4,2,0,2],
-"q_events.html#q_queuednot":[4,2,0,1],
-"q_events.html#q_queueexample":[4,2,1,2],
-"q_events.html#q_queues":[4,2,1],
-"q_events.html#q_queuesetup":[4,2,1,0],
-"q_events.html#q_simplenot":[4,2,0,0]
+"q_events.html#q_notificationsend":[4,2,0,2]
 };

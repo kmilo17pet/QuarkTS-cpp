@@ -25,6 +25,7 @@ var hierarchy =
       [ "qOS::cli::command", "classq_o_s_1_1cli_1_1command.html", null ],
       [ "qOS::commandLineInterface", "classq_o_s_1_1command_line_interface.html", null ],
       [ "qOS::core", "classq_o_s_1_1core.html", null ],
+      [ "qOS::critical::lock", "classq_o_s_1_1critical_1_1lock.html", null ],
       [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", null ],
       [ "qOS::queue", "classq_o_s_1_1queue.html", null ],
       [ "qOS::response", "classq_o_s_1_1response.html", null ],

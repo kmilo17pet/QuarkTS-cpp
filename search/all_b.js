@@ -14,11 +14,12 @@ var searchData=
   ['listiterator_11',['listIterator',['../classq_o_s_1_1list_iterator.html',1,'qOS::listIterator'],['../classq_o_s_1_1list_iterator.html#a38e5d575b74c462a65d3733e3c91c450',1,'qOS::listIterator::listIterator()=delete'],['../classq_o_s_1_1list_iterator.html#ae19eb42ed3d51f7be76e5d8696f2b5cd',1,'qOS::listIterator::listIterator(list &amp;xList, listDirection dir=listDirection::FORWARD, void *nodeOffset=nullptr) noexcept']]],
   ['listposition_12',['listPosition',['../group__qlists.html#gac09d38844e64e8cebdff8971d2aa1bc4',1,'qOS']]],
   ['lists_13',['Generic double-linked lists',['../group__qlists.html',1,'']]],
-  ['logger_14',['Logger',['../group__qlogger.html',1,'']]],
-  ['logger_15',['logger',['../classq_o_s_1_1logger.html',1,'qOS']]],
-  ['logging_16',['Logging',['../q_trace.html',1,'q_extensions']]],
-  ['logging_20text_20and_20variables_17',['Logging text and variables',['../q_trace.html#q_trace_viewvars',1,'']]],
-  ['logseverity_18',['logSeverity',['../group__qlogger.html#ga8d02cc4e3735026bc7ceb4cb70940bc1',1,'qOS::logger']]],
-  ['low_5fthreshold_19',['LOW_THRESHOLD',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a1e90896f18fbae5d0daa125409c648b4',1,'qOS::input']]],
-  ['lowest_5fpriority_20',['LOWEST_PRIORITY',['../classq_o_s_1_1core.html#adbace2acdfcb3e3e702bc5a35b692c80',1,'qOS::core']]]
+  ['lock_14',['lock',['../classq_o_s_1_1critical_1_1lock.html',1,'qOS::critical::lock'],['../classq_o_s_1_1critical_1_1lock.html#a2ce70149be5c2068197445a049660a0b',1,'qOS::critical::lock::lock()']]],
+  ['logger_15',['Logger',['../group__qlogger.html',1,'']]],
+  ['logger_16',['logger',['../classq_o_s_1_1logger.html',1,'qOS']]],
+  ['logging_17',['Logging',['../q_trace.html',1,'q_extensions']]],
+  ['logging_20text_20and_20variables_18',['Logging text and variables',['../q_trace.html#q_trace_viewvars',1,'']]],
+  ['logseverity_19',['logSeverity',['../group__qlogger.html#ga8d02cc4e3735026bc7ceb4cb70940bc1',1,'qOS::logger']]],
+  ['low_5fthreshold_20',['LOW_THRESHOLD',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a1e90896f18fbae5d0daa125409c648b4',1,'qOS::input']]],
+  ['lowest_5fpriority_21',['LOWEST_PRIORITY',['../classq_o_s_1_1core.html#adbace2acdfcb3e3e702bc5a35b692c80',1,'qOS::core']]]
 ];

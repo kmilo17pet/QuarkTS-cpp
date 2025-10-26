@@ -140,6 +140,7 @@ $(function(){initNavTree('namespaceq_o_s_1_1critical.html',''); initResizable(tr
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">qOS::critical Namespace Reference<div class="ingroups"><a class="el" href="group__qos.html">Operative System</a> &raquo; <a class="el" href="group__qcritical.html">Critical</a></div></div></div>
 </div><!--header-->
@@ -148,17 +149,20 @@ $(function(){initNavTree('namespaceq_o_s_1_1critical.html',''); initResizable(tr
 <p>OS Critical interfaces.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classq_o_s_1_1critical_1_1lock.html">lock</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scoped critical section lock.  <a href="classq_o_s_1_1critical_1_1lock.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga1355881dd15a03e4b7a7aadf4a2a8252" id="r_ga1355881dd15a03e4b7a7aadf4a2a8252"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#ga1355881dd15a03e4b7a7aadf4a2a8252">enter</a> (void) noexcept</td></tr>
-<tr class="memdesc:ga1355881dd15a03e4b7a7aadf4a2a8252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enter a critical section. This function invokes the <b>Disabler</b> function if available.  <br /></td></tr>
-<tr class="separator:ga1355881dd15a03e4b7a7aadf4a2a8252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae4bf023b86dc2222baa432a5a125510d" id="r_gae4bf023b86dc2222baa432a5a125510d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#gae4bf023b86dc2222baa432a5a125510d">exit</a> (void) noexcept</td></tr>
-<tr class="memdesc:gae4bf023b86dc2222baa432a5a125510d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exit a critical section. This function invokes the <b>Enabler</b> function if available.  <br /></td></tr>
-<tr class="separator:gae4bf023b86dc2222baa432a5a125510d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9e2b0a0a873cf6bef7f29f8aae7c73e3" id="r_ga9e2b0a0a873cf6bef7f29f8aae7c73e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#ga9e2b0a0a873cf6bef7f29f8aae7c73e3">setInterruptsED</a> (const <a class="el" href="group__qcritical.html#gae30d7d10a02c867634d5805e006f5668">int_restorer_t</a> rFcn, const <a class="el" href="group__qcritical.html#ga6acc337b2c8d386964bade7edf76da63">int_disabler_t</a> dFcn) noexcept</td></tr>
-<tr class="memdesc:ga9e2b0a0a873cf6bef7f29f8aae7c73e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to communicate safely from Interrupts using queued-notifications or queues.  <br /></td></tr>
-<tr class="separator:ga9e2b0a0a873cf6bef7f29f8aae7c73e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga51640441b690f168b7a69a0707391434" id="r_ga51640441b690f168b7a69a0707391434"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#ga51640441b690f168b7a69a0707391434">scope</a> (void) noexcept</td></tr>
+<tr class="memdesc:ga51640441b690f168b7a69a0707391434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables a scoped critical section with minimal syntax overhead.  <br /></td></tr>
+<tr class="separator:ga51640441b690f168b7a69a0707391434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7617e90163d733e70bbccd71be0609fb" id="r_ga7617e90163d733e70bbccd71be0609fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcritical.html#ga7617e90163d733e70bbccd71be0609fb">setInterruptsED</a> (const <a class="el" href="group__qcritical.html#gae30d7d10a02c867634d5805e006f5668">int_restorer_t</a> rFcn, const <a class="el" href="group__qcritical.html#ga6acc337b2c8d386964bade7edf76da63">int_disabler_t</a> dFcn)</td></tr>
+<tr class="memdesc:ga7617e90163d733e70bbccd71be0609fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to communicate safely from Interrupts using queued-notifications or queues.  <br /></td></tr>
+<tr class="separator:ga7617e90163d733e70bbccd71be0609fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>OS Critical interfaces. </p>
