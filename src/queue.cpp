@@ -23,14 +23,14 @@ bool queue::setup( void *pData, const size_t size, const size_t count ) noexcept
 /*============================================================================*/
 void queue::reset( void ) noexcept
 {
-    critical::enter();
-    /*cstat -CERT-INT30-C_a*/
-    tail = head + ( itemsCount*itemSize );
-    itemsWaiting = 0U;
-    writer = head;
-    reader = head + ( ( itemsCount - 1U )*itemSize );
-    /*cstat +CERT-INT30-C_a*/
-    critical::exit();
+    critical::scope {
+        /*cstat -CERT-INT30-C_a*/
+        tail = head + ( itemsCount*itemSize );
+        itemsWaiting = 0U;
+        writer = head;
+        reader = head + ( ( itemsCount - 1U )*itemSize );
+        /*cstat +CERT-INT30-C_a*/
+    }
 }
 /*============================================================================*/
 bool queue::isEmpty( void ) const noexcept
@@ -64,16 +64,17 @@ void queue::moveReader( void ) noexcept
 bool queue::removeFront( void ) noexcept
 {
     bool retValue = false;
-    size_t waiting;
 
-    critical::enter();
-    waiting = itemsWaiting;
-    if ( waiting > 0U ) {
-        moveReader();
-        itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting */
-        retValue = true;
+    critical::scope {
+        size_t waiting;
+
+        waiting = itemsWaiting;
+        if ( waiting > 0U ) {
+            moveReader();
+            itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting */
+            retValue = true;
+        }
     }
-    critical::exit();
 
     return retValue;
 }
@@ -87,18 +88,17 @@ void queue::copyDataFromQueue( void * const dst ) noexcept
 bool queue::receive( void *dst ) noexcept
 {
     bool retValue = false;
-    size_t waiting;
 
-    critical::enter();
-    waiting = itemsWaiting;
-    if ( waiting > 0U ) {
-        copyDataFromQueue( dst );
-        itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting */
-        retValue = true;
+    critical::scope {
+        size_t waiting;
+
+        waiting = itemsWaiting;
+        if ( waiting > 0U ) {
+            copyDataFromQueue( dst );
+            itemsWaiting = itemsWaiting - 1U; /* --itemsWaiting */
+            retValue = true;
+        }
     }
-    critical::exit();
-
-
     return retValue;
 }
 /*============================================================================*/
@@ -126,12 +126,12 @@ bool queue::send( void *itemToQueue, const queueSendMode pos ) noexcept
     bool retValue = false;
 
     if ( ( queueSendMode::TO_BACK == pos  ) || ( queueSendMode::TO_FRONT == pos ) ) {
-        critical::enter();
-        if ( itemsWaiting < itemsCount ) {
-            copyDataToQueue( itemToQueue, pos );
-            retValue = true;
+        critical::scope {
+            if ( itemsWaiting < itemsCount ) {
+                copyDataToQueue( itemToQueue, pos );
+                retValue = true;
+            }
         }
-        critical::exit();
     }
 
     return retValue;
@@ -140,18 +140,17 @@ bool queue::send( void *itemToQueue, const queueSendMode pos ) noexcept
 void* queue::peek( void ) const noexcept
 {
     uint8_t *retValue = nullptr;
-    size_t waiting;
+    critical::scope {
+        size_t waiting;
 
-    critical::enter();
-    waiting = itemsWaiting;
-    if ( waiting > 0U ) {
-        retValue = static_cast<uint8_t *>( reader + itemSize );
-        if ( retValue >= tail ) {
-            retValue = head;
+        waiting = itemsWaiting;
+        if ( waiting > 0U ) {
+            retValue = static_cast<uint8_t *>( reader + itemSize );
+            if ( retValue >= tail ) {
+                retValue = head;
+            }
         }
     }
-    critical::exit();
-
     return static_cast<void*>( retValue );
 }
 /*============================================================================*/

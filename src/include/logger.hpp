@@ -303,6 +303,8 @@ namespace qOS {
         */
         extern const char * const wht;
 
+        struct ChainLoggerProxy;
+
         /*! @cond */
         class _logger final : private nonCopyable {
             private:
@@ -336,32 +338,63 @@ namespace qOS {
                     writeNumStr();
                     return *this;
                 }
-                _logger& operator<<( const char& v );
-                _logger& operator<<( const char * s );
-                _logger& operator<<( const short& v );
-                _logger& operator<<( const int& v );
-                _logger& operator<<( const long int& v );
-                _logger& operator<<( const unsigned char& v );
-                _logger& operator<<( const unsigned short& v );
-                _logger& operator<<( const unsigned int& v );
-                _logger& operator<<( const unsigned long& v );
-                _logger& operator<<( const void * const p );
-                _logger& operator<<( const float64_t& v );
-                _logger& operator<<( const lout_base& f );
-                _logger& operator<<( const mem& m );
-                _logger& operator<<( const pre& m );
-                _logger& operator<<( const task& t );
-                _logger& operator<<( const qOS::timer& t );
-                _logger& operator<<( const qOS::stateMachine& sm );
-                _logger& operator<<( const qOS::sm::state& s );
-                _logger& operator<<( const qOS::trigger& t );
-                _logger& operator<<( const qOS::input::channel& in );
-                _logger& operator<<( const qOS::string & s );
 
-            friend _logger& out( const logSeverity s, const source_location &loc ) noexcept;
+                void toLog( const char& v );
+                void toLog( const char * s );
+                void toLog( const short& v );
+                void toLog( const int& v );
+                void toLog( const long int& v );
+                void toLog( const unsigned char& v );
+                void toLog( const unsigned short& v );
+                void toLog( const unsigned int& v );
+                void toLog( const unsigned long& v );
+                void toLog( const void * const p );
+                void toLog( const float64_t& v );
+                void toLog( const lout_base& f );
+                void toLog( const mem& m );
+                void toLog( const pre& m );
+                void toLog( const task& t );
+                void toLog( const qOS::timer& t );
+                void toLog( const qOS::stateMachine& sm );
+                void toLog( const qOS::sm::state& s );
+                void toLog( const qOS::trigger& t );
+                void toLog( const qOS::input::channel& in );
+                void toLog( const qOS::string & s );
+
+            friend ChainLoggerProxy out( const logSeverity s, const source_location &loc ) noexcept;
             friend void setOutputFcn( util::putChar_t fcn );
+            friend class ChainLoggerProxy;
         };
         extern _logger& _logger_out; // skipcq: CXX-W2011, CXX-W2009
+
+        struct ChainLoggerProxy {
+            _logger& parent;
+            ChainLoggerProxy( _logger& p) : parent(p) {}
+            ChainLoggerProxy( const ChainLoggerProxy& ) = delete;
+            ChainLoggerProxy( ChainLoggerProxy&& other ) noexcept : parent( other.parent ) {}
+            ~ChainLoggerProxy();
+            ChainLoggerProxy& operator<<( const char& v );
+            ChainLoggerProxy& operator<<( const char * s );
+            ChainLoggerProxy& operator<<( const short& v );
+            ChainLoggerProxy& operator<<( const int& v );
+            ChainLoggerProxy& operator<<( const long int& v );
+            ChainLoggerProxy& operator<<( const unsigned char& v );
+            ChainLoggerProxy& operator<<( const unsigned short& v );
+            ChainLoggerProxy& operator<<( const unsigned int& v );
+            ChainLoggerProxy& operator<<( const unsigned long& v );
+            ChainLoggerProxy& operator<<( const void * const p );
+            ChainLoggerProxy& operator<<( const float64_t& v );
+            ChainLoggerProxy& operator<<( const lout_base& f );
+            ChainLoggerProxy& operator<<( const mem& m );
+            ChainLoggerProxy& operator<<( const pre& m );
+            ChainLoggerProxy& operator<<( const task& t );
+            ChainLoggerProxy& operator<<( const qOS::timer& t );
+            ChainLoggerProxy& operator<<( const qOS::stateMachine& sm );
+            ChainLoggerProxy& operator<<( const qOS::sm::state& s );
+            ChainLoggerProxy& operator<<( const qOS::trigger& t );
+            ChainLoggerProxy& operator<<( const qOS::input::channel& in );
+            ChainLoggerProxy& operator<<( const qOS::string & s );
+        };
         /*! @endcond */
 
         /**
@@ -371,7 +404,7 @@ namespace qOS {
         void setOutputFcn( util::putChar_t fcn );
 
         /*! @cond */
-        _logger& out( const logSeverity s = logSeverity::none, const source_location &loc = source_location::current() ) noexcept;
+        ChainLoggerProxy out( const logSeverity s = logSeverity::none, const source_location &loc = source_location::current() ) noexcept;
         /* cppcheck-suppress functionStatic */
         inline const char * var( const char * vname ){ return vname; }
         /*! @endcond */

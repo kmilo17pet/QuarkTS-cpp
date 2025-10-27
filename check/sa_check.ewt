@@ -9,9 +9,9 @@
         <debug>1</debug>
         <settings>
             <name>C-STAT</name>
-            <archiveVersion>518</archiveVersion>
+            <archiveVersion>519</archiveVersion>
             <data>
-                <version>518</version>
+                <version>519</version>
                 <cstatargs>
                     <useExtraArgs>0</useExtraArgs>
                     <extraArgs></extraArgs>
@@ -25,7 +25,7 @@
                     <outputDir>Debug\C-STAT</outputDir>
                 </cstatargs>
                 <cstat_settings>
-                    <cstat_version>2.6.0</cstat_version>
+                    <cstat_version>2.7.2</cstat_version>
                     <checks_tree>
                         <package enabled="true" name="STDCHECKS">
                             <group enabled="true" name="ARR">
@@ -194,7 +194,6 @@
                                 <check enabled="true" name="MEM-free-no-use" />
                                 <check enabled="true" name="MEM-free-op" />
                                 <check enabled="true" name="MEM-free-struct-field" />
-                                <check enabled="true" name="MEM-free-variable-alias" />
                                 <check enabled="true" name="MEM-free-variable" />
                                 <check enabled="true" name="MEM-leak-alias" />
                                 <check enabled="false" name="MEM-leak" />
@@ -257,6 +256,7 @@
                                 <check enabled="false" name="RED-no-effect" />
                                 <check enabled="true" name="RED-self-assign" />
                                 <check enabled="true" name="RED-unused-assign" />
+                                <check enabled="false" name="RED-unused-enum-val" />
                                 <check enabled="false" name="RED-unused-param" />
                                 <check enabled="false" name="RED-unused-return-val" />
                                 <check enabled="false" name="RED-unused-val" />
@@ -279,7 +279,6 @@
                                 <check enabled="false" name="SPC-uninit-arr-all" />
                                 <check enabled="true" name="SPC-uninit-struct-field-heap" />
                                 <check enabled="false" name="SPC-uninit-struct-field" />
-                                <check enabled="true" name="SPC-uninit-struct" />
                                 <check enabled="true" name="SPC-uninit-var-all" />
                                 <check enabled="true" name="SPC-uninit-var-some" />
                                 <check enabled="false" name="SPC-volatile-reads" />
@@ -290,6 +289,7 @@
                             </group>
                             <group enabled="true" name="SWITCH">
                                 <check enabled="true" name="SWITCH-fall-through" />
+                                <check enabled="false" name="SWITCH-missing-enum-val" />
                             </group>
                             <group enabled="true" name="THROW">
                                 <check enabled="false" name="THROW-empty" />
@@ -375,7 +375,6 @@
                                 <check enabled="true" name="CERT-EXP33-C_c" />
                                 <check enabled="true" name="CERT-EXP33-C_d" />
                                 <check enabled="true" name="CERT-EXP33-C_e" />
-                                <check enabled="true" name="CERT-EXP33-C_f" />
                                 <check enabled="true" name="CERT-EXP34-C_a" />
                                 <check enabled="true" name="CERT-EXP34-C_b" />
                                 <check enabled="true" name="CERT-EXP34-C_c" />
@@ -485,7 +484,6 @@
                                 <check enabled="true" name="CERT-MSC40-C_b" />
                                 <check enabled="true" name="CERT-MSC40-C_c" />
                                 <check enabled="true" name="CERT-MSC40-C_d" />
-                                <check enabled="false" name="CERT-MSC40-C_e" />
                                 <check enabled="true" name="CERT-MSC41-C_a" />
                                 <check enabled="true" name="CERT-MSC41-C_b" />
                                 <check enabled="true" name="CERT-MSC41-C_c" />
@@ -844,8 +842,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_t" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_u" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_v" />
-                                <check enabled="true" name="MISRAC2012-Rule-1.4_a" />
-                                <check enabled="true" name="MISRAC2012-Rule-1.4_b" />
+                                <check enabled="true" name="MISRAC2012-Rule-1.4" />
                                 <check enabled="false" name="MISRAC2012-Rule-1.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.5_b" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.5_c" />
@@ -865,6 +862,9 @@
                                 <check enabled="false" name="MISRAC2012-Rule-2.5" />
                                 <check enabled="false" name="MISRAC2012-Rule-2.6" />
                                 <check enabled="false" name="MISRAC2012-Rule-2.7" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_a" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_b" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_c" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-3">
                                 <check enabled="true" name="MISRAC2012-Rule-3.1" />
@@ -897,6 +897,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-7.4_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-7.4_b" />
                                 <check enabled="true" name="MISRAC2012-Rule-7.5" />
+                                <check enabled="true" name="MISRAC2012-Rule-7.6" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-8">
                                 <check enabled="true" name="MISRAC2012-Rule-8.1" />
@@ -921,15 +922,15 @@
                             <group enabled="true" name="MISRAC2012-Rule-9">
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_b" />
-                                <check enabled="true" name="MISRAC2012-Rule-9.1_c" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_d" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_e" />
-                                <check enabled="true" name="MISRAC2012-Rule-9.1_f" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.2" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.3" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.4" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.5_b" />
+                                <check enabled="true" name="MISRAC2012-Rule-9.6" />
+                                <check enabled="true" name="MISRAC2012-Rule-9.7" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-10">
                                 <check enabled="true" name="MISRAC2012-Rule-10.1_R2" />
@@ -959,6 +960,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-11.7" />
                                 <check enabled="true" name="MISRAC2012-Rule-11.8" />
                                 <check enabled="true" name="MISRAC2012-Rule-11.9" />
+                                <check enabled="true" name="MISRAC2012-Rule-11.10" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-12">
                                 <check enabled="false" name="MISRAC2012-Rule-12.1" />
@@ -966,6 +968,7 @@
                                 <check enabled="false" name="MISRAC2012-Rule-12.3" />
                                 <check enabled="false" name="MISRAC2012-Rule-12.4" />
                                 <check enabled="true" name="MISRAC2012-Rule-12.5" />
+                                <check enabled="true" name="MISRAC2012-Rule-12.6" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-13">
                                 <check enabled="true" name="MISRAC2012-Rule-13.1" />
@@ -1043,6 +1046,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-18.7" />
                                 <check enabled="true" name="MISRAC2012-Rule-18.8" />
                                 <check enabled="true" name="MISRAC2012-Rule-18.9" />
+                                <check enabled="true" name="MISRAC2012-Rule-18.10" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-19">
                                 <check enabled="true" name="MISRAC2012-Rule-19.1" />
@@ -1093,6 +1097,7 @@
                                 <check enabled="false" name="MISRAC2012-Rule-21.22" />
                                 <check enabled="false" name="MISRAC2012-Rule-21.23" />
                                 <check enabled="false" name="MISRAC2012-Rule-21.24" />
+                                <check enabled="true" name="MISRAC2012-Rule-21.25" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-22">
                                 <check enabled="true" name="MISRAC2012-Rule-22.1_a" />
@@ -1468,9 +1473,9 @@
         <debug>0</debug>
         <settings>
             <name>C-STAT</name>
-            <archiveVersion>518</archiveVersion>
+            <archiveVersion>519</archiveVersion>
             <data>
-                <version>518</version>
+                <version>519</version>
                 <cstatargs>
                     <useExtraArgs>0</useExtraArgs>
                     <extraArgs></extraArgs>
@@ -1484,7 +1489,7 @@
                     <outputDir>Release\C-STAT</outputDir>
                 </cstatargs>
                 <cstat_settings>
-                    <cstat_version>2.6.0</cstat_version>
+                    <cstat_version>2.7.2</cstat_version>
                     <checks_tree>
                         <package enabled="true" name="STDCHECKS">
                             <group enabled="true" name="ARR">
@@ -1653,7 +1658,6 @@
                                 <check enabled="true" name="MEM-free-no-use" />
                                 <check enabled="true" name="MEM-free-op" />
                                 <check enabled="true" name="MEM-free-struct-field" />
-                                <check enabled="true" name="MEM-free-variable-alias" />
                                 <check enabled="true" name="MEM-free-variable" />
                                 <check enabled="true" name="MEM-leak-alias" />
                                 <check enabled="false" name="MEM-leak" />
@@ -1716,6 +1720,7 @@
                                 <check enabled="false" name="RED-no-effect" />
                                 <check enabled="true" name="RED-self-assign" />
                                 <check enabled="true" name="RED-unused-assign" />
+                                <check enabled="false" name="RED-unused-enum-val" />
                                 <check enabled="false" name="RED-unused-param" />
                                 <check enabled="false" name="RED-unused-return-val" />
                                 <check enabled="false" name="RED-unused-val" />
@@ -1738,7 +1743,6 @@
                                 <check enabled="false" name="SPC-uninit-arr-all" />
                                 <check enabled="true" name="SPC-uninit-struct-field-heap" />
                                 <check enabled="false" name="SPC-uninit-struct-field" />
-                                <check enabled="true" name="SPC-uninit-struct" />
                                 <check enabled="true" name="SPC-uninit-var-all" />
                                 <check enabled="true" name="SPC-uninit-var-some" />
                                 <check enabled="false" name="SPC-volatile-reads" />
@@ -1749,6 +1753,7 @@
                             </group>
                             <group enabled="true" name="SWITCH">
                                 <check enabled="true" name="SWITCH-fall-through" />
+                                <check enabled="false" name="SWITCH-missing-enum-val" />
                             </group>
                             <group enabled="true" name="THROW">
                                 <check enabled="false" name="THROW-empty" />
@@ -1834,7 +1839,6 @@
                                 <check enabled="true" name="CERT-EXP33-C_c" />
                                 <check enabled="true" name="CERT-EXP33-C_d" />
                                 <check enabled="true" name="CERT-EXP33-C_e" />
-                                <check enabled="true" name="CERT-EXP33-C_f" />
                                 <check enabled="true" name="CERT-EXP34-C_a" />
                                 <check enabled="true" name="CERT-EXP34-C_b" />
                                 <check enabled="true" name="CERT-EXP34-C_c" />
@@ -1944,7 +1948,6 @@
                                 <check enabled="true" name="CERT-MSC40-C_b" />
                                 <check enabled="true" name="CERT-MSC40-C_c" />
                                 <check enabled="true" name="CERT-MSC40-C_d" />
-                                <check enabled="false" name="CERT-MSC40-C_e" />
                                 <check enabled="true" name="CERT-MSC41-C_a" />
                                 <check enabled="true" name="CERT-MSC41-C_b" />
                                 <check enabled="true" name="CERT-MSC41-C_c" />
@@ -2303,8 +2306,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_t" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_u" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.3_v" />
-                                <check enabled="true" name="MISRAC2012-Rule-1.4_a" />
-                                <check enabled="true" name="MISRAC2012-Rule-1.4_b" />
+                                <check enabled="true" name="MISRAC2012-Rule-1.4" />
                                 <check enabled="false" name="MISRAC2012-Rule-1.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.5_b" />
                                 <check enabled="true" name="MISRAC2012-Rule-1.5_c" />
@@ -2324,6 +2326,9 @@
                                 <check enabled="false" name="MISRAC2012-Rule-2.5" />
                                 <check enabled="false" name="MISRAC2012-Rule-2.6" />
                                 <check enabled="false" name="MISRAC2012-Rule-2.7" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_a" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_b" />
+                                <check enabled="false" name="MISRAC2012-Rule-2.8_c" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-3">
                                 <check enabled="true" name="MISRAC2012-Rule-3.1" />
@@ -2356,6 +2361,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-7.4_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-7.4_b" />
                                 <check enabled="true" name="MISRAC2012-Rule-7.5" />
+                                <check enabled="true" name="MISRAC2012-Rule-7.6" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-8">
                                 <check enabled="true" name="MISRAC2012-Rule-8.1" />
@@ -2380,15 +2386,15 @@
                             <group enabled="true" name="MISRAC2012-Rule-9">
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_b" />
-                                <check enabled="true" name="MISRAC2012-Rule-9.1_c" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_d" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.1_e" />
-                                <check enabled="true" name="MISRAC2012-Rule-9.1_f" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.2" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.3" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.4" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-9.5_b" />
+                                <check enabled="true" name="MISRAC2012-Rule-9.6" />
+                                <check enabled="true" name="MISRAC2012-Rule-9.7" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-10">
                                 <check enabled="true" name="MISRAC2012-Rule-10.1_R2" />
@@ -2418,6 +2424,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-11.7" />
                                 <check enabled="true" name="MISRAC2012-Rule-11.8" />
                                 <check enabled="true" name="MISRAC2012-Rule-11.9" />
+                                <check enabled="true" name="MISRAC2012-Rule-11.10" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-12">
                                 <check enabled="false" name="MISRAC2012-Rule-12.1" />
@@ -2425,6 +2432,7 @@
                                 <check enabled="false" name="MISRAC2012-Rule-12.3" />
                                 <check enabled="false" name="MISRAC2012-Rule-12.4" />
                                 <check enabled="true" name="MISRAC2012-Rule-12.5" />
+                                <check enabled="true" name="MISRAC2012-Rule-12.6" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-13">
                                 <check enabled="true" name="MISRAC2012-Rule-13.1" />
@@ -2502,6 +2510,7 @@
                                 <check enabled="true" name="MISRAC2012-Rule-18.7" />
                                 <check enabled="true" name="MISRAC2012-Rule-18.8" />
                                 <check enabled="true" name="MISRAC2012-Rule-18.9" />
+                                <check enabled="true" name="MISRAC2012-Rule-18.10" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-19">
                                 <check enabled="true" name="MISRAC2012-Rule-19.1" />
@@ -2552,6 +2561,7 @@
                                 <check enabled="false" name="MISRAC2012-Rule-21.22" />
                                 <check enabled="false" name="MISRAC2012-Rule-21.23" />
                                 <check enabled="false" name="MISRAC2012-Rule-21.24" />
+                                <check enabled="true" name="MISRAC2012-Rule-21.25" />
                             </group>
                             <group enabled="true" name="MISRAC2012-Rule-22">
                                 <check enabled="true" name="MISRAC2012-Rule-22.1_a" />

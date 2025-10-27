@@ -39,20 +39,35 @@ namespace qOS {
                 _logger_out.writeChar = fcn;
             }
         }
+
         /*cstat -MISRAC++2008-0-1-7*/
-        _logger& out( const logSeverity s, const source_location &loc ) noexcept
+        ChainLoggerProxy out( const logSeverity s, const source_location &loc ) noexcept
         {
-            _logger_out << "[ " <<  dec << clock::getTick() << "] " << _logger_out.s_str[ s ];
+            _logger_out.toLog( "[ " );
+            _logger_out.toLog( dec );
+            _logger_out.toLog( clock::getTick() );
+            _logger_out.toLog( "] " );
+            _logger_out.toLog( _logger_out.s_str[ s ] );
+
             if ( s == logSeverity::debug ) {
-                _logger_out << "( " << loc.function_name() << ":" << loc.line() << "): ";
+                _logger_out.toLog( "( " );
+                _logger_out.toLog( loc.function_name() );
+                _logger_out.toLog( ":" );
+                _logger_out.toLog( loc.line() );
+                _logger_out.toLog( "): " );
             }
             else if ( s == logSeverity::verbose ) {
-                _logger_out <<
-                loc.file_name() << " ( " << loc.function_name() << ":" << loc.line() << "): ";
+                _logger_out.toLog( loc.file_name() );
+                _logger_out.toLog( " ( " );
+                _logger_out.toLog( loc.function_name() );
+                _logger_out.toLog( ":" );
+                _logger_out.toLog( loc.line() );
+                _logger_out.toLog( "): " );
             }
-            return _logger_out;
+            return ChainLoggerProxy(_logger_out);
         }
         /*cstat +MISRAC++2008-0-1-7*/
+
         void _logger::writeNumStr( void ) noexcept
         {
             if ( '\0' != preFix[ 0 ] ) {
@@ -68,54 +83,52 @@ namespace qOS {
             return instance;
         }
 
-        _logger& _logger::operator<<( const char& v )
+        void _logger::toLog( const char& v )
         {
             writeChar( nullptr, v );
-            return *this;
         }
 
-        _logger& _logger::operator<<( const char * s )
+        void _logger::toLog( const char * s )
         {
             (void)util::outputString( writeChar, s );
-            return *this;
         }
 
-        _logger& _logger::operator<<( const short& v )
+        void _logger::toLog( const short& v )
         {
-            return _log_integer( v, true );
+            _log_integer( v, true );
         }
 
-        _logger& _logger::operator<<( const int& v )
+        void _logger::toLog( const int& v )
         {
-            return _log_integer( v, true );
+            _log_integer( v, true );
         }
 
-        _logger& _logger::operator<<( const long int& v )
+        void _logger::toLog( const long int& v )
         {
-            return _log_integer( v, true );
+            _log_integer( v, true );
         }
 
-        _logger& _logger::operator<<( const unsigned char& v )
+        void _logger::toLog( const unsigned char& v )
         {
-            return _log_integer( v, false );
+            _log_integer( v, false );
         }
 
-        _logger& _logger::operator<<( const unsigned short& v )
+        void _logger::toLog( const unsigned short& v )
         {
-            return _log_integer( v, false );
+            _log_integer( v, false );
         }
 
-        _logger& _logger::operator<<( const unsigned int& v )
+        void _logger::toLog( const unsigned int& v )
         {
-            return _logger::_log_integer( v, false );
+            _logger::_log_integer( v, false );
         }
 
-        _logger& _logger::operator<<( const unsigned long& v )
+        void _logger::toLog( const unsigned long& v )
         {
-            return _log_integer( v, false );
+            _log_integer( v, false );
         }
 
-        _logger& _logger::operator<<( const void * const p )
+        void _logger::toLog( const void * const p )
         {
             /*cstat -CERT-INT36-C*/
             (void)util::unsignedToString( reinterpret_cast<uintptr_t>( p ), buffer, 16U ); // skipcq: CXX-C1000
@@ -129,18 +142,16 @@ namespace qOS {
                 writeChar( nullptr, ']' );
             }
             writeChar( nullptr, ' ' );
-            return *this;
         }
 
-        _logger& _logger::operator<<( const float64_t& v )
+        void _logger::toLog( const float64_t& v )
         {
             (void)util::floatToString( v, buffer, precision ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
             writeChar( nullptr, ' ' );
-            return *this;
         }
 
-        _logger& _logger::operator<<( const lout_base& f )
+        void _logger::toLog( const lout_base& f )
         {
             base = f.base;
             switch( f.base ) {
@@ -157,22 +168,19 @@ namespace qOS {
                     (void)memset( preFix, 0, sizeof(preFix) ); // skipcq: CXX-C1000
                     break;
             }
-            return *this;
         }
 
-        _logger& _logger::operator<<( const mem& m )
+        void _logger::toLog( const mem& m )
         {
             n = m.n;
-            return *this;
         }
 
-        _logger& _logger::operator<<( const pre& m )
+        void _logger::toLog( const pre& m )
         {
             precision = m.precision;
-            return *this;
         }
 
-        _logger& _logger::operator<<( const task& t )
+        void _logger::toLog( const task& t )
         {
             (void)util::unsignedToString( t.getID(), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , "T{ \"" );
@@ -182,10 +190,9 @@ namespace qOS {
             (void)util::outputString( writeChar , ", " );
             (void)util::outputString( writeChar , ( taskState::ENABLED_STATE == t.getState() )? "enabled" : "disabled" );
             (void)util::outputString( writeChar , " } " );
-            return *this;
         }
 
-        _logger& _logger::operator<<( const qOS::timer& t )
+        void _logger::toLog( const qOS::timer& t )
         {
             (void)util::outputString( writeChar , "t{ E:" );
             (void)util::unsignedToString( t.elapsed(), buffer, 10 ); // skipcq: CXX-C1000
@@ -194,10 +201,9 @@ namespace qOS {
             (void)util::unsignedToString( t.remaining(), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
-            return *this;
         }
         /*cstat -CERT-INT36-C*/
-        _logger& _logger::operator<<( const qOS::stateMachine& sm )
+        void _logger::toLog( const qOS::stateMachine& sm )
         {
             (void)util::outputString( writeChar , "SM{ T: 0x" );
             (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &sm.getTop() ), buffer, 16 ); // skipcq: CXX-C1000
@@ -206,19 +212,17 @@ namespace qOS {
             (void)util::unsignedToString( reinterpret_cast<uintptr_t>( sm.getCurrent() ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
-            return *this;
         }
 
-        _logger& _logger::operator<<( const qOS::sm::state& s )
+        void _logger::toLog( const qOS::sm::state& s )
         {
             (void)util::outputString( writeChar , "s{ 0x" );
             (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &s ), buffer, 16 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
-            return *this;
         }
 
-        _logger& _logger::operator<<( const qOS::trigger& t )
+        void _logger::toLog( const qOS::trigger& t )
         {
             static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) + 1 ] = { // skipcq: CXX-W2066
                 "None ", "byTimeElapsed ", "byNotificationQueued ", "byNotificationSimple ",
@@ -226,10 +230,9 @@ namespace qOS {
                 "byEventFlags ", "bySchedulingRelease ", "byNoReadyTasks "
             };
             (void)util::outputString( writeChar , str[ static_cast<int>( t ) ] ); // skipcq: CXX-C1000
-            return *this;
         }
 
-        _logger& _logger::operator<<( const qOS::input::channel& in )
+        void _logger::toLog( const qOS::input::channel& in )
         {
             static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) ] = { // skipcq: CXX-W2066
                 "NONE ", "EXCEPTION ", "ON_CHANGE ", "FALLING_EDGE ", "RISING_EDGE ",
@@ -250,14 +253,122 @@ namespace qOS {
             if ( qOS::input::event::NONE != e ) {
                 (void)util::outputString( writeChar , str[ static_cast<int>( e ) ] ); // skipcq: CXX-C1000
             }
+        }
+
+        ChainLoggerProxy::~ChainLoggerProxy()
+        {
+            (void)util::outputString( parent.writeChar, logger::end );
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const char& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const char * s )
+        {
+            parent.toLog( s );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const short& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const int& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const long int& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const unsigned char& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const unsigned short& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const unsigned int& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const unsigned long& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const void * const p )
+        {
+            parent.toLog( p );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const float64_t& v )
+        {
+            parent.toLog( v );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const lout_base& f )
+        {
+            parent.toLog( f );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const mem& m )
+        {
+            parent.toLog( m );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const pre& m )
+        {
+            parent.toLog( m );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const task& t )
+        {
+            parent.toLog( t );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::timer& t )
+        {
+            parent.toLog( t );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::stateMachine& sm )
+        {
+            parent.toLog( sm );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::sm::state& s )
+        {
+            parent.toLog( s );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::trigger& t )
+        {
+            parent.toLog( t );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::input::channel& in )
+        {
+            parent.toLog( in );
+            return *this;
+        }
+        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::string & s )
+        {
+            parent.toLog( s );
             return *this;
         }
 
         /*cstat +CERT-INT36-C*/
-        _logger& _logger::operator<<( const qOS::string & s )
+        void _logger::toLog( const qOS::string & s )
         {
             (void)util::outputString( writeChar, s.c_str() );
-            return *this;
         }
     }
 
