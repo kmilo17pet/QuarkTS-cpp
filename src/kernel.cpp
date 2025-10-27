@@ -350,7 +350,6 @@ void core::dispatchTaskFillEventInfo( task *Task ) noexcept
     taskEvent::FirstCall = !Task->getFlag( task::BIT_INIT );
     taskEvent::TaskData = Task->taskData;
     taskEvent::currentTask = Task;
-    //currentTask = Task;
 }
 /*============================================================================*/
 void core::dispatch( list * const xList ) noexcept

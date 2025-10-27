@@ -64,7 +64,6 @@ namespace qOS {
                 _logger_out.toLog( loc.line() );
                 _logger_out.toLog( "): " );
             }
-            //return _logger_out;
             return ChainLoggerProxy(_logger_out);
         }
         /*cstat +MISRAC++2008-0-1-7*/

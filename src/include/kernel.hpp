@@ -93,7 +93,6 @@ namespace qOS {
             list coreLists[ Q_PRIORITY_LEVELS + 2 ]; // skipcq: CXX-W2066
             list& waitingList;  // skipcq: CXX-W2012, CXX-W2010
             list& suspendedList;  // skipcq: CXX-W2012, CXX-W2010
-            //list inputWatchers;
             void(*cpuIdle)(void){ nullptr };
             static const priority_t MAX_PRIORITY_VALUE;
             static const uint32_t BIT_INIT;

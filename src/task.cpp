@@ -201,18 +201,12 @@ trigger task::queueCheckEvents( void ) noexcept
     trigger retValue = trigger::None;
 
     if ( nullptr != aQueue ) {
-        bool fullFlag;
-        bool countFlag;
-        bool receiverFlag;
-        bool emptyFlag;
-        size_t qCount; /*current queue count*/
+        const bool fullFlag = getFlag( BIT_QUEUE_FULL );
+        const bool countFlag = getFlag( BIT_QUEUE_COUNT );
+        const bool receiverFlag = getFlag( BIT_QUEUE_RECEIVER );
+        const bool emptyFlag = getFlag( BIT_QUEUE_EMPTY );
+        const size_t qCount = aQueue->count(); /*current queue count*/
 
-        fullFlag = getFlag( BIT_QUEUE_FULL );
-        countFlag = getFlag( BIT_QUEUE_COUNT );
-        receiverFlag = getFlag( BIT_QUEUE_RECEIVER );
-        emptyFlag = getFlag( BIT_QUEUE_EMPTY );
-
-        qCount = aQueue->count(); /*to avoid side effects*/
         /*check the queue events in the corresponding precedence order*/
         /*cstat -MISRAC++2008-5-14-1*/
         if ( fullFlag && aQueue->isFull() ) { /*isFull() is known to not have side effects*/
