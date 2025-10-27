@@ -691,12 +691,13 @@ Example using a hierarchical FSM</h2>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition cruising_transitions[] = {</div>
-<div class="line">     { SIGNAL_OFF, state_cruisingoff },</div>
+<div class="line">     { SIGNAL_OFF,   state_cruisingoff },</div>
 <div class="line">     { SIGNAL_ACCEL, state_accelerating }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition resuming_transitions[] = {</div>
-<div class="line">     { SIGNAL_ACCEL, state_accelerating }</div>
+<div class="line">     { SIGNAL_ACCEL,            state_accelerating },</div>
+<div class="line">     { SIGNAL_REACHED_CRUISING, state_cruising }</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line">sm::transition cruisingoff_transitions[] = {</div>
