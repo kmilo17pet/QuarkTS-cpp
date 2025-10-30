@@ -793,12 +793,14 @@
 *  };
 *
 *  sm::transition cruising_transitions[] = {
-*       { SIGNAL_OFF, state_cruisingoff },
+*       { SIGNAL_OFF,   state_cruisingoff },
 *       { SIGNAL_ACCEL, state_accelerating }
 *  };
 *
 *  sm::transition resuming_transitions[] = {
-*       { SIGNAL_ACCEL, state_accelerating }
+*       { SIGNAL_OFF,              state_cruisingoff },
+*       { SIGNAL_ACCEL,            state_accelerating },
+*       { SIGNAL_REACHED_CRUISING, state_cruising }
 *  };
 *
 *  sm::transition cruisingoff_transitions[] = {
