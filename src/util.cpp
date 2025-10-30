@@ -113,7 +113,7 @@ size_t util::strcat( char *dst, const char *src, size_t maxlen ) noexcept
     else {
         if ( srclen < ( maxlen - dstlen ) ) {
             (void)memcpy( &dst[ dstlen ], src, srclen + 1U ) ;
-        } 
+        }
         else {
             (void)memcpy( &dst[ dstlen ], src, maxlen - 1U );
             dst[ dstlen + maxlen - 1U ] = '\0';
@@ -370,7 +370,7 @@ float64_t util::stringToFloat( const char *s ) noexcept
     #endif
 }
 /*============================================================================*/
-char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcept
+char* util::floatToString( float32_t num, char *str, uint8_t precision ) noexcept
 {
     if ( nullptr != str ) {
         uint32_t u = 0U;
@@ -393,7 +393,7 @@ char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcep
 
             intPart = static_cast<uint32_t>( num );
             /*cstat -CERT-FLP36-C*/
-            num -= static_cast<float64_t>( intPart );
+            num -= static_cast<float32_t>( intPart );
             i += xBaseUtoA( intPart, &str[ i ], 10U );
             if ( precision > 0U ) {
                 str[ i++ ] = '.';
@@ -402,7 +402,7 @@ char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcep
                     num *= 10.0F;
                     c = static_cast<char>( num );
                     str[ i++ ] = static_cast<char>( static_cast<uint8_t>( c ) + '0' );
-                    num -= static_cast<float64_t>( c );
+                    num -= static_cast<float32_t>( c );
                 }
             }
             /*cstat +CERT-FLP36-C*/
@@ -419,6 +419,57 @@ char* util::floatToString( float64_t num, char *str, uint8_t precision ) noexcep
 
     return str;
 }
+/*============================================================================*/
+char* util::doubleToString( float64_t num, char* str, uint8_t precision ) noexcept
+{
+    if ( nullptr != str ) {
+        uint64_t u = 0U;
+
+        (void)memcpy( &u, &num, sizeof(uint64_t) );
+        u &= 0x7FFFFFFFFFFFFFFFULL;
+
+        if ( 0ULL == u ) {
+            (void)util::strcpy( str, "0.0", 4 );
+        }
+        else if ( u < 0x7FF0000000000000ULL ) {
+            uint32_t intPart;
+            size_t i = 0U;
+
+            precision = clipUpper( precision, static_cast<uint8_t>( Q_MAX_FTOA_PRECISION ) );
+            if ( num < 0.0 ) {
+                num = -num;
+                str[ i++ ] = '-';
+            }
+
+            intPart = static_cast<uint32_t>( num );
+            /*cstat -CERT-FLP36-C*/
+            num -= static_cast<double>( intPart );
+            i += xBaseUtoA( intPart, &str[ i ], 10U );
+            if ( precision > 0U ) {
+                str[ i++ ] = '.';
+                while ( 0U != precision-- ) {
+                    char c;
+                    num *= 10.0;
+                    c = static_cast<char>( num );
+                    str[ i++ ] = static_cast<char>( static_cast<uint8_t>( c ) + '0' );
+                    num -= static_cast<double>( c );
+                }
+            }
+            /*cstat +CERT-FLP36-C*/
+            str[ i ] = '\0';
+        }
+        else if ( 0x7FF0000000000000ULL == u ) {
+            str[ 0 ] = ( num > 0.0 ) ? '+' : '-';
+            (void)util::strcpy( &str[ 1 ] , "inf", 4 );
+        }
+        else {
+            (void)util::strcpy( str, "nan", 4 );
+        }
+    }
+
+    return str;
+}
+
 /*============================================================================*/
 int util::stringToInt( const char *s ) noexcept
 {

@@ -342,10 +342,12 @@ bool input::watcher::add( input::channel& c ) noexcept
         input::analogChannel& chan = static_cast<analogChannel&>( c );
         /* check if channel is shared( same channel number)*/
         for ( auto i = analogChannels.begin(); i.untilEnd() ; i++ ) {
-            input::analogChannel& channelInWatcher = *i.get<input::analogChannel*>();
+            const input::analogChannel& channelInWatcher = *i.get<input::analogChannel*>();
 
             if ( chan.number == channelInWatcher.number ) {
-                chan.ptrValue = &channelInWatcher.value;
+                /*cstat -CERT-EXP39-C_d*/
+                chan.ptrValue = const_cast<analogValue_t*>(&channelInWatcher.value);
+                /*cstat +CERT-EXP39-C_d*/
                 break;
             }
         }

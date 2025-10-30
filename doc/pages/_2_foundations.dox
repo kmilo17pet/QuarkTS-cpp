@@ -418,35 +418,98 @@
 * @c DISABLED states.
 *
 * @section q_critical Critical sections
-* Since the kernel is non-preemptive, the only critical section that must be
-* handled are the shared resources accessed from the ISR context. Perhaps, the
-* most obvious way of achieving mutual exclusion is to allow the kernel to
-* disable interrupts before it enters their critical section and then, enable
-* interrupts after it leaves its critical section.
 *
-* By disabling interrupts, the CPU will be unable to change the current context.
-* This guarantees that the currently running job can use a shared resource
-* without another context accessing it. But, disabling interrupts, is a major
-* undertaking. At best, the system will not be able to service interrupts for
-* the time the current job is doing in its critical section, however, in QuarkTS++,
-* these critical sections are handled as quickly as possible.
+* Since the kernel is non-preemptive, the only critical sections that must be
+* handled are those involving shared resources accessed from ISR context.
+* The most straightforward way to achieve mutual exclusion is to temporarily
+* disable interrupts before entering a critical section and re-enable them
+* afterward.
 *
-* Considering that the kernel is hardware-independent, the application writer
-* should provide the necessary piece of code to enable and disable interrupts.
+* By disabling interrupts, the CPU cannot switch context, ensuring that the
+* currently running job accesses shared resources safely. However, this must
+* be done carefully and only for short periods. In QuarkTS++, critical
+* sections are minimized to keep interrupt latency as small as possible.
 *
-* For this, the qOS::critical::setInterruptsED() method should be used. In this way,
-* communication between ISR and tasks using queued notifications or data queues
-* is performed safely.
+* Because the kernel is hardware-independent, the application developer must
+* provide the specific code for enabling and disabling interrupts.
 *
-* In some systems, disabling the global IRQ flags is not enough, as they don't
-* save/restore state of interrupt, so here, the @c uint32_t argument and
-* return value in both functions (@c Disabler and @c Restorer) becomes relevant,
-* because they can be used by the application writer to save and restore the
-* current interrupt configuration. So, when a critical section is performed,
-* the @c Disabler, in addition to disabling the interrupts, returns the current
-* configuration to be retained by the kernel, later when the critical section
-* finish, this retained value is passed to @c Restorer to bring back the saved
-* configuration.
+* For this purpose, the qOS::critical::setInterruptsED() method should be
+* used. It allows the kernel to safely coordinate communication between ISRs
+* and tasks using queued notifications or data queues.
+*
+* Some MCUs require not only disabling global interrupt flags but also
+* saving and restoring the interrupt configuration. The @c uint32_t argument
+* and return values in the provided @c Disabler and @c Restorer functions are used
+* for this purpose.
+*
+* When a critical section is performed:
+* - The @c Disabler function disables interrupts and returns the previous
+*   interrupt configuration.
+* - The kernel stores this configuration internally.
+* - After the critical section ends, the @c Restorer function restores
+*   the saved configuration.
+*
+*
+* @subsection q_critical_examples Examples
+*
+* @subsubsection regintfcns Registering the interrupt control functions
+*
+* Before using any critical section, the application must register the
+* hardware-specific enable/disable routines:
+*
+* @code{.cpp}
+* using namespace qOS;
+*
+* static uint32_t disableInterrupts() {
+*     uint32_t primask = __get_PRIMASK();  // Read current interrupt state
+*     __disable_irq();                      // Disable all interrupts
+*     return primask;                       // Return the saved state
+* }
+*
+* static void restoreInterrupts(uint32_t primask) {
+*     if (!primask) {
+*         __enable_irq();                   // Restore interrupt state
+*     }
+* }
+*
+* void main( void ) {
+*     critical::setInterruptsED(restoreInterrupts, disableInterrupts);
+*     /* TODO : Setup OS and add tasks*/
+* }
+* @endcode
+*
+*
+* @subsubsection usecritscope Using critical::scope for quick inline protection
+*
+* This construct provides minimal syntax overhead for protecting short
+* critical sections. The section is automatically exited when the scope ends.
+*
+* @code{.cpp}
+* void example() {
+*     // Normal code (non-critical)
+*     critical::scope {
+*         // This block runs with interrupts disabled
+*         sharedCounter++;
+*     }
+*     // Back to normal code (interrupts enabled)
+* }
+* @endcode
+*
+*
+* @subsubsection usecritlock Using critical::lock (RAII-style)
+*
+* The qOS::critical::lock class automatically manages entry and exit of a
+* critical section using RAII semantics. When the object is created, interrupts
+* are disabled; when it goes out of scope, interrupts are restored.
+*
+* @code{.cpp}
+* void example() {
+*     critical::lock lockGuard;   // interrupts disabled here
+*
+*     sharedBuffer.push(value);   // safe shared access
+*
+* } // lockGuard destroyed → interrupts restored
+* @endcode
 *
 * @section q_configmacros Configuration macros
 * Some OS features can be customized using a set of macros located in the header
