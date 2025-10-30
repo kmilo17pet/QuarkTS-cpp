@@ -41,8 +41,8 @@ This file is part of the QuarkTS++ OS distribution.
 #ifndef QOS_CPP_H
 #define QOS_CPP_H
 
-#define QUARKTS_CPP_VERSION         "1.7.8"
-#define QUARKTS_CPP_VERNUM          ( 178u )
+#define QUARKTS_CPP_VERSION         "1.7.9"
+#define QUARKTS_CPP_VERNUM          ( 179u )
 #define QUARKTS_CPP_CAPTION         "QuarkTS++ OS " QUARKTS_CPP_VERSION
 
 #include "config/config.h"
@@ -65,8 +65,9 @@ This file is part of the QuarkTS++ OS distribution.
 #include "include/logger.hpp"
 
 namespace qOS {
+    /*cstat -MISRAC++2008-0-1-4_b*/
     namespace build {
-        constexpr const uint32_t number = 4215;
+        constexpr const uint32_t number = 4238;
         constexpr const char* date = __DATE__;
         constexpr const char* time = __TIME__;
         constexpr const char* std = "c++11";
@@ -76,7 +77,7 @@ namespace qOS {
         constexpr const uint8_t number = QUARKTS_CPP_VERNUM;
         constexpr const uint8_t mayor = 1U;
         constexpr const uint8_t minor = 7U;
-        constexpr const uint8_t rev = 8U;
+        constexpr const uint8_t rev = 9U;
     }
     namespace product {
         constexpr const char* author = "J. Camilo Gomez C.";
@@ -90,6 +91,7 @@ namespace qOS {
         constexpr const char* source_model = "Open Source";
         constexpr const char* kernel_type = "Cooperative Real-Time Microkernel";
     }
+    /*cstat +MISRAC++2008-0-1-4_b*/
 }
 
 #endif /*QOS_CPP_H*/

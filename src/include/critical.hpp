@@ -65,9 +65,11 @@ namespace qOS {
         *
         * @code{.cpp}
         * void example() {
+        *     // code here : normal section(non-critical)
         *     critical::scope {
         *         // Code here runs in a critical section
         *     }
+        *     // code here, normal section (non-critical)
         * }
         * @endcode
         */

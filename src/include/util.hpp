@@ -82,7 +82,7 @@ namespace qOS {
         * @param[in] s Pointer to the null-terminated byte string to be examined
         * @param[in] maxlen Maximum number of characters to examine
         * @return The length of the null-terminated byte string @a str on success,
-        * zero if @a str is a null pointer, @a maxlen if the null character was 
+        * zero if @a str is a null pointer, @a maxlen if the null character was
         * not found.
         */
         size_t strlen( const char* s, size_t maxlen ) noexcept;
@@ -97,19 +97,19 @@ namespace qOS {
         */
         size_t strcpy( char * dst, const char * src, size_t maxlen ) noexcept;
         /**
-        * @brief appends no more than @a maxlen−len(dst)−1 characters pointed to by 
-        * @a src into the array pointed to by @a dst and always terminates the 
-        * result with a null character if @a maxlen is greater than zero. Both 
+        * @brief appends no more than @a maxlen−len(dst)−1 characters pointed to by
+        * @a src into the array pointed to by @a dst and always terminates the
+        * result with a null character if @a maxlen is greater than zero. Both
         * the strings @a dst and @a src must be terminated with a null character on
-        * entry the function and a byte for the terminating null should be included 
-        * in @a maxlen. 
+        * entry the function and a byte for the terminating null should be included
+        * in @a maxlen.
         * @note The behavior of this function is undefined if copying takes
         * place between objects that overlap.
         * @param[out] dst The destination string
         * @param[in] src The source string
         * @param[in] maxlen Maximum number of characters to copy
-        * @return returns the number of characters it tried to copy, which is the 
-        * sum of the lengths of the strings @a dst and @a src or @a n, whichever 
+        * @return returns the number of characters it tried to copy, which is the
+        * sum of the lengths of the strings @a dst and @a src or @a n, whichever
         * is smaller.
         */
         size_t strcat( char *dst, const char *src, size_t maxlen ) noexcept;
@@ -203,7 +203,18 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-        char* floatToString( float64_t num, char *str, uint8_t precision = 10U ) noexcept;
+        char* floatToString( float32_t num, char *str, uint8_t precision = 10U ) noexcept;
+        /**
+        * @brief Converts a double value to a formatted string.
+        * @param[in] num Value to be converted to a string.
+        * @param[out] str  Array in memory where to store the resulting
+        * null-terminated string.
+        * @param[in] precision Desired number of significant fractional digits in
+        * the string. (default = 10u )
+        * @return A pointer to the resulting null-terminated string, same as
+        * parameter @a str.
+        */
+        char* doubleToString( float64_t num, char* str, uint8_t precision ) noexcept;
         /**
         * @brief Parses the C-string @a s interpreting its content as an integral
         * number, which is returned as a value of type int. The function first
@@ -220,7 +231,7 @@ namespace qOS {
         * @param[in] s The string beginning with the representation of a integer
         * number.
         * @return On success, the function returns the converted integral number as
-        * an int value.
+        * an @c int value.
         * If the converted value would be out of the range of representable values
         * by an @c int, it causes undefined behavior.
         */
@@ -275,7 +286,7 @@ namespace qOS {
 
         /** @}*/
     }
-    
+
 }
 
 #endif /*QOS_CPP_UTIL*/

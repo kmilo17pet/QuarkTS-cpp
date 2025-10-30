@@ -324,31 +324,25 @@ namespace qOS {
                 void writeNumStr( void ) noexcept;
             public:
                 static _logger& getInstance( void ) noexcept;
+
                 template <typename T>
-                inline _logger& _log_integer( const T& v, bool is_int )
+                auto toLog(const T& v) -> decltype((void)(T(1) % 1), (void)(-T(1)), void()) // only valid for integrals
                 {
-                    /*cstat -MISRAC++2008-5-0-9 -MISRAC++2008-5-0-8*/
-                    if ( is_int ) {
-                        (void)util::integerToString( static_cast<signed_t>( v ), buffer, base ); // skipcq: CXX-C1000
+                    /*cstat -CERT-INT31-C_a -MISRAC++2008-5-0-8 -MISRAC++2008-5-0-9 -MISRAC++2008-0-1-2_b -MISRAC++2008-0-1-2_a*/
+                    if (T(-1) < T(0)) {
+                        (void)util::integerToString(static_cast<signed_t>(v), buffer, base);
+                    } else {
+                        (void)util::unsignedToString(static_cast<unsigned_t>(v), buffer, base);
                     }
-                    else {
-                        (void)util::unsignedToString( static_cast<unsigned_t>( v ), buffer, base ); // skipcq: CXX-C1000
-                    }
-                    /*cstat +MISRAC++2008-5-0-9 +MISRAC++2008-5-0-8*/
+                    /*cstat +CERT-INT31-C_a +MISRAC++2008-5-0-8 +MISRAC++2008-5-0-9 +MISRAC++2008-0-1-2_b +MISRAC++2008-0-1-2_a*/
                     writeNumStr();
-                    return *this;
                 }
 
                 void toLog( const char& v );
                 void toLog( const char * s );
-                void toLog( const short& v );
-                void toLog( const int& v );
-                void toLog( const long int& v );
-                void toLog( const unsigned char& v );
-                void toLog( const unsigned short& v );
-                void toLog( const unsigned int& v );
-                void toLog( const unsigned long& v );
                 void toLog( const void * const p );
+
+                void toLog( const float32_t& v );
                 void toLog( const float64_t& v );
                 void toLog( const lout_base& f );
                 void toLog( const mem& m );
@@ -373,17 +367,17 @@ namespace qOS {
             ChainLoggerProxy( const ChainLoggerProxy& ) = delete;
             ChainLoggerProxy( ChainLoggerProxy&& other ) noexcept : parent( other.parent ) {}
             ~ChainLoggerProxy();
+
+            template<typename T>
+            auto operator<<(const T& v) -> decltype((void)(v + 0), *this)
+            {
+                parent.toLog( v );
+                return *this;
+            }
+
             ChainLoggerProxy& operator<<( const char& v );
             ChainLoggerProxy& operator<<( const char * s );
-            ChainLoggerProxy& operator<<( const short& v );
-            ChainLoggerProxy& operator<<( const int& v );
-            ChainLoggerProxy& operator<<( const long int& v );
-            ChainLoggerProxy& operator<<( const unsigned char& v );
-            ChainLoggerProxy& operator<<( const unsigned short& v );
-            ChainLoggerProxy& operator<<( const unsigned int& v );
-            ChainLoggerProxy& operator<<( const unsigned long& v );
             ChainLoggerProxy& operator<<( const void * const p );
-            ChainLoggerProxy& operator<<( const float64_t& v );
             ChainLoggerProxy& operator<<( const lout_base& f );
             ChainLoggerProxy& operator<<( const mem& m );
             ChainLoggerProxy& operator<<( const pre& m );
