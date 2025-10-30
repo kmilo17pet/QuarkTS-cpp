@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"q_events.html#q_notificationsend":[4,2,0,2],
 "q_events.html#q_queuednot":[4,2,0,1],
 "q_events.html#q_queueexample":[4,2,1,2],
 "q_events.html#q_queues":[4,2,1],
@@ -12,6 +13,7 @@ var NAVTREEINDEX3 =
 "q_foundations.html#q_addtasks":[2,2,1],
 "q_foundations.html#q_configmacros":[2,6],
 "q_foundations.html#q_critical":[2,5],
+"q_foundations.html#q_critical_examples":[2,5,0],
 "q_foundations.html#q_eventtasks":[2,2,2],
 "q_foundations.html#q_globalstates":[2,4],
 "q_foundations.html#q_idletask":[2,2,0],
@@ -23,7 +25,10 @@ var NAVTREEINDEX3 =
 "q_foundations.html#q_runos":[2,3],
 "q_foundations.html#q_tasks":[2,2],
 "q_foundations.html#q_timmingapproach":[2,1],
+"q_foundations.html#regintfcns":[2,5,0,0],
 "q_foundations.html#rtcmodel":[2,0],
+"q_foundations.html#usecritlock":[2,5,0,2],
+"q_foundations.html#usecritscope":[2,5,0,1],
 "q_fsm.html":[5,0],
 "q_fsm.html#q_fsm_astask":[5,0,6],
 "q_fsm.html#q_fsm_example1":[5,0,7],

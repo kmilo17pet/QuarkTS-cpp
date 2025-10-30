@@ -193,6 +193,22 @@ $(function(){initNavTree('q_foundations.html',''); initResizable(true); });
   </li>
   <li class="level1">
     <a href="#q_critical">Critical sections</a>
+    <ul>
+      <li class="level2">
+        <a href="#q_critical_examples">Examples</a>
+        <ul>
+          <li class="level3">
+            <a href="#regintfcns">Registering the interrupt control functions</a>
+          </li>
+          <li class="level3">
+            <a href="#usecritscope">Using critical::scope for quick inline protection</a>
+          </li>
+          <li class="level3">
+            <a href="#usecritlock">Using critical::lock (RAII-style)</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </li>
   <li class="level1">
     <a href="#q_configmacros">Configuration macros</a>
@@ -405,12 +421,63 @@ Additional operational states</h3>
 <dl class="section note"><dt>Note</dt><dd>The <code>ASLEEP</code> operational state overrides the <code>ENABLED</code> and <code>DISABLED</code> states.</dd></dl>
 <h1><a class="anchor" id="q_critical"></a>
 Critical sections</h1>
-<p>Since the kernel is non-preemptive, the only critical section that must be handled are the shared resources accessed from the ISR context. Perhaps, the most obvious way of achieving mutual exclusion is to allow the kernel to disable interrupts before it enters their critical section and then, enable interrupts after it leaves its critical section.</p>
-<p>By disabling interrupts, the CPU will be unable to change the current context. This guarantees that the currently running job can use a shared resource without another context accessing it. But, disabling interrupts, is a major undertaking. At best, the system will not be able to service interrupts for the time the current job is doing in its critical section, however, in QuarkTS++, these critical sections are handled as quickly as possible.</p>
-<p>Considering that the kernel is hardware-independent, the application writer should provide the necessary piece of code to enable and disable interrupts.</p>
-<p>For this, the <a class="el" href="group__qcritical.html#ga7617e90163d733e70bbccd71be0609fb" title="Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to commun...">qOS::critical::setInterruptsED()</a> method should be used. In this way, communication between ISR and tasks using queued notifications or data queues is performed safely.</p>
-<p>In some systems, disabling the global IRQ flags is not enough, as they don't save/restore state of interrupt, so here, the <code>uint32_t</code> argument and return value in both functions (<code>Disabler</code> and <code>Restorer</code>) becomes relevant, because they can be used by the application writer to save and restore the current interrupt configuration. So, when a critical section is performed, the <code>Disabler</code>, in addition to disabling the interrupts, returns the current configuration to be retained by the kernel, later when the critical section finish, this retained value is passed to <code>Restorer</code> to bring back the saved configuration.</p>
-<h1><a class="anchor" id="q_configmacros"></a>
+<p>Since the kernel is non-preemptive, the only critical sections that must be handled are those involving shared resources accessed from ISR context. The most straightforward way to achieve mutual exclusion is to temporarily disable interrupts before entering a critical section and re-enable them afterward.</p>
+<p>By disabling interrupts, the CPU cannot switch context, ensuring that the currently running job accesses shared resources safely. However, this must be done carefully and only for short periods. In QuarkTS++, critical sections are minimized to keep interrupt latency as small as possible.</p>
+<p>Because the kernel is hardware-independent, the application developer must provide the specific code for enabling and disabling interrupts.</p>
+<p>For this purpose, the <a class="el" href="group__qcritical.html#ga7617e90163d733e70bbccd71be0609fb" title="Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to commun...">qOS::critical::setInterruptsED()</a> method should be used. It allows the kernel to safely coordinate communication between ISRs and tasks using queued notifications or data queues.</p>
+<p>Some MCUs require not only disabling global interrupt flags but also saving and restoring the interrupt configuration. The <code>uint32_t</code> argument and return values in the provided <code>Disabler</code> and <code>Restorer</code> functions are used for this purpose.</p>
+<p>When a critical section is performed:</p><ul>
+<li>The <code>Disabler</code> function disables interrupts and returns the previous interrupt configuration.</li>
+<li>The kernel stores this configuration internally.</li>
+<li>After the critical section ends, the <code>Restorer</code> function restores the saved configuration.</li>
+</ul>
+<h2><a class="anchor" id="q_critical_examples"></a>
+Examples</h2>
+<h3><a class="anchor" id="regintfcns"></a>
+Registering the interrupt control functions</h3>
+<p>Before using any critical section, the application must register the hardware-specific enable/disable routines:</p>
+<div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceq_o_s.html">qOS</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> uint32_t disableInterrupts() {</div>
+<div class="line">    uint32_t primask = __get_PRIMASK();  <span class="comment">// Read current interrupt state</span></div>
+<div class="line">    __disable_irq();                      <span class="comment">// Disable all interrupts</span></div>
+<div class="line">    <span class="keywordflow">return</span> primask;                       <span class="comment">// Return the saved state</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> restoreInterrupts(uint32_t primask) {</div>
+<div class="line">    <span class="keywordflow">if</span> (!primask) {</div>
+<div class="line">        __enable_irq();                   <span class="comment">// Restore interrupt state</span></div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> main( <span class="keywordtype">void</span> ) {</div>
+<div class="line">    <a class="code hl_function" href="group__qcritical.html#ga7617e90163d733e70bbccd71be0609fb">critical::setInterruptsED</a>(restoreInterrupts, disableInterrupts);</div>
+<div class="line">    <span class="comment">/* TODO : Setup OS and add tasks*/</span></div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qcritical_html_ga7617e90163d733e70bbccd71be0609fb"><div class="ttname"><a href="group__qcritical.html#ga7617e90163d733e70bbccd71be0609fb">qOS::critical::setInterruptsED</a></div><div class="ttdeci">bool setInterruptsED(const int_restorer_t rFcn, const int_disabler_t dFcn) noexcept</div><div class="ttdoc">Set the hardware-specific code for global interrupt enable/disable. Setting this allows you to commun...</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="usecritscope"></a>
+Using critical::scope for quick inline protection</h3>
+<p>This construct provides minimal syntax overhead for protecting short critical sections. The section is automatically exited when the scope ends.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> example() {</div>
+<div class="line">    <span class="comment">// Normal code (non-critical)</span></div>
+<div class="line">    <a class="code hl_function" href="group__qcritical.html#ga51640441b690f168b7a69a0707391434">critical::scope</a> {</div>
+<div class="line">        <span class="comment">// This block runs with interrupts disabled</span></div>
+<div class="line">        sharedCounter++;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// Back to normal code (interrupts enabled)</span></div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qcritical_html_ga51640441b690f168b7a69a0707391434"><div class="ttname"><a href="group__qcritical.html#ga51640441b690f168b7a69a0707391434">qOS::critical::scope</a></div><div class="ttdeci">void scope(void) noexcept</div><div class="ttdoc">Enables a scoped critical section with minimal syntax overhead.</div><div class="ttdef"><b>Definition</b> critical.hpp:76</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="usecritlock"></a>
+Using critical::lock (RAII-style)</h3>
+<p>The <a class="el" href="classq_o_s_1_1critical_1_1lock.html" title="Scoped critical section lock.">qOS::critical::lock</a> class automatically manages entry and exit of a critical section using RAII semantics. When the object is created, interrupts are disabled; when it goes out of scope, interrupts are restored.</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> example() {</div>
+<div class="line">    <a class="code hl_class" href="classq_o_s_1_1critical_1_1lock.html">critical::lock</a> lockGuard;   <span class="comment">// interrupts disabled here</span></div>
+<div class="line"> </div>
+<div class="line">    sharedBuffer.push(value);   <span class="comment">// safe shared access</span></div>
+<div class="line"> </div>
+<div class="line">} <span class="comment">// lockGuard destroyed → interrupts restored</span></div>
+<div class="ttc" id="aclassq_o_s_1_1critical_1_1lock_html"><div class="ttname"><a href="classq_o_s_1_1critical_1_1lock.html">qOS::critical::lock</a></div><div class="ttdoc">Scoped critical section lock.</div><div class="ttdef"><b>Definition</b> critical.hpp:94</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="q_configmacros"></a>
 Configuration macros</h1>
 <p>Some OS features can be customized using a set of macros located in the header file <code><a class="el" href="config_8h_source.html">config.h</a></code>. Here is the default configuration, followed by an explanation of each macro:</p>
 <ul>

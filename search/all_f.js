@@ -16,11 +16,12 @@ var searchData=
   ['printxdata_13',['printXData',['../group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67',1,'qOS::util']]],
   ['priority_5ft_14',['priority_t',['../group__qtypes.html#gafa40141ce2de5f15a1d9b1558466311a',1,'qOS']]],
   ['process_20and_20coding_20standard_15',['Development process and coding standard',['../q_background.html#q_codstandard',1,'']]],
-  ['provided_20approach_16',['The provided approach',['../q_fsm.html#qfsm_approach',1,'']]],
-  ['pseudo_20states_17',['Example with history pseudo-states',['../q_fsm.html#q_fsm_example4',1,'']]],
-  ['pulsation_5fdouble_18',['PULSATION_DOUBLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f',1,'qOS::input']]],
-  ['pulsation_5fmulti_19',['PULSATION_MULTI',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa',1,'qOS::input']]],
-  ['pulsation_5ftriple_20',['PULSATION_TRIPLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e',1,'qOS::input']]],
-  ['put_21',['put',['../classq_o_s_1_1byte_buffer.html#aa0f78551140dee000951cff92eab831f',1,'qOS::byteBuffer']]],
-  ['putchar_5ft_22',['putChar_t',['../group__qioutils.html#ga2d1dc078cfeaafc3e3723662a9eff629',1,'qOS::util']]]
+  ['protection_16',['Using critical::scope for quick inline protection',['../q_foundations.html#usecritscope',1,'']]],
+  ['provided_20approach_17',['The provided approach',['../q_fsm.html#qfsm_approach',1,'']]],
+  ['pseudo_20states_18',['Example with history pseudo-states',['../q_fsm.html#q_fsm_example4',1,'']]],
+  ['pulsation_5fdouble_19',['PULSATION_DOUBLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a983d2e95843ca4b79efaa4563d8c0e3f',1,'qOS::input']]],
+  ['pulsation_5fmulti_20',['PULSATION_MULTI',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a32154eafe61dada6cff15bdbc03c7cfa',1,'qOS::input']]],
+  ['pulsation_5ftriple_21',['PULSATION_TRIPLE',['../group__qinput.html#gga72d9a973c87da11f11a8aeabbbb25aa7a9246161c6e1edc91606609e844ed862e',1,'qOS::input']]],
+  ['put_22',['put',['../classq_o_s_1_1byte_buffer.html#aa0f78551140dee000951cff92eab831f',1,'qOS::byteBuffer']]],
+  ['putchar_5ft_23',['putChar_t',['../group__qioutils.html#ga2d1dc078cfeaafc3e3723662a9eff629',1,'qOS::util']]]
 ];

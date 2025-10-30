@@ -45,12 +45,15 @@ var searchData=
   ['configuration_20file_42',['Get a copy of the OS configuration file',['../q_gettingstarted.html#q_getqconfig',1,'']]],
   ['configuration_20macros_43',['Configuration macros',['../q_foundations.html#q_configmacros',1,'']]],
   ['control_44',['External control',['../q_qcoroutines.html#q_coroutine_ext',1,'']]],
-  ['copy_20of_20the_20os_20configuration_20file_45',['Get a copy of the OS configuration file',['../q_gettingstarted.html#q_getqconfig',1,'']]],
-  ['copyright_46',['copyright',['../namespaceq_o_s_1_1product.html#a479e2ebec2bf16c71644ea48bf716823',1,'qOS::product']]],
-  ['core_47',['core',['../classq_o_s_1_1core.html',1,'qOS']]],
-  ['count_48',['count',['../classq_o_s_1_1byte_buffer.html#afcc85e15c7179199fc99557826d55f63',1,'qOS::byteBuffer::count()'],['../classq_o_s_1_1queue.html#a7c72087cd2f661c48861847cc828aa2f',1,'qOS::queue::count()']]],
-  ['critical_49',['Critical',['../group__qcritical.html',1,'']]],
-  ['critical_20sections_50',['Critical sections',['../q_foundations.html#q_critical',1,'']]],
-  ['cycles_5ft_51',['cycles_t',['../group__qtypes.html#ga9aa89c14ce683ea87fa74b7dcf3e6a2e',1,'qOS']]],
-  ['cyn_52',['cyn',['../group__qlogger.html#ga0cd46669b8448b3ec22986b3ca43cf54',1,'qOS::logger']]]
+  ['control_20functions_45',['Registering the interrupt control functions',['../q_foundations.html#regintfcns',1,'']]],
+  ['copy_20of_20the_20os_20configuration_20file_46',['Get a copy of the OS configuration file',['../q_gettingstarted.html#q_getqconfig',1,'']]],
+  ['copyright_47',['copyright',['../namespaceq_o_s_1_1product.html#a479e2ebec2bf16c71644ea48bf716823',1,'qOS::product']]],
+  ['core_48',['core',['../classq_o_s_1_1core.html',1,'qOS']]],
+  ['count_49',['count',['../classq_o_s_1_1byte_buffer.html#afcc85e15c7179199fc99557826d55f63',1,'qOS::byteBuffer::count()'],['../classq_o_s_1_1queue.html#a7c72087cd2f661c48861847cc828aa2f',1,'qOS::queue::count()']]],
+  ['critical_50',['Critical',['../group__qcritical.html',1,'']]],
+  ['critical_20sections_51',['Critical sections',['../q_foundations.html#q_critical',1,'']]],
+  ['critical_3a_3alock_20raii_20style_52',['Using critical::lock (RAII-style)',['../q_foundations.html#usecritlock',1,'']]],
+  ['critical_3a_3ascope_20for_20quick_20inline_20protection_53',['Using critical::scope for quick inline protection',['../q_foundations.html#usecritscope',1,'']]],
+  ['cycles_5ft_54',['cycles_t',['../group__qtypes.html#ga9aa89c14ce683ea87fa74b7dcf3e6a2e',1,'qOS']]],
+  ['cyn_55',['cyn',['../group__qlogger.html#ga0cd46669b8448b3ec22986b3ca43cf54',1,'qOS::logger']]]
 ];

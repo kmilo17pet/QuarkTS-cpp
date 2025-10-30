@@ -44,5 +44,6 @@ var searchData=
   ['queued_20notifications_41',['Queued Notifications',['../q_events.html#q_queuednot',1,'']]],
   ['queuelinkmode_42',['queueLinkMode',['../group__qtaskmanip.html#ga510a1627bf9fff09eec6bd9b02d82be4',1,'qOS']]],
   ['queues_43',['Queues',['../group__qqueues.html',1,'Queues'],['../q_events.html#q_queues',1,'Queues']]],
-  ['queuesendmode_44',['queueSendMode',['../group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22',1,'qOS']]]
+  ['queuesendmode_44',['queueSendMode',['../group__qqueues.html#gaa2a592dbca5e6b54ae44c57f37d10e22',1,'qOS']]],
+  ['quick_20inline_20protection_45',['Using critical::scope for quick inline protection',['../q_foundations.html#usecritscope',1,'']]]
 ];

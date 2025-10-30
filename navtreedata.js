@@ -51,7 +51,13 @@ var NAVTREE =
           [ "Additional operational states", "q_foundations.html#q_os_operational_states", null ]
         ] ]
       ] ],
-      [ "Critical sections", "q_foundations.html#q_critical", null ],
+      [ "Critical sections", "q_foundations.html#q_critical", [
+        [ "Examples", "q_foundations.html#q_critical_examples", [
+          [ "Registering the interrupt control functions", "q_foundations.html#regintfcns", null ],
+          [ "Using critical::scope for quick inline protection", "q_foundations.html#usecritscope", null ],
+          [ "Using critical::lock (RAII-style)", "q_foundations.html#usecritlock", null ]
+        ] ]
+      ] ],
       [ "Configuration macros", "q_foundations.html#q_configmacros", null ]
     ] ],
     [ "Getting started", "q_gettingstarted.html", [
@@ -121,7 +127,7 @@ var NAVTREEINDEX =
 "annotated.html",
 "classq_o_s_1_1sm_1_1state.html#a2c1f9aa5808779bb96644239c427396d",
 "group__qfsm.html#ga452ff125ce90025a087527f27d9abfb4",
-"q_events.html#q_queuednot"
+"q_events.html#q_notificationsend"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

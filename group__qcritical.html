@@ -270,11 +270,13 @@ The kernel passes the previously saved interrupt configuration as input argument
 
 <p>Enables a scoped critical section with minimal syntax overhead. </p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> example() {</div>
+<div class="line">    <span class="comment">// code here : normal section(non-critical)</span></div>
 <div class="line">    <a class="code hl_function" href="#ga51640441b690f168b7a69a0707391434">critical::scope</a> {</div>
 <div class="line">        <span class="comment">// Code here runs in a critical section</span></div>
 <div class="line">    }</div>
+<div class="line">    <span class="comment">// code here, normal section (non-critical)</span></div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qcritical_html_ga51640441b690f168b7a69a0707391434"><div class="ttname"><a href="#ga51640441b690f168b7a69a0707391434">qOS::critical::scope</a></div><div class="ttdeci">void scope(void) noexcept</div><div class="ttdoc">Enables a scoped critical section with minimal syntax overhead.</div><div class="ttdef"><b>Definition</b> critical.hpp:74</div></div>
+<div class="ttc" id="agroup__qcritical_html_ga51640441b690f168b7a69a0707391434"><div class="ttname"><a href="#ga51640441b690f168b7a69a0707391434">qOS::critical::scope</a></div><div class="ttdeci">void scope(void) noexcept</div><div class="ttdoc">Enables a scoped critical section with minimal syntax overhead.</div><div class="ttdef"><b>Definition</b> critical.hpp:76</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

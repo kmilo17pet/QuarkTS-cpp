@@ -19,11 +19,13 @@ var searchData=
   ['using_20a_20hierarchical_20fsm_16',['Example using a hierarchical FSM',['../q_fsm.html#q_fsm_example3',1,'']]],
   ['using_20a_20timer_17',['Using a Timer',['../q_stimers.html#q_stimerusage',1,'']]],
   ['using_20a_20transition_20table_18',['Using a transition table',['../q_fsm.html#q_fsm_ttable',1,'']]],
-  ['using_20quarkts_20in_20arduino_19',['Using QuarkTS++ in Arduino',['../q_gettingstarted.html#qarduinousage',1,'']]],
-  ['using_20the_20hierarchical_20approach_20',['Using the hierarchical approach',['../q_fsm.html#qfsm_happroach',1,'']]],
-  ['using_20the_20task_20argument_21',['Using the task argument',['../q_gettingstarted.html#q_os_example2',1,'']]],
-  ['using_20the_20task_20event_20flags_22',['Using the task Event-flags',['../q_events.html#q_eventflagsexample',1,'']]],
-  ['using_20transition_20tables_23',['Demonstrative example using transition tables',['../q_fsm.html#q_fsm_example2',1,'']]],
-  ['utilities_24',['Utilities',['../group__qutility.html',1,'']]],
-  ['utils_25',['I/O Utils',['../group__qioutils.html',1,'']]]
+  ['using_20critical_3a_3alock_20raii_20style_19',['Using critical::lock (RAII-style)',['../q_foundations.html#usecritlock',1,'']]],
+  ['using_20critical_3a_3ascope_20for_20quick_20inline_20protection_20',['Using critical::scope for quick inline protection',['../q_foundations.html#usecritscope',1,'']]],
+  ['using_20quarkts_20in_20arduino_21',['Using QuarkTS++ in Arduino',['../q_gettingstarted.html#qarduinousage',1,'']]],
+  ['using_20the_20hierarchical_20approach_22',['Using the hierarchical approach',['../q_fsm.html#qfsm_happroach',1,'']]],
+  ['using_20the_20task_20argument_23',['Using the task argument',['../q_gettingstarted.html#q_os_example2',1,'']]],
+  ['using_20the_20task_20event_20flags_24',['Using the task Event-flags',['../q_events.html#q_eventflagsexample',1,'']]],
+  ['using_20transition_20tables_25',['Demonstrative example using transition tables',['../q_fsm.html#q_fsm_example2',1,'']]],
+  ['utilities_26',['Utilities',['../group__qutility.html',1,'']]],
+  ['utils_27',['I/O Utils',['../group__qioutils.html',1,'']]]
 ];
