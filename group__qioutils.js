@@ -11,6 +11,7 @@ var group__qioutils =
     [ "qOS::util::integerToString", "group__qioutils.html#gab07149b2d1611c1fb699ead02c675b6c", null ],
     [ "qOS::util::outputRAW", "group__qioutils.html#ga057bcfe88c1239c40169daaff9055383", null ],
     [ "qOS::util::outputString", "group__qioutils.html#gaa52986572af92eced6edf56209ee5ec2", null ],
+    [ "qOS::util::pointerToString", "group__qioutils.html#ga7e104bf8a4ac25fc0e3ca4b04028135f", null ],
     [ "qOS::util::printXData", "group__qioutils.html#ga595d57a0b27862c5d4d028e3ece14c67", null ],
     [ "qOS::util::strcat", "group__qioutils.html#ga1877d86a8e6add07e15a0d78b38a35d1", null ],
     [ "qOS::util::strchr", "group__qioutils.html#gaeb1cf14c3cbe5ba82565afb4368b7683", null ],

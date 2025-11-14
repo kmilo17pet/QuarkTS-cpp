@@ -187,6 +187,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0703b4fef051351cd863d303dade48cb" id="r_a0703b4fef051351cd863d303dade48cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0703b4fef051351cd863d303dade48cb">watch</a> (void) noexcept</td></tr>
 <tr class="memdesc:a0703b4fef051351cd863d303dade48cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Watch for the state and events for all channels registered inside the watcher instance (Non-Blocking call).  <br /></td></tr>
 <tr class="separator:a0703b4fef051351cd863d303dade48cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59d066abb482bcfc648e5c4de1383de2" id="r_a59d066abb482bcfc648e5c4de1383de2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59d066abb482bcfc648e5c4de1383de2">operator()</a> (void)</td></tr>
+<tr class="memdesc:a59d066abb482bcfc648e5c4de1383de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Watch for the state and events for all channels registered inside the watcher instance (Non-Blocking call).  <br /></td></tr>
+<tr class="separator:a59d066abb482bcfc648e5c4de1383de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72ad4b7a23116ef89fcf69db41fbf620" id="r_a72ad4b7a23116ef89fcf69db41fbf620"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72ad4b7a23116ef89fcf69db41fbf620">getAnalogChannelsCount</a> (void) const noexcept</td></tr>
+<tr class="memdesc:a72ad4b7a23116ef89fcf69db41fbf620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of analog channels monitored by this instance.  <br /></td></tr>
+<tr class="separator:a72ad4b7a23116ef89fcf69db41fbf620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa88c98c4b8ddc101c3e3900a6c439463" id="r_aa88c98c4b8ddc101c3e3900a6c439463"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa88c98c4b8ddc101c3e3900a6c439463">getDigitalChannelsCount</a> (void) const noexcept</td></tr>
+<tr class="memdesc:aa88c98c4b8ddc101c3e3900a6c439463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of digital channels monitored by this instance.  <br /></td></tr>
+<tr class="separator:aa88c98c4b8ddc101c3e3900a6c439463"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The digital input-channel watcher class. </p>
@@ -429,6 +438,90 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success. Otherwise <code>false</code>. </dd></dl>
+
+</div>
+</div>
+<a id="a72ad4b7a23116ef89fcf69db41fbf620" name="a72ad4b7a23116ef89fcf69db41fbf620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72ad4b7a23116ef89fcf69db41fbf620">&#9670;&#160;</a></span>getAnalogChannelsCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t qOS::input::watcher::getAnalogChannelsCount </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of analog channels monitored by this instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of analog channels managed by the watcher instance. </dd></dl>
+
+</div>
+</div>
+<a id="aa88c98c4b8ddc101c3e3900a6c439463" name="aa88c98c4b8ddc101c3e3900a6c439463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa88c98c4b8ddc101c3e3900a6c439463">&#9670;&#160;</a></span>getDigitalChannelsCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t qOS::input::watcher::getDigitalChannelsCount </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of digital channels monitored by this instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of digital channels managed by the watcher instance. </dd></dl>
+
+</div>
+</div>
+<a id="a59d066abb482bcfc648e5c4de1383de2" name="a59d066abb482bcfc648e5c4de1383de2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d066abb482bcfc648e5c4de1383de2">&#9670;&#160;</a></span>operator()()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qOS::input::watcher::operator() </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Watch for the state and events for all channels registered inside the watcher instance (Non-Blocking call). </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> when the input channels have been completed an updated cycle. Otherwise <code>false</code>. </dd></dl>
 
 </div>
 </div>
