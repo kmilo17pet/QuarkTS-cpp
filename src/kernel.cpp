@@ -135,8 +135,9 @@ static void inputWatcherTaskCallback( event_t e )
 /*============================================================================*/
 bool core::add( task &Task, input::watcher &w, const priority_t p, const taskState s, void *arg ) noexcept
 {
+    /*cstat -MISRAC++2008-2-13-3*/
     bool retValue = core::add( Task, inputWatcherTaskCallback, p, 10_ms, task::PERIODIC, s, arg );
-
+    /*cstat +MISRAC++2008-2-13-3*/
     if ( retValue ) {
         Task.aObj = &w;
         retValue = true;

@@ -3,10 +3,10 @@
 using namespace qOS;
 
 /*! @cond  */
-int_disabler_t critical::lock::disable = nullptr; /*< Point to the user-supplied function used to disable the hardware interrupts. */
-int_restorer_t critical::lock::restore = nullptr; /*< Point to the user-supplied function used to restore the hardware interrupts. */
-volatile uint32_t critical::lock::flags = 0UL;    /*< To save the current interrupt flags before the disable action is performed. */
-volatile int critical::lock::nestingLevel = 0;
+int_disabler_t critical::lock::disable = nullptr; // skipcq: CXX-W2009 /*< Point to the user-supplied function used to disable the hardware interrupts. */
+int_restorer_t critical::lock::restore = nullptr; // skipcq: CXX-W2009 /*< Point to the user-supplied function used to restore the hardware interrupts. */
+volatile uint32_t critical::lock::flags = 0UL;    // skipcq: CXX-W2009 /*< To save the current interrupt flags before the disable action is performed. */
+volatile int critical::lock::nestingLevel = 0;    // skipcq: CXX-W2009
 /*! @endcond  */
 
 /*============================================================================*/

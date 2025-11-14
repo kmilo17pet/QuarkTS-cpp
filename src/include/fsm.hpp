@@ -383,7 +383,15 @@ namespace qOS {
                 {
                     return *State;
                 }
+                inline const state& thisState( void ) const noexcept
+                {
+                    return *State;
+                }
                 inline stateMachine& thisMachine( void ) noexcept
+                {
+                    return *Machine;
+                }
+                inline const stateMachine& thisMachine( void ) const noexcept
                 {
                     return *Machine;
                 }

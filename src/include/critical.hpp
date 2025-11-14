@@ -95,10 +95,10 @@ namespace qOS {
             private:
                 static void enter( void ) noexcept;
                 static void exit( void ) noexcept;
-                static int_disabler_t disable;
-                static int_restorer_t restore;
-                static volatile uint32_t flags;
-                static volatile int nestingLevel;
+                static int_disabler_t disable;      // skipcq: CXX-W2009
+                static int_restorer_t restore;      // skipcq: CXX-W2009
+                static volatile uint32_t flags;     // skipcq: CXX-W2009
+                static volatile int nestingLevel;   // skipcq: CXX-W2009
                 bool entered{ true };
                 friend bool setInterruptsED( const int_restorer_t rFcn, const int_disabler_t dFcn ) noexcept;
             public:

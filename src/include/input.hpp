@@ -449,7 +449,7 @@ namespace qOS {
             friend class watcher;
         };
 
-
+        /*cstat -MISRAC++2008-2-13-3*/
         /**
         * @brief The digital input-channel watcher class.
         */
@@ -545,13 +545,32 @@ namespace qOS {
                 * updated cycle. Otherwise @c false.
                 */
                 bool watch( void ) noexcept;
-                /*! @cond  */
+                /**
+                * @brief Watch for the state and events for all channels
+                * registered inside the watcher instance (Non-Blocking call).
+                * @return @c true when the input channels have been completed an
+                * updated cycle. Otherwise @c false.
+                */
                 inline bool operator()( void )
                 {
                     return watch();
                 }
-                /*! @endcond  */
+                /**
+                 * @brief Returns the number of analog channels monitored by
+                 * this instance.
+                 * @return The number of analog channels managed by the watcher
+                 * instance.
+                 */
+                size_t getAnalogChannelsCount( void ) const noexcept;
+                /**
+                 * @brief Returns the number of digital channels monitored by
+                 * this instance.
+                 * @return The number of digital channels managed by the watcher
+                 * instance.
+                 */
+                size_t getDigitalChannelsCount( void ) const noexcept;
         };
+        /*cstat +MISRAC++2008-2-13-3*/
         /** @}*/
     }
 

@@ -64,7 +64,7 @@ namespace qOS {
                 _logger_out.toLog( loc.line() );
                 _logger_out.toLog( "): " );
             }
-            return ChainLoggerProxy(_logger_out);
+            return ChainLoggerProxy(_logger_out); // skipcq: CXX-W2033
         }
         /*cstat +MISRAC++2008-0-1-7*/
 
@@ -95,10 +95,10 @@ namespace qOS {
 
         void _logger::toLog( const void * const p )
         {
-            /*cstat -CERT-INT36-C*/
-            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( p ), buffer, 16U ); // skipcq: CXX-C1000
-            /*cstat +CERT-INT36-C*/
-            (void)util::outputString( writeChar, "p@0x" );
+            (void)util::pointerToString( p, buffer );
+            //(void)util::outputString( writeChar, "p@" );
+            writeChar( nullptr, '@' );
+            writeChar( nullptr, ':' );
             (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
             if ( n > 0U ) {
                 (void)util::outputString( writeChar, " = [ " );
@@ -152,12 +152,19 @@ namespace qOS {
             precision = m.precision;
         }
 
-        void _logger::toLog( const task& t )
+        void _logger::toLog( const qOS::task& t )
         {
+            (void)util::outputString( writeChar , "task{ " );
+            const auto name = t.getName();
+            if ( '\0' == name[ 0 ] ) {
+                (void)util::pointerToString( &t, buffer );
+                (void)util::outputString( writeChar, buffer );
+            }
+            else {
+                (void)util::outputString( writeChar , t.getName() );
+            }
+            (void)util::outputString( writeChar , ", " );
             (void)util::unsignedToString( t.getID(), buffer, 10 ); // skipcq: CXX-C1000
-            (void)util::outputString( writeChar , "T{ \"" );
-            (void)util::outputString( writeChar , t.getName() );
-            (void)util::outputString( writeChar , "\", " );
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ", " );
             (void)util::outputString( writeChar , ( taskState::ENABLED_STATE == t.getState() )? "enabled" : "disabled" );
@@ -166,7 +173,7 @@ namespace qOS {
 
         void _logger::toLog( const qOS::timer& t )
         {
-            (void)util::outputString( writeChar , "t{ E:" );
+            (void)util::outputString( writeChar , "timer{ E: " );
             (void)util::unsignedToString( t.elapsed(), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ", R: " );
@@ -174,22 +181,47 @@ namespace qOS {
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
         }
-        /*cstat -CERT-INT36-C*/
+
         void _logger::toLog( const qOS::stateMachine& sm )
         {
-            (void)util::outputString( writeChar , "SM{ T: 0x" );
-            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &sm.getTop() ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , "stateMachine{ T: " );
+            (void)util::pointerToString( &sm.getTop(), buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
-            (void)util::outputString( writeChar , ", C: 0x" );
-            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( sm.getCurrent() ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", C: " );
+            (void)util::pointerToString( sm.getCurrent(), buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
         }
 
         void _logger::toLog( const qOS::sm::state& s )
         {
-            (void)util::outputString( writeChar , "s{ 0x" );
-            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &s ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , "sm::state{ " );
+            (void)util::pointerToString( &s, buffer );
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , " } " );
+        }
+
+        void _logger::toLog( const qOS::queue& v )
+        {
+            (void)util::outputString( writeChar , "queue{ H: " );
+            (void)util::pointerToString( v.peek(), buffer );
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", count: " );
+            (void)util::unsignedToString( v.count(), buffer, 10 );
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , " } " );
+        }
+
+        void _logger::toLog( const qOS::mem::pool& v )
+        {
+            (void)util::outputString( writeChar , "mem::pool{ " );
+            (void)util::pointerToString( v.getPoolArea(), buffer );
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", size: " );
+            (void)util::unsignedToString( v.getTotalSize(), buffer, 10 );
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", free: " );
+            (void)util::unsignedToString( v.getFreeSize(), buffer, 10 );
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
         }
@@ -204,6 +236,43 @@ namespace qOS {
             (void)util::outputString( writeChar , str[ static_cast<int>( t ) ] ); // skipcq: CXX-C1000
         }
 
+        void _logger::toLog( const qOS::globalState& s )
+        {
+            static const char *str[ 5 ] = { // skipcq: CXX-W2066
+                "UNDEFINED ", "READY ", "WAITING ", "SUSPENDED ", "RUNNING "
+            };
+            (void)util::outputString( writeChar , str[ static_cast<int>( s ) ] ); // skipcq: CXX-C1000
+        }
+
+        void _logger::toLog( const qOS::taskEvent& e )
+        {
+            toLog( e.thisTask() );
+            (void)util::outputString( writeChar , "-> event_t{ " );
+            if ( e.firstCall() ) {
+                (void)util::outputString( writeChar , "firstCall, " );
+            }
+            if ( e.firstIteration() ) {
+                (void)util::outputString( writeChar , "firstIteration, " );
+            }
+            if ( e.lastIteration() ) {
+                (void)util::outputString( writeChar , "lastIteration, " );
+            }
+            (void)util::outputString( writeChar , "startDelay: " );
+            (void)util::unsignedToString( e.startDelay(), buffer, 10 ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", trigger: " );
+            toLog( e.getTrigger() );
+            (void)util::outputString( writeChar , "} " );
+        }
+
+        void _logger::toLog( const qOS::taskState& v )
+        {
+            static const char *str[ 4 ] = { // skipcq: CXX-W2066
+                "DISABLED ", "ENABLED ", "AWAKE ", "ASLEEP "
+            };
+            (void)util::outputString( writeChar , str[ static_cast<int>( v ) ] ); // skipcq: CXX-C1000
+        }
+
         void _logger::toLog( const qOS::input::channel& in )
         {
             static const char *str[ static_cast<int>( qOS::input::event::MAX_EVENTS ) ] = { // skipcq: CXX-W2066
@@ -213,8 +282,8 @@ namespace qOS {
                 "STEADY_IN_LOW ", "STEADY_IN_BAND ", "DELTA ", "STEP_UP ", "STEP_DOWN "
             };
             const auto e = in.getEvent();
-            (void)util::outputString( writeChar , "in{ 0x" );
-            (void)util::unsignedToString( reinterpret_cast<uintptr_t>( &in ), buffer, 16 ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , "input::channel{ " );
+            (void)util::pointerToString( &in, buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ( qOS::input::type::ANALOG_CHANNEL == in.getType() ) ? ", ANALOG, C: " : ", DIGITAL, C: " );
             /*cstat -MISRAC++2008-5-0-8*/
@@ -227,7 +296,109 @@ namespace qOS {
             }
         }
 
-        /*cstat +CERT-INT36-C*/
+        void _logger::toLog( const qOS::input::watcher& v )
+        {
+            (void)util::outputString( writeChar , "input::watcher{ " );
+            (void)util::pointerToString( &v, buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", ANALOG: " );
+            (void)util::unsignedToString( v.getAnalogChannelsCount(), buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", DIGITAL: " );
+            (void)util::unsignedToString( v.getDigitalChannelsCount(), buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , " } " );
+        }
+
+        void _logger::toLog( const qOS::sm::signalID & v )
+        {
+            const char *str = nullptr;
+            buffer[ 0 ] = ' ';
+            buffer[ 1 ] = '\0';
+
+            switch ( v ) {
+                case qOS::sm::SIGNAL_START:  str = "SIGNAL_START";  break;
+                case qOS::sm::SIGNAL_EXIT:   str = "SIGNAL_EXIT";   break;
+                case qOS::sm::SIGNAL_ENTRY:  str = "SIGNAL_ENTRY";  break;
+                case qOS::sm::SIGNAL_NONE:   str = "SIGNAL_NONE";   break;
+                default:
+                    break;
+            }
+            if ( str != nullptr ) {
+                (void)util::outputString( writeChar, str );
+                (void)util::outputString( writeChar, buffer );
+            }
+            else {
+                const unsigned sig  = static_cast<unsigned>( v );
+                if ( ( v >= qOS::sm::TM_MIN ) && ( v <= qOS::sm::TM_MAX  ) ) {
+                    const unsigned tBase = static_cast<unsigned>( qOS::sm::SIGNAL_TIMEOUT0 );
+                    const unsigned maxIdx = static_cast<unsigned>( Q_FSM_MAX_TIMEOUTS) - 1U;
+                    const unsigned idx = maxIdx - ( tBase - sig );
+                    (void)util::outputString( writeChar, "SIGNAL_TIMEOUT" );
+                    (void)util::unsignedToString( idx, buffer, 10 );
+                    (void)util::outputString( writeChar, buffer );
+                    writeChar( nullptr, ' ' );
+                }
+                else {
+                    (void)util::outputString( writeChar, "SIGNAL_USER:" );
+                    (void)util::unsignedToString( sig, buffer, 10 );
+                    (void)util::outputString( writeChar, buffer );
+                    writeChar( nullptr, ' ' );
+                }
+            }
+        }
+
+        void _logger::toLog( const qOS::sm::status & v )
+        {
+            const char *str = "STATUS_USER:";
+            buffer[ 0 ] = ' ';
+            buffer[ 1 ] = '\0';
+
+            switch ( v ) {
+                case qOS::sm::status::BEFORE_ANY:
+                    str = "BEFORE_ANY";
+                    break;
+                case qOS::sm::status::ABSENT:
+                    str = "ABSENT";
+                    break;
+                case qOS::sm::status::FAILURE:
+                    str = "FAILURE";
+                    break;
+                case qOS::sm::status::SUCCESS:
+                    str = "SUCCESS";
+                    break;
+                case qOS::sm::status::SIGNAL_HANDLED:
+                    str = "SIGNAL_HANDLED";
+                    break;
+                default:
+                    /*cstat -MISRAC++2008-5-0-8*/
+                    (void)util::unsignedToString( static_cast<unsigned_t>( v ), buffer, 10 ); // skipcq: CXX-C1000
+                    /*cstat +MISRAC++2008-5-0-8*/
+                    break;
+            }
+            (void)util::outputString( writeChar, str );
+            (void)util::outputString( writeChar, buffer );
+        }
+
+        void _logger::toLog( const qOS::sm::stateHandler& v )
+        {
+            const auto &m = v.thisMachine();
+            const auto &s = v.thisState();
+            (void)util::outputString( writeChar , "sm::handler_t{ " );
+            (void)util::pointerToString( &m, buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , " | state: " );
+            (void)util::pointerToString( &s, buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
+            (void)util::outputString( writeChar , ", " );
+            toLog( v.signal() );
+            if ( qOS::sm::status::ABSENT != v.lastStatus() ) {
+                (void)util::outputString( writeChar , ", lastStatus:" );
+                toLog( v.lastStatus() );
+            }
+            (void)util::outputString( writeChar , "} " );
+        }
+
         void _logger::toLog( const qOS::string & s )
         {
             (void)util::outputString( writeChar, s.c_str() );
@@ -237,71 +408,7 @@ namespace qOS {
         {
             (void)util::outputString( parent.writeChar, logger::end );
         }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const char& v )
-        {
-            parent.toLog( v );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const char * s )
-        {
-            parent.toLog( s );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const void * const p )
-        {
-            parent.toLog( p );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const lout_base& f )
-        {
-            parent.toLog( f );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const mem& m )
-        {
-            parent.toLog( m );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const pre& m )
-        {
-            parent.toLog( m );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const task& t )
-        {
-            parent.toLog( t );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::timer& t )
-        {
-            parent.toLog( t );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::stateMachine& sm )
-        {
-            parent.toLog( sm );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::sm::state& s )
-        {
-            parent.toLog( s );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::trigger& t )
-        {
-            parent.toLog( t );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::input::channel& in )
-        {
-            parent.toLog( in );
-            return *this;
-        }
-        ChainLoggerProxy& ChainLoggerProxy::operator<<( const qOS::string & s )
-        {
-            parent.toLog( s );
-            return *this;
-        }
+
     }
 
 }

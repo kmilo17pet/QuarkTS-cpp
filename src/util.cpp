@@ -528,6 +528,27 @@ char* util::integerToString( signed_t num, char* str, uint8_t base ) noexcept
     return str;
 }
 /*============================================================================*/
+char* util::pointerToString( const void *ptr, char* str ) noexcept
+{
+    if ( nullptr != str ) {
+        if ( nullptr != ptr ) {
+            size_t i;
+            /*cstat -CERT-INT36-C*/
+            const auto num = reinterpret_cast<uintptr_t>( ptr );
+            /*cstat +CERT-INT36-C*/
+            str[ 0 ] = '0';
+            str[ 1 ] = 'x';
+            i = xBaseUtoA( num, &str[ 2 ], 16 );
+            str[ i + 2 ] = '\0';
+        }
+        else {
+            (void)util::strcpy( str, "null", 5 );
+        }
+    }
+
+    return str;
+}
+/*============================================================================*/
 char* util::boolToString( const bool num, char *str ) noexcept
 {
     if ( nullptr != str ) {

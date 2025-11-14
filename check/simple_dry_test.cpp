@@ -69,11 +69,8 @@ unsigned long sysClock( void );
 
 void idleTask_callback( event_t e )
 {
-    unsigned int a;
-
     if ( e.firstCall() ) {
-        logger::out() << "idle task" << a;;
-        logger::out() << e.thisTask();
+        logger::out() << e;
     }
     co::reenter() {
         for(;;) {
@@ -106,7 +103,7 @@ co::semaphore sem(1);
 void otherTask( event_t e )
 {
     if ( e.firstCall() ) {
-        logger::out() << e.thisTask();
+        logger::out() << e;
     }
     co::reenter( otherTaskCrHandle ) {
         co::restart();
@@ -117,10 +114,13 @@ void otherTask( event_t e )
 
 sm::status s1_callback( sm::handler_t h )
 {
+    logger::out() << h;
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
             logger::out() << logger::cyn << h.thisMachine() << h.thisState() << "s1_callback";
             h.thisMachine().timeoutSet( 0, 5_sec );
+            h.thisMachine().timeoutSet( 1, 3_sec );
+            h.thisMachine().timeoutSet( 2, 2_sec );
             break;
         case sm::SIGNAL_TIMEOUT( 0 ):
             h.nextState( s2 );
@@ -134,11 +134,13 @@ sm::status s1_callback( sm::handler_t h )
 sm::status s2_callback( sm::handler_t h )
 {
     static timer tmr;
-
+    logger::out() << h;
     logger::out() << logger::var(tmr);
+    logger::out() << h.signal();
 
     switch ( h.signal() ) {
         case sm::SIGNAL_ENTRY:
+
             logger::out() << logger::cyn  << h.thisMachine() << h.thisState() << "s2_callback";
             tmr( 5_sec );
             break;
@@ -153,19 +155,8 @@ sm::status s2_callback( sm::handler_t h )
 
 void task_callback( event_t e )
 {
-    logger::out() << e.self();
-
-    if ( e.firstCall() ) {
-        logger::out() << logger::grn << "first call "<< e.thisTask();
-    }
-
-    if( trigger::byNotificationSimple ==  e.getTrigger() ) {
-        logger::out() << "notified(SIMPLE)! " << e.thisTask();
-    }
-
-    if( trigger::byNotificationQueued ==  e.getTrigger() ) {
-        logger::out() << "notified(QUEUED)! " << e.thisTask();
-    }
+    logger::out() << e;
+    logger::out() << LEDsigqueue.q;
 
     if ( e.lastIteration() ) {
         os.notify( notifyMode::QUEUED, t1, nullptr );
@@ -177,7 +168,7 @@ void task_callback( event_t e )
 
     int someValue = 457;
     int *ptr = &someValue;
-    logger::out() << logger::red <<"test trace "<< logger::dec << logger::var(someValue)<< "  " << ptr;
+    logger::out() << logger::red <<"test trace "<< logger::dec << logger::var(someValue)<<  ptr;
 
 }
 
@@ -211,6 +202,9 @@ input::digitalChannel pinD3( 3, true );
 input::digitalChannel pinD4( 4, true );
 input::watcher pinWatcher( digitalRead, analogRead, 50_ms );
 
+void pinEvent( input::channel& c ) {
+  logger::out() << c;
+}
 
 int main()
 {
@@ -218,8 +212,23 @@ int main()
     uint32_t x = 0xFFAA2211;
     double y = -3.1416;
     logger::setOutputFcn( &putCharFcn );
+    uint8_t area[ 256 ];
+    mem::pool mypool( area, sizeof(area) );
+
+    pinWatcher.add( pinD2, pinEvent );
+    pinWatcher.add( pinD3, pinEvent );
+    pinWatcher.add( pinD4, pinEvent );
+    pinWatcher.add( pinA0, pinEvent );
+
+    void *ptrx = nullptr;
+
+
+    logger::out() << pinWatcher;
     logger::out() << logger::pre(8) << logger::var(y);
     logger::out() << logger::var(x) << logger::mem( sizeof(x) ) << &x;
+    logger::out() << logger::var(y) << logger::mem( sizeof(y) ) << &y;
+    logger::out() << ptrx;
+    logger::out() << mypool;
     logger::out(logger::info) << "info message";
     logger::out(logger::error) << "error message";
     logger::out(logger::debug) << "debug message";
@@ -245,7 +254,7 @@ int main()
     os.add( t5, nullptr, core::MEDIUM_PRIORITY, 1_sec, task::PERIODIC );
 
     t1.setName( "t1" );
-    t2.setName( "t2" );
+    //t2.setName( "t2" );
     t3.setName( "t3" );
     t4.setName( "t4" );
     t5.setName( "t5" );

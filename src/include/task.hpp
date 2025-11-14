@@ -228,8 +228,15 @@ namespace qOS {
             {
                 return *currentTask;
             }
+            inline const task& self( void ) const noexcept
+            {
+                return *currentTask;
+            }
             inline task& thisTask( void ) noexcept
             {
+                return *currentTask;
+            }
+            inline const task& thisTask( void ) const noexcept {
                 return *currentTask;
             }
     };

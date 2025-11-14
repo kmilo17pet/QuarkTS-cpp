@@ -134,7 +134,7 @@ void* mem::pool::alloc( size_t pSize ) noexcept
         if ( ( pSize > static_cast<size_t>( 0U ) ) && ( pSize < freeBytesRemaining ) ) {
             mem::blockConnect_t *xBlock;
             mem::blockConnect_t *previousBlock;
-    
+
             previousBlock = &start;
             xBlock = start.next;
             while ( ( xBlock->blockSize < pSize ) && ( nullptr != xBlock->next ) ) {
@@ -181,6 +181,16 @@ size_t mem::pool::getFreeSize( void ) const noexcept
     return retValue;
 }
 /*============================================================================*/
+size_t mem::pool::getTotalSize( void ) const noexcept
+{
+    return poolMemSize;
+}
+/*============================================================================*/
+void* mem::pool::getPoolArea( void ) const noexcept
+{
+    return poolMemory;
+}
+/*============================================================================*/
 
 #if ( Q_DEFAULT_HEAP_SIZE >= 64 )
 
@@ -223,7 +233,7 @@ void operator delete[](void * ptr) noexcept
 /*============================================================================*/
 void operator delete(void* ptr, void* place) noexcept
 {
-    (void)ptr; 
+    (void)ptr;
     (void)place;
     /*Nothing to do*/
 }

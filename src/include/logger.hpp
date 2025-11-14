@@ -8,6 +8,8 @@
 #include "include/fsm.hpp"
 #include "include/timer.hpp"
 #include "include/input.hpp"
+#include "include/queue.hpp"
+#include "include/memory.hpp"
 #include "config/config.h"
 
 namespace qOS {
@@ -330,9 +332,9 @@ namespace qOS {
                 {
                     /*cstat -CERT-INT31-C_a -MISRAC++2008-5-0-8 -MISRAC++2008-5-0-9 -MISRAC++2008-0-1-2_b -MISRAC++2008-0-1-2_a*/
                     if (T(-1) < T(0)) {
-                        (void)util::integerToString(static_cast<signed_t>(v), buffer, base);
+                        (void)util::integerToString(static_cast<signed_t>(v), buffer, base); // skipcq: CXX-C1000
                     } else {
-                        (void)util::unsignedToString(static_cast<unsigned_t>(v), buffer, base);
+                        (void)util::unsignedToString(static_cast<unsigned_t>(v), buffer, base); // skipcq: CXX-C1000
                     }
                     /*cstat +CERT-INT31-C_a +MISRAC++2008-5-0-8 +MISRAC++2008-5-0-9 +MISRAC++2008-0-1-2_b +MISRAC++2008-0-1-2_a*/
                     writeNumStr();
@@ -347,12 +349,21 @@ namespace qOS {
                 void toLog( const lout_base& f );
                 void toLog( const mem& m );
                 void toLog( const pre& m );
-                void toLog( const task& t );
+                void toLog( const qOS::task& t );
                 void toLog( const qOS::timer& t );
                 void toLog( const qOS::stateMachine& sm );
                 void toLog( const qOS::sm::state& s );
                 void toLog( const qOS::trigger& t );
+                void toLog( const qOS::globalState& s );
+                void toLog( const qOS::taskEvent& e );
+                void toLog( const qOS::taskState& v );
+                void toLog( const qOS::queue& v );
+                void toLog( const qOS::mem::pool& v );
                 void toLog( const qOS::input::channel& in );
+                void toLog( const qOS::input::watcher& v );
+                void toLog( const qOS::sm::signalID& v );
+                void toLog( const qOS::sm::status& v );
+                void toLog( const qOS::sm::stateHandler& v );
                 void toLog( const qOS::string & s );
 
             friend ChainLoggerProxy out( const logSeverity s, const source_location &loc ) noexcept;
@@ -361,9 +372,16 @@ namespace qOS {
         };
         extern _logger& _logger_out; // skipcq: CXX-W2011, CXX-W2009
 
+        #define IMPL_CHAIN_LOGGER_OPERATOR( Type )                          \
+        ChainLoggerProxy& operator<<( Type v )                              \
+        {                                                                   \
+            parent.toLog( v );                                              \
+            return *this;                                                   \
+        }                                                                   \
+
         struct ChainLoggerProxy {
-            _logger& parent;
-            ChainLoggerProxy( _logger& p) : parent(p) {}
+            _logger& parent; // skipcq: CXX-W2010
+            explicit ChainLoggerProxy( _logger& p) : parent(p) {}
             ChainLoggerProxy( const ChainLoggerProxy& ) = delete;
             ChainLoggerProxy( ChainLoggerProxy&& other ) noexcept : parent( other.parent ) {}
             ~ChainLoggerProxy();
@@ -374,20 +392,28 @@ namespace qOS {
                 parent.toLog( v );
                 return *this;
             }
-
-            ChainLoggerProxy& operator<<( const char& v );
-            ChainLoggerProxy& operator<<( const char * s );
-            ChainLoggerProxy& operator<<( const void * const p );
-            ChainLoggerProxy& operator<<( const lout_base& f );
-            ChainLoggerProxy& operator<<( const mem& m );
-            ChainLoggerProxy& operator<<( const pre& m );
-            ChainLoggerProxy& operator<<( const task& t );
-            ChainLoggerProxy& operator<<( const qOS::timer& t );
-            ChainLoggerProxy& operator<<( const qOS::stateMachine& sm );
-            ChainLoggerProxy& operator<<( const qOS::sm::state& s );
-            ChainLoggerProxy& operator<<( const qOS::trigger& t );
-            ChainLoggerProxy& operator<<( const qOS::input::channel& in );
-            ChainLoggerProxy& operator<<( const qOS::string & s );
+            IMPL_CHAIN_LOGGER_OPERATOR( const char& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const char * )
+            IMPL_CHAIN_LOGGER_OPERATOR( const void * const )
+            IMPL_CHAIN_LOGGER_OPERATOR( const lout_base& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const mem& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const pre& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::task& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::timer& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::stateMachine& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::sm::state& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::trigger& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::globalState& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::taskEvent& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::taskState& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::queue& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::mem::pool& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::input::channel& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::input::watcher& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::sm::signalID& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::sm::status& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::sm::stateHandler& )
+            IMPL_CHAIN_LOGGER_OPERATOR( const qOS::string& )
         };
         /*! @endcond */
 

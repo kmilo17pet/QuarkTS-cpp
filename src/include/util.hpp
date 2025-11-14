@@ -282,6 +282,8 @@ namespace qOS {
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
+
+        char* pointerToString( const void *ptr, char* str ) noexcept;
         char* boolToString( const bool num, char *str ) noexcept;
 
         /** @}*/

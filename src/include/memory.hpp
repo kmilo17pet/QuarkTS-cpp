@@ -108,6 +108,18 @@ namespace qOS {
                 */
                 size_t getFreeSize( void ) const noexcept;
                 /**
+                * @brief Returns the total amount of heap space requested for the
+                * the memory pool.
+                * @return The size of the pool in bytes.
+                */
+                size_t getTotalSize( void ) const noexcept;
+                /**
+                * @brief Returns a pointer to a memory block statically allocated
+                * to act as Heap of the memory pool
+                * @return A pointer to the memory block.
+                */
+                void* getPoolArea( void ) const noexcept;
+                /**
                 * @brief Check if the memory pool instance has been initialized.
                 * @return @c true if instance has been initialized
                 */

@@ -297,6 +297,17 @@ bool input::watcher::watch( void ) noexcept
     return true;
 }
 /*============================================================================*/
+size_t input::watcher::getAnalogChannelsCount( void ) const noexcept
+{
+    return analogChannels.length();
+}
+/*============================================================================*/
+size_t input::watcher::getDigitalChannelsCount( void ) const noexcept
+{
+    return digitalChannels.length();
+}
+/*============================================================================*/
+/*============================================================================*/
 void input::digitalChannel::setInitalState( void ) noexcept
 {
     auto val = ( nullptr != reader ) ? reader( number ) : -1;
@@ -467,8 +478,8 @@ bool input::analogChannel::setParameter( const input::event e, const analogValue
         case input::event::DELTA:
             delta = p;
             break;
-        case input::event::STEP_UP:
-        case input::event::STEP_DOWN:
+        case input::event::STEP_UP: // [fallthrough]
+        case input::event::STEP_DOWN: // skipcq: CXX-C1001
             step = p;
             break;
         default:
@@ -478,4 +489,3 @@ bool input::analogChannel::setParameter( const input::event e, const analogValue
 
     return retValue;
 }
-/*============================================================================*/

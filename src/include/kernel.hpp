@@ -104,7 +104,9 @@ namespace qOS {
             void dispatchTaskFillEventInfo( task *Task ) noexcept;
             void dispatch( list * const xList ) noexcept;
             void dispatchIdle( void ) noexcept;
+            /*cstat -MISRAC++2008-8-5-2*/
             core() noexcept : waitingList( coreLists[ Q_PRIORITY_LEVELS ] ), suspendedList( coreLists[ Q_PRIORITY_LEVELS + 1 ] ) {}
+            /*cstat +MISRAC++2008-8-5-2*/
             core( core &other ) = delete;
             void operator=( const core & ) = delete;
         public:

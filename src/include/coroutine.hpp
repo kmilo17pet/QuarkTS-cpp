@@ -126,11 +126,13 @@ namespace qOS {
                 co::state label{ co::BEGINNING };
                 qOS::timer tm;
             public:
+                /*cstat -CERT-MSC40-C_a*/
                 coContext() = default;
                 inline void saveHandle( co::handle& h ) noexcept
                 {
                     h.ctx = this;
                 }
+                /*cstat +CERT-MSC40-C_a*/
                 inline static void saveHandle( void ) noexcept {}
                 inline static void semSignal( semaphore& s ) noexcept
                 {
@@ -140,11 +142,13 @@ namespace qOS {
                 {
                     return s.tryLock();
                 }
+                /*cstat -COP-member-uninit*/
                 inline coContext& operator=( co::state l )
                 {
                     label = l;
                     return *this;
                 }
+                /*cstat +COP-member-uninit*/
                 inline operator co::state() const
                 {
                     return label;
@@ -321,6 +325,7 @@ namespace qOS {
         * @note Must be used together with a matching co::until() statement.
         * @warning Co-routines statements are not allowed within the job segment.
         * and can produce undefined behavior.
+        *
         * Example:
         * @code{.c}
         * co::perform() {
@@ -337,6 +342,7 @@ namespace qOS {
         * @warning Co-routines statements are not allowed within the job segment.
         * and can produce undefined behavior.
         * @param[in] t The timeout for the specified job segment.
+        *
         * Example:
         * @code{.c}
         * co::perform( timeout ) {
@@ -362,6 +368,10 @@ namespace qOS {
         * @endcode
         */
         inline void until( bool condition ) noexcept { Q_UNUSED(condition); }
+
+
+
+        inline void until( bool condition, qOS::duration_t timeout ) noexcept { Q_UNUSED(condition); Q_UNUSED(timeout); }
         /*cstat +MISRAC++2008-0-1-11 +MISRAC++2008-7-1-2*/
 
         /** @}*/
@@ -383,12 +393,12 @@ reenter();                                                                     \
 static qOS::co::coContext co_ctx;                                              \
 co_ctx.saveHandle( h );                                                        \
 for ( ; co_ctx != qOS::co::SUSPENDED ; co_ctx = qOS::co::SUSPENDED )           \
-    if ( 0 ) {                                                                 \
+    if ( false ) {                                                             \
         goto q_co_continue;                                                    \
         q_co_continue:                                                         \
         continue;                                                              \
     }                                                                          \
-    else if ( 0 ) {                                                            \
+    else if ( false ) {                                                        \
         goto q_co_break;                                                       \
         q_co_break:                                                            \
         break;                                                                 \
@@ -401,7 +411,7 @@ for ( ; co_ctx != qOS::co::SUSPENDED ; co_ctx = qOS::co::SUSPENDED )           \
 #define q_co_SaveRestore( label, init_action, pos_label_action )               \
 init_action;                                                                   \
 for ( co_ctx = (label) ;; )                                                    \
-    if ( 0 ) {                                                                 \
+    if ( false ) {                                                             \
         case ( label ) : {                                                     \
             pos_label_action                                                   \
             break;                                                             \
@@ -431,7 +441,7 @@ q_co_SaveRestore( label, qOS::co::crNOP(), Q_NONE )                            \
 #define delay( t ) q_co_delay( q_co_label , t)
 #define q_co_delay( label, t )                                                 \
 delay( t );                                                                    \
-q_co_SaveRestore( label, co_ctx(t) , q_co_t_cond(0) )                          \
+q_co_SaveRestore( label, co_ctx(t) , q_co_t_cond(false) )                      \
 
 /*============================================================================*/
 #define q_co_wu_1( c ) q_co_waitUntil( q_co_label , c )
@@ -493,6 +503,8 @@ q_co_SaveRestore( q_co_label, co_ctx(t), Q_NONE );                             \
 until( c );                                                                    \
 q_co_cond( ( c ) || co_ctx.timeout() )                                         \
 /*============================================================================*/
+
+
 /*! @endcond  */
 
 #endif /*QOS_CPP_CO*/

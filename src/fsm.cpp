@@ -11,11 +11,13 @@ const sm::timeoutSpecOption_t sm::TIMEOUT_RST_EXIT = 0x08000000UL;
 const sm::timeoutSpecOption_t sm::TIMEOUT_KEEP_IF_SET = 0x10000000UL;
 const sm::timeoutSpecOption_t sm::TIMEOUT_PERIODIC = 0x20000000UL;
 
+/*cstat -MISRAC++2008-8-5-2*/
 /*============================================================================*/
 sm::signalPublisher::signalPublisher()
 {
     unsubscribeAll();
 }
+/*cstat +MISRAC++2008-8-5-2*/
 /*============================================================================*/
 void sm::signalPublisher::unsubscribeAll( void ) noexcept
 {
