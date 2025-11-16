@@ -273,16 +273,16 @@ namespace qOS {
         */
         char* integerToString( signed_t num, char* str, uint8_t base = 10U ) noexcept;
         /**
-        * @brief Converts a boolean value to a null-terminated string. Input is
-        * considered true with any value different to zero (0).
-        * The argument @a str should be an array long enough to contain the output
-        * @param[in] num Value to be converted to a string.
+        * @brief Converts a pointer value to a null-terminated string.
+        * The pointer address is formatted in hexadecimal notation.
+        * The buffer provided in @a str must be large enough to hold the resulting
+        * string, including the null terminator.
+        * @param[in] ptr Pointer value to convert.
         * @param[out] str  Array in memory where to store the resulting
         * null-terminated string.
         * @return A pointer to the resulting null-terminated string, same as
         * parameter @a str.
         */
-
         char* pointerToString( const void *ptr, char* str ) noexcept;
         char* boolToString( const bool num, char *str ) noexcept;
 
