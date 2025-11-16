@@ -267,10 +267,16 @@ namespace qOS {
             #endif
 
             /**
-            * @brief Add an input-watcher so that its function is executed by
-            * the kernel
+            * @brief Add an input-watcher as a task so that its function is
+            * executed by the kernel
             * @note The input-watcher is considered as an always-active task
+            * @param[in] Task The task node.
             * @param[in] w The input watcher.
+            * @param[in] p Task priority Value. [0(min) - @c Q_PRIORITY_LEVELS (max)]
+            * @param[in] s Specifies the initial operational state of the task
+            * (taskState::ENABLED_STATE, taskState::DISABLED_STATE,
+            * taskState::AWAKE_STATE or taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)).
+            * @param[in] arg The task arguments.
             * @return Returns @c true if success, otherwise returns @c false.
             */
             bool add( task &Task, input::watcher &w, const priority_t p = HIGHEST_PRIORITY, const taskState s = taskState::ENABLED_STATE, void *arg = nullptr ) noexcept;

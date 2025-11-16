@@ -307,7 +307,6 @@ size_t input::watcher::getDigitalChannelsCount( void ) const noexcept
     return digitalChannels.length();
 }
 /*============================================================================*/
-/*============================================================================*/
 void input::digitalChannel::setInitalState( void ) noexcept
 {
     auto val = ( nullptr != reader ) ? reader( number ) : -1;

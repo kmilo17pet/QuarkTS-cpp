@@ -468,8 +468,8 @@ namespace qOS {
                 /*! @endcond  */
                 /**
                 * @brief Constructor for the input-watcher instance
-                * @param[in] timeDebounce The specified time to bypass the
-                * bounce of the digital input channels
+                * @param[in] dt The specified time to bypass the bounce of the
+                * digital input channels
                 */
                 explicit watcher( const qOS::duration_t dt = 100_ms ) : debounceTime( dt ) {}
                 /**
@@ -483,8 +483,8 @@ namespace qOS {
                 * on analog input channels to trigger input::event::STEP and
                 * input::event::DELTA events.
                 */
-                watcher( const digitalReaderFcn_t& rDigital, const analogReaderFcn_t& rAnalog, const qOS::duration_t timeDebounce = 100_ms ) :
-                    debounceTime( timeDebounce ), digitalReader( rDigital ), analogReader( rAnalog ) {}
+                watcher( const digitalReaderFcn_t& rDigital, const analogReaderFcn_t& rAnalog, const qOS::duration_t dt = 100_ms ) :
+                    debounceTime( dt ), digitalReader( rDigital ), analogReader( rAnalog ) {}
                 /**
                 * @brief Add a channel to the watcher instance
                 * @param[in] c The input-Channel to watch

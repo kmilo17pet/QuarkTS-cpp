@@ -95,8 +95,7 @@ namespace qOS {
 
         void _logger::toLog( const void * const p )
         {
-            (void)util::pointerToString( p, buffer );
-            //(void)util::outputString( writeChar, "p@" );
+            (void)util::pointerToString( p, buffer ); // skipcq: CXX-C1000
             writeChar( nullptr, '@' );
             writeChar( nullptr, ':' );
             (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
@@ -155,10 +154,10 @@ namespace qOS {
         void _logger::toLog( const qOS::task& t )
         {
             (void)util::outputString( writeChar , "task{ " );
-            const auto name = t.getName();
+            const char *name = t.getName();
             if ( '\0' == name[ 0 ] ) {
-                (void)util::pointerToString( &t, buffer );
-                (void)util::outputString( writeChar, buffer );
+                (void)util::pointerToString( &t, buffer ); // skipcq: CXX-C1000
+                (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
             }
             else {
                 (void)util::outputString( writeChar , t.getName() );
@@ -196,7 +195,7 @@ namespace qOS {
         void _logger::toLog( const qOS::sm::state& s )
         {
             (void)util::outputString( writeChar , "sm::state{ " );
-            (void)util::pointerToString( &s, buffer );
+            (void)util::pointerToString( &s, buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
         }
@@ -204,10 +203,10 @@ namespace qOS {
         void _logger::toLog( const qOS::queue& v )
         {
             (void)util::outputString( writeChar , "queue{ H: " );
-            (void)util::pointerToString( v.peek(), buffer );
+            (void)util::pointerToString( v.peek(), buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ", count: " );
-            (void)util::unsignedToString( v.count(), buffer, 10 );
+            (void)util::unsignedToString( v.count(), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
         }
@@ -215,13 +214,13 @@ namespace qOS {
         void _logger::toLog( const qOS::mem::pool& v )
         {
             (void)util::outputString( writeChar , "mem::pool{ " );
-            (void)util::pointerToString( v.getPoolArea(), buffer );
+            (void)util::pointerToString( v.getPoolArea(), buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ", size: " );
-            (void)util::unsignedToString( v.getTotalSize(), buffer, 10 );
+            (void)util::unsignedToString( v.getTotalSize(), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , ", free: " );
-            (void)util::unsignedToString( v.getFreeSize(), buffer, 10 );
+            (void)util::unsignedToString( v.getFreeSize(), buffer, 10 ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , buffer ); // skipcq: CXX-C1000
             (void)util::outputString( writeChar , " } " );
         }
@@ -326,7 +325,7 @@ namespace qOS {
             }
             if ( str != nullptr ) {
                 (void)util::outputString( writeChar, str );
-                (void)util::outputString( writeChar, buffer );
+                (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
             }
             else {
                 const unsigned sig  = static_cast<unsigned>( v );
@@ -335,14 +334,14 @@ namespace qOS {
                     const unsigned maxIdx = static_cast<unsigned>( Q_FSM_MAX_TIMEOUTS) - 1U;
                     const unsigned idx = maxIdx - ( tBase - sig );
                     (void)util::outputString( writeChar, "SIGNAL_TIMEOUT" );
-                    (void)util::unsignedToString( idx, buffer, 10 );
-                    (void)util::outputString( writeChar, buffer );
+                    (void)util::unsignedToString( idx, buffer, 10 ); // skipcq: CXX-C1000
+                    (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
                     writeChar( nullptr, ' ' );
                 }
                 else {
                     (void)util::outputString( writeChar, "SIGNAL_USER:" );
-                    (void)util::unsignedToString( sig, buffer, 10 );
-                    (void)util::outputString( writeChar, buffer );
+                    (void)util::unsignedToString( sig, buffer, 10 ); // skipcq: CXX-C1000
+                    (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
                     writeChar( nullptr, ' ' );
                 }
             }
@@ -377,7 +376,7 @@ namespace qOS {
                     break;
             }
             (void)util::outputString( writeChar, str );
-            (void)util::outputString( writeChar, buffer );
+            (void)util::outputString( writeChar, buffer ); // skipcq: CXX-C1000
         }
 
         void _logger::toLog( const qOS::sm::stateHandler& v )
