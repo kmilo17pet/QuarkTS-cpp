@@ -166,9 +166,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae91a14fcccc429a4c88e09950930cc3c" id="r_ae91a14fcccc429a4c88e09950930cc3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae91a14fcccc429a4c88e09950930cc3c">watcher</a> (const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> dt=100_ms)</td></tr>
 <tr class="memdesc:ae91a14fcccc429a4c88e09950930cc3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the input-watcher instance.  <br /></td></tr>
 <tr class="separator:ae91a14fcccc429a4c88e09950930cc3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2a0a54239cfaee6503b1b0a9d22761c" id="r_ac2a0a54239cfaee6503b1b0a9d22761c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2a0a54239cfaee6503b1b0a9d22761c">watcher</a> (const <a class="el" href="group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a">digitalReaderFcn_t</a> &amp;rDigital, const <a class="el" href="group__qinput.html#ga4d54566c9f0a347e22be79e1be218319">analogReaderFcn_t</a> &amp;rAnalog, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> timeDebounce=100_ms)</td></tr>
-<tr class="memdesc:ac2a0a54239cfaee6503b1b0a9d22761c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the input-watcher instance.  <br /></td></tr>
-<tr class="separator:ac2a0a54239cfaee6503b1b0a9d22761c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee6790595d3cb8511a52fcac5c9facb8" id="r_aee6790595d3cb8511a52fcac5c9facb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee6790595d3cb8511a52fcac5c9facb8">watcher</a> (const <a class="el" href="group__qinput.html#ga3b6e44648c5f6be1a0cc5c27138f771a">digitalReaderFcn_t</a> &amp;rDigital, const <a class="el" href="group__qinput.html#ga4d54566c9f0a347e22be79e1be218319">analogReaderFcn_t</a> &amp;rAnalog, const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a> dt=100_ms)</td></tr>
+<tr class="memdesc:aee6790595d3cb8511a52fcac5c9facb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the input-watcher instance.  <br /></td></tr>
+<tr class="separator:aee6790595d3cb8511a52fcac5c9facb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94e0fda2802a8a5cb07892d2e960ab1a" id="r_a94e0fda2802a8a5cb07892d2e960ab1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94e0fda2802a8a5cb07892d2e960ab1a">add</a> (<a class="el" href="classq_o_s_1_1input_1_1channel.html">channel</a> &amp;c) noexcept</td></tr>
 <tr class="memdesc:a94e0fda2802a8a5cb07892d2e960ab1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a channel to the watcher instance.  <br /></td></tr>
 <tr class="separator:a94e0fda2802a8a5cb07892d2e960ab1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,15 +226,15 @@ Public Member Functions</h2></td></tr>
 <p>Constructor for the input-watcher instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">timeDebounce</td><td>The specified time to bypass the bounce of the digital input channels </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>The specified time to bypass the bounce of the digital input channels </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ac2a0a54239cfaee6503b1b0a9d22761c" name="ac2a0a54239cfaee6503b1b0a9d22761c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2a0a54239cfaee6503b1b0a9d22761c">&#9670;&#160;</a></span>watcher() <span class="overload">[2/2]</span></h2>
+<a id="aee6790595d3cb8511a52fcac5c9facb8" name="aee6790595d3cb8511a52fcac5c9facb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee6790595d3cb8511a52fcac5c9facb8">&#9670;&#160;</a></span>watcher() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,7 +255,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>timeDebounce</em></span><span class="paramdefsep"> = </span><span class="paramdefval">100_ms</span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="group__qclock.html#ga23120959288587741e4741198212c8e9">qOS::duration_t</a></td>          <td class="paramname"><span class="paramname"><em>dt</em></span><span class="paramdefsep"> = </span><span class="paramdefval">100_ms</span>&#160;)</td>
         </tr>
       </table>
   </td>

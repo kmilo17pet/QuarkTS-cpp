@@ -181,7 +181,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ga2cf5af2256df982e17035559ab177a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a task to the scheduling scheme running an AT Command Line Interface. Task will be scheduled as event-triggered task. The parser address will be stored in the <a class="el" href="classq_o_s_1_1event__t.html#a44c21a4201ab6c42ce8a36ec91742787" title="Task arguments defined at the time of its creation. (Storage-Pointer)">event_t::TaskData</a> storage-Pointer.  <br /></td></tr>
 <tr class="separator:ga2cf5af2256df982e17035559ab177a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a426aade1d561f1f0e2f292acd0ece51c" id="r_a426aade1d561f1f0e2f292acd0ece51c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a426aade1d561f1f0e2f292acd0ece51c">add</a> (<a class="el" href="classq_o_s_1_1task.html">task</a> &amp;Task, <a class="el" href="classq_o_s_1_1input_1_1watcher.html">input::watcher</a> &amp;w, const <a class="el" href="group__qtypes.html#gafa40141ce2de5f15a1d9b1558466311a">priority_t</a> p=<a class="el" href="#a9b090820d0612980def0501f89653020">HIGHEST_PRIORITY</a>, const <a class="el" href="group__qtaskmanip.html#ga8eb83d12746447d118e970f385fef5a8">taskState</a> s=<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0">taskState::ENABLED_STATE</a>, void *arg=nullptr) noexcept</td></tr>
-<tr class="memdesc:a426aade1d561f1f0e2f292acd0ece51c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an input-watcher so that its function is executed by the kernel.  <br /></td></tr>
+<tr class="memdesc:a426aade1d561f1f0e2f292acd0ece51c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an input-watcher as a task so that its function is executed by the kernel.  <br /></td></tr>
 <tr class="separator:a426aade1d561f1f0e2f292acd0ece51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4991fda84316e63029be7e200dff6aa0" id="r_a4991fda84316e63029be7e200dff6aa0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4991fda84316e63029be7e200dff6aa0">setIdleTask</a> (<a class="el" href="group__qtaskmanip.html#ga0570508d64e1001573d1910d89cec472">taskFcn_t</a> callback) noexcept</td></tr>
 <tr class="memdesc:a4991fda84316e63029be7e200dff6aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the callback for the Idle-task.  <br /></td></tr>
@@ -302,11 +302,15 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Add an input-watcher so that its function is executed by the kernel. </p>
+<p>Add an input-watcher as a task so that its function is executed by the kernel. </p>
 <dl class="section note"><dt>Note</dt><dd>The input-watcher is considered as an always-active task </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Task</td><td>The task node. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">w</td><td>The input watcher. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Task priority Value. [0(min) - <code>Q_PRIORITY_LEVELS</code> (max)] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>Specifies the initial operational state of the task (<a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af384a000870accb89c5c1f3bba962fe0" title="The task can catch all the events. This operational state is available when the ENABLE bit is set.">taskState::ENABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8ac30da079e916ce6def242ed46fac12c5" title="In this state, the time events will be discarded. This operational state is available when the ENABLE...">taskState::DISABLED_STATE</a>, <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE</a> or <a class="el" href="group__qtaskmanip.html#gga8eb83d12746447d118e970f385fef5a8af113e1ff40cec2242040e71786e7bfd1" title="In this state, the task is conceptually in an alert mode, handling most of the available events....">taskState::AWAKE_STATE(implies taskState::ENABLED_STATE,)</a>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>The task arguments. </td></tr>
   </table>
   </dd>
 </dl>

@@ -39,7 +39,7 @@ var group__qinput =
     ] ],
     [ "qOS::input::watcher", "classq_o_s_1_1input_1_1watcher.html", [
       [ "watcher", "classq_o_s_1_1input_1_1watcher.html#ae91a14fcccc429a4c88e09950930cc3c", null ],
-      [ "watcher", "classq_o_s_1_1input_1_1watcher.html#ac2a0a54239cfaee6503b1b0a9d22761c", null ],
+      [ "watcher", "classq_o_s_1_1input_1_1watcher.html#aee6790595d3cb8511a52fcac5c9facb8", null ],
       [ "add", "classq_o_s_1_1input_1_1watcher.html#a94e0fda2802a8a5cb07892d2e960ab1a", null ],
       [ "add", "classq_o_s_1_1input_1_1watcher.html#a7603e2fc1c9afcb1e8dfec0875c73ee7", null ],
       [ "add", "classq_o_s_1_1input_1_1watcher.html#ad25b4fc7a579e07d18701a9ac90d9199", null ],
